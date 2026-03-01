@@ -70,3 +70,4 @@ ADR-002 Sub-Decision 4. This task is BLOCKED until TASK-025 (A/B testing) produc
 | Date | Status | Notes |
 |------|--------|-------|
 | 2026-02-28 | Created | Initial creation — blocked by TASK-025 |
+| 2026-03-01 | Unblocked | TASK-025 completed with CONDITIONAL GO via PG-003 (p=0.016, pi_d=0.078). Consequence documentation validated; NEVER-framing is convention-alignment. Proceed with NPT-013 adoption. |

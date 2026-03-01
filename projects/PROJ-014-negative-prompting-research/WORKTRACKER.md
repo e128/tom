@@ -22,7 +22,7 @@
 | Criticality | C4 (Critical) |
 | Quality Threshold | >= 0.95 |
 | Orchestration | `neg-prompting-20260227-001` |
-| Progress | Phases 1-6 COMPLETE. FEAT-001 (ADR-001) DONE. FEAT-002 Phase 5A DONE (TASK-035 blocked). FEAT-003 Component A DONE (TASK-037 blocked). FEAT-004 DONE. Remaining: blocked tasks (TASK-025 A/B testing) + EPIC-006. |
+| Progress | Phases 1-6 COMPLETE. FEAT-001 (ADR-001) DONE. FEAT-002 Phase 5A DONE (TASK-035 unblocked). FEAT-003 Component A DONE (TASK-037 unblocked). FEAT-004 DONE. TASK-025 A/B testing DONE — CONDITIONAL GO via PG-003 (p=0.016, C3=100%, C4 gate 0.954). |
 
 ## Work Items
 
@@ -74,8 +74,8 @@
 | TASK-038 | Task | Decision 1: PG-004 Compaction testing requirement | DONE (f5f892b2) | FEAT-004 |
 | TASK-039 | Task | Decision 2: Add L2-REINJECT markers for H-04 and H-32 | DONE (f5f892b2) | FEAT-004 |
 | TASK-040 | Task | Decision 3: T-004 Failure mode documentation in templates | DONE (f5f892b2) | FEAT-004 |
-| EPIC-006 | Epic | Validation & Publication | PENDING | — |
-| TASK-025 | Task | A/B Testing: Positive vs Negative vs Negative with Consequence | PENDING | EPIC-006 |
+| EPIC-006 | Epic | Validation & Publication | IN PROGRESS | — |
+| TASK-025 | Task | A/B Testing: Positive vs Negative vs Negative with Consequence + orchestration ab-testing-20260301-001 | DONE — CONDITIONAL GO via PG-003 (0.954, 3 iter) | EPIC-006 |
 | TASK-026 | Task | Write Jerry MD Docs Site Article | PENDING | EPIC-006 |
 | TASK-027 | Task | Write Medium Article | PENDING | EPIC-006 |
 | TASK-028 | Task | Write Tweet and Cross-Post Medium + Jerry Articles | PENDING | EPIC-006 |

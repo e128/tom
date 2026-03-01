@@ -71,3 +71,4 @@ ADR-003 Component B (conditional). This task is BLOCKED until TASK-025 (A/B test
 | Date | Status | Notes |
 |------|--------|-------|
 | 2026-02-28 | Created | Initial creation — blocked by TASK-025 |
+| 2026-03-01 | Unblocked | TASK-025 completed with CONDITIONAL GO via PG-003 + G-001 completion. NPT-013 format validated for routing contexts. Proceed with framing vocabulary standardization. |
