@@ -62,6 +62,21 @@ activation-keywords:
   - "north star metric"
   - "opportunity solution tree"
   - "product kata"
+  - "break-even"
+  - "NPV"
+  - "IRR"
+  - "revenue model"
+  - "feasibility"
+  - "Van Westendorp"
+  - "Lean Canvas"
+  - "Rule of 40"
+  - "Magic Number"
+  - "payback period"
+  - "Blue Ocean"
+  - "value curve"
+  - "Crossing the Chasm"
+  - "competitive threat"
+  - "market intelligence"
 ---
 
 # PM/PMM Skill
@@ -90,8 +105,8 @@ The PM/PMM skill provides a **decision-focused product management and product ma
 
 - **Product Strategy:** Creates PRDs, product vision documents, roadmaps, and use case specifications grounded in JTBD, RICE, Kano, Playing to Win, and Opportunity Solution Tree frameworks
 - **Customer Insight:** Builds JTBD-oriented personas, customer journey maps with Moments of Truth, and VOC research reports synthesized from interview data
-- **Business Analysis:** Produces business cases, TAM/SAM/SOM market sizing, and pricing strategy analysis (Phase 3)
-- **Competitive Intelligence:** Delivers competitive analysis with Porter's Five Forces, battle cards, and win/loss analysis (Phase 3)
+- **Business Analysis:** Produces business cases, TAM/SAM/SOM market sizing, and pricing strategy analysis using Van Westendorp, Lean Canvas, and SaaS financial metrics
+- **Competitive Intelligence:** Delivers competitive analysis with Porter's Five Forces, Blue Ocean value curves, battle cards with talk tracks, and win/loss pattern analysis
 - **Go-to-Market:** Creates GTM plans with Dunford positioning, MRDs, and buying-committee buyer personas
 
 ### Core Design Principles
@@ -150,8 +165,8 @@ These keywords in a request should suppress `/pm-pmm` routing:
 | `pm-product-strategist` | "What should we build, and why?" | Value + Viability (strategy) | opus | **Tier 1 -- Active** |
 | `pm-customer-insight` | "Who are our customers, and what do they need?" | Value Risk | opus | **Tier 1 -- Active** |
 | `pm-market-strategist` | "How do we bring this to market?" | Viability Risk (GTM) | opus | **Tier 1 -- Active** |
-| `pm-business-analyst` | "Is this worth investing in?" | Viability Risk (financial) | sonnet | **Tier 2 -- Phase 3** |
-| `pm-competitive-analyst` | "Who are we up against?" | Viability Risk (market) | sonnet | **Tier 2 -- Phase 3** |
+| `pm-business-analyst` | "Is this worth investing in?" | Viability Risk (financial) | sonnet | **Tier 2 -- Active** |
+| `pm-competitive-analyst` | "Who are we up against?" | Viability Risk (market) | sonnet | **Tier 2 -- Active** |
 
 ### Agent-to-Artifact Ownership
 
@@ -160,8 +175,8 @@ These keywords in a request should suppress `/pm-pmm` routing:
 | pm-product-strategist | PRD, Product Vision, Roadmap, Use Cases | 4 |
 | pm-customer-insight | User Personas, Customer Journey Maps, VOC Research Reports | 3 |
 | pm-market-strategist | GTM Plan, MRD, Buyer Personas | 3 |
-| pm-business-analyst (Phase 3) | Business Case, Market Sizing (TAM/SAM/SOM) | 2 |
-| pm-competitive-analyst (Phase 3) | Competitive Analysis, Battle Cards, Win/Loss Analysis | 3 |
+| pm-business-analyst | Business Case, Market Sizing (TAM/SAM/SOM) | 2 |
+| pm-competitive-analyst | Competitive Analysis, Battle Cards, Win/Loss Analysis | 3 |
 | **Total** | | **15** |
 
 ### Agent Selection Hints
@@ -171,8 +186,8 @@ These keywords in a request should suppress `/pm-pmm` routing:
 | "Write a PRD" / "product requirements" / "roadmap" / "prioritize features" | pm-product-strategist | Owns all product requirements and prioritization artifacts |
 | "Create personas" / "journey map" / "customer interviews" / "VOC" / "pain points" | pm-customer-insight | Owns user personas, journey maps, VOC research |
 | "GTM plan" / "positioning" / "messaging" / "buyer persona" / "launch plan" | pm-market-strategist | Owns GTM, MRD, buyer personas |
-| "Business case" / "TAM" / "market sizing" / "pricing model" / "unit economics" | pm-business-analyst | Phase 3 -- inform user agent is not yet available |
-| "Competitive analysis" / "battle card" / "win/loss" / "Porter's" / "SWOT" | pm-competitive-analyst | Phase 3 -- inform user agent is not yet available |
+| "Business case" / "TAM" / "market sizing" / "pricing model" / "unit economics" | pm-business-analyst | Owns business cases, market sizing, pricing analysis |
+| "Competitive analysis" / "battle card" / "win/loss" / "Porter's" / "SWOT" | pm-competitive-analyst | Owns competitive analysis, battle cards, win/loss reports |
 
 ---
 
@@ -197,7 +212,7 @@ P-003 AGENT HIERARCHY:
   +------+ +------+ +------+
 
   +------+ +------+
-  | pm-  | | pm-  |   <-- Tier 2 Workers (Phase 3)
+  | pm-  | | pm-  |   <-- Tier 2 Workers (Active)
   |biz-  | |comp- |
   |anlst | |anlst |
   +------+ +------+
@@ -248,6 +263,12 @@ Request work that spans multiple agents (orchestrated by main context):
 
 "Position our product and then create a GTM launch plan"
   -> pm-market-strategist (positioning hypothesis) -> pm-market-strategist (GTM plan)
+
+"Analyze the competitive landscape and build a business case for our platform"
+  -> pm-competitive-analyst (competitive analysis) -> pm-business-analyst (business case with competitive context)
+
+"Size the market, analyze competitors, and create pricing recommendations"
+  -> pm-business-analyst (TAM/SAM/SOM) -> pm-competitive-analyst (competitive pricing) -> pm-business-analyst (pricing strategy)
 ```
 
 ---
@@ -321,7 +342,7 @@ Discovery before delivery prevents the most expensive PM failure mode: building 
 
 **Supporting methods:** Crossing the Chasm (adoption lifecycle, bowling alley), StoryBrand (messaging narrative)
 
-### pm-business-analyst Frameworks (3) -- Phase 3
+### pm-business-analyst Frameworks (3)
 
 | # | Framework | Operationalization |
 |---|-----------|-------------------|
@@ -331,7 +352,7 @@ Discovery before delivery prevents the most expensive PM failure mode: building 
 
 **Supporting methods:** Good-Better-Best pricing, Conjoint analysis, NPV/IRR/break-even
 
-### pm-competitive-analyst Frameworks (3) -- Phase 3
+### pm-competitive-analyst Frameworks (3)
 
 | # | Framework | Operationalization |
 |---|-----------|-------------------|
@@ -356,11 +377,11 @@ Every artifact has exactly one primary owner. Contributing agents provide inputs
 | 5 | User Personas | pm-customer-insight | -- | confidential |
 | 6 | Journey Maps | pm-customer-insight | -- | confidential |
 | 7 | VOC Reports | pm-customer-insight | -- | confidential |
-| 8 | Business Case | pm-business-analyst | pm-product-strategist, pm-competitive-analyst | confidential |
-| 9 | Market Sizing | pm-business-analyst | pm-competitive-analyst | confidential |
-| 10 | Competitive Analysis | pm-competitive-analyst | pm-market-strategist | confidential |
-| 11 | Battle Cards | pm-competitive-analyst | pm-market-strategist | confidential |
-| 12 | Win/Loss Analysis | pm-competitive-analyst | pm-market-strategist | confidential |
+| 8 | Business Case | pm-business-analyst | pm-product-strategist, pm-competitive-analyst | restricted |
+| 9 | Market Sizing | pm-business-analyst | pm-competitive-analyst | restricted |
+| 10 | Competitive Analysis | pm-competitive-analyst | pm-market-strategist | restricted |
+| 11 | Battle Cards | pm-competitive-analyst | pm-market-strategist | restricted |
+| 12 | Win/Loss Analysis | pm-competitive-analyst | pm-market-strategist | restricted |
 | 13 | GTM Plan | pm-market-strategist | pm-competitive-analyst, pm-customer-insight | internal |
 | 14 | MRD | pm-market-strategist | pm-competitive-analyst, pm-product-strategist | internal |
 | 15 | Buyer Personas | pm-market-strategist | pm-competitive-analyst | internal |
@@ -376,8 +397,11 @@ All agent interactions are mediated by the Jerry main context (orchestrator). No
 | pm-customer-insight | pm-product-strategist | Persona file paths, VOC themes, JTBD statements | File paths in handoff artifacts array |
 | pm-customer-insight | pm-market-strategist | User persona references for buyer-user alignment | cross_refs frontmatter |
 | pm-competitive-analyst | pm-market-strategist | Competitive positioning, battle card references | File paths in handoff |
+| pm-competitive-analyst | pm-business-analyst | Competitive pricing data, market share estimates | Orchestrator passes file paths in handoff |
 | pm-business-analyst | pm-product-strategist | Market sizing, feasibility verdict | cross_refs frontmatter |
+| pm-business-analyst | pm-market-strategist | Pricing model, packaging recommendations | Orchestrator passes file paths in handoff |
 | pm-product-strategist | pm-market-strategist | Product strategy, feature differentiation | cross_refs frontmatter |
+| pm-product-strategist | pm-business-analyst | Product scope, investment estimation inputs | Orchestrator passes file paths in handoff |
 
 ### Conflict Resolution
 
@@ -418,6 +442,12 @@ When agents produce conflicting recommendations:
 | Create buyer personas | pm-market-strategist | "Build buyer personas for the enterprise buying committee" |
 | Prioritize backlog | pm-product-strategist | "Prioritize these 8 features using RICE scoring" |
 | Assess PMF | pm-market-strategist | "Design a PMF survey using the Ellis 40% test" |
+| Build business case | pm-business-analyst | "Create a business case for the self-service platform with NPV analysis" |
+| Size market | pm-business-analyst | "Calculate TAM/SAM/SOM for the developer platform market" |
+| Analyze pricing | pm-business-analyst | "Run Van Westendorp pricing analysis for our enterprise tier" |
+| Analyze competitors | pm-competitive-analyst | "Analyze the competitive landscape using Porter's Five Forces" |
+| Create battle cards | pm-competitive-analyst | "Build battle cards for our top 3 competitors with talk tracks" |
+| Analyze win/loss | pm-competitive-analyst | "Analyze Q1 win/loss patterns from our sales data" |
 
 ### Routing Keyword Quick-Map
 
@@ -426,8 +456,8 @@ When agents produce conflicting recommendations:
 | PRD, product requirements, roadmap, prioritize, RICE, Kano, product vision, product strategy, "what to build", opportunity, north star, feature prioritization | pm-product-strategist |
 | persona, customer interview, journey map, VOC, voice of customer, churn, NPS, CSAT, CES, customer discovery, pain points, user needs | pm-customer-insight |
 | GTM, go-to-market, positioning, messaging, MRD, launch plan, sales enablement, buyer persona, product marketing, PLG, category | pm-market-strategist |
-| business case, financial model, market sizing, TAM, SAM, SOM, pricing, unit economics, LTV, CAC, NRR, NPV, break-even | pm-business-analyst (Phase 3) |
-| competitive analysis, battle card, win/loss, competitor, Porter's, SWOT, competitive landscape, differentiation | pm-competitive-analyst (Phase 3) |
+| business case, financial model, market sizing, TAM, SAM, SOM, pricing, unit economics, LTV, CAC, NRR, NPV, break-even, feasibility, revenue model, Van Westendorp, Lean Canvas, Rule of 40, Magic Number, payback period | pm-business-analyst |
+| competitive analysis, battle card, win/loss, competitor, Porter's, SWOT, competitive landscape, differentiation, market intelligence, competitive threat, Blue Ocean, value curve, Crossing the Chasm | pm-competitive-analyst |
 
 > **Persona routing disambiguation:** Standalone "persona" routes to pm-customer-insight (user personas). "buyer persona" routes to pm-market-strategist (buying committee personas). This distinction aligns with the user persona vs. buyer persona ownership boundary.
 
@@ -447,9 +477,9 @@ For registration in `mandatory-skill-usage.md`:
 
 ## Dependencies / Prerequisites
 
-### Templates (Phase 3)
+### Templates (Phase 4)
 
-15 artifact templates in `skills/pm-pmm/templates/` will be created during Phase 3 (naming: `{NN}-{artifact-slug}.template.md`). Templates cover all 15 artifact types from the Artifact Ownership Matrix. Each template includes both discovery and delivery mode sections.
+15 artifact templates in `skills/pm-pmm/templates/` will be created during Phase 4 (naming: `{NN}-{artifact-slug}.template.md`). Templates cover all 15 artifact types from the Artifact Ownership Matrix. Each template includes both discovery and delivery mode sections.
 
 ### SSOT Files
 
