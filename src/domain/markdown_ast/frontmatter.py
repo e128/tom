@@ -133,6 +133,17 @@ class BlockquoteFrontmatter:
         # Index for O(1) key lookup; last value wins for duplicate keys
         self._index: dict[str, int] = {f.key: i for i, f in enumerate(fields)}
 
+    @property
+    def fields(self) -> list[FrontmatterField]:
+        """Ordered list of FrontmatterField instances in document order.
+
+        Returns a copy to preserve immutability of the internal collection.
+
+        Returns:
+            List of FrontmatterField with key, value, line_number, start, end.
+        """
+        return list(self._fields)
+
     @classmethod
     def extract(cls, doc: JerryDocument) -> BlockquoteFrontmatter:
         """
