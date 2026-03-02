@@ -22,7 +22,7 @@
 | Criticality | C4 (Critical) |
 | Quality Threshold | >= 0.95 |
 | Orchestration | `neg-prompting-20260227-001` |
-| Progress | Phases 1-6 COMPLETE. FEAT-001 DONE. FEAT-002 DONE (TASK-035 gate 0.957). FEAT-003 DONE (TASK-037 gate pending). FEAT-004 DONE. TASK-025 DONE. Completion workflow `proj-014-completion-20260301-001` active: Steps 0-2 COMPLETE, Step 3 next. |
+| Progress | Phases 1-6 COMPLETE. FEAT-001 DONE. FEAT-002 DONE (TASK-035 gate 0.957). FEAT-003 DONE (TASK-037 gate 0.974). FEAT-004 DONE. TASK-025 DONE. FEAT-005 DONE (NPT-ref 0.955, agents 0.954, SKILL.md 0.9325 FA-03-accepted). EPIC-005 DONE. Completion workflow `proj-014-completion-20260301-001` active: Steps 0-3 COMPLETE, Step 4 PENDING. |
 
 ## Work Items
 
@@ -54,7 +54,7 @@
 | TASK-018 | Task | Phase 6: Final Synthesis & Implementation Roadmap + per-agent /adversary C4 gates | DONE (0.954, 2 iter) — Artifact: `orchestration/neg-prompting-20260227-001/phase-6/final-synthesis.md` | EPIC-004 |
 | TASK-019 | Task | Phase 6: /adversary C4 tournament (all 10 strategies, >= 0.95, max 5 iter) | DONE (0.954, 2 iter) — Tournament report: `orchestration/neg-prompting-20260227-001/phase-6/adversary-tournament-i2.md` | TASK-018 |
 | TASK-020 | Task | Documentation & commit | DONE | TASK-019 |
-| EPIC-005 | Epic | ADR Implementation | IN PROGRESS | — |
+| EPIC-005 | Epic | ADR Implementation | DONE | — |
 | FEAT-001 | Feature | Implement ADR-001: NPT-014 Elimination | DONE | EPIC-005 |
 | TASK-021 | Task | Phase 1: Baseline capture — identify all NPT-014 instances + quality metrics | DONE — 47 NPT-014, 28 NPT-009, 36 NPT-013 identified | FEAT-001 |
 | TASK-022 | Task | Phase 2: Rule files — upgrade NPT-014 to NPT-009/NPT-013 in .context/rules/ | DONE — 8 instances across 7 files upgraded | FEAT-001 |
@@ -74,6 +74,11 @@
 | TASK-038 | Task | Decision 1: PG-004 Compaction testing requirement | DONE (f5f892b2) | FEAT-004 |
 | TASK-039 | Task | Decision 2: Add L2-REINJECT markers for H-04 and H-32 | DONE (f5f892b2) | FEAT-004 |
 | TASK-040 | Task | Decision 3: T-004 Failure mode documentation in templates | DONE (f5f892b2) | FEAT-004 |
+| FEAT-005 | Feature | Create /prompt-engineering Interactive Skill | DONE | EPIC-005 |
+| TASK-041 | Task | Create SKILL.md and skill directory structure | DONE — SKILL.md created (225→237 lines), Triple-Lens added, description improved | FEAT-005 |
+| TASK-042 | Task | Create 3 agent definitions with governance YAML | DONE — 6 files: pe-builder, pe-constraint-gen, pe-scorer (.md + .governance.yaml) | FEAT-005 |
+| TASK-043 | Task | Create NPT pattern reference table | DONE — 142-line reference at skills/prompt-engineering/rules/npt-pattern-reference.md | FEAT-005 |
+| TASK-044 | Task | Register skill in CLAUDE.md, AGENTS.md, trigger map | DONE — CLAUDE.md + AGENTS.md (61 agents) + mandatory-skill-usage.md (priority 11) | FEAT-005 |
 | EPIC-006 | Epic | Validation & Publication | IN PROGRESS | — |
 | TASK-025 | Task | A/B Testing: Positive vs Negative vs Negative with Consequence + orchestration ab-testing-20260301-001 | DONE — CONDITIONAL GO via PG-003 (0.954, 3 iter) | EPIC-006 |
 | TASK-026 | Task | Write Jerry MD Docs Site Article | PENDING | EPIC-006 |

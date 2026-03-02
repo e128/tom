@@ -37,9 +37,9 @@ steps:
     gate:
       artifact: "ORCHESTRATION_PLAN.md"
       report: "adversary-gates/orchestration-plan-gate.md"
-      score: null  # iteration 3 in progress
-      iterations: 3
-      result: "IN_PROGRESS"
+      score: 0.950
+      iterations: 5
+      result: "PASS"
 
   step-1:
     name: "TASK-035: NPT-013 Constitutional Triplet"
@@ -67,21 +67,25 @@ steps:
 
   step-3:
     name: "FEAT-005: Create /prompt-engineering Skill"
-    status: "PENDING"
+    status: "COMPLETE"
     tasks: ["FEAT-005", "TASK-041", "TASK-042", "TASK-043", "TASK-044"]
     gates:
       - artifact: "SKILL.md"
-        report: "adversary-gates/feat-005-skill-gate.md"
-        score: null
-        result: "PENDING"
+        report: "adversary-gates/feat-005-skill-gate-i5.md"
+        score: 0.9325
+        iterations: 5
+        result: "FA-03-ACCEPTED"
+        note: "FA-03 max iterations reached. Fixes applied post-scoring (P-002 scope note, default target). Projected 0.953."
       - artifact: "Agent definitions"
-        report: "adversary-gates/feat-005-agents-gate.md"
-        score: null
-        result: "PENDING"
+        report: "adversary-gates/feat-005-agents-gate-i5.md"
+        score: 0.954
+        iterations: 5
+        result: "PASS"
       - artifact: "NPT reference table"
-        report: "adversary-gates/feat-005-npt-ref-gate.md"
-        score: null
-        result: "PENDING"
+        report: "adversary-gates/feat-005-npt-ref-gate-i2.md"
+        score: 0.955
+        iterations: 2
+        result: "PASS"
 
   step-4:
     name: "Publication Articles (Fan-Out)"
@@ -119,9 +123,10 @@ steps:
 
 metrics:
   steps_total: 7
-  steps_complete: 2  # step-1, step-2 (step-0 was scaffolding)
+  steps_complete: 4  # step-0 (0.950), step-1 (0.957), step-2 (0.974), step-3 (0.954/0.955/0.9325-FA03)
   gates_total: 10
-  gates_passed: 2  # task-035-gate (0.957), task-037-gate (0.974)
+  gates_passed: 5  # +agents(0.954), +npt-ref(0.955); skill-gate FA-03-accepted at 0.9325
+  gates_fa03_accepted: 1  # skill-gate (0.9325, 5 iterations, fixes applied post-scoring)
   quality_threshold: 0.95
   max_iterations_per_gate: 5
 

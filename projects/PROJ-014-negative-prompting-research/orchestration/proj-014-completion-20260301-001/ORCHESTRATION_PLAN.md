@@ -31,6 +31,8 @@ PROJ-014 Negative Prompting Research has completed:
 - **FEAT-004** (ADR-004): Compaction Resilience -- L2-REINJECT markers for H-04 and H-32
 - **TASK-025**: A/B Testing -- CONDITIONAL GO via PG-003 (p=0.016, C3=100%, C4 gate 0.954)
 
+Parent workflow artifacts: `orchestration/neg-prompting-20260227-001/`. Key source documents: `orchestration/neg-prompting-20260227-001/phase-6/final-synthesis.md` (research findings), `orchestration/neg-prompting-20260227-001/ab-testing/ab-testing-synthesis.md` (A/B test results).
+
 **Remaining work (this workflow):**
 - TASK-035 (FEAT-002): NPT-013 constitutional triplet in 12 existing SKILL.md files
 - TASK-037 (FEAT-003): Framing vocabulary standardization in 12 existing SKILL.md files
@@ -111,10 +113,12 @@ Scorer (fresh background Task: adv-scorer) --> scores artifact
 
 **Strategy application per step type:**
 - Steps 1-2 (SKILL.md edits): S-014 (LLM-as-Judge) primary. Compliance verification against NPT-013 format specification.
-- Step 3 (skill creation): S-014 primary + S-007 (Constitutional AI Critique) for governance compliance.
+- Step 3 (skill creation): S-014 primary scorer. All 10 selected strategies required for SKILL.md and agent definitions per C4 tournament standard (quality-enforcement.md). S-007 (Constitutional AI Critique) additionally mandatory for governance compliance.
 - Steps 4-5 (publication): S-014 primary. Voice compliance via sb-reviewer is a separate pass/fail check (not scored).
 
-**Escalation (AE-006 alignment):** If any gate reaches iteration 5 without passing >= 0.95, the artifact is user-accepted with documented score. The gate report must include: final score, iteration count, remaining findings, and acceptance rationale.
+**Escalation:**
+1. **FA-03 exhaustion:** If any gate reaches iteration 5 without passing >= 0.95, the artifact is user-accepted with documented score per user authorization. The gate report must include: final score, iteration count, remaining findings, and acceptance rationale.
+2. **AE-006 context fill monitoring:** CRITICAL tier (>= 0.80 fill) triggers auto-checkpoint + reduced verbosity. EMERGENCY tier (>= 0.88) triggers mandatory checkpoint + user handoff. COMPACTION event triggers human escalation (C3+ per AE-006e).
 
 ---
 
@@ -169,6 +173,8 @@ NEVER invoke this skill when:
 
 *Note: FEAT-005 is the parent Feature entity for TASK-041 through TASK-044.*
 
+*Note: EPIC-005 ('ADR Implementation') is an existing worktracker entity already IN PROGRESS. FEAT-005 is added as a new child Feature under EPIC-005. No new Epic creation required.*
+
 - FEAT-005: Create `/prompt-engineering` Interactive Skill (parent: EPIC-005)
 - TASK-041: Create SKILL.md and skill directory structure
 - TASK-042: Create 3 agent definitions with governance YAML
@@ -182,15 +188,15 @@ NEVER invoke this skill when:
 - `skills/prompt-engineering/agents/pe-scorer.md` + `.governance.yaml` (TASK-042)
 - `skills/prompt-engineering/rules/npt-pattern-reference.md` (TASK-043)
 
-**Registration (TASK-044):** CLAUDE.md skill table, AGENTS.md registry, mandatory-skill-usage.md trigger map
+**Registration (TASK-044):** CLAUDE.md skill table, AGENTS.md registry, mandatory-skill-usage.md trigger map. Trigger keywords: "build prompt", "create prompt", "prompt template", "NPT pattern", "constraint generation", "prompt quality", "score prompt".
 
 ### Step 4: Publication Fan-Out
 
 Three independent articles, each following: draft -> sb-rewriter voice transform -> sb-reviewer + adv-scorer gates.
 
-- **TASK-026:** Jerry MD Docs Site Article — Research findings narrative, NPT taxonomy overview, A/B test results (p=0.016), implementation guide for framework authors, link to `/prompt-engineering` skill
-- **TASK-027:** Medium Article — Broader audience narrative, key findings (NPT-013 100% vs positive-only 92.2%), practical recommendations for LLM prompt engineers, link to Jerry docs article
-- **TASK-029:** Slack Announcement — Brief announcement with key findings summary, links to TASK-026 and TASK-027 articles
+- **TASK-026:** Jerry MD Docs Site Article — Research findings narrative, NPT taxonomy overview, A/B test results (p=0.016), implementation guide for framework authors, link to `/prompt-engineering` skill. Target: ~1500-2000 words (5 sections: Introduction, Research Findings, NPT Taxonomy, A/B Test Results, Implementation Guide)
+- **TASK-027:** Medium Article — Broader audience narrative, key findings (NPT-013 100% vs positive-only 92.2%), practical recommendations for LLM prompt engineers, link to Jerry docs article. Target: ~1200-1500 words (narrative format for broader audience)
+- **TASK-029:** Slack Announcement — Brief announcement with key findings summary, links to TASK-026 and TASK-027 articles. Target: ~200-300 words
 
 **Adversary strategies per article gate:** S-014 (LLM-as-Judge) primary scoring. Voice compliance via sb-reviewer is a separate check (pass/fail, not scored).
 
@@ -200,12 +206,16 @@ Three independent articles, each following: draft -> sb-rewriter voice transform
 
 Fan-in barrier: depends on TASK-026, TASK-027, and TASK-029 completion for cross-linking. Tweet references article URLs from TASK-026 and TASK-027.
 
+**Tweet specification:** <= 280 characters, reference TASK-026 Jerry Docs article URL and TASK-027 Medium article URL. Suggested hashtags: #PromptEngineering #LLM #AIGovernance. Cross-post targets: Jerry community Slack channel, X/Twitter.
+
 ### Step 6: Finalize PROJ-014
 
 **Artifacts updated:**
 - `WORKTRACKER.md`: All remaining tasks to DONE, EPIC-005 to DONE, EPIC-006 to DONE, PROJ-014 status to COMPLETE
 - `ORCHESTRATION.yaml` (completion workflow): status to COMPLETE, all step statuses to COMPLETE, final metrics populated
 - `ORCHESTRATION.yaml` (parent workflow `neg-prompting-20260227-001`): status to COMPLETE
+
+Confirm EPIC-005 ("ADR Implementation") completion status -- if all child Features (FEAT-001 through FEAT-005) are DONE, update EPIC-005 to DONE.
 
 **Escalation path for below-threshold artifacts:** If any gate fails to reach 0.95 after 5 iterations (FA-03), the artifact is accepted with documented score per user authorization. The gate report documents: final score, iteration count, remaining findings, and user acceptance rationale.
 

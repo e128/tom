@@ -19,6 +19,7 @@
 | [Session Voice Skill Agents](#session-voice-skill-agents) | sb-voice agent (1 total) |
 | [Eng-Team Skill Agents](#eng-team-skill-agents) | eng-* agents (10 total) |
 | [Red-Team Skill Agents](#red-team-skill-agents) | red-* agents (11 total) |
+| [Prompt Engineering Skill Agents](#prompt-engineering-skill-agents) | pe-* agents (3 total) |
 | [MCP Tool Access](#mcp-tool-access) | Context7 and Memory-Keeper agent matrix |
 | [Agent Handoff Protocol](#agent-handoff-protocol) | Multi-agent coordination |
 | [Adding New Agents](#adding-new-agents) | Extension guide |
@@ -51,12 +52,13 @@ to specific skills. This provides:
 | Session Voice Agents | 1 | `/saucer-boy` skill |
 | Eng-Team Agents | 10 | `/eng-team` skill |
 | Red-Team Agents | 11 | `/red-team` skill |
-| **Total** | **58** | |
+| Prompt Engineering Agents | 3 | `/prompt-engineering` skill |
+| **Total** | **61** | |
 
 > **Verification:** Agent counts verified against filesystem scan (`skills/*/agents/*.md`).
-> 62 total files found; 4 template/extension files excluded from counts:
+> 65 total files found; 4 template/extension files excluded from counts:
 > `NSE_AGENT_TEMPLATE.md`, `NSE_EXTENSION.md`, `PS_AGENT_TEMPLATE.md`, `PS_EXTENSION.md`.
-> Per-skill sum: 9 + 10 + 3 + 3 + 3 + 5 + 3 + 1 + 10 + 11 = 58 invokable agents.
+> Per-skill sum: 9 + 10 + 3 + 3 + 3 + 5 + 3 + 1 + 10 + 11 + 3 = 61 invokable agents.
 > Last verified: 2026-02-22.
 
 ---
@@ -234,6 +236,32 @@ These agents parse, extract, and format transcript files.
 **Invocation**: Use `/transcript` skill for transcript processing.
 
 **Hybrid Architecture**: ts-parser delegates VTT files to Python parser (1,250x cost reduction), uses LLM fallback for SRT/plain text.
+
+---
+
+## Prompt Engineering Skill Agents
+
+These agents implement structured prompt construction and quality validation through the `/prompt-engineering` skill. Operationalizes PROJ-014 negative prompting research findings (NPT-013: 100% compliance vs 92.2% positive-only, p=0.016).
+
+| Agent | File | Role | Cognitive Mode |
+|-------|------|------|----------------|
+| pe-builder | `skills/prompt-engineering/agents/pe-builder.md` | Interactive prompt assembly (5-element anatomy) | Integrative |
+| pe-constraint-gen | `skills/prompt-engineering/agents/pe-constraint-gen.md` | NPT pattern selector and constraint formatter | Systematic |
+| pe-scorer | `skills/prompt-engineering/agents/pe-scorer.md` | Prompt quality scorer (7-criterion rubric) | Convergent |
+
+**Key Capabilities:**
+
+| Agent | Primary Use Case | Output Type |
+|-------|------------------|-------------|
+| pe-builder | Walk users through 5-element prompt anatomy, generate XML-wrapped structured prompts | Structured prompts with routing, scope, data source, quality gate, output path |
+| pe-constraint-gen | Convert intent to NPT-009/NPT-013 formatted constraints with XML wrapping | `<forbidden_actions>` and `<constraint>` XML blocks |
+| pe-scorer | Evaluate prompts against 7-criterion rubric (C1-C7), return dimension scores | Dimension-level scores with weighted composite and improvement suggestions |
+
+**Invocation**: Use `/prompt-engineering` skill. Keywords: build prompt, create prompt, NPT pattern, constraint generation, score prompt.
+
+**Model Tiers:** pe-builder (opus), pe-constraint-gen (sonnet), pe-scorer (haiku).
+
+**Source**: PROJ-014 Negative Prompting Research, `.context/rules/prompt-quality.md`, `.context/rules/prompt-templates.md`.
 
 ---
 
