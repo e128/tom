@@ -22,7 +22,7 @@
 | Criticality | C4 (Critical) |
 | Quality Threshold | >= 0.95 |
 | Orchestration | `neg-prompting-20260227-001` |
-| Progress | PROJECT COMPLETE. Phases 1-6 DONE. EPIC-005 DONE (FEAT-001/002/003/004/005). EPIC-006 DONE (TASK-025/026/027/028/029). All 10 C4 gates passed. Completion workflow `proj-014-completion-20260301-001` COMPLETE (Steps 0-6). |
+| Progress | Phases 1-6 DONE. EPIC-005 DONE. EPIC-006 DONE. EPIC-007 DONE. All C4 gates passed (25 total: 17 agent + 5 barrier + 1 tournament + 2 MKDocs publication). |
 
 ## Work Items
 
@@ -85,6 +85,9 @@
 | TASK-027 | Task | Write Medium Article | DONE (0.952, 5 iter) — Voice PASS + C4 PASS | EPIC-006 |
 | TASK-028 | Task | Write Tweet and Cross-Post Medium + Jerry Articles | DONE (0.945, 2 iter) — Voice PASS + C4 PASS (genre-constrained) | EPIC-006 |
 | TASK-029 | Task | Slack Message Announcement | DONE (0.957, 1 iter) — Voice PASS + C4 PASS | EPIC-006 |
+| EPIC-007 | Epic | MKDocs Site Publication | DONE | — |
+| TASK-045 | Task | Publish jerry-docs article to MKDocs blog section | DONE — `docs/blog/posts/structured-negation-constraint-enforcement.md` | EPIC-007 |
+| TASK-046 | Task | Create negative prompting research page for docs/research/ with Saucer Boy voice + C4 gate | DONE (0.953, 5 iter) — Voice PASS + C4 PASS | EPIC-007 |
 
 ---
 
