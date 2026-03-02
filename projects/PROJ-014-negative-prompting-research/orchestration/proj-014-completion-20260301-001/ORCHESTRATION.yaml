@@ -89,21 +89,24 @@ steps:
 
   step-4:
     name: "Publication Articles (Fan-Out)"
-    status: "PENDING"
+    status: "COMPLETE"
     tasks: ["TASK-026", "TASK-027", "TASK-029"]
     gates:
       - artifact: "Jerry docs article"
         report: "adversary-gates/task-026-gate.md"
-        score: null
-        result: "PENDING"
+        score: 0.952
+        iterations: 1
+        result: "PASS"
       - artifact: "Medium article"
-        report: "adversary-gates/task-027-gate.md"
-        score: null
-        result: "PENDING"
+        report: "adversary-gates/task-027-gate-i5.md"
+        score: 0.952
+        iterations: 5
+        result: "PASS"
       - artifact: "Slack announcement"
         report: "adversary-gates/task-029-gate.md"
-        score: null
-        result: "PENDING"
+        score: 0.957
+        iterations: 1
+        result: "PASS"
 
   step-5:
     name: "TASK-028: Tweet + Cross-Post (Fan-In)"
@@ -123,9 +126,9 @@ steps:
 
 metrics:
   steps_total: 7
-  steps_complete: 4  # step-0 (0.950), step-1 (0.957), step-2 (0.974), step-3 (0.954/0.955/0.9325-FA03)
+  steps_complete: 5  # step-0 (0.950), step-1 (0.957), step-2 (0.974), step-3 (0.954/0.955/0.9325-FA03), step-4 (0.952/0.952/0.957)
   gates_total: 10
-  gates_passed: 5  # +agents(0.954), +npt-ref(0.955); skill-gate FA-03-accepted at 0.9325
+  gates_passed: 8  # +task-026(0.952), +task-027(0.952), +task-029(0.957)
   gates_fa03_accepted: 1  # skill-gate (0.9325, 5 iterations, fixes applied post-scoring)
   quality_threshold: 0.95
   max_iterations_per_gate: 5
