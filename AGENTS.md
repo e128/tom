@@ -19,6 +19,7 @@
 | [Session Voice Skill Agents](#session-voice-skill-agents) | sb-voice agent (1 total) |
 | [Eng-Team Skill Agents](#eng-team-skill-agents) | eng-* agents (10 total) |
 | [Red-Team Skill Agents](#red-team-skill-agents) | red-* agents (11 total) |
+| [PM/PMM Skill Agents](#pmpmm-skill-agents) | pm-* agents (5 total) |
 | [MCP Tool Access](#mcp-tool-access) | Context7 and Memory-Keeper agent matrix |
 | [Agent Handoff Protocol](#agent-handoff-protocol) | Multi-agent coordination |
 | [Adding New Agents](#adding-new-agents) | Extension guide |
@@ -51,13 +52,14 @@ to specific skills. This provides:
 | Session Voice Agents | 1 | `/saucer-boy` skill |
 | Eng-Team Agents | 10 | `/eng-team` skill |
 | Red-Team Agents | 11 | `/red-team` skill |
-| **Total** | **58** | |
+| PM/PMM Agents | 5 | `/pm-pmm` skill |
+| **Total** | **63** | |
 
 > **Verification:** Agent counts verified against filesystem scan (`skills/*/agents/*.md`).
-> 62 total files found; 4 template/extension files excluded from counts:
+> 67 total files found; 4 template/extension files excluded from counts:
 > `NSE_AGENT_TEMPLATE.md`, `NSE_EXTENSION.md`, `PS_AGENT_TEMPLATE.md`, `PS_EXTENSION.md`.
-> Per-skill sum: 9 + 10 + 3 + 3 + 3 + 5 + 3 + 1 + 10 + 11 = 58 invokable agents.
-> Last verified: 2026-02-22.
+> Per-skill sum: 9 + 10 + 3 + 3 + 3 + 5 + 3 + 1 + 10 + 11 + 5 = 63 invokable agents.
+> Last verified: 2026-03-01.
 
 ---
 
@@ -237,6 +239,34 @@ These agents parse, extract, and format transcript files.
 
 ---
 
+## PM/PMM Skill Agents
+
+These agents provide product management and product marketing capabilities.
+
+| Agent | File | Role | Cognitive Mode |
+|-------|------|------|----------------|
+| pm-product-strategist | `skills/pm-pmm/agents/pm-product-strategist.md` | Product Strategist | Integrative |
+| pm-customer-insight | `skills/pm-pmm/agents/pm-customer-insight.md` | Customer Insight Researcher | Divergent |
+| pm-market-strategist | `skills/pm-pmm/agents/pm-market-strategist.md` | Market Strategist | Convergent |
+| pm-business-analyst | `skills/pm-pmm/agents/pm-business-analyst.md` | Business Analyst | Convergent |
+| pm-competitive-analyst | `skills/pm-pmm/agents/pm-competitive-analyst.md` | Competitive Intelligence Analyst | Convergent |
+
+**Key Capabilities:**
+
+| Agent | Primary Use Case | Output Type |
+|-------|------------------|-------------|
+| pm-product-strategist | PRDs, product vision, roadmaps, feature prioritization (RICE/Kano/WSJF) | Product strategy artifacts |
+| pm-customer-insight | User personas (JTBD), journey maps, VOC research, customer discovery | Customer insight artifacts |
+| pm-market-strategist | GTM plans, positioning (Dunford), MRDs, buyer personas, launch planning | Market strategy artifacts |
+| pm-business-analyst | Business cases, market sizing (TAM/SAM/SOM), pricing analysis, financial models | Business analysis artifacts |
+| pm-competitive-analyst | Competitive analysis, battle cards, win/loss analysis, Porter's Five Forces | Competitive intelligence artifacts |
+
+**Invocation**: Use `/pm-pmm` skill for product management and product marketing work.
+
+**Discovery/Delivery Mode**: All agents support dual-mode operation -- discovery mode (hypothesis-driven sketches) before delivery mode (validated production artifacts).
+
+---
+
 ## MCP Tool Access
 
 Agents with MCP (Model Context Protocol) tool access for external documentation lookup and cross-session memory.
@@ -262,6 +292,9 @@ Agents with MCP (Model Context Protocol) tool access for external documentation 
 | eng-security | eng-team | resolve-library-id, query-docs |
 | eng-reviewer | eng-team | resolve-library-id, query-docs |
 | eng-incident | eng-team | resolve-library-id, query-docs |
+| pm-customer-insight | pm-pmm | resolve-library-id, query-docs |
+| pm-market-strategist | pm-pmm | resolve-library-id, query-docs |
+| pm-competitive-analyst | pm-pmm | resolve-library-id, query-docs |
 | red-lead | red-team | resolve-library-id, query-docs |
 | red-recon | red-team | resolve-library-id, query-docs |
 | red-vuln | red-team | resolve-library-id, query-docs |

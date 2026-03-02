@@ -84,6 +84,7 @@ See `docs/governance/JERRY_CONSTITUTION.md` for full governance.
 | `/ast` | Markdown AST: parse, query, validate, modify frontmatter |
 | `/eng-team` | Secure software engineering methodology (10 agents: architecture, implementation, quality, incident response) |
 | `/red-team` | Offensive security testing methodology (11 agents: recon, exploitation, post-exploitation, reporting) |
+| `/pm-pmm` | Product management and product marketing (5 agents: strategy, customer insight, market, business analysis, competitive) |
 
 **SessionStart Hook Tags:**
 

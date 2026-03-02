@@ -149,6 +149,9 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 | eng-security | resolve, query | — | Security standard documentation |
 | eng-reviewer | resolve, query | — | Standards verification research |
 | eng-incident | resolve, query | — | IR framework documentation |
+| pm-customer-insight | resolve, query | — | Customer research documentation |
+| pm-market-strategist | resolve, query | — | Market strategy framework docs |
+| pm-competitive-analyst | resolve, query | — | Competitive analysis methodology |
 | red-lead | resolve, query | — | Methodology framework research |
 | red-recon | resolve, query | — | Reconnaissance tool documentation |
 | red-vuln | resolve, query | — | Vulnerability database research |
@@ -167,6 +170,7 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 - **ps-critic, ps-validator, ps-reviewer** — Quality evaluation; no external library research needed
 - **ps-reporter** — Report generation from existing data
 - **eng-*** — File-based persistence per P-002 (engagement-scoped output); no cross-session state requirement
+- **pm-product-strategist, pm-business-analyst** — T3 tools (WebSearch/WebFetch) but no Context7; external research via web search only
 - **red-*** — File-based persistence per P-002 (engagement-scoped output); scope documents and evidence stored in engagement directories
 
 > **Classification rule for new agents:** See MCP-M-002 in [MEDIUM Standards](#medium-standards).
