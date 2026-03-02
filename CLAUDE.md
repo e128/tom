@@ -66,7 +66,7 @@ See `docs/governance/JERRY_CONSTITUTION.md` for full governance.
 
 ## Quick Reference
 
-**CLI** (v0.21.0): `jerry session start|end|status|abandon` | `jerry items list|show` | `jerry projects list|context|validate`
+**CLI** (v0.22.1): `jerry session start|end|status|abandon` | `jerry items list|show` | `jerry projects list|context|validate`
 
 **Skills** (invoke proactively per H-22):
 
@@ -85,6 +85,8 @@ See `docs/governance/JERRY_CONSTITUTION.md` for full governance.
 | `/eng-team` | Secure software engineering methodology (10 agents: architecture, implementation, quality, incident response) |
 | `/red-team` | Offensive security testing methodology (11 agents: recon, exploitation, post-exploitation, reporting) |
 | `/pm-pmm` | Product management and product marketing (5 agents: strategy, customer insight, market, business analysis, competitive) |
+| `/prompt-engineering` | Structured prompt construction, NPT constraint generation, prompt quality scoring (3 agents: builder, constraint-gen, scorer) |
+| `/diataxis` | Four-quadrant documentation methodology (6 agents: 4 writers, classifier, auditor) |
 
 **SessionStart Hook Tags:**
 
