@@ -121,6 +121,8 @@ def main() -> int:
         return _handle_ast(args, json_output)
     elif args.namespace == "agents":
         return _handle_agents(args, json_output)
+    elif args.namespace == "ci":
+        return _handle_ci(args, json_output)
     elif args.namespace == "hooks":
         return _handle_hooks(adapter, args)
 
@@ -672,6 +674,55 @@ def _handle_agents(args: Any, json_output: bool) -> int:
         return 1 if drift_count > 0 else 0
 
     print(f"Unknown agents command: {args.command}")
+    return 1
+
+
+def _handle_ci(args: Any, json_output: bool) -> int:
+    """Route ci namespace commands.
+
+    Does not require the CLIAdapter; uses its own bootstrap wiring
+    for the version bounded context.
+
+    Args:
+        args: Parsed arguments with .command.
+        json_output: Whether JSON output was requested.
+
+    Returns:
+        Exit code: 0 (success), 1 (error).
+
+    References:
+        - BUG-002: Version bump regex rejects uppercase scopes
+    """
+    if args.command is None:
+        print("No ci command specified. Use 'jerry ci --help'.")
+        return 1
+
+    if args.command == "detect-bump-type":
+        from src.bootstrap import create_ci_detect_bump_type_handler
+
+        commits_from_stdin = getattr(args, "commits_from_stdin", False)
+        handler = create_ci_detect_bump_type_handler(
+            commits_from_stdin=commits_from_stdin,
+        )
+
+        since_tag = getattr(args, "since_tag", None)
+        range_spec = getattr(args, "range_spec", None)
+
+        result = handler.handle(
+            since_tag=since_tag,
+            range_spec=range_spec,
+        )
+
+        if json_output:
+            import json
+
+            print(json.dumps({"bump_type": result.label}))
+        else:
+            print(result.label)
+
+        return 0
+
+    print(f"Unknown ci command: {args.command}")
     return 1
 
 
