@@ -16,13 +16,13 @@
 | Metric | Value |
 |--------|-------|
 | Project | PROJ-014-negative-prompting-research |
-| Status | IN PROGRESS |
+| Status | COMPLETE |
 | Created | 2026-02-27 |
 | GitHub Issue | [#122](https://github.com/geekatron/jerry/issues/122) |
 | Criticality | C4 (Critical) |
 | Quality Threshold | >= 0.95 |
 | Orchestration | `neg-prompting-20260227-001` |
-| Progress | Phases 1-6 COMPLETE. FEAT-001 DONE. FEAT-002 DONE (TASK-035 gate 0.957). FEAT-003 DONE (TASK-037 gate 0.974). FEAT-004 DONE. TASK-025 DONE. FEAT-005 DONE (NPT-ref 0.955, agents 0.954, SKILL.md 0.9325 FA-03-accepted). EPIC-005 DONE. TASK-026 DONE (0.952). TASK-027 DONE (0.952, 5 iter). TASK-029 DONE (0.957). Completion workflow `proj-014-completion-20260301-001` active: Steps 0-4 COMPLETE, Step 5 PENDING. |
+| Progress | PROJECT COMPLETE. Phases 1-6 DONE. EPIC-005 DONE (FEAT-001/002/003/004/005). EPIC-006 DONE (TASK-025/026/027/028/029). All 10 C4 gates passed. Completion workflow `proj-014-completion-20260301-001` COMPLETE (Steps 0-6). |
 
 ## Work Items
 
@@ -79,11 +79,11 @@
 | TASK-042 | Task | Create 3 agent definitions with governance YAML | DONE — 6 files: pe-builder, pe-constraint-gen, pe-scorer (.md + .governance.yaml) | FEAT-005 |
 | TASK-043 | Task | Create NPT pattern reference table | DONE — 142-line reference at skills/prompt-engineering/rules/npt-pattern-reference.md | FEAT-005 |
 | TASK-044 | Task | Register skill in CLAUDE.md, AGENTS.md, trigger map | DONE — CLAUDE.md + AGENTS.md (61 agents) + mandatory-skill-usage.md (priority 11) | FEAT-005 |
-| EPIC-006 | Epic | Validation & Publication | IN PROGRESS | — |
+| EPIC-006 | Epic | Validation & Publication | DONE | — |
 | TASK-025 | Task | A/B Testing: Positive vs Negative vs Negative with Consequence + orchestration ab-testing-20260301-001 | DONE — CONDITIONAL GO via PG-003 (0.954, 3 iter) | EPIC-006 |
 | TASK-026 | Task | Write Jerry MD Docs Site Article | DONE (0.952, 1 iter) — Voice PASS + C4 PASS | EPIC-006 |
 | TASK-027 | Task | Write Medium Article | DONE (0.952, 5 iter) — Voice PASS + C4 PASS | EPIC-006 |
-| TASK-028 | Task | Write Tweet and Cross-Post Medium + Jerry Articles | PENDING | EPIC-006 |
+| TASK-028 | Task | Write Tweet and Cross-Post Medium + Jerry Articles | DONE (0.945, 2 iter) — Voice PASS + C4 PASS (genre-constrained) | EPIC-006 |
 | TASK-029 | Task | Slack Message Announcement | DONE (0.957, 1 iter) — Voice PASS + C4 PASS | EPIC-006 |
 
 ---
