@@ -469,9 +469,9 @@ For registration in `mandatory-skill-usage.md`:
 
 | Detected Keywords | Negative Keywords | Priority | Compound Triggers | Skill |
 |---|---|---|---|---|
-| product strategy, PRD, product requirements, roadmap, prioritize, RICE, customer insight, persona, journey map, VOC, voice of customer, business case, market sizing, TAM, pricing, unit economics, competitive analysis, battle card, win/loss, GTM, go-to-market, positioning, messaging, MRD, launch plan, product marketing, buyer persona, JTBD, north star, Kano, product vision | code review, architecture, engineering, implementation, deployment, testing, CI/CD, infrastructure pricing, cloud pricing, adversarial, transcript, penetration test, exploit, strategy (standalone) | 8 | "product strategy" OR "product requirements" OR "market sizing" OR "go-to-market" (phrase match) | `/pm-pmm` |
+| product strategy, PRD, product requirements, roadmap, prioritize, RICE, customer insight, persona, journey map, VOC, voice of customer, business case, market sizing, TAM, pricing, unit economics, competitive analysis, battle card, win/loss, GTM, go-to-market, positioning, messaging, MRD, launch plan, product marketing, buyer persona, JTBD, north star, Kano, product vision | code review, architecture, engineering, implementation, deployment, testing, CI/CD, infrastructure pricing, cloud pricing, adversarial, transcript, penetration test, exploit, strategy (standalone) | 9 | "product strategy" OR "product requirements" OR "market sizing" OR "go-to-market" OR "competitive analysis" OR "business case" OR "buyer persona" (phrase match) | `/pm-pmm` |
 
-> **Priority 8 rationale:** Below /adversary (7), ensuring /pm-pmm does not capture general analysis requests. PM/PMM domain terms provide sufficient specificity. Standalone "strategy" replaced with compound "product strategy" to avoid collision with /problem-solving.
+> **Priority 9 rationale:** Below /ast (8) and /adversary (7), ensuring /pm-pmm does not capture general analysis or AST requests. PM/PMM domain terms provide sufficient specificity via compound triggers. Standalone "strategy" replaced with compound "product strategy" to avoid collision with /problem-solving.
 
 ---
 
