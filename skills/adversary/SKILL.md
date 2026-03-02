@@ -71,14 +71,13 @@ Activate when:
 - Pairing S-003 (Steelman) before S-002 (Devil's Advocate) per H-16
 - Needing a standalone quality assessment without revision cycles
 
-**Do NOT use when:**
-
-- You need a creator-critic-revision loop (use `/problem-solving` with ps-critic instead)
-- You need routine code review for quick defect checks (use ps-reviewer)
-- You need constraint validation (use ps-validator)
-- Working on routine code changes at C1 criticality — use self-review (S-010) only without full adversarial overhead
-- Fixing defects or bugs with obvious solutions — use `/problem-solving` for root-cause analysis instead
-- User explicitly requests a quick review without adversarial rigor — respect user preference per P-020
+NEVER invoke this skill when:
+- Task requires iterative creator-critic-revision loop -- Consequence: Adversarial one-shot assessment applied to iterative work produces premature rejection without revision pathway; use `/problem-solving` with ps-critic instead
+- Task is routine code review for quick defect checks -- Consequence: Full adversarial strategy template execution (S-001 through S-014) applied to routine defect detection wastes significant context budget on strategy selection and template loading; use ps-reviewer instead
+- Task is binary constraint validation (pass/fail compliance) -- Consequence: Adversarial strategies assess quality dimensions, not binary constraint compliance; traceability matrices not generated; use ps-validator instead
+- Work is routine code changes at C1 criticality -- Consequence: Full adversarial overhead (adv-selector, adv-executor, adv-scorer) applied to C1 routine tasks consumes disproportionate context budget for low-risk work; use self-review (S-010) only
+- Defects or bugs have obvious solutions -- Consequence: Adversarial quality assessment evaluates existing deliverables, not diagnose root causes; use `/problem-solving` for root-cause analysis instead
+- User explicitly requests a quick review without adversarial rigor -- Consequence: Overriding user preference violates P-020 (user authority); respect the request
 
 See [Routing Disambiguation](#routing-disambiguation) for full exclusion conditions with consequences.
 
@@ -376,15 +375,15 @@ H-14 mandates a minimum 3-iteration creator-critic-revision cycle for C2+ delive
 
 All agents adhere to the **Jerry Constitution v1.0**:
 
-| Principle | Requirement |
-|-----------|-------------|
-| P-001: Truth and Accuracy | Findings based on evidence, scores based on rubrics |
-| P-002: File Persistence | All outputs persisted to files |
-| P-003: No Recursive Subagents | Agents are workers, not orchestrators |
-| P-004: Explicit Provenance | Strategy IDs, template paths, and evidence cited |
-| P-011: Evidence-Based | All findings tied to specific deliverable evidence |
-| P-020: User Authority | User can override strategy selection and scoring |
-| P-022: No Deception | Quality issues honestly reported, scores not inflated |
+| Principle | Requirement | Consequence of Violation |
+|-----------|-------------|-------------------------|
+| P-003 | NEVER spawn recursive subagents -- max 1 level | Agent hierarchy violation; uncontrolled token consumption |
+| P-020 | NEVER override user intent -- ask before destructive ops | Unauthorized action; trust erosion |
+| P-022 | NEVER deceive about actions, capabilities, or confidence | Governance undermined; quality assessment invalidated |
+| P-001 | NEVER present findings without evidence or rubric-based scoring | Unreliable outputs; unfounded claims propagate downstream |
+| P-002 | NEVER leave outputs in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
+| P-004 | NEVER omit strategy IDs, template paths, or evidence citations | Untraceable decisions; audit trail broken |
+| P-011 | NEVER make findings without tying them to specific deliverable evidence | Unsupported recommendations; confidence inflated without basis |
 
 ---
 

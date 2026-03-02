@@ -95,13 +95,12 @@ Activate when:
 - Generating engagement reports with findings, risk scores, and remediation guidance
 - Validating /eng-team defenses through adversarial testing (purple team)
 
-**Do NOT use when:**
-
-- Building secure software (use `/eng-team` instead)
-- Performing adversarial quality reviews of deliverables (use `/adversary` instead)
-- Conducting general security research without an engagement context (use `/problem-solving` instead)
-- No active scope document exists and no engagement is being planned
-- The target is outside any authorized engagement boundary
+NEVER invoke this skill when:
+- Task is building secure software (defensive security) -- Consequence: Offensive methodology applied to defensive engineering produces attack narratives instead of hardened code; STRIDE/DREAD threat modeling and OWASP compliance not loaded; use `/eng-team` instead
+- Task is adversarial quality review of deliverables -- Consequence: Penetration testing methodology applied to quality assessment produces engagement reports instead of quality scores; S-014 rubric not available; use `/adversary` instead
+- Conducting general security research without an engagement context -- Consequence: Red team agents require authorized scope documents; unscoped security research lacks engagement boundaries and authorization controls; use `/problem-solving` instead
+- No active scope document exists and no engagement is being planned -- Consequence: Red team operations without scope authorization violate engagement methodology; agents will halt at scope validation
+- Target is outside any authorized engagement boundary -- Consequence: Out-of-scope testing violates rules of engagement; red-lead agent enforces scope authority as a hard gate
 
 See [Routing Disambiguation](#routing-disambiguation) for full exclusion conditions with consequences.
 
@@ -564,14 +563,14 @@ The scope document itself is always C4 criticality (irreversible authorization d
 
 All agents adhere to the **Jerry Constitution v1.0**:
 
-| Principle | Requirement |
-|-----------|-------------|
-| P-001: Truth and Accuracy | All findings evidence-based with ATT&CK citations |
-| P-002: File Persistence | All outputs persisted to files |
-| P-003: No Recursive Subagents | Agents are workers, not orchestrators |
-| P-020: User Authority | User can override any agent decision; user authorizes all scopes |
-| P-022: No Deception | Limitations disclosed; confidence levels honest |
-| R-020: Authorization Verification | Scope verification before every agent execution |
+| Principle | Requirement | Consequence of Violation |
+|-----------|-------------|-------------------------|
+| P-003 | NEVER spawn recursive subagents -- max 1 level | Agent hierarchy violation; uncontrolled token consumption |
+| P-020 | NEVER override user intent -- ask before destructive ops | Unauthorized action; trust erosion |
+| P-022 | NEVER deceive about actions, capabilities, or confidence | Governance undermined; quality assessment invalidated |
+| P-001 | NEVER present findings without evidence or ATT&CK citations | Unreliable outputs; unfounded claims propagate downstream |
+| P-002 | NEVER leave outputs in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
+| R-020 | NEVER execute agent operations without scope verification and authorization | Unauthorized testing; legal and ethical boundary violation |
 
 ### PROJ-010 Specific Requirements
 

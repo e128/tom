@@ -33,6 +33,7 @@ activation-keywords:
 | [Operations Reference](#operations-reference) | All available CLI commands |
 | [Quick Reference](#quick-reference) | Copy-paste examples for common tasks |
 | [Routing Disambiguation](#routing-disambiguation) | When this skill is the wrong choice |
+| [Constitutional Compliance](#constitutional-compliance) | Principle mapping with consequences |
 | [Architecture Notes](#architecture-notes) | Layer compliance and design |
 
 ---
@@ -66,9 +67,9 @@ Invoke `/ast` when you need to:
 - Extract L2-REINJECT directives to inspect or audit the re-injection payload.
 - Normalize markdown formatting before writing or diffing files.
 
-Do NOT use `/ast` for:
-- Reading raw file content (use Read tool directly).
-- Writing arbitrary content to files (use Write/Edit tools directly).
+NEVER invoke this skill when:
+- Reading raw file content without structural parsing -- Consequence: AST parsing overhead applied to simple file reads wastes CLI invocation cost; JSON output format adds unnecessary complexity for content retrieval; use Read tool directly
+- Writing arbitrary content to files -- Consequence: AST modify is scoped to frontmatter field updates only; arbitrary content writes fail or produce incorrect results; use Write/Edit tools directly
 
 See [Routing Disambiguation](#routing-disambiguation) for full exclusion conditions with consequences.
 
@@ -247,6 +248,18 @@ uv run jerry ast validate --schema story projects/PROJ-005-markdown-ast/work/EPI
 | General text processing on non-entity markdown | Read/Write/Edit tools directly | AST validation schema applied to non-entity markdown produces false-positive structural errors; entity schema enforcement rejects valid non-worktracker files |
 | Research, analysis, or investigation tasks | `/problem-solving` | AST provides structural parsing only; no analytical methodology, no research capability, no root cause investigation |
 | Validating content quality or adversarial review | `/adversary` | AST validates structural compliance (H-23/H-24 nav tables, entity schemas), not content quality; no S-014 scoring rubric |
+
+---
+
+## Constitutional Compliance
+
+All operations adhere to the **Jerry Constitution v1.0**:
+
+| Principle | Requirement | Consequence of Violation |
+|-----------|-------------|-------------------------|
+| P-003 | NEVER spawn recursive subagents -- max 1 level | Agent hierarchy violation; uncontrolled token consumption |
+| P-020 | NEVER override user intent -- ask before destructive ops | Unauthorized action; trust erosion |
+| P-022 | NEVER deceive about actions, capabilities, or confidence | Governance undermined; quality assessment invalidated |
 
 ---
 

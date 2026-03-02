@@ -33,6 +33,7 @@ activation-keywords:
 | [Worktracker Agents](#worktracker-agents) | Specialized agents for verification, visualization, auditing |
 | [Quick Reference](#quick-reference) | Entity hierarchy, templates, key locations |
 | [Routing Disambiguation](#routing-disambiguation) | When this skill is the wrong choice |
+| [Constitutional Compliance](#constitutional-compliance) | Principle mapping with consequences |
 | [Additional Resources](#additional-resources) | Links to detailed rule files |
 
 ---
@@ -199,6 +200,19 @@ Agent outputs use standardized templates:
 | Requirements engineering or V&V activities | `/nasa-se` | Worktracker tracks work items, not requirements; no traceability matrix or verification capability |
 | Multi-agent workflow coordination | `/orchestration` | Worktracker manages individual work items, not multi-pipeline workflow state; no checkpointing or sync barriers |
 | Adversarial quality review | `/adversary` | Worktracker has no quality scoring or adversarial strategy capability |
+
+---
+
+## Constitutional Compliance
+
+All agents adhere to the **Jerry Constitution v1.0**:
+
+| Principle | Requirement | Consequence of Violation |
+|-----------|-------------|-------------------------|
+| P-003 | NEVER spawn recursive subagents -- max 1 level | Agent hierarchy violation; uncontrolled token consumption |
+| P-020 | NEVER override user intent -- ask before destructive ops | Unauthorized action; trust erosion |
+| P-022 | NEVER deceive about actions, capabilities, or confidence | Governance undermined; quality assessment invalidated |
+| P-002 | NEVER leave outputs in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
 
 ---
 

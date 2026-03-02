@@ -397,15 +397,16 @@ Architecture artifacts should use standardized templates to ensure consistency.
 
 All architecture work adheres to the **Jerry Constitution v1.0**:
 
-| Principle | Requirement | Implementation |
-|-----------|-------------|----------------|
-| P-002: File Persistence | All outputs persisted to files | ADRs written to `docs/design/`, diagrams to specified paths |
-| P-004: Explicit Provenance | Reasoning and sources documented | ADRs include context, alternatives considered, consequences |
-| P-011: Evidence-Based | Recommendations tied to evidence | Architecture reviews cite specific violations or compliance |
-| H-07: Domain Layer Isolation | Domain MUST NOT import external layers | `analyze` command verifies import boundaries |
-| H-07: Application Layer Isolation | Application MUST NOT import infrastructure/interface | `analyze` command verifies layer dependencies |
-| H-07: Composition Root Exclusivity | Only bootstrap.py instantiates infrastructure | Architecture test enforces this rule |
-| H-10: One Class Per File | Each file contains exactly ONE public class | AST check enforces this rule |
+| Principle | Requirement | Consequence of Violation |
+|-----------|-------------|-------------------------|
+| P-003 | NEVER spawn recursive subagents -- max 1 level | Agent hierarchy violation; uncontrolled token consumption |
+| P-020 | NEVER override user intent -- ask before destructive ops | Unauthorized action; trust erosion |
+| P-022 | NEVER deceive about actions, capabilities, or confidence | Governance undermined; quality assessment invalidated |
+| P-002 | NEVER leave outputs in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
+| P-004 | NEVER omit reasoning provenance or source documentation in ADRs | Untraceable decisions; audit trail broken |
+| P-011 | NEVER make architecture recommendations without supporting evidence | Unsupported recommendations; confidence inflated without basis |
+| H-07 | NEVER violate architecture layer isolation -- domain, application, composition root boundaries enforced | Architecture layer corruption; dependency violations propagate |
+| H-10 | NEVER place multiple public classes in a single file | File bloat; class discovery degraded |
 
 ---
 

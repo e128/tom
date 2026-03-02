@@ -22,7 +22,7 @@
 | Criticality | C4 (Critical) |
 | Quality Threshold | >= 0.95 |
 | Orchestration | `neg-prompting-20260227-001` |
-| Progress | Phases 1-6 COMPLETE. FEAT-001 (ADR-001) DONE. FEAT-002 Phase 5A DONE (TASK-035 unblocked). FEAT-003 Component A DONE (TASK-037 unblocked). FEAT-004 DONE. TASK-025 A/B testing DONE — CONDITIONAL GO via PG-003 (p=0.016, C3=100%, C4 gate 0.954). |
+| Progress | Phases 1-6 COMPLETE. FEAT-001 DONE. FEAT-002 DONE (TASK-035 gate 0.957). FEAT-003 DONE (TASK-037 gate pending). FEAT-004 DONE. TASK-025 DONE. Completion workflow `proj-014-completion-20260301-001` active: Steps 0-2 COMPLETE, Step 3 next. |
 
 ## Work Items
 
@@ -63,13 +63,13 @@
 | TASK-030 | Task | Run NPT-014 diagnostic scan on all modified files | DONE — CONDITIONAL PASS, 8 residuals fixed | FEAT-001 |
 | TASK-031 | Task | Update Phase 1 inventory with completion status | DONE | FEAT-001 |
 | TASK-032 | Task | Update ADR-001 status to ACCEPTED | DONE — ADR-001 PROPOSED -> ACCEPTED | FEAT-001 |
-| FEAT-002 | Feature | Implement ADR-002: Constitutional Triplet and High-Framing Upgrades | IN PROGRESS (67%) | EPIC-005 |
+| FEAT-002 | Feature | Implement ADR-002: Constitutional Triplet and High-Framing Upgrades | DONE | EPIC-005 |
 | TASK-033 | Task | Phase 5A: Update guardrails template to NPT-009 format | DONE (cf1342a2) | FEAT-002 |
 | TASK-034 | Task | Phase 5A: Add forbidden_action_format field to governance schema | DONE (cf1342a2) | FEAT-002 |
-| TASK-035 | Task | Phase 5B: Full adoption or contingency (blocked by TASK-025 A/B testing) | PENDING | FEAT-002 |
-| FEAT-003 | Feature | Implement ADR-003: Routing Disambiguation Standard | IN PROGRESS (50%) | EPIC-005 |
+| TASK-035 | Task | Phase 5B: NPT-013 constitutional triplet in 12 SKILL.md files | DONE (0.957, 1 iter) | FEAT-002 |
+| FEAT-003 | Feature | Implement ADR-003: Routing Disambiguation Standard | DONE | EPIC-005 |
 | TASK-036 | Task | Component A: Add routing disambiguation sections to all 13 skills | DONE (f5f892b2) | FEAT-003 |
-| TASK-037 | Task | Component B: Framing vocabulary standardization (blocked by TASK-025) | PENDING | FEAT-003 |
+| TASK-037 | Task | Component B: Framing vocabulary standardization in 6 SKILL.md files | DONE (0.974, 1 iter) | FEAT-003 |
 | FEAT-004 | Feature | Implement ADR-004: Compaction Resilience | DONE | EPIC-005 |
 | TASK-038 | Task | Decision 1: PG-004 Compaction testing requirement | DONE (f5f892b2) | FEAT-004 |
 | TASK-039 | Task | Decision 2: Add L2-REINJECT markers for H-04 and H-32 | DONE (f5f892b2) | FEAT-004 |

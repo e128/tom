@@ -2759,31 +2759,15 @@ Critical Validations (Quantitative):
 
 ## Constitutional Compliance
 
-| Principle | Enforcement | Skill Behavior |
-|-----------|-------------|----------------|
-| P-001 (Truth/Accuracy) | **Hard** | Self-critique protocol enforced; INV-EXT-001/002 mandatory |
-| P-002 (File Persistence) | Medium | All outputs written to files (see checklist above) |
-| P-003 (No Recursion) | **Hard** | Orchestrator → workers only, no nesting |
-| P-004 (Provenance) | **Hard** | All extractions require citations; deep links maintained |
-| P-010 (Task Tracking) | Medium | State outputs match actual results (counts, file lists) |
-| P-020 (User Authority) | **Hard** | User controls input/output paths, model selection, mindmap flags |
-| P-022 (No Deception) | **Hard** | Honest reporting of confidence, errors, limitations |
-
-### P-003 Compliance Diagram
-
-```
-Claude Code (Main Context)
-    │
-    └──► Transcript Skill (SKILL.md)
-            │
-            ├──► ts-parser (WORKER)      ✓ No subagents
-            ├──► ts-extractor (WORKER)   ✓ No subagents
-            ├──► ts-formatter (WORKER)   ✓ No subagents
-            ├──► ts-mindmap-* (WORKER)   ✓ No subagents
-            └──► ps-critic (WORKER)      ✓ No subagents
-
-COMPLIANT: Exactly ONE level of agent nesting
-```
+| Principle | Requirement | Consequence of Violation |
+|-----------|-------------|-------------------------|
+| P-003 | NEVER spawn recursive subagents -- max 1 level | Agent hierarchy violation; uncontrolled token consumption |
+| P-020 | NEVER override user intent -- ask before destructive ops | Unauthorized action; trust erosion |
+| P-022 | NEVER deceive about actions, capabilities, or confidence | Governance undermined; quality assessment invalidated |
+| P-001 | NEVER present findings without evidence -- self-critique protocol enforced | Unreliable outputs; unfounded claims propagate downstream |
+| P-002 | NEVER leave outputs in transient context only -- persist all outputs to files | Context rot vulnerability; artifacts lost on session compaction |
+| P-004 | NEVER omit citations or provenance -- all extractions require deep links | Untraceable decisions; audit trail broken |
+| P-010 | NEVER misrepresent task state -- state outputs must match actual results | Work progress invisible; status unknown |
 
 ---
 

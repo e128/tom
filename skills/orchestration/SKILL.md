@@ -67,10 +67,10 @@ Activate when:
 - Need **checkpointing** for long-running processes
 - Require **visibility** into complex workflow progress
 
-**Do NOT use when:**
-- Single agent task (use problem-solving skill instead)
-- Simple sequential flow (use direct agent invocation)
-- No cross-session state needed
+NEVER invoke this skill when:
+- Task requires a single agent only -- Consequence: Orchestration overhead (barrier sync, quality gates, ORCHESTRATION.yaml state tracking) applied to single-step task wastes significant context budget on unnecessary coordination infrastructure; use `/problem-solving` instead
+- Flow is simple and sequential without parallel pipelines -- Consequence: Three artifacts created (ORCHESTRATION_PLAN.md, ORCHESTRATION_WORKTRACKER.md, ORCHESTRATION.yaml) for a workflow that needs none; artifact overhead exceeds task complexity; use direct agent invocation
+- No cross-session state persistence is needed -- Consequence: YAML state management and checkpointing infrastructure adds complexity without value for ephemeral single-session work
 
 See [Routing Disambiguation](#routing-disambiguation) for full exclusion conditions with consequences.
 
@@ -635,16 +635,17 @@ quality:
 
 ## Constitutional Compliance
 
-| Principle | Requirement | Implementation |
-|-----------|-------------|----------------|
-| P-002 | File Persistence | All state persisted to ORCHESTRATION.yaml |
-| P-003 | No Recursive Subagents | Main context invokes workers only |
-| P-010 | Task Tracking | ORCHESTRATION_WORKTRACKER.md updated |
-| P-022 | No Deception | Honest status and progress reporting |
-| H-13 | Quality threshold >= 0.92 | Phase gates enforce weighted composite scoring |
-| H-14 | Creator-critic-revision (3 min) | Adversarial cycle at every sync barrier |
-| H-15 | Self-review before presenting | S-010 applied before gate submission |
-| WTI-007 | Mandatory Template Usage | Entity files created during orchestration MUST use canonical templates from `.context/templates/worktracker/` |
+| Principle | Requirement | Consequence of Violation |
+|-----------|-------------|-------------------------|
+| P-003 | NEVER spawn recursive subagents -- max 1 level | Agent hierarchy violation; uncontrolled token consumption |
+| P-020 | NEVER override user intent -- ask before destructive ops | Unauthorized action; trust erosion |
+| P-022 | NEVER deceive about actions, capabilities, or confidence | Governance undermined; quality assessment invalidated |
+| P-002 | NEVER leave state in transient context only -- persist to ORCHESTRATION.yaml | Context rot vulnerability; artifacts lost on session compaction |
+| P-010 | NEVER omit task tracking updates from ORCHESTRATION_WORKTRACKER.md | Work progress invisible; status unknown |
+| H-13 | NEVER accept C2+ deliverables below 0.92 weighted composite score | Sub-threshold deliverables accepted without quality enforcement |
+| H-14 | NEVER skip creator-critic-revision cycle -- minimum 3 iterations | Single-pass review misses blind spots |
+| H-15 | NEVER present deliverables without self-review (S-010) first | Obvious defects consume critic cycles unnecessarily |
+| WTI-007 | NEVER create entity files without canonical templates from `.context/templates/worktracker/` | Inconsistent entity format; worktracker integrity degraded |
 
 ---
 
