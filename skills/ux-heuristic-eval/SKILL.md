@@ -13,7 +13,7 @@ description: >
 version: "1.0.0"
 agents:
   - ux-heuristic-evaluator
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, mcp__context7__resolve-library-id, mcp__context7__query-docs
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, mcp__context7__resolve-library-id, mcp__context7__query-docs
 activation-keywords:
   - "heuristic evaluation"
   - "usability audit"
@@ -124,7 +124,7 @@ Do NOT use for:
 
 **STUB: The agent definition file (`skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md`) currently contains frontmatter, identity, purpose, and guardrails sections only. Full agent body implementation (`<input>`, `<capabilities>`, `<methodology>`, `<output>` sections) is pending Wave 1 completion of PROJ-022 EPIC-002. The SKILL.md specifies the methodology and output contract that the agent will implement.
 
-**Tool tier:** T3 (External) = Read, Write, Edit, Glob, Grep, Bash + WebSearch, WebFetch + Context7 MCP. The T3 tier enables access to external UX standards documentation via Context7 and web search. See `agent-development-standards.md` [Tool Security Tiers] for full tier definitions.
+**Tool tier:** T3 (External) = Read, Write, Edit, Glob, Grep + WebSearch, WebFetch + Context7 MCP. The T3 tier enables access to external UX standards documentation via Context7 and web search. Bash is intentionally excluded; T3 tier does not require shell access for MCP operations. See `agent-development-standards.md` [Tool Security Tiers] for full tier definitions.
 
 The agent produces output at three levels per AD-M-004:
 - **L0 (Executive Summary):** Top 3-5 findings with severity ratings for stakeholders and cross-framework synthesis input.
@@ -308,8 +308,9 @@ When the Figma MCP adapter is unavailable (current state -- adapter implementati
   ```
   [DEGRADED MODE] This evaluation was produced without Figma MCP access.
   Input was provided via screenshot-input mode. Some features are reduced:
-  - Cannot inspect component states or interactive behaviors
+  - Cannot inspect component states (hover, focus, active, disabled)
   - Cannot verify responsive behavior across breakpoints
+  - Cannot access style tokens or design system variables programmatically
   ```
 
 ### Context7 Usage

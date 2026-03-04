@@ -306,8 +306,8 @@ pipelines:
     current_phase: 1
     total_phases: 4
     total_artifacts: 12
-    artifacts_complete: 4
-    progress_percent: 33
+    artifacts_complete: 6
+    progress_percent: 50
     entry_condition: "gate-wave0-to-wave1 PASSED (KICKOFF-SIGNOFF.md quality_verdict=PASS)"
     exit_condition: "WAVE-1-SIGNOFF.md quality_verdict=PASS"
 
@@ -343,12 +343,13 @@ pipelines:
             blocked_by: "creator-heuristic-skill-md"
           - id: "creator-heuristic-governance"
             role: "creator"
-            status: "NOT_STARTED"
-            completed_at: null
+            status: "COMPLETE"
+            completed_at: "2026-03-04T00:00:00Z"
             artifact: "skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.governance.yaml"
-            quality_score: null
-            quality_iteration: null
-            quality_verdict: null
+            quality_score: 0.951
+            quality_iteration: 5
+            quality_verdict: "PASS"
+            quality_note: "Scored as companion file during agent.md dual-file C4 review (H-34)"
             inputs:
               - "skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md"
               - "docs/schemas/agent-governance-v1.schema.json"
@@ -414,12 +415,13 @@ pipelines:
             blocked_by: "creator-jtbd-skill-md"
           - id: "creator-jtbd-governance"
             role: "creator"
-            status: "NOT_STARTED"
-            completed_at: null
+            status: "COMPLETE"
+            completed_at: "2026-03-04T00:00:00Z"
             artifact: "skills/ux-jtbd/agents/ux-jtbd-analyst.governance.yaml"
-            quality_score: null
-            quality_iteration: null
-            quality_verdict: null
+            quality_score: 0.951
+            quality_iteration: 3
+            quality_verdict: "PASS"
+            quality_note: "Scored as companion file during agent.md dual-file C4 review (H-34)"
             inputs:
               - "skills/ux-jtbd/agents/ux-jtbd-analyst.md"
               - "docs/schemas/agent-governance-v1.schema.json"

@@ -1,4 +1,4 @@
-<!-- VERSION: 1.1.0 | DATE: 2026-03-04 | SOURCE: SKILL.md (skills/user-experience/SKILL.md) Sections "MCP Integration Architecture" (#mcp-integration-architecture), "Current Jerry MCP Integration" (#current-jerry-mcp-integration), "Figma Dependency Risk Profile" (#figma-dependency-risk-profile), "Cost Tiers" (#cost-tiers), "Lifecycle-Stage Routing" (#lifecycle-stage-routing) | PARENT: /user-experience skill | GOVERNANCE: .context/rules/mcp-tool-standards.md (MCP-001, MCP-002) | PROJECT: projects/PROJ-022-user-experience-skill/PLAN.md -->
+<!-- VERSION: 1.2.0 | DATE: 2026-03-04 | SOURCE: SKILL.md (skills/user-experience/SKILL.md) Sections "MCP Integration Architecture" (#mcp-integration-architecture), "Current Jerry MCP Integration" (#current-jerry-mcp-integration), "Figma Dependency Risk Profile" (#figma-dependency-risk-profile), "Cost Tiers" (#cost-tiers), "Lifecycle-Stage Routing" (#lifecycle-stage-routing) | PARENT: /user-experience skill | GOVERNANCE: .context/rules/mcp-tool-standards.md (MCP-001, MCP-002) | PROJECT: projects/PROJ-022-user-experience-skill/PLAN.md -->
 
 # MCP Coordination Rules
 
@@ -134,8 +134,8 @@ Per MCP-001 (`.context/rules/mcp-tool-standards.md` [Context7 Integration](#cont
 
 | MCP Tool | Canonical Name | Usage | Agents |
 |----------|---------------|-------|--------|
-| Context7 Resolve | `mcp__context7__resolve-library-id` | Resolve UX framework libraries and design system packages | ux-atomic-architect, ux-ai-design-guide |
-| Context7 Query | `mcp__context7__query-docs` | Query component library documentation, accessibility API docs | ux-atomic-architect, ux-inclusive-evaluator, ux-ai-design-guide |
+| Context7 Resolve | `mcp__context7__resolve-library-id` | Resolve UX framework libraries and design system packages | ux-heuristic-evaluator, ux-atomic-architect, ux-ai-design-guide |
+| Context7 Query | `mcp__context7__query-docs` | Query component library documentation, accessibility API docs, heuristic evaluation UX framework research | ux-heuristic-evaluator, ux-atomic-architect, ux-inclusive-evaluator, ux-ai-design-guide |
 
 ### Context7 Usage Rules
 
@@ -241,7 +241,7 @@ Per `/eng-team` integration (see SKILL.md [Cross-Skill Integration](../SKILL.md#
 
 ---
 
-*Rule file: mcp-coordination.md (v1.1.0)*
+*Rule file: mcp-coordination.md (v1.2.0)*
 *Parent skill: /user-experience*
 *Parent SKILL.md: `skills/user-experience/SKILL.md`*
 *MCP governance SSOT: `.context/rules/mcp-tool-standards.md` (MCP-001, MCP-002)*
@@ -250,5 +250,5 @@ Per `/eng-team` integration (see SKILL.md [Cross-Skill Integration](../SKILL.md#
 *Sibling rules: `skills/user-experience/rules/ux-routing-rules.md`, `skills/user-experience/rules/synthesis-validation.md`, `skills/user-experience/rules/wave-progression.md`, `skills/user-experience/rules/ci-checks.md`*
 *Created: 2026-03-03*
 *Updated: 2026-03-04*
-*Revision: iter3 — addressed Internal Consistency (REQ/COND clarification, degraded mode separation), Completeness (Memory-Keeper scope note, COND instantiation), Traceability (anchor links, PROJ-022 path, MCP-001 citations), Methodological Rigor (timeout definition, failure conditions), Evidence Quality (canonical tool names, source annotation precision)*
+*Revision: iter4 — added ux-heuristic-evaluator to Context7 agent table (Wave 1 deployment); prior: iter3 addressed Internal Consistency (REQ/COND clarification, degraded mode separation), Completeness (Memory-Keeper scope note, COND instantiation), Traceability (anchor links, PROJ-022 path, MCP-001 citations), Methodological Rigor (timeout definition, failure conditions), Evidence Quality (canonical tool names, source annotation precision)*
 *Status: COMPLETE*

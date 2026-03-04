@@ -173,7 +173,7 @@ Follow this 5-phase sequential workflow. Each phase produces intermediate artifa
    > Importance: 8 | Satisfaction: 3
    > Opportunity Score = 8 + max(8 - 3, 0) = 8 + 5 = **13** (underserved threshold: >= 10 -- this job is underserved)
 
-**Recommended scope:** Identify 3-7 main functional jobs per engagement. Tiny teams (1-3 people) lack capacity to address more than 7 jobs effectively. If initial identification surfaces more than 7 jobs, consolidate related jobs into parent jobs or prioritize the top 7 by opportunity score.
+**Recommended scope:** Identify 3-7 main functional jobs per engagement. Tiny teams (1-5 people) lack capacity to address more than 7 jobs effectively. If initial identification surfaces more than 7 jobs, consolidate related jobs into parent jobs or prioritize the top 7 by opportunity score.
 
 **Phase output:** Draft job inventory with type classification (functional/social/emotional), main vs. related distinction, and preliminary job statements.
 
