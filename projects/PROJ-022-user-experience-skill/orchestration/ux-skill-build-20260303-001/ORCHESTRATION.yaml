@@ -1,0 +1,1403 @@
+# ORCHESTRATION.yaml
+# Machine-readable orchestration state for PROJ-022 /user-experience Skill Build
+# Document ID: PROJ-022-ORCH-STATE
+# Schema Version: 3.0.0
+# Created: 2026-03-03T00:00:00Z
+# Managed by: orch-planner agent (v2.2.0)
+
+schema_version: "3.0.0"
+
+# =============================================================================
+# WORKFLOW METADATA
+# =============================================================================
+workflow:
+  id: "ux-skill-build-20260303-001"
+  name: "PROJ-022 /user-experience Skill Build — 8-Pipeline Wave Architecture"
+  project_id: "PROJ-022"
+  github_issue: "https://github.com/geekatron/jerry/issues/138"
+  version: "1.0"
+  created_at: "2026-03-03T00:00:00Z"
+  updated_at: "2026-03-03T00:00:00Z"
+  status: "ACTIVE"
+
+  id_source: "auto"
+  id_format: "semantic-date-seq"
+
+  patterns:
+    - SEQUENTIAL        # Wave gates enforce strict pipeline ordering
+    - CONCURRENT        # Parallel artifact creation within phases
+    - WAVE_GATED        # Each wave requires a signoff document before next begins
+    - BARRIER_SYNC      # 5 sync barriers at wave transitions
+    - CONDITIONAL       # FEAT-020 (/ux-ai-first-design) has activation criteria
+
+  constraints:
+    max_agent_nesting: 1                  # P-003 hard constraint (H-01)
+    file_persistence: true                # P-002 mandatory persistence
+    user_authority: true                  # P-020 user authority (H-02)
+    max_concurrent_agents: 3              # Per-pipeline parallel cap
+    max_quality_gate_retries: 6           # User override (default framework: 3)
+    min_creator_critic_iterations: 3      # H-14 minimum
+    checkpoint_frequency: "PER_ARTIFACT"  # Per-artifact commit strategy
+    criticality: "C4"
+    commit_on_artifact_pass: true
+    commit_format: "feat(PROJ-022): add {artifact-name} [C4: {score}] [skip-bump]"
+
+# =============================================================================
+# PATH CONFIGURATION
+# =============================================================================
+paths:
+  base: "projects/PROJ-022-user-experience-skill/orchestration/ux-skill-build-20260303-001/"
+  pipeline_artifact: "{base}{pipeline_alias}/{phase_id}/"
+  skills_root: "skills/"
+  work_root: "skills/user-experience/work/"
+  # Note: Skill artifacts land in skills/ tree, not in orchestration/ tree.
+  # No hardcoded pipeline names — all resolved from pipeline short_alias field.
+
+# =============================================================================
+# PIPELINE DEFINITIONS
+# =============================================================================
+pipelines:
+
+  # ============================================================
+  # PIPELINE 1: Foundation (EPIC-001) — Wave 0
+  # ============================================================
+  pipeline_foundation:
+    id: "pipeline-foundation"
+    name: "Foundation Pipeline"
+    description: "Parent SKILL.md, ux-orchestrator agent + governance, 5 rule files, 2 templates, kickoff signoff"
+    short_alias: "foundation"
+    epic: "EPIC-001"
+    wave: 0
+    status: "NOT_STARTED"
+    current_phase: 0
+    total_phases: 5
+    total_artifacts: 11
+    artifacts_complete: 0
+    progress_percent: 0
+    entry_condition: "none"
+    exit_condition: "KICKOFF-SIGNOFF.md exists and quality_verdict=PASS"
+
+    phases:
+      - id: 1
+        name: "Parent SKILL.md"
+        path_id: "phase-1"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-001"]
+        agents:
+          - id: "creator-skill-md"
+            role: "creator"
+            status: "NOT_STARTED"
+            started_at: null
+            completed_at: null
+            artifact: "skills/user-experience/SKILL.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "projects/PROJ-022-user-experience-skill/PLAN.md"
+              - "skills/eng-team/SKILL.md"
+              - ".context/rules/skill-standards.md"
+
+      - id: 2
+        name: "Orchestrator Agent + Governance"
+        path_id: "phase-2"
+        status: "NOT_STARTED"
+        blocked_by: "phase-1"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-001"]
+        agents:
+          - id: "creator-ux-orchestrator-md"
+            role: "creator"
+            status: "NOT_STARTED"
+            started_at: null
+            completed_at: null
+            artifact: "skills/user-experience/agents/ux-orchestrator.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/user-experience/SKILL.md"
+              - "skills/adversary/agents/adv-executor.md"
+              - ".context/rules/agent-development-standards.md"
+          - id: "creator-ux-orchestrator-governance"
+            role: "creator"
+            status: "NOT_STARTED"
+            started_at: null
+            completed_at: null
+            artifact: "skills/user-experience/agents/ux-orchestrator.governance.yaml"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/user-experience/agents/ux-orchestrator.md"
+              - "docs/schemas/agent-governance-v1.schema.json"
+
+      - id: 3
+        name: "Rule Files"
+        path_id: "phase-3"
+        status: "NOT_STARTED"
+        blocked_by: "phase-2"
+        execution_mode: "PARALLEL"
+        features: ["FEAT-002"]
+        agents:
+          - id: "creator-ux-routing-rules"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/rules/ux-routing-rules.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/user-experience/SKILL.md"]
+          - id: "creator-synthesis-validation"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/rules/synthesis-validation.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/user-experience/SKILL.md"]
+          - id: "creator-wave-progression"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/rules/wave-progression.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/user-experience/SKILL.md"]
+          - id: "creator-mcp-coordination"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/rules/mcp-coordination.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/user-experience/SKILL.md"
+              - ".context/rules/mcp-tool-standards.md"
+          - id: "creator-ci-checks"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/rules/ci-checks.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/user-experience/SKILL.md"
+              - ".context/rules/agent-development-standards.md"
+
+      - id: 4
+        name: "Templates"
+        path_id: "phase-4"
+        status: "NOT_STARTED"
+        blocked_by: "phase-3"
+        execution_mode: "PARALLEL"
+        features: ["FEAT-003"]
+        agents:
+          - id: "creator-kickoff-signoff-template"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/templates/kickoff-signoff-template.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/user-experience/SKILL.md"
+              - "skills/user-experience/rules/wave-progression.md"
+          - id: "creator-wave-signoff-template"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/templates/wave-signoff-template.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/user-experience/SKILL.md"
+              - "skills/user-experience/rules/wave-progression.md"
+
+      - id: 5
+        name: "Kickoff Signoff"
+        path_id: "phase-5"
+        status: "NOT_STARTED"
+        blocked_by: "phase-4"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-004"]
+        agents:
+          - id: "creator-kickoff-signoff"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/work/KICKOFF-SIGNOFF.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/user-experience/SKILL.md"
+              - "skills/user-experience/agents/ux-orchestrator.md"
+              - "skills/user-experience/agents/ux-orchestrator.governance.yaml"
+              - "skills/user-experience/rules/ux-routing-rules.md"
+              - "skills/user-experience/rules/synthesis-validation.md"
+              - "skills/user-experience/rules/wave-progression.md"
+              - "skills/user-experience/rules/mcp-coordination.md"
+              - "skills/user-experience/rules/ci-checks.md"
+              - "skills/user-experience/templates/kickoff-signoff-template.md"
+              - "skills/user-experience/templates/wave-signoff-template.md"
+
+  # ============================================================
+  # PIPELINE 2: Wave 1 (EPIC-002)
+  # ============================================================
+  pipeline_wave1:
+    id: "pipeline-wave1"
+    name: "Wave 1 Pipeline"
+    description: "/ux-heuristic-eval + /ux-jtbd sub-skills, cross-framework tests, wave signoff"
+    short_alias: "wave1"
+    epic: "EPIC-002"
+    wave: 1
+    status: "NOT_STARTED"
+    current_phase: 0
+    total_phases: 4
+    total_artifacts: 12
+    artifacts_complete: 0
+    progress_percent: 0
+    entry_condition: "gate-wave0-to-wave1 PASSED (KICKOFF-SIGNOFF.md quality_verdict=PASS)"
+    exit_condition: "WAVE-1-SIGNOFF.md quality_verdict=PASS"
+
+    phases:
+      - id: 1
+        name: "/ux-heuristic-eval Sub-Skill"
+        path_id: "phase-1"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
+        note: "SKILL.md -> agent.md -> governance.yaml sequential; rules + template parallel with each other"
+        features: ["FEAT-005"]
+        agents:
+          - id: "creator-heuristic-skill-md"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-heuristic-eval/SKILL.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/user-experience/SKILL.md"
+              - "skills/user-experience/rules/ux-routing-rules.md"
+          - id: "creator-heuristic-agent-md"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/ux-heuristic-eval/SKILL.md"]
+            blocked_by: "creator-heuristic-skill-md"
+          - id: "creator-heuristic-governance"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.governance.yaml"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md"
+              - "docs/schemas/agent-governance-v1.schema.json"
+            blocked_by: "creator-heuristic-agent-md"
+          - id: "creator-heuristic-eval-rules"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-heuristic-eval/rules/heuristic-evaluation-rules.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/ux-heuristic-eval/SKILL.md"]
+          - id: "creator-heuristic-mcp-runbook"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-heuristic-eval/rules/mcp-runbook.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/ux-heuristic-eval/SKILL.md"
+              - "skills/user-experience/rules/mcp-coordination.md"
+          - id: "creator-heuristic-report-template"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-heuristic-eval/templates/heuristic-report-template.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/ux-heuristic-eval/SKILL.md"]
+
+      - id: 2
+        name: "/ux-jtbd Sub-Skill"
+        path_id: "phase-2"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
+        features: ["FEAT-006"]
+        agents:
+          - id: "creator-jtbd-skill-md"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-jtbd/SKILL.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/user-experience/SKILL.md"
+              - "skills/user-experience/rules/ux-routing-rules.md"
+          - id: "creator-jtbd-agent-md"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-jtbd/agents/ux-jtbd-analyst.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/ux-jtbd/SKILL.md"]
+            blocked_by: "creator-jtbd-skill-md"
+          - id: "creator-jtbd-governance"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-jtbd/agents/ux-jtbd-analyst.governance.yaml"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/ux-jtbd/agents/ux-jtbd-analyst.md"
+              - "docs/schemas/agent-governance-v1.schema.json"
+            blocked_by: "creator-jtbd-agent-md"
+          - id: "creator-jtbd-methodology-rules"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-jtbd/rules/jtbd-methodology-rules.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/ux-jtbd/SKILL.md"]
+          - id: "creator-jtbd-job-statement-template"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-jtbd/templates/job-statement-template.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/ux-jtbd/SKILL.md"]
+          - id: "creator-jtbd-switch-interview-guide"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/ux-jtbd/templates/switch-interview-guide.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/ux-jtbd/SKILL.md"]
+
+      - id: 3
+        name: "Wave 1 Cross-Framework Testing"
+        path_id: "phase-3"
+        status: "NOT_STARTED"
+        blocked_by: "phase-1,phase-2"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-007"]
+        agents:
+          - id: "creator-wave1-cross-framework-tests"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/work/wave-1-cross-framework-tests.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/ux-heuristic-eval/SKILL.md"
+              - "skills/ux-jtbd/SKILL.md"
+              - "skills/user-experience/rules/synthesis-validation.md"
+
+      - id: 4
+        name: "Wave 1 Signoff"
+        path_id: "phase-4"
+        status: "NOT_STARTED"
+        blocked_by: "phase-3"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-008"]
+        agents:
+          - id: "creator-wave1-signoff"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/work/WAVE-1-SIGNOFF.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/user-experience/work/wave-1-cross-framework-tests.md"
+              - "skills/user-experience/templates/wave-signoff-template.md"
+
+  # ============================================================
+  # PIPELINE 3: Wave 2 (EPIC-003)
+  # ============================================================
+  pipeline_wave2:
+    id: "pipeline-wave2"
+    name: "Wave 2 Pipeline"
+    description: "/ux-lean-ux + /ux-heart-metrics sub-skills"
+    short_alias: "wave2"
+    epic: "EPIC-003"
+    wave: 2
+    status: "NOT_STARTED"
+    current_phase: 0
+    total_phases: 4
+    total_artifacts: 11
+    artifacts_complete: 0
+    progress_percent: 0
+    entry_condition: "gate-wave1-to-wave2 PASSED (WAVE-1-SIGNOFF.md quality_verdict=PASS)"
+    exit_condition: "WAVE-2-SIGNOFF.md quality_verdict=PASS"
+
+    phases:
+      - id: 1
+        name: "/ux-lean-ux Sub-Skill"
+        path_id: "phase-1"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
+        features: ["FEAT-009"]
+        agents:
+          - id: "creator-lean-ux-skill-md"
+            artifact: "skills/ux-lean-ux/SKILL.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-lean-ux-agent-md"
+            artifact: "skills/ux-lean-ux/agents/ux-lean-ux-facilitator.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-lean-ux-skill-md"
+          - id: "creator-lean-ux-governance"
+            artifact: "skills/ux-lean-ux/agents/ux-lean-ux-facilitator.governance.yaml"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-lean-ux-agent-md"
+          - id: "creator-lean-ux-methodology-rules"
+            artifact: "skills/ux-lean-ux/rules/lean-ux-methodology-rules.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-lean-ux-mcp-runbook"
+            artifact: "skills/ux-lean-ux/rules/mcp-runbook.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-lean-ux-hypothesis-backlog"
+            artifact: "skills/ux-lean-ux/templates/hypothesis-backlog-template.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-lean-ux-assumption-map"
+            artifact: "skills/ux-lean-ux/templates/assumption-map-template.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+      - id: 2
+        name: "/ux-heart-metrics Sub-Skill"
+        path_id: "phase-2"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
+        features: ["FEAT-010"]
+        note: "HEART GSM template bundled into methodology rules (single deliverable per WORKTRACKER)"
+        agents:
+          - id: "creator-heart-skill-md"
+            artifact: "skills/ux-heart-metrics/SKILL.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-heart-agent-md"
+            artifact: "skills/ux-heart-metrics/agents/ux-heart-analyst.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-heart-skill-md"
+          - id: "creator-heart-governance"
+            artifact: "skills/ux-heart-metrics/agents/ux-heart-analyst.governance.yaml"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-heart-agent-md"
+          - id: "creator-heart-methodology-rules"
+            artifact: "skills/ux-heart-metrics/rules/heart-methodology-rules.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+      - id: 3
+        name: "Wave 2 Cross-Framework Testing"
+        path_id: "phase-3"
+        status: "NOT_STARTED"
+        blocked_by: "phase-1,phase-2"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-011"]
+        agents:
+          - id: "creator-wave2-cross-framework-tests"
+            artifact: "skills/user-experience/work/wave-2-cross-framework-tests.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+      - id: 4
+        name: "Wave 2 Signoff"
+        path_id: "phase-4"
+        status: "NOT_STARTED"
+        blocked_by: "phase-3"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-012"]
+        agents:
+          - id: "creator-wave2-signoff"
+            artifact: "skills/user-experience/work/WAVE-2-SIGNOFF.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+  # ============================================================
+  # PIPELINE 4: Wave 3 (EPIC-004)
+  # ============================================================
+  pipeline_wave3:
+    id: "pipeline-wave3"
+    name: "Wave 3 Pipeline"
+    description: "/ux-atomic-design + /ux-inclusive-design sub-skills"
+    short_alias: "wave3"
+    epic: "EPIC-004"
+    wave: 3
+    status: "NOT_STARTED"
+    current_phase: 0
+    total_phases: 4
+    total_artifacts: 13
+    artifacts_complete: 0
+    progress_percent: 0
+    entry_condition: "gate-wave2-to-wave3 PASSED (WAVE-2-SIGNOFF.md quality_verdict=PASS)"
+    exit_condition: "WAVE-3-SIGNOFF.md quality_verdict=PASS"
+
+    phases:
+      - id: 1
+        name: "/ux-atomic-design Sub-Skill"
+        path_id: "phase-1"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
+        features: ["FEAT-013"]
+        agents:
+          - id: "creator-atomic-skill-md"
+            artifact: "skills/ux-atomic-design/SKILL.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-atomic-agent-md"
+            artifact: "skills/ux-atomic-design/agents/ux-atomic-architect.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-atomic-skill-md"
+          - id: "creator-atomic-governance"
+            artifact: "skills/ux-atomic-design/agents/ux-atomic-architect.governance.yaml"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-atomic-agent-md"
+          - id: "creator-atomic-design-rules"
+            artifact: "skills/ux-atomic-design/rules/atomic-design-rules.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-atomic-mcp-runbook"
+            artifact: "skills/ux-atomic-design/rules/mcp-runbook.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-atomic-component-inventory"
+            artifact: "skills/ux-atomic-design/templates/component-inventory-template.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+      - id: 2
+        name: "/ux-inclusive-design Sub-Skill"
+        path_id: "phase-2"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
+        features: ["FEAT-014"]
+        agents:
+          - id: "creator-inclusive-skill-md"
+            artifact: "skills/ux-inclusive-design/SKILL.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-inclusive-agent-md"
+            artifact: "skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-inclusive-skill-md"
+          - id: "creator-inclusive-governance"
+            artifact: "skills/ux-inclusive-design/agents/ux-inclusive-evaluator.governance.yaml"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-inclusive-agent-md"
+          - id: "creator-inclusive-design-rules"
+            artifact: "skills/ux-inclusive-design/rules/inclusive-design-rules.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-inclusive-mcp-runbook"
+            artifact: "skills/ux-inclusive-design/rules/mcp-runbook.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-inclusive-persona-spectrum"
+            artifact: "skills/ux-inclusive-design/templates/persona-spectrum-template.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-inclusive-accessibility-report"
+            artifact: "skills/ux-inclusive-design/templates/accessibility-report-template.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+      - id: 3
+        name: "Wave 3 Cross-Framework Testing"
+        path_id: "phase-3"
+        status: "NOT_STARTED"
+        blocked_by: "phase-1,phase-2"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-015"]
+        agents:
+          - id: "creator-wave3-cross-framework-tests"
+            artifact: "skills/user-experience/work/wave-3-cross-framework-tests.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+      - id: 4
+        name: "Wave 3 Signoff"
+        path_id: "phase-4"
+        status: "NOT_STARTED"
+        blocked_by: "phase-3"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-016"]
+        agents:
+          - id: "creator-wave3-signoff"
+            artifact: "skills/user-experience/work/WAVE-3-SIGNOFF.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+  # ============================================================
+  # PIPELINE 5: Wave 4 (EPIC-005)
+  # ============================================================
+  pipeline_wave4:
+    id: "pipeline-wave4"
+    name: "Wave 4 Pipeline"
+    description: "/ux-behavior-design + /ux-kano-model sub-skills (Wave 4 signoff is in EPIC-006/pipeline_wave5)"
+    short_alias: "wave4"
+    epic: "EPIC-005"
+    wave: 4
+    status: "NOT_STARTED"
+    current_phase: 0
+    total_phases: 2
+    total_artifacts: 10
+    artifacts_complete: 0
+    progress_percent: 0
+    entry_condition: "gate-wave3-to-wave4 PASSED (WAVE-3-SIGNOFF.md quality_verdict=PASS)"
+    exit_condition: "All 10 artifacts quality_verdict=PASS; WAVE-4-SIGNOFF.md created in pipeline_wave5"
+
+    phases:
+      - id: 1
+        name: "/ux-behavior-design Sub-Skill"
+        path_id: "phase-1"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
+        features: ["FEAT-017"]
+        agents:
+          - id: "creator-behavior-skill-md"
+            artifact: "skills/ux-behavior-design/SKILL.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-behavior-agent-md"
+            artifact: "skills/ux-behavior-design/agents/ux-behavior-diagnostician.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-behavior-skill-md"
+          - id: "creator-behavior-governance"
+            artifact: "skills/ux-behavior-design/agents/ux-behavior-diagnostician.governance.yaml"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-behavior-agent-md"
+          - id: "creator-behavior-fogg-rules"
+            artifact: "skills/ux-behavior-design/rules/fogg-behavior-rules.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-behavior-bmap-template"
+            artifact: "skills/ux-behavior-design/templates/bmap-diagnosis-template.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+      - id: 2
+        name: "/ux-kano-model Sub-Skill"
+        path_id: "phase-2"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
+        features: ["FEAT-018"]
+        agents:
+          - id: "creator-kano-skill-md"
+            artifact: "skills/ux-kano-model/SKILL.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-kano-agent-md"
+            artifact: "skills/ux-kano-model/agents/ux-kano-analyst.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-kano-skill-md"
+          - id: "creator-kano-governance"
+            artifact: "skills/ux-kano-model/agents/ux-kano-analyst.governance.yaml"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-kano-agent-md"
+          - id: "creator-kano-methodology-rules"
+            artifact: "skills/ux-kano-model/rules/kano-methodology-rules.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-kano-survey-template"
+            artifact: "skills/ux-kano-model/templates/kano-survey-template.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-kano-feature-priority"
+            artifact: "skills/ux-kano-model/templates/feature-priority-template.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+  # ============================================================
+  # PIPELINE 6: Wave 5 (EPIC-006)
+  # ============================================================
+  pipeline_wave5:
+    id: "pipeline-wave5"
+    name: "Wave 5 Pipeline"
+    description: "Wave 4 signoff (retrospective), /ux-design-sprint, /ux-ai-first-design (CONDITIONAL), Wave 5 signoff"
+    short_alias: "wave5"
+    epic: "EPIC-006"
+    wave: 5
+    status: "NOT_STARTED"
+    current_phase: 0
+    total_phases: 4
+    total_artifacts: 12
+    artifacts_complete: 0
+    progress_percent: 0
+    entry_condition: "gate-wave4-to-wave5 PASSED (all pipeline_wave4 artifacts quality_verdict=PASS)"
+    exit_condition: "WAVE-5-SIGNOFF.md quality_verdict=PASS"
+
+    conditional_artifact:
+      feature: "FEAT-020"
+      sub_skill: "/ux-ai-first-design"
+      agent: "ux-ai-design-guide"
+      condition: "WSM >= 7.80 AND enabler research complete"
+      status: "PENDING_EVALUATION"
+      artifacts_if_included: 6
+      artifacts_if_skipped: 0
+
+    phases:
+      - id: 1
+        name: "Wave 4 Signoff (Retrospective)"
+        path_id: "phase-1"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-021"]
+        agents:
+          - id: "creator-wave4-signoff"
+            artifact: "skills/user-experience/work/WAVE-4-SIGNOFF.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+      - id: 2
+        name: "/ux-design-sprint Sub-Skill"
+        path_id: "phase-2"
+        status: "NOT_STARTED"
+        blocked_by: "phase-1"
+        execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
+        features: ["FEAT-019"]
+        note: "Sprint day templates (Day 1-4) bundled into single file per PLAN.md"
+        agents:
+          - id: "creator-sprint-skill-md"
+            artifact: "skills/ux-design-sprint/SKILL.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-sprint-agent-md"
+            artifact: "skills/ux-design-sprint/agents/ux-sprint-facilitator.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-sprint-skill-md"
+          - id: "creator-sprint-governance"
+            artifact: "skills/ux-design-sprint/agents/ux-sprint-facilitator.governance.yaml"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-sprint-agent-md"
+          - id: "creator-sprint-design-rules"
+            artifact: "skills/ux-design-sprint/rules/design-sprint-rules.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-sprint-mcp-runbook"
+            artifact: "skills/ux-design-sprint/rules/mcp-runbook.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-sprint-day-templates"
+            artifact: "skills/ux-design-sprint/templates/sprint-day-templates.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+      - id: 3
+        name: "/ux-ai-first-design Sub-Skill (CONDITIONAL)"
+        path_id: "phase-3"
+        status: "CONDITIONAL"
+        condition: "WSM >= 7.80 AND enabler complete"
+        execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
+        features: ["FEAT-020"]
+        agents:
+          - id: "creator-ai-design-skill-md"
+            artifact: "skills/ux-ai-first-design/SKILL.md"
+            status: "CONDITIONAL"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-ai-design-agent-md"
+            artifact: "skills/ux-ai-first-design/agents/ux-ai-design-guide.md"
+            status: "CONDITIONAL"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-ai-design-skill-md"
+          - id: "creator-ai-design-governance"
+            artifact: "skills/ux-ai-first-design/agents/ux-ai-design-guide.governance.yaml"
+            status: "CONDITIONAL"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            blocked_by: "creator-ai-design-agent-md"
+          - id: "creator-ai-first-design-rules"
+            artifact: "skills/ux-ai-first-design/rules/ai-first-design-rules.md"
+            status: "CONDITIONAL"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-ai-first-mcp-runbook"
+            artifact: "skills/ux-ai-first-design/rules/mcp-runbook.md"
+            status: "CONDITIONAL"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+          - id: "creator-ai-interaction-spec-template"
+            artifact: "skills/ux-ai-first-design/templates/ai-interaction-spec-template.md"
+            status: "CONDITIONAL"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+      - id: 4
+        name: "Wave 5 Signoff"
+        path_id: "phase-4"
+        status: "NOT_STARTED"
+        blocked_by: "phase-2,phase-3"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-022"]
+        agents:
+          - id: "creator-wave5-signoff"
+            artifact: "skills/user-experience/work/WAVE-5-SIGNOFF.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+
+  # ============================================================
+  # PIPELINE 7: Integration (EPIC-007)
+  # ============================================================
+  pipeline_integration:
+    id: "pipeline-integration"
+    name: "Integration and Validation Pipeline"
+    description: "Cross-framework handoff tests, failure mode documentation, purple team security testing"
+    short_alias: "integration"
+    epic: "EPIC-007"
+    wave: null
+    status: "NOT_STARTED"
+    current_phase: 0
+    total_phases: 2
+    total_artifacts: 3
+    artifacts_complete: 0
+    progress_percent: 0
+    entry_condition: "gate-wave1-to-wave2 PASSED (WAVE-1-SIGNOFF.md quality_verdict=PASS)"
+    exit_condition: "purple-team-results.md quality_verdict=PASS"
+
+    phases:
+      - id: 1
+        name: "Cross-Framework Handoff Testing"
+        path_id: "phase-1"
+        status: "NOT_STARTED"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-023"]
+        agents:
+          - id: "creator-cross-framework-handoff-tests"
+            artifact: "skills/user-experience/work/cross-framework-handoff-tests.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            note: "Tests canonical sequences: JTBD->Sprint, LeanUX->HEART"
+            inputs:
+              - "skills/user-experience/rules/synthesis-validation.md"
+              - "skills/ux-jtbd/SKILL.md"
+              - "skills/ux-lean-ux/SKILL.md"
+          - id: "creator-failure-mode-documentation"
+            artifact: "skills/user-experience/work/failure-mode-documentation.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/user-experience/work/cross-framework-handoff-tests.md"]
+            blocked_by: "creator-cross-framework-handoff-tests"
+
+      - id: 2
+        name: "Purple Team Security Testing"
+        path_id: "phase-2"
+        status: "NOT_STARTED"
+        blocked_by: "phase-1"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-024"]
+        agents:
+          - id: "creator-purple-team-results"
+            artifact: "skills/user-experience/work/purple-team-results.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            test_scenarios:
+              - "MCP OAuth flow validation"
+              - "P-003 enforcement (sub-skill agents must not have Task tool)"
+              - "Credential storage security"
+              - "Synthesis validation (3-tier confidence gate)"
+              - "Wave bypass prevention"
+            inputs:
+              - "skills/user-experience/rules/ci-checks.md"
+              - "skills/user-experience/rules/mcp-coordination.md"
+              - "skills/user-experience/work/failure-mode-documentation.md"
+
+  # ============================================================
+  # PIPELINE 8: Registration (EPIC-008)
+  # ============================================================
+  pipeline_registration:
+    id: "pipeline-registration"
+    name: "Registration and Documentation Pipeline"
+    description: "CLAUDE.md skill table, AGENTS.md registry, trigger map update, metrics plan"
+    short_alias: "registration"
+    epic: "EPIC-008"
+    wave: null
+    status: "NOT_STARTED"
+    current_phase: 0
+    total_phases: 1
+    total_artifacts: 4
+    artifacts_complete: 0
+    progress_percent: 0
+    entry_condition: "gate-wave0-to-wave1 PASSED (KICKOFF-SIGNOFF.md quality_verdict=PASS)"
+    exit_condition: "All 4 registration artifacts quality_verdict=PASS"
+
+    phases:
+      - id: 1
+        name: "Framework Registration"
+        path_id: "phase-1"
+        status: "NOT_STARTED"
+        execution_mode: "PARALLEL"
+        auto_escalation: "AE-002 applies to .context/rules/mandatory-skill-usage.md (auto-C3 minimum; already C4)"
+        features: ["FEAT-025", "FEAT-026"]
+        agents:
+          - id: "creator-claude-md-update"
+            artifact: "CLAUDE.md"
+            action: "update_skill_table"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/user-experience/SKILL.md"]
+          - id: "creator-agents-md-update"
+            artifact: "AGENTS.md"
+            action: "add_11_agents"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/user-experience/agents/ux-orchestrator.md"]
+          - id: "creator-trigger-map-update"
+            artifact: ".context/rules/mandatory-skill-usage.md"
+            action: "add_user_experience_trigger_row"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            auto_escalation: "AE-002"
+            inputs:
+              - "skills/user-experience/SKILL.md"
+              - ".context/rules/agent-routing-standards.md"
+          - id: "creator-metrics-plan"
+            artifact: "skills/user-experience/rules/metrics-plan.md"
+            status: "NOT_STARTED"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs: ["skills/user-experience/SKILL.md"]
+
+# =============================================================================
+# WAVE GATES
+# =============================================================================
+wave_gates:
+  - id: "gate-wave0-to-wave1"
+    name: "Foundation to Wave 1"
+    status: "NOT_REACHED"
+    completed_at: null
+    entry_pipeline: "pipeline_foundation"
+    exit_pipelines: ["pipeline_wave1", "pipeline_registration"]
+    signoff_artifact: "skills/user-experience/work/KICKOFF-SIGNOFF.md"
+    condition: "KICKOFF-SIGNOFF.md exists AND quality_verdict=PASS AND all 11 foundation artifacts quality_verdict=PASS"
+    quality_threshold: 0.95
+    quality_check: "S-014 composite >= 0.95 on signoff document"
+
+  - id: "gate-wave1-to-wave2"
+    name: "Wave 1 to Wave 2"
+    status: "NOT_REACHED"
+    completed_at: null
+    entry_pipeline: "pipeline_wave1"
+    exit_pipelines: ["pipeline_wave2", "pipeline_integration"]
+    signoff_artifact: "skills/user-experience/work/WAVE-1-SIGNOFF.md"
+    condition: "WAVE-1-SIGNOFF.md exists AND quality_verdict=PASS AND all 12 wave-1 artifacts quality_verdict=PASS"
+    quality_threshold: 0.95
+    quality_check: "S-014 composite >= 0.95 on signoff document"
+
+  - id: "gate-wave2-to-wave3"
+    name: "Wave 2 to Wave 3"
+    status: "NOT_REACHED"
+    completed_at: null
+    entry_pipeline: "pipeline_wave2"
+    exit_pipelines: ["pipeline_wave3"]
+    signoff_artifact: "skills/user-experience/work/WAVE-2-SIGNOFF.md"
+    condition: "WAVE-2-SIGNOFF.md exists AND quality_verdict=PASS AND all 11 wave-2 artifacts quality_verdict=PASS"
+    quality_threshold: 0.95
+    quality_check: "S-014 composite >= 0.95 on signoff document"
+
+  - id: "gate-wave3-to-wave4"
+    name: "Wave 3 to Wave 4"
+    status: "NOT_REACHED"
+    completed_at: null
+    entry_pipeline: "pipeline_wave3"
+    exit_pipelines: ["pipeline_wave4"]
+    signoff_artifact: "skills/user-experience/work/WAVE-3-SIGNOFF.md"
+    condition: "WAVE-3-SIGNOFF.md exists AND quality_verdict=PASS AND all 13 wave-3 artifacts quality_verdict=PASS"
+    quality_threshold: 0.95
+    quality_check: "S-014 composite >= 0.95 on signoff document"
+
+  - id: "gate-wave4-to-wave5"
+    name: "Wave 4 to Wave 5"
+    status: "NOT_REACHED"
+    completed_at: null
+    entry_pipeline: "pipeline_wave4"
+    exit_pipelines: ["pipeline_wave5"]
+    signoff_artifact: "skills/user-experience/work/WAVE-4-SIGNOFF.md"
+    note: "WAVE-4-SIGNOFF.md is created in pipeline_wave5 phase-1 as a retrospective"
+    condition: "All 10 pipeline_wave4 artifacts quality_verdict=PASS"
+    quality_threshold: 0.95
+    quality_check: "S-014 composite >= 0.95 on all wave-4 artifacts"
+
+# =============================================================================
+# CHECKPOINTS
+# =============================================================================
+checkpoints:
+  latest_id: null
+  strategy: "PER_ARTIFACT_COMMIT"
+  commit_format: "feat(PROJ-022): add {artifact-name} [C4: {score}] [skip-bump]"
+  update_orchestration_yaml_with_each_commit: true
+  entries: []
+  # Entries populated during execution with:
+  #   id: "CP-NNN"
+  #   timestamp: "{ISO-8601}"
+  #   artifact: "{artifact-path}"
+  #   quality_score: "{score}"
+  #   commit_sha: "{sha}"
+  #   pipeline: "{pipeline_id}"
+  #   phase: "{phase_id}"
+
+# =============================================================================
+# QUALITY CONFIGURATION
+# =============================================================================
+quality:
+  threshold: 0.95                # User override (framework default: 0.92)
+  criticality: "C4"
+  scoring_mechanism: "S-014"     # LLM-as-Judge
+  max_qg_retries: 6              # User requirement override (framework default: 3)
+  creator_critic_min_iterations: 3   # H-14 minimum
+
+  required_strategies:
+    - "S-001"   # Red Team Analysis
+    - "S-002"   # Devil's Advocate
+    - "S-003"   # Steelman Technique (MUST precede S-002 per H-16)
+    - "S-004"   # Pre-Mortem Analysis
+    - "S-007"   # Constitutional AI Critique
+    - "S-010"   # Self-Refine
+    - "S-011"   # Chain-of-Verification
+    - "S-012"   # FMEA
+    - "S-013"   # Inversion Technique
+    - "S-014"   # LLM-as-Judge
+
+  optional_strategies: []        # C4 = ALL strategies required
+
+  scoring_dimensions:
+    completeness: 0.20
+    internal_consistency: 0.20
+    methodological_rigor: 0.20
+    evidence_quality: 0.15
+    actionability: 0.15
+    traceability: 0.10
+
+  auto_escalation_active:
+    AE_002: "Applies to pipeline_registration — .context/rules/mandatory-skill-usage.md is auto-C3 minimum (already C4)"
+    AE_001: "Does not apply (not touching JERRY_CONSTITUTION.md)"
+    AE_003: "Does not apply (no ADRs in scope)"
+
+  schema_validation: "Every .governance.yaml validates against docs/schemas/agent-governance-v1.schema.json BEFORE LLM scoring (H-34)"
+  p003_check: "No sub-skill agent (T2/T3) declares Task in tools; only ux-orchestrator (T5)"
+
+  phase_scores: {}     # Populated as artifacts complete: {artifact-id: {iteration_1: score, verdict: PASS|FAIL}}
+  barrier_scores: {}   # Populated as wave gates pass: {gate-id: {score: N, verdict: PASS}}
+  workflow_quality:
+    average_score: null
+    lowest_score: null
+    total_iterations: 0
+    gates_passed: 0
+    gates_failed: 0
+
+# =============================================================================
+# METRICS
+# =============================================================================
+metrics:
+  execution:
+    pipelines_total: 8
+    pipelines_complete: 0
+    phases_total: 23              # Across all 8 pipelines
+    phases_complete: 0
+    wave_gates_total: 5
+    wave_gates_passed: 0
+    artifacts_total: 72           # Approximate; FEAT-020 conditional adds up to 6 more
+    artifacts_complete: 0
+    artifacts_percent: 0
+
+  quality:
+    agent_success_rate: null
+    wave_gate_pass_rate: null
+    checkpoint_recovery_tested: false
+
+  timing:
+    workflow_started: "2026-03-03T00:00:00Z"
+    last_activity: "2026-03-03T00:00:00Z"
+    estimated_completion: null
+
+# =============================================================================
+# BLOCKERS AND ISSUES
+# =============================================================================
+blockers:
+  active: []
+
+issues:
+  resolved: []
+
+# =============================================================================
+# NEXT ACTIONS
+# =============================================================================
+next_actions:
+  immediate:
+    - action: "Create skills/user-experience/SKILL.md"
+      pipeline: "pipeline_foundation"
+      phase: 1
+      agent_id: "creator-skill-md"
+      quality_gate: "C4 >= 0.95 (all 10 strategies)"
+      commit_after_pass: true
+      reference_files:
+        - "skills/eng-team/SKILL.md"
+        - ".context/rules/skill-standards.md"
+        - "projects/PROJ-022-user-experience-skill/PLAN.md"
+        - "https://github.com/geekatron/jerry/issues/138"
+
+  subsequent:
+    - action: "Create ux-orchestrator.md + ux-orchestrator.governance.yaml"
+      pipeline: "pipeline_foundation"
+      phase: 2
+      blocked_by: "Phase 1 complete"
+    - action: "Create 5 rule files (parallel, max 3 concurrent)"
+      pipeline: "pipeline_foundation"
+      phase: 3
+      blocked_by: "Phase 2 complete"
+    - action: "Create kickoff-signoff-template.md + wave-signoff-template.md (parallel)"
+      pipeline: "pipeline_foundation"
+      phase: 4
+      blocked_by: "Phase 3 complete"
+    - action: "Create KICKOFF-SIGNOFF.md"
+      pipeline: "pipeline_foundation"
+      phase: 5
+      blocked_by: "Phase 4 complete"
+    - action: "Check wave gate: gate-wave0-to-wave1"
+      blocked_by: "pipeline_foundation phase 5 complete"
+    - action: "Begin pipeline_wave1 AND pipeline_registration (parallel, independent)"
+      blocked_by: "gate-wave0-to-wave1 PASSED"
+
+# =============================================================================
+# RESUMPTION CONTEXT
+# =============================================================================
+resumption:
+  recovery_state:
+    last_checkpoint: null
+    current_pipeline: "pipeline_foundation"
+    current_phase: 1
+    current_phase_name: "Parent SKILL.md"
+    workflow_status: "ACTIVE"
+    current_activity: >
+      NOT STARTED. Begin pipeline_foundation Phase 1.
+      First artifact: skills/user-experience/SKILL.md.
+      Reference: skills/eng-team/SKILL.md as architecture pattern.
+      Quality gate: C4 >= 0.95 (all 10 adversarial strategies, max 6 iterations).
+      Commit format: feat(PROJ-022): add skills/user-experience/SKILL.md [C4: {score}] [skip-bump]
+    next_step: "Create skills/user-experience/SKILL.md — this is the root artifact all other skill files depend on."
+    context_fill_at_update: null
+    updated_at: "2026-03-03T00:00:00Z"
+    cross_session_portable: true
+    ephemeral_references: false
+
+  files_to_read_on_resume:
+    - path: "projects/PROJ-022-user-experience-skill/orchestration/ux-skill-build-20260303-001/ORCHESTRATION.yaml"
+      priority: 1
+      purpose: "Machine-readable state SSOT. Read resumption.recovery_state first to orient, then execution_queue for active group."
+    - path: "projects/PROJ-022-user-experience-skill/orchestration/ux-skill-build-20260303-001/ORCHESTRATION_PLAN.md"
+      priority: 2
+      purpose: "Strategic context: L0 overview, L1 pipeline diagram, L2 implementation details, agent table."
+    - path: "projects/PROJ-022-user-experience-skill/orchestration/ux-skill-build-20260303-001/ORCHESTRATION_WORKTRACKER.md"
+      priority: 3
+      purpose: "Tactical execution log: per-artifact status, quality scores, session decisions."
+    - path: "projects/PROJ-022-user-experience-skill/PLAN.md"
+      priority: 4
+      purpose: "Project plan: artifact paths, wave assignments, reference files, verification criteria."
+    - path: "projects/PROJ-022-user-experience-skill/WORKTRACKER.md"
+      priority: 5
+      purpose: "Project worktracker: Epics, Features, per-artifact status."
+
+  quality_trajectory:
+    gates_completed: []
+    gates_remaining:
+      - "gate-wave0-to-wave1"
+      - "gate-wave1-to-wave2"
+      - "gate-wave2-to-wave3"
+      - "gate-wave3-to-wave4"
+      - "gate-wave4-to-wave5"
+    current_gate: null
+    current_gate_iteration: null
+    score_history: {}
+    lowest_dimension: null
+    total_iterations_used: 0
+
+  failure_recovery:
+    qg_max_iterations_exceeded: "Document delta, capture residual findings, mark quality_verdict: MAX_ITERATIONS, proceed with documented rationale in ORCHESTRATION_WORKTRACKER.md"
+    wave_signoff_failure: "Re-examine sub-skill artifacts that fed the cross-framework tests; address specific defects surfaced by testing"
+    conditional_feat020_not_activated: "Formally defer FEAT-020, document WSM score and blocker in ORCHESTRATION.yaml blockers section, proceed to WAVE-5-SIGNOFF.md with written justification"
+    context_compaction: "Immediately checkpoint current artifact progress to ORCHESTRATION.yaml, commit partial work, note AE-006e in ORCHESTRATION_WORKTRACKER.md, restart session from last checkpoint"
+
+  defect_summary:
+    total_defects_found: 0
+    total_defects_resolved: 0
+    unresolved_defects: []
+    recurring_patterns: []
+    last_gate_primary_defect: null
+
+  decision_log: []
+  agent_summaries: {}
+
+  compaction_events:
+    count: 0
+    events: []
