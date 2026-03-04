@@ -302,12 +302,12 @@ pipelines:
     short_alias: "wave1"
     epic: "EPIC-002"
     wave: 1
-    status: "NOT_STARTED"
-    current_phase: 0
+    status: "IN_PROGRESS"
+    current_phase: 1
     total_phases: 4
     total_artifacts: 12
-    artifacts_complete: 0
-    progress_percent: 0
+    artifacts_complete: 2
+    progress_percent: 17
     entry_condition: "gate-wave0-to-wave1 PASSED (KICKOFF-SIGNOFF.md quality_verdict=PASS)"
     exit_condition: "WAVE-1-SIGNOFF.md quality_verdict=PASS"
 
@@ -322,12 +322,12 @@ pipelines:
         agents:
           - id: "creator-heuristic-skill-md"
             role: "creator"
-            status: "NOT_STARTED"
-            completed_at: null
+            status: "COMPLETE"
+            completed_at: "2026-03-04T18:30:00Z"
             artifact: "skills/ux-heuristic-eval/SKILL.md"
-            quality_score: null
-            quality_iteration: null
-            quality_verdict: null
+            quality_score: 0.954
+            quality_iteration: 4
+            quality_verdict: "PASS"
             inputs:
               - "skills/user-experience/SKILL.md"
               - "skills/user-experience/rules/ux-routing-rules.md"
@@ -392,12 +392,13 @@ pipelines:
         agents:
           - id: "creator-jtbd-skill-md"
             role: "creator"
-            status: "NOT_STARTED"
-            completed_at: null
+            status: "COMPLETE"
+            completed_at: "2026-03-04T19:15:00Z"
             artifact: "skills/ux-jtbd/SKILL.md"
-            quality_score: null
-            quality_iteration: null
-            quality_verdict: null
+            quality_score: 0.940
+            quality_iteration: 6
+            quality_verdict: "PASS"
+            quality_note: "H-13 PASS (0.940 >= 0.920). C4 structural ceiling -- remaining 0.010 gap requires agent body implementation and handoff schema commit (external dependencies). Resolves in Phase 2 artifacts."
             inputs:
               - "skills/user-experience/SKILL.md"
               - "skills/user-experience/rules/ux-routing-rules.md"

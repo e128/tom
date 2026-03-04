@@ -54,6 +54,15 @@ validation:
   - verify_navigation_table
   - verify_severity_ratings_present
   - verify_all_10_heuristics_evaluated
+session_context:
+  on_receive:
+    - validate_engagement_id_present
+    - validate_product_context_present
+    - load_prior_evaluation_findings_if_exists
+  on_send:
+    - include_severity_rated_findings
+    - include_heuristic_coverage_summary
+    - include_remediation_recommendations
 enforcement:
   tier: hard
   escalation_path: "ux-orchestrator -> user"
