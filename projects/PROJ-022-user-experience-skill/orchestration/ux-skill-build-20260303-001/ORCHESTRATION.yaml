@@ -15,10 +15,11 @@ workflow:
   name: "PROJ-022 /user-experience Skill Build — 8-Pipeline Wave Architecture"
   project_id: "PROJ-022"
   github_issue: "https://github.com/geekatron/jerry/issues/138"
-  version: "1.0"
+  version: "1.1"
   created_at: "2026-03-03T00:00:00Z"
   updated_at: "2026-03-03T00:00:00Z"
   status: "ACTIVE"
+  scope: "ALL 5 waves orchestrated in this workflow. GitHub issue #138 closure requires Wave 1 + Parent Orchestrator minimum; Waves 2-5 continue in the same orchestration."
 
   id_source: "auto"
   id_format: "semantic-date-seq"
@@ -41,6 +42,47 @@ workflow:
     criticality: "C4"
     commit_on_artifact_pass: true
     commit_format: "feat(PROJ-022): add {artifact-name} [C4: {score}] [skip-bump]"
+
+# =============================================================================
+# EXECUTION PROTOCOL
+# =============================================================================
+execution_protocol:
+  orchestrator_role: "Main context reads ORCHESTRATION.yaml, dispatches background agents, updates SSOT, commits"
+
+  artifact_loop:
+    description: "For each artifact in the execution queue"
+    steps:
+      1_identify: "Read ORCHESTRATION.yaml resumption.recovery_state to find next artifact"
+      2_dispatch_creator: "Launch background Agent (creator) with artifact path, input files, reference patterns"
+      3_wait_for_creator: "Wait for background agent completion; creator writes artifact to specified path"
+      4_dispatch_adversary: "Launch background Agent (adv-scorer) with artifact path and C4 quality gate config"
+      5_check_score:
+        pass: ">= 0.95 → update ORCHESTRATION.yaml agent entry (quality_score, quality_verdict=PASS, quality_iteration) → git commit artifact + ORCHESTRATION.yaml"
+        revise: "< 0.95, iteration < 6 → launch background Agent (creator) with adversary findings for revision → go to step 4"
+        escalate: "< 0.95, iteration = 6 → mark quality_verdict=MAX_ITERATIONS → escalate to user"
+      6_update_ssot: "Update ORCHESTRATION.yaml: agent status, pipeline progress_percent, metrics counters"
+      7_update_worktracker: "Update WORKTRACKER.md Feature status for the completed artifact"
+      8_commit: "git commit with format: feat(PROJ-022): add {artifact-name} [C4: {score}] [skip-bump]"
+      9_next: "Move to next artifact in dependency order"
+
+  parallel_execution:
+    description: "When execution_mode is PARALLEL, dispatch up to max_concurrent_agents (3) background creators simultaneously"
+    wait_strategy: "Wait for ALL parallel creators to complete before dispatching adversary reviews"
+    adversary_reviews: "Run adversary reviews sequentially (one at a time) to avoid context contention"
+
+  wave_gate_check:
+    description: "At wave boundaries, verify all artifacts in the pipeline have quality_verdict=PASS"
+    steps:
+      1_verify: "Check all agent entries in the pipeline have quality_verdict=PASS"
+      2_create_signoff: "Dispatch background creator for the wave signoff document"
+      3_score_signoff: "Run C4 adversary review on the signoff document"
+      4_update_gate: "Update wave_gates entry: status=PASSED, completed_at=timestamp"
+      5_unlock: "Update exit_pipelines entry_condition to reflect gate passage"
+
+  session_boundaries:
+    on_session_start: "Read ORCHESTRATION.yaml resumption.recovery_state → identify current position → resume"
+    on_session_end: "Update ORCHESTRATION.yaml with current state → commit → record in ORCHESTRATION_WORKTRACKER.md"
+    on_compaction: "AE-006e: checkpoint to ORCHESTRATION.yaml immediately → commit → warn user"
 
 # =============================================================================
 # PATH CONFIGURATION
@@ -741,18 +783,18 @@ pipelines:
   pipeline_wave4:
     id: "pipeline-wave4"
     name: "Wave 4 Pipeline"
-    description: "/ux-behavior-design + /ux-kano-model sub-skills (Wave 4 signoff is in EPIC-006/pipeline_wave5)"
+    description: "/ux-behavior-design + /ux-kano-model sub-skills + Wave 4 signoff"
     short_alias: "wave4"
     epic: "EPIC-005"
     wave: 4
     status: "NOT_STARTED"
     current_phase: 0
-    total_phases: 2
-    total_artifacts: 10
+    total_phases: 3
+    total_artifacts: 11
     artifacts_complete: 0
     progress_percent: 0
     entry_condition: "gate-wave3-to-wave4 PASSED (WAVE-3-SIGNOFF.md quality_verdict=PASS)"
-    exit_condition: "All 10 artifacts quality_verdict=PASS; WAVE-4-SIGNOFF.md created in pipeline_wave5"
+    exit_condition: "WAVE-4-SIGNOFF.md quality_verdict=PASS"
 
     phases:
       - id: 1
@@ -841,23 +883,44 @@ pipelines:
             quality_iteration: null
             quality_verdict: null
 
+      - id: 3
+        name: "Wave 4 Signoff"
+        path_id: "phase-3"
+        status: "NOT_STARTED"
+        blocked_by: "phase-1,phase-2"
+        execution_mode: "SEQUENTIAL"
+        features: ["FEAT-021"]
+        agents:
+          - id: "creator-wave4-signoff"
+            role: "creator"
+            status: "NOT_STARTED"
+            completed_at: null
+            artifact: "skills/user-experience/work/WAVE-4-SIGNOFF.md"
+            quality_score: null
+            quality_iteration: null
+            quality_verdict: null
+            inputs:
+              - "skills/ux-behavior-design/SKILL.md"
+              - "skills/ux-kano-model/SKILL.md"
+              - "skills/user-experience/templates/wave-signoff-template.md"
+
   # ============================================================
   # PIPELINE 6: Wave 5 (EPIC-006)
   # ============================================================
   pipeline_wave5:
     id: "pipeline-wave5"
     name: "Wave 5 Pipeline"
-    description: "Wave 4 signoff (retrospective), /ux-design-sprint, /ux-ai-first-design (CONDITIONAL), Wave 5 signoff"
+    description: "/ux-design-sprint, /ux-ai-first-design (CONDITIONAL), Wave 5 signoff"
     short_alias: "wave5"
     epic: "EPIC-006"
     wave: 5
     status: "NOT_STARTED"
     current_phase: 0
-    total_phases: 4
-    total_artifacts: 12
+    total_phases: 3
+    total_artifacts: 11
     artifacts_complete: 0
     progress_percent: 0
-    entry_condition: "gate-wave4-to-wave5 PASSED (all pipeline_wave4 artifacts quality_verdict=PASS)"
+    entry_condition: "gate-wave4-to-wave5 PASSED (WAVE-4-SIGNOFF.md quality_verdict=PASS)"
     exit_condition: "WAVE-5-SIGNOFF.md quality_verdict=PASS"
 
     conditional_artifact:
@@ -871,24 +934,9 @@ pipelines:
 
     phases:
       - id: 1
-        name: "Wave 4 Signoff (Retrospective)"
+        name: "/ux-design-sprint Sub-Skill"
         path_id: "phase-1"
         status: "NOT_STARTED"
-        execution_mode: "SEQUENTIAL"
-        features: ["FEAT-021"]
-        agents:
-          - id: "creator-wave4-signoff"
-            artifact: "skills/user-experience/work/WAVE-4-SIGNOFF.md"
-            status: "NOT_STARTED"
-            quality_score: null
-            quality_iteration: null
-            quality_verdict: null
-
-      - id: 2
-        name: "/ux-design-sprint Sub-Skill"
-        path_id: "phase-2"
-        status: "NOT_STARTED"
-        blocked_by: "phase-1"
         execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
         features: ["FEAT-019"]
         note: "Sprint day templates (Day 1-4) bundled into single file per PLAN.md"
@@ -932,10 +980,11 @@ pipelines:
             quality_iteration: null
             quality_verdict: null
 
-      - id: 3
+      - id: 2
         name: "/ux-ai-first-design Sub-Skill (CONDITIONAL)"
-        path_id: "phase-3"
+        path_id: "phase-2"
         status: "CONDITIONAL"
+        blocked_by: "phase-1"
         condition: "WSM >= 7.80 AND enabler complete"
         execution_mode: "SEQUENTIAL_WITHIN_PARALLEL"
         features: ["FEAT-020"]
@@ -979,11 +1028,11 @@ pipelines:
             quality_iteration: null
             quality_verdict: null
 
-      - id: 4
+      - id: 3
         name: "Wave 5 Signoff"
-        path_id: "phase-4"
+        path_id: "phase-3"
         status: "NOT_STARTED"
-        blocked_by: "phase-2,phase-3"
+        blocked_by: "phase-1,phase-2"
         execution_mode: "SEQUENTIAL"
         features: ["FEAT-022"]
         agents:
@@ -1184,10 +1233,9 @@ wave_gates:
     entry_pipeline: "pipeline_wave4"
     exit_pipelines: ["pipeline_wave5"]
     signoff_artifact: "skills/user-experience/work/WAVE-4-SIGNOFF.md"
-    note: "WAVE-4-SIGNOFF.md is created in pipeline_wave5 phase-1 as a retrospective"
-    condition: "All 10 pipeline_wave4 artifacts quality_verdict=PASS"
+    condition: "WAVE-4-SIGNOFF.md exists AND quality_verdict=PASS AND all 11 pipeline_wave4 artifacts quality_verdict=PASS"
     quality_threshold: 0.95
-    quality_check: "S-014 composite >= 0.95 on all wave-4 artifacts"
+    quality_check: "S-014 composite >= 0.95 on signoff document"
 
 # =============================================================================
 # CHECKPOINTS
@@ -1257,17 +1305,156 @@ quality:
     gates_failed: 0
 
 # =============================================================================
+# QUALITY REVIEW PROTOCOL
+# =============================================================================
+quality_review_protocol:
+  description: "C4 adversary review sequence executed as background agents after each creator output"
+
+  per_artifact_review:
+    agent_sequence:
+      - step: 1
+        agent_type: "jerry:adv-selector"
+        action: "Map C4 criticality to strategy set — returns all 10 strategies for C4"
+        background: true
+      - step: 2
+        agent_type: "jerry:adv-executor"
+        action: "Execute all 10 strategy templates against the artifact, producing structured findings"
+        background: true
+        strategies:
+          - "S-003 Steelman (MUST precede S-002 per H-16)"
+          - "S-002 Devil's Advocate"
+          - "S-001 Red Team Analysis"
+          - "S-004 Pre-Mortem Analysis"
+          - "S-007 Constitutional AI Critique"
+          - "S-010 Self-Refine"
+          - "S-011 Chain-of-Verification"
+          - "S-012 FMEA"
+          - "S-013 Inversion Technique"
+          - "S-014 LLM-as-Judge"
+      - step: 3
+        agent_type: "jerry:adv-scorer"
+        action: "Score using S-014 6-dimension rubric, produce weighted composite score"
+        background: true
+        scoring_dimensions:
+          completeness: 0.20
+          internal_consistency: 0.20
+          methodological_rigor: 0.20
+          evidence_quality: 0.15
+          actionability: 0.15
+          traceability: 0.10
+        threshold: 0.95
+        verdict_mapping:
+          PASS: ">= 0.95"
+          REVISE: "0.85 - 0.94"
+          REJECTED: "< 0.85"
+
+    revision_loop:
+      max_iterations: 6
+      on_revise: "Creator agent receives adv-scorer findings + adv-executor strategy findings → revises artifact → re-run adv-scorer"
+      on_reject: "Creator agent receives full findings → substantial rework → re-run full adv-executor + adv-scorer"
+      plateau_detection: "Score delta < 0.01 for 3 consecutive iterations → escalate to user"
+
+    output_artifacts:
+      per_review: "projects/PROJ-022-user-experience-skill/quality/{agent-id}-{iteration}.md"
+      summary: "Stored in ORCHESTRATION.yaml quality.phase_scores.{agent-id}"
+
+# =============================================================================
+# CROSS-SKILL INTEGRATION
+# =============================================================================
+cross_skill_integration:
+  eng_team:
+    description: "/eng-team agents invoked at specific pipeline phases for security and quality"
+
+    invocations:
+      - id: "eng-architect-threat-model"
+        agent: "jerry:eng-architect"
+        when: "pipeline_foundation phase-3 (after ux-orchestrator agent exists)"
+        purpose: "MCP threat model: Figma OAuth trust boundaries, Miro API security, credential lifecycle"
+        output: "skills/user-experience/work/eng-architect-mcp-threat-model.md"
+        background: true
+        quality_gate: "C4 >= 0.95"
+
+      - id: "eng-devsecops-ci-gate"
+        agent: "jerry:eng-devsecops"
+        when: "pipeline_foundation phase-3 (parallel with rule files)"
+        purpose: "CI gate specification: P-003 enforcement grep, JSON Schema validation, governance.yaml checks"
+        output: "skills/user-experience/work/eng-devsecops-ci-gate-spec.md"
+        background: true
+        quality_gate: "C4 >= 0.95"
+
+      - id: "eng-qa-wave-benchmarks"
+        agent: "jerry:eng-qa"
+        when: "Each wave signoff phase (before signoff document creation)"
+        purpose: "Per-wave quality benchmarks derived from the 27 acceptance criteria"
+        output: "skills/user-experience/work/eng-qa-wave-{N}-benchmarks.md"
+        background: true
+        quality_gate: "C4 >= 0.95"
+
+      - id: "eng-security-mcp-credentials"
+        agent: "jerry:eng-security"
+        when: "pipeline_foundation phase-3 AND pipeline_wave5 phase-3 (ai-first-design MCP)"
+        purpose: "MCP credential handling review, OAuth token lifecycle, secure storage patterns"
+        output: "skills/user-experience/work/eng-security-mcp-review.md"
+        background: true
+        quality_gate: "C4 >= 0.95"
+
+      - id: "eng-reviewer-wave-gate"
+        agent: "jerry:eng-reviewer"
+        when: "Each wave gate transition (after all pipeline artifacts pass)"
+        purpose: "Final review gate: architecture compliance, security standards, test coverage"
+        output: "skills/user-experience/work/eng-reviewer-wave-{N}-gate.md"
+        background: true
+        quality_gate: "C4 >= 0.95"
+
+      - id: "eng-incident-failure-modes"
+        agent: "jerry:eng-incident"
+        when: "pipeline_integration phase-1 (after cross-framework handoff tests)"
+        purpose: "MCP failure mode documentation, degraded-mode runbooks"
+        output: "skills/user-experience/work/eng-incident-failure-modes.md"
+        background: true
+        quality_gate: "C4 >= 0.95"
+
+  red_team:
+    description: "/red-team agents invoked for purple team security testing at EPIC-007"
+
+    invocations:
+      - id: "red-recon-mcp-surface"
+        agent: "jerry:red-recon"
+        when: "pipeline_integration phase-2 (purple team)"
+        purpose: "Figma/Miro MCP attack surface reconnaissance"
+        output: "skills/user-experience/work/red-recon-mcp-surface.md"
+        background: true
+
+      - id: "red-vuln-credential-extraction"
+        agent: "jerry:red-vuln"
+        when: "pipeline_integration phase-2 (after red-recon)"
+        purpose: "MCP credential extraction from agent context, P-003 Task tool escalation attempt"
+        output: "skills/user-experience/work/red-vuln-credential-test.md"
+        background: true
+
+      - id: "red-social-confidence-bypass"
+        agent: "jerry:red-social"
+        when: "pipeline_integration phase-2 (after red-vuln)"
+        purpose: "Confidence gate bypass via crafted input, synthesis manipulation"
+        output: "skills/user-experience/work/red-social-confidence-test.md"
+        background: true
+
+  adversary:
+    description: "/adversary agents invoked per the quality_review_protocol for EVERY artifact"
+    note: "See quality_review_protocol section — adv-selector, adv-executor, adv-scorer run as background agents after each creator output"
+
+# =============================================================================
 # METRICS
 # =============================================================================
 metrics:
   execution:
     pipelines_total: 8
     pipelines_complete: 0
-    phases_total: 23              # Across all 8 pipelines
+    phases_total: 23              # Across all 8 pipelines (wave4: 3, wave5: 3, net unchanged)
     phases_complete: 0
     wave_gates_total: 5
     wave_gates_passed: 0
-    artifacts_total: 72           # Approximate; FEAT-020 conditional adds up to 6 more
+    artifacts_total: 72           # Approximate; FEAT-020 conditional adds up to 6 more (wave4: +1 signoff, wave5: -1 signoff, net unchanged)
     artifacts_complete: 0
     artifacts_percent: 0
 

@@ -29,7 +29,7 @@ GitHub issue #138 specifies a `/user-experience` skill for the Jerry Framework: 
 - Validate spec gaps during Foundation phase (fix as discovered)
 - Cross-session orchestration via ORCHESTRATION.yaml
 
-**Issue closure:** Wave 1 + Parent Orchestrator. Waves 2-5 tracked in child issues.
+**Issue closure:** GitHub issue #138 minimum closure: Wave 1 + Parent Orchestrator. ALL 5 waves are orchestrated in this workflow via ORCHESTRATION.yaml. Waves 2-5 continue in the same orchestration after Wave 1 completes.
 
 ---
 
