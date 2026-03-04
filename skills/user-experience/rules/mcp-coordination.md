@@ -1,8 +1,8 @@
-<!-- VERSION: 1.0.0 | DATE: 2026-03-04 | SOURCE: SKILL.md (skills/user-experience/SKILL.md) Sections "MCP Integration Architecture", "Current Jerry MCP Integration", "Figma Dependency Risk Profile", "Cost Tiers" | PARENT: /user-experience skill -->
+<!-- VERSION: 1.1.0 | DATE: 2026-03-04 | SOURCE: SKILL.md (skills/user-experience/SKILL.md) Sections "MCP Integration Architecture" (#mcp-integration-architecture), "Current Jerry MCP Integration" (#current-jerry-mcp-integration), "Figma Dependency Risk Profile" (#figma-dependency-risk-profile), "Cost Tiers" (#cost-tiers), "Lifecycle-Stage Routing" (#lifecycle-stage-routing) | PARENT: /user-experience skill | GOVERNANCE: .context/rules/mcp-tool-standards.md (MCP-001, MCP-002) | PROJECT: projects/PROJ-022-user-experience-skill/PLAN.md -->
 
 # MCP Coordination Rules
 
-> MCP tool coordination rules for the /user-experience skill. Defines the sub-skill MCP dependency matrix, degraded mode behavior, Context7 integration, cost tiers, and future MCP adapter architecture. See also: `skills/user-experience/rules/ux-routing-rules.md` (MCP CHECK step in lifecycle triage), `skills/user-experience/rules/wave-progression.md` (wave deployment readiness affected by MCP availability), `skills/user-experience/rules/ci-checks.md` (CI gate UX-CI-007 validates MCP ownership in kickoff signoff). MCP governance: `.context/rules/mcp-tool-standards.md` [Context7 Integration], [Memory-Keeper Integration].
+> MCP tool coordination rules for the /user-experience skill. Defines the sub-skill MCP dependency matrix, degraded mode behavior, Context7 integration, cost tiers, and future MCP adapter architecture. See also: `skills/user-experience/rules/ux-routing-rules.md` (MCP CHECK step in lifecycle triage), `skills/user-experience/rules/wave-progression.md` (wave deployment readiness affected by MCP availability), `skills/user-experience/rules/ci-checks.md` (CI gate UX-CI-007 validates kickoff signoff file structure including MCP-related fields per [Wave Gate Compliance](../rules/ci-checks.md#wave-gate-compliance)). MCP governance: `.context/rules/mcp-tool-standards.md` [Context7 Integration](#context7-integration), [Memory-Keeper Integration](#memory-keeper-integration) -- MCP-001 (Context7 MUST for external library references), MCP-002 (Memory-Keeper MUST at phase boundaries).
 
 ## Document Sections
 
@@ -21,7 +21,9 @@
 
 ## MCP Dependency Matrix
 
-<!-- Source: SKILL.md (skills/user-experience/SKILL.md) Section "MCP Integration Architecture" — sub-skill dependency matrix. Note: `/ux-ai-first-design` has Figma REQ dependency (SKILL.md line 411) despite the sub-skill itself being conditional on Enabler DONE + WSM >= 7.80 (SKILL.md Section "Wave Architecture" line 267). The COND on line 267 refers to sub-skill wave deployment conditionality, NOT MCP dependency classification. Memory-Keeper is excluded from this matrix: no /user-experience sub-skill requires cross-session persistence via Memory-Keeper; all sub-skill state is engagement-scoped per P-002. -->
+<!-- Source: SKILL.md [MCP Integration Architecture](../SKILL.md#mcp-integration-architecture) — sub-skill dependency matrix (SKILL.md lines 400-411). Note: `/ux-ai-first-design` has Figma **REQ** dependency (SKILL.md line 411). The sub-skill itself is conditionally deployed (Wave 5 COND entry criteria: Enabler DONE + WSM >= 7.80, per SKILL.md [Wave Architecture](../SKILL.md#wave-architecture) line 267), but when invoked, Figma is a required dependency — wave deployment conditionality and MCP dependency classification are independent dimensions. -->
+
+> **Scope:** This matrix covers design-tool MCP dependencies (Figma, Miro, Storybook, Zeroheight, Hotjar Bridge, Whimsical). Infrastructure MCP tools -- specifically Memory-Keeper (`mcp__memory-keeper__store`, `mcp__memory-keeper__retrieve`, `mcp__memory-keeper__search`) used by `ux-orchestrator` for phase-boundary state per MCP-002 (`.context/rules/mcp-tool-standards.md` [Memory-Keeper Integration](#memory-keeper-integration)) -- are governed by `mcp-tool-standards.md` and are not included in this matrix. No sub-skill agent requires Memory-Keeper; all sub-skill state is engagement-scoped per P-002.
 
 | Sub-Skill | Figma | Miro | Storybook | Zeroheight | Hotjar (Bridge) | Whimsical |
 |-----------|-------|------|-----------|------------|-----------------|-----------|
@@ -40,7 +42,7 @@
 
 ## Dependency Classifications
 
-<!-- Source: SKILL.md (skills/user-experience/SKILL.md) Section "MCP Integration Architecture" — dependency classification definitions. REQ/ENH/COND labels used consistently across the dependency matrix and degraded-mode tables. Note: COND classification applies to MCP dependency conditionality (e.g., feature X required only when condition Y is met), NOT to sub-skill wave deployment conditionality (which is tracked in wave-progression.md [Wave Definitions]). -->
+<!-- Source: SKILL.md [MCP Integration Architecture](../SKILL.md#mcp-integration-architecture) — dependency classification definitions (SKILL.md line 413). REQ/ENH/COND labels used consistently across the dependency matrix and degraded-mode tables. Note: COND classification applies to MCP dependency conditionality (e.g., feature X required only when condition Y is met), NOT to sub-skill wave deployment conditionality (which is tracked in wave-progression.md [Wave Definitions]). -->
 
 | Classification | Label | Meaning | Failure Behavior |
 |---------------|-------|---------|-----------------|
@@ -48,31 +50,36 @@
 | **Enhancement** | ENH | MCP improves output quality but is not essential | Cosmetic limitation on failure. Sub-skill operates normally; enhanced features silently degrade to text-only equivalents. |
 | **Conditional** | COND | MCP required only under specific conditions | Depends on condition. When condition is met and MCP unavailable: treated as REQ. When condition not met: no dependency. |
 
+> **COND instantiation note:** No current sub-skill has a COND MCP dependency in the matrix above. All dependencies are classified as REQ or ENH. The COND classification is defined here for completeness and future adapter use. Example of when COND would apply: if a future MCP adapter (e.g., Hotjar Bridge) were required only when evaluating products with > 1,000 monthly active users (where behavioral analytics data is statistically meaningful), that dependency would be classified COND rather than ENH — the adapter is not merely an enhancement but is required under specific data-volume conditions. The distinction from wave deployment conditionality is important: wave COND (SKILL.md line 267) governs whether a sub-skill is *deployed*; MCP COND governs whether a specific MCP tool is *needed by* an already-deployed sub-skill.
+
 ### Enforcement Rules
 
 1. **REQ dependencies:** When a REQ MCP is unavailable, the orchestrator MUST inform the user per P-022 and route to the degraded-mode fallback path. The sub-skill MUST NOT silently proceed as if the MCP were available.
 2. **ENH dependencies:** When an ENH MCP is unavailable, the sub-skill proceeds normally. No user notification required unless the user explicitly requested the enhanced feature.
-3. **COND dependencies:** The orchestrator evaluates the condition before checking MCP availability. If the condition is not met, the MCP is not needed.
+3. **COND dependencies:** The orchestrator evaluates the condition before checking MCP availability. If the condition is not met, the MCP is not needed. If the condition is met and the MCP is unavailable, behavior follows REQ enforcement (degraded mode + explicit error).
 
 ---
 
 ## Degraded Mode Behavior
 
-<!-- Source: SKILL.md (skills/user-experience/SKILL.md) Section "MCP Integration Architecture" — text-only mode. -->
+<!-- Source: SKILL.md [MCP Integration Architecture](../SKILL.md#mcp-integration-architecture) — text-only mode (SKILL.md lines 441-443); [Fallback: Text-Only Mode](../SKILL.md#fallback-text-only-mode). -->
 
 ### Text-Only Mode
 
 When MCP tools are unavailable, all agents operate in **text-only mode**: users provide design descriptions, screenshots, or markup instead of live design artifacts. The agent methodology remains identical; only the input modality changes.
 
-### Per-Dependency Degraded Modes
+### Currently Exercisable Fallbacks
 
-**Currently available MCP tools:**
+These degraded modes apply to MCP tools that are available in the current Jerry infrastructure and can be tested now.
 
-| MCP Tool | Degraded Mode | Impact |
-|----------|--------------|--------|
-| Context7 | WebSearch fallback: use web search for UX framework documentation | May return less targeted results; stale training data risk |
+| MCP Tool | Canonical Name | Degraded Mode | Impact |
+|----------|---------------|--------------|--------|
+| Context7 Resolve | `mcp__context7__resolve-library-id` | WebSearch fallback per MCP-001 (`.context/rules/mcp-tool-standards.md` [Error Handling](#error-handling)): use web search for UX framework documentation when resolve-library-id returns no matches | May return less targeted results; stale training data risk |
+| Context7 Query | `mcp__context7__query-docs` | WebSearch fallback: use web search and note "Context7 no coverage" in output per `mcp-tool-standards.md` [Error Handling](#error-handling) | Less precise documentation lookup; may retrieve outdated API references |
 
-**Future MCP adapters (not yet implemented — architecture only in PROJ-022):**
+### Future Adapter Fallbacks (Architecture Only)
+
+These degraded modes apply to future MCP adapters that are not yet implemented. **Actual adapter implementation is out of scope for PROJ-022** (see `projects/PROJ-022-user-experience-skill/PLAN.md`). The fallback paths are defined here to enable sub-skill operation in text-only mode until adapters are built.
 
 | MCP Tool | Degraded Mode | Impact |
 |----------|--------------|--------|
@@ -98,9 +105,9 @@ Input was provided via {fallback method}. Some features are reduced:
 
 ## Figma Dependency Risk Profile
 
-<!-- Source: SKILL.md (skills/user-experience/SKILL.md) Section "Figma Dependency Risk Profile". -->
+<!-- Source: SKILL.md [Figma Dependency Risk Profile](../SKILL.md#figma-dependency-risk-profile) (SKILL.md lines 415-424). Non-Figma Fallback column sourced from SKILL.md; Quality Impact column is an elaboration added by this rule file for operational guidance. -->
 
-Figma is the highest-risk MCP dependency: 4 sub-skills require it, 2 are enhanced by it (6 of 10 total connections).
+Figma is the highest-risk MCP dependency: 4 sub-skills require it (REQ), 2 are enhanced by it (ENH), totaling 6 of 10 sub-skill connections. REQ count verified against MCP Dependency Matrix: `/ux-heuristic-eval`, `/ux-inclusive-design`, `/ux-design-sprint`, `/ux-ai-first-design`. ENH count: `/ux-lean-ux`, `/ux-atomic-design`.
 
 | Sub-Skill | Non-Figma Fallback | Quality Impact |
 |-----------|--------------------|---------------|
@@ -112,30 +119,32 @@ Figma is the highest-risk MCP dependency: 4 sub-skills require it, 2 are enhance
 ### Figma Mitigation Strategy
 
 1. **Wave 1 sub-skills do not require Figma:** `/ux-heuristic-eval` (REQ Figma) is Wave 1, but screenshot-input mode provides viable fallback.
-2. **Figma MCP adapter is architecture-only in PROJ-022:** Actual adapter implementation deferred to post-PROJ-022. Architecture + fallback paths defined here.
-3. **Cost tier awareness:** Free tier ($0) explicitly excludes Figma-dependent sub-skills at full capability.
+2. **Figma MCP adapter is architecture-only in PROJ-022:** Actual adapter implementation deferred to post-PROJ-022 (see `projects/PROJ-022-user-experience-skill/PLAN.md`). Architecture + fallback paths defined here.
+3. **Cost tier awareness:** Free tier ($0) runs Figma-dependent sub-skills in degraded mode (screenshot-input fallback), not at full capability. Sub-skills are not blocked entirely; they operate with reduced input modality per the degraded mode behavior defined in [Currently Exercisable Fallbacks](#currently-exercisable-fallbacks) and [Future Adapter Fallbacks](#future-adapter-fallbacks-architecture-only).
 
 ---
 
 ## Context7 Usage
 
-<!-- Source: SKILL.md (skills/user-experience/SKILL.md) Section "Current Jerry MCP Integration" and `.context/rules/mcp-tool-standards.md` MCP-001. -->
+<!-- Source: SKILL.md [Current Jerry MCP Integration](../SKILL.md#current-jerry-mcp-integration) (SKILL.md lines 434-439) and `.context/rules/mcp-tool-standards.md` MCP-001 ([Context7 Integration](#context7-integration)). Canonical tool names sourced from `mcp-tool-standards.md` [Canonical Tool Names](#canonical-tool-names). -->
 
 ### Currently Available MCP Integration
 
-| MCP Tool | Usage | Agents |
-|----------|-------|--------|
-| Context7 (resolve-library-id) | Resolve UX framework libraries and design system packages | ux-atomic-architect, ux-ai-design-guide |
-| Context7 (query-docs) | Query component library documentation, accessibility API docs | ux-atomic-architect, ux-inclusive-evaluator, ux-ai-design-guide |
+Per MCP-001 (`.context/rules/mcp-tool-standards.md` [Context7 Integration](#context7-integration)): "Context7 MUST be used when any agent task references an external library, framework, SDK, or API by name. Respect the per-question call limit enforced by the tool. WebSearch is permitted only for general concepts or when Context7 returns no results." Source: FEAT-028 AC-1.
+
+| MCP Tool | Canonical Name | Usage | Agents |
+|----------|---------------|-------|--------|
+| Context7 Resolve | `mcp__context7__resolve-library-id` | Resolve UX framework libraries and design system packages | ux-atomic-architect, ux-ai-design-guide |
+| Context7 Query | `mcp__context7__query-docs` | Query component library documentation, accessibility API docs | ux-atomic-architect, ux-inclusive-evaluator, ux-ai-design-guide |
 
 ### Context7 Usage Rules
 
-Per MCP-001 from `.context/rules/mcp-tool-standards.md` [Context7 Integration]:
+Per MCP-001 (`.context/rules/mcp-tool-standards.md` [Context7 Integration](#context7-integration)):
 
 1. Context7 MUST be used when an agent task references an external UX library, framework, or design system by name (e.g., Material UI, Radix, WCAG specification).
-2. Protocol: `resolve-library-id` first, then `query-docs` with resolved ID.
-3. Respect the per-question call limit enforced by the tool.
-4. If `resolve-library-id` returns no matches: fall back to WebSearch for that library.
+2. Protocol: call `mcp__context7__resolve-library-id` with library name first, then call `mcp__context7__query-docs` with resolved library ID and specific query.
+3. Respect the per-question call limit enforced by the tool; each distinct library resets the limit.
+4. If `mcp__context7__resolve-library-id` returns no matches: fall back to WebSearch for that library per `mcp-tool-standards.md` [Error Handling](#error-handling).
 
 ### Context7 UX Framework Examples
 
@@ -151,7 +160,7 @@ Per MCP-001 from `.context/rules/mcp-tool-standards.md` [Context7 Integration]:
 
 ## Cost Tiers
 
-<!-- Source: SKILL.md Section "Cost Tiers". -->
+<!-- Source: SKILL.md [Cost Tiers](../SKILL.md#cost-tiers) (SKILL.md lines 426-432). -->
 
 | Tier | Monthly Cost | Sub-Skills Available |
 |------|-------------|---------------------|
@@ -167,35 +176,35 @@ The orchestrator's CAPACITY CHECK step (see `ux-routing-rules.md` [Lifecycle Sta
 
 ## MCP Availability Detection
 
-<!-- Source: SKILL.md Section "Lifecycle-Stage Routing" — MCP CHECK step. -->
+<!-- Source: SKILL.md [Lifecycle-Stage Routing](../SKILL.md#lifecycle-stage-routing) — MCP CHECK step (SKILL.md line 303). Probe implementation details (WCAG test call, caching, timeout handling, retry policy) are elaborations operationalizing the SKILL.md specification; the SKILL.md defines the MCP CHECK step conceptually and this section provides the concrete implementation protocol. -->
 
 The orchestrator's 4-step lifecycle triage includes MCP detection at Step 3:
 
 ### Detection Protocol
 
-1. **Probe:** Attempt a lightweight Context7 `resolve-library-id` call (e.g., resolve "WCAG"). Timeout: 5 seconds with 1 retry before declaring unavailable.
-2. **If success:** MCP available. Cache status for engagement session.
-3. **If failure (timeout > 5s after retry, or error response):** MCP unavailable. Route all sub-skills to non-MCP fallback paths.
+1. **Probe:** Attempt a lightweight `mcp__context7__resolve-library-id` call (e.g., resolve "WCAG"). **Timeout definition:** a timeout is defined as > 5 seconds with no response from the MCP server. One retry is attempted after a timeout before declaring the MCP unavailable.
+2. **If success:** MCP available. Cache status for the duration of the engagement session (no re-probing within the same engagement).
+3. **If failure:** MCP unavailable. Failure conditions: (a) timeout exceeding 5 seconds after 1 retry, (b) error response from the MCP server, or (c) MCP server unreachable. Route all sub-skills to non-MCP fallback paths defined in [Currently Exercisable Fallbacks](#currently-exercisable-fallbacks) and [Future Adapter Fallbacks](#future-adapter-fallbacks-architecture-only).
 4. **Disclose:** Inform user of MCP status per P-022. "MCP tools are [available/unavailable] for this session. [Available features / Degraded mode description]."
 
 ### Future MCP Probes
 
-When Figma/Miro/Storybook MCP adapters become available, the detection protocol will expand:
+When Figma/Miro/Storybook MCP adapters become available, the detection protocol will expand. Probe implementations for Figma/Miro/Storybook will be specified in their respective adapter architecture documents when implemented (post-PROJ-022 scope, see `projects/PROJ-022-user-experience-skill/PLAN.md`). Each probe endpoint specification follows the Adapter Architecture Pattern step 1 (health probe endpoint) defined in [Future MCP Adapters](#future-mcp-adapters).
 
 | Probe | Target | Fallback |
 |-------|--------|----------|
-| Context7 resolve | UX library documentation | WebSearch |
-| Figma API health | Figma file access | Screenshot-input mode |
-| Miro API health | Miro board access | Text-based exercise mode |
-| Storybook endpoint | Component story browsing | Manual component inventory |
+| `mcp__context7__resolve-library-id` | UX library documentation | WebSearch per `mcp-tool-standards.md` [Error Handling](#error-handling) |
+| Figma API health (future) | Figma file access | Screenshot-input mode |
+| Miro API health (future) | Miro board access | Text-based exercise mode |
+| Storybook endpoint (future) | Component story browsing | Manual component inventory |
 
 ---
 
 ## Future MCP Adapters
 
-<!-- Source: SKILL.md Section "MCP Integration Architecture" — architecture + fallback paths only. -->
+<!-- Source: SKILL.md [MCP Integration Architecture](../SKILL.md#mcp-integration-architecture) — architecture + fallback paths only (SKILL.md lines 396-445). Adapter architecture pattern and planned adapter table are elaborations derived from the SKILL.md dependency matrix and text-only mode specification. -->
 
-This section defines the adapter architecture for future MCP integrations. **Actual adapter implementation is out of scope for PROJ-022.**
+This section defines the adapter architecture for future MCP integrations. **Actual adapter implementation is out of scope for PROJ-022** (architecture scope: `projects/PROJ-022-user-experience-skill/PLAN.md`; adapter implementation deferred to post-PROJ-022).
 
 ### Adapter Architecture Pattern
 
@@ -223,19 +232,23 @@ MCP Adapter Pattern:
 
 ### Security Considerations
 
-Per `/eng-team` integration (see SKILL.md [Cross-Skill Integration]):
+Per `/eng-team` integration (see SKILL.md [Cross-Skill Integration](../SKILL.md#cross-skill-integration)):
 
-- MCP credential handling follows Jerry's MCP tool standards (`mcp-tool-standards.md`).
+- MCP credential handling follows Jerry's MCP tool standards (`.context/rules/mcp-tool-standards.md`).
 - OAuth tokens for Figma/Miro MUST NOT be stored in agent context or output files.
-- API keys MUST be managed via environment variables or secrets management.
+- API keys MUST be managed via environment variables or secrets management (see `.claude/settings.local.json` for runtime MCP server configuration per `mcp-tool-standards.md` [References](#references)).
 - Adapter health probes MUST NOT expose authentication state in error messages.
 
 ---
 
-*Rule file: mcp-coordination.md*
+*Rule file: mcp-coordination.md (v1.1.0)*
 *Parent skill: /user-experience*
 *Parent SKILL.md: `skills/user-experience/SKILL.md`*
+*MCP governance SSOT: `.context/rules/mcp-tool-standards.md` (MCP-001, MCP-002)*
+*Canonical tool names: `mcp-tool-standards.md` [Canonical Tool Names](#canonical-tool-names)*
+*Project scope: `projects/PROJ-022-user-experience-skill/PLAN.md`*
 *Sibling rules: `skills/user-experience/rules/ux-routing-rules.md`, `skills/user-experience/rules/synthesis-validation.md`, `skills/user-experience/rules/wave-progression.md`, `skills/user-experience/rules/ci-checks.md`*
 *Created: 2026-03-03*
 *Updated: 2026-03-04*
+*Revision: iter3 — addressed Internal Consistency (REQ/COND clarification, degraded mode separation), Completeness (Memory-Keeper scope note, COND instantiation), Traceability (anchor links, PROJ-022 path, MCP-001 citations), Methodological Rigor (timeout definition, failure conditions), Evidence Quality (canonical tool names, source annotation precision)*
 *Status: COMPLETE*
