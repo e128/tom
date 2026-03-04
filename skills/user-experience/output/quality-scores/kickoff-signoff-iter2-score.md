@@ -1,21 +1,24 @@
-# Quality Score Report: Kickoff Signoff Template
+# Quality Score Report: /user-experience Skill Kickoff Signoff (Iteration 2)
 
 ## L0 Executive Summary
 
-**Score:** 0.936/1.00 | **Verdict:** REVISE | **Weakest Dimension:** Evidence Quality (0.86)
-**One-line assessment:** A strong, well-structured template that covers all required fields and traces cleanly to authoritative sources, but falls short of the 0.95 C4 threshold due to a missing source annotation on the MCP table body, a minor placeholder convention inconsistency in the Engagement ID regex, and the absence of mcp-coordination.md in the footer's "Consumed by" list.
+**Score:** 0.949/1.00 | **Verdict:** REVISE | **Weakest Dimension:** Completeness (0.93)
+**One-line assessment:** Iteration 2 fixes all four iter1 issues (score discrepancies corrected and verified, file moved to correct output path, navigation table added, MCP deferral documented), but falls 0.001 below the strict C4 >= 0.950 threshold because the MCP Ownership Assignments table provides a documented deferral ("no specific date") rather than a target date — which technically violates the template's own Validation Rule stating "Planned with non-empty target date acceptable."
 
 ---
 
 ## Scoring Context
 
-- **Deliverable:** `skills/user-experience/templates/kickoff-signoff-template.md`
-- **Deliverable Type:** Design/Template
+- **Deliverable:** `skills/user-experience/output/KICKOFF-SIGNOFF.md`
+- **Deliverable Type:** Other (Foundation pipeline gate document)
 - **Criticality Level:** C4
 - **Scoring Strategy:** S-014 (LLM-as-Judge)
 - **SSOT Reference:** `.context/rules/quality-enforcement.md`
-- **Pass Threshold Override:** 0.95 (C4 engagement-specific; PROJ-022 override of H-13 default 0.92)
+- **Custom Threshold:** >= 0.950 (C4 per scoring request; PROJ-022 override of H-13 default 0.92)
+- **Strategy Findings Incorporated:** No
+- **Prior Score:** 0.913 (iteration 1, REVISE — `skills/user-experience/output/quality-scores/kickoff-signoff-iter1-score.md`)
 - **Scored:** 2026-03-04T00:00:00Z
+- **Iteration:** 2
 
 ---
 
@@ -23,9 +26,11 @@
 
 | Metric | Value |
 |--------|-------|
-| **Weighted Composite** | 0.936 |
-| **Threshold** | 0.95 (C4, PROJ-022 override) |
+| **Weighted Composite** | 0.949 |
+| **Threshold** | 0.950 (C4, strictly >= 0.950) |
 | **Verdict** | REVISE |
+| **Delta from Iter1** | +0.036 (0.913 → 0.949) |
+| **Gap to Threshold** | -0.001 |
 | **Strategy Findings Incorporated** | No |
 
 ---
@@ -34,61 +39,87 @@
 
 | Dimension | Weight | Score | Weighted | Evidence Summary |
 |-----------|--------|-------|----------|-----------------|
-| Completeness | 0.20 | 0.96 | 0.192 | All 10 Foundation artifacts listed; all 4 MCPs listed; all 9 required fields present; 8 acceptance criteria items; 10 validation rules match CI gate |
-| Internal Consistency | 0.20 | 0.93 | 0.186 | No contradictions found; minor placeholder convention tension between `UX-[NNNN]` in template and `UX-{NNNN}` in validation rules |
-| Methodological Rigor | 0.20 | 0.95 | 0.190 | Three-section structure (Template/Field Descriptions/Validation Rules) matches sibling template pattern; quality gate threshold documented with source; signoff pattern from wave-progression.md followed exactly |
-| Evidence Quality | 0.15 | 0.86 | 0.129 | SOURCE annotations present in all three sections; however, MCP table body in template block lacks an inline source annotation (the source comment appears only in the outer metadata block); cross-references lack version anchors |
-| Actionability | 0.15 | 0.94 | 0.141 | Every field has a Field Descriptions row with population guidance; placeholder convention `[value]` is unambiguous; specific paths given in acceptance criteria ("skills/ux-heuristic-eval/, skills/ux-jtbd/"); validation rules are precise pass/fail criteria |
-| Traceability | 0.10 | 0.97 | 0.097 | VERSION header present; footer with sibling refs and consumed-by list present; three source annotations covering all sections; one gap: mcp-coordination.md absent from footer "Consumed by" list despite MCP ownership table being validated by that rule file |
-| **TOTAL** | **1.00** | | **0.936** | |
+| Completeness | 0.20 | 0.93 | 0.186 | All 10 artifacts with correct scores; nav table added; 8 acceptance criteria addressed; MCP table complete; gap: template Validation Rule requires "non-empty target date" for Planned MCPs but signoff states "no specific date" with deferral rationale |
+| Internal Consistency | 0.20 | 0.97 | 0.194 | All 3 score discrepancies from iter1 corrected and verified against source reports; summary stats (min 0.950, max 0.957, mean 0.9534) arithmetically correct; no contradictions found |
+| Methodological Rigor | 0.20 | 0.95 | 0.190 | Template structure followed precisely; source annotations present in all sections; PROVISIONAL caveat on ADR-PROJ022-002 applied consistently; file now at correct path per template spec; MCP deferral documented with external-dependency rationale |
+| Evidence Quality | 0.15 | 0.95 | 0.1425 | All 10 artifact scores verified against source report files; iteration counts accurate; CI gate references specific; acceptance criteria cite exact CLAUDE.md text and keyword count; MCP deferral explains why date unavailable |
+| Actionability | 0.15 | 0.95 | 0.1425 | Wave 1 authorization "YES" unambiguous; zero-dependency Wave 1 sub-skills clearly identified; fallback paths referenced to mcp-coordination.md [Degraded Mode Behavior]; rules/ scope note clarifies Wave 1 deliverable boundary |
+| Traceability | 0.10 | 0.94 | 0.094 | quality-enforcement.md, mcp-coordination.md, ci-checks.md, skill-standards.md, mandatory-skill-usage.md, SKILL.md all cited; all 3 iter1 score traceability breaks fixed; minor: wave-progression.md [Signoff File Locations] not cited as source for output path |
+| **TOTAL** | **1.00** | | **0.949** | |
+
+---
+
+## Composite Score Verification
+
+```
+Completeness:           0.93 × 0.20 = 0.186
+Internal Consistency:   0.97 × 0.20 = 0.194
+Methodological Rigor:   0.95 × 0.20 = 0.190
+Evidence Quality:       0.95 × 0.15 = 0.1425
+Actionability:          0.95 × 0.15 = 0.1425
+Traceability:           0.94 × 0.10 = 0.094
+
+Weighted composite = 0.186 + 0.194 + 0.190 + 0.1425 + 0.1425 + 0.094 = 0.949
+```
 
 ---
 
 ## Detailed Dimension Analysis
 
-### Completeness (0.96/1.00)
+### Completeness (0.93/1.00)
 
 **Evidence:**
 
-All 10 Foundation artifacts are listed in the template table (lines 33-42): SKILL.md, orchestrator agent, orchestrator governance YAML, routing rules, synthesis validation, wave progression, MCP coordination, CI checks, kickoff signoff template, and wave signoff template. This matches the "10 Foundation artifacts" stated in the Field Descriptions at line 83 ("All 10 Foundation artifacts with C4 quality scores").
+The deliverable addresses all template sections in the correct order: header block (Date, Signed off by, Engagement ID, Foundation phase status), Foundation Artifacts Verified table (10 rows), MCP Ownership Assignments table (4 rows), Acceptance Criteria (8 checkboxes, all checked), Authorization. All 10 Foundation artifact paths, scores, and statuses are present.
 
-All 4 MCP tools are present in the MCP Ownership Assignments table (lines 48-51): Context7, Figma MCP, Miro MCP, Storybook. This matches mcp-coordination.md [MCP Availability Detection] which identifies exactly these four tools as the ones requiring ownership documentation in the kickoff signoff.
+Navigation table is now present (H-23/NAV-001 compliance, lines 3-11), with H-24 anchor links to all 4 sections. Document is 63 lines, exceeding the 30-line H-23 threshold.
 
-All 9 required signoff fields are present: Date, Signed off by, Engagement ID, Foundation phase status, Foundation Artifacts Verified, MCP Ownership Assignments, Acceptance Criteria Met, Authorization, Notes. The Field Descriptions table at lines 79-87 marks 8 as Required and 1 (Notes) as Optional.
+All 8 acceptance criteria have substantive inline justification, not just a check mark. Each criterion cites its governing rule source.
 
-The 10-row Validation Rules table at lines 97-106 covers all checks listed in ci-checks.md [Wave Gate Compliance] for KICKOFF-SIGNOFF.md. The Validation Rules add three checks not explicitly itemized in ci-checks.md (Engagement ID format, All quality scores present, All quality scores >= 0.95) but these are consistent with the "all required fields non-empty" ci-checks.md criterion — they are refinements, not contradictions.
+**Gap:**
 
-**Gaps:**
+The template Validation Rules table (Manual check #8) states: "For REQ MCPs: 'Available' or 'Planned' with **non-empty target date** are acceptable at kickoff; 'Unavailable' without a documented fallback plan is not acceptable."
 
-The acceptance criteria do not include a checkbox for "bypass resolution" (no active wave bypasses) even though wave-progression.md [Signoff Requirements] item 4 says "No unresolved bypasses for the completing wave." However, this requirement applies specifically to wave signoffs (WAVE-N-SIGNOFF.md), not to the Foundation kickoff. The kickoff signoff occurs before any wave is completed, so bypass resolution is not applicable here. This is not a gap.
+Both Figma MCP and Miro MCP have Status="Planned" but the Notes column reads: "deferred (post-PROJ-022; no specific date -- dependency on external MCP adapter availability)." This is an explicit acknowledgment that no target date can be specified, with documented rationale. However, the template validation rule requires a non-empty target date for Planned status MCPs. The deferral is substantively more informative than a placeholder date, but technically does not satisfy the "non-empty target date" requirement from the template's own Validation Rules.
 
-Minor: The Quality Score column in the Foundation Artifacts table has no documented minimum (the threshold appears only in the Validation Rules section). A reader completing the template could miss this without reading the Validation Rules section. This is a minor completeness gap — the template itself contains `[score]` as a placeholder without inline guidance toward the 0.95 threshold.
+This is the only remaining completeness gap. The rest of the document is complete.
 
 **Improvement Path:**
 
-Add a column header annotation or footnote in the Foundation Artifacts table noting "(C4 >= 0.95 required — see Validation Rules)" to reduce the risk of a scorer missing the threshold requirement.
+Replace "no specific date" with a specific date estimate or a work item reference that constitutes a traceable target. If a date cannot be committed, one option is to document a target as a conditional: "post-PROJ-022 (tracked in PROJ-022 worktracker as [Enabler ID] -- planned for post-completion sprint)." A reference to a worktracker Enabler or follow-on project would satisfy the "non-empty target date" requirement with a traceable deferral mechanism.
 
 ---
 
-### Internal Consistency (0.93/1.00)
+### Internal Consistency (0.97/1.00)
 
 **Evidence:**
 
-The Field Descriptions table (lines 79-87) is fully consistent with the template fields. Every field in the template has a matching row in Field Descriptions; every Field Descriptions row has a corresponding template field. No orphaned descriptions were found.
+All 3 score discrepancies identified in iter1 are corrected and verified against source reports:
 
-The quality score threshold is stated consistently: "C4 >= 0.95" in the Acceptance Criteria (line 55), "All quality scores >= 0.95" in the Validation Rules (line 103), and "C4 >= 0.95 quality gate" in Field Descriptions at line 83. The source comment at line 75 explicitly notes this is a PROJ-022 override of the H-13 default 0.92.
+| Artifact | Iter1 claimed | Iter2 claims | Source report | Match? |
+|----------|--------------|--------------|---------------|--------|
+| Parent SKILL.md | 0.952 (iter7) | **0.957 (iter7)** | `adv-scorer-skill-md-007.md` L0: "Score: 0.957/1.00" | ✓ |
+| MCP coordination | 0.957 (iter3) | **0.956 (iter3)** | `mcp-coordination-iter3-score.md` L0: "Score: 0.956/1.00" | ✓ |
+| Kickoff signoff template | 0.957 (iter3) | **0.953 (iter3)** | `kickoff-signoff-iter3-score.md` L0: "Score: 0.953/1.00" | ✓ |
 
-The Authorization field uses "YES / NO" in the template (line 66) and "Authorization is YES | Field contains 'YES'" in Validation Rules (line 106). The validation rule unambiguously resolves the YES/NO ambiguity.
+All remaining 7 artifact scores verified consistent with prior assessment from iter1 (orchestrator agent 0.953, orchestrator governance 0.953, routing rules 0.955, synthesis validation 0.951, wave progression 0.950, CI checks 0.953, wave signoff template 0.953).
 
-**Inconsistency found:**
+Summary statistics verified by calculation:
+- Scores: 0.957, 0.953, 0.953, 0.955, 0.951, 0.950, 0.956, 0.953, 0.953, 0.953
+- Sum: 9.534
+- Mean: 9.534 / 10 = **0.9534** ✓
+- Minimum: **0.950** (wave-progression.md) ✓
+- Maximum: **0.957** (SKILL.md) ✓
 
-The template (line 26) uses `UX-[NNNN]` as the Engagement ID placeholder (square brackets as placeholder notation). The Validation Rules check (line 99) states the pass criterion as `Matches UX-{NNNN} pattern`. While square brackets are used consistently for placeholders throughout the template and curly braces in the validation rules appear to describe the regex pattern, a reader may be momentarily confused about whether the format is `UX-[NNNN]` or `UX-{NNNN}`. The Field Descriptions row for Engagement ID (line 81) uses the pattern `UX-{NNNN}` which is consistent with the Validation Rules. The template body, however, shows `UX-[NNNN]`. An orchestrator agent populating the template would see `UX-[NNNN]` as the example and might produce output in that format, which the Validation Rule says should match `UX-{NNNN}`. This is a low-severity but genuine inconsistency.
+No contradictions found between the MCP table, acceptance criteria, and authorization notes.
 
-The ci-checks.md [Wave Gate Compliance] for KICKOFF-SIGNOFF.md required fields does not list Engagement ID as a required field, but the template's Validation Rules table includes it as a required CI check. This creates a slight discrepancy between the template's Validation Rules and the source CI rule file. Not a major contradiction, but a traceability gap.
+**Residual gap (very minor):**
+
+The acceptance criteria implicitly claim all CI checks pass. The template Validation Rule for MCP target dates is a Manual check (not CI-automated), so the CI check claim is technically accurate. The manual validation rule gap noted under Completeness does not create an internal contradiction.
 
 **Improvement Path:**
 
-Standardize the Engagement ID placeholder notation: either use `UX-{NNNN}` in the template body (matching the validation rule pattern) or add a note in Field Descriptions clarifying that `[NNNN]` is the template placeholder convention and `{NNNN}` is the regex pattern.
+No targeted action required for this dimension. The main fix (3 score corrections) is complete and verified.
 
 ---
 
@@ -96,112 +127,115 @@ Standardize the Engagement ID placeholder notation: either use `UX-{NNNN}` in th
 
 **Evidence:**
 
-The three-section structure (Template / Field Descriptions / Validation Rules) is identical to the sibling wave-signoff-template.md, establishing a coherent methodological pattern across all signoff templates. This consistency is deliberate and appropriate.
+The template structure is followed precisely in the correct order. Source annotations using HTML comments appear at the top of each major section, citing specific rules and section names:
+- Artifacts table: `quality-enforcement.md [H-13, H-17]`
+- MCP table: `mcp-coordination.md [MCP Availability Detection]`, `projects/PROJ-022-user-experience-skill/PLAN.md`
+- Acceptance criteria: cite governing rule with section references per criterion
+- Authorization: contains operational rationale for the YES decision
 
-The quality gate threshold (0.95) is documented with an explicit source justification in Field Descriptions (line 75): "C4 >= 0.95 per user-specified threshold (quality-enforcement.md H-13 default is 0.92; PROJ-022 overrides to 0.95)." This is methodologically sound — the threshold is documented, sourced, and distinguished from the framework default.
+PROVISIONAL caveats are applied consistently: "ADR-PROJ022-002 pending baselined" appears in the artifact table comment, the first acceptance criterion, and the authorization notes — all three locations.
 
-The Validation Rules section maps directly to ci-checks.md [UX-CI-007], providing a clear human-readable representation of the machine-executed CI gate. This ensures the template author and the CI system use the same acceptance criteria.
+File is now at `skills/user-experience/output/KICKOFF-SIGNOFF.md`, matching the template's specified output location (line 5 of the template), wave-progression.md [Signoff File Locations] (which specifies `skills/user-experience/output/KICKOFF-SIGNOFF.md`), and ux-routing-rules.md [Signoff Status Routing].
 
-The MCP Ownership Assignments table structure (Owner, Status, Notes) aligns with mcp-coordination.md [MCP Availability Detection] which defines the 4 MCPs requiring ownership documentation.
-
-The template correctly models the Wave 0 → 1 transition checkpoint: completeness-based validation (all fields populated) plus MCP ownership assignment, consistent with wave-progression.md [Wave Transition Gates] row "Wave 0 → 1."
+The MCP deferral is documented with specific rationale in the comment: "Actual adapter implementation is out of scope for PROJ-022 per projects/PROJ-022-user-experience-skill/PLAN.md."
 
 **Minor gap:**
 
-The template does not include guidance for what constitutes a "valid" quality score format (e.g., "0.95" vs "PASS/FAIL" vs "95%"). The Validation Rules say "All quality scores >= 0.95" but do not specify the expected format. This creates a minor ambiguity in methodological execution.
+The deferral from the template's "[target date if planned]" placeholder to "no specific date -- dependency on external MCP adapter availability" is a documented, methodologically sound departure. However, the template's Validation Rules constitute the authoritative completion criteria, and this departure is from the validation rule rather than a neutral deviation.
 
 **Improvement Path:**
 
-Add a Field Descriptions row note or a Validation Rules footnote specifying the quality score format: "Express as decimal between 0.00 and 1.00 (e.g., 0.97, not 97% or PASS)."
+None required beyond the Completeness fix. The methodological documentation is complete.
 
 ---
 
-### Evidence Quality (0.86/1.00)
+### Evidence Quality (0.95/1.00)
 
 **Evidence:**
 
-Three source annotations are present:
+All 10 artifact scores are verified against their source score report files (as documented in the Internal Consistency section above). The iteration counts in parenthetical format (iter3, iter4, iter7) provide a direct lookup key for the source reports.
 
-1. Line 19: The template block has a full source annotation citing SKILL.md "Wave Signoff Enforcement," wave-progression.md [Signoff Requirements], mcp-coordination.md [MCP Availability Detection], and ci-checks.md [UX-CI-001 through UX-CI-007] with quality-enforcement.md [H-34, H-35].
+CI gate references are granular and specific: UX-CI-001, UX-CI-002 (P-003), UX-CI-004, UX-CI-005 (schema validation), UX-CI-007 (referenced implicitly through acceptance criteria pattern).
 
-2. Line 75: The Field Descriptions section comment cites SKILL.md and quality-enforcement.md H-13 with explicit PROJ-022 override documentation.
+Acceptance criteria cite verifiable specific evidence:
+- CLAUDE.md criterion quotes the exact entry text
+- mandatory-skill-usage.md criterion cites "21 positive keywords," "9 negative keywords," and "4 compound triggers" — all verifiable against the actual trigger map row
+- Wave 1 directory criterion names the exact paths
 
-3. Line 93: The Validation Rules section cites ci-checks.md [UX-CI-007].
+MCP deferral in the Notes column explains the reason ("dependency on external MCP adapter availability") and references the authoritative scope document (PLAN.md). This is higher-quality than a placeholder date.
 
-**Gaps:**
+**Minor gap:**
 
-The source annotation at line 19 appears in a comment OUTSIDE the template code block. Agents reading the rendered template (not the source markdown) would not see this annotation when populating the file. The MCP table at lines 48-51 inside the template block has no inline source annotation within the code fence. This is a documentation gap — the provenance of the MCP table structure is not visible in the produced artifact.
-
-Cross-references throughout the document do not include version anchors. The source annotations say "SKILL.md Section 'Wave Signoff Enforcement'" but do not anchor to version 1.0.0. Since these are all 1.0.0 artifacts created simultaneously, this is low-risk, but it is a gap against the 0.9+ Evidence Quality rubric criterion ("All claims with credible citations").
-
-The annotation at line 103 notes "PROJ-022 override" but does not reference a specific decision artifact (ADR or worktracker entity) beyond "PROJ-022." An ADR reference would strengthen evidence quality.
+The "no specific date" entry for Figma and Miro cannot be independently verified by a reader without access to the external adapter availability timeline. A reference to a worktracker entity or follow-on project would anchor this deferral to a traceable decision artifact, improving evidence quality.
 
 **Improvement Path:**
 
-1. Add an inline comment inside the template code block adjacent to the MCP table: `<!-- Source: mcp-coordination.md [MCP Availability Detection] — 4 MCPs requiring ownership documentation. -->` to make the provenance visible in the produced artifact.
-2. Reference the specific ADR (e.g., ADR-PROJ022-NNN) for the 0.95 threshold override in Field Descriptions line 75.
-3. Add version anchors to source cross-references: "SKILL.md v1.0.0 Section..."
+Add a traceable reference for the MCP deferral: e.g., reference a PROJ-022 worktracker Enabler for post-completion MCP adapter work, or note the planned follow-on project scope.
 
 ---
 
-### Actionability (0.94/1.00)
+### Actionability (0.95/1.00)
 
 **Evidence:**
 
-Every template field has a corresponding Field Descriptions row explaining what to enter, whether it is required, and the expected format. The orchestrator agent populating this template can work through the Field Descriptions row by row without ambiguity.
+The authorization decision is explicit and unambiguous: "Wave 1 deployment is authorized: YES."
 
-The acceptance criteria checkboxes (lines 55-62) are specific and verifiable:
-- "All Foundation artifacts pass C4 >= 0.95 quality gate" — unambiguous threshold
-- "P-003 enforcement verified (no sub-skill has Task tool)" — specific technical check
-- "Schema validation passes for all governance YAML files" — tool-executable check
-- "CLAUDE.md updated with /user-experience skill entry" — file-specific check
-- "AGENTS.md updated with all deployed agent entries" — file-specific check
-- "mandatory-skill-usage.md updated with /user-experience trigger keywords" — file-specific check
-- "MCP ownership assignments documented (all REQ MCPs have owner or fallback plan)" — specific criterion
-- "Wave 1 sub-skill directories created (skills/ux-heuristic-eval/, skills/ux-jtbd/)" — path-specific check
+The authorization Notes section provides operational guidance sufficient for a Wave 1 executor:
+- Which sub-skills are zero-dependency (no Figma/Miro required for Wave 1 core functionality)
+- Specific fallback mode for `/ux-heuristic-eval` (screenshot-input mode)
+- No Figma or Miro dependency for `/ux-jtbd`
+- `rules/` subdirectories are Wave 1 deliverables, not Foundation prerequisites
+- Quality score range (3-7 iterations) confirms convergence
 
-The Validation Rules table provides unambiguous pass/fail criteria that map directly to what CI will check, enabling the orchestrator to pre-validate before committing.
+Fallback paths reference `mcp-coordination.md [Degraded Mode Behavior]` — a reader can follow that reference to the specific degraded mode behavior per MCP tool.
 
-**Minor gaps:**
+**Minor gap:**
 
-The MCP Ownership Assignments table includes a "Status" column with values "Available / Unavailable / Planned" but the Validation Rules only check "MCP table populated | All 4 MCP rows have owner and status." There is no guidance on what Status value is acceptable for CI passage — specifically, whether "Planned" passes the CI check for required MCPs or only "Available." The mcp-coordination.md REQ dependencies (Figma for Wave 1's ux-heuristic-eval) suggest "Planned" with a target date might be acceptable for the kickoff signoff, but this is not documented in the template.
-
-The "Notes" column in the MCP table (lines 48-51) shows examples like "[configuration notes]" and "[target date if planned]" but does not specify what constitutes a valid vs. empty Notes field for CI purposes.
+The absence of a specific target date for Figma/Miro MCP means a Wave 1 executor cannot plan for when full Figma capability becomes available. This does not block Wave 1 execution (Wave 1 sub-skills are operable without Figma/Miro) but reduces long-range planning capability.
 
 **Improvement Path:**
 
-Add a Validation Rules note clarifying acceptable Status values for required MCPs at kickoff: "For REQ MCPs: 'Available' or 'Planned' with non-empty target date are acceptable; 'Unavailable' without fallback plan is not acceptable."
+None critical for Wave 1 execution. The MCP target date gap (same as Completeness) would improve planning but does not affect Wave 1 actionability.
 
 ---
 
-### Traceability (0.97/1.00)
+### Traceability (0.94/1.00)
 
 **Evidence:**
 
-VERSION header present at line 1: `<!-- VERSION: 1.0.0 | DATE: 2026-03-04 | SOURCE: SKILL.md ... | PARENT: /user-experience skill -->`. This is the authoritative version marker.
+The following governance sources are cited with specific section references:
+- `quality-enforcement.md [H-13, H-17]` — artifact table comment
+- `mcp-coordination.md [MCP Availability Detection]` — MCP table comment
+- `ci-checks.md [UX-CI-001, UX-CI-002]` — P-003 acceptance criterion
+- `ci-checks.md [UX-CI-004, UX-CI-005]` — schema validation criterion
+- `skill-standards.md [H-26]` — CLAUDE.md and AGENTS.md criteria
+- `mandatory-skill-usage.md [H-22]` — trigger map criterion
+- `SKILL.md [Wave Architecture]` — sub-skill directory criterion
 
-Footer is comprehensive (lines 110-117):
-- Template file name
-- Parent skill
-- Parent SKILL.md path
-- Sibling templates
-- Consumed by (ci-checks.md [UX-CI-007], wave-progression.md [Signoff Requirements])
-- Created/Updated dates
-- Status
+The PROVISIONAL caveat with "ADR-PROJ022-002" appears in 3 consistent locations (artifact table comment, first acceptance criterion, authorization notes).
 
-Document Sections navigation table (lines 9-13) provides anchor links to all three sections per H-23/H-24.
+All 3 iter1 traceability breaks (where score values did not match source reports) are fixed. The signoff's claim "Scores cited are actual S-014 composite scores from adversarial review iterations" is now accurate — verified against `adv-scorer-skill-md-007.md`, `mcp-coordination-iter3-score.md`, and `kickoff-signoff-iter3-score.md`.
 
-Every section contains a source annotation traceable to the authoritative sources.
+**Residual gap:**
 
-**Gap:**
-
-The footer "Consumed by" list (line 114) includes `ci-checks.md [UX-CI-007]` and `wave-progression.md [Signoff Requirements]` but omits `mcp-coordination.md [MCP Availability Detection]`. The MCP Ownership Assignments section of this template is the persistence mechanism for the detection protocol defined in mcp-coordination.md. That rule file explicitly cross-references the kickoff signoff as the recording location for MCP ownership. The traceability chain from template to mcp-coordination.md is missing from the footer.
-
-This is a small but genuine gap — the footer "Consumed by" list is incomplete.
+`wave-progression.md [Signoff File Locations]` is not cited as the source for the output path of this signoff file. That document is the authoritative source for the `skills/user-experience/output/KICKOFF-SIGNOFF.md` location requirement. The template itself cites this source in its preamble, but the signoff document does not carry a traceability reference back to the authoritative location specification. This is a minor omission.
 
 **Improvement Path:**
 
-Add `skills/user-experience/rules/mcp-coordination.md [MCP Availability Detection]` to the "Consumed by" footer line.
+Add `wave-progression.md [Signoff File Locations]` as a source reference in the header block comment, noting that the file path `skills/user-experience/output/KICKOFF-SIGNOFF.md` is specified there.
+
+---
+
+## Iter1 Fix Verification
+
+| Issue (from iter1) | Fix Required | Status in Iter2 | Verified? |
+|-------------------|-------------|-----------------|-----------|
+| SKILL.md score 0.952 → should be 0.957 | Correct to 0.957 (iter7) | **0.957 (iter7)** | ✓ Source: `adv-scorer-skill-md-007.md` L0 = 0.957 |
+| mcp-coordination score 0.957 → should be 0.956 | Correct to 0.956 | **0.956 (iter3)** | ✓ Source: `mcp-coordination-iter3-score.md` L0 = 0.956 |
+| kickoff-signoff-template score 0.957 → should be 0.953 | Correct to 0.953 | **0.953 (iter3)** | ✓ Source: `kickoff-signoff-iter3-score.md` L0 = 0.953 |
+| File at wrong path (work/) | Move to output/ | File at `skills/user-experience/output/KICKOFF-SIGNOFF.md` | ✓ Confirmed by filesystem |
+| Navigation table absent (H-23) | Add nav table | Navigation table present lines 3-11 with anchor links | ✓ H-23, H-24 satisfied |
+| MCP target dates absent | Explicit dates or documented deferral | Deferral documented with rationale; "no specific date" | Partial — rationale present, no date |
 
 ---
 
@@ -209,78 +243,48 @@ Add `skills/user-experience/rules/mcp-coordination.md [MCP Availability Detectio
 
 | Priority | Dimension | Current | Target | Recommendation |
 |----------|-----------|---------|--------|----------------|
-| 1 | Evidence Quality | 0.86 | 0.93 | Add inline source annotation inside the template code block adjacent to the MCP Ownership Assignments table: `<!-- Source: mcp-coordination.md [MCP Availability Detection] -->`. This makes MCP table provenance visible in the produced artifact, not just in the outer source comment. |
-| 2 | Internal Consistency | 0.93 | 0.97 | Standardize Engagement ID notation: change template body line 26 from `UX-[NNNN]` to `UX-{NNNN}` (matching the validation rule pattern and Field Descriptions), OR add a note in Field Descriptions clarifying the distinction between template placeholder brackets `[...]` and the regex pattern `{NNNN}`. |
-| 3 | Traceability | 0.97 | 0.99 | Add `mcp-coordination.md [MCP Availability Detection]` to the footer "Consumed by" list at line 114. The MCP ownership table in the template is explicitly consumed/validated by that rule file. |
-| 4 | Methodological Rigor | 0.95 | 0.97 | Add a quality score format specification note in Field Descriptions: "Express quality scores as decimal 0.00–1.00 (e.g., 0.97, not 97% or PASS)." Eliminates format ambiguity in orchestrator execution. |
-| 5 | Actionability | 0.94 | 0.97 | Add a Validation Rules note clarifying acceptable MCP Status values for required dependencies at kickoff: "For REQ MCPs: 'Available' or 'Planned' with non-empty target date acceptable; 'Unavailable' without fallback plan is not acceptable." |
-| 6 | Completeness | 0.96 | 0.99 | Add an inline threshold reminder in the Foundation Artifacts table header: "(Quality Score: C4 >= 0.95 required — see Validation Rules)". Reduces the risk of an orchestrator populating scores without seeing the threshold requirement. |
-| 7 | Evidence Quality | 0.86 | 0.93 | Reference the specific ADR (or note "ADR pending") for the 0.95 threshold override in Field Descriptions line 75, replacing the bare "PROJ-022" reference with a traceable decision artifact. |
-
----
-
-## Composite Score Verification
-
-```
-Completeness:           0.96 × 0.20 = 0.192
-Internal Consistency:   0.93 × 0.20 = 0.186
-Methodological Rigor:   0.95 × 0.20 = 0.190
-Evidence Quality:       0.86 × 0.15 = 0.129
-Actionability:          0.94 × 0.15 = 0.141
-Traceability:           0.97 × 0.10 = 0.097
-
-Weighted composite:     0.192 + 0.186 + 0.190 + 0.129 + 0.141 + 0.097 = 0.935
-```
-
-Reported as 0.936 (rounding from the sum 0.935 — this falls in the 0.935-0.936 range given decimal representation; conservative rounding applied downward → **0.935**).
-
-**Corrected composite: 0.935**
-
----
-
-## Verdict: REVISE
-
-Score 0.935 is below the C4 threshold of 0.95. The deliverable is close to the REVISE/PASS boundary but does not meet the required threshold.
-
-**Root cause of gap:** Evidence Quality (0.86) is the primary score suppressor. The missing inline source annotation inside the template code block and the absence of a decision artifact reference for the threshold override are the two highest-impact gaps. Resolving Priority 1 and Priority 7 recommendations would raise Evidence Quality to approximately 0.92-0.93, which would push the composite to approximately 0.942-0.944. Further improvements to Internal Consistency (Priority 2), Actionability (Priority 5), and Traceability (Priority 3) would be needed to reach 0.95.
+| 1 | Completeness | 0.93 | >= 0.95 | Add a traceable deferral reference for Figma and Miro MCP target dates. Replace "no specific date" with a worktracker entity reference or follow-on project scope identifier. This satisfies the template Validation Rule requiring a non-empty target date for Planned MCPs. Example: "deferred (post-PROJ-022; tracked as [ENABLER-ID] in PROJ-022 worktracker; estimated post-completion sprint 1)" |
+| 2 | Traceability | 0.94 | >= 0.96 | Add `wave-progression.md [Signoff File Locations]` as a source annotation in the header block, noting it as the authoritative source for the `skills/user-experience/output/KICKOFF-SIGNOFF.md` location requirement. |
+| 3 | Evidence Quality | 0.95 | >= 0.97 | Anchor the MCP deferral to a traceable artifact: reference a worktracker Enabler, planned follow-on project, or a specific decision record. This converts the unsupported "no specific date" into a traceable deferral with a reference chain. |
 
 ---
 
 ## Leniency Bias Check
 
 - [x] Each dimension scored independently before computing composite
-- [x] Evidence documented for each score (specific line references provided)
-- [x] Uncertain scores resolved downward (Evidence Quality scored 0.86 not 0.89; borderline Internal Consistency scored 0.93 not 0.95)
-- [x] C4 first-draft calibration applied (0.86-0.97 range is consistent with a well-executed first draft with minor gaps)
-- [x] No dimension scored above 0.95 without strong evidence (only Methodological Rigor and Traceability reached 0.95/0.97, both with documented justification)
-- [x] Weighted composite independently verified by hand calculation
+- [x] Evidence documented for each dimension with specific file references and verified score values
+- [x] Uncertain scores resolved downward: Completeness scored 0.93 (not 0.95) because the template Validation Rule on MCP target dates is not fully satisfied; Traceability scored 0.94 (not 0.96) because wave-progression.md source citation is absent
+- [x] Anti-leniency applied to overall verdict: 0.949 is below 0.950; REVISE verdict issued despite being only 0.001 from threshold — the strict >= 0.950 rule is applied literally
+- [x] No dimension scored above 0.97 without strong evidence (Internal Consistency 0.97 is justified by the complete resolution of all 3 factual discrepancies and verified arithmetic)
+- [x] Weighted composite independently verified by hand calculation: 0.186 + 0.194 + 0.190 + 0.1425 + 0.1425 + 0.094 = 0.949
+- [x] Score history shows genuine improvement: 0.913 → 0.949 (+0.036), consistent with fixing the 4 stated issues
 
 ---
 
-## Session Context Protocol
+## Session Context Handoff
 
 ```yaml
 verdict: REVISE
-composite_score: 0.935
-threshold: 0.95
-weakest_dimension: Evidence Quality
-weakest_score: 0.86
+composite_score: 0.949
+threshold: 0.950
+weakest_dimension: Completeness
+weakest_score: 0.93
 critical_findings_count: 0
 iteration: 2
+delta_from_prior: +0.036
+gap_to_threshold: -0.001
 improvement_recommendations:
-  - "Add inline source annotation inside template code block adjacent to MCP table"
-  - "Standardize Engagement ID notation: UX-[NNNN] vs UX-{NNNN} inconsistency"
-  - "Add mcp-coordination.md [MCP Availability Detection] to footer Consumed by list"
-  - "Add quality score format specification in Field Descriptions"
-  - "Clarify acceptable MCP Status values for REQ dependencies in Validation Rules"
-  - "Add threshold reminder inline in Foundation Artifacts table header"
-  - "Reference specific ADR (or note pending) for 0.95 threshold override"
+  - "Add traceable deferral reference for Figma and Miro MCP target dates — replace 'no specific date' with a worktracker Enabler ID or follow-on project reference to satisfy template Validation Rule (Manual check #8: non-empty target date required for Planned MCPs)"
+  - "Add wave-progression.md [Signoff File Locations] as source annotation for the output path requirement"
+  - "Optionally anchor MCP deferral to a traceable artifact (Enabler ID, planned sprint reference)"
 ```
 
 ---
 
-*Score report: kickoff-signoff-iter2-score.md*
+*Score report: kickoff-signoff-iter2-score.md (KICKOFF-SIGNOFF.md iteration 2)*
 *Scored by: adv-scorer*
 *SSOT: `.context/rules/quality-enforcement.md`*
-*Deliverable: `skills/user-experience/templates/kickoff-signoff-template.md`*
+*Deliverable: `skills/user-experience/output/KICKOFF-SIGNOFF.md`*
+*Prior score report: `skills/user-experience/output/quality-scores/kickoff-signoff-iter1-score.md`*
 *Created: 2026-03-04*
+*Note: This file path was previously used for a score of skills/user-experience/templates/kickoff-signoff-template.md (iter2). That score is superseded by this iter2 score for the KICKOFF-SIGNOFF.md document, which is the subject of the Foundation pipeline scoring sequence.*
