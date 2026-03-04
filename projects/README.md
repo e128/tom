@@ -20,6 +20,7 @@
 | PROJ-014 | negative-prompting-research | COMPLETE | Deep research on negative prompting techniques — hypothesis: telling LLMs what NOT to do reduces hallucination by 60% and outperforms positive prompting. Application to Jerry framework. |
 | PROJ-015 | documentation-audit | COMPLETE | User-facing documentation audit & gap analysis using /diataxis |
 | PROJ-016 | documentation-writing | ACTIVE | Write user-facing Jerry documentation based on PROJ-015 audit findings |
+| PROJ-020 | feature-enhancements | ACTIVE | Feature enhancement filing and tracking for the Jerry Framework |
 | PROJ-030 | bugs | ACTIVE | Bug fixes and defect resolution for the Jerry Framework |
 
 ## Project Lookup
@@ -38,4 +39,5 @@
 - **PROJ-014**: `projects/PROJ-014-negative-prompting-research/`
 - **PROJ-015**: `projects/PROJ-015-documentation-audit/`
 - **PROJ-016**: `projects/PROJ-016-documentation-writing/`
+- **PROJ-020**: `projects/PROJ-020-feature-enhancements/`
 - **PROJ-030**: `projects/PROJ-030-bugs/`
