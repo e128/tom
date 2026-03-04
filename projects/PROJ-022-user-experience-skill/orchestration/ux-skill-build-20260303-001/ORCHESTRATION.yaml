@@ -306,8 +306,8 @@ pipelines:
     current_phase: 1
     total_phases: 4
     total_artifacts: 12
-    artifacts_complete: 2
-    progress_percent: 17
+    artifacts_complete: 4
+    progress_percent: 33
     entry_condition: "gate-wave0-to-wave1 PASSED (KICKOFF-SIGNOFF.md quality_verdict=PASS)"
     exit_condition: "WAVE-1-SIGNOFF.md quality_verdict=PASS"
 
@@ -333,12 +333,12 @@ pipelines:
               - "skills/user-experience/rules/ux-routing-rules.md"
           - id: "creator-heuristic-agent-md"
             role: "creator"
-            status: "NOT_STARTED"
-            completed_at: null
+            status: "COMPLETE"
+            completed_at: "2026-03-04T00:00:00Z"
             artifact: "skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md"
-            quality_score: null
-            quality_iteration: null
-            quality_verdict: null
+            quality_score: 0.951
+            quality_iteration: 5
+            quality_verdict: "PASS"
             inputs: ["skills/ux-heuristic-eval/SKILL.md"]
             blocked_by: "creator-heuristic-skill-md"
           - id: "creator-heuristic-governance"
@@ -404,12 +404,12 @@ pipelines:
               - "skills/user-experience/rules/ux-routing-rules.md"
           - id: "creator-jtbd-agent-md"
             role: "creator"
-            status: "NOT_STARTED"
-            completed_at: null
+            status: "COMPLETE"
+            completed_at: "2026-03-04T00:00:00Z"
             artifact: "skills/ux-jtbd/agents/ux-jtbd-analyst.md"
-            quality_score: null
-            quality_iteration: null
-            quality_verdict: null
+            quality_score: 0.951
+            quality_iteration: 3
+            quality_verdict: "PASS"
             inputs: ["skills/ux-jtbd/SKILL.md"]
             blocked_by: "creator-jtbd-skill-md"
           - id: "creator-jtbd-governance"
