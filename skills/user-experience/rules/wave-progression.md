@@ -1,4 +1,4 @@
-<!-- VERSION: 1.1.0 | DATE: 2026-03-04 | SOURCE: SKILL.md (skills/user-experience/SKILL.md) Sections "Wave Architecture", "Wave Transition Quality Gates", "Wave Signoff Enforcement" | PARENT: /user-experience skill | ITERATION: 3 (C4 quality revision) -->
+<!-- VERSION: 1.2.0 | DATE: 2026-03-04 | SOURCE: SKILL.md (skills/user-experience/SKILL.md) Sections "Wave Architecture", "Wave Transition Quality Gates", "Wave Signoff Enforcement" | PARENT: /user-experience skill | REVISION: Build-phase convention note for signoff file locations; build-phase evidence distinction in Per-Transition Requirements Wave 2 → 3 -->
 
 # Wave Progression Rules
 
@@ -53,7 +53,7 @@ This threshold is distinct from H-13's 0.92 for governance artifacts. Wave gates
 |-----------|---------------|-----------|-------------------|--------|
 | Wave 0 → 1 | KICKOFF-SIGNOFF.md completeness | All fields populated (pass/fail) | MCP ownership assignments present | SKILL.md "Wave Transition Quality Gates" line 277; SKILL.md "Wave Architecture" Wave 1 entry criteria |
 | Wave 1 → 2 | Wave 1 deliverables quality scoring | S-014 composite >= 0.85 on heuristic eval report | At least 1 heuristic eval completed AND 1 JTBD job statement used | SKILL.md "Wave Transition Quality Gates" line 278; ADR-PROJ022-002 (PROVISIONAL) for 0.85 threshold; Wave 2 entry criteria from SKILL.md Wave Architecture table |
-| Wave 2 → 3 | Wave 2 deliverables + usage evidence | S-014 composite >= 0.85 | Documented usage artifact (product launch OR hypothesis cycle) | SKILL.md "Wave Transition Quality Gates" line 279; Wave 3 entry criteria from SKILL.md Wave Architecture table |
+| Wave 2 → 3 | Wave 2 deliverables + usage evidence | S-014 composite >= 0.85 | Documented usage artifact (product launch OR hypothesis cycle). **Build-phase note:** During skill build orchestrations, "usage evidence" refers to deployment readiness (complete agent definitions, methodology rules, templates, governance YAML, and cross-framework synthesis tests). Operational-usage evidence (actual hypothesis cycle or product launch) is produced when sub-skills are first invoked against a real project engagement and is tracked as PENDING in the signoff until produced. | SKILL.md "Wave Transition Quality Gates" line 279; Wave 3 entry criteria from SKILL.md Wave Architecture table |
 | Wave 3 → 4 | Wave 3 deliverables + Storybook artifact | S-014 composite >= 0.85 | Storybook story count verification (5+ Atom stories) | SKILL.md "Wave Transition Quality Gates" line 280; Wave 4 entry criteria from SKILL.md Wave Architecture table |
 | Wave 4 → 5 | Wave 4 deliverables + user data evidence | S-014 composite >= 0.85 | User count (30+) or behavioral data artifact | SKILL.md "Wave Transition Quality Gates" line 281; Wave 5 entry criteria from SKILL.md Wave Architecture table |
 
@@ -86,6 +86,8 @@ Wave gate scoring uses the same S-014 6-dimension rubric as H-13, with weights:
 | Wave 3 | WAVE-3-SIGNOFF.md | `skills/user-experience/output/WAVE-3-SIGNOFF.md` |
 | Wave 4 | WAVE-4-SIGNOFF.md | `skills/user-experience/output/WAVE-4-SIGNOFF.md` |
 | Wave 5 | WAVE-5-SIGNOFF.md | `skills/user-experience/output/WAVE-5-SIGNOFF.md` |
+
+> **Build-phase convention:** During skill build orchestrations (e.g., PROJ-022), signoff files are created at `skills/user-experience/work/WAVE-{N}-SIGNOFF.md` alongside other build-phase work artifacts. The `output/` paths above are the canonical operational locations used by CI gates (UX-CI-007, UX-CI-008) and wave state detection in production. Signoff files are moved to `output/` when the skill build is finalized and the skill transitions from build phase to operational phase. Both Wave 1 and Wave 2 signoffs follow this build-phase convention.
 
 ### Signoff File Validation
 
@@ -217,7 +219,7 @@ When `WAVE-5-SIGNOFF.md` is valid (all waves complete), the orchestrator enters 
 
 ---
 
-*Version: 1.1.0*
+*Version: 1.2.0*
 *Rule file: wave-progression.md*
 *Parent skill: /user-experience*
 *Parent SKILL.md: `skills/user-experience/SKILL.md`*
