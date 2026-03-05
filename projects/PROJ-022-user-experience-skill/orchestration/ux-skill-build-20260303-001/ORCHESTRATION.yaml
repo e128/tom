@@ -977,7 +977,7 @@ pipelines:
             quality_iteration: null
             quality_verdict: null
           - id: "creator-sprint-day-templates"
-            artifact: "skills/ux-design-sprint/templates/sprint-day-templates.md"
+            artifact: "skills/ux-design-sprint/templates/design-sprint-template.md"
             status: "NOT_STARTED"
             quality_score: null
             quality_iteration: null

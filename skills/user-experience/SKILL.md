@@ -435,8 +435,8 @@ Figma is the highest-risk MCP dependency: 4 sub-skills require it, 2 are enhance
 
 | MCP Tool | Usage | Agents |
 |----------|-------|--------|
-| Context7 (resolve-library-id) | Resolve UX framework libraries and design system packages | ux-atomic-architect, ux-ai-design-guide |
-| Context7 (query-docs) | Query component library documentation, accessibility API docs | ux-atomic-architect, ux-inclusive-evaluator, ux-ai-design-guide |
+| Context7 (resolve-library-id) | Resolve UX framework libraries and design system packages | ux-atomic-architect, ux-ai-design-guide, ux-sprint-facilitator |
+| Context7 (query-docs) | Query component library documentation, accessibility API docs | ux-atomic-architect, ux-inclusive-evaluator, ux-ai-design-guide, ux-sprint-facilitator |
 
 ### Fallback: Text-Only Mode
 
