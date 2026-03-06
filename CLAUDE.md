@@ -86,6 +86,7 @@ See `docs/governance/JERRY_CONSTITUTION.md` for full governance.
 | `/red-team` | Offensive security testing methodology (11 agents: recon, exploitation, post-exploitation, reporting) |
 | `/prompt-engineering` | Structured prompt construction, NPT constraint generation, prompt quality scoring (3 agents: builder, constraint-gen, scorer) |
 | `/diataxis` | Four-quadrant documentation methodology (6 agents: 4 writers, classifier, auditor) |
+| `/user-experience` | AI-augmented UX methodology for tiny teams (11 agents: orchestrator + 10 framework specialists across 5 criteria-gated waves) |
 
 **SessionStart Hook Tags:**
 

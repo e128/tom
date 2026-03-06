@@ -21,6 +21,7 @@
 | [Red-Team Skill Agents](#red-team-skill-agents) | red-* agents (11 total) |
 | [Prompt Engineering Skill Agents](#prompt-engineering-skill-agents) | pe-* agents (3 total) |
 | [Diataxis Skill Agents](#diataxis-skill-agents) | diataxis-* agents (6 total) |
+| [User-Experience Skill Agents](#user-experience-skill-agents) | ux-* agents (11 total) |
 | [MCP Tool Access](#mcp-tool-access) | Context7 and Memory-Keeper agent matrix |
 | [Agent Handoff Protocol](#agent-handoff-protocol) | Multi-agent coordination |
 | [Adding New Agents](#adding-new-agents) | Extension guide |
@@ -55,13 +56,12 @@ to specific skills. This provides:
 | Red-Team Agents | 11 | `/red-team` skill |
 | Diataxis Agents | 6 | `/diataxis` skill |
 | Prompt Engineering Agents | 3 | `/prompt-engineering` skill |
-| **Total** | **61** | |
+| User-Experience Agents | 11 | `/user-experience` skill |
+| **Total** | **78** | |
 
 > **Verification:** Agent counts verified against filesystem scan (`skills/*/agents/*.md`).
-> 68 total files found; 4 template/extension files excluded from counts:
-> `NSE_AGENT_TEMPLATE.md`, `NSE_EXTENSION.md`, `PS_AGENT_TEMPLATE.md`, `PS_EXTENSION.md`.
-> Per-skill sum: 9 + 10 + 3 + 3 + 3 + 5 + 3 + 1 + 10 + 11 + 6 + 3 = 67 invokable agents.
-> Last verified: 2026-03-01.
+> Per-skill sum: 9 + 10 + 3 + 3 + 3 + 5 + 3 + 1 + 10 + 11 + 6 + 3 + 11 = 78 invokable agents.
+> Last verified: 2026-03-03.
 
 ---
 
@@ -296,6 +296,52 @@ These agents implement Diataxis four-quadrant documentation methodology through 
 
 ---
 
+## User-Experience Skill Agents
+
+These agents implement AI-augmented UX methodology for tiny teams through the `/user-experience` skill. One parent orchestrator routes to 10 framework specialist agents deployed across 5 criteria-gated waves. Each agent encapsulates a proven UX framework with synthesis hypothesis confidence gates.
+
+| Agent | File | Role | Cognitive Mode |
+|-------|------|------|----------------|
+| ux-orchestrator | `skills/user-experience/agents/ux-orchestrator.md` | Parent orchestrator: routing, wave gating, cross-framework synthesis | Integrative |
+| ux-heuristic-evaluator | `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` | Nielsen heuristic evaluation specialist | Systematic |
+| ux-jtbd-analyst | `skills/ux-jtbd/agents/ux-jtbd-analyst.md` | Jobs-to-Be-Done research and analysis | Divergent |
+| ux-lean-ux-facilitator | `skills/ux-lean-ux/agents/ux-lean-ux-facilitator.md` | Lean UX hypothesis and experiment facilitation | Systematic |
+| ux-heart-analyst | `skills/ux-heart-metrics/agents/ux-heart-analyst.md` | HEART metrics framework specialist | Systematic |
+| ux-atomic-architect | `skills/ux-atomic-design/agents/ux-atomic-architect.md` | Atomic design component taxonomy architect | Systematic |
+| ux-inclusive-evaluator | `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md` | Inclusive design and accessibility auditor | Systematic |
+| ux-behavior-diagnostician | `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` | Fogg B=MAP behavior bottleneck diagnosis | Convergent |
+| ux-kano-analyst | `skills/ux-kano-model/agents/ux-kano-analyst.md` | Kano model feature classification and prioritization | Convergent |
+| ux-sprint-facilitator | `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` | AJ&Smart Design Sprint 2.0 facilitation | Systematic |
+| ux-ai-design-guide | `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` | AI-first interaction design specialist (CONDITIONAL) | Divergent |
+
+**Key Capabilities:**
+
+| Agent | Primary Use Case | Output Type |
+|-------|------------------|-------------|
+| ux-orchestrator | Route UX requests by product lifecycle stage, enforce wave gates, synthesize cross-framework findings | Synthesis reports, routing decisions |
+| ux-heuristic-evaluator | Nielsen's 10 Heuristics with severity-rated findings | Heuristic evaluation reports |
+| ux-jtbd-analyst | Switch interviews, job mapping, outcome-driven innovation | JTBD analysis reports |
+| ux-lean-ux-facilitator | Hypothesis-driven build-measure-learn experiment cycles | Lean UX experiment plans |
+| ux-heart-analyst | Google Goal-Signal-Metric framework for UX measurement | HEART metrics dashboards |
+| ux-atomic-architect | Brad Frost 5-level component taxonomy and design tokens | Component inventories |
+| ux-inclusive-evaluator | WCAG 2.2 compliance and Microsoft Inclusive Design evaluation | Accessibility audit reports |
+| ux-behavior-diagnostician | Fogg B=MAP bottleneck analysis for action completion | Behavior diagnosis reports |
+| ux-kano-analyst | Must-be / Performance / Attractive feature classification | Kano classification reports |
+| ux-sprint-facilitator | AJ&Smart Design Sprint 2.0 four-day process facilitation | Sprint deliverables |
+| ux-ai-design-guide | AI interface patterns, trust calibration, conversational UX | AI interaction design guides |
+
+**Invocation**: Use `/user-experience` skill. Keywords: UX, user experience, usability, heuristic evaluation, JTBD, lean UX, HEART metrics, atomic design, inclusive design, behavior design, Kano model, design sprint.
+
+**Model Tiers:** ux-orchestrator (opus), ux-sprint-facilitator (opus), ux-ai-design-guide (opus), ux-heuristic-evaluator (haiku*); all others (sonnet). *Haiku for high-volume checklist evaluation; escalates to Sonnet per AD-M-009.
+
+**Tool Tiers:** ux-orchestrator is T5 (full, with Task for delegation); all sub-skill agents are T2 or T3 (no Task tool per P-003).
+
+**Wave Architecture:** Sub-skills deploy in 5 criteria-gated waves. Wave 0 (Foundation) deploys the orchestrator. Waves 1-5 deploy sub-skills progressively based on team maturity criteria.
+
+**Artifact Location**: `skills/{sub-skill}/output/{engagement-id}/ux-{agent}-{topic-slug}.md`
+
+---
+
 ## MCP Tool Access
 
 Agents with MCP (Model Context Protocol) tool access for external documentation lookup and cross-session memory.
@@ -332,6 +378,9 @@ Agents with MCP (Model Context Protocol) tool access for external documentation 
 | red-reporter | red-team | resolve-library-id, query-docs |
 | red-infra | red-team | resolve-library-id, query-docs |
 | red-social | red-team | resolve-library-id, query-docs |
+| ux-atomic-architect | user-experience | resolve-library-id, query-docs |
+| ux-inclusive-evaluator | user-experience | resolve-library-id, query-docs |
+| ux-ai-design-guide | user-experience | resolve-library-id, query-docs |
 
 ### Memory-Keeper (Cross-Session Persistence)
 
