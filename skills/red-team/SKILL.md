@@ -1,13 +1,6 @@
 ---
 name: red-team
-description: >
-  Offensive security team skill providing methodology guidance for penetration
-  testing and red team engagements. Invoked when users request penetration
-  testing, reconnaissance, vulnerability analysis, exploitation methodology,
-  social engineering, C2 infrastructure, or engagement reporting. Routes to
-  11 specialized agents covering the full MITRE ATT&CK kill chain.
-  All engagements require red-lead scope authorization before any other agent.
-  Follows PTES, OSSTMM, and ATT&CK methodology frameworks.
+description: "Offensive security team skill providing methodology guidance for penetration testing and red team engagements. Invoked when users request penetration testing, reconnaissance, vulnerability analysis, exploitation methodology, social engineering, C2 infrastructure, or engagement reporting. Routes to 11 specialized agents covering the full MITRE ATT&CK kill chain. All engagements require red-lead scope authorization before any other agent. Follows PTES, OSSTMM, and ATT&CK methodology frameworks."
 version: "1.0.0"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, mcp__context7__resolve-library-id, mcp__context7__query-docs
 activation-keywords:

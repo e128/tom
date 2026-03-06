@@ -66,7 +66,7 @@ See `docs/governance/JERRY_CONSTITUTION.md` for full governance.
 
 ## Quick Reference
 
-**CLI** (v0.22.1): `jerry session start|end|status|abandon` | `jerry items list|show` | `jerry projects list|context|validate`
+**CLI** (v0.24.0): `jerry session start|end|status|abandon` | `jerry items list|show` | `jerry projects list|context|validate`
 
 **Skills** (invoke proactively per H-22):
 
@@ -87,6 +87,7 @@ See `docs/governance/JERRY_CONSTITUTION.md` for full governance.
 | `/pm-pmm` | Product management and product marketing (5 agents: strategy, customer insight, market, business analysis, competitive) |
 | `/prompt-engineering` | Structured prompt construction, NPT constraint generation, prompt quality scoring (3 agents: builder, constraint-gen, scorer) |
 | `/diataxis` | Four-quadrant documentation methodology (6 agents: 4 writers, classifier, auditor) |
+| `/user-experience` | AI-augmented UX methodology for tiny teams (11 agents: orchestrator + 10 framework specialists across 5 criteria-gated waves) |
 
 **SessionStart Hook Tags:**
 

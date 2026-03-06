@@ -17,7 +17,11 @@
 | PROJ-009 | llm-deception-research | ACTIVE | Research documenting LLM deception patterns and behavioral flaws; multi-platform Saucer Boy content for Anthropic/Boris engagement |
 | PROJ-010 | cyber-ops | ACTIVE | Elite /eng-team (secure software engineering) and /red-team (offensive security) skills for authorized pentesting and system hardening |
 | PROJ-011 | saucer-boy-articles | ACTIVE | High-quality articles in the Saucer Boy (McConkey) voice covering LLM engineering topics with C4 adversarial quality gates |
-| PROJ-014 | negative-prompting-research | ACTIVE | Deep research on negative prompting techniques — hypothesis: telling LLMs what NOT to do reduces hallucination by 60% and outperforms positive prompting. Application to Jerry framework. |
+| PROJ-014 | negative-prompting-research | COMPLETE | Deep research on negative prompting techniques — hypothesis: telling LLMs what NOT to do reduces hallucination by 60% and outperforms positive prompting. Application to Jerry framework. |
+| PROJ-015 | documentation-audit | COMPLETE | User-facing documentation audit & gap analysis using /diataxis |
+| PROJ-016 | documentation-writing | ACTIVE | Write user-facing Jerry documentation based on PROJ-015 audit findings |
+| PROJ-020 | feature-enhancements | ACTIVE | Feature enhancement filing and tracking for the Jerry Framework |
+| PROJ-022 | user-experience-skill | ACTIVE | /user-experience parent orchestrator skill with 10 pluggable sub-skills across 5 criteria-gated waves |
 | PROJ-030 | bugs | ACTIVE | Bug fixes and defect resolution for the Jerry Framework |
 
 ## Project Lookup
@@ -34,4 +38,8 @@
 - **PROJ-010**: `projects/PROJ-010-cyber-ops/`
 - **PROJ-011**: `projects/PROJ-011-saucer-boy-articles/`
 - **PROJ-014**: `projects/PROJ-014-negative-prompting-research/`
+- **PROJ-015**: `projects/PROJ-015-documentation-audit/`
+- **PROJ-016**: `projects/PROJ-016-documentation-writing/`
+- **PROJ-020**: `projects/PROJ-020-feature-enhancements/`
+- **PROJ-022**: `projects/PROJ-022-user-experience-skill/`
 - **PROJ-030**: `projects/PROJ-030-bugs/`

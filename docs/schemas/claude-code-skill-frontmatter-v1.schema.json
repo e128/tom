@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jerry-framework.dev/schemas/claude-code-skill-frontmatter/v1.0.0",
+  "title": "Claude Code SKILL.md Frontmatter Schema",
+  "description": "Validates YAML frontmatter in SKILL.md files against Anthropic's documented Claude Code skill fields. Source: https://code.claude.com/docs/en/skills (March 2026). Unrecognized fields are silently ignored by Claude Code at runtime but flagged here to prevent dead metadata.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
+      "maxLength": 64,
+      "description": "Display name and /slash-command. If omitted, uses directory name. Lowercase letters, numbers, and hyphens only."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 1024,
+      "description": "What the skill does and when to use it. Claude uses this to decide when to load automatically. WARNING: Claude Code's skill indexer may misparse YAML multiline indicators (>, |, >-, |-). Use single-line strings."
+    },
+    "argument-hint": {
+      "type": "string",
+      "description": "Hint shown during autocomplete for expected arguments. Example: '[issue-number]' or '[filename] [format]'."
+    },
+    "disable-model-invocation": {
+      "type": "boolean",
+      "description": "Set to true to prevent Claude from automatically loading this skill. Only user invocation via /name allowed. Default: false."
+    },
+    "user-invocable": {
+      "type": "boolean",
+      "description": "Set to false to hide from the / menu. Only Claude can invoke automatically. Default: true."
+    },
+    "allowed-tools": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Comma-separated tool names. Example: 'Read, Write, Glob, Bash'"
+        },
+        {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Array of tool names."
+        }
+      ],
+      "description": "Tools Claude can use without asking permission when this skill is active."
+    },
+    "model": {
+      "type": "string",
+      "description": "Model to use when this skill is active. Accepts aliases (sonnet, opus, haiku) or full IDs (claude-opus-4-6, claude-sonnet-4, claude-haiku-4-5)."
+    },
+    "context": {
+      "type": "string",
+      "enum": ["fork"],
+      "description": "Set to 'fork' to run in a forked subagent context."
+    },
+    "agent": {
+      "type": "string",
+      "description": "Subagent type when context: fork is set. Options: built-in (Explore, Plan, general-purpose) or custom agent name."
+    },
+    "hooks": {
+      "type": "object",
+      "description": "Hooks scoped to this skill's lifecycle.",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
