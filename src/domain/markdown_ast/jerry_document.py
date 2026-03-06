@@ -25,6 +25,7 @@ Exports:
 from __future__ import annotations
 
 import copy
+from collections import defaultdict
 from collections.abc import Callable
 
 import mdformat
@@ -78,6 +79,7 @@ class JerryDocument:
         self._source = source
         self._tokens = tokens
         self._tree = tree
+        self._type_index: dict[str, list[SyntaxTreeNode]] | None = None
 
     @classmethod
     def parse(cls, source: str) -> JerryDocument:
@@ -129,10 +131,13 @@ class JerryDocument:
         """
         Query all nodes of a given type in the document AST.
 
-        Walks the full AST tree and collects every non-root node whose type
-        matches the requested node_type string. Node types correspond to
-        markdown-it-py SyntaxTreeNode type names (e.g., 'heading', 'paragraph',
-        'blockquote', 'bullet_list', 'inline').
+        Uses a lazily-built type index to avoid repeated full tree walks.
+        The index is constructed on the first call and reused for subsequent
+        queries. This is safe because JerryDocument is immutable after
+        construction.
+
+        Node types correspond to markdown-it-py SyntaxTreeNode type names
+        (e.g., 'heading', 'paragraph', 'blockquote', 'bullet_list', 'inline').
 
         Args:
             node_type: The node type string to match (case-sensitive).
@@ -150,13 +155,23 @@ class JerryDocument:
             >>> len(headings)
             2
         """
-        results: list[SyntaxTreeNode] = []
+        if self._type_index is None:
+            self._type_index = self._build_type_index()
+        return list(self._type_index.get(node_type, []))
+
+    def _build_type_index(self) -> dict[str, list[SyntaxTreeNode]]:
+        """
+        Build a type-to-nodes index by walking the tree once.
+
+        Returns:
+            Dict mapping node type strings to lists of nodes in document order.
+        """
+        index: dict[str, list[SyntaxTreeNode]] = defaultdict(list)
         for node in self._tree.walk():
             if node.is_root:
                 continue
-            if node.type == node_type:
-                results.append(node)
-        return results
+            index[node.type].append(node)
+        return dict(index)
 
     def transform(
         self,

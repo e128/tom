@@ -56,18 +56,21 @@ def parse_file(file_path: str) -> dict:
     doc = JerryDocument.parse(source)
     node_types = []
     seen: set[str] = set()
+    heading_count = 0
     for node in doc.tree.walk():
         if node.is_root:
             continue
         if node.type not in seen:
             seen.add(node.type)
             node_types.append(node.type)
+        if node.type == "heading":
+            heading_count += 1
     fm = extract_frontmatter(doc)
     return {
         "file_path": file_path,
         "source_length": len(source),
         "node_types": node_types,
-        "heading_count": len(doc.query("heading")),
+        "heading_count": heading_count,
         "has_frontmatter": len(fm) > 0,
     }
 
