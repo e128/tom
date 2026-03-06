@@ -1,15 +1,6 @@
 ---
 name: ux-heuristic-eval
-description: >
-  Nielsen heuristic evaluation sub-skill for the /user-experience parent skill.
-  Evaluates interfaces against Nielsen's 10 usability heuristics, produces
-  severity-rated findings on a 0-4 scale (Cosmetic to Catastrophic), and
-  generates remediation recommendations with effort estimates. Invoke when
-  teams need structured usability evaluation, interface review, heuristic
-  audit, or severity-rated UX findings. Invoked by ux-orchestrator during
-  Wave 1 lifecycle-stage routing or CRISIS mode triage. Triggers: heuristic
-  evaluation, usability audit, Nielsen heuristics, interface review, severity
-  rating, usability inspection, UX evaluation.
+description: "Nielsen heuristic evaluation sub-skill for the /user-experience parent skill. Evaluates interfaces against Nielsen's 10 usability heuristics, produces severity-rated findings on a 0-4 scale (Cosmetic to Catastrophic), and generates remediation recommendations with effort estimates. Invoke when teams need structured usability evaluation, interface review, heuristic audit, or severity-rated UX findings. Invoked by ux-orchestrator during Wave 1 lifecycle-stage routing or CRISIS mode triage. Triggers: heuristic evaluation, usability audit, Nielsen heuristics, interface review, severity rating, usability inspection, UX evaluation."
 version: "1.0.0"
 agents:
   - ux-heuristic-evaluator

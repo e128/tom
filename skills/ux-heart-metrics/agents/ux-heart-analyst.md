@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-heart-analyst
+name: ux-heart-analyst
 description: >
   HEART framework metrics analyst for the /user-experience skill.
   Applies Google's HEART framework (Happiness, Engagement, Adoption, Retention,

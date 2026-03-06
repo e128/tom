@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-sprint-facilitator
+name: ux-sprint-facilitator
 description: >
   AJ&Smart Design Sprint 2.0 facilitator for the /user-experience skill.
   Facilitates a structured four-day rapid prototyping and validation process

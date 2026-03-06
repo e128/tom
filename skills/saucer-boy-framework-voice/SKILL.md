@@ -1,12 +1,6 @@
 ---
 name: saucer-boy-framework-voice
-description: >-
-  INTERNAL SKILL — auto-loaded for framework output voice quality. Reviews,
-  rewrites, and scores framework output text for persona compliance using the
-  Shane McConkey ethos: joy and excellence as multipliers. Governs quality gate
-  messages, error messages, CLI output, hook text, and framework-generated text.
-  Not user-invocable; loaded automatically when framework output needs voice
-  enforcement.
+description: "INTERNAL SKILL — auto-loaded for framework output voice quality. Reviews, rewrites, and scores framework output text for persona compliance using the Shane McConkey ethos: joy and excellence as multipliers. Governs quality gate messages, error messages, CLI output, hook text, and framework-generated text. Not user-invocable; loaded automatically when framework output needs voice enforcement."
 version: "1.1.0"
 allowed-tools: Read, Write, Edit, Glob, Grep
 activation-keywords:

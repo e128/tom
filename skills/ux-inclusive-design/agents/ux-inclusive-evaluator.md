@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-inclusive-evaluator
+name: ux-inclusive-evaluator
 description: >
   Inclusive design and WCAG 2.2 accessibility evaluator for the /user-experience
   skill. Performs WCAG 2.2 compliance audits across Perceivable, Operable,

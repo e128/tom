@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-atomic-architect
+name: ux-atomic-architect
 description: >
   Atomic Design component taxonomy architect for the /user-experience skill.
   Implements Brad Frost's 5-level component hierarchy (Atoms, Molecules,

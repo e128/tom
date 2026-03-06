@@ -1,17 +1,6 @@
 ---
 name: ux-atomic-design
-description: >
-  Atomic Design component taxonomy sub-skill for the /user-experience parent
-  skill. Implements Brad Frost's 5-level component hierarchy (Atoms, Molecules,
-  Organisms, Templates, Pages) for design system architecture. Produces component
-  inventories, design token audits, composition rules, and Storybook coverage
-  reports. Invoke when teams need component taxonomy construction, design system
-  architecture, Storybook integration, design token consistency analysis, or
-  component reuse auditing. Invoked by ux-orchestrator during Wave 3
-  lifecycle-stage routing or when user intent is "Building component system"
-  during the "During design" stage. Triggers: atomic design, component taxonomy,
-  design tokens, Storybook, atoms molecules organisms, design system, component
-  inventory, component library.
+description: "Atomic Design component taxonomy sub-skill for the /user-experience parent skill. Implements Brad Frost's 5-level component hierarchy (Atoms, Molecules, Organisms, Templates, Pages) for design system architecture. Produces component inventories, design token audits, composition rules, and Storybook coverage reports. Invoke when teams need component taxonomy construction, design system architecture, Storybook integration, design token consistency analysis, or component reuse auditing. Invoked by ux-orchestrator during Wave 3 lifecycle-stage routing or when user intent is \"Building component system\" during the \"During design\" stage. Triggers: atomic design, component taxonomy, design tokens, Storybook, atoms molecules organisms, design system, component inventory, component library."
 version: "1.2.0"
 agents:
   - ux-atomic-architect

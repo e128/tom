@@ -1,17 +1,8 @@
 ---
 name: ux-jtbd
-description: >
-  Jobs-to-Be-Done research and analysis sub-skill for the /user-experience
-  parent skill. Conducts JTBD job statement synthesis, switch interview
-  analysis (Moesta/Spiek four forces), outcome-driven innovation (Ulwick ODI),
-  and job mapping for tiny teams (1-5 people). Invoked by ux-orchestrator
-  when users need to understand user motivations, map jobs to be done, identify
-  switch triggers, or produce job maps with outcome expectations. Sub-skill of
-  /user-experience; routed via ux-orchestrator lifecycle-stage triage.
-  Triggers: JTBD, jobs to be done, switch interview, job mapping, user
-  motivation, outcome, hiring criteria, user jobs, switch forces.
+description: "Jobs-to-Be-Done research and analysis sub-skill for the /user-experience parent skill. Conducts JTBD job statement synthesis, switch interview analysis (Moesta/Spiek four forces), outcome-driven innovation (Ulwick ODI), and job mapping for tiny teams (1-5 people). Invoked by ux-orchestrator when users need to understand user motivations, map jobs to be done, identify switch triggers, or produce job maps with outcome expectations. Sub-skill of /user-experience; routed via ux-orchestrator lifecycle-stage triage. Triggers: JTBD, jobs to be done, switch interview, job mapping, user motivation, outcome, hiring criteria, user jobs, switch forces."
 model: sonnet
-tools:
+allowed-tools:
   - Read
   - Write
   - Edit

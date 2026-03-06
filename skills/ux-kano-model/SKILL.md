@@ -1,19 +1,6 @@
 ---
 name: ux-kano-model
-description: >
-  Kano model feature classification and prioritization sub-skill for the
-  /user-experience parent skill. Classifies product features into Must-be (M),
-  Performance (O), Attractive (A), Indifferent (I), and Reverse (R) categories
-  using the functional/dysfunctional questionnaire pair methodology (Kano et al.,
-  1984). Computes Customer Satisfaction (CS) coefficients (Better/Worse) for
-  priority matrix visualization. Produces feature classification reports,
-  priority matrices, and survey design templates. Sample size awareness:
-  5-8 respondents yields directional classification only (MEDIUM confidence);
-  20+ respondents required for statistical classification (Berger et al., 1993).
-  Invoked by ux-orchestrator during Wave 4 lifecycle-stage routing or when user
-  intent is "Need to prioritize features" at any lifecycle stage. Triggers:
-  Kano, must-be, attractive, one-dimensional, performance feature, satisfaction,
-  feature classification, delighter, feature prioritization, CS coefficient.
+description: "Kano model feature classification and prioritization sub-skill for the /user-experience parent skill. Classifies product features into Must-be (M), Performance (O), Attractive (A), Indifferent (I), and Reverse (R) categories using the functional/dysfunctional questionnaire pair methodology (Kano et al., 1984). Computes Customer Satisfaction (CS) coefficients (Better/Worse) for priority matrix visualization. Produces feature classification reports, priority matrices, and survey design templates. Sample size awareness: 5-8 respondents yields directional classification only (MEDIUM confidence); 20+ respondents required for statistical classification (Berger et al., 1993). Invoked by ux-orchestrator during Wave 4 lifecycle-stage routing or when user intent is \"Need to prioritize features\" at any lifecycle stage. Triggers: Kano, must-be, attractive, one-dimensional, performance feature, satisfaction, feature classification, delighter, feature prioritization, CS coefficient."
 version: "1.2.0"
 model: sonnet
 agents:

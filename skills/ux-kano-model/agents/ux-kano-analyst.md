@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-kano-analyst
+name: ux-kano-analyst
 description: >
   Kano model feature classification analyst for the /user-experience skill.
   Implements the Kano Model methodology (Kano et al., 1984) with 5x5 functional/

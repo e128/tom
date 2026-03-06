@@ -1,19 +1,6 @@
 ---
 name: ux-inclusive-design
-description: >
-  Inclusive design and WCAG 2.2 accessibility evaluation sub-skill for the
-  /user-experience parent skill. Performs WCAG 2.2 compliance audits across
-  Perceivable, Operable, Understandable, and Robust principles (conformance
-  levels A, AA, AAA) and applies Microsoft Inclusive Design methodology
-  including Persona Spectrum analysis (permanent, temporary, situational
-  disabilities). Produces accessibility audit reports and persona spectrum
-  analyses. Invoke when teams need accessibility compliance evaluation, WCAG
-  conformance auditing, screen reader compatibility assessment, color
-  contrast analysis, cognitive load evaluation, or inclusive design review.
-  Invoked by ux-orchestrator during Wave 3 lifecycle-stage routing or when
-  user intent is "Check accessibility" at any lifecycle stage. Triggers:
-  accessibility, WCAG, ARIA, screen reader, contrast, cognitive load,
-  inclusive, a11y, inclusive design, WCAG 2.2, persona spectrum.
+description: "Inclusive design and WCAG 2.2 accessibility evaluation sub-skill for the /user-experience parent skill. Performs WCAG 2.2 compliance audits across Perceivable, Operable, Understandable, and Robust principles (conformance levels A, AA, AAA) and applies Microsoft Inclusive Design methodology including Persona Spectrum analysis (permanent, temporary, situational disabilities). Produces accessibility audit reports and persona spectrum analyses. Invoke when teams need accessibility compliance evaluation, WCAG conformance auditing, screen reader compatibility assessment, color contrast analysis, cognitive load evaluation, or inclusive design review. Invoked by ux-orchestrator during Wave 3 lifecycle-stage routing or when user intent is \"Check accessibility\" at any lifecycle stage. Triggers: accessibility, WCAG, ARIA, screen reader, contrast, cognitive load, inclusive, a11y, inclusive design, WCAG 2.2, persona spectrum."
 version: "1.1.0"
 model: sonnet
 agents:

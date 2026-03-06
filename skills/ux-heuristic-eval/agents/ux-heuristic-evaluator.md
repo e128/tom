@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-heuristic-evaluator
+name: ux-heuristic-evaluator
 description: >
   Nielsen heuristic evaluation specialist for the /user-experience skill.
   Evaluates interfaces against Nielsen's 10 usability heuristics, produces

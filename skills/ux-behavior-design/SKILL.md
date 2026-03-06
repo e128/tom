@@ -1,20 +1,6 @@
 ---
 name: ux-behavior-design
-description: >
-  Fogg Behavior Model B=MAP bottleneck diagnosis sub-skill for the
-  /user-experience parent skill. Diagnoses why users fail to take desired
-  actions by analyzing the three B=MAP factors (Motivation, Ability, Prompt)
-  and identifying which factor falls below the action threshold. Produces
-  bottleneck diagnoses, factor-level assessments, and intervention
-  recommendations with synthesis confidence gates. Invoke when teams need
-  to understand why users are not completing a specific action, diagnose
-  behavioral bottlenecks, design behavior change interventions, or analyze
-  post-launch user inaction patterns. Invoked by ux-orchestrator during
-  Wave 4 lifecycle-stage routing or when user intent is "Users not completing
-  action" during the "After launch" stage. Triggers: behavior design, B=MAP,
-  Fogg model, behavior bottleneck, motivation analysis, ability analysis,
-  prompt design, why users don't, user inaction, behavior diagnosis, tiny
-  habits, action threshold.
+description: "Fogg Behavior Model B=MAP bottleneck diagnosis sub-skill for the /user-experience parent skill. Diagnoses why users fail to take desired actions by analyzing the three B=MAP factors (Motivation, Ability, Prompt) and identifying which factor falls below the action threshold. Produces bottleneck diagnoses, factor-level assessments, and intervention recommendations with synthesis confidence gates. Invoke when teams need to understand why users are not completing a specific action, diagnose behavioral bottlenecks, design behavior change interventions, or analyze post-launch user inaction patterns. Invoked by ux-orchestrator during Wave 4 lifecycle-stage routing or when user intent is \"Users not completing action\" during the \"After launch\" stage. Triggers: behavior design, B=MAP, Fogg model, behavior bottleneck, motivation analysis, ability analysis, prompt design, why users don't, user inaction, behavior diagnosis, tiny habits, action threshold."
 version: "1.5.0"
 agents:
   - ux-behavior-diagnostician

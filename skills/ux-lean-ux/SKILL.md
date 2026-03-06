@@ -1,16 +1,6 @@
 ---
 name: ux-lean-ux
-description: >
-  Lean UX hypothesis-driven design sub-skill for the /user-experience parent
-  skill. Facilitates Build-Measure-Learn cycles using Jeff Gothelf and Josh
-  Seiden's Lean UX methodology (3rd ed. 2021). Produces hypothesis backlogs,
-  assumption maps, MVP experiment designs, and validated learning logs. Invoke
-  when teams need hypothesis-driven iteration, assumption mapping, experiment
-  design, or validated learning documentation. Invoked by ux-orchestrator
-  during Wave 2 lifecycle-stage routing or when user intent is "testing
-  hypotheses" during the "During design" stage. Triggers: lean UX, hypothesis,
-  assumption mapping, build-measure-learn, MVP experiment, validated learning,
-  experiment design, hypothesis backlog.
+description: "Lean UX hypothesis-driven design sub-skill for the /user-experience parent skill. Facilitates Build-Measure-Learn cycles using Jeff Gothelf and Josh Seiden's Lean UX methodology (3rd ed. 2021). Produces hypothesis backlogs, assumption maps, MVP experiment designs, and validated learning logs. Invoke when teams need hypothesis-driven iteration, assumption mapping, experiment design, or validated learning documentation. Invoked by ux-orchestrator during Wave 2 lifecycle-stage routing or when user intent is \"testing hypotheses\" during the \"During design\" stage. Triggers: lean UX, hypothesis, assumption mapping, build-measure-learn, MVP experiment, validated learning, experiment design, hypothesis backlog."
 version: "1.2.0"
 agents:
   - ux-lean-ux-facilitator

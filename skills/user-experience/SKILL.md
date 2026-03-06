@@ -1,16 +1,6 @@
 ---
 name: user-experience
-description: >
-  Parent orchestrator for AI-augmented UX methodology targeting tiny teams
-  (1-5 people). Routes to 10 sub-skills by product lifecycle stage through
-  criteria-gated waves. Invoke when team needs structured UX evaluation,
-  user research, design systems, UX metrics, behavior diagnosis, feature
-  prioritization, design sprints, or AI interaction design. Each sub-skill
-  implements a proven UX framework with synthesis hypothesis confidence gates
-  and MCP design tool integration. Triggers: UX, user experience, usability,
-  heuristic evaluation, JTBD, lean UX, HEART metrics, atomic design,
-  inclusive design, behavior design, Kano model, design sprint, AI-first
-  design, UX audit, accessibility, design system, user research.
+description: "Parent orchestrator for AI-augmented UX methodology targeting tiny teams (1-5 people). Routes to 10 sub-skills by product lifecycle stage through criteria-gated waves. Invoke when team needs structured UX evaluation, user research, design systems, UX metrics, behavior diagnosis, feature prioritization, design sprints, or AI interaction design. Each sub-skill implements a proven UX framework with synthesis hypothesis confidence gates and MCP design tool integration. Triggers: UX, user experience, usability, heuristic evaluation, JTBD, lean UX, HEART metrics, atomic design, inclusive design, behavior design, Kano model, design sprint, AI-first design, UX audit, accessibility, design system, user research."
 version: "1.0.0"
 agents:
   - ux-orchestrator

@@ -1,16 +1,7 @@
 ---
 name: ux-heart-metrics
 version: "1.2.0"
-description: >
-  HEART Metrics framework sub-skill for the /user-experience parent skill.
-  Applies Google's HEART framework (Happiness, Engagement, Adoption, Retention,
-  Task Success) using the Goals-Signals-Metrics (GSM) process to define
-  measurable UX metrics for products and features. Invoked by ux-orchestrator
-  when users need to measure UX health, define UX metrics, establish measurement
-  baselines, or produce dashboard-ready metric specifications. Sub-skill of
-  /user-experience; routed via ux-orchestrator lifecycle-stage triage.
-  Triggers: HEART, metrics, happiness, engagement, adoption, retention, task
-  success, GSM, measurement, UX metrics, dashboard, goals signals metrics.
+description: "HEART Metrics framework sub-skill for the /user-experience parent skill. Applies Google's HEART framework (Happiness, Engagement, Adoption, Retention, Task Success) using the Goals-Signals-Metrics (GSM) process to define measurable UX metrics for products and features. Invoked by ux-orchestrator when users need to measure UX health, define UX metrics, establish measurement baselines, or produce dashboard-ready metric specifications. Sub-skill of /user-experience; routed via ux-orchestrator lifecycle-stage triage. Triggers: HEART, metrics, happiness, engagement, adoption, retention, task success, GSM, measurement, UX metrics, dashboard, goals signals metrics."
 activation-keywords:
   - HEART
   - HEART metrics

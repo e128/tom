@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-ai-design-guide
+name: ux-ai-design-guide
 description: >
   AI-first interaction design guide (CONDITIONAL) for /user-experience.
   Designs trust-calibrated AI interaction patterns using Yang et al. (2020)

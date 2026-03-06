@@ -1,21 +1,6 @@
 ---
 name: ux-design-sprint
-description: >
-  AJ&Smart Design Sprint 2.0 facilitation sub-skill for the /user-experience
-  parent skill. Facilitates a structured four-day rapid prototyping and
-  validation process compressed from the Google Ventures five-day Design Sprint
-  (Knapp, Zeratsky & Kowitz, 2016; Courtney, 2019). Produces sprint artifacts
-  including challenge maps, solution sketches, storyboards, realistic
-  prototypes, and structured user interview findings with synthesis confidence
-  gates. Invoke when teams need to rapidly validate a product concept, solve a
-  critical design challenge through structured prototyping, test ideas with
-  real users before committing to development, or explore solution directions
-  when they do not know what to build. Invoked by ux-orchestrator during
-  Wave 5 lifecycle-stage routing or when user intent is "Need validated
-  prototype" during the "Before design" stage. Triggers: design sprint, GV
-  sprint, rapid prototyping, sprint week, map sketch decide test, 4-day
-  sprint, design sprint 2.0, AJ Smart sprint, validate prototype, test with
-  users, sprint facilitation.
+description: "AJ&Smart Design Sprint 2.0 facilitation sub-skill for the /user-experience parent skill. Facilitates a structured four-day rapid prototyping and validation process compressed from the Google Ventures five-day Design Sprint (Knapp, Zeratsky & Kowitz, 2016; Courtney, 2019). Produces sprint artifacts including challenge maps, solution sketches, storyboards, realistic prototypes, and structured user interview findings with synthesis confidence gates. Invoke when teams need to rapidly validate a product concept, solve a critical design challenge through structured prototyping, test ideas with real users before committing to development, or explore solution directions when they do not know what to build. Triggers: design sprint, GV sprint, rapid prototyping, sprint week, map sketch decide test, 4-day sprint, design sprint 2.0, AJ Smart sprint, validate prototype, test with users, sprint facilitation."
 version: "1.1.0"
 agents:
   - ux-sprint-facilitator

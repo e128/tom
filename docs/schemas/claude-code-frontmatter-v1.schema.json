@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jerry-framework.dev/schemas/claude-code-frontmatter/v1.0.0",
+  "title": "Claude Code Agent Frontmatter Schema",
+  "description": "Validates YAML frontmatter in agent .md files against Anthropic's documented Claude Code fields. Source: https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/sub-agents (March 2026). Unrecognized fields are silently ignored by Claude Code at runtime but flagged here to prevent governance metadata from leaking into frontmatter.",
+  "type": "object",
+  "required": ["name", "description"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+      "description": "Agent identifier. Kebab-case, lowercase letters and hyphens. Must be unique within scope (project > user > plugin)."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "description": "When Claude should delegate to this agent. Include 'use proactively' to encourage automatic invocation. This is the primary routing signal."
+    },
+    "model": {
+      "type": "string",
+      "enum": ["sonnet", "opus", "haiku", "inherit"],
+      "description": "Model selection. Defaults to inherit from parent if omitted."
+    },
+    "tools": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Comma-separated tool names. Example: 'Read, Write, Glob, Bash'"
+        },
+        {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Array of tool names. Example: ['Read', 'Write', 'Glob', 'Bash']"
+        }
+      ],
+      "description": "Allowlist of tools. If omitted, agent inherits ALL tools from parent. Special syntax: Agent(name) restricts spawnable subagents."
+    },
+    "disallowedTools": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      ],
+      "description": "Denylist of tools to remove from inherited or specified set."
+    },
+    "mcpServers": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "boolean", "const": true },
+          {
+            "type": "object",
+            "description": "Full MCP server config or tool allowlist.",
+            "properties": {
+              "tools": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Allowlist of specific MCP tools from this server."
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      },
+      "description": "MCP servers available to this agent. Keys are server names. Value: true (all tools) or object with config/tool allowlist."
+    },
+    "permissionMode": {
+      "type": "string",
+      "enum": ["default", "acceptEdits", "dontAsk", "bypassPermissions", "plan"],
+      "description": "Permission prompt behavior for this agent."
+    },
+    "maxTurns": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Maximum agentic turns before agent stops."
+    },
+    "skills": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Skill names to preload. Full skill content injected into agent context. Subagents do NOT inherit parent skills."
+    },
+    "hooks": {
+      "type": "object",
+      "description": "Lifecycle hooks scoped to this agent. Supports PreToolUse, PostToolUse, SubagentStart, SubagentStop events.",
+      "additionalProperties": true
+    },
+    "memory": {
+      "type": "string",
+      "enum": ["user", "project", "local"],
+      "description": "Persistent memory scope for cross-session learning."
+    },
+    "background": {
+      "type": "boolean",
+      "description": "Run as background task. Default: false."
+    },
+    "isolation": {
+      "type": "string",
+      "enum": ["worktree"],
+      "description": "Run in temporary git worktree (auto-cleaned if no changes)."
+    },
+    "color": {
+      "type": "string",
+      "description": "Background color for subagent UI identification. Undocumented but used by /agents command (e.g., 'blue', 'purple'). See github.com/anthropics/claude-code/issues/8501."
+    }
+  },
+  "additionalProperties": true
+}

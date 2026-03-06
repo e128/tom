@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-lean-ux-facilitator
+name: ux-lean-ux-facilitator
 description: >
   Lean UX hypothesis-driven design facilitator for the /user-experience skill.
   Facilitates Build-Measure-Learn cycles using Gothelf & Seiden's Lean UX

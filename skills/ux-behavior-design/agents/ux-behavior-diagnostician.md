@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-behavior-diagnostician
+name: ux-behavior-diagnostician
 description: >
   Fogg Behavior Model B=MAP bottleneck diagnostician for the /user-experience
   skill. Diagnoses why users fail to take desired actions by analyzing the

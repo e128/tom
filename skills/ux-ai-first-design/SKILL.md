@@ -1,22 +1,6 @@
 ---
 name: ux-ai-first-design
-description: >
-  AI-first interaction design sub-skill (CONDITIONAL) for the /user-experience
-  parent skill. Provides trust-calibrated AI interaction design guidance using
-  Yang et al.'s trust-risk and error-risk classification framework. Produces
-  interaction pattern recommendations, trust calibration assessments, feedback
-  loop designs, and progressive disclosure strategies for AI-powered features.
-  CONDITIONAL activation: requires WSM >= 7.80 AND enabler research (FEAT-020)
-  complete. When condition is not met, the ux-orchestrator routes to
-  /ux-heuristic-eval with PAIR protocol as interim alternative. Invoke when
-  teams need to design AI-powered interactions, calibrate user trust in AI
-  outputs, classify AI error risks, design human-AI handoff patterns, or audit
-  existing AI interfaces for trust and safety. Invoked by ux-orchestrator during
-  Wave 5 lifecycle-stage routing when user intent is "Building AI product"
-  during the "During design" stage. Triggers: AI-first design, AI interaction,
-  trust calibration, AI UX, conversational UX, AI interface, LLM interface,
-  agentic UX, human-AI interaction, AI transparency, AI error handling,
-  AI onboarding, progressive AI disclosure, trust-risk, error-risk.
+description: "AI-first interaction design sub-skill (CONDITIONAL) for the /user-experience parent skill. Provides trust-calibrated AI interaction design guidance using Yang et al.'s trust-risk and error-risk classification framework. Produces interaction pattern recommendations, trust calibration assessments, feedback loop designs, and progressive disclosure strategies for AI-powered features. CONDITIONAL: requires WSM >= 7.80 AND enabler research (FEAT-020) complete; otherwise routes to /ux-heuristic-eval with PAIR protocol. Invoke when teams need to design AI-powered interactions, calibrate user trust in AI outputs, classify AI error risks, design human-AI handoff patterns, or audit existing AI interfaces for trust and safety. Triggers: AI-first design, AI interaction, trust calibration, AI UX, conversational UX, AI interface, LLM interface, agentic UX, human-AI interaction, AI transparency, AI error handling, AI onboarding, progressive AI disclosure, trust-risk, error-risk."
 version: "1.1.0"
 agents:
   - ux-ai-design-guide

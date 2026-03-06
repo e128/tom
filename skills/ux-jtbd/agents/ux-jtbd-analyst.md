@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-jtbd-analyst
+name: ux-jtbd-analyst
 description: >
   Jobs-to-Be-Done research and analysis specialist for the /user-experience skill.
   Conducts JTBD interviews, maps job statements, identifies switch triggers, and

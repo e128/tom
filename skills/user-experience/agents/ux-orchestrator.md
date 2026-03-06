@@ -1,5 +1,5 @@
 ---
-name: jerry:ux-orchestrator
+name: ux-orchestrator
 description: >
   Parent orchestrator for the /user-experience skill. Routes UX requests by product
   lifecycle stage, enforces wave criteria gates, manages cross-sub-skill handoffs,
