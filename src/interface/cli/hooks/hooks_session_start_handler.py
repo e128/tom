@@ -155,7 +155,15 @@ class HooksSessionStartHandler:
                     f"  <project-id>{project_id}</project-id>\n"
                     "</project-context>"
                 )
-                context_parts.append(project_xml)
+            else:
+                project_xml = (
+                    "<project-context>\n"
+                    "  <jerry-project></jerry-project>\n"
+                    "  <project-id></project-id>\n"
+                    "  <project-required/>\n"
+                    "</project-context>"
+                )
+            context_parts.append(project_xml)
         except Exception as exc:  # noqa: BLE001
             print(
                 f"[hooks/session-start] Project context query failed: {exc}",
