@@ -42,6 +42,9 @@ from src.infrastructure.internal.enforcement.enforcement_decision import (
 from src.infrastructure.internal.enforcement.pre_tool_enforcement_engine import (
     PreToolEnforcementEngine,
 )
+from src.infrastructure.internal.enforcement.security_enforcement_engine import (
+    SecurityEnforcementEngine,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -81,15 +84,20 @@ class HooksPreToolUseHandler:
         self,
         enforcement_engine: PreToolEnforcementEngine,
         staleness_detector: StalenessDetector,
+        security_engine: SecurityEnforcementEngine | None = None,
     ) -> None:
         """Initialize the handler with required services.
 
         Args:
             enforcement_engine: AST-based architecture enforcement engine.
             staleness_detector: ORCHESTRATION.yaml staleness detector.
+            security_engine: Security enforcement engine for blocked paths,
+                dangerous commands, and pattern-based validation. Optional
+                for backward compatibility during migration.
         """
         self._enforcement_engine = enforcement_engine
         self._staleness_detector = staleness_detector
+        self._security_engine = security_engine
 
     def handle(self, stdin_json: str) -> int:
         """Handle a PreToolUse hook event.
@@ -121,7 +129,26 @@ class HooksPreToolUseHandler:
         tool_input: dict[str, Any] = hook_data.get("tool_input", {})
         file_path: str = tool_input.get("file_path", "")
 
-        # Step 2: Architecture enforcement (fail-open)
+        # Step 2: Security enforcement (fail-open, runs first — cheap checks)
+        if self._security_engine is not None:
+            try:
+                security_decision = self._security_engine.evaluate(
+                    tool_name, tool_input
+                )
+                if security_decision.action == "block":
+                    response["decision"] = "block"
+                    response["reason"] = security_decision.reason
+                    if security_decision.violations:
+                        response["violations"] = security_decision.violations
+                    print(json.dumps(response))
+                    return 0  # Early termination on security block
+            except Exception as exc:  # noqa: BLE001
+                print(
+                    f"[hooks/pre-tool-use] Security engine failed: {exc}",
+                    file=sys.stderr,
+                )
+
+        # Step 3: Architecture enforcement (fail-open)
         try:
             decision = self._run_enforcement(tool_name, tool_input)
             if decision is not None:
