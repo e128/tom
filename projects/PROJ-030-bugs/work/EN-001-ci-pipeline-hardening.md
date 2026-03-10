@@ -1,7 +1,7 @@
 # EN-001: CI pipeline security hardening
 
 > **Type:** enabler
-> **Status:** pending
+> **Status:** in_progress
 > **Priority:** high
 > **Impact:** high
 > **Enabler Type:** infrastructure
@@ -42,14 +42,14 @@ The BUG-003 investigation (eng-devsecops security review, red-team attack surfac
 
 ## Tasks
 
-| # | Finding | File | Severity | Description |
-|---|---------|------|----------|-------------|
-| 1 | F-001 | `release.yml` | HIGH | `release.yml` uses `pip install` fallback and bare `uv sync` — apply `uv sync --frozen` consistently; remove `pip` fallback (H-05 violation) |
-| 2 | F-004 | `version-bump.yml` | MEDIUM | `workflow_dispatch` bypasses `[skip-bump]` check — a manual trigger can double-bump a commit already marked skip |
-| 3 | F-006 | `version-bump.yml` | LOW | `astral-sh/setup-uv@v5` uses floating major-version tag — pin to commit SHA, use Dependabot for updates |
-| 4 | RISK-03 | `version-bump.yml` | MEDIUM | `actions/checkout@v5` also uses floating tag — pin to commit SHA |
-| 5 | — | `ci.yml` | LOW | Multiple `uv sync` calls without `--frozen` — apply `--frozen` for reproducible CI builds |
-| 6 | #150 | `scripts/` | HIGH | Consolidate standalone scripts into jerry CLI per issue #150 |
+| # | Finding | File | Severity | Status | Description |
+|---|---------|------|----------|--------|-------------|
+| 1 | F-001 | `release.yml` | HIGH | DONE | `release.yml` uses `pip install` fallback and bare `uv sync` — apply `uv sync --frozen` consistently; remove `pip` fallback (H-05 violation) |
+| 2 | F-004 | `version-bump.yml` | MEDIUM | DONE | `workflow_dispatch` bypasses `[skip-bump]` check — a manual trigger can double-bump a commit already marked skip |
+| 3 | F-006 | `version-bump.yml` | LOW | DONE | `astral-sh/setup-uv@v5` uses floating major-version tag — pin to commit SHA, use Dependabot for updates |
+| 4 | RISK-03 | all workflows | MEDIUM | DONE | All `actions/*` and third-party actions use floating tags — pin to commit SHA |
+| 5 | — | `ci.yml` | LOW | DONE | Multiple `uv sync` calls without `--frozen` — apply `--frozen` for reproducible CI builds |
+| 6 | #150 | `scripts/` | HIGH | PENDING | Consolidate standalone scripts into jerry CLI per issue #150 |
 
 ---
 
@@ -61,10 +61,10 @@ Apply `uv sync --frozen` and SHA-pinned actions across all workflows. Port stand
 
 ## Acceptance Criteria
 
-- [ ] All CI workflows use `uv sync --frozen` (no bare `uv sync` in any workflow)
-- [ ] All third-party GitHub Actions pinned to commit SHAs with Dependabot config for updates
-- [ ] `release.yml` does not fall back to `pip install` (H-05 compliance)
-- [ ] `workflow_dispatch` respects `[skip-bump]` marker
+- [x] All CI workflows use `uv sync --frozen` (no bare `uv sync` in any workflow)
+- [x] All third-party GitHub Actions pinned to commit SHAs with Dependabot config for updates
+- [x] `release.yml` does not fall back to `pip install` (H-05 compliance)
+- [x] `workflow_dispatch` respects `[skip-bump]` marker
 - [ ] No standalone scripts in `scripts/` that duplicate CLI capabilities (issue #150 alignment)
 
 ---
@@ -91,3 +91,4 @@ Apply `uv sync --frozen` and SHA-pinned actions across all workflows. Port stand
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-03-09 | Claude | pending | Created from BUG-003 security review findings |
+| 2026-03-09 | Claude | in_progress | Tasks 1-5 complete: all workflows use --frozen, all actions SHA-pinned, release.yml pip removed, skip-bump guard added, Dependabot configured. Task 6 (#150 script consolidation) pending. |
