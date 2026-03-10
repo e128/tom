@@ -681,7 +681,7 @@ To verify backward compatibility, the JSON Schema was validated against three ex
 | `identity` additionalProperties | **FAIL** | Includes `orchestration_patterns` array not declared in schema |
 | `persona` enums | PASS | tone, communication_style, audience_level all valid |
 | `persona` additionalProperties | **FAIL** | Includes `character` field not declared in schema |
-| `capabilities.allowed_tools` enum | **FAIL** | Uses `mcp__memory-keeper__store`, `mcp__memory-keeper__retrieve`, `mcp__memory-keeper__search` -- these names do not match schema enum values (`mcp__memory-keeper__context_save`, `mcp__memory-keeper__context_get`, `mcp__memory-keeper__context_search`, `mcp__memory-keeper__context_checkpoint`). Tool naming mismatch between production agents and schema. |
+| `capabilities.allowed_tools` enum | **FAIL** | Uses `mcp__memory-keeper__context_save`, `mcp__memory-keeper__context_get`, `mcp__memory-keeper__context_search` -- these names do not match schema enum values (`mcp__memory-keeper__context_save`, `mcp__memory-keeper__context_get`, `mcp__memory-keeper__context_search`, `mcp__memory-keeper__context_checkpoint`). Tool naming mismatch between production agents and schema. |
 | `capabilities.forbidden_actions` minItems | PASS | 5 items >= 3 |
 | `guardrails.input_validation` minItems | PASS | 2 items >= 1 |
 | `guardrails.output_filtering` minItems, string type | PASS | 4 string items >= 3 |
@@ -693,7 +693,7 @@ To verify backward compatibility, the JSON Schema was validated against three ex
 | `constitution.principles_applied` minItems | PASS | 6 items >= 3 |
 | `session_context` additionalProperties | **FAIL** | Same violation as ps-researcher: includes `schema_version`, `input_validation`, `output_validation` |
 
-**Verdict: 7 violations.** The most architecturally significant is the MCP tool name mismatch: orch-planner uses `mcp__memory-keeper__store` while the schema enum specifies `mcp__memory-keeper__context_save`. This confirms the infrastructure coupling concern raised in Schema Design Decisions. Other violations involve `additionalProperties: false` rejecting extension fields that production agents legitimately use, and the `output.levels` structural mismatch (object vs. array).
+**Verdict: 7 violations.** The most architecturally significant is the MCP tool name mismatch: orch-planner uses `mcp__memory-keeper__context_save` while the schema enum specifies `mcp__memory-keeper__context_save`. This confirms the infrastructure coupling concern raised in Schema Design Decisions. Other violations involve `additionalProperties: false` rejecting extension fields that production agents legitimately use, and the `output.levels` structural mismatch (object vs. array).
 
 **Validation Summary:**
 
@@ -708,7 +708,7 @@ To verify backward compatibility, the JSON Schema was validated against three ex
 1. **Expand `persona` enums.** Add "analytical" to `tone` and "evidence-based" to `communication_style`. These are legitimate production values.
 2. **Expand `fallback_behavior` enum** or change to open string. Agent-specific fallback behaviors (e.g., "warn_and_request_strategy_id") are valid specializations.
 3. **Relax `additionalProperties` on `identity`, `persona`, `session_context`, `output`, and `validation`** to `true`, or add commonly-used extension fields (`belbin_role`, `orchestration_patterns`, `character`, `schema_version`, `secondary_artifacts`, `disclaimer_required`). The current `false` setting rejects legitimate production patterns.
-4. **Reconcile MCP tool names.** The schema enum must match actual MCP tool names used in production. Either update the schema enum to match production usage (`mcp__memory-keeper__store`) or update production agents to match the schema (`mcp__memory-keeper__context_save`).
+4. **Reconcile MCP tool names.** The schema enum must match actual MCP tool names used in production. Either update the schema enum to match production usage (`mcp__memory-keeper__context_save`) or update production agents to match the schema (`mcp__memory-keeper__context_save`).
 5. **Support both `output.levels` formats.** Either accept the array-of-enum format (schema current) and migrate production agents, or support both formats via `oneOf`.
 6. **Make `output` RECOMMENDED rather than REQUIRED** for agents that do not produce file artifacts (e.g., adv-executor operates as a worker with output managed by the orchestrator).
 

@@ -1,13 +1,13 @@
 # BUG-002: Version bump regex rejects uppercase scopes like GH-NNN
 
 > **Type:** bug
-> **Status:** in_progress
+> **Status:** completed
 > **Priority:** high
 > **Impact:** high
 > **Severity:** major
 > **Created:** 2026-03-02T00:00:00Z
 > **Due:**
-> **Completed:**
+> **Completed:** 2026-03-09T00:00:00Z
 > **Parent:** PROJ-030-bugs
 > **Owner:** Claude
 > **Found In:** 0.22.1

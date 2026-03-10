@@ -4,7 +4,7 @@
 
 > Governance rules for proactive MCP tool usage across Jerry Framework agents.
 
-<!-- L2-REINJECT: rank=9, content="Context7 REQUIRED for external library/framework docs: resolve-library-id then query-docs; respect tool-enforced call limit. Memory-Keeper REQUIRED at phase boundaries: phase-complete→store, phase-start→retrieve. Fallback: persist to work/.mcp-fallback/ on MCP failure. Key: jerry/{project}/{entity-type}/{entity-id}." -->
+<!-- L2-REINJECT: rank=9, content="Context7 REQUIRED for external library/framework docs: resolve-library-id then query-docs; respect tool-enforced call limit. Memory-Keeper REQUIRED at phase boundaries: phase-complete→context_save, phase-start→context_get. Fallback: persist to work/.mcp-fallback/ on MCP failure. Key: jerry/{project}/{entity-type}/{entity-id}." -->
 
 ## Document Sections
 
@@ -28,7 +28,7 @@
 | ID | Rule | Source | Consequence |
 |----|------|--------|-------------|
 | MCP-001 | Context7 MUST be used when any agent task references an external library, framework, SDK, or API by name. Respect the per-question call limit enforced by the tool. WebSearch is permitted only for general concepts or when Context7 returns no results. | FEAT-028 AC-1 | Research quality degradation. Stale training-data knowledge used instead of current docs. |
-| MCP-002 | Memory-Keeper `store` MUST be called at orchestration phase boundaries. Memory-Keeper `retrieve`/`search` MUST be called at phase start to load prior context. | FEAT-028 AC-2 | Cross-session context loss. Phase handoff operates on stale or absent data. |
+| MCP-002 | Memory-Keeper `context_save` MUST be called at orchestration phase boundaries. Memory-Keeper `context_get`/`context_search` MUST be called at phase start to load prior context. | FEAT-028 AC-2 | Cross-session context loss. Phase handoff operates on stale or absent data. |
 
 > **Namespace:** MCP-001/MCP-002 use a file-scoped `MCP-` prefix (not the global `H-` series in `quality-enforcement.md`). These rules are scoped to MCP tool governance only. The global HARD Rule Index references this file via H-22 (proactive skill invocation) which mandates the behavioral patterns these rules operationalize.
 
@@ -94,11 +94,11 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 
 | Event | Action | Tools |
 |-------|--------|-------|
-| Orchestration phase complete | Store phase summary + artifacts | `store` |
-| New orchestration phase start | Retrieve prior phase context | `retrieve`, `search` |
-| Multi-session research | Store key findings for reuse | `store` |
-| Session resume | Search for prior context | `search` |
-| Cross-pipeline synthesis | Search across stored contexts | `search` |
+| Orchestration phase complete | Store phase summary + artifacts | `context_save` |
+| New orchestration phase start | Retrieve prior phase context | `context_get`, `context_search` |
+| Multi-session research | Store key findings for reuse | `context_save` |
+| Session resume | Search for prior context | `context_search` |
+| Cross-pipeline synthesis | Search across stored contexts | `context_search` |
 
 ---
 
@@ -110,11 +110,11 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 |------|---------------|---------|
 | Context7 Resolve | `mcp__context7__resolve-library-id` | Resolve package to library ID |
 | Context7 Query | `mcp__context7__query-docs` | Query library documentation |
-| Memory-Keeper Store | `mcp__memory-keeper__store` | Store context with key |
-| Memory-Keeper Retrieve | `mcp__memory-keeper__retrieve` | Retrieve context by key |
-| Memory-Keeper Search | `mcp__memory-keeper__search` | Search stored contexts |
-| Memory-Keeper List | `mcp__memory-keeper__list` | List all stored contexts |
-| Memory-Keeper Delete | `mcp__memory-keeper__delete` | Delete stored context |
+| Memory-Keeper Store | `mcp__memory-keeper__context_save` | Store context with key |
+| Memory-Keeper Retrieve | `mcp__memory-keeper__context_get` | Retrieve context by key |
+| Memory-Keeper Search | `mcp__memory-keeper__context_search` | Search stored contexts |
+| Memory-Keeper List | `mcp__memory-keeper__context_session_list` | List all stored contexts |
+| Memory-Keeper Delete | `mcp__memory-keeper__context_batch_delete` | Delete stored context |
 
 > **Note:** `list` and `delete` are available in the MCP server but not currently assigned to any agent. Reserved for administrative use.
 
@@ -128,17 +128,17 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 |-------|----------|---------------|-----------|
 | ps-researcher | resolve, query | — | Library/framework research |
 | ps-analyst | resolve, query | — | API documentation lookup |
-| ps-architect | resolve, query | store, retrieve, search | Architecture research + decision persistence |
+| ps-architect | resolve, query | context_save, context_get, context_search | Architecture research + decision persistence |
 | ps-investigator | resolve, query | — | Debugging with library docs |
 | ps-synthesizer | resolve, query | — | Cross-source synthesis |
 | nse-explorer | resolve, query | — | Trade study research |
 | nse-architecture | resolve, query | — | Architecture standards research |
-| nse-requirements | — | store, retrieve, search | Requirements persistence across sessions |
-| orch-planner | — | store, retrieve, search | Phase planning + context handoff |
-| orch-tracker | — | store, retrieve, search | State persistence + checkpoint storage |
-| orch-synthesizer | — | retrieve, search | Cross-pipeline context retrieval |
-| ts-parser | — | store, retrieve | Transcript session persistence |
-| ts-extractor | — | store, retrieve | Extraction results persistence |
+| nse-requirements | — | context_save, context_get, context_search | Requirements persistence across sessions |
+| orch-planner | — | context_save, context_get, context_search | Phase planning + context handoff |
+| orch-tracker | — | context_save, context_get, context_search | State persistence + checkpoint storage |
+| orch-synthesizer | — | context_get, context_search | Cross-pipeline context retrieval |
+| ts-parser | — | context_save, context_get | Transcript session persistence |
+| ts-extractor | — | context_save, context_get | Extraction results persistence |
 | eng-architect | resolve, query | — | Library/framework security research |
 | eng-lead | resolve, query | — | Standards and dependency research |
 | eng-backend | resolve, query | — | Backend framework security docs |
@@ -183,8 +183,8 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 |---------|----------|
 | Context7 `resolve-library-id` returns no matches | Fall back to WebSearch for that library |
 | Context7 `query-docs` returns empty or irrelevant | Use WebSearch; note "Context7 no coverage" in output |
-| Memory-Keeper `store` fails (timeout, server down) | Persist context to `work/.mcp-fallback/{key}.md`; note failure in worktracker entry |
-| Memory-Keeper `retrieve` returns empty | Search by partial key before proceeding; if still empty, proceed without prior context and note gap |
+| Memory-Keeper `context_save` fails (timeout, server down) | Persist context to `work/.mcp-fallback/{key}.md`; note failure in worktracker entry |
+| Memory-Keeper `context_get` returns empty | Search by partial key before proceeding; if still empty, proceed without prior context and note gap |
 | Context7 tool-enforced call limit reached | Fall back to WebSearch for remaining queries for that library |
 | MCP server unavailable | Continue work without MCP tools; log gap in session worktracker entry |
 

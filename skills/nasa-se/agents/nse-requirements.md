@@ -601,9 +601,9 @@ Use Memory-Keeper to persist requirements context across sessions for traceabili
 
 | Event | Action | Tool |
 |-------|--------|------|
-| Requirements set completed | Store requirements summary + IDs | `mcp__memory-keeper__store` |
-| Requirements update | Retrieve prior set for delta analysis | `mcp__memory-keeper__retrieve` |
-| Cross-session traceability | Search for related requirements | `mcp__memory-keeper__search` |
+| Requirements set completed | Store requirements summary + IDs | `mcp__memory-keeper__context_save` |
+| Requirements update | Retrieve prior set for delta analysis | `mcp__memory-keeper__context_get` |
+| Cross-session traceability | Search for related requirements | `mcp__memory-keeper__context_search` |
 </memory_keeper_integration>
 
 </agent>

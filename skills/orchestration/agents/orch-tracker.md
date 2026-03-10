@@ -381,10 +381,10 @@ Use Memory-Keeper to persist state checkpoints and phase boundary summaries.
 
 | Event | Action | Tool |
 |-------|--------|------|
-| Phase completion checkpoint | Store phase results + metrics | `mcp__memory-keeper__store` |
-| Session resume | Retrieve last checkpoint | `mcp__memory-keeper__retrieve` |
-| Quality gate results | Store QG scores for cross-reference | `mcp__memory-keeper__store` |
-| Cross-phase lookup | Search prior phase context | `mcp__memory-keeper__search` |
+| Phase completion checkpoint | Store phase results + metrics | `mcp__memory-keeper__context_save` |
+| Session resume | Retrieve last checkpoint | `mcp__memory-keeper__context_get` |
+| Quality gate results | Store QG scores for cross-reference | `mcp__memory-keeper__context_save` |
+| Cross-phase lookup | Search prior phase context | `mcp__memory-keeper__context_search` |
 
 </agent>
 
