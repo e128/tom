@@ -62,7 +62,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pyright
+          pip install "pyright==1.1.408"
           pip install -e ".[dev]" || pip install -e .
 
       - name: Run pyright
@@ -85,13 +85,14 @@ jobs:
       - name: Install pip-audit
         run: |
           python -m pip install --upgrade pip
-          pip install pip-audit
+          pip install "pip-audit==2.10.0"
 
       - name: Install and audit dependencies
         run: |
           # Install dev dependencies directly (not the jerry package itself)
           # This allows auditing only real PyPI dependencies
-          pip install filelock mypy ruff
+          # EN-001: Pin versions to prevent supply chain drift
+          pip install "filelock==3.20.3" "mypy==1.19.1" "ruff==0.14.11"
           pip-audit --strict
 
       - name: Check for banned YAML APIs (M-04b)
@@ -125,7 +126,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
@@ -169,7 +170,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
@@ -193,7 +194,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
@@ -218,7 +219,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
@@ -381,7 +382,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
@@ -491,7 +492,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
@@ -516,7 +517,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
