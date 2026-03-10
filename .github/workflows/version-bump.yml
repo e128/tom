@@ -44,9 +44,15 @@ jobs:
     # BUG-003/F-003: Use github.actor (authenticated identity set by
     # GitHub from the token) instead of author.name (any committer can
     # set git config user.name "github-actions[bot]" to suppress bumps)
+    # EN-001/F-004: workflow_dispatch also respects [skip-bump] to
+    # prevent double-bumping a commit already marked skip
     if: >-
-      github.event_name == 'workflow_dispatch' ||
       (
+        github.event_name == 'workflow_dispatch' &&
+        !contains(github.event.head_commit.message, '[skip-bump]')
+      ) ||
+      (
+        github.event_name != 'workflow_dispatch' &&
         !contains(github.event.head_commit.message, '[skip-bump]') &&
         github.actor != 'github-actions[bot]'
       )
@@ -56,7 +62,7 @@ jobs:
       # Checkout with PAT for push-through-branch-protection
       # ------------------------------------------------------------------
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           fetch-depth: 0
           token: ${{ secrets.VERSION_BUMP_PAT }}
@@ -65,7 +71,7 @@ jobs:
       # Set up Python + UV + bump-my-version
       # ------------------------------------------------------------------
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
           version: "latest"
 
