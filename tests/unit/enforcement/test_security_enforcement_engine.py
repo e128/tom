@@ -555,6 +555,30 @@ class TestBypassBV06PathSuffixFalsePositive:
         assert decision.action == "approve"
 
 
+class TestEvalCommandBlocking:
+    """F-003: eval command must be blocked with word boundary."""
+
+    def test_blocks_eval_command(
+        self, engine: SecurityEnforcementEngine
+    ) -> None:
+        """Bare eval command is blocked."""
+        decision = engine.evaluate(
+            tool_name="Bash",
+            tool_input={"command": 'eval "$(ssh-agent)"'},
+        )
+        assert decision.action == "block"
+
+    def test_allows_evaluate_in_text(
+        self, engine: SecurityEnforcementEngine
+    ) -> None:
+        """Words containing 'eval' as substring are NOT blocked."""
+        decision = engine.evaluate(
+            tool_name="Bash",
+            tool_input={"command": "echo 'we evaluate the results'"},
+        )
+        assert decision.action == "approve"
+
+
 class TestBypassBV03NonRmDeletion:
     """BV-03: Destructive deletion via non-rm tools must be caught."""
 

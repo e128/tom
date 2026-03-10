@@ -304,6 +304,15 @@ class SecurityEnforcementEngine:
                 violations=["Download-execute pattern detected"],
             )
 
+        # F-003: eval as a bash command (word-boundary to avoid matching
+        # "evaluate", "evaluation", etc.)
+        if re.search(r"\beval\b", cmd_lower):
+            return EnforcementDecision(
+                action="block",
+                reason="eval command is blocked (arbitrary code execution)",
+                violations=["eval command detected"],
+            )
+
         # Check exact substring patterns
         for dangerous in self._rules.dangerous_commands:
             if dangerous.lower() in cmd_lower:
