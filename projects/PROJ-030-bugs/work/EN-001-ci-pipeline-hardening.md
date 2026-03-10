@@ -78,6 +78,7 @@ Apply `uv sync --frozen` and SHA-pinned actions across all workflows. Port stand
 ### Related Items
 
 - **Originating Bug:** [BUG-003](BUG-003-version-bump-uv-lock-dirty.md) — investigation that surfaced these findings
+- **GitHub Issue:** [#153](https://github.com/geekatron/jerry/issues/153) — this enabler
 - **GitHub Issue:** [#150](https://github.com/geekatron/jerry/issues/150) — standalone script consolidation
 - **GitHub Issue:** [#151](https://github.com/geekatron/jerry/issues/151) — version-bump uv.lock dirty
 - **Security Review:** [bug-003-devsecops-security-review.md](../reviews/bug-003-devsecops-security-review.md)
