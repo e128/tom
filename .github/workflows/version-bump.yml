@@ -41,11 +41,14 @@ jobs:
     runs-on: ubuntu-latest
 
     # Skip if this is a version bump commit (prevent infinite loop)
+    # BUG-003/F-003: Use github.actor (authenticated identity set by
+    # GitHub from the token) instead of author.name (any committer can
+    # set git config user.name "github-actions[bot]" to suppress bumps)
     if: >-
       github.event_name == 'workflow_dispatch' ||
       (
         !contains(github.event.head_commit.message, '[skip-bump]') &&
-        github.event.head_commit.author.name != 'github-actions[bot]'
+        github.actor != 'github-actions[bot]'
       )
 
     steps:
@@ -69,14 +72,24 @@ jobs:
       - name: Set up Python
         run: uv python install 3.14
 
+      # BUG-003/RISK-01: Pin bump-my-version to exact version to prevent
+      # supply chain attacks via PyPI package compromise. Update pin
+      # periodically via Dependabot or manual review.
       - name: Install bump-my-version
-        run: uv tool install bump-my-version
+        run: uv tool install 'bump-my-version==1.2.7'
 
       # ------------------------------------------------------------------
       # Install project dependencies for bump detection
+      # BUG-003: Use --frozen to prevent uv.lock modification in CI.
+      # Without --frozen, uv performs full dependency re-resolution against
+      # the CI Python version (3.14). When this differs from the version
+      # used to generate uv.lock locally, the resolver updates platform
+      # markers and dependency bounds, modifying uv.lock and making the
+      # working tree dirty — which causes bump-my-version to fail
+      # (allow_dirty = false).
       # ------------------------------------------------------------------
       - name: Install project dependencies
-        run: uv sync
+        run: uv sync --frozen
 
       # ------------------------------------------------------------------
       # Determine bump type from commits
@@ -101,6 +114,25 @@ jobs:
           echo "prerelease=" >> "$GITHUB_OUTPUT"
 
       # ------------------------------------------------------------------
+      # Ensure clean working tree before bump (BUG-003)
+      # Fail-fast guard: with --frozen, the tree should be clean.
+      # If dirty, something unexpected happened — fail loudly so a
+      # human investigates rather than silently committing unreviewed
+      # changes (allow_dirty = false is a supply chain security control).
+      # ------------------------------------------------------------------
+      - name: Ensure clean working tree
+        if: steps.bump.outputs.type != 'none'
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "::error::Working tree unexpectedly dirty before bump (uv sync --frozen should prevent this)"
+            git diff --name-only
+            echo ""
+            echo "If only uv.lock is dirty, the lockfile needs regeneration."
+            echo "Run 'uv lock' locally and commit the updated uv.lock."
+            exit 1
+          fi
+
+      # ------------------------------------------------------------------
       # Apply version bump
       # ------------------------------------------------------------------
       - name: Apply version bump
@@ -115,6 +147,13 @@ jobs:
 
           echo "Applying $BUMP_TYPE bump..."
 
+          # BUG-003/RISK-02: Validate prerelease input is alphanumeric only.
+          # Prevents shell injection via workflow_dispatch free-form string.
+          if [[ -n "$PRERELEASE" && ! "$PRERELEASE" =~ ^[a-zA-Z0-9]+$ ]]; then
+            echo "::error::Invalid prerelease label '$PRERELEASE'. Must be alphanumeric (e.g., alpha, beta, rc)."
+            exit 1
+          fi
+
           if [[ -n "$PRERELEASE" ]]; then
             echo "Pre-release: $PRERELEASE"
             bump-my-version bump "$BUMP_TYPE" --no-tag
@@ -125,11 +164,17 @@ jobs:
 
       # ------------------------------------------------------------------
       # Validate version consistency
+      # BUG-003: Use --frozen here too. Without it, uv sync after the
+      # bump commit could re-resolve dependencies and re-dirty the tree,
+      # which doesn't break the bump (already committed) but leaves the
+      # runner in an inconsistent state for the version check script.
+      # The version field change in pyproject.toml does not affect
+      # dependency resolution, so --frozen is safe here.
       # ------------------------------------------------------------------
       - name: Validate version sync
         if: steps.bump.outputs.type != 'none'
         run: |
-          uv sync
+          uv sync --frozen
           uv run python scripts/sync_versions.py --check
 
       # ------------------------------------------------------------------

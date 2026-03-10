@@ -8,6 +8,8 @@
 |----|------|-------|--------|--------|
 | BUG-001 | Bug | Memory-keeper tool names mismatch across all governance files | pending | PROJ-030-bugs |
 | BUG-002 | Bug | Version bump regex rejects uppercase scopes like GH-NNN | in_progress | PROJ-030-bugs |
+| BUG-003 | Bug | version-bump workflow fails — uv.lock dirty after uv sync | in_progress | PROJ-030-bugs |
+| EN-001 | Enabler | CI pipeline security hardening | pending | PROJ-030-bugs |
 
 ## Completed
 
