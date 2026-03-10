@@ -27,7 +27,7 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       # EN-001/H-002: Use uv with --frozen instead of pip with floating constraint
       - name: Install uv
-        uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
         with:
           version: "0.10.9"
       - name: Set up Python
