@@ -108,6 +108,9 @@ nav:
     - Orchestration: playbooks/orchestration.md
     - Transcript Processing: playbooks/transcript.md
     - Plugin Development: playbooks/PLUGIN-DEVELOPMENT.md
+    - Update a SHA-Pinned Action: howto/update-sha-pinned-action.md
+    - Add a New CI Job: howto/add-ci-job.md
+    - Add a GitHub Actions Dependency: howto/add-github-actions-dependency.md
   - Reference:
     - CLAUDE.md Guide: CLAUDE-MD-GUIDE.md
     - CI/CD Pipeline Security: reference/ci-cd-pipeline-security.md
