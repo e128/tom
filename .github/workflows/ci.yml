@@ -529,6 +529,61 @@ jobs:
         run: uv run python scripts/check_hard_rule_ceiling.py
 
   # ===========================================================================
+  # Changelog Enforcement
+  # ===========================================================================
+  # Every PR to main must include a CHANGELOG.md update.
+  # Exemptions: Dependabot PRs, version-bump bot commits, [skip-changelog] marker.
+  changelog-check:
+    name: Changelog Entry
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0
+
+      # CLCHK-001: Use env block to prevent shell injection via PR title.
+      # ${{ }} expressions are expanded at YAML render time before bash executes,
+      # so untrusted strings must be passed as env vars, not inline interpolation.
+      - name: Check CHANGELOG.md was updated
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_ACTOR: ${{ github.actor }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          # Exempt bot PRs
+          if [[ "$PR_ACTOR" == "dependabot[bot]" ]] || \
+             [[ "$PR_ACTOR" == "github-actions[bot]" ]]; then
+            echo "Bot PR — changelog check skipped."
+            exit 0
+          fi
+
+          # Exempt [skip-changelog] marker in PR title
+          if [[ "$PR_TITLE" == *"[skip-changelog]"* ]]; then
+            echo "PR title contains [skip-changelog] — check skipped."
+            exit 0
+          fi
+
+          # Check if CHANGELOG.md is in the diff against the PR base
+          if git diff --name-only "$BASE_SHA"...HEAD | grep -q '^CHANGELOG.md$'; then
+            # Verify the change touches the [Unreleased] section, not just any line
+            if git diff "$BASE_SHA"...HEAD -- CHANGELOG.md | grep -q '^\+.*Unreleased\|^\+.*###'; then
+              echo "CHANGELOG.md updated with content in [Unreleased] section. OK."
+            else
+              echo "::warning::CHANGELOG.md was modified but no new entries detected under [Unreleased]."
+              echo "Passing check — but please verify the changelog entry is meaningful."
+            fi
+          else
+            echo "::error::CHANGELOG.md was not updated in this PR."
+            echo ""
+            echo "Every PR must include a changelog entry in the [Unreleased] section."
+            echo "See CHANGELOG.md for format (Keep a Changelog)."
+            echo ""
+            echo "To skip this check (e.g., CI-only changes), add [skip-changelog] to the PR title."
+            exit 1
+          fi
+
+  # ===========================================================================
   # Final Status Check
   # ===========================================================================
   # Both pip and uv test jobs must pass for CI to succeed
@@ -536,7 +591,7 @@ jobs:
   ci-success:
     name: CI Success
     runs-on: ubuntu-latest
-    needs: [lint, type-check, security, plugin-validation, template-validation, license-headers, cli-integration, test-pip, test-uv, version-sync, hard-rule-ceiling]
+    needs: [lint, type-check, security, plugin-validation, template-validation, license-headers, cli-integration, test-pip, test-uv, version-sync, hard-rule-ceiling, changelog-check]
     if: always()
     steps:
       - name: Check all jobs passed
@@ -566,6 +621,16 @@ jobs:
             echo "  hard-rule-ceiling: ${{ needs.hard-rule-ceiling.result }}"
             exit 1
           fi
+
+          # CLCHK-003: changelog-check only runs on PRs (if: github.event_name == 'pull_request').
+          # On push events it reports "skipped" — this is expected, not a failure.
+          # Any future PR-only job added to the needs list must use this same pattern.
+          CHANGELOG_RESULT="${{ needs.changelog-check.result }}"
+          if [[ "$CHANGELOG_RESULT" != "success" && "$CHANGELOG_RESULT" != "skipped" ]]; then
+            echo "changelog-check failed: $CHANGELOG_RESULT"
+            exit 1
+          fi
+
           echo "All CI checks passed!"
           echo "  - Linting: OK"
           echo "  - Type checking: OK"
@@ -578,3 +643,4 @@ jobs:
           echo "  - Tests (uv): OK"
           echo "  - Version sync: OK"
           echo "  - HARD rule ceiling: OK"
+          echo "  - Changelog entry: ${CHANGELOG_RESULT}"
