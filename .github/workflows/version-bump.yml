@@ -96,11 +96,11 @@ jobs:
 
       # ------------------------------------------------------------------
       # Install project dependencies for bump detection
-      # BUG-003: --frozen is redundant with job-level UV_LOCKED=1 (see
-      # env block above) but kept for explicitness.
+      # BUG-003: UV_LOCKED=1 (job-level env) handles lockfile protection.
+      # Do NOT add --frozen here — it conflicts with UV_LOCKED.
       # ------------------------------------------------------------------
       - name: Install project dependencies
-        run: uv sync --frozen
+        run: uv sync
 
       # ------------------------------------------------------------------
       # Determine bump type from commits
@@ -175,12 +175,13 @@ jobs:
 
       # ------------------------------------------------------------------
       # Validate version consistency
-      # BUG-003: --frozen redundant with job-level UV_LOCKED=1.
+      # BUG-003: UV_LOCKED=1 (job-level env) prevents lockfile modification.
+      # Do NOT add --frozen — it conflicts with UV_LOCKED.
       # ------------------------------------------------------------------
       - name: Validate version sync
         if: steps.bump.outputs.type != 'none'
         run: |
-          uv sync --frozen
+          uv sync
           uv run python scripts/sync_versions.py --check
 
       # ------------------------------------------------------------------
