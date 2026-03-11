@@ -190,6 +190,12 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 
 ---
 
+## Permission Syntax
+
+For Claude Code permission patterns (MCP wildcards, skill permissions, Bash patterns, file access, evaluation order, settings scope), see `docs/reference/claude-code-permissions.md`.
+
+---
+
 ## References
 
 | Source | Content |
@@ -198,3 +204,4 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 | TOOL_REGISTRY.yaml | SSOT for tool-to-agent mappings and permissions |
 | `.claude/settings.local.json` | Runtime MCP server configuration |
 | `quality-enforcement.md` | Quality gate thresholds and enforcement architecture |
+| `docs/reference/claude-code-permissions.md` | Claude Code permission syntax reference (patterns, wildcards, evaluation order, scopes) |

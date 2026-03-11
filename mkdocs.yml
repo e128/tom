@@ -114,6 +114,7 @@ nav:
   - Reference:
     - CLAUDE.md Guide: CLAUDE-MD-GUIDE.md
     - CI/CD Pipeline Security: reference/ci-cd-pipeline-security.md
+    - Claude Code Permissions: reference/claude-code-permissions.md
     - Schema Versioning: schemas/SCHEMA_VERSIONING.md
     - Session Context Schema: schemas/SESSION_CONTEXT_GUIDE.md
   - Explanation:
