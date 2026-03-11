@@ -173,6 +173,14 @@ jobs:
             bump-my-version bump "$BUMP_TYPE"
           fi
 
+          # Regenerate uv.lock after version bump. bump-my-version changes
+          # the version field in pyproject.toml, making uv.lock stale.
+          # UV_LOCKED would block subsequent uv commands without this step.
+          # Unset UV_LOCKED temporarily so uv lock can update the file.
+          UV_LOCKED="" uv lock
+          git add uv.lock
+          git commit --amend --no-edit
+
       # ------------------------------------------------------------------
       # Validate version consistency
       # BUG-003: UV_LOCKED=1 (job-level env) prevents lockfile modification.
