@@ -14,8 +14,7 @@ References:
 
 from __future__ import annotations
 
-import platform
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
@@ -41,6 +40,7 @@ class SecurityRules:
         "~/.ssh",
         "~/.gnupg",
         "~/.aws",
+        "~/.config/gcloud",
         "/etc",
         "/var",
         "/usr",
@@ -97,9 +97,10 @@ class SecurityRules:
         "master",
     )
 
-    current_platform: str = field(
-        default_factory=lambda: platform.system().lower()
-    )
+    # Note: Windows-specific path enforcement (normcase, %SystemRoot%) from
+    # scripts/pre_tool_use.py is not ported. Jerry Framework targets macOS/Linux
+    # CI runners. If Windows support is needed, add platform-aware checks in a
+    # future PR rather than carrying dead config fields.
 
     @classmethod
     def default(cls) -> SecurityRules:

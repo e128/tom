@@ -3,7 +3,12 @@
 # Copyright (c) 2026 Adam Nowak
 """PreToolUse hook wrapper. Delegates to jerry hooks pre-tool-use.
 
-Timeout budget: wrapper subprocess=4s < hooks.json=5s (1s buffer for wrapper overhead).
+#150: Consolidated enforcement pipeline — SecurityEnforcementEngine
+(blocked paths, dangerous commands, secrets/PII) + PreToolEnforcementEngine
+(architecture V-038/V-041) + StalenessDetector, all via single CLI path.
+
+Timeout budget: subprocess=4s < hooks.json=5s (1s buffer for wrapper overhead).
+Fail-open: any exception results in exit 0 with no output (approve passthrough).
 """
 
 import os
@@ -22,6 +27,15 @@ try:
     sys.stdout.buffer.write(result.stdout)
     if result.stderr:
         sys.stderr.buffer.write(result.stderr)
+    # Propagate CLI exit code when non-zero indicates a handled error
+    # (vs. Exception path which is always fail-open)
+    if result.returncode != 0:
+        print(
+            f"[hooks/pre-tool-use] CLI exited {result.returncode}",
+            file=sys.stderr,
+        )
 except Exception:
+    # Fail-open: timeout, FileNotFoundError, any other error
+    # results in exit 0 with no stdout (approve passthrough)
     pass
 sys.exit(0)

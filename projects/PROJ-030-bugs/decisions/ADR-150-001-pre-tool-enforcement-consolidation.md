@@ -19,7 +19,13 @@
 
 ## Status
 
-**Proposed** -- 2026-03-10
+**Accepted and Implemented** -- 2026-03-10
+
+**As-built deviations from original design:**
+- `YamlPatternLibraryAdapter` → implemented as `PatternLibraryAdapter` (simpler name)
+- `security_check_result.py`, `ipattern_library.py`, `pattern_validation_result.py` → dataclasses inlined into `pattern_library_adapter.py` and engine (fewer files, same interfaces)
+- `security_engine` handler parameter → `Optional` for backward compatibility during migration
+- `current_platform` field → removed (Windows enforcement out of scope; Jerry targets macOS/Linux)
 
 ---
 

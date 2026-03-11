@@ -37,14 +37,9 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "Write|Edit|MultiEdit|Bash",
-        "_comment": "Dual enforcement: (1) security guardrails (WI-SAO-015) then (2) architecture enforcement (EN-006/PROJ-004). Claude Code runs hooks in order; first 'block' wins.",
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash",
+        "_comment": "#150: Consolidated enforcement pipeline. SecurityEnforcementEngine (security checks) + PreToolEnforcementEngine (architecture) + StalenessDetector, all via single CLI path.",
         "hooks": [
-          {
-            "type": "command",
-            "command": "uv run --directory ${CLAUDE_PLUGIN_ROOT} ${CLAUDE_PLUGIN_ROOT}/scripts/pre_tool_use.py",
-            "timeout": 5000
-          },
           {
             "type": "command",
             "command": "uv run --directory ${CLAUDE_PLUGIN_ROOT} ${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use.py",

@@ -6,17 +6,18 @@
 """
 Pre-Tool Use Hook - Security Guardrails
 
-This hook runs BEFORE Claude executes any tool, providing security checks
-and guardrails to prevent dangerous operations.
+DEPRECATED (#150): This standalone script is superseded by the consolidated
+enforcement pipeline in src/infrastructure/internal/enforcement/. All security
+checks from this file have been ported to SecurityEnforcementEngine and are
+now invoked via the CLI path: jerry hooks pre-tool-use.
 
-Reference: https://docs.anthropic.com/en/docs/claude-code/hooks
+The hooks.json configuration has been updated to use only the CLI path.
+This file is retained temporarily for reference during the migration
+verification period. It will be deleted in a future cleanup PR.
 
-Work Item: WI-SAO-015 (Guardrail Validation Hooks)
-Acceptance Criteria:
-    - AC-015-001: Async validation via subprocess model
-    - AC-015-002: timeout_ms: 100
-    - AC-015-003: mode: warn (log but don't block)
-    - AC-015-004: Pattern library for common checks
+See: ADR-150-001 (Pre-Tool Enforcement Pipeline Consolidation)
+
+Original Work Item: WI-SAO-015 (Guardrail Validation Hooks)
 
 Exit Codes:
     0 - Allow the tool use (with optional decision in JSON)

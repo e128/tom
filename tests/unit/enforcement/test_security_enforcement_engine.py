@@ -60,6 +60,7 @@ class TestBlockedWritePaths:
             "~/.ssh/authorized_keys",
             "~/.gnupg/private-keys-v1.d/key.gpg",
             "~/.aws/credentials",
+            "~/.config/gcloud/application_default_credentials.json",
             "/etc/passwd",
             "/etc/shadow",
             "/var/log/syslog",
