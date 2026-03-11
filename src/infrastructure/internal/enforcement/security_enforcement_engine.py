@@ -163,8 +163,10 @@ class SecurityEnforcementEngine:
             # false positives on paths like /project/my-ssh-tool/config.py
             if blocked.startswith("~/"):
                 dotdir = blocked[2:]  # .ssh, .gnupg, .aws
-                # Check if dotdir appears as an exact directory component
-                if re.search(r"(?<=/)" + re.escape(dotdir) + r"(/|$)", canonical):
+                # Check if dotdir appears as an exact directory component.
+                # Use [/\\] to handle both Unix and Windows path separators
+                # since os.path.normpath uses backslashes on Windows.
+                if re.search(r"(?<=[/\\])" + re.escape(dotdir) + r"([/\\]|$)", canonical):
                     return EnforcementDecision(
                         action="block",
                         reason=f"Writing to {blocked} is blocked for security",
