@@ -126,16 +126,16 @@ jobs:
 
       # ------------------------------------------------------------------
       # Ensure clean working tree before bump (BUG-003)
-      # Fail-fast guard: with --frozen, the tree should be clean.
-      # If dirty, something unexpected happened — fail loudly so a
-      # human investigates rather than silently committing unreviewed
-      # changes (allow_dirty = false is a supply chain security control).
+      # BUG-003: Fail-fast guard. With UV_LOCKED=1, uv sync/run cannot
+      # modify uv.lock. If the tree is dirty, something unexpected happened.
+      # Fail loudly so a human investigates (allow_dirty = false is a
+      # supply chain security control).
       # ------------------------------------------------------------------
       - name: Ensure clean working tree
         if: steps.bump.outputs.type != 'none'
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
-            echo "::error::Working tree unexpectedly dirty before bump (uv sync --frozen should prevent this)"
+            echo "::error::Working tree unexpectedly dirty before bump (UV_LOCKED=1 should prevent this)"
             git diff --name-only
             echo ""
             echo "If only uv.lock is dirty, the lockfile needs regeneration."
@@ -171,6 +171,39 @@ jobs:
             bump-my-version bump pre_l --no-commit --no-tag --new-version "$(grep -oP 'version = "\K[^"]+' pyproject.toml | head -1)-${PRERELEASE}.1"
           else
             bump-my-version bump "$BUMP_TYPE"
+          fi
+
+          # BUG-003/FIX: Regenerate uv.lock after version bump.
+          # bump-my-version changes the version in pyproject.toml, making
+          # uv.lock stale. UV_LOCKED blocks subsequent uv commands without
+          # this step. In the prerelease path, the amend also folds the
+          # --no-commit changes from line 171 into the bump commit.
+          # Unset UV_LOCKED temporarily so uv lock can update the file.
+          UV_LOCKED="" uv lock
+
+          # Guard: verify uv lock only changed the jerry version field,
+          # not transitive dependencies. A broader change could indicate
+          # a supply chain issue (red-exploit Finding 1).
+          LOCK_DIFF=$(git diff --unified=0 uv.lock | grep "^[+-]" | grep -v "^[+-][+-][+-]" || true)
+          LOCK_LINES=$(echo "$LOCK_DIFF" | grep -c "." || true)
+          if [[ "$LOCK_LINES" -gt 2 ]]; then
+            echo "::warning::uv.lock changed more than the version field ($LOCK_LINES diff lines). Review the lockfile changes."
+            git diff uv.lock
+          fi
+
+          git add uv.lock
+          git commit --amend --no-edit
+
+          # Re-create the tag at the amended commit SHA.
+          # bump-my-version created the tag at the pre-amend commit (C1).
+          # The amend creates a new commit (C2), orphaning C1. Without
+          # re-tagging, the release tag points to a commit that does NOT
+          # include the regenerated uv.lock. (eng-devsecops Finding 5)
+          NEW_VERSION=$(grep -oP '^version = "\K[^"]+' pyproject.toml | head -1)
+          if git tag -l "v${NEW_VERSION}" | grep -q .; then
+            git tag -d "v${NEW_VERSION}"
+            git tag -a "v${NEW_VERSION}" -m "Release v${NEW_VERSION}"
+            echo "Re-tagged v${NEW_VERSION} at amended commit $(git rev-parse HEAD)"
           fi
 
       # ------------------------------------------------------------------
