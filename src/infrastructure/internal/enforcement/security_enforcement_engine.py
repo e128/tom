@@ -164,9 +164,7 @@ class SecurityEnforcementEngine:
             if blocked.startswith("~/"):
                 dotdir = blocked[2:]  # .ssh, .gnupg, .aws
                 # Check if dotdir appears as an exact directory component
-                if re.search(
-                    r"(?<=/)" + re.escape(dotdir) + r"(/|$)", canonical
-                ):
+                if re.search(r"(?<=/)" + re.escape(dotdir) + r"(/|$)", canonical):
                     return EnforcementDecision(
                         action="block",
                         reason=f"Writing to {blocked} is blocked for security",
@@ -194,9 +192,7 @@ class SecurityEnforcementEngine:
                     violations=[f"Sensitive file pattern: {pattern}"],
                 )
             # Also check extension match (.pem, .key)
-            if pattern_lower.startswith(".") and basename.endswith(
-                pattern_lower
-            ):
+            if pattern_lower.startswith(".") and basename.endswith(pattern_lower):
                 return EnforcementDecision(
                     action="block",
                     reason=(
@@ -287,17 +283,13 @@ class SecurityEnforcementEngine:
 
         return _APPROVE
 
-    def _check_dangerous_commands(
-        self, command: str
-    ) -> EnforcementDecision:
+    def _check_dangerous_commands(self, command: str) -> EnforcementDecision:
         """C-005: Block known dangerous commands."""
         cmd_lower = command.lower()
 
         # BV-04: Download-then-execute pattern — catches pipe, &&, ;, >
         # curl/wget followed by bash/sh in the same command, any separator
-        if re.search(
-            r"\b(curl|wget)\b.*\b(bash|sh)\b", cmd_lower
-        ):
+        if re.search(r"\b(curl|wget)\b.*\b(bash|sh)\b", cmd_lower):
             return EnforcementDecision(
                 action="block",
                 reason="Download followed by shell execution is blocked",
@@ -338,8 +330,7 @@ class SecurityEnforcementEngine:
                     return EnforcementDecision(
                         action="block",
                         reason=(
-                            f"Force push to {branch} is blocked. "
-                            f"Use a feature branch instead."
+                            f"Force push to {branch} is blocked. Use a feature branch instead."
                         ),
                         violations=[f"Force push to {branch}"],
                     )
@@ -350,17 +341,13 @@ class SecurityEnforcementEngine:
     # Pattern-based validation (C-012..C-017)
     # ------------------------------------------------------------------
 
-    def _check_patterns(
-        self, tool_name: str, tool_input: dict[str, Any]
-    ) -> EnforcementDecision:
+    def _check_patterns(self, tool_name: str, tool_input: dict[str, Any]) -> EnforcementDecision:
         """Check tool input against pattern library (PII, secrets)."""
         try:
             library = self._pattern_library
             if library is None:
                 return _APPROVE
-            result = library.validate_tool_input(
-                tool_name, tool_input
-            )
+            result = library.validate_tool_input(tool_name, tool_input)
             if result.decision == "block":
                 return EnforcementDecision(
                     action="block",

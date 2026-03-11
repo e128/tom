@@ -100,9 +100,7 @@ class TestBlockedWritePaths:
             f"Expected approve for write to {file_path}, got {decision.action}"
         )
 
-    def test_blocks_path_traversal_to_system_dir(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_blocks_path_traversal_to_system_dir(self, engine: SecurityEnforcementEngine) -> None:
         """Path traversal attempts to system dirs must be blocked (T-04)."""
         decision = engine.evaluate(
             tool_name="Write",
@@ -148,9 +146,7 @@ class TestSensitiveFilePatterns:
             f"Expected block for write to {file_path}, got {decision.action}"
         )
 
-    def test_allows_env_example(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_allows_env_example(self, engine: SecurityEnforcementEngine) -> None:
         """Writing to .env.example should be allowed (not a real secret)."""
         decision = engine.evaluate(
             tool_name="Write",
@@ -180,9 +176,7 @@ class TestBashCdBlocking:
             "$(cd /tmp)",
         ],
     )
-    def test_blocks_cd_command(
-        self, engine: SecurityEnforcementEngine, command: str
-    ) -> None:
+    def test_blocks_cd_command(self, engine: SecurityEnforcementEngine, command: str) -> None:
         """cd commands must be blocked to preserve working directory."""
         decision = engine.evaluate(
             tool_name="Bash",
@@ -192,9 +186,7 @@ class TestBashCdBlocking:
             f"Expected block for cd command '{command}', got {decision.action}"
         )
 
-    def test_allows_command_without_cd(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_allows_command_without_cd(self, engine: SecurityEnforcementEngine) -> None:
         """Normal bash commands without cd should be allowed."""
         decision = engine.evaluate(
             tool_name="Bash",
@@ -221,21 +213,15 @@ class TestDangerousRmPatterns:
             "rm -rf /home",
         ],
     )
-    def test_blocks_destructive_rm(
-        self, engine: SecurityEnforcementEngine, command: str
-    ) -> None:
+    def test_blocks_destructive_rm(self, engine: SecurityEnforcementEngine, command: str) -> None:
         """Destructive rm commands must be blocked."""
         decision = engine.evaluate(
             tool_name="Bash",
             tool_input={"command": command},
         )
-        assert decision.action == "block", (
-            f"Expected block for '{command}', got {decision.action}"
-        )
+        assert decision.action == "block", f"Expected block for '{command}', got {decision.action}"
 
-    def test_allows_safe_rm(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_allows_safe_rm(self, engine: SecurityEnforcementEngine) -> None:
         """Targeted rm commands on specific files should be allowed."""
         decision = engine.evaluate(
             tool_name="Bash",
@@ -271,9 +257,7 @@ class TestDangerousCommands:
             tool_name="Bash",
             tool_input={"command": command},
         )
-        assert decision.action == "block", (
-            f"Expected block for '{command}', got {decision.action}"
-        )
+        assert decision.action == "block", f"Expected block for '{command}', got {decision.action}"
 
 
 # ---------------------------------------------------------------------------
@@ -301,13 +285,9 @@ class TestGitForcePush:
             tool_name="Bash",
             tool_input={"command": command},
         )
-        assert decision.action == "block", (
-            f"Expected block for '{command}', got {decision.action}"
-        )
+        assert decision.action == "block", f"Expected block for '{command}', got {decision.action}"
 
-    def test_allows_force_push_to_feature_branch(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_allows_force_push_to_feature_branch(self, engine: SecurityEnforcementEngine) -> None:
         """Force push to feature branches should be allowed."""
         decision = engine.evaluate(
             tool_name="Bash",
@@ -315,9 +295,7 @@ class TestGitForcePush:
         )
         assert decision.action == "approve"
 
-    def test_allows_normal_push_to_main(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_allows_normal_push_to_main(self, engine: SecurityEnforcementEngine) -> None:
         """Normal push (no --force) to main should be allowed."""
         decision = engine.evaluate(
             tool_name="Bash",
@@ -334,9 +312,7 @@ class TestGitForcePush:
 class TestEditToolChecks:
     """Edit tool should apply the same file path checks as Write."""
 
-    def test_blocks_edit_to_sensitive_file(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_blocks_edit_to_sensitive_file(self, engine: SecurityEnforcementEngine) -> None:
         """Edit to sensitive file must be blocked."""
         decision = engine.evaluate(
             tool_name="Edit",
@@ -348,9 +324,7 @@ class TestEditToolChecks:
         )
         assert decision.action == "block"
 
-    def test_allows_edit_to_safe_file(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_allows_edit_to_safe_file(self, engine: SecurityEnforcementEngine) -> None:
         """Edit to project file must be allowed."""
         decision = engine.evaluate(
             tool_name="Edit",
@@ -394,9 +368,7 @@ class TestToolDispatch:
 class TestFailOpen:
     """Engine must approve when internal errors occur."""
 
-    def test_missing_file_path_approves(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_missing_file_path_approves(self, engine: SecurityEnforcementEngine) -> None:
         """Write with no file_path should approve (fail-open, not crash)."""
         decision = engine.evaluate(
             tool_name="Write",
@@ -404,9 +376,7 @@ class TestFailOpen:
         )
         assert decision.action == "approve"
 
-    def test_empty_command_approves(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_empty_command_approves(self, engine: SecurityEnforcementEngine) -> None:
         """Bash with empty command should approve."""
         decision = engine.evaluate(
             tool_name="Bash",
@@ -414,9 +384,7 @@ class TestFailOpen:
         )
         assert decision.action == "approve"
 
-    def test_empty_tool_input_approves(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_empty_tool_input_approves(self, engine: SecurityEnforcementEngine) -> None:
         """Empty tool input should approve."""
         decision = engine.evaluate(
             tool_name="Write",
@@ -452,9 +420,7 @@ class TestBypassBV10NonStringFilePath:
 class TestBypassBV11NullByteInjection:
     """BV-11: Null bytes in file_path must be blocked."""
 
-    def test_null_byte_in_file_path_is_blocked(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_null_byte_in_file_path_is_blocked(self, engine: SecurityEnforcementEngine) -> None:
         """Null byte in file_path is a path injection attempt — block it."""
         decision = engine.evaluate(
             tool_name="Write",
@@ -465,9 +431,7 @@ class TestBypassBV11NullByteInjection:
         )
         assert decision.action == "block"
 
-    def test_null_byte_in_bash_command_is_blocked(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_null_byte_in_bash_command_is_blocked(self, engine: SecurityEnforcementEngine) -> None:
         """Null byte in bash command is blocked."""
         decision = engine.evaluate(
             tool_name="Bash",
@@ -495,9 +459,7 @@ class TestBypassBV04TwoStageDownloadExecute:
             tool_name="Bash",
             tool_input={"command": command},
         )
-        assert decision.action == "block", (
-            f"Expected block for '{command}', got {decision.action}"
-        )
+        assert decision.action == "block", f"Expected block for '{command}', got {decision.action}"
 
 
 class TestBypassBV01SubshellCd:
@@ -519,17 +481,13 @@ class TestBypassBV01SubshellCd:
             tool_name="Bash",
             tool_input={"command": command},
         )
-        assert decision.action == "block", (
-            f"Expected block for '{command}', got {decision.action}"
-        )
+        assert decision.action == "block", f"Expected block for '{command}', got {decision.action}"
 
 
 class TestBypassBV05MultiSpaceGitPush:
     """BV-05: git  push (multi-space) must still be caught."""
 
-    def test_blocks_git_push_with_extra_spaces(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_blocks_git_push_with_extra_spaces(self, engine: SecurityEnforcementEngine) -> None:
         """Force push with multiple spaces between git and push."""
         decision = engine.evaluate(
             tool_name="Bash",
@@ -541,9 +499,7 @@ class TestBypassBV05MultiSpaceGitPush:
 class TestBypassBV06PathSuffixFalsePositive:
     """BV-06: Legitimate paths containing .ssh as substring should not block."""
 
-    def test_allows_project_with_ssh_in_name(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_allows_project_with_ssh_in_name(self, engine: SecurityEnforcementEngine) -> None:
         """A project dir named my-ssh-tool should not be blocked."""
         decision = engine.evaluate(
             tool_name="Write",
@@ -558,9 +514,7 @@ class TestBypassBV06PathSuffixFalsePositive:
 class TestEvalCommandBlocking:
     """F-003: eval command must be blocked with word boundary."""
 
-    def test_blocks_eval_command(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_blocks_eval_command(self, engine: SecurityEnforcementEngine) -> None:
         """Bare eval command is blocked."""
         decision = engine.evaluate(
             tool_name="Bash",
@@ -568,9 +522,7 @@ class TestEvalCommandBlocking:
         )
         assert decision.action == "block"
 
-    def test_allows_evaluate_in_text(
-        self, engine: SecurityEnforcementEngine
-    ) -> None:
+    def test_allows_evaluate_in_text(self, engine: SecurityEnforcementEngine) -> None:
         """Words containing 'eval' as substring are NOT blocked."""
         decision = engine.evaluate(
             tool_name="Bash",
@@ -589,14 +541,10 @@ class TestBypassBV03NonRmDeletion:
             "find / -exec rm {} +",
         ],
     )
-    def test_blocks_destructive_find(
-        self, engine: SecurityEnforcementEngine, command: str
-    ) -> None:
+    def test_blocks_destructive_find(self, engine: SecurityEnforcementEngine, command: str) -> None:
         """find -delete targeting root must be blocked."""
         decision = engine.evaluate(
             tool_name="Bash",
             tool_input={"command": command},
         )
-        assert decision.action == "block", (
-            f"Expected block for '{command}', got {decision.action}"
-        )
+        assert decision.action == "block", f"Expected block for '{command}', got {decision.action}"

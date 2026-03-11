@@ -75,9 +75,7 @@ class PatternLibraryAdapter:
 
             self._library = load_patterns(patterns_path)
         except Exception as exc:
-            logger.warning(
-                "[PatternLibraryAdapter] Failed to load patterns: %s", exc
-            )
+            logger.warning("[PatternLibraryAdapter] Failed to load patterns: %s", exc)
 
     @staticmethod
     def _find_scripts_dir(patterns_path: Path | None) -> Path | None:
@@ -114,9 +112,7 @@ class PatternLibraryAdapter:
             T-06: matches contain rule_id only, never matched text.
         """
         if self._library is None:
-            return PatternValidationResult(
-                decision="approve", reason="", matches=[]
-            )
+            return PatternValidationResult(decision="approve", reason="", matches=[])
 
         try:
             result = self._library.validate_input(tool_name, tool_input)
@@ -137,9 +133,5 @@ class PatternLibraryAdapter:
                 matches=safe_matches,
             )
         except Exception as exc:
-            logger.warning(
-                "[PatternLibraryAdapter] Validation failed: %s", exc
-            )
-            return PatternValidationResult(
-                decision="approve", reason="", matches=[]
-            )
+            logger.warning("[PatternLibraryAdapter] Validation failed: %s", exc)
+            return PatternValidationResult(decision="approve", reason="", matches=[])

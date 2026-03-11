@@ -72,8 +72,8 @@ class SecurityRules:
         "> /dev/sda",
         "mkfs",
         "dd if=",
-        "find / -delete",      # BV-03: non-rm destructive deletion
-        "find / -exec rm",     # BV-03: find with rm action
+        "find / -delete",  # BV-03: non-rm destructive deletion
+        "find / -exec rm",  # BV-03: find with rm action
     )
     # Note: curl/wget download-execute patterns are handled by regex in
     # SecurityEnforcementEngine._check_dangerous_commands, not by
@@ -86,9 +86,9 @@ class SecurityRules:
         "; cd",
         "$(cd",
         "| cd",
-        "(cd",       # BV-01: subshell cd
-        "pushd",     # BV-01: pushd builtin
-        "env -c",    # BV-01: env -C (case-insensitive match)
+        "(cd",  # BV-01: subshell cd
+        "pushd",  # BV-01: pushd builtin
+        "env -c",  # BV-01: env -C (case-insensitive match)
         "env --chdir",  # BV-01: env --chdir
     )
 

@@ -194,9 +194,7 @@ class TestHooksJsonStructure:
         """GIVEN hooks.json WHEN PreToolUse THEN single CLI path after #150 consolidation."""
         pre_tool_use = hooks_json["hooks"]["PreToolUse"]
         commands = [h["command"] for entry in pre_tool_use for h in entry.get("hooks", [])]
-        assert len(commands) == 1, (
-            f"PreToolUse should have 1 hook after #150. Found: {commands}"
-        )
+        assert len(commands) == 1, f"PreToolUse should have 1 hook after #150. Found: {commands}"
         assert "hooks/pre-tool-use.py" in commands[0]
 
     def test_subagent_stop_unchanged(self, hooks_json: dict) -> None:

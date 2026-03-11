@@ -45,9 +45,7 @@ class TestPatternLibraryAdapterLoading:
         """Missing patterns file results in fail-open approve."""
         from pathlib import Path
 
-        adapter = PatternLibraryAdapter(
-            patterns_path=Path("/nonexistent/patterns.yaml")
-        )
+        adapter = PatternLibraryAdapter(patterns_path=Path("/nonexistent/patterns.yaml"))
         result = adapter.validate_tool_input("Write", {"content": "test"})
         assert result.decision == "approve"
 
@@ -88,9 +86,7 @@ class TestPatternLibraryAdapterValidation:
         )
         assert result.decision == "approve"
 
-    def test_t06_matched_text_not_in_result(
-        self, adapter: PatternLibraryAdapter
-    ) -> None:
+    def test_t06_matched_text_not_in_result(self, adapter: PatternLibraryAdapter) -> None:
         """T-06: PatternMatch objects must not contain matched text."""
         fake_pat = _make_fake_gh_pat()
         result = adapter.validate_tool_input(

@@ -128,9 +128,10 @@
 
 **Tactical note:** Write all three guides in a single session (shared context efficiency). But PR them independently so a quality finding on one guide doesn't block the other two (DA-002). Each PR includes its mkdocs.yml nav entry.
 
-### Phase 3a: Source-to-Doc Mapping (can start in parallel with Phase 2)
-**Entry:** Phase 0 complete. No dependency on Phase 2 (DA-004).
-**Exit:** #159 mapping config and validation script merged
+### Phase 3a: Source-to-Doc Mapping — CANCELLED
+**Status:** #158, #159, #160, #174 closed. Manual mapping approach does not scale.
+**Replacement:** #175 (design ticket for scalable doc freshness detection).
+**Rationale:** Manual YAML mapping creates maintenance rot, combinatorial explosion, and warning fatigue. Needs proper /problem-solving design before implementation.
 
 | Step | Action | Skill | Effort | Dependency |
 |------|--------|-------|--------|------------|

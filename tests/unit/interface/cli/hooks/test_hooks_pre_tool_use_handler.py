@@ -345,9 +345,7 @@ class TestSecurityEngineIntegration:
     def mock_security_engine(self) -> MagicMock:
         """Create a mock SecurityEnforcementEngine."""
         engine = MagicMock()
-        engine.evaluate.return_value = EnforcementDecision(
-            action="approve", reason=""
-        )
+        engine.evaluate.return_value = EnforcementDecision(action="approve", reason="")
         return engine
 
     @pytest.fixture()
@@ -371,10 +369,12 @@ class TestSecurityEngineIntegration:
         capsys: pytest.CaptureFixture[str],
     ) -> None:
         """Security engine is called for Write tool."""
-        hook_input = json.dumps({
-            "tool_name": "Write",
-            "tool_input": {"file_path": "/tmp/test.py", "content": "pass"},
-        })
+        hook_input = json.dumps(
+            {
+                "tool_name": "Write",
+                "tool_input": {"file_path": "/tmp/test.py", "content": "pass"},
+            }
+        )
 
         handler_with_security.handle(hook_input)
 
@@ -389,16 +389,16 @@ class TestSecurityEngineIntegration:
         capsys: pytest.CaptureFixture[str],
     ) -> None:
         """Security engine is called for Bash tool."""
-        hook_input = json.dumps({
-            "tool_name": "Bash",
-            "tool_input": {"command": "ls -la"},
-        })
+        hook_input = json.dumps(
+            {
+                "tool_name": "Bash",
+                "tool_input": {"command": "ls -la"},
+            }
+        )
 
         handler_with_security.handle(hook_input)
 
-        mock_security_engine.evaluate.assert_called_once_with(
-            "Bash", {"command": "ls -la"}
-        )
+        mock_security_engine.evaluate.assert_called_once_with("Bash", {"command": "ls -la"})
 
     def test_security_block_returns_block_response(
         self,
@@ -420,10 +420,12 @@ class TestSecurityEngineIntegration:
             security_engine=blocking_security,
         )
 
-        hook_input = json.dumps({
-            "tool_name": "Write",
-            "tool_input": {"file_path": "~/.ssh/authorized_keys", "content": "bad"},
-        })
+        hook_input = json.dumps(
+            {
+                "tool_name": "Write",
+                "tool_input": {"file_path": "~/.ssh/authorized_keys", "content": "bad"},
+            }
+        )
 
         exit_code = handler.handle(hook_input)
 
@@ -453,10 +455,12 @@ class TestSecurityEngineIntegration:
             security_engine=blocking_security,
         )
 
-        hook_input = json.dumps({
-            "tool_name": "Write",
-            "tool_input": {"file_path": "/etc/passwd", "content": "bad"},
-        })
+        hook_input = json.dumps(
+            {
+                "tool_name": "Write",
+                "tool_input": {"file_path": "/etc/passwd", "content": "bad"},
+            }
+        )
 
         handler.handle(hook_input)
 
@@ -479,10 +483,12 @@ class TestSecurityEngineIntegration:
             security_engine=crashing_security,
         )
 
-        hook_input = json.dumps({
-            "tool_name": "Write",
-            "tool_input": {"file_path": "/src/test.py", "content": "pass"},
-        })
+        hook_input = json.dumps(
+            {
+                "tool_name": "Write",
+                "tool_input": {"file_path": "/src/test.py", "content": "pass"},
+            }
+        )
 
         exit_code = handler.handle(hook_input)
 
@@ -506,10 +512,12 @@ class TestSecurityEngineIntegration:
             # No security_engine — backward compatibility
         )
 
-        hook_input = json.dumps({
-            "tool_name": "Write",
-            "tool_input": {"file_path": "/src/test.py", "content": "pass"},
-        })
+        hook_input = json.dumps(
+            {
+                "tool_name": "Write",
+                "tool_input": {"file_path": "/src/test.py", "content": "pass"},
+            }
+        )
 
         exit_code = handler.handle(hook_input)
 

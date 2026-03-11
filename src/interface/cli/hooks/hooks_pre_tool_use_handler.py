@@ -132,9 +132,7 @@ class HooksPreToolUseHandler:
         # Step 2: Security enforcement (fail-open, runs first — cheap checks)
         if self._security_engine is not None:
             try:
-                security_decision = self._security_engine.evaluate(
-                    tool_name, tool_input
-                )
+                security_decision = self._security_engine.evaluate(tool_name, tool_input)
                 if security_decision.action == "block":
                     response["decision"] = "block"
                     response["reason"] = security_decision.reason
