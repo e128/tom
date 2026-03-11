@@ -355,7 +355,10 @@ class SecurityEnforcementEngine:
     ) -> EnforcementDecision:
         """Check tool input against pattern library (PII, secrets)."""
         try:
-            result = self._pattern_library.validate_tool_input(
+            library = self._pattern_library
+            if library is None:
+                return _APPROVE
+            result = library.validate_tool_input(
                 tool_name, tool_input
             )
             if result.decision == "block":

@@ -71,7 +71,7 @@ class PatternLibraryAdapter:
             if scripts_dir and str(scripts_dir) not in sys.path:
                 sys.path.insert(0, str(scripts_dir))
 
-            from patterns.loader import load_patterns
+            from patterns.loader import load_patterns  # type: ignore[import-not-found]
 
             self._library = load_patterns(patterns_path)
         except Exception as exc:

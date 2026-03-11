@@ -13,9 +13,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependabot configuration for automated GitHub Actions and pip dependency updates (`.github/dependabot.yml`)
 - Reference documentation for CI/CD pipeline security controls (`docs/reference/ci-cd-pipeline-security.md`)
 - Explanation documentation for CI/CD supply chain security model (`docs/explanation/ci-cd-supply-chain-security.md`)
+- Three Diataxis how-to guides for CI/CD operations: update SHA-pinned action, add CI job, add GitHub Actions dependency (#155, #156, #157)
+- `SecurityEnforcementEngine` — consolidated pre-tool-use security enforcement with 82 tests covering blocked paths, sensitive files, dangerous commands, git force push blocking, PII/secrets detection (#150)
+- `PatternLibraryAdapter` — wraps existing patterns.yaml for secrets/PII detection with T-06 compliance
+- `SecurityRules` — injectable frozen dataclass for security rule definitions
+
+### Fixed
+- **BUG-001**: Memory-keeper MCP tool names corrected across 26 governance files — `store`/`retrieve`/`search`/`list`/`delete` replaced with actual API names `context_save`/`context_get`/`context_search`/`context_session_list`/`context_batch_delete` (#111)
+- **BUG-002**: Version bump regex case sensitivity verified already implemented (src/version/ bounded context with case-insensitive regex) (#132)
+- 8 bypass vectors closed: null byte injection, non-string type confusion, subshell cd evasion, multi-space git push, two-stage download-execute, non-rm destructive deletion, path suffix false positives
 
 ### Changed
+- `hooks.json`: PreToolUse consolidated from dual hooks (standalone script + CLI) to single CLI path; NotebookEdit added to matcher
+- `hooks/pre-tool-use.py`: Updated wrapper with consolidation documentation
+- `scripts/pre_tool_use.py`: Marked DEPRECATED — superseded by SecurityEnforcementEngine
 - `version-bump.yml`: `workflow_dispatch` now respects `[skip-bump]` marker to prevent double-bumping (F-004)
+
+### Security
+- Wildcard permission `mcp__memory-keeper__*` removed from `.claude/settings.local.json` — replaced with explicit tool names to prevent future drift
 
 ## [0.25.0] - 2026-03-09
 

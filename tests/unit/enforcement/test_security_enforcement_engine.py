@@ -28,7 +28,6 @@ from src.infrastructure.internal.enforcement.security_enforcement_engine import 
 )
 from src.infrastructure.internal.enforcement.security_rules import SecurityRules
 
-
 # ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------
