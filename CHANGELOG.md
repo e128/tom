@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `version-bump.yml`: `workflow_dispatch` now respects `[skip-bump]` marker to prevent double-bumping (F-004)
 
 ### Security
-- Wildcard permission `mcp__memory-keeper__*` removed from `.claude/settings.local.json` — replaced with explicit tool names to prevent future drift
+- Memory-keeper MCP tool names corrected from wrong names (`store`/`retrieve`) to actual API names (`context_save`/`context_get`) in `.claude/settings.local.json`; wildcard `mcp__memory-keeper__*` retained for trusted server access
 
 ## [0.25.0] - 2026-03-09
 
