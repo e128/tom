@@ -179,7 +179,7 @@ jobs:
           # this step. In the prerelease path, the amend also folds the
           # --no-commit changes from line 171 into the bump commit.
           # Unset UV_LOCKED temporarily so uv lock can update the file.
-          UV_LOCKED="" uv lock
+          UV_LOCKED=0 uv lock
 
           # Guard: verify uv lock only changed the jerry version field,
           # not transitive dependencies. A broader change could indicate
