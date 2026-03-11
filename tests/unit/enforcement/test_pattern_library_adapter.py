@@ -16,7 +16,6 @@ import pytest
 
 from src.infrastructure.internal.enforcement.pattern_library_adapter import (
     PatternLibraryAdapter,
-    PatternValidationResult,
 )
 
 

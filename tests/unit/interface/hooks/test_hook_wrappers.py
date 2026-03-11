@@ -190,13 +190,14 @@ class TestHooksJsonStructure:
             f"PreToolUse does not include hooks/pre-tool-use.py. Commands: {commands}"
         )
 
-    def test_pre_tool_use_keeps_security_guardrails(self, hooks_json: dict) -> None:
-        """GIVEN hooks.json WHEN checking PreToolUse THEN still has scripts/pre_tool_use.py."""
+    def test_pre_tool_use_consolidated_single_cli_path(self, hooks_json: dict) -> None:
+        """GIVEN hooks.json WHEN PreToolUse THEN single CLI path after #150 consolidation."""
         pre_tool_use = hooks_json["hooks"]["PreToolUse"]
         commands = [h["command"] for entry in pre_tool_use for h in entry.get("hooks", [])]
-        assert any("scripts/pre_tool_use.py" in cmd for cmd in commands), (
-            f"PreToolUse must retain scripts/pre_tool_use.py for security guardrails. Commands: {commands}"
+        assert len(commands) == 1, (
+            f"PreToolUse should have 1 hook after #150. Found: {commands}"
         )
+        assert "hooks/pre-tool-use.py" in commands[0]
 
     def test_subagent_stop_unchanged(self, hooks_json: dict) -> None:
         """GIVEN hooks.json WHEN checking SubagentStop THEN still uses scripts/subagent_stop.py."""

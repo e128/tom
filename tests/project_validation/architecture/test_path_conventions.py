@@ -87,6 +87,11 @@ class TestProjectIsolation:
             if "orchestration" in rel_parts:
                 continue
 
+            # Skip review artifacts — security reviews and quality scores
+            # legitimately reference patterns from other projects as evidence
+            if "reviews" in rel_parts:
+                continue
+
             content = md_file.read_text()
             matches = cross_ref_pattern.findall(content)
 
