@@ -126,16 +126,16 @@ jobs:
 
       # ------------------------------------------------------------------
       # Ensure clean working tree before bump (BUG-003)
-      # Fail-fast guard: with --frozen, the tree should be clean.
-      # If dirty, something unexpected happened — fail loudly so a
-      # human investigates rather than silently committing unreviewed
-      # changes (allow_dirty = false is a supply chain security control).
+      # BUG-003: Fail-fast guard. With UV_LOCKED=1, uv sync/run cannot
+      # modify uv.lock. If the tree is dirty, something unexpected happened.
+      # Fail loudly so a human investigates (allow_dirty = false is a
+      # supply chain security control).
       # ------------------------------------------------------------------
       - name: Ensure clean working tree
         if: steps.bump.outputs.type != 'none'
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
-            echo "::error::Working tree unexpectedly dirty before bump (uv sync --frozen should prevent this)"
+            echo "::error::Working tree unexpectedly dirty before bump (UV_LOCKED=1 should prevent this)"
             git diff --name-only
             echo ""
             echo "If only uv.lock is dirty, the lockfile needs regeneration."
@@ -173,9 +173,11 @@ jobs:
             bump-my-version bump "$BUMP_TYPE"
           fi
 
-          # Regenerate uv.lock after version bump. bump-my-version changes
-          # the version field in pyproject.toml, making uv.lock stale.
-          # UV_LOCKED would block subsequent uv commands without this step.
+          # BUG-003/FIX: Regenerate uv.lock after version bump.
+          # bump-my-version changes the version in pyproject.toml, making
+          # uv.lock stale. UV_LOCKED blocks subsequent uv commands without
+          # this step. In the prerelease path, the amend also folds the
+          # --no-commit changes from line 171 into the bump commit.
           # Unset UV_LOCKED temporarily so uv lock can update the file.
           UV_LOCKED="" uv lock
 
