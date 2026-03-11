@@ -40,6 +40,16 @@ jobs:
     name: Determine and Apply Version Bump
     runs-on: ubuntu-latest
 
+    # BUG-003 (complete fix): UV_LOCKED prevents all uv sync/run commands
+    # from modifying uv.lock AND fails if the lockfile is stale relative to
+    # pyproject.toml. Stricter than UV_FROZEN (which silently uses stale
+    # lockfiles). The original fix only added --frozen to uv sync, but
+    # uv run (jerry CLI, sync_versions.py) also re-resolves the lockfile
+    # when CI uv version differs from the one that generated it.
+    # Source: https://docs.astral.sh/uv/reference/environment/
+    env:
+      UV_LOCKED: "1"
+
     # Skip if this is a version bump commit (prevent infinite loop)
     # BUG-003/F-003: Use github.actor (authenticated identity set by
     # GitHub from the token) instead of author.name (any committer can
@@ -86,13 +96,8 @@ jobs:
 
       # ------------------------------------------------------------------
       # Install project dependencies for bump detection
-      # BUG-003: Use --frozen to prevent uv.lock modification in CI.
-      # Without --frozen, uv performs full dependency re-resolution against
-      # the CI Python version (3.14). When this differs from the version
-      # used to generate uv.lock locally, the resolver updates platform
-      # markers and dependency bounds, modifying uv.lock and making the
-      # working tree dirty — which causes bump-my-version to fail
-      # (allow_dirty = false).
+      # BUG-003: --frozen is redundant with job-level UV_LOCKED=1 (see
+      # env block above) but kept for explicitness.
       # ------------------------------------------------------------------
       - name: Install project dependencies
         run: uv sync --frozen
@@ -170,12 +175,7 @@ jobs:
 
       # ------------------------------------------------------------------
       # Validate version consistency
-      # BUG-003: Use --frozen here too. Without it, uv sync after the
-      # bump commit could re-resolve dependencies and re-dirty the tree,
-      # which doesn't break the bump (already committed) but leaves the
-      # runner in an inconsistent state for the version check script.
-      # The version field change in pyproject.toml does not affect
-      # dependency resolution, so --frozen is safe here.
+      # BUG-003: --frozen redundant with job-level UV_LOCKED=1.
       # ------------------------------------------------------------------
       - name: Validate version sync
         if: steps.bump.outputs.type != 'none'
