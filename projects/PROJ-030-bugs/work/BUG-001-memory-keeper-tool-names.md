@@ -1,17 +1,17 @@
 # BUG-001: Memory-keeper tool names mismatch across all governance files
 
 > **Type:** bug
-> **Status:** pending
+> **Status:** completed
 > **Priority:** high
 > **Impact:** high
 > **Severity:** major
 > **Created:** 2026-02-26T00:00:00Z
 > **Due:**
-> **Completed:**
+> **Completed:** 2026-03-09T00:00:00Z
 > **Parent:** PROJ-030-bugs
-> **Owner:**
+> **Owner:** Claude
 > **Found In:** 0.12.5
-> **Fix Version:**
+> **Fix Version:** 0.25.0
 
 ---
 
@@ -137,3 +137,4 @@ The Jerry Framework governance was built against assumed tool names (`store`, `r
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-02-26 | Claude | pending | Initial report. Research completed. 30+ affected files identified. |
+| 2026-03-09 | Claude | completed | Fixed 26 active governance files. 5 MCP tool names corrected. Grep sweep confirms zero old names in .context/, skills/, TOOL_REGISTRY.yaml. eng-security + adv-scorer review complete. |

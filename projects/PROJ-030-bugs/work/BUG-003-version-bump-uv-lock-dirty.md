@@ -1,13 +1,13 @@
 # BUG-003: version-bump workflow fails — uv.lock dirty after uv sync
 
 > **Type:** bug
-> **Status:** in_progress
+> **Status:** completed
 > **Priority:** critical
 > **Impact:** critical
 > **Severity:** critical
 > **Created:** 2026-03-09T00:00:00Z
 > **Due:**
-> **Completed:**
+> **Completed:** 2026-03-09T00:00:00Z
 > **Parent:** PROJ-030-bugs
 > **Owner:** Claude
 > **Found In:** 0.24.0

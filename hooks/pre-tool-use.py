@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
-"""PreToolUse hook wrapper. Delegates to jerry hooks pre-tool-use.
-
-Timeout budget: wrapper subprocess=4s < hooks.json=5s (1s buffer for wrapper overhead).
-"""
+"""PreToolUse hook — delegates to jerry hooks pre-tool-use (#150 consolidated pipeline)."""
 
 import os
 import subprocess

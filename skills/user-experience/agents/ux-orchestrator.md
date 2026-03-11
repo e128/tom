@@ -25,9 +25,9 @@ mcpServers:
       - mcp__context7__query-docs
   memory-keeper:
     tools:
-      - mcp__memory-keeper__store
-      - mcp__memory-keeper__retrieve
-      - mcp__memory-keeper__search
+      - mcp__memory-keeper__context_save
+      - mcp__memory-keeper__context_get
+      - mcp__memory-keeper__context_search
 ---
 
 <!-- Agent Definition: ux-orchestrator -->

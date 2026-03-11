@@ -982,8 +982,8 @@ Use Memory-Keeper to persist extraction results for multi-session workflows and 
 
 | Event | Action | Tool |
 |-------|--------|------|
-| Extraction complete | Store extraction summary + entity counts | `mcp__memory-keeper__store` |
-| Session resume | Retrieve prior extraction context | `mcp__memory-keeper__retrieve` |
+| Extraction complete | Store extraction summary + entity counts | `mcp__memory-keeper__context_save` |
+| Session resume | Retrieve prior extraction context | `mcp__memory-keeper__context_get` |
 
 ---
 

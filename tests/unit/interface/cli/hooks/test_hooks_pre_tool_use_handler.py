@@ -331,3 +331,197 @@ class TestHooksPreToolUseHandlerFailOpen:
         captured = capsys.readouterr()
         result = json.loads(captured.out)
         assert result is not None
+
+
+# =============================================================================
+# Security Engine Integration Tests (#150)
+# =============================================================================
+
+
+class TestSecurityEngineIntegration:
+    """Tests for SecurityEnforcementEngine integration in the handler."""
+
+    @pytest.fixture()
+    def mock_security_engine(self) -> MagicMock:
+        """Create a mock SecurityEnforcementEngine."""
+        engine = MagicMock()
+        engine.evaluate.return_value = EnforcementDecision(action="approve", reason="")
+        return engine
+
+    @pytest.fixture()
+    def handler_with_security(
+        self,
+        mock_enforcement_engine: MagicMock,
+        mock_staleness_detector: MagicMock,
+        mock_security_engine: MagicMock,
+    ) -> HooksPreToolUseHandler:
+        """Handler with security engine wired in."""
+        return HooksPreToolUseHandler(
+            enforcement_engine=mock_enforcement_engine,
+            staleness_detector=mock_staleness_detector,
+            security_engine=mock_security_engine,
+        )
+
+    def test_security_engine_called_for_write(
+        self,
+        handler_with_security: HooksPreToolUseHandler,
+        mock_security_engine: MagicMock,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        """Security engine is called for Write tool."""
+        hook_input = json.dumps(
+            {
+                "tool_name": "Write",
+                "tool_input": {"file_path": "/tmp/test.py", "content": "pass"},
+            }
+        )
+
+        handler_with_security.handle(hook_input)
+
+        mock_security_engine.evaluate.assert_called_once_with(
+            "Write", {"file_path": "/tmp/test.py", "content": "pass"}
+        )
+
+    def test_security_engine_called_for_bash(
+        self,
+        handler_with_security: HooksPreToolUseHandler,
+        mock_security_engine: MagicMock,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        """Security engine is called for Bash tool."""
+        hook_input = json.dumps(
+            {
+                "tool_name": "Bash",
+                "tool_input": {"command": "ls -la"},
+            }
+        )
+
+        handler_with_security.handle(hook_input)
+
+        mock_security_engine.evaluate.assert_called_once_with("Bash", {"command": "ls -la"})
+
+    def test_security_block_returns_block_response(
+        self,
+        mock_enforcement_engine: MagicMock,
+        mock_staleness_detector: MagicMock,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        """When security engine blocks, response is block with reason."""
+        blocking_security = MagicMock()
+        blocking_security.evaluate.return_value = EnforcementDecision(
+            action="block",
+            reason="Writing to ~/.ssh is blocked for security",
+            violations=["Blocked path: ~/.ssh"],
+        )
+
+        handler = HooksPreToolUseHandler(
+            enforcement_engine=mock_enforcement_engine,
+            staleness_detector=mock_staleness_detector,
+            security_engine=blocking_security,
+        )
+
+        hook_input = json.dumps(
+            {
+                "tool_name": "Write",
+                "tool_input": {"file_path": "~/.ssh/authorized_keys", "content": "bad"},
+            }
+        )
+
+        exit_code = handler.handle(hook_input)
+
+        assert exit_code == 0
+        captured = capsys.readouterr()
+        result = json.loads(captured.out)
+        assert result["decision"] == "block"
+        assert "ssh" in result["reason"].lower()
+
+    def test_security_block_prevents_architecture_check(
+        self,
+        mock_enforcement_engine: MagicMock,
+        mock_staleness_detector: MagicMock,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        """Security block short-circuits — architecture engine not called."""
+        blocking_security = MagicMock()
+        blocking_security.evaluate.return_value = EnforcementDecision(
+            action="block",
+            reason="Blocked",
+            violations=["test"],
+        )
+
+        handler = HooksPreToolUseHandler(
+            enforcement_engine=mock_enforcement_engine,
+            staleness_detector=mock_staleness_detector,
+            security_engine=blocking_security,
+        )
+
+        hook_input = json.dumps(
+            {
+                "tool_name": "Write",
+                "tool_input": {"file_path": "/etc/passwd", "content": "bad"},
+            }
+        )
+
+        handler.handle(hook_input)
+
+        # Architecture engine should NOT be called when security blocks
+        mock_enforcement_engine.evaluate_write.assert_not_called()
+
+    def test_security_engine_failure_is_fail_open(
+        self,
+        mock_enforcement_engine: MagicMock,
+        mock_staleness_detector: MagicMock,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        """When security engine crashes, handler continues (fail-open)."""
+        crashing_security = MagicMock()
+        crashing_security.evaluate.side_effect = RuntimeError("boom")
+
+        handler = HooksPreToolUseHandler(
+            enforcement_engine=mock_enforcement_engine,
+            staleness_detector=mock_staleness_detector,
+            security_engine=crashing_security,
+        )
+
+        hook_input = json.dumps(
+            {
+                "tool_name": "Write",
+                "tool_input": {"file_path": "/src/test.py", "content": "pass"},
+            }
+        )
+
+        exit_code = handler.handle(hook_input)
+
+        assert exit_code == 0
+        captured = capsys.readouterr()
+        result = json.loads(captured.out)
+        assert result is not None
+        # Architecture engine should still be called despite security crash
+        mock_enforcement_engine.evaluate_write.assert_called_once()
+
+    def test_no_security_engine_still_works(
+        self,
+        mock_enforcement_engine: MagicMock,
+        mock_staleness_detector: MagicMock,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        """Handler without security engine (backward compat) still works."""
+        handler = HooksPreToolUseHandler(
+            enforcement_engine=mock_enforcement_engine,
+            staleness_detector=mock_staleness_detector,
+            # No security_engine — backward compatibility
+        )
+
+        hook_input = json.dumps(
+            {
+                "tool_name": "Write",
+                "tool_input": {"file_path": "/src/test.py", "content": "pass"},
+            }
+        )
+
+        exit_code = handler.handle(hook_input)
+
+        assert exit_code == 0
+        captured = capsys.readouterr()
+        result = json.loads(captured.out)
+        assert result is not None
