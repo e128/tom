@@ -295,7 +295,7 @@ The `.feature.md` extension indicates "Gherkin content in a Markdown container w
 
 ## Routing Entry (Priority 14)
 
-Per `agent-routing-standards.md` enhanced 5-column trigger map format. Registration in `mandatory-skill-usage.md` is PENDING (eng-reviewer action after SKILL.md finalization).
+Per `agent-routing-standards.md` enhanced 5-column trigger map format. Registration in `mandatory-skill-usage.md` is complete.
 
 | Detected Keywords | Negative Keywords | Priority | Compound Triggers | Skill |
 |---|---|---|---|---|
@@ -373,5 +373,5 @@ Before invoking tspec-generator, verify your use case artifact has:
 ---
 
 > *Skill Version: 1.0.0 | Framework: Jerry Framework | Constitutional compliance: P-003, P-020, P-022*
-> *Author: eng-backend | Date: 2026-03-09 | Status: PROPOSED*
+> *Author: eng-backend | Date: 2026-03-09 | Status: ACTIVE*
 > *SSOT: `projects/PROJ-021-use-case/orchestration/use-case-skills-20260308-001/implementation/step-10-test-spec-architecture.md`*

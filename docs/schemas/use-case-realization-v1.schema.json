@@ -157,7 +157,7 @@
           },
           "type": {
             "type": "string",
-            "enum": ["human", "system", "timer"],
+            "enum": ["human", "system", "timer", "external"],
             "description": "Actor classification."
           }
         },
@@ -250,7 +250,7 @@
       "description": "Agent or user that last modified this artifact."
     }
   },
-  "additionalProperties": true,
+  "additionalProperties": false,
   "$defs": {
     "flow_step": {
       "type": "object",
@@ -409,7 +409,7 @@
         "id": {
           "type": "string",
           "pattern": "^INT-\\d{2,3}$",
-          "description": "Interaction identifier. Format: INT-{NN}. Example: INT-01."
+          "description": "Interaction identifier. Format: INT-{NN} or INT-{NNN} for use cases with >99 interactions. Examples: INT-01, INT-100."
         },
         "source_step": {
           "type": "integer",
@@ -500,6 +500,50 @@
           }
         }
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "realization_level": { "const": "STORY_DEFINED" }
+        },
+        "required": ["realization_level"]
+      },
+      "then": {
+        "required": ["slices"],
+        "properties": {
+          "slices": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "detail_level": { "enum": ["ESSENTIAL_OUTLINE", "FULLY_DESCRIBED"] }
+        },
+        "required": ["detail_level"]
+      },
+      "then": {
+        "required": ["extensions"],
+        "properties": {
+          "extensions": {
+            "minItems": 1,
+            "description": "Extensions are required at ESSENTIAL_OUTLINE and FULLY_DESCRIBED detail levels for complete use case specification."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "realization_level": { "const": "INTERACTION_DEFINED" },
+          "detail_level": { "enum": ["BRIEFLY_DESCRIBED", "BULLETED_OUTLINE"] }
+        },
+        "required": ["realization_level", "detail_level"]
+      },
+      "then": false,
+      "description": "INTERACTION_DEFINED realization requires at minimum ESSENTIAL_OUTLINE detail level. BRIEFLY_DESCRIBED and BULLETED_OUTLINE cannot support interaction sequences."
     }
   ]
 }

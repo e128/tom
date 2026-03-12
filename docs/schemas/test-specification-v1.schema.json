@@ -29,7 +29,7 @@
     "source_detail_level": {
       "type": "string",
       "enum": ["ESSENTIAL_OUTLINE", "FULLY_DESCRIBED"],
-      "description": "Detail level of the source use case at generation time. Clark transformation requires >= ESSENTIAL_OUTLINE; BRIEFLY_DESCRIBED and BULLETED_OUTLINE are rejected."
+      "description": "Detail level of the source use case at generation time. Only ESSENTIAL_OUTLINE and FULLY_DESCRIBED are valid values; the enum constraint enforces this restriction. Clark transformation requires >= ESSENTIAL_OUTLINE per RULE-IV-02."
     },
     "source_goal_level": {
       "type": "string",
@@ -128,5 +128,5 @@
       "description": "Generation warnings (e.g., low-confidence step type mappings, missing extension conditions)."
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }
