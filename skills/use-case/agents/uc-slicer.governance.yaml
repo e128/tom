@@ -73,6 +73,7 @@ validation:
     - "verify_interactions_present_when_realization_level_INTERACTION_DEFINED"
     - "verify_realization_level_is_explicitly_set"
     - "verify_slice_state_is_explicitly_set"
+    - "verify_detail_level_realization_level_cross_constraint_via_ast_validate"
 
 session_context:
   on_receive:

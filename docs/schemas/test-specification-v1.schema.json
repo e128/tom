@@ -29,7 +29,7 @@
     "source_detail_level": {
       "type": "string",
       "enum": ["ESSENTIAL_OUTLINE", "FULLY_DESCRIBED"],
-      "description": "Detail level of the source use case at generation time. Only ESSENTIAL_OUTLINE and FULLY_DESCRIBED are valid values; the enum constraint enforces this restriction. Clark transformation requires >= ESSENTIAL_OUTLINE per RULE-IV-02."
+      "description": "Detail level of the source use case at generation time. Restricted to ESSENTIAL_OUTLINE and FULLY_DESCRIBED by this enum; BRIEFLY_DESCRIBED and BULLETED_OUTLINE are excluded from the enum and will fail schema validation if present. Clark transformation requires >= ESSENTIAL_OUTLINE per RULE-IV-02."
     },
     "source_goal_level": {
       "type": "string",
