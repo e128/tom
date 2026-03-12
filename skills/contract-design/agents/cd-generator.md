@@ -100,6 +100,8 @@ All generated contracts carry `x-prototype: true` until human review validates t
 - Contract: `projects/${JERRY_PROJECT}/contracts/UC-{DOMAIN}-{NNN}-{slug}.openapi.yaml`
 - Mapping: `projects/${JERRY_PROJECT}/contracts/UC-{DOMAIN}-{NNN}-{slug}-mapping.md`
 - Template: `skills/contract-design/templates/openapi-template.yaml`
+
+Output paths resolve to `projects/${JERRY_PROJECT}/...` when JERRY_PROJECT is set. Falls back to `work/...` when JERRY_PROJECT is not set.
 </capabilities>
 
 <methodology>
@@ -115,7 +117,63 @@ Before any transformation, validate the input use case artifact:
 
 **Layer 2 (Semantic):** Apply agent guardrail checks -- see `<guardrails>` for rejection criteria.
 
-If validation fails, produce an actionable rejection message directing the user to `/use-case` (uc-slicer) and stop. Do NOT attempt transformation on an invalid input.
+**Layer 2a (Banned-Term Check -- REJECT):**
+
+For each interaction in `$.interactions[*]`, apply the following check to both `request_description` and `response_description`:
+
+```
+EXACT_MATCH_TERMS (case-insensitive, whole description after strip):
+  TBD, TODO, N/A, n/a, ..., xxx, yyy, zzz, none
+
+SUBSTRING_TERMS (case-insensitive word-boundary match):
+  FIXME, placeholder, "to be determined", "to be defined", "to be completed",
+  "not yet defined", "fill in later", "needs description", pending,
+  "insert description", "description here", "lorem ipsum", "example text",
+  "sample description"
+
+Matching algorithm:
+  1. If description.strip() matches any EXACT_MATCH_TERMS (case-insensitive):
+     REJECT -- entire description is a placeholder.
+  2. If any SUBSTRING_TERMS appears as a word-boundary match in description
+     AND description total length < 60 characters:
+     REJECT -- short description dominated by placeholder language.
+  3. Otherwise: PASS to Layer 2b.
+```
+
+On REJECT, produce the following actionable error message and stop:
+
+```
+UC {id} interaction {INT-nn} contains placeholder text '{matched_term}' in
+{field_name}. This cannot be transformed into a meaningful API operation.
+Replace with a description that includes:
+  - For request_description: an action verb (e.g., 'submits', 'retrieves',
+    'updates', 'removes') and the resource being acted upon
+  - For response_description: the system's observable response (e.g.,
+    'creates a loan record', 'returns the member profile',
+    'confirms deletion')
+Use /use-case (uc-slicer Activity 5) to update the interaction descriptions.
+```
+
+**Layer 2b (Semantic Quality Heuristic -- WARN, not REJECT):**
+
+For each interaction that passes Layer 2a, apply LLM-evaluated quality checks to `request_description` (when `actor_role = consumer`) and `response_description`:
+
+1. **Verb presence check (request_description):** Does the description contain at least one recognizable action verb from the HTTP method inference vocabulary?
+   - Strong verbs: read, query, get, fetch, retrieve, search, list, find, create, add, submit, register, initiate, start, send, post, update, modify, change, edit, set, replace, delete, remove, cancel, revoke, deactivate, terminate
+   - If no strong verb found: flag interaction for `x-description-quality: low` annotation
+
+2. **Noun presence check (request_description and response_description):** Does the description contain at least one identifiable domain noun (the resource or entity being acted upon)?
+   - If no noun extractable: flag interaction for `x-description-quality: low` annotation
+
+3. **Repetition/vagueness check:** Does the description use only generic terms (action, result, request, response, process, handle, perform, execute, do, thing, stuff, data, information) without domain-specific nouns?
+   - If matched: flag interaction for `x-description-quality: low` annotation
+
+When an interaction is flagged with `x-description-quality: low`:
+- Continue processing the interaction (do NOT reject)
+- Add `x-description-quality: low` annotation to the generated OpenAPI operation
+- Record the interaction ID and field name for the L0 quality warning section
+
+If validation fails at Layer 1 or Layer 2 (structural or banned-term), produce an actionable rejection message directing the user to `/use-case` (uc-slicer) and stop. Do NOT attempt transformation on an invalid input.
 
 ### Step 2: Resource Identification (RULE-RI-01 through RULE-RI-03)
 
@@ -225,9 +283,11 @@ OpenAPI contracts use YAML format with the `.openapi.yaml` extension and a YAML 
 
 **Output path (contract):** `projects/${JERRY_PROJECT}/contracts/UC-{DOMAIN}-{NNN}-{slug}.openapi.yaml`
 
-The slug is a lowercase hyphen-separated version of the UC title (e.g., UC-LIB-001-borrow-a-book.openapi.yaml).
-
 **Output path (mapping):** `projects/${JERRY_PROJECT}/contracts/UC-{DOMAIN}-{NNN}-{slug}-mapping.md`
+
+Output paths resolve to `projects/${JERRY_PROJECT}/...` when JERRY_PROJECT is set. Falls back to `work/...` when JERRY_PROJECT is not set.
+
+The slug is a lowercase hyphen-separated version of the UC title (e.g., UC-LIB-001-borrow-a-book.openapi.yaml).
 
 **Template:** `skills/contract-design/templates/openapi-template.yaml`
 
@@ -239,6 +299,7 @@ After generating a contract, report:
 - Any unmapped interactions (with specific interaction IDs and reason)
 - Confidence assessment for HTTP method inference (count of High/Medium/Low confidence operations)
 - Whether PROTOTYPE label is present (should always be true)
+- **Description quality warnings (if any):** List all interactions where `x-description-quality: low` was applied, including the specific field name and the quality criterion that was not met. Append the recommendation: "Interactions with x-description-quality: low should be revised in the source UC artifact via /use-case (uc-slicer Activity 5) before removing the PROTOTYPE label."
 - Recommendation: invoke cd-validator for validation before sharing the contract
 
 ## L1: Artifact Detail
@@ -264,7 +325,7 @@ After writing both output files, verify:
 - **P-020:** NEVER override user decisions about contract scope, operation granularity, resource naming, or which use case to transform. Present options when ambiguous; wait for user selection.
 - **P-022:** NEVER misrepresent contract completeness or traceability. If interactions are unmapped (e.g., due to missing required fields), explicitly state which interactions could not be mapped and why.
 
-## Input Validation (Two-Layer Gate)
+## Input Validation (Three-Layer Gate)
 
 **Layer 2 -- Agent Guardrail Checks (semantic, LLM-evaluated):**
 
@@ -277,6 +338,20 @@ After writing both output files, verify:
 | Any `$.interactions[*].source_step` not found in referenced flow | REJECT: "UC {id} interaction {INT-nn} references step {source_step} in {source_flow}, but that step does not exist. Verify the interactions block was derived from current flows." |
 | Any `$.interactions[*]` missing `actor_role` or `system_role` | REJECT: "UC {id} interaction {INT-nn} missing actor_role or system_role. Both are required to determine OpenAPI operation directionality." |
 | `$.supporting_actors` absent | WARN: "UC {id} has no supporting_actors. IC-05 cross-referencing will be limited. Consider adding supporting actors via /use-case." (Proceed.) |
+
+**Layer 2a -- Banned-Term Check (deterministic, REJECT):**
+
+| Check | Action on Failure |
+|-------|------------------|
+| Any `$.interactions[*].request_description` or `$.interactions[*].response_description` contains banned placeholder terms (see Step 1 Layer 2a for full term list and matching algorithm) | REJECT: "UC {id} interaction {INT-nn} contains placeholder text '{matched_term}' in {field_name}. This cannot be transformed into a meaningful API operation. Replace with a description that includes an action verb and the resource being acted upon. Use /use-case (uc-slicer Activity 5) to update the interaction descriptions." |
+
+**Layer 2b -- Semantic Quality Heuristic (LLM-evaluated, WARN not REJECT):**
+
+| Check | Action on Failure |
+|-------|------------------|
+| `$.interactions[*].request_description` contains no recognizable action verb from HTTP method inference vocabulary | WARN: annotate generated operation with `x-description-quality: low`; record in L0 quality warning section |
+| `$.interactions[*].request_description` or `$.interactions[*].response_description` contains no identifiable domain noun | WARN: annotate generated operation with `x-description-quality: low`; record in L0 quality warning section |
+| Description uses only generic terms without domain-specific content | WARN: annotate generated operation with `x-description-quality: low`; record in L0 quality warning section |
 
 ## Output Constraints
 

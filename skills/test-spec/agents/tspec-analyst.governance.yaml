@@ -46,18 +46,23 @@ capabilities:
 guardrails:
   input_validation:
     - "Feature file must exist at expected path and contain Gherkin Scenario blocks"
-    - "Source use case artifact must exist and contain valid YAML frontmatter with $.work_type = USE_CASE"
-    - "Source use case must have $.basic_flow and $.extensions (minimum for coverage baseline)"
+    - "Feature file YAML frontmatter must contain source_use_case field (cross-reference prerequisite: used to locate and validate source artifact when artifact_path is not explicitly provided)"
+    - "Source use case artifact must exist; load the full artifact to verify $.work_type = USE_CASE in YAML frontmatter (cross-reference prerequisite: full UC file must be loaded before coverage baseline can be established)"
+    - "Source use case must have $.basic_flow (minimum for coverage baseline); reject if absent with actionable error"
+    - "Source use case must have $.extensions (required for coverage formula denominator to include error scenario coverage); warn if absent"
+    - "Both Feature file and source use case artifact must be loaded before any coverage computation begins (mutual prerequisite: coverage cross-reference requires both inputs to be in scope simultaneously)"
   output_filtering:
     - "no_secrets_in_output"
     - "coverage_percentages_must_be_mathematically_verifiable"
     - "every_gap_must_cite_specific_unmapped_flow_element"
     - "recommendations_must_include_priority_and_effort_estimate"
+    - "do_not_modify_source_use_case_or_feature_file_artifacts"
   fallback_behavior: "escalate_to_user"
 
 output:
   required: true
   location: "projects/${JERRY_PROJECT}/test-specs/UC-{DOMAIN}-{NNN}-{slug}-coverage.md"
+  fallback_location: "work/test-specs/UC-{DOMAIN}-{NNN}-{slug}-coverage.md"
   levels:
     - "L0"
     - "L1"

@@ -43,9 +43,13 @@ capabilities:
 
 guardrails:
   input_validation:
-    - "Contract file must exist at specified path and contain valid YAML"
-    - "Source use case artifact must exist and contain valid YAML frontmatter with $.interactions"
-    - "Contract file must be an OpenAPI 3.1 specification (check openapi field)"
+    # Boundary rule: all entries below are structural or cross-reference constraints.
+    # Cross-reference constraints include explicit loading prerequisites for CI gate awareness.
+    - "Contract file must exist at specified path and parse as valid YAML (structural check; no loading prerequisite)"
+    - "Contract file openapi field must be present and set to a 3.1.x value (structural check)"
+    - "Source use case artifact must exist; load the full artifact to verify $.work_type = USE_CASE and $.interactions is present (cross-reference prerequisite: full UC file must be loaded before traceability steps 2, 5, 8, and 9 can execute)"
+    - "Both contract file and source use case artifact must be loaded before traceability validation begins (mutual prerequisite: Step 2 path completeness check cross-references contract operations against UC $.interactions[*].actor_role = consumer)"
+    - "Contract info.x-source-use-case must reference a UC artifact that matches the source use case artifact provided (cross-reference check: load info section, then verify x-source-use-case value matches the loaded artifact's $.id field)"
   output_filtering:
     - "no_secrets_in_output"
     - "validation_results_must_include_pass_fail_per_check"
@@ -56,6 +60,7 @@ guardrails:
 output:
   required: true
   location: "projects/${JERRY_PROJECT}/contracts/UC-{DOMAIN}-{NNN}-{slug}-validation.md"
+  fallback_location: "work/contracts/UC-{DOMAIN}-{NNN}-{slug}-validation.md"
   levels:
     - "L0"
     - "L1"

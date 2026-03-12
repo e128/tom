@@ -35,20 +35,22 @@ capabilities:
 
 guardrails:
   input_validation:
-    - "Input artifact must exist and contain valid YAML frontmatter with $.work_type = USE_CASE"
-    - "Input artifact $.detail_level must be >= ESSENTIAL_OUTLINE (reject BRIEFLY_DESCRIBED and BULLETED_OUTLINE)"
+    - "Input artifact must exist; load the full artifact file first, then verify $.work_type = USE_CASE in YAML frontmatter (cross-reference prerequisite: full file must be loaded before semantic field checks can execute)"
+    - "Input artifact $.detail_level must be >= ESSENTIAL_OUTLINE (reject BRIEFLY_DESCRIBED and BULLETED_OUTLINE); requires full artifact load to read $.detail_level"
     - "Input artifact must have $.basic_flow with 3-9 steps"
+    - "Input artifact must have $.extensions[] non-empty (at least 1 extension required); reject if $.extensions is absent or empty with actionable error directing to uc-author"
   output_filtering:
     - "no_secrets_in_output"
     - "all_slices_must_have_steps_included"
     - "basic_flow_must_be_first_slice"
-    - "realization_level_must_match_populated_blocks"
+    - "realization_level_must_match_populated_blocks (enforced by allOf schema constraint + manual frontmatter verification against docs/schemas/use-case-realization-v1.schema.json)"
     - "slice_state_must_be_explicitly_set_on_every_transition"
   fallback_behavior: "escalate_to_user"
 
 output:
   required: true
   location: "projects/${JERRY_PROJECT}/use-cases/UC-{DOMAIN}-{NNN}-{slug}.md"
+  fallback_location: "work/use-cases/UC-{DOMAIN}-{NNN}-{slug}.md"
   template: "skills/use-case/templates/use-case-slice.template.md"
   levels:
     - "L0"
@@ -73,7 +75,9 @@ validation:
     - "verify_interactions_present_when_realization_level_INTERACTION_DEFINED"
     - "verify_realization_level_is_explicitly_set"
     - "verify_slice_state_is_explicitly_set"
-    - "verify_detail_level_realization_level_cross_constraint_via_ast_validate"
+    - "verify_frontmatter_satisfies_use_case_realization_schema_allOf_constraints"
+    - "verify_frontmatter_realization_level_allOf_constraint_satisfied_before_state_transition"
+    - "verify_rejection_artifact_written_on_input_validation_failure"
 
 session_context:
   on_receive:
@@ -84,6 +88,7 @@ session_context:
     - "Report artifact path, slice count, and realization level achieved"
     - "List key findings: slice IDs, INVEST pass/fail summary, interaction count"
     - "Flag if realization level is sufficient for downstream /contract-design consumption"
+    - "On input validation rejection: write structured rejection artifact to {artifact_path}-rejection.yaml with fields: schema_version (1.0.0), rejecting_agent (uc-slicer), rejected_artifact (repository-relative path), rejection_reason (enum: detail_level_insufficient | schema_validation_failed | missing_required_section | precondition_not_met), current_state (detail_level of rejected artifact), required_state (detail_level: ESSENTIAL_OUTLINE), missing_elements (array of specific actionable descriptions), recommended_action (re-invoke uc-author with target_detail_level: ESSENTIAL_OUTLINE), and timestamp (ISO-8601). Overwrite any existing rejection artifact at that path. HALT after writing -- do not proceed to slicing steps."
 
 enforcement:
   tier: "medium"

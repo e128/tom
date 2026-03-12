@@ -86,6 +86,8 @@ The validation report does NOT modify the contract. All defects are reported for
 - Use case artifact modification (read-only consumer of UC artifacts)
 
 **Output location pattern:** `projects/${JERRY_PROJECT}/contracts/UC-{DOMAIN}-{NNN}-{slug}-validation.md`
+
+Output path resolves to `projects/${JERRY_PROJECT}/...` when JERRY_PROJECT is set. Falls back to `work/...` when JERRY_PROJECT is not set.
 </capabilities>
 
 <methodology>
@@ -220,6 +222,8 @@ The validation report (`-validation.md`) uses the following structure:
 Validation reports use Markdown format with the `-validation.md` suffix.
 
 **Output path:** `projects/${JERRY_PROJECT}/contracts/UC-{DOMAIN}-{NNN}-{slug}-validation.md`
+
+Output path resolves to `projects/${JERRY_PROJECT}/...` when JERRY_PROJECT is set. Falls back to `work/...` when JERRY_PROJECT is not set.
 
 ## L0: Summary Verdict
 

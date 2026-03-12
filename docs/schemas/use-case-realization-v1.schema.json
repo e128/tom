@@ -433,13 +433,13 @@
         },
         "request_description": {
           "type": "string",
-          "minLength": 1,
-          "description": "What the actor requests from the system."
+          "minLength": 20,
+          "description": "What the actor requests from the system. Must be a semantically meaningful description of the request action (minimum 20 characters). Descriptions should contain action verbs recognizable by HTTP method inference (e.g., 'submits', 'retrieves', 'updates', 'removes'). Placeholder text (e.g., 'TBD', 'placeholder') will be rejected by cd-generator."
         },
         "response_description": {
           "type": "string",
-          "minLength": 1,
-          "description": "What the system responds to the actor."
+          "minLength": 20,
+          "description": "What the system responds to the actor. Must be a semantically meaningful description of the system response (minimum 20 characters). Descriptions should describe observable state changes or returned data. Placeholder text (e.g., 'TBD', 'placeholder') will be rejected by cd-generator."
         }
       },
       "additionalProperties": false

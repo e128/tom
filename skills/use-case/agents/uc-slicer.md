@@ -72,6 +72,8 @@ The skill bridges the gap between a complete use case specification and the impl
 
 **Output location:** Same file as input (the uc-author artifact), with `$.slices[]`, `$.interactions[]`, `$.slice_state`, `$.realization_level`, and `$.slice_ids[]` added.
 
+Output path resolves to `projects/${JERRY_PROJECT}/...` when JERRY_PROJECT is set. Falls back to `work/...` when JERRY_PROJECT is not set.
+
 **Templates available:**
 - `skills/use-case/templates/use-case-slice.template.md` -- for separate slice documents (optional)
 </capabilities>
@@ -83,14 +85,57 @@ Load `skills/use-case/rules/use-case-writing-rules.md` UC 2.0 Slice Lifecycle Ru
 
 | Step | Activity | Action |
 |------|---------|--------|
-| 1 | Activity 2 | Validate input artifact: `detail_level >= ESSENTIAL_OUTLINE`, `basic_flow` non-empty, `extensions` non-empty |
+| 1 | Activity 2 | Validate input artifact: `detail_level >= ESSENTIAL_OUTLINE`, `basic_flow` non-empty, `extensions` non-empty. **If validation fails, execute the rejection artifact protocol (see below) and HALT -- do not proceed to Step 2.** |
 | 2 | Activity 2 | Identify slice candidates: the basic flow is always Slice 1; each significant extension branch is a candidate for a separate slice |
 | 3 | Activity 2 | Apply INVEST criteria to each candidate; record in `invest_assessment{}` |
 | 4 | Activity 2 | Create slice definitions: `slice_id` (UC-{DOMAIN}-{NNN}-S{N}), `title`, `steps_included`, `invest_assessment`; set `slice_state: SCOPED` |
 | 5 | Activity 4 | For each SCOPED slice: define test cases, enhance narrative for PREPARED state; set `slice_state: PREPARED` |
 | 6 | Activity 4 | Create worktracker Story entities for PREPARED slices via `uv run jerry items create` |
 | 7 | Activity 5 | For PREPARED slices: identify system elements, allocate responsibilities, produce `$.interactions[]` |
-| 8 | Activity 5 | Set `realization_level: INTERACTION_DEFINED` after verifying `interactions[]` is non-empty; set `slice_state: ANALYZED` |
+| 8 | Activity 5 | Before setting `realization_level: INTERACTION_DEFINED`, verify the output artifact's YAML frontmatter satisfies the allOf constraints defined in `docs/schemas/use-case-realization-v1.schema.json`. Check: (1) goal_symbol matches goal_level, (2) if realization_level is INTERACTION_DEFINED then interactions[] must have minItems: 1, (3) if realization_level is STORY_DEFINED then slices[] must have minItems: 1, (4) if detail_level is ESSENTIAL_OUTLINE or FULLY_DESCRIBED then extensions[] must have minItems: 1, (5) INTERACTION_DEFINED is not permitted with BRIEFLY_DESCRIBED or BULLETED_OUTLINE detail_level. Only set the realization level if all constraints pass. Set `slice_state: ANALYZED` after verification passes. |
+
+## Rejection Artifact Protocol (Step 1 Failure Path)
+
+When Step 1 input validation fails, execute this protocol before halting:
+
+**1. Determine rejection fields** based on the specific failure:
+
+| Validation Failure | rejection_reason | current_state | required_state | missing_elements (examples) |
+|-------------------|-----------------|---------------|----------------|-----------------------------|
+| `$.detail_level` is BRIEFLY_DESCRIBED or BULLETED_OUTLINE | `detail_level_insufficient` | `detail_level: {current}` | `detail_level: ESSENTIAL_OUTLINE` | "extensions[] empty or absent", "preconditions[] absent", "Cockburn Step 9 quality indicators not verified" |
+| `$.work_type` is not USE_CASE or YAML is invalid | `schema_validation_failed` | `detail_level: unknown` | `detail_level: ESSENTIAL_OUTLINE` | "work_type must be USE_CASE", "YAML frontmatter parse error" |
+| `$.basic_flow` has <3 or >9 steps | `precondition_not_met` | `detail_level: {current}` | `detail_level: ESSENTIAL_OUTLINE` | "basic_flow has {N} steps; must have 3-9" |
+| `$.extensions[]` is empty or absent | `missing_required_section` | `detail_level: {current}` | `detail_level: ESSENTIAL_OUTLINE` | "extensions[] is empty; at least one extension required for slicing" |
+
+**2. Construct and write the rejection artifact YAML** to `{artifact_path}-rejection.yaml` using the Write tool:
+
+```yaml
+schema_version: "1.0.0"
+rejecting_agent: "uc-slicer"
+rejected_artifact: "{repository-relative path to the artifact}"
+rejection_reason: "{reason code from table above}"
+current_state:
+  detail_level: "{BRIEFLY_DESCRIBED | BULLETED_OUTLINE | etc.}"
+required_state:
+  detail_level: "ESSENTIAL_OUTLINE"
+missing_elements:
+  - "{specific, actionable description of first missing element}"
+  - "{additional missing elements -- at least one required}"
+recommended_action: "Re-invoke uc-author with target_detail_level: ESSENTIAL_OUTLINE on artifact {artifact filename}"
+human_message: >-
+  The use case artifact is at {current_level}. uc-slicer requires
+  ESSENTIAL_OUTLINE minimum to perform slicing (Activity 2). {specific
+  elements missing}.
+timestamp: "{ISO-8601 timestamp, e.g. 2026-03-11T14:30:00Z}"
+```
+
+If a rejection artifact already exists at that path, overwrite it. The latest rejection is always the current truth.
+
+**3. Report to user** with both:
+- A human-readable message explaining the failure and the correction path
+- The path where the rejection artifact was written: `{artifact_path}-rejection.yaml`
+
+**4. HALT** -- do not proceed to Step 2 under any circumstances.
 
 ## Slice State Machine
 
@@ -118,6 +163,10 @@ NEVER set `realization_level: INTERACTION_DEFINED` before populating `interactio
 </methodology>
 
 <output>
+## Rejection Artifacts (Input Validation Failure Path)
+
+When input validation fails at Step 1, uc-slicer produces a rejection artifact at `{artifact_path}-rejection.yaml` as a side effect of the rejection. This artifact is machine-readable and allows uc-author (or an orchestrator) to detect the rejection, understand the required correction, and re-invoke with the correct `target_detail_level`. The rejection artifact is NOT produced on success -- it exists only when input validation fails.
+
 ## Artifact Updates
 
 uc-slicer updates the existing use case artifact in-place, adding:
@@ -138,16 +187,16 @@ After completing slicing operations, report:
 
 ## L1: Artifact Detail
 
-The updated artifact file is the primary L1 deliverable. Optionally, produce separate slice documents at `projects/${JERRY_PROJECT}/use-cases/UC-{DOMAIN}-{NNN}/slices/UC-{DOMAIN}-{NNN}-S{N}-{slug}.md`.
+The updated artifact file is the primary L1 deliverable. Optionally, produce separate slice documents at `projects/${JERRY_PROJECT}/use-cases/UC-{DOMAIN}-{NNN}/slices/UC-{DOMAIN}-{NNN}-S{N}-{slug}.md` (or `work/use-cases/...` when JERRY_PROJECT is not set).
 
 ## Post-Update Verification
 
-After updating the artifact, verify:
-1. Artifact validates against schema including allOf constraints
+After updating the artifact, verify by manually checking the YAML frontmatter satisfies the allOf constraints defined in `docs/schemas/use-case-realization-v1.schema.json` and confirming all of the following:
+1. Artifact YAML frontmatter satisfies the allOf constraints defined in `docs/schemas/use-case-realization-v1.schema.json`: (a) goal_symbol matches goal_level, (b) if realization_level is INTERACTION_DEFINED then interactions[] has minItems: 1, (c) if realization_level is STORY_DEFINED then slices[] has minItems: 1, (d) if detail_level is ESSENTIAL_OUTLINE or FULLY_DESCRIBED then extensions[] has minItems: 1, (e) INTERACTION_DEFINED is not permitted with BRIEFLY_DESCRIBED or BULLETED_OUTLINE detail_level
 2. basic_flow is the first slice (slice_id ending in -S1)
 3. Each slice has an INVEST assessment
 4. Test cases present when slice_state >= PREPARED
-5. interactions[] present when realization_level = INTERACTION_DEFINED
+5. interactions[] present and non-empty when realization_level = INTERACTION_DEFINED (enforced by allOf schema constraint verified at Step 8)
 6. realization_level explicitly set
 7. slice_state explicitly set on every transition
 </output>
@@ -185,7 +234,8 @@ After updating the artifact, verify:
 
 | Failure | Response |
 |---------|---------|
-| Input artifact at detail_level < ESSENTIAL_OUTLINE | Reject with actionable error: "Input artifact is at {current_level}. uc-slicer requires detail_level >= ESSENTIAL_OUTLINE. Use uc-author to elaborate the use case first." |
+| Input artifact at detail_level < ESSENTIAL_OUTLINE | Execute rejection artifact protocol: construct rejection YAML with `rejection_reason: detail_level_insufficient`, write to `{artifact_path}-rejection.yaml`, report to user with human-readable message AND rejection artifact path, HALT. |
+| Rejection artifact written | uc-slicer writes `{artifact_path}-rejection.yaml` alongside the rejected artifact. Report artifact path to user. Do not proceed to Step 2. |
 | Slice fails INVEST criteria | Record failure in invest_assessment{}, report to user, ask whether to redefine slice boundaries or proceed with documented INVEST exceptions |
 | allOf constraint violation after update | Fix the artifact: populate the required block before setting the triggering field (e.g., populate interactions[] before setting realization_level: INTERACTION_DEFINED) |
 | Worktracker CLI fails | Report the error, persist slice definitions to the artifact file, note that Story entity creation failed and must be retried |

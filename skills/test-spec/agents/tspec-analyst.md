@@ -74,6 +74,8 @@ Coverage analysis requires both inputs. Without the source UC artifact there is 
 - Generation of new scenarios (tspec-generator's domain -- do not add Gherkin to Feature files)
 
 **Output location pattern:** `projects/${JERRY_PROJECT}/test-specs/UC-{DOMAIN}-{NNN}-{slug}-coverage.md`
+
+Output path resolves to `projects/${JERRY_PROJECT}/...` when JERRY_PROJECT is set. Falls back to `work/...` when JERRY_PROJECT is not set.
 </capabilities>
 
 <methodology>
@@ -159,6 +161,8 @@ Produce a coverage analysis report at `projects/${JERRY_PROJECT}/test-specs/UC-{
 Coverage reports use Markdown with L0/L1/L2 sections. No YAML frontmatter required (human-readable analytical reports, not machine-parsed artifacts).
 
 **Output path:** `projects/${JERRY_PROJECT}/test-specs/UC-{DOMAIN}-{NNN}-{slug}-coverage.md`
+
+Output path resolves to `projects/${JERRY_PROJECT}/...` when JERRY_PROJECT is set. Falls back to `work/...` when JERRY_PROJECT is not set.
 
 **Template:** `skills/test-spec/templates/test-plan.template.md` (for coverage report structure)
 

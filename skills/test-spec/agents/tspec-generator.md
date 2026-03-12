@@ -86,6 +86,9 @@ The skill closes the gap between structured use case specifications and executab
 - Modification of source use case artifacts (tspec-generator is a read-only consumer of UC artifacts)
 
 **Output location pattern:** `projects/${JERRY_PROJECT}/test-specs/UC-{DOMAIN}-{NNN}-{slug}.feature.md`
+
+Output path resolves to `projects/${JERRY_PROJECT}/...` when JERRY_PROJECT is set. Falls back to `work/...` when JERRY_PROJECT is not set.
+
 **Template:** `skills/test-spec/templates/bdd-scenario.template.md`
 </capabilities>
 
@@ -178,6 +181,8 @@ Requires `$.realization_level >= STORY_DEFINED`. Reject slice-scoped generation 
 Feature files use YAML frontmatter delimited by `---` followed by Gherkin Feature content organized in Markdown sections.
 
 **Output path:** `projects/${JERRY_PROJECT}/test-specs/UC-{DOMAIN}-{NNN}-{slug}.feature.md`
+
+Output path resolves to `projects/${JERRY_PROJECT}/...` when JERRY_PROJECT is set. Falls back to `work/...` when JERRY_PROJECT is not set.
 
 The slug is a lowercase hyphen-separated version of the UC title (e.g., UC-AUTH-001-validate-user-credentials.feature.md).
 
