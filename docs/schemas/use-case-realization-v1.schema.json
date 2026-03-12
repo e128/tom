@@ -225,8 +225,15 @@
       "description": "References to related use case IDs."
     },
     "parent_id": {
-      "type": ["string", "null"],
-      "pattern": "^UC-[A-Z]+-\\d{3}$",
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^UC-[A-Z]+-\\d{3}$"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "description": "Parent use case ID for sub-use-cases. Null for top-level use cases."
     },
     "created_at": {

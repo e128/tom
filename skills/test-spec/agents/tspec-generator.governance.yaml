@@ -84,6 +84,8 @@ validation:
     - "verify_all_scenarios_have_source_step_traceability"
     - "verify_given_clauses_present_in_happy_path"
     - "verify_then_clauses_present_in_happy_path"
+    - "verify_coverage_percentage_consistent_with_mapped_and_total_flows"
+    - "verify_scenario_count_equals_coverage_mapped_flows"
 
 session_context:
   on_receive:

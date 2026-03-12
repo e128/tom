@@ -132,7 +132,10 @@ SUBSTRING_TERMS (case-insensitive word-boundary match):
   "sample description"
 
 Matching algorithm:
-  1. If description.strip() matches any EXACT_MATCH_TERMS (case-insensitive):
+  0. Normalize Unicode: apply NFC normalization and strip non-ASCII whitespace
+     (U+00A0 non-breaking space, U+200B zero-width space, U+FEFF BOM) before
+     all comparisons. This prevents bypass via Unicode padding.
+  1. If normalized description.strip() matches any EXACT_MATCH_TERMS (case-insensitive):
      REJECT -- entire description is a placeholder.
   2. If any SUBSTRING_TERMS appears as a word-boundary match in description
      AND description total length < 60 characters:
@@ -159,7 +162,7 @@ Use /use-case (uc-slicer Activity 5) to update the interaction descriptions.
 For each interaction that passes Layer 2a, apply LLM-evaluated quality checks to `request_description` (when `actor_role = consumer`) and `response_description`:
 
 1. **Verb presence check (request_description):** Does the description contain at least one recognizable action verb from the HTTP method inference vocabulary?
-   - Strong verbs: read, query, get, fetch, retrieve, search, list, find, create, add, submit, register, initiate, start, send, post, update, modify, change, edit, set, replace, delete, remove, cancel, revoke, deactivate, terminate
+   - Strong verbs: read, query, get, fetch, retrieve, search, list, find, create, add, submit, register, initiate, start, send, post, update, modify, change, edit, set, replace, delete, remove, cancel, revoke, deactivate, terminate, ingest, dispatch, propagate, publish, subscribe, emit, enqueue, dequeue, validate, verify, authenticate, authorize, approve, reject, transfer, allocate, assign, release, notify, acknowledge, confirm, deny, request, respond, invoke, execute, process, compute, transform, generate, render, export, import, upload, download, sync, refresh, expire, archive, restore, migrate, provision, deprovision, configure, deploy, escalate
    - If no strong verb found: flag interaction for `x-description-quality: low` annotation
 
 2. **Noun presence check (request_description and response_description):** Does the description contain at least one identifiable domain noun (the resource or entity being acted upon)?
