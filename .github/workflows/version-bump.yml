@@ -18,23 +18,35 @@ on:
     # Does NOT affect workflow_dispatch — manual triggers always fire.
     # Source: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore
     paths-ignore:
-      - '.github/**'
-      - '.claude/**'
-      - '.claude-plugin/**'
-      - '.context/**'
+      # Only exclude files that can NEVER affect the shipped plugin.
+      # Jerry is a Claude Code plugin — skills/, hooks/, .context/, .claude/,
+      # scripts/, agents, rules, templates are ALL product surface.
+      # When in doubt, do NOT exclude. A wasted CI run (BumpType.NONE)
+      # is better than a missed version bump.
+      #
+      # --- Documentation site (published separately, not part of plugin) ---
       - 'docs/**'
-      - 'tests/**'
-      - 'projects/**'
-      - 'skills/**'
-      - 'hooks/**'
-      - 'requirements-*.txt'
-      - '*.md'
+      - 'site/**'
+      - 'overrides/**'
       - 'mkdocs.yml'
+      - 'CNAME'
+      # --- Project management (internal work tracking) ---
+      - 'projects/**'
+      # --- Operational (maintainer tooling, not shipped) ---
+      - 'runbooks/**'
       - '.pre-commit-config.yaml'
-      - 'TOOL_REGISTRY.yaml'
-      # NOTE: scripts/ is NOT excluded — sync_versions.py is version-critical
-      # NOTE: .github/** exclusion prevents self-testing of version-bump.yml
-      #        changes, but those commits carry ci: prefix so Filter B skips them
+      - 'pytest.ini'
+      - 'requirements-*.txt'
+      # --- Community/legal (no behavioral impact) ---
+      - 'CODE_OF_CONDUCT.md'
+      - 'CONTRIBUTING.md'
+      - 'LICENSE'
+      - 'NOTICE'
+      - 'SECURITY.md'
+      - 'SOUNDTRACK.md'
+      - 'README.md'
+      # --- CI config (changes use ci: prefix, caught by Filter B) ---
+      - '.github/**'
   workflow_dispatch:
     inputs:
       bump_type:
