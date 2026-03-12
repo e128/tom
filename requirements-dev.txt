@@ -10,7 +10,7 @@ mypy-extensions==1.1.0
     # via mypy
 pathspec==1.0.4
     # via mypy
-ruff==0.14.11
+ruff==0.15.5
     # via jerry (pyproject.toml)
 typing-extensions==4.15.0
     # via mypy
