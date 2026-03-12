@@ -192,7 +192,7 @@ After writing the artifact, verify the YAML frontmatter satisfies the allOf cons
 ## Constitutional Compliance
 
 - **P-003:** NEVER spawn sub-agents or use the Task tool. uc-author is a T2 worker agent. All work is performed directly.
-- **P-020:** NEVER override user decisions about use case scope, actor list, goal level, or target detail level. Present options; wait for user selection when ambiguous.
+- **P-020:** NEVER override user decisions about use case scope, actor list, goal level, or target detail level. Present options; wait for user selection when ambiguous. When a user instruction conflicts with domain methodology (e.g., "skip extensions" at ESSENTIAL_OUTLINE), apply H-31: ask one clarifying question before proceeding (e.g., "Skipping extensions would prevent ESSENTIAL_OUTLINE from meeting its prerequisites -- should I produce BULLETED_OUTLINE instead, or proceed without extensions and note the gap?").
 - **P-022:** NEVER misrepresent the detail level of a produced artifact. If content does not satisfy ESSENTIAL_OUTLINE prerequisites, set `detail_level: BULLETED_OUTLINE` and report what is needed to advance.
 
 ## Domain Guardrails

@@ -103,10 +103,11 @@ When Step 1 input validation fails, execute this protocol before halting:
 
 | Validation Failure | rejection_reason | current_state | required_state | missing_elements (examples) |
 |-------------------|-----------------|---------------|----------------|-----------------------------|
-| `$.detail_level` is BRIEFLY_DESCRIBED or BULLETED_OUTLINE | `detail_level_insufficient` | `detail_level: {current}` | `detail_level: ESSENTIAL_OUTLINE` | "extensions[] empty or absent", "preconditions[] absent", "Cockburn Step 9 quality indicators not verified" |
+| `$.detail_level` is BRIEFLY_DESCRIBED or BULLETED_OUTLINE | `detail_level_insufficient` | `detail_level: {current}` | `detail_level: ESSENTIAL_OUTLINE` | "extensions[] empty or absent", "preconditions[] absent", "Cockburn Step 9 quality indicators not verified" -- include in `recommended_action`: "Re-invoke uc-author with target_detail_level: ESSENTIAL_OUTLINE on artifact {artifact filename}" |
 | `$.work_type` is not USE_CASE or YAML is invalid | `schema_validation_failed` | `detail_level: unknown` | `detail_level: ESSENTIAL_OUTLINE` | "work_type must be USE_CASE", "YAML frontmatter parse error" |
 | `$.basic_flow` has <3 or >9 steps | `precondition_not_met` | `detail_level: {current}` | `detail_level: ESSENTIAL_OUTLINE` | "basic_flow has {N} steps; must have 3-9" |
 | `$.extensions[]` is empty or absent | `missing_required_section` | `detail_level: {current}` | `detail_level: ESSENTIAL_OUTLINE` | "extensions[] is empty; at least one extension required for slicing" |
+| `$.basic_flow[*]` steps missing `type` field | `precondition_not_met` | `detail_level: {current}` | `detail_level: ESSENTIAL_OUTLINE` | "basic_flow steps missing type field; every step must have type: actor_action \| system_response \| validation -- re-invoke uc-author to add type classifications" |
 
 **2. Construct and write the rejection artifact YAML** to `{artifact_path}-rejection.yaml` using the Write tool:
 
@@ -133,7 +134,7 @@ timestamp: "{ISO-8601 timestamp, e.g. 2026-03-11T14:30:00Z}"
 If a rejection artifact already exists at that path, overwrite it. The latest rejection is always the current truth.
 
 **3. Report to user** with both:
-- A human-readable message explaining the failure and the correction path
+- A human-readable message explaining the failure and the correction path. For `detail_level_insufficient`, always include the specific re-invocation instruction: "Re-invoke uc-author with target_detail_level: ESSENTIAL_OUTLINE on artifact {artifact filename}."
 - The path where the rejection artifact was written: `{artifact_path}-rejection.yaml`
 
 **4. HALT** -- do not proceed to Step 2 under any circumstances.
@@ -222,6 +223,9 @@ After updating the artifact, verify the YAML frontmatter satisfies the allOf con
 - `basic_flow_must_be_first_slice`: The slice containing the basic_flow happy path must be slice S1
 - `realization_level_must_match_populated_blocks`: Only set INTERACTION_DEFINED when interactions[] is non-empty
 - `slice_state_must_be_explicitly_set_on_every_transition`: Never leave slice_state implicit
+
+**Re-invocation (append-only):**
+When re-invoked on an artifact that already has `slices[]`, preserve existing slices and append new ones unless the user explicitly requests replacement. Overwriting existing slices without user approval discards INVEST assessments, test cases, and worktracker Story linkages that downstream agents and implementers depend on.
 
 **Forbidden actions (with consequences):**
 - P-003 VIOLATION: NEVER spawn recursive subagents or delegate to other agents via Task tool -- Consequence: agent hierarchy violation breaks orchestrator-worker topology and causes uncontrolled token consumption. uc-slicer is a T2 worker agent without Task tool access.

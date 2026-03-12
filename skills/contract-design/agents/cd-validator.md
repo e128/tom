@@ -168,6 +168,8 @@ For every operation in `paths`:
 
 Verify that `info.x-prototype: true` is present in the contract's `info` section.
 
+**Case sensitivity note:** YAML keys are case-sensitive; verify the exact lowercase spelling `x-prototype: true`, not `X-Prototype` or `x-Prototype`. A key with incorrect casing will not be recognized as the PROTOTYPE label and must be treated as absent.
+
 This check is a safety gate. A contract without the PROTOTYPE label may be treated as production-ready by downstream consumers before human review has occurred.
 
 **Failure action:** FAIL verdict with message: "Contract is missing info.x-prototype: true. This label is required until a human reviewer validates the contract's semantic correctness. Do not distribute this contract without the PROTOTYPE label." This is a mandatory FAIL -- no override permitted.
