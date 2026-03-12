@@ -29,10 +29,10 @@ jobs:
     name: Lint & Format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: "3.14"
 
@@ -52,17 +52,17 @@ jobs:
     name: Type Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: "3.14"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pyright
+          pip install "pyright==1.1.408"
           pip install -e ".[dev]" || pip install -e .
 
       - name: Run pyright
@@ -75,23 +75,24 @@ jobs:
     name: Security Scan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: "3.14"
 
       - name: Install pip-audit
         run: |
           python -m pip install --upgrade pip
-          pip install pip-audit
+          pip install "pip-audit==2.10.0"
 
       - name: Install and audit dependencies
         run: |
           # Install dev dependencies directly (not the jerry package itself)
           # This allows auditing only real PyPI dependencies
-          pip install filelock mypy ruff
+          # EN-001: Pin versions to prevent supply chain drift
+          pip install "filelock==3.20.3" "mypy==1.19.1" "ruff==0.14.11"
           pip-audit --strict
 
       - name: Check for banned YAML APIs (M-04b)
@@ -120,18 +121,18 @@ jobs:
     name: Plugin Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
 
       - name: Install dependencies
-        run: uv sync --extra dev
+        run: uv sync --frozen --extra dev
 
       - name: Validate plugin manifests
         run: uv run python scripts/validate_plugin_manifests.py
@@ -164,18 +165,18 @@ jobs:
     name: Template Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --frozen
 
       - name: Validate adversarial strategy templates
         run: uv run python scripts/validate_templates.py --verbose
@@ -188,18 +189,18 @@ jobs:
     name: License Header Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --frozen
 
       - name: Validate SPDX license headers
         run: uv run python scripts/check_spdx_headers.py
@@ -213,18 +214,18 @@ jobs:
     name: CLI Integration Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
 
       - name: Install dependencies
-        run: uv sync --extra dev --extra test
+        run: uv sync --frozen --extra dev --extra test
 
       - name: Run CLI subprocess tests
         run: |
@@ -276,10 +277,10 @@ jobs:
             python-version: "3.12"
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -325,7 +326,7 @@ jobs:
             -v
 
       - name: Upload coverage artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         if: matrix.python-version == '3.14' && matrix.os == 'ubuntu-latest'
         with:
           name: coverage-report-pip
@@ -335,7 +336,7 @@ jobs:
             junit-pip-${{ matrix.python-version }}.xml
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8fd56d24 # v5.4.3
         if: matrix.python-version == '3.14' && matrix.os == 'ubuntu-latest'
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -344,7 +345,7 @@ jobs:
           fail_ci_if_error: false
 
       - name: Upload test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         if: always()
         with:
           name: test-results-pip-${{ matrix.os }}-${{ matrix.python-version }}
@@ -376,18 +377,18 @@ jobs:
             python-version: "3.12"
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
 
       - name: Install dependencies (uv)
-        run: uv sync --extra test
+        run: uv sync --frozen --extra test
 
       - name: Run tests with coverage
         shell: bash
@@ -426,7 +427,7 @@ jobs:
             -v
 
       - name: Upload coverage artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         if: matrix.python-version == '3.14' && matrix.os == 'ubuntu-latest'
         with:
           name: coverage-report-uv
@@ -435,7 +436,7 @@ jobs:
             junit-uv-${{ matrix.python-version }}.xml
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8fd56d24 # v5.4.3
         if: matrix.python-version == '3.14' && matrix.os == 'ubuntu-latest'
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -444,7 +445,7 @@ jobs:
           fail_ci_if_error: false
 
       - name: Upload test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         if: always()
         with:
           name: test-results-uv-${{ matrix.os }}-${{ matrix.python-version }}
@@ -460,15 +461,15 @@ jobs:
     needs: [test-pip, test-uv]
     if: github.event_name == 'pull_request'
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Download uv coverage artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
         with:
           name: coverage-report-uv
 
       - name: Add coverage comment to PR
-        uses: MishaKav/pytest-coverage-comment@main
+        uses: MishaKav/pytest-coverage-comment@26f986d2599c288bb62f623d29c2da98609e9cd4 # main (2026-03-09)
         with:
           pytest-xml-coverage-path: coverage.xml
           junitxml-path: junit-uv-3.14.xml
@@ -486,18 +487,18 @@ jobs:
     name: Version Sync Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --frozen
 
       - name: Validate version consistency
         run: uv run python scripts/sync_versions.py --check
@@ -511,21 +512,76 @@ jobs:
     name: HARD Rule Ceiling
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
         with:
-          version: "latest"
+          version: "0.10.9"
 
       - name: Set up Python
         run: uv python install 3.14
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --frozen
 
       - name: Check HARD rule ceiling
         run: uv run python scripts/check_hard_rule_ceiling.py
+
+  # ===========================================================================
+  # Changelog Enforcement
+  # ===========================================================================
+  # Every PR to main must include a CHANGELOG.md update.
+  # Exemptions: Dependabot PRs, version-bump bot commits, [skip-changelog] marker.
+  changelog-check:
+    name: Changelog Entry
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+
+      # CLCHK-001: Use env block to prevent shell injection via PR title.
+      # ${{ }} expressions are expanded at YAML render time before bash executes,
+      # so untrusted strings must be passed as env vars, not inline interpolation.
+      - name: Check CHANGELOG.md was updated
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_ACTOR: ${{ github.actor }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          # Exempt bot PRs
+          if [[ "$PR_ACTOR" == "dependabot[bot]" ]] || \
+             [[ "$PR_ACTOR" == "github-actions[bot]" ]]; then
+            echo "Bot PR — changelog check skipped."
+            exit 0
+          fi
+
+          # Exempt [skip-changelog] marker in PR title
+          if [[ "$PR_TITLE" == *"[skip-changelog]"* ]]; then
+            echo "PR title contains [skip-changelog] — check skipped."
+            exit 0
+          fi
+
+          # Check if CHANGELOG.md is in the diff against the PR base
+          if git diff --name-only "$BASE_SHA"...HEAD | grep -q '^CHANGELOG.md$'; then
+            # Verify the change touches the [Unreleased] section, not just any line
+            if git diff "$BASE_SHA"...HEAD -- CHANGELOG.md | grep -q '^\+.*Unreleased\|^\+.*###'; then
+              echo "CHANGELOG.md updated with content in [Unreleased] section. OK."
+            else
+              echo "::warning::CHANGELOG.md was modified but no new entries detected under [Unreleased]."
+              echo "Passing check — but please verify the changelog entry is meaningful."
+            fi
+          else
+            echo "::error::CHANGELOG.md was not updated in this PR."
+            echo ""
+            echo "Every PR must include a changelog entry in the [Unreleased] section."
+            echo "See CHANGELOG.md for format (Keep a Changelog)."
+            echo ""
+            echo "To skip this check (e.g., CI-only changes), add [skip-changelog] to the PR title."
+            exit 1
+          fi
 
   # ===========================================================================
   # Final Status Check
@@ -535,7 +591,7 @@ jobs:
   ci-success:
     name: CI Success
     runs-on: ubuntu-latest
-    needs: [lint, type-check, security, plugin-validation, template-validation, license-headers, cli-integration, test-pip, test-uv, version-sync, hard-rule-ceiling]
+    needs: [lint, type-check, security, plugin-validation, template-validation, license-headers, cli-integration, test-pip, test-uv, version-sync, hard-rule-ceiling, changelog-check]
     if: always()
     steps:
       - name: Check all jobs passed
@@ -565,6 +621,16 @@ jobs:
             echo "  hard-rule-ceiling: ${{ needs.hard-rule-ceiling.result }}"
             exit 1
           fi
+
+          # CLCHK-003: changelog-check only runs on PRs (if: github.event_name == 'pull_request').
+          # On push events it reports "skipped" — this is expected, not a failure.
+          # Any future PR-only job added to the needs list must use this same pattern.
+          CHANGELOG_RESULT="${{ needs.changelog-check.result }}"
+          if [[ "$CHANGELOG_RESULT" != "success" && "$CHANGELOG_RESULT" != "skipped" ]]; then
+            echo "changelog-check failed: $CHANGELOG_RESULT"
+            exit 1
+          fi
+
           echo "All CI checks passed!"
           echo "  - Linting: OK"
           echo "  - Type checking: OK"
@@ -577,3 +643,4 @@ jobs:
           echo "  - Tests (uv): OK"
           echo "  - Version sync: OK"
           echo "  - HARD rule ceiling: OK"
+          echo "  - Changelog entry: ${CHANGELOG_RESULT}"

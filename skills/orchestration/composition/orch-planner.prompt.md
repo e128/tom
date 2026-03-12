@@ -358,13 +358,13 @@ Use Memory-Keeper to persist orchestration planning context across sessions and 
 
 | Event | Action | Tool |
 |-------|--------|------|
-| Workflow plan created | Store plan summary + phase definitions | `mcp__memory-keeper__store` |
-| Resuming workflow | Retrieve prior plan context | `mcp__memory-keeper__retrieve` |
-| Cross-workflow reference | Search for related orchestrations | `mcp__memory-keeper__search` |
+| Workflow plan created | Store plan summary + phase definitions | `mcp__memory-keeper__context_save` |
+| Resuming workflow | Retrieve prior plan context | `mcp__memory-keeper__context_get` |
+| Cross-workflow reference | Search for related orchestrations | `mcp__memory-keeper__context_search` |
 
 ### Store Example
 ```
-mcp__memory-keeper__store(
+mcp__memory-keeper__context_save(
     key="jerry/PROJ-001/orchestration/feat028-mcp-20260220",
     value="Workflow: FEAT-028 MCP Integration. 5 phases, 3 QGs. Phase 1: Rule file creation..."
 )

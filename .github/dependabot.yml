@@ -1,0 +1,30 @@
+# Dependabot configuration for automated dependency updates
+# EN-001: All GitHub Actions are pinned to commit SHAs.
+# Dependabot opens PRs when new versions are available.
+
+version: 2
+updates:
+  # GitHub Actions — weekly check for pinned SHA updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "dependencies"
+      - "ci"
+    open-pull-requests-limit: 10
+
+  # pip — weekly check for Python dependency updates
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "deps"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 5

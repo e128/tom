@@ -243,7 +243,7 @@ tools:
         - "Finding code examples"
         - "Researching API usage"
 
-    mcp__memory-keeper__store:
+    mcp__memory-keeper__context_save:
       description: "Store context with a key for cross-session persistence"
       category: "mcp"
       risk_level: "low"
@@ -255,7 +255,7 @@ tools:
         - "Storing architecture decisions for cross-reference"
         - "Checkpoint creation for session recovery"
 
-    mcp__memory-keeper__retrieve:
+    mcp__memory-keeper__context_get:
       description: "Retrieve stored context by key"
       category: "mcp"
       risk_level: "low"
@@ -266,7 +266,7 @@ tools:
         - "Resuming prior session context"
         - "Loading phase boundary summaries"
 
-    mcp__memory-keeper__search:
+    mcp__memory-keeper__context_search:
       description: "Search stored contexts by query"
       category: "mcp"
       risk_level: "low"
@@ -277,7 +277,7 @@ tools:
         - "Finding related prior work"
         - "Cross-pipeline context discovery"
 
-    mcp__memory-keeper__list:
+    mcp__memory-keeper__context_session_list:
       description: "List all stored context keys"
       category: "mcp"
       risk_level: "low"
@@ -285,7 +285,7 @@ tools:
         - "Auditing stored contexts"
         - "Session inventory"
 
-    mcp__memory-keeper__delete:
+    mcp__memory-keeper__context_batch_delete:
       description: "Delete stored context by key"
       category: "mcp"
       risk_level: "low"
@@ -395,9 +395,9 @@ agent_permissions:
         - WebFetch
         - mcp__context7__resolve-library-id
         - mcp__context7__query-docs
-        - mcp__memory-keeper__store
-        - mcp__memory-keeper__retrieve
-        - mcp__memory-keeper__search
+        - mcp__memory-keeper__context_save
+        - mcp__memory-keeper__context_get
+        - mcp__memory-keeper__context_search
       focus: "ADR creation, architecture decisions"
 
     ps-critic:
@@ -580,9 +580,9 @@ agent_permissions:
         - Bash
         - WebSearch
         - WebFetch
-        - mcp__memory-keeper__store
-        - mcp__memory-keeper__retrieve
-        - mcp__memory-keeper__search
+        - mcp__memory-keeper__context_save
+        - mcp__memory-keeper__context_get
+        - mcp__memory-keeper__context_search
       focus: "Requirements engineering per NPR 7123.1D"
 
     nse-reviewer:
@@ -641,9 +641,9 @@ agent_permissions:
         - Glob
         - Grep
         - Bash
-        - mcp__memory-keeper__store
-        - mcp__memory-keeper__retrieve
-        - mcp__memory-keeper__search
+        - mcp__memory-keeper__context_save
+        - mcp__memory-keeper__context_get
+        - mcp__memory-keeper__context_search
       focus: "Workflow design, pipeline architecture, state schema definition"
 
     orch-tracker:
@@ -656,9 +656,9 @@ agent_permissions:
         - Glob
         - Grep
         - Bash
-        - mcp__memory-keeper__store
-        - mcp__memory-keeper__retrieve
-        - mcp__memory-keeper__search
+        - mcp__memory-keeper__context_save
+        - mcp__memory-keeper__context_get
+        - mcp__memory-keeper__context_search
       focus: "State tracking, checkpoint creation, metrics calculation"
 
     orch-synthesizer:
@@ -671,8 +671,8 @@ agent_permissions:
         - Glob
         - Grep
         - Bash
-        - mcp__memory-keeper__retrieve
-        - mcp__memory-keeper__search
+        - mcp__memory-keeper__context_get
+        - mcp__memory-keeper__context_search
       focus: "Cross-document synthesis, pattern extraction, recommendations"
 
 # ============================================================================
@@ -785,7 +785,7 @@ categories:
     description: "Workflow and task management"
 
   mcp:
-    tools: ["mcp__context7__resolve-library-id", "mcp__context7__query-docs", "mcp__memory-keeper__store", "mcp__memory-keeper__retrieve", "mcp__memory-keeper__search", "mcp__memory-keeper__list", "mcp__memory-keeper__delete"]
+    tools: ["mcp__context7__resolve-library-id", "mcp__context7__query-docs", "mcp__memory-keeper__context_save", "mcp__memory-keeper__context_get", "mcp__memory-keeper__context_search", "mcp__memory-keeper__context_session_list", "mcp__memory-keeper__context_batch_delete"]
     risk: "low"
     description: "Model Context Protocol extensions"
 

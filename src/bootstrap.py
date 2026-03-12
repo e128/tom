@@ -646,6 +646,21 @@ def create_hooks_handlers() -> dict[str, Any]:
     # Pre-tool enforcement engine
     pre_tool_engine = PreToolEnforcementEngine(project_root=project_root)
 
+    # Security enforcement engine (#150 consolidation)
+    from src.infrastructure.internal.enforcement.pattern_library_adapter import (
+        PatternLibraryAdapter,
+    )
+    from src.infrastructure.internal.enforcement.security_enforcement_engine import (
+        SecurityEnforcementEngine,
+    )
+
+    pattern_library = PatternLibraryAdapter(
+        patterns_path=project_root / "scripts" / "patterns" / "patterns.yaml"
+    )
+    security_engine = SecurityEnforcementEngine(
+        pattern_library=pattern_library,
+    )
+
     # ST-006: Cross-invocation state store for graduated escalation
     context_state_store = FilesystemContextStateStore(state_dir=lifecycle_dir)
 
@@ -673,6 +688,7 @@ def create_hooks_handlers() -> dict[str, Any]:
         "pre-tool-use": HooksPreToolUseHandler(
             enforcement_engine=pre_tool_engine,
             staleness_detector=staleness_detector,
+            security_engine=security_engine,
         ),
         "stop": HooksStopGateHandler(
             context_state_store=context_state_store,
