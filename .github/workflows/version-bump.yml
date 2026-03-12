@@ -12,6 +12,28 @@ name: Version Bump
 on:
   push:
     branches: [main]
+    # #187 Filter A: Skip workflow when ONLY non-version-relevant files change.
+    # Uses paths-ignore (denylist) because the set of irrelevant paths is
+    # smaller and more stable than enumerating all version-relevant paths.
+    # Does NOT affect workflow_dispatch — manual triggers always fire.
+    # Source: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore
+    paths-ignore:
+      - '.github/**'
+      - '.claude/**'
+      - '.context/**'
+      - 'docs/**'
+      - 'tests/**'
+      - 'projects/**'
+      - 'skills/**'
+      - 'hooks/**'
+      - 'requirements-*.txt'
+      - '*.md'
+      - 'mkdocs.yml'
+      - '.pre-commit-config.yaml'
+      - 'TOOL_REGISTRY.yaml'
+      # NOTE: scripts/ is NOT excluded — sync_versions.py is version-critical
+      # NOTE: .github/** exclusion prevents self-testing of version-bump.yml
+      #        changes, but those commits carry ci: prefix so Filter B skips them
   workflow_dispatch:
     inputs:
       bump_type:
@@ -50,12 +72,24 @@ jobs:
     env:
       UV_LOCKED: "1"
 
-    # Skip if this is a version bump commit (prevent infinite loop)
-    # BUG-003/F-003: Use github.actor (authenticated identity set by
-    # GitHub from the token) instead of author.name (any committer can
-    # set git config user.name "github-actions[bot]" to suppress bumps)
-    # EN-001/F-004: workflow_dispatch also respects [skip-bump] to
-    # prevent double-bumping a commit already marked skip
+    # Skip conditions (all must pass for the job to run):
+    # NOTE: Filter B assumes standard merge commits (not squash/rebase).
+    # With standard merges, head_commit.message is "Merge pull request #N..."
+    # which passes all startsWith checks, and detect-bump-type reads the
+    # individual commits inside the merge. With rebase merges, only the last
+    # commit's subject is checked, which could incorrectly skip a PR with
+    # mixed commit types. (red-exploit V6)
+    #
+    # 1. Not a version bump commit (prevent infinite loop)
+    #    BUG-003/F-003: Use github.actor, not author.name
+    #
+    # 2. Not a non-bump conventional commit prefix (#187 Filter B)
+    #    Only feat:, fix:, perf:, and breaking changes produce bumps.
+    #    ci:, deps:, docs:, chore:, style:, refactor:, test:, build:
+    #    all resolve to "none" — skip the workflow entirely.
+    #    startsWith() is case-insensitive per GitHub Actions docs.
+    #
+    # 3. workflow_dispatch always runs (manual override)
     if: >-
       (
         github.event_name == 'workflow_dispatch' &&
@@ -64,7 +98,25 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' &&
         !contains(github.event.head_commit.message, '[skip-bump]') &&
-        github.actor != 'github-actions[bot]'
+        github.actor != 'github-actions[bot]' &&
+        !startsWith(github.event.head_commit.message, 'ci:') &&
+        !startsWith(github.event.head_commit.message, 'ci(') &&
+        !startsWith(github.event.head_commit.message, 'deps:') &&
+        !startsWith(github.event.head_commit.message, 'deps(') &&
+        !startsWith(github.event.head_commit.message, 'docs:') &&
+        !startsWith(github.event.head_commit.message, 'docs(') &&
+        !startsWith(github.event.head_commit.message, 'chore:') &&
+        !startsWith(github.event.head_commit.message, 'chore(') &&
+        !startsWith(github.event.head_commit.message, 'style:') &&
+        !startsWith(github.event.head_commit.message, 'style(') &&
+        !startsWith(github.event.head_commit.message, 'refactor:') &&
+        !startsWith(github.event.head_commit.message, 'refactor(') &&
+        !startsWith(github.event.head_commit.message, 'test:') &&
+        !startsWith(github.event.head_commit.message, 'test(') &&
+        !startsWith(github.event.head_commit.message, 'build:') &&
+        !startsWith(github.event.head_commit.message, 'build(') &&
+        !startsWith(github.event.head_commit.message, 'revert:') &&
+        !startsWith(github.event.head_commit.message, 'revert(')
       )
 
     steps:
