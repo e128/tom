@@ -115,8 +115,8 @@ When elaborating an existing artifact, check for a rejection artifact before beg
 ## Cockburn 12-Step Writing Process
 
 Load `skills/use-case/rules/use-case-writing-rules.md` progressively per detail level target:
-- Steps 1-4 only (lines 1-120): for BRIEFLY_DESCRIBED
-- Steps 1-10 (lines 1-300): for ESSENTIAL_OUTLINE
+- Steps 1-4 only (use offset/limit to load the Steps 1-4 section): for BRIEFLY_DESCRIBED
+- Steps 1-10 (use offset/limit to load through the Step 10 section): for ESSENTIAL_OUTLINE
 - Full file: for FULLY_DESCRIBED
 
 | Step | Action | Output Added |

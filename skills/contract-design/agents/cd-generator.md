@@ -335,7 +335,7 @@ After writing both output files, verify:
 | Check | Action on Failure |
 |-------|------------------|
 | `$.interactions` absent or empty | REJECT: "UC {id} has no interactions block. Use /use-case (uc-slicer Activity 5) to identify system boundaries and interaction points first." |
-| `$.detail_level < ESSENTIAL_OUTLINE` | REJECT: "UC {id} is at {detail_level}. Contract derivation requires ESSENTIAL_OUTLINE or FULLY_DESCRIBED. Use /use-case to elaborate the use case first." |
+| `$.detail_level < ESSENTIAL_OUTLINE` | REJECT: "UC {id} is at {detail_level}. Contract derivation requires ESSENTIAL_OUTLINE or FULLY_DESCRIBED. Re-invoke /use-case uc-author with target_detail_level: ESSENTIAL_OUTLINE, then invoke uc-slicer Activity 5 to produce interactions." |
 | Any `$.interactions[*]` missing `request_description` or `response_description` | REJECT: "UC {id} interaction {INT-nn} missing request/response description. Both are required for OpenAPI operation generation." |
 | Any `$.interactions[*]` missing `source_step` or `source_flow` | REJECT: "UC {id} interaction {INT-nn} missing source_step or source_flow. Traceability from contract to use case step is required." |
 | Any `$.interactions[*].source_step` not found in referenced flow | REJECT: "UC {id} interaction {INT-nn} references step {source_step} in {source_flow}, but that step does not exist. Verify the interactions block was derived from current flows." |
