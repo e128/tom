@@ -73,6 +73,7 @@ validation:
     - "verify_each_slice_has_invest_assessment"
     - "verify_test_cases_present_when_slice_state_gte_PREPARED"
     - "verify_interactions_present_when_realization_level_INTERACTION_DEFINED"
+    - "verify_each_interaction_has_all_7_required_fields_non_empty_before_INTERACTION_DEFINED"
     - "verify_realization_level_is_explicitly_set"
     - "verify_slice_state_is_explicitly_set"
     - "verify_frontmatter_satisfies_use_case_realization_schema_allOf_constraints"

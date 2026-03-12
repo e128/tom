@@ -108,8 +108,9 @@ When elaborating an existing artifact, check for a rejection artifact before beg
 
 **Post-elaboration cleanup:** After successfully producing an artifact at or above `required_state.detail_level`:
 1. Verify the produced artifact's `$.detail_level` >= `required_state.detail_level` from the rejection artifact.
-2. If yes: delete `{artifact_path}-rejection.yaml` using Bash (`rm "{artifact_path}-rejection.yaml"`).
-3. If no: leave the rejection artifact in place -- it remains valid since the required level was not achieved.
+2. Verify that every item listed in `missing_elements[]` from the rejection artifact is satisfied in the produced artifact. For each missing_element: check whether the corresponding field or content is present and non-empty (e.g., "extensions[] empty or absent" is resolved when `$.extensions` is non-empty; "preconditions[] absent" is resolved when `$.preconditions` is non-empty). If any missing_element is not yet satisfied, do NOT delete the rejection artifact -- log which items remain unsatisfied and report to the user.
+3. If both conditions pass (detail_level sufficient AND all missing_elements satisfied): delete `{artifact_path}-rejection.yaml` using Bash (`rm "{artifact_path}-rejection.yaml"`). Log: "Rejection artifact deleted: all {N} missing_elements satisfied and detail_level={achieved_level} >= required {required_level}."
+4. If no: leave the rejection artifact in place -- it remains valid since the required level or content completeness was not achieved.
 
 ## Cockburn 12-Step Writing Process
 

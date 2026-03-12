@@ -55,7 +55,7 @@ activation-keywords:
 | [Invoking an Agent](#invoking-an-agent) | Three invocation modes |
 | [UC-to-Contract Algorithm Reference](#uc-to-contract-algorithm-reference) | Domain methodology summary |
 | [Input Requirements](#input-requirements) | Use case artifact prerequisites |
-| [Output Artifacts](#output-artifacts) | OpenAPI contract, mapping document, validation report |
+| [Output Artifacts](#output-artifacts) | OpenAPI contract, mapping document, validation report, PROTOTYPE review checklist |
 | [Integration Points](#integration-points) | Cross-skill connections |
 | [Routing Entry (Priority 15)](#routing-entry-priority-15) | Trigger map entry for mandatory-skill-usage.md |
 | [Constitutional Compliance](#constitutional-compliance) | Principle-to-agent mapping |
@@ -303,6 +303,38 @@ The PROTOTYPE label (`x-prototype: true`) remains on all contracts until:
 3. The reviewer explicitly removes the `x-prototype: true` label
 
 Neither cd-generator nor cd-validator removes the PROTOTYPE label. That action is a human decision (P-020 user authority).
+
+### PROTOTYPE Review Checklist
+
+When `cd-validator` produces a PASS verdict, a human reviewer MUST complete this checklist before removing the `x-prototype: true` label. This checklist constitutes the formal sign-off ceremony. Record completion in the validation report alongside the cd-validator PASS verdict.
+
+**Reviewer checklist (all items required for label removal):**
+
+| # | Check | Reviewer Action |
+|---|-------|----------------|
+| 1 | cd-validator PASS confirmed | Verify `-validation.md` shows overall PASS with all 9 steps individually PASS |
+| 2 | HTTP method semantics correct | For every operation: manually verify the inferred HTTP method matches the use case intent -- especially any operations with `x-method-inference: medium` or `x-method-inference: low` |
+| 3 | Resource naming is correct | Path names (`/resources/{id}`) match the domain entities and naming conventions of the target system |
+| 4 | Request/response schemas are complete | Required fields are present; field names match the implementation's data model; no spurious required fields |
+| 5 | Error responses are correct | Each 4xx/5xx response maps to an actual failure condition; status codes follow RFC 9110 semantics for the operation |
+| 6 | No invented operations | Every operation traces to a specific `$.interactions` entry in the source UC artifact via `x-source-interaction` annotation |
+| 7 | Supporting actors are correctly referenced | `components/schemas` descriptions and `x-internal-operations` entries accurately represent external system dependencies |
+| 8 | Contract is suitable for downstream consumption | The contract can serve as a binding specification for implementation; no ambiguous operations remain |
+
+**Sign-off format (append to `-validation.md`):**
+
+```markdown
+## PROTOTYPE Review Sign-Off
+
+**Reviewer:** {name}
+**Date:** {YYYY-MM-DD}
+**Checklist:** All 8 items verified
+**Decision:** APPROVED for label removal
+**Action taken:** x-prototype: true removed from info section
+**Notes:** {any caveats or conditional approvals}
+```
+
+**Audit trail:** The sign-off record in `-validation.md` is the audit trail. Do not remove the PROTOTYPE label without appending this section. The sign-off is permanent -- do not delete it after label removal.
 
 ---
 

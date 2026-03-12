@@ -48,7 +48,7 @@
     "scenario_count": {
       "type": "integer",
       "minimum": 1,
-      "description": "Total number of Gherkin scenarios generated. Must equal coverage.mapped_flows."
+      "description": "Total number of Gherkin scenarios generated. Must equal coverage.mapped_flows. Note: JSON Schema cannot enforce cross-field equality at the schema level; tspec-generator MUST verify scenario_count == coverage.mapped_flows as a post_completion_check (verify_scenario_count_equals_coverage_mapped_flows) before writing the Feature file."
     },
     "coverage": {
       "type": "object",

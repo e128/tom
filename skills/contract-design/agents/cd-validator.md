@@ -93,7 +93,7 @@ Output path resolves to `projects/${JERRY_PROJECT}/...` when JERRY_PROJECT is se
 <methodology>
 ## Contract Validation Protocol (9 Steps)
 
-For each validation session, execute all 9 steps in order. Record a PASS or FAIL verdict with specific evidence for each step. Report a combined PASS verdict only if all 9 steps pass.
+For each validation session, execute all 9 steps in order. Record a PASS or FAIL verdict with specific evidence for each step. Every step produces exactly one binary verdict: PASS or FAIL -- never a gap, warning, or documentation note without an accompanying FAIL. Report a combined PASS verdict only if all 9 steps individually pass. A single FAIL in any step produces a combined FAIL verdict for the session.
 
 ### Step 1: Structural Validity
 
@@ -123,11 +123,14 @@ Report as: `{mapped_operations}/{total_consumer_interactions} = {coverage}%`
 
 For each external operation in the contract:
 - Verify the HTTP method is semantically consistent with the source interaction's `request_description`
-- Check `x-method-inference` annotation: if present with value "low", flag for human review
+- Check `x-method-inference` annotation: if present with value "low", flag the operation for human review
+- Count all external operations that carry `x-method-inference: low`
 - Verify operation has a valid `operationId` (non-empty, unique within the contract)
 - Verify operation has a `summary` field (non-empty)
 
-**Failure action:** For each method mismatch, cite the operation path, the inferred method, the source interaction's request_description, and the expected method based on RFC 9110 semantics. FAIL if any operation has no operationId or empty summary.
+**Threshold enforcement:** FAIL this step if more than 20% of external consumer operations have `x-method-inference: low`. A contract where the majority of HTTP methods are low-confidence inferences is not suitable for downstream implementers without human correction. Report the count and percentage: `{low_count}/{total_external_ops} = {pct}% low-confidence`.
+
+**Failure action:** For each method mismatch, cite the operation path, the inferred method, the source interaction's request_description, and the expected method based on RFC 9110 semantics. FAIL if any operation has no operationId or empty summary. FAIL if low-confidence threshold exceeded (>20%).
 
 ### Step 4: Schema Completeness
 
@@ -142,11 +145,14 @@ For each external operation:
 
 For each `$.extensions[*]` with `outcome = failure` in the source UC artifact:
 - Identify which interactions have `source_step` matching the extension's `anchor_step`
-- Verify those operations have a corresponding 4xx or 5xx error response
+- If no interaction `source_step` matches the extension's `anchor_step`, record this as an anchor_step mismatch -- FAIL this step immediately; do not treat as a warning
+- Verify those matched operations have a corresponding 4xx or 5xx error response
 - Verify the error response carries `x-source-extension: "{extension_id}"` annotation
 - Verify the error response references `#/components/schemas/ErrorResponse`
 
-**Failure action:** List each extension ID that has no corresponding error response in the contract. Include the expected HTTP status code based on the extension condition.
+**Anchor_step mismatch is a FAIL:** An unmatched anchor_step means a failure extension has no corresponding error response in the contract, which leaves error paths undocumented for implementers. This is not a warning-level gap.
+
+**Failure action:** List each extension ID that has no corresponding error response in the contract. List each unmatched anchor_step with the extension ID and the anchor_step value that could not be resolved. Include the expected HTTP status code based on the extension condition. FAIL verdict for this step if any mismatch or missing error response is found.
 
 ### Step 6: Traceability Annotations
 
@@ -174,7 +180,7 @@ For each `$.interactions[*]` where `actor_role = provider` in the source UC arti
 
 This step verifies that the contract documents the complete system behavior, not just the externally-visible API surface.
 
-**Failure action:** List each provider interaction with no `x-internal-operations` entry. Report as a documentation gap (not a critical FAIL unless all provider interactions are undocumented).
+**Failure action:** List each provider interaction with no `x-internal-operations` entry. FAIL verdict for this step. If all provider interactions are undocumented, add a critical FAIL note to the report indicating the complete absence of internal operation documentation.
 
 ### Step 9: IC-05 Supporting Actor Resolution
 
@@ -182,7 +188,7 @@ For each `$.supporting_actors[*]` in the source UC artifact:
 - Verify the supporting actor is referenced in at least one of: (a) a `components/schemas` description, (b) an `x-internal-operations` entry, (c) an operation description
 - This verifies that external dependencies are visible to contract consumers
 
-**Failure action:** List any supporting actors with no contract presence. Report as a documentation gap.
+**Failure action:** List any supporting actors with no contract presence. FAIL verdict for this step.
 
 ## Validation Report Format
 

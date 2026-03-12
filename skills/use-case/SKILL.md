@@ -65,6 +65,7 @@ activation-keywords:
 | [Routing Entry (Priority 13)](#routing-entry-priority-13) | Trigger map entry for mandatory-skill-usage.md |
 | [Constitutional Compliance](#constitutional-compliance) | Principle-to-agent mapping |
 | [Quick Reference](#quick-reference) | Common workflows and agent selection |
+| [Elaboration State Matrix](#elaboration-state-matrix-detail_level-x-realization_level) | 2D valid-state and readiness matrix |
 | [References](#references) | File paths and external citations |
 
 ---
@@ -369,8 +370,30 @@ Per `agent-routing-standards.md` enhanced 5-column trigger map format. Priority 
 |-------|----------------|-----------|
 | BRIEFLY_DESCRIBED | Title + 3-step basic flow + goal level | Human review only |
 | BULLETED_OUTLINE | Steps 1-6 complete (actors, typed flow, pre/postconditions) | Internal discussion |
-| ESSENTIAL_OUTLINE | Steps 1-10 complete (extensions, alternative flows, quality indicators) | `/test-spec`, `/use-case` uc-slicer |
-| FULLY_DESCRIBED | Steps 1-12 complete (sub-use cases extracted, all exceptions) | `/contract-design` (after uc-slicer Activity 5) |
+| ESSENTIAL_OUTLINE | Steps 1-10 complete (extensions, alternative flows, quality indicators) | `/test-spec`, `/use-case` uc-slicer, and `/contract-design` (after uc-slicer Activity 5 adds interactions) |
+| FULLY_DESCRIBED | Steps 1-12 complete (sub-use cases extracted, all exceptions) | All consumers (maximum completeness) |
+
+> **Note:** ESSENTIAL_OUTLINE + uc-slicer Activity 5 (`realization_level = INTERACTION_DEFINED`) is the minimum prerequisite for `/contract-design`. FULLY_DESCRIBED is not required. See Downstream Consumption Readiness table above.
+
+---
+
+### Elaboration State Matrix (detail_level x realization_level)
+
+This 2D matrix shows which `(detail_level, realization_level)` combinations are valid and which transitions produce downstream-consumable artifacts.
+
+| | `OUTLINED` | `STORY_DEFINED` | `INTERACTION_DEFINED` |
+|---|---|---|---|
+| **BRIEFLY_DESCRIBED** | Valid (initial state) | NOT PERMITTED (schema allOf block) | NOT PERMITTED (schema allOf block) |
+| **BULLETED_OUTLINE** | Valid (working spec) | Valid (slices created, no interactions yet) | NOT PERMITTED (schema allOf block) |
+| **ESSENTIAL_OUTLINE** | Valid (pre-slice) | Valid (Activities 2+4 complete) | **Ready for /contract-design and /test-spec** |
+| **FULLY_DESCRIBED** | Valid (pre-slice) | Valid (Activities 2+4 complete) | **Ready for /contract-design and /test-spec (maximum completeness)** |
+
+**Key rules:**
+- `INTERACTION_DEFINED` requires `detail_level >= ESSENTIAL_OUTLINE` -- enforced by the schema's allOf conditional constraint
+- `STORY_DEFINED` requires `detail_level >= BULLETED_OUTLINE` (slices need typed flow steps)
+- `/contract-design` requires `realization_level = INTERACTION_DEFINED` (independent of detail_level)
+- `/test-spec` requires `detail_level >= ESSENTIAL_OUTLINE` (independent of realization_level)
+- The most common production target is `(ESSENTIAL_OUTLINE, INTERACTION_DEFINED)`
 
 ---
 
