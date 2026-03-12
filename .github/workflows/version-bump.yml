@@ -20,6 +20,7 @@ on:
     paths-ignore:
       - '.github/**'
       - '.claude/**'
+      - '.claude-plugin/**'
       - '.context/**'
       - 'docs/**'
       - 'tests/**'
@@ -72,28 +73,30 @@ jobs:
     env:
       UV_LOCKED: "1"
 
-    # Skip conditions (all must pass for the job to run):
-    # NOTE: Filter B assumes standard merge commits (not squash/rebase).
+    # #187 Filter B: Skip non-bump conventional commit prefixes.
+    # Only feat:, fix:, perf:, and breaking changes (!) produce bumps.
+    # All other prefixes resolve to BumpType.NONE in the CLI — skip them.
+    #
+    # startsWith() is case-insensitive per GitHub Actions docs:
+    #   "String comparisons are case insensitive"
+    #   Source: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions#functions
+    #
+    # head_commit.message is null on workflow_dispatch (no push commit).
+    # Null coerces to empty string '', making all startsWith() return false
+    # and all !startsWith() return true. workflow_dispatch always passes.
+    #   Source: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions#literals
+    #
+    # NOTE: Assumes standard merge commits (not squash/rebase).
     # With standard merges, head_commit.message is "Merge pull request #N..."
-    # which passes all startsWith checks, and detect-bump-type reads the
+    # which passes all startsWith checks. detect-bump-type reads the
     # individual commits inside the merge. With rebase merges, only the last
-    # commit's subject is checked, which could incorrectly skip a PR with
-    # mixed commit types. (red-exploit V6)
+    # commit's subject is checked, which could skip a PR with mixed types.
+    # (red-exploit V6 — not applicable; Jerry uses standard merges)
     #
-    # 1. Not a version bump commit (prevent infinite loop)
-    #    BUG-003/F-003: Use github.actor, not author.name
-    #
-    # 2. Not a non-bump conventional commit prefix (#187 Filter B)
-    #    Only feat:, fix:, perf:, and breaking changes produce bumps.
-    #    ci:, deps:, docs:, chore:, style:, refactor:, test:, build:
-    #    all resolve to "none" — skip the workflow entirely.
-    #    startsWith() is case-insensitive per GitHub Actions docs.
-    #
-    # 3. workflow_dispatch always runs (manual override)
+    # Research: projects/PROJ-030-bugs/research/workflow-filtering-research.md
     if: >-
       (
-        github.event_name == 'workflow_dispatch' &&
-        !contains(github.event.head_commit.message, '[skip-bump]')
+        github.event_name == 'workflow_dispatch'
       ) ||
       (
         github.event_name != 'workflow_dispatch' &&
