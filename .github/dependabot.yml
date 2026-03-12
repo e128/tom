@@ -2,7 +2,7 @@
 #
 # DESIGN RATIONALE (7 decisions):
 #
-# D1: pip group structure
+# D1: pip group structure (verified #188; update when dep count changes)
 #   - "pip-minor-patch" group: patch + minor updates together (low ceremony).
 #   - Major updates: ungrouped (each gets its own PR for manual review).
 #   - Dev/test deps are NOT separated from runtime deps because:
@@ -13,13 +13,15 @@
 #     (c) The risk profile of patch/minor is the same for both categories.
 #     If the dep count grows past ~40, reconsider splitting by adding a
 #     second group with `dependency-type: "development"`.
-#   - DEVIATION from risk analysis (R-3, R-4): The FMEA recommended
-#     separating the pytest ecosystem from dev tools (to isolate RPN 120
-#     transitive conflict risk) and keeping runtime deps ungrouped (user-
-#     facing blast radius). The `allow: direct` policy (D3) eliminates the
-#     transitive conflict risk entirely (gherkin-official class), making
-#     the pytest separation unnecessary. Runtime grouping is acceptable at
-#     current dep count (~7 runtime) because CI catches breakage pre-merge.
+#   - DEVIATION from risk analysis (R-3, R-4): The FMEA raised three
+#     independent concerns: (1) transitive conflict risk (RPN 120),
+#     (2) user-facing blast radius for runtime deps, (3) pytest ecosystem
+#     coupling. The `allow: direct` policy (D3) addresses concern #1 only
+#     (prevents standalone transitive PRs). Concerns #2 and #3 are
+#     accepted at current scale: (2) ~7 runtime deps produce low PR
+#     volume; CI catches breakage pre-merge; (3) pytest deps share no
+#     cross-constraints with non-pytest dev tools (ruff, pyright, mypy).
+#     Revisit if dep count exceeds ~40 or if runtime dep breakage occurs.
 #     See: projects/PROJ-030-bugs/research/dependabot-risk-analysis.md
 #
 # D2: github-actions group structure
@@ -29,11 +31,11 @@
 #     v4->v7 (setup-uv) after individual review. Major action bumps can
 #     change behavior (e.g., Node.js runtime version, input/output schema).
 #     These warrant individual PRs with manual review.
-#   - DEVIATION from risk analysis (R-1): The FMEA recommended grouping
-#     ALL Actions (including major) since SHA pinning makes even major bumps
-#     "just a hash change." This config takes a more conservative approach
-#     because major bumps CAN change runtime behavior (Node.js version,
-#     input schemas) regardless of the pin mechanism.
+#   - CONSERVATIVE OVERRIDE of risk analysis (R-1): The FMEA recommended
+#     grouping ALL Actions (including major) since SHA pinning makes even
+#     major bumps "just a hash change." This config is MORE conservative —
+#     major bumps stay individual because they CAN change runtime behavior
+#     (Node.js version, input schemas) regardless of the pin mechanism.
 #
 # D3: Transitive dependency handling
 #   - Using `allow` with `dependency-type: direct` for pip.
@@ -49,16 +51,22 @@
 #         only touches what we explicitly declared. Transitive deps update
 #         when their parent direct dep is bumped (e.g., pytest-bdd bump
 #         pulls in the compatible gherkin-official version via uv.lock).
-#   - HOW IT WORKS: Dependabot classifies deps as direct/indirect using
-#     `# via <parent>` annotations in requirements*.txt files. Packages
-#     annotated with `# via` are indirect and excluded by this policy.
-#     Debug: if an unexpected PR appears for a package, check if its entry
-#     in requirements-*.txt has a `# via` annotation.
-#   - CAVEAT: This means compromised transitive deps (e.g., urllib3 via
-#     pip-audit, or gherkin-official via pytest-bdd) will NOT generate a
-#     Dependabot PR. Compensating controls: `pip-audit` in CI catches
-#     known CVEs; review the `uv.lock` diff on grouped PRs to spot
-#     transitive version changes. (red-recon Q1)
+#   - HOW IT WORKS: Dependabot classifies deps as direct/indirect via
+#     two mechanisms: (1) packages listed in pyproject.toml [dependencies]
+#     or [dependency-groups] are always classified as direct; (2) packages
+#     in requirements*.txt with `# via <parent>` annotations are indirect.
+#     Debug: if an unexpected PR appears, check both pyproject.toml
+#     (is it a declared dependency?) and requirements-*.txt (does it have
+#     a `# via` annotation?).
+#   - CAVEAT: Transitive dep compromises will NOT generate a Dependabot
+#     PR. Compensating DETECTION controls: `pip-audit` in CI catches
+#     known CVEs; `uv.lock` diff review on grouped PRs reveals transitive
+#     shifts. These are detectors, not remediators — a transitive CVE
+#     still requires manual intervention (bump the parent dep or add an
+#     explicit override). Maximum transitive CVE detection latency: up to
+#     7 days (next weekly Dependabot run triggers parent bump → CI runs
+#     pip-audit). For faster detection, run `uv run pip-audit` locally.
+#     (red-recon supply chain assessment, DA-001)
 #   - GitHub Actions are all direct references (no transitive concept), so
 #     no `allow` restriction is needed there.
 #
@@ -70,6 +78,9 @@
 #     interval controls version updates only. Security update PRs are
 #     created as soon as a compatible fix is available, regardless of the
 #     configured schedule.
+#   - Note: `open-pull-requests-limit` applies to security PRs too (CC-005).
+#     At Jerry's scale this is unlikely to saturate, but a burst of CVEs
+#     could compete with version update PRs for queue slots.
 #   - Security updates must be enabled in repo Settings > Code security >
 #     Dependabot security updates. No additional dependabot.yml config is
 #     needed to keep them ungrouped (that is the default behavior).
@@ -83,13 +94,13 @@
 #   - No downstream impact from prefix choice beyond Filter B. Labels
 #     provide the risk-level signaling (see D7).
 #
-# D6: open-pull-requests-limit
+# D6: open-pull-requests-limit (verified #188; update when dep count changes)
 #   - Actions: 10 (unchanged). With grouping, patch+minor collapses to ~1
-#     grouped PR. The limit of 10 accommodates the remaining individual
-#     major-version PRs (Jerry uses ~7 distinct actions).
+#     grouped PR consuming 1 slot. Effective ceiling for individual major
+#     PRs is 9. Jerry uses ~7 distinct actions, so headroom is adequate.
 #   - Pip: 5 -> 10. With direct-only filtering (D3), the grouped PR count
-#     is small (~1 for patch/minor). The limit of 10 accommodates
-#     individual major-version PRs for the ~8 direct runtime deps plus
+#     is small (~1 for patch/minor, consuming 1 slot). The limit of 10
+#     accommodates individual major-version PRs for the ~8 direct runtime deps plus
 #     ~4 direct dev deps. The old limit of 5 could queue PRs when
 #     multiple majors are pending simultaneously.
 #
@@ -106,7 +117,7 @@
 # REFERENCES:
 #   - Research: projects/PROJ-030-bugs/research/merge-queue-vs-dependabot-grouping.md
 #   - Risk analysis (FMEA): projects/PROJ-030-bugs/research/dependabot-risk-analysis.md
-#   - Supply chain assessment: red-recon Q1-Q5 (projects/PROJ-030-bugs/reviews/)
+#   - Supply chain assessment: projects/PROJ-030-bugs/reviews/ (red-recon #188)
 #   - Filter B: .github/workflows/version-bump.yml (#187)
 #   - SHA pinning: EN-001
 #   - Dependabot options: https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
@@ -170,4 +181,16 @@ updates:
           - "patch"
     # Major updates (e.g., pytest 9->10, ruff 1->2) remain ungrouped.
     # Each gets its own PR for individual review. Major version bumps
+    #
+    # REVIEWER GUIDE for grouped PRs (DA-004):
+    #   If a grouped PR fails CI:
+    #     1. Check which dep broke: read the test failure output
+    #     2. Comment `@dependabot ignore <pkg> minor version` to exclude it
+    #     3. Dependabot recreates the group without the excluded dep
+    #     4. The excluded dep gets its own individual PR for separate review
+    #   If you need to split a group entirely:
+    #     1. Close the grouped PR
+    #     2. Temporarily remove the `groups:` block from this file
+    #     3. Dependabot creates individual PRs on next schedule run
+    #     4. Identify and fix the problem, then restore the groups block
     # may require code changes (API removals, behavior changes).
