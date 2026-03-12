@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `/use-case` skill — guided use case authoring (uc-author) and Jacobson UC 2.0 slicing (uc-slicer) with Cockburn 12-step methodology, rejection artifact pattern for inter-agent error propagation, and 2D detail_level x realization_level state matrix ([#109](https://github.com/geekatron/jerry/issues/109), [PR #149](https://github.com/geekatron/jerry/pull/149))
+- `/test-spec` skill — BDD test specification generation from use cases via Clark transformation (tspec-generator) with 7 Cs coverage analysis (tspec-analyst) ([#109](https://github.com/geekatron/jerry/issues/109), [PR #149](https://github.com/geekatron/jerry/pull/149))
+- `/contract-design` skill — API contract generation from use case realization artifacts producing OpenAPI 3.1 specifications (cd-generator) with 9-step validation (cd-validator), three-layer description quality validation, and PROTOTYPE review checklist ([#109](https://github.com/geekatron/jerry/issues/109), [PR #149](https://github.com/geekatron/jerry/pull/149))
+- `use-case-realization-v1.schema.json` — JSON Schema (Draft 2020-12) for use case artifact YAML frontmatter validation with allOf conditional constraints for lifecycle state consistency
+- `test-specification-v1.schema.json` — JSON Schema (Draft 2020-12) for BDD Feature file YAML frontmatter validation
+- Rejection artifact pattern (`{artifact_path}-rejection.yaml`) — structured inter-agent error propagation with T1-T5 security mitigations (ADR-PM001)
+- `work/` fallback output paths for all 6 PROJ-021 agents when `JERRY_PROJECT` is not set ([#192](https://github.com/geekatron/jerry/issues/192))
 - CHANGELOG.md using Keep a Changelog format, enforced by CI (`changelog-check` job)
 - CI enforcement: `changelog-check` job in `ci.yml` fails PRs that don't update CHANGELOG.md (exempts bots, `[skip-changelog]` escape hatch)
 - Dependabot configuration for automated GitHub Actions and pip dependency updates (`.github/dependabot.yml`)

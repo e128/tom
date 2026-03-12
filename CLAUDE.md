@@ -88,6 +88,9 @@ See `docs/governance/JERRY_CONSTITUTION.md` for full governance.
 | `/prompt-engineering` | Structured prompt construction, NPT constraint generation, prompt quality scoring (3 agents: builder, constraint-gen, scorer) |
 | `/diataxis` | Four-quadrant documentation methodology (6 agents: 4 writers, classifier, auditor) |
 | `/user-experience` | AI-augmented UX methodology for tiny teams (11 agents: orchestrator + 10 framework specialists across 5 criteria-gated waves) |
+| `/use-case` | Guided use case authoring and decomposition (2 agents: Cockburn 12-step author, Jacobson UC 2.0 slicer) |
+| `/test-spec` | BDD test specification from use cases (2 agents: Clark transformation generator, 7 Cs coverage analyst) |
+| `/contract-design` | API contract generation from use cases (2 agents: UC-to-OpenAPI generator, 9-step validator) |
 
 **SessionStart Hook Tags:**
 
