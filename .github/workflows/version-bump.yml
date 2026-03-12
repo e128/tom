@@ -25,10 +25,16 @@ on:
       # is better than a missed version bump.
       #
       # --- Documentation site (published separately, not part of plugin) ---
-      # NOTE: docs/schemas/ and docs/governance/ are NOT excluded — they
-      # contain runtime files (JSON schemas, JERRY_CONSTITUTION.md) loaded
-      # by the enforcement engine. Only documentation-only subdirs excluded.
-      # (red-exploit Finding 1)
+      # Product-relevant docs/ subdirs intentionally NOT excluded:
+      #   docs/schemas/    — runtime validation schemas (validate-agent-frontmatter.py)
+      #   docs/governance/ — JERRY_CONSTITUTION.md, C4-escalation (AE-001)
+      #   docs/knowledge/  — knowledge files loaded by agents at runtime
+      #   docs/design/     — ADRs; baselined ADR changes trigger AE-004 (C4)
+      #   docs/experience/ — learnings captured by agents
+      # MAINTENANCE: When creating a new docs/ subdirectory, assess if it
+      # contains runtime files loaded by agents or enforcement. If yes: do
+      # NOT add here. If pure doc-site content: add to this list.
+      # (red-exploit Finding 1: projects/PROJ-030-bugs/reviews/)
       - 'docs/reference/**'
       - 'docs/explanation/**'
       - 'docs/howto/**'
@@ -110,7 +116,8 @@ jobs:
     #
     # startsWith() is case-insensitive per GitHub Actions docs:
     #   "String comparisons are case insensitive"
-    #   Source: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions#functions
+    #   Source: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions#startswith
+    #   (Section: "startsWith" — "This function is not case sensitive.")
     #
     # head_commit.message is null on workflow_dispatch (no push commit).
     # Null coerces to empty string '', making all startsWith() return false
@@ -129,11 +136,13 @@ jobs:
     # SECURITY: workflow_dispatch has no secondary approval — any actor with
     # repo write access can trigger any bump type. This is a GitHub platform
     # characteristic. If external write contributors are added, configure a
-    # GitHub Environment with required reviewers. (eng-security FINDING-001)
+    # GitHub Environment with required reviewers.
+    # (eng-security FINDING-001: projects/PROJ-030-bugs/reviews/eng-security-187-dual-filter-review.md)
     #
     # MAINTENANCE: The denylist below must ONLY contain prefixes that
     # detect-bump-type treats as BumpType.NONE. Do NOT add prefixes that
-    # could be bump-worthy (feat:, fix:, perf:). (eng-security FINDING-003)
+    # could be bump-worthy (feat:, fix:, perf:).
+    # (eng-security FINDING-003: projects/PROJ-030-bugs/reviews/eng-security-187-dual-filter-review.md)
     #
     # Prefix rationale:
     #   deps: — Jerry convention for dependency updates not using build(deps):
@@ -189,8 +198,10 @@ jobs:
         run: uv python install 3.14
 
       # BUG-003/RISK-01: Pin bump-my-version to exact version to prevent
-      # supply chain attacks via PyPI package compromise. Update pin
-      # periodically via Dependabot or manual review.
+      # supply chain attacks via PyPI package compromise.
+      # NOTE: Dependabot does NOT track `uv tool install` version pins
+      # (only `uses:` action pins and requirements files). This pin must
+      # be updated manually. Check PyPI for new releases quarterly.
       - name: Install bump-my-version
         run: uv tool install 'bump-my-version==1.2.7'
 
