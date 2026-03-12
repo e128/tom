@@ -3,9 +3,21 @@
 # updates version across all files via bump-my-version, and creates a tag
 # that triggers release.yml.
 #
+# DUAL-FILTER ARCHITECTURE (#187):
+# Two complementary (not redundant) filters prevent unnecessary runs:
+#   Filter A (paths-ignore, trigger level): Coarse file-based filter.
+#     GitHub evaluates this BEFORE the workflow is queued. If ALL changed
+#     files are in paths-ignore, the workflow never starts. Zero CI cost.
+#   Filter B (startsWith, job-level if:): Fine commit-type filter.
+#     Evaluated AFTER the workflow is queued but before any steps run.
+#     Skips the job for non-bump conventional commit prefixes.
+# Together they eliminate ~60-70% of unnecessary runs. See research:
+#   projects/PROJ-030-bugs/research/workflow-filtering-research.md
+#
 # References:
 #   - EN-108: Version Bumping Strategy
 #   - TASK-003: Design Version Bumping Process
+#   - #187: Dual filtering implementation
 
 name: Version Bump
 
@@ -72,6 +84,11 @@ on:
       - '.github/workflows/pat-monitor.yml'
       - '.github/dependabot.yml'
       - '.github/CODEOWNERS'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/pull_request_template.md'
+      # MAINTENANCE: When adding new .github/ files, assess product relevance.
+      # release.yml is NOT excluded — artifact packaging is product-relevant.
+      # ISSUE_TEMPLATE and PR templates are community files, not product.
   workflow_dispatch:
     inputs:
       bump_type:
@@ -114,10 +131,8 @@ jobs:
     # Only feat:, fix:, perf:, and breaking changes (!) produce bumps.
     # All other prefixes resolve to BumpType.NONE in the CLI — skip them.
     #
-    # startsWith() is case-insensitive per GitHub Actions docs:
-    #   "String comparisons are case insensitive"
+    # startsWith() is case-insensitive: "This function is not case sensitive."
     #   Source: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions#startswith
-    #   (Section: "startsWith" — "This function is not case sensitive.")
     #
     # head_commit.message is null on workflow_dispatch (no push commit).
     # Null coerces to empty string '', making all startsWith() return false
@@ -130,13 +145,18 @@ jobs:
     # individual commits inside the merge. With rebase merges, only the last
     # commit's subject is checked, which could skip a PR with mixed types.
     # (red-exploit V6 — not applicable; Jerry uses standard merges)
+    # Verify: GitHub repo Settings > General > Pull Requests > merge method
     #
     # Research: projects/PROJ-030-bugs/research/workflow-filtering-research.md
     #
     # SECURITY: workflow_dispatch has no secondary approval — any actor with
-    # repo write access can trigger any bump type. This is a GitHub platform
-    # characteristic. If external write contributors are added, configure a
-    # GitHub Environment with required reviewers.
+    # repo write access can trigger any bump type. Two threat scenarios:
+    #   1. Authorized collaborator: accepted risk (write access = trusted)
+    #   2. Compromised PAT: accepted risk — VERSION_BUMP_PAT has contents:write
+    #      scope; a compromised PAT can push to main directly anyway, making
+    #      workflow_dispatch a less interesting attack vector.
+    # If external write contributors are added, configure a GitHub Environment
+    # with required reviewers.
     # (eng-security FINDING-001: projects/PROJ-030-bugs/reviews/eng-security-187-dual-filter-review.md)
     #
     # MAINTENANCE: The denylist below must ONLY contain prefixes that
@@ -175,6 +195,11 @@ jobs:
         !startsWith(github.event.head_commit.message, 'revert:') &&
         !startsWith(github.event.head_commit.message, 'revert(')
       )
+
+    # NOTE on per-step `if:` guards: Steps that modify the repo (bump, push)
+    # use `if: steps.bump.outputs.type != 'none'` to skip when there's nothing
+    # to bump. The "Job summary" step uses `if: always()` so the run always
+    # reports its outcome regardless of skip/success/failure.
 
     steps:
       # ------------------------------------------------------------------
