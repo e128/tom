@@ -1,10 +1,124 @@
-# Dependabot configuration for automated dependency updates
-# EN-001: All GitHub Actions are pinned to commit SHAs.
-# Dependabot opens PRs when new versions are available.
+# Dependabot Configuration -- Risk-Tiered Dependency Management (#188)
+#
+# DESIGN RATIONALE (7 decisions):
+#
+# D1: pip group structure
+#   - "pip-minor-patch" group: patch + minor updates together (low ceremony).
+#   - Major updates: ungrouped (each gets its own PR for manual review).
+#   - Dev/test deps are NOT separated from runtime deps because:
+#     (a) Jerry's dep count is small (~20 direct+transitive). Separate groups
+#         would produce 2 PRs where 1 suffices with no loss of visibility.
+#     (b) CI runs the full test suite on every PR regardless, so a broken
+#         test dep is caught the same way as a broken runtime dep.
+#     (c) The risk profile of patch/minor is the same for both categories.
+#     If the dep count grows past ~40, reconsider splitting by adding a
+#     second group with `dependency-type: "development"`.
+#   - DEVIATION from risk analysis (R-3, R-4): The FMEA recommended
+#     separating the pytest ecosystem from dev tools (to isolate RPN 120
+#     transitive conflict risk) and keeping runtime deps ungrouped (user-
+#     facing blast radius). The `allow: direct` policy (D3) eliminates the
+#     transitive conflict risk entirely (gherkin-official class), making
+#     the pytest separation unnecessary. Runtime grouping is acceptable at
+#     current dep count (~7 runtime) because CI catches breakage pre-merge.
+#     See: projects/PROJ-030-bugs/research/dependabot-risk-analysis.md
+#
+# D2: github-actions group structure
+#   - "actions-minor-patch" group: patch + minor SHA rotations (low risk;
+#     all actions are SHA-pinned per EN-001, so even "minor" is a SHA swap).
+#   - Major updates: ungrouped. Jerry just merged v5->v6 (checkout) and
+#     v4->v7 (setup-uv) after individual review. Major action bumps can
+#     change behavior (e.g., Node.js runtime version, input/output schema).
+#     These warrant individual PRs with manual review.
+#   - DEVIATION from risk analysis (R-1): The FMEA recommended grouping
+#     ALL Actions (including major) since SHA pinning makes even major bumps
+#     "just a hash change." This config takes a more conservative approach
+#     because major bumps CAN change runtime behavior (Node.js version,
+#     input schemas) regardless of the pin mechanism.
+#
+# D3: Transitive dependency handling
+#   - Using `allow` with `dependency-type: direct` for pip.
+#     This tells Dependabot to only open PRs for packages listed directly
+#     in pyproject.toml (and requirements*.txt), not for transitive deps
+#     like gherkin-official (pulled in by pytest-bdd).
+#   - Why `allow` instead of `exclude-patterns` (vs. risk analysis R-5):
+#     (a) gherkin-official 29->39 was a transitive dep conflict. Excluding
+#         it by name is whack-a-mole; new transitive deps appear over time.
+#         R-5 recommended an explicit ignore list; `allow: direct` is more
+#         durable and achieves the same outcome with a single policy line.
+#     (b) `allow: dependency-type: direct` is a durable policy: Dependabot
+#         only touches what we explicitly declared. Transitive deps update
+#         when their parent direct dep is bumped (e.g., pytest-bdd bump
+#         pulls in the compatible gherkin-official version via uv.lock).
+#   - HOW IT WORKS: Dependabot classifies deps as direct/indirect using
+#     `# via <parent>` annotations in requirements*.txt files. Packages
+#     annotated with `# via` are indirect and excluded by this policy.
+#     Debug: if an unexpected PR appears for a package, check if its entry
+#     in requirements-*.txt has a `# via` annotation.
+#   - CAVEAT: This means compromised transitive deps (e.g., urllib3 via
+#     pip-audit, or gherkin-official via pytest-bdd) will NOT generate a
+#     Dependabot PR. Compensating controls: `pip-audit` in CI catches
+#     known CVEs; review the `uv.lock` diff on grouped PRs to spot
+#     transitive version changes. (red-recon Q1)
+#   - GitHub Actions are all direct references (no transitive concept), so
+#     no `allow` restriction is needed there.
+#
+# D4: Security update handling
+#   - Security updates are ungrouped by default. Each CVE gets its own PR
+#     with clear visibility into what vulnerability it addresses.
+#   - Dependabot security updates are event-driven (triggered by GitHub
+#     Advisory Database updates), not schedule-driven. The `schedule`
+#     interval controls version updates only. Security update PRs are
+#     created as soon as a compatible fix is available, regardless of the
+#     configured schedule.
+#   - Security updates must be enabled in repo Settings > Code security >
+#     Dependabot security updates. No additional dependabot.yml config is
+#     needed to keep them ungrouped (that is the default behavior).
+#   - If we later want to GROUP security updates, add a group with
+#     `applies-to: security-updates` inside the relevant ecosystem block.
+#
+# D5: Commit message prefix
+#   - "ci" for actions, "deps" for pip. Unchanged from current config.
+#   - Both prefixes are caught by version-bump.yml Filter B (#187) which
+#     skips the version-bump job for ci: and deps: prefixed commits.
+#   - No downstream impact from prefix choice beyond Filter B. Labels
+#     provide the risk-level signaling (see D7).
+#
+# D6: open-pull-requests-limit
+#   - Actions: 10 (unchanged). With grouping, patch+minor collapses to ~1
+#     grouped PR. The limit of 10 accommodates the remaining individual
+#     major-version PRs (Jerry uses ~7 distinct actions).
+#   - Pip: 5 -> 10. With direct-only filtering (D3), the grouped PR count
+#     is small (~1 for patch/minor). The limit of 10 accommodates
+#     individual major-version PRs for the ~8 direct runtime deps plus
+#     ~4 direct dev deps. The old limit of 5 could queue PRs when
+#     multiple majors are pending simultaneously.
+#
+# D7: Labels
+#   - All Dependabot PRs get "dependencies" (existing).
+#   - Actions PRs additionally get "ci" (existing).
+#   - No risk-tier labels added. At Jerry's current PR volume (~2-4 PRs
+#     per week after grouping), the PR title already communicates risk:
+#     grouped PRs say "Bump the X group" (low risk), individual PRs show
+#     the specific major version change (review required). Adding labels
+#     like "risk:low" would require creating the label first and provides
+#     marginal value at this scale.
+#
+# REFERENCES:
+#   - Research: projects/PROJ-030-bugs/research/merge-queue-vs-dependabot-grouping.md
+#   - Risk analysis (FMEA): projects/PROJ-030-bugs/research/dependabot-risk-analysis.md
+#   - Supply chain assessment: red-recon Q1-Q5 (projects/PROJ-030-bugs/reviews/)
+#   - Filter B: .github/workflows/version-bump.yml (#187)
+#   - SHA pinning: EN-001
+#   - Dependabot options: https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
 
 version: 2
+
 updates:
-  # GitHub Actions — weekly check for pinned SHA updates
+  # ==================================================================
+  # GitHub Actions -- weekly check for pinned SHA updates
+  # ==================================================================
+  # Jerry SHA-pins all actions per EN-001. Dependabot detects when a new
+  # release is available and proposes the updated SHA.
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -16,8 +130,20 @@ updates:
       - "dependencies"
       - "ci"
     open-pull-requests-limit: 10
+    groups:
+      # D2: Patch + minor SHA rotations are low-risk for pinned actions.
+      # Produces ~1 grouped PR per week instead of ~7 individual PRs.
+      # Example: actions/checkout v6.0.1 -> v6.0.2 (patch SHA swap).
+      actions-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    # Major updates (e.g., actions/checkout v6->v7) remain ungrouped.
+    # Each gets its own PR for individual review of breaking changes.
 
-  # pip — weekly check for Python dependency updates
+  # ==================================================================
+  # pip -- weekly check for Python dependency updates
+  # ==================================================================
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
@@ -27,4 +153,21 @@ updates:
       prefix: "deps"
     labels:
       - "dependencies"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 10
+    # D3: Only bump direct dependencies declared in pyproject.toml and
+    # requirements*.txt. Transitive deps (gherkin-official, mako,
+    # markupsafe, coverage, pluggy, etc.) update when their parent
+    # direct dep is bumped and uv.lock is regenerated.
+    allow:
+      - dependency-type: "direct"
+    groups:
+      # D1: Patch + minor updates grouped together. SemVer contract says
+      # these should be backward-compatible. CI catches the exceptions.
+      # Produces ~1 grouped PR instead of ~5-8 individual PRs.
+      pip-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    # Major updates (e.g., pytest 9->10, ruff 1->2) remain ungrouped.
+    # Each gets its own PR for individual review. Major version bumps
+    # may require code changes (API removals, behavior changes).
