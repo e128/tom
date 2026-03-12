@@ -8,7 +8,7 @@ mypy==1.19.1
     # via jerry (pyproject.toml)
 mypy-extensions==1.1.0
     # via mypy
-pathspec==1.0.3
+pathspec==1.0.4
     # via mypy
 ruff==0.14.11
     # via jerry (pyproject.toml)
