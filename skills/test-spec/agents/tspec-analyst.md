@@ -53,7 +53,7 @@ Coverage analysis requires both inputs. Without the source UC artifact there is 
 **Session context fields (if provided by orchestrator):**
 - `feature_file_path`: Path to Feature file to analyze
 - `uc_artifact_path`: Path to source use case artifact
-- `goal_level`: Used to select appropriate coverage target (USER_GOAL = 100%, SUMMARY = 80%+, SUBFUNCTION = 100%)
+- `goal_level`: Used to select appropriate coverage target (USER_GOAL = 100%, SUBFUNCTION = 80%, SUMMARY = 60%) per test-specification-v1.schema.json
 - `success_criteria`: Observable acceptance criteria for this analysis session
 </input>
 
@@ -137,8 +137,8 @@ gap_count = total_mappable_flows - mapped_scenarios
 
 **Coverage targets by goal level:**
 - USER_GOAL: 100% (core use cases must have complete BDD coverage)
-- SUMMARY: 80%+ (summary-level UCs may have abstract flows not directly BDD-mappable)
-- SUBFUNCTION: 100% (granular functions; complete coverage achievable and expected)
+- SUBFUNCTION: 80% (granular functions with high but not necessarily complete coverage)
+- SUMMARY: 60% (summary-level UCs have abstract flows not directly BDD-mappable)
 
 ### Step 6: Prioritize Coverage Gaps
 

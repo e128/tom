@@ -111,5 +111,5 @@ session_context:
     - "Flag x-prototype status and recommend cd-validator for validation"
 
 enforcement:
-  tier: "high"
+  tier: "hard"
   escalation_path: "eng-reviewer"

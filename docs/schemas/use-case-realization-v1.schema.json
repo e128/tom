@@ -335,6 +335,11 @@
           "minLength": 1,
           "description": "Condition that triggers this alternative flow."
         },
+        "branches_from_step": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Basic flow step number where this alternative flow branches. Required for slice-scoped coverage computation in tspec-analyst."
+        },
         "steps": {
           "type": "array",
           "items": {
@@ -435,8 +440,8 @@
         },
         "system_role": {
           "type": "string",
-          "enum": ["receiver", "provider"],
-          "description": "System's role in this interaction."
+          "enum": ["receiver", "provider", "initiator"],
+          "description": "System's role in this interaction. 'initiator' used when system proactively triggers the interaction (e.g., timer-based events, system notifications)."
         },
         "request_description": {
           "type": "string",
