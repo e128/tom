@@ -149,7 +149,7 @@ Implement scenarios in this order to build a growing test baseline from the most
 | `{P2_COUNT}` | count(extensions where outcome matches `rejoin:\d+`) |
 | `{P3_COUNT}` | count(extensions where outcome = "success") |
 | `{COVERAGE_PERCENT}` | (mapped_scenarios / total_mappable_flows) * 100 |
-| `{TARGET_PERCENT}` | USER_GOAL = 100%, SUMMARY = 80%, SUBFUNCTION = 100% |
+| `{TARGET_PERCENT}` | USER_GOAL = 100%, SUBFUNCTION = 80%, SUMMARY = 60% |
 
 *Template Version: 1.0.0 | Audience: Project managers and tech leads planning test implementation*
 *Companion: bdd-scenario.template.md (consumed by test implementers writing Cucumber/test code)*

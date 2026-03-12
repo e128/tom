@@ -14,10 +14,6 @@
     "goal_symbol",
     "primary_actor",
     "detail_level",
-    "trigger",
-    "preconditions",
-    "postconditions",
-    "basic_flow",
     "created_at",
     "created_by"
   ],
@@ -556,6 +552,18 @@
       },
       "then": false,
       "description": "INTERACTION_DEFINED realization requires at minimum ESSENTIAL_OUTLINE detail level. BRIEFLY_DESCRIBED and BULLETED_OUTLINE cannot support interaction sequences."
+    },
+    {
+      "if": {
+        "properties": {
+          "detail_level": { "enum": ["BULLETED_OUTLINE", "ESSENTIAL_OUTLINE", "FULLY_DESCRIBED"] }
+        },
+        "required": ["detail_level"]
+      },
+      "then": {
+        "required": ["trigger", "preconditions", "postconditions", "basic_flow"],
+        "description": "trigger, preconditions, postconditions, and basic_flow are required at BULLETED_OUTLINE and above. BRIEFLY_DESCRIBED artifacts contain only a narrative brief without structured flow data."
+      }
     }
   ]
 }
