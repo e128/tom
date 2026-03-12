@@ -178,7 +178,7 @@ The artifact itself (YAML frontmatter + Markdown narrative body) is the primary 
 
 ## Post-Creation Verification
 
-After writing the artifact, verify by manually checking the YAML frontmatter satisfies the allOf constraints defined in `docs/schemas/use-case-realization-v1.schema.json` and confirming all of the following:
+After writing the artifact, verify the YAML frontmatter satisfies the allOf constraints defined in `docs/schemas/use-case-realization-v1.schema.json` by systematically checking each constraint. When `jerry schema validate` becomes available (GH #193), use it for deterministic validation. Until then, verify each constraint explicitly:
 1. File exists at the declared output path
 2. Verify the output artifact's YAML frontmatter satisfies the allOf constraints defined in `docs/schemas/use-case-realization-v1.schema.json`. Check: (1) goal_symbol matches goal_level, (2) if realization_level is INTERACTION_DEFINED then interactions[] must have minItems: 1, (3) if realization_level is STORY_DEFINED then slices[] must have minItems: 1, (4) if detail_level is ESSENTIAL_OUTLINE or FULLY_DESCRIBED then extensions[] must have minItems: 1, (5) INTERACTION_DEFINED is not permitted with BRIEFLY_DESCRIBED or BULLETED_OUTLINE detail_level
 3. `basic_flow` has between 3 and 9 steps

@@ -191,7 +191,7 @@ The updated artifact file is the primary L1 deliverable. Optionally, produce sep
 
 ## Post-Update Verification
 
-After updating the artifact, verify by manually checking the YAML frontmatter satisfies the allOf constraints defined in `docs/schemas/use-case-realization-v1.schema.json` and confirming all of the following:
+After updating the artifact, verify the YAML frontmatter satisfies the allOf constraints defined in `docs/schemas/use-case-realization-v1.schema.json` by systematically checking each constraint. When `jerry schema validate` becomes available (GH #193), use it for deterministic validation. Until then, verify each constraint explicitly:
 1. Artifact YAML frontmatter satisfies the allOf constraints defined in `docs/schemas/use-case-realization-v1.schema.json`: (a) goal_symbol matches goal_level, (b) if realization_level is INTERACTION_DEFINED then interactions[] has minItems: 1, (c) if realization_level is STORY_DEFINED then slices[] has minItems: 1, (d) if detail_level is ESSENTIAL_OUTLINE or FULLY_DESCRIBED then extensions[] has minItems: 1, (e) INTERACTION_DEFINED is not permitted with BRIEFLY_DESCRIBED or BULLETED_OUTLINE detail_level
 2. basic_flow is the first slice (slice_id ending in -S1)
 3. Each slice has an INVEST assessment
