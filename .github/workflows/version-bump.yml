@@ -25,7 +25,19 @@ on:
       # is better than a missed version bump.
       #
       # --- Documentation site (published separately, not part of plugin) ---
-      - 'docs/**'
+      # NOTE: docs/schemas/ and docs/governance/ are NOT excluded — they
+      # contain runtime files (JSON schemas, JERRY_CONSTITUTION.md) loaded
+      # by the enforcement engine. Only documentation-only subdirs excluded.
+      # (red-exploit Finding 1)
+      - 'docs/reference/**'
+      - 'docs/explanation/**'
+      - 'docs/howto/**'
+      - 'docs/playbooks/**'
+      - 'docs/blog/**'
+      - 'docs/index.md'
+      - 'docs/INSTALLATION.md'
+      - 'docs/BOOTSTRAP.md'
+      - 'docs/CLAUDE-MD-GUIDE.md'
       - 'site/**'
       - 'overrides/**'
       - 'mkdocs.yml'
@@ -45,8 +57,15 @@ on:
       - 'SECURITY.md'
       - 'SOUNDTRACK.md'
       - 'README.md'
-      # --- CI config (changes use ci: prefix, caught by Filter B) ---
-      - '.github/**'
+      # --- CI config (enumerated, NOT blanket .github/**) ---
+      # release.yml is NOT excluded — artifact packaging changes are product-relevant.
+      # (red-exploit Finding 2)
+      - '.github/workflows/ci.yml'
+      - '.github/workflows/version-bump.yml'
+      - '.github/workflows/docs.yml'
+      - '.github/workflows/pat-monitor.yml'
+      - '.github/dependabot.yml'
+      - '.github/CODEOWNERS'
   workflow_dispatch:
     inputs:
       bump_type:
@@ -106,6 +125,20 @@ jobs:
     # (red-exploit V6 — not applicable; Jerry uses standard merges)
     #
     # Research: projects/PROJ-030-bugs/research/workflow-filtering-research.md
+    #
+    # SECURITY: workflow_dispatch has no secondary approval — any actor with
+    # repo write access can trigger any bump type. This is a GitHub platform
+    # characteristic. If external write contributors are added, configure a
+    # GitHub Environment with required reviewers. (eng-security FINDING-001)
+    #
+    # MAINTENANCE: The denylist below must ONLY contain prefixes that
+    # detect-bump-type treats as BumpType.NONE. Do NOT add prefixes that
+    # could be bump-worthy (feat:, fix:, perf:). (eng-security FINDING-003)
+    #
+    # Prefix rationale:
+    #   deps: — Jerry convention for dependency updates not using build(deps):
+    #   revert: — rolling back a feat/fix does not create a new forward bump
+    #   [skip-bump] intentionally absent from workflow_dispatch (no commit)
     if: >-
       (
         github.event_name == 'workflow_dispatch'
