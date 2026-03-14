@@ -52,7 +52,8 @@
       "Bash(wc:*)",
       "Bash(grep:*)",
       "Skill(prompt-engineering)",
-      "Skill(jerry:prompt-engineering)"
+      "Skill(jerry:prompt-engineering)",
+      "Bash(git stash:*)"
     ]
   },
   "hooks": {
