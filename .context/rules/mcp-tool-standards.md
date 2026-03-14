@@ -194,6 +194,18 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 
 For Claude Code permission patterns (MCP wildcards, skill permissions, Bash patterns, file access, evaluation order, settings scope), see `docs/reference/claude-code-permissions.md`.
 
+### MCP Server Namespace Note
+
+Context7 registers under two server names depending on installation method:
+- **`mcp__context7__*`** — direct MCP server configuration (via `.mcp.json` or CLI)
+- **`mcp__plugin_context7_context7__*`** — plugin-registered form (via `enabledPlugins` in `.claude/settings.json` with `context7@claude-plugins-official`)
+
+Both wildcards are in `settings.local.json` to cover both registration paths. This dual-namespace pattern is a known Claude Code behavior for plugins that expose MCP servers. See GitHub Issue #29360 for the namespace resolution discussion.
+
+### Permission Mode
+
+Neither `settings.json` nor `settings.local.json` sets `defaultMode`. Claude Code defaults to `"default"` mode: prompts for permission on first use of each tool. The `Skill()` entries in `settings.local.json` pre-approve skill invocations so they don't prompt. Without these entries, skills would still work but would prompt on first invocation per session.
+
 ---
 
 ## References
