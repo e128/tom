@@ -22,6 +22,7 @@
 | PROJ-016 | documentation-writing | ACTIVE | Write user-facing Jerry documentation based on PROJ-015 audit findings |
 | PROJ-020 | feature-enhancements | ACTIVE | Feature enhancement filing and tracking for the Jerry Framework |
 | PROJ-022 | user-experience-skill | ACTIVE | /user-experience parent orchestrator skill with 10 pluggable sub-skills across 5 criteria-gated waves |
+| PROJ-021 | use-case | ACTIVE | Use case authoring, test specifications & contract design skills ([#109](https://github.com/geekatron/jerry/issues/109)) |
 | PROJ-030 | bugs | ACTIVE | Bug fixes and defect resolution for the Jerry Framework |
 
 ## Project Lookup
@@ -42,4 +43,5 @@
 - **PROJ-016**: `projects/PROJ-016-documentation-writing/`
 - **PROJ-020**: `projects/PROJ-020-feature-enhancements/`
 - **PROJ-022**: `projects/PROJ-022-user-experience-skill/`
+- **PROJ-021**: `projects/PROJ-021-use-case/`
 - **PROJ-030**: `projects/PROJ-030-bugs/`
