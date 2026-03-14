@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BUG-001**: Memory-keeper MCP tool names corrected across 26 governance files — `store`/`retrieve`/`search`/`list`/`delete` replaced with actual API names `context_save`/`context_get`/`context_search`/`context_session_list`/`context_batch_delete` (#111)
 - **BUG-002**: Version bump regex case sensitivity verified already implemented (src/version/ bounded context with case-insensitive regex) (#132)
 - 8 bypass vectors closed: null byte injection, non-string type confusion, subshell cd evasion, multi-space git push, two-stage download-execute, non-rm destructive deletion, path suffix false positives
+- Claude Code settings migrated from deprecated fields to schema-valid configuration — removed invalid `hooks`, `stash`, `grep` fields (#180)
+- Skill-level permission entries added to `settings.local.json` so proactive skill invocations (H-22) don't prompt for permission (#181)
+- Deprecated Bash command patterns (`/bin/bash`, `bash -c`) replaced with direct command syntax in all settings permission entries (#182)
 
 ### Changed
 - `hooks.json`: PreToolUse consolidated from dual hooks (standalone script + CLI) to single CLI path; NotebookEdit added to matcher
