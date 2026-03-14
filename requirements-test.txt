@@ -14,7 +14,7 @@ packaging==25.0
     # via
     #   pytest
     #   pytest-bdd
-parse==1.20.2
+parse==1.21.1
     # via
     #   parse-type
     #   pytest-bdd
