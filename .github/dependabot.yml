@@ -36,6 +36,8 @@
 #     major bumps "just a hash change." This config is MORE conservative —
 #     major bumps stay individual because they CAN change runtime behavior
 #     (Node.js version, input schemas) regardless of the pin mechanism.
+#     (Historical example: v5->v6 checkout, v4->v7 setup-uv merged
+#     individually in March 2026; reassess after 90 days of operation)
 #
 # D3: Transitive dependency handling
 #   - Using `allow` with `dependency-type: direct` for pip.
@@ -43,7 +45,8 @@
 #     in pyproject.toml (and requirements*.txt), not for transitive deps
 #     like gherkin-official (pulled in by pytest-bdd).
 #   - Why `allow` instead of `exclude-patterns` (vs. risk analysis R-5):
-#     (a) gherkin-official 29->39 was a transitive dep conflict. Excluding
+#     (a) gherkin-official 29->39 was a transitive dep conflict (PR #168,
+#         March 2026; tracked as #190). Excluding
 #         it by name is whack-a-mole; new transitive deps appear over time.
 #         R-5 recommended an explicit ignore list; `allow: direct` is more
 #         durable and achieves the same outcome with a single policy line.
@@ -113,7 +116,7 @@
 #     ~4 direct dev deps. The old limit of 5 could queue PRs when
 #     multiple majors are pending simultaneously.
 #
-# D7: Labels (verified #188; update when PR volume changes)
+# D7: Labels (verified #188; reassess after 90 days of operation)
 #   - All Dependabot PRs get "dependencies" (existing).
 #   - Actions PRs additionally get "ci" (existing).
 #   - No risk-tier labels added. At Jerry's current PR volume (~2-4 PRs
@@ -126,7 +129,8 @@
 # REFERENCES:
 #   - Research: projects/PROJ-030-bugs/research/merge-queue-vs-dependabot-grouping.md
 #   - Risk analysis (FMEA): projects/PROJ-030-bugs/research/dependabot-risk-analysis.md
-#   - Supply chain assessment: projects/PROJ-030-bugs/reviews/188-s002-devils-advocate.md
+#   - Supply chain assessment: projects/PROJ-030-bugs/research/dependabot-risk-analysis.md
+#   - C4 tournament reviews: projects/PROJ-030-bugs/reviews/188-s0*.md
 #   - Security scan: .github/workflows/security-scan.yml (daily pip-audit)
 #   - Filter B: .github/workflows/version-bump.yml (#187)
 #   - SHA pinning: EN-001
