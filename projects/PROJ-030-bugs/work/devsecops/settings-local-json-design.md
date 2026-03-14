@@ -22,11 +22,11 @@ Five architecture decisions govern the corrected `settings.local.json`:
 
 3. **Replace all `:*` with ` *` in Bash entries.** The `:*` suffix is explicitly deprecated (FINDING-004). Evidence from Issue #33595 (March 2026) shows it may silently fail. Remove the duplicate `Bash(python3 *)` and the stale `FEAT_DIR=` entry.
 
-4. **Remove Bash entries that are already covered by `settings.json`.** The committed `settings.json` uses broader patterns (e.g., `Bash(uv *)` covers `Bash(uv run *)`, `Bash(uv run python *)`, `Bash(uv run pytest *)`, `Bash(uv run pyright *)`). Local entries that are strict subsets of committed patterns are redundant. Keep only entries in local that are NOT covered by committed patterns, plus local-specific additions like `Bash(git stash *)` and `Bash(grep *)`.
+4. **Remove ALL Bash entries from local.** The committed `settings.json` uses broader patterns that subsume every local Bash entry. The three candidates initially considered local-only (`Bash(git push *)`, `Bash(git stash *)`, `Bash(grep *)`) were all removed during C4 tournament review: git push conflicts with `settings.json`'s `ask` entry (red-exploit finding), git stash is destructive (FM-010), and grep is covered by the structured Grep tool (RT-003).
 
 5. **~~Keep the hooks block.~~** REVISED in C4 tournament: **Hooks block REMOVED.** The auto-approve hooks were found to violate P-020 (user authority bypass) and P-022 (structural deception) by 4 independent strategies (S-001 RT-002, S-007 CC-001/CC-002, S-012 FM-013/FM-014). WebSearch/WebFetch are already in the committed `settings.json` allow list, making the hooks redundant. Additionally, `Bash(git stash *)`, `Bash(grep *)`, and `Bash(git push *)` were removed during the tournament — git stash is destructive (FM-010), grep is covered by the structured Grep tool (RT-003), and git push conflicts with settings.json's ask entry (red-exploit finding).
 
-**Net effect:** The file shrinks from 56 allow entries to 24 (19 Skill + 2 MCP wildcards + 3 MCP specifics + 0 redundant Bash), all using documented syntax. The `python3` entries are removed (H-05 violation -- all Python execution must go through `uv run`).
+**Net effect:** The file shrinks from 56 allow entries to 22 (19 Skill + 3 MCP wildcards), all using documented syntax. Zero Bash entries remain (all subsumed by `settings.json` or removed for safety/policy reasons). Zero hooks remain (removed for P-020/P-022 violations). The `python3` entries are removed (H-05 violation -- all Python execution must go through `uv run`).
 
 ---
 
@@ -125,27 +125,32 @@ Five architecture decisions govern the corrected `settings.local.json`:
 
 | Entry | Keep? | Rationale |
 |-------|-------|-----------|
-| `Bash(git push *)` | No | Already in `settings.json` `ask` array -- local `allow` would override to auto-approve, which conflicts with the shared safety intent |
-| `Bash(git stash *)` | Yes | Not in `settings.json` at all |
-| `Bash(grep *)` | Yes | Not in `settings.json` at all |
+| `Bash(git push *)` | No | Already in `settings.json` `ask` array -- local `allow` would override the shared safety gate (red-exploit finding during C4 tournament) |
+| `Bash(git stash *)` | No | Destructive operation (FM-010 during C4 tournament); no safety justification for auto-approval |
+| `Bash(grep *)` | No | Covered by the structured Grep tool (RT-003 during C4 tournament); Bash grep is unnecessary |
 | `Bash(python3 *)` | No | H-05 violation: all Python execution must use `uv run` |
 | `Bash(FEAT_DIR=...)` | No | Stale project-specific cruft |
 
-**Decision:** Remove all Bash and web tool entries from local that are subsumed by `settings.json`. This eliminates ~27 redundant entries. Keep only genuinely local-only Bash entries: `Bash(git push *)`, `Bash(git stash *)`, `Bash(grep *)`.
+**Decision:** Remove ALL Bash and web tool entries from local. This eliminates all ~30 Bash entries. The committed `settings.json` provides sufficient Bash coverage for safe commands, and the three initially considered local-only entries (`git push`, `git stash`, `grep`) were all removed during C4 tournament review for safety, policy, or redundancy reasons.
 
-**Reconsideration on `git push`:** The committed `settings.json` places `Bash(git push *)` in the `ask` array. The local file has it in `allow`. Per Claude Code evaluation order documentation, `deny > ask > allow` with "first matching rule wins" -- but the precedence documentation also states that local (precedence 3) overrides shared (precedence 4). This means the local `allow` entry intentionally overrides the shared `ask` entry, auto-approving `git push` for this developer. This is a valid developer-specific override. **Keep it in local `allow`.**
+**REVISED during C4 tournament:** The initial design proposed keeping `Bash(git push *)`, `Bash(git stash *)`, and `Bash(grep *)`. All three were removed: `git push` conflicts with the `settings.json` `ask` safety gate (auto-approving push defeats the shared safety intent); `git stash` is a destructive operation that should require explicit approval (FM-010); `grep` is fully covered by the structured Grep tool which provides better user experience and avoids Bash-based exfiltration surface (RT-003).
 
 ### Decision 5: Hooks Block
 
-**Context:** `settings.local.json` has a hooks block with PreToolUse and PermissionRequest matchers for WebFetch/WebSearch that auto-allow these tools.
+**Context:** `settings.local.json` had a hooks block with PreToolUse and PermissionRequest matchers for WebFetch/WebSearch that auto-allow these tools.
 
-**Analysis:**
+**Analysis (pre-tournament):**
 - The committed `settings.json` has NO hooks block.
 - The backup `settings.json.bkup` has hooks (PreToolUse, PostToolUse, SubagentStop, SessionStart) but this is a backup file, not active.
-- The local hooks provide developer-specific auto-approval for web search tools.
+- The local hooks provided developer-specific auto-approval for web search tools.
 - No `.claude/hooks/` directory or `hooks.json` file exists.
 
-**Decision:** Keep the hooks block. It serves a developer-specific purpose (auto-approving web tools without prompts) and does not duplicate any committed configuration.
+**Decision:** **REVISED in C4 tournament: Hooks block REMOVED.** Four independent strategies identified the hooks as violations:
+- S-001 RT-002: Auto-approve hooks bypass the permission model entirely.
+- S-007 CC-001/CC-002: Hooks violate P-020 (user authority bypass) and P-022 (structural deception -- the hooks silently suppress approval prompts).
+- S-012 FM-013/FM-014: FMEA identified hooks as a high-RPN failure mode for permission bypass.
+
+WebSearch and WebFetch are already in the committed `settings.json` allow list, making the local hooks redundant. Removing them restores the standard permission evaluation path without any loss of functionality.
 
 ### Decision 6: MCP Permissions
 
@@ -166,11 +171,11 @@ The corrected `settings.local.json` contains:
 **Permissions (allow):**
 - 19 Skill entries (all CLAUDE.md-registered skills, documented `Skill(name)` form only)
 - 3 MCP wildcard entries (memory-keeper, context7, plugin_context7_context7)
-- 3 Bash entries (git push, git stash, grep -- local-only commands not in settings.json)
+- 0 Bash entries (all removed -- subsumed by `settings.json` or removed for safety/policy reasons during C4 tournament)
 
-**Hooks:** Retained as-is (WebFetch/WebSearch auto-allow).
+**Hooks:** Removed (P-020/P-022 violations identified by 4 independent C4 tournament strategies).
 
-**Total allow entries:** 25 (down from 56).
+**Total allow entries:** 22 (down from 56).
 
 ---
 
@@ -189,25 +194,25 @@ The corrected `settings.local.json` contains:
 
 | ID | Category | Threat | Component | Mitigation |
 |----|----------|--------|-----------|------------|
-| T-01 | Elevation of Privilege | Local `allow` overrides shared `ask` for `git push`, enabling auto-push without approval | TB-4 | Accepted risk: developer-intentional override. The `ask` entry in shared settings protects other contributors. Document this override in a comment. |
+| T-01 | Elevation of Privilege | Local `allow` could override shared `ask` for `git push`, enabling auto-push without approval | TB-4 | Mitigated: `Bash(git push *)` removed from local `allow` during C4 tournament. The `ask` entry in shared `settings.json` now applies without override. |
 | T-02 | Tampering | Undocumented `Skill(jerry:name)` form could silently fail to match, allowing skills to run without permission validation | TB-1 | Mitigated: Remove undocumented form; use only `Skill(name)`. |
 | T-03 | Denial of Service | Deprecated `Bash(:*)` silently fails (Issue #33595), causing all Bash commands to require manual approval, blocking automation | TB-1 | Mitigated: Migrate to `Bash(command *)` space syntax. |
 | T-04 | Information Disclosure | `mcp__memory-keeper__*` wildcard permits all Memory-Keeper operations including batch_delete | TB-2 | Accepted risk: Memory-Keeper runs locally; wildcard is appropriate for developer workflow. The `mcp-tool-standards.md` governance restricts which agents can use which tools at the agent definition level (defense in depth). |
 | T-05 | Spoofing | Missing Skill permissions for 12 skills could cause approval prompts that train the developer to click "approve" reflexively | TB-1 | Mitigated: Add explicit `Skill(name)` entries for all registered skills. |
 | T-06 | Elevation of Privilege | `Bash(python3 *)` entry bypasses H-05 (UV-only constraint) by pre-approving direct Python execution | TB-1 | Mitigated: Remove `Bash(python3 *)` entirely. |
-| T-07 | Tampering | `Bash(grep *)` in allow could be used to construct exfiltration commands via Bash | TB-1 | Accepted risk: `grep` is read-only. The deny array blocks `curl` and `wget` for exfiltration prevention. |
+| T-07 | Tampering | `Bash(grep *)` in allow could be used to construct exfiltration commands via Bash | TB-1 | Mitigated: `Bash(grep *)` removed from local `allow` during C4 tournament. The structured Grep tool provides equivalent functionality without Bash exfiltration surface (RT-003). |
 
 ### DREAD Scoring (C2 -- Standard criticality)
 
 | Threat | D | R | E | A | D | Score | Priority |
 |--------|---|---|---|---|---|-------|----------|
-| T-01 (git push auto-allow) | 3 | 5 | 5 | 2 | 3 | 3.6 | MEDIUM |
+| T-01 (git push auto-allow) | 3 | 5 | 5 | 2 | 3 | 3.6 | MITIGATED |
 | T-02 (undocumented Skill form) | 2 | 5 | 3 | 3 | 2 | 3.0 | LOW |
 | T-03 (deprecated Bash syntax) | 5 | 5 | 5 | 5 | 3 | 4.6 | HIGH |
 | T-04 (MCP wildcard scope) | 2 | 3 | 3 | 2 | 2 | 2.4 | LOW |
 | T-05 (approval fatigue) | 3 | 5 | 5 | 3 | 2 | 3.6 | MEDIUM |
 | T-06 (python3 H-05 bypass) | 4 | 5 | 5 | 3 | 3 | 4.0 | HIGH |
-| T-07 (grep in allow) | 1 | 3 | 3 | 1 | 1 | 1.8 | LOW |
+| T-07 (grep in allow) | 1 | 3 | 3 | 1 | 1 | 1.8 | MITIGATED |
 
 DREAD dimensions: Damage (1-5), Reproducibility (1-5), Exploitability (1-5), Affected Users (1-5), Discoverability (1-5).
 
@@ -218,7 +223,7 @@ DREAD dimensions: Damage (1-5), Reproducibility (1-5), Exploitability (1-5), Aff
 | Identify (ID) | ID.AM-2 Software inventory | All 19 skills explicitly listed in permission entries |
 | Protect (PR) | PR.AA-1 Access control | `deny` array blocks `curl`/`wget`; `ask` array gates destructive git ops; documented permission syntax only |
 | Protect (PR) | PR.DS-1 Data protection | MCP wildcards scoped to known-safe servers; no secrets in settings |
-| Detect (DE) | DE.CM-1 Monitoring | Hooks block provides audit point for web tool usage |
+| Detect (DE) | DE.CM-1 Monitoring | Standard permission evaluation path provides audit point; hooks removed to restore default approval flow |
 | Respond (RS) | -- | Out of scope for settings file |
 | Recover (RC) | -- | Out of scope for settings file |
 
@@ -232,12 +237,12 @@ DREAD dimensions: Damage (1-5), Reproducibility (1-5), Exploitability (1-5), Aff
 | Bash syntax | `Bash(command *)` | `Bash(command:*)` (deprecated, silently failing) |
 | Overlap resolution | Remove local duplicates of committed entries | Keep all (redundant), move all to committed (breaks per-dev config) |
 | MCP entries | Wildcards only | Wildcards + specific tools (redundant) |
-| Hooks | Keep in local | Remove (would lose web tool auto-approval) |
+| Hooks | Remove (P-020/P-022 violations; WebSearch/WebFetch already in committed `settings.json`) | Keep (violates P-020/P-022 per 4 C4 tournament strategies) |
 | python3 entries | Remove | Keep (violates H-05) |
 
 ---
 
-*Design Version: 1.0.0*
+*Design Version: 1.1.0*
 *Agent: eng-architect*
 *Criticality: C2 (Standard -- reversible in 1 session, 1 file affected, but governs all tool permissions)*
 *SSOT: `docs/reference/claude-code-permissions.md`*
