@@ -72,9 +72,7 @@ def main() -> int:
         claude_md = claude_md_path.read_text()
         # Extract skill names from the skills table in CLAUDE.md
         # Pattern: | `/skill-name` |
-        registered_skills = set(
-            re.findall(r"\| `/([\w-]+)` \|", claude_md)
-        )
+        registered_skills = set(re.findall(r"\| `/([\w-]+)` \|", claude_md))
         # Extract Skill() entries from settings
         settings_skills = set()
         for entry in allow:
@@ -86,20 +84,14 @@ def main() -> int:
         extra = settings_skills - registered_skills
 
         if missing:
-            errors.append(
-                f"Skills in CLAUDE.md but NOT in settings.local.json: {sorted(missing)}"
-            )
+            errors.append(f"Skills in CLAUDE.md but NOT in settings.local.json: {sorted(missing)}")
         if extra:
-            warnings.append(
-                f"Skills in settings.local.json but NOT in CLAUDE.md: {sorted(extra)}"
-            )
+            warnings.append(f"Skills in settings.local.json but NOT in CLAUDE.md: {sorted(extra)}")
 
     # --- Check 3: Deprecated :* syntax ---
     colon_entries = [e for e in allow if ":*" in e]
     if colon_entries:
-        errors.append(
-            f"Deprecated :* syntax in {len(colon_entries)} entries: {colon_entries}"
-        )
+        errors.append(f"Deprecated :* syntax in {len(colon_entries)} entries: {colon_entries}")
 
     # --- Check 4: Undocumented Skill(jerry:name) form ---
     jerry_entries = [e for e in allow if "jerry:" in e]
