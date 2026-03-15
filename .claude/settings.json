@@ -13,6 +13,9 @@
       "WebSearch",
       "WebFetch",
       "TodoWrite"
+    ],
+    "ask": [
+      "Bash(git push *)"
     ]
   },
   "statusLine": {
