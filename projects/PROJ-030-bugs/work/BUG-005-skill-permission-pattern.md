@@ -26,6 +26,7 @@
 | [Acceptance Criteria](#acceptance-criteria) | Conditions for bug to be fixed |
 | [Related Items](#related-items) | Hierarchy and related work items |
 | [History](#history) | Status changes and key events |
+| [Key Discoveries](#key-discoveries) | Enforcement engine, permission inheritance, namespace findings |
 
 ---
 
@@ -100,10 +101,12 @@ Replace 19 individual `Skill(jerry:name)` entries with a single `Skill(jerry:*)`
 
 ### Changes Made
 
-- settings.local.json: 56 allow entries → 4 entries (1 skill wildcard + 3 MCP wildcards)
+- settings.local.json: 56 allow entries → 4 entries (1 skill wildcard + 3 MCP wildcards + PreToolUse hook)
 - Removed all deprecated `Bash(:*)` colon syntax entries
-- Removed all Bash entries subsumed by settings.json
-- Removed hooks block (P-020/P-022 violations per C4 tournament)
+- Removed all Bash entries from local (subsumed by settings.json blanket `Bash` allow)
+- Restored PreToolUse hook for WebSearch/WebFetch (GitHub #18950 workaround for skill permission inheritance gap)
+- Removed PermissionRequest hook (redundant — PreToolUse `permissionDecision: "allow"` bypasses permission system before prompt appears)
+- settings.json: Restored blanket `Bash` allow — SecurityEnforcementEngine (82 tests, #150) handles dangerous command blocking at the hook level, making per-command Bash patterns redundant and harmful to background agents
 
 ### Code References
 
@@ -150,3 +153,24 @@ Replace 19 individual `Skill(jerry:name)` entries with a single `Skill(jerry:*)`
 | 2026-03-11 | pending | Initial report from S-013 Inversion review (IN-001) |
 | 2026-03-14 | in_progress | Documentation analysis + A/B testing |
 | 2026-03-14 | completed | Resolved with Skill(jerry:*) wildcard based on empirical tests |
+| 2026-03-14 | completed | Restored blanket Bash + PreToolUse hook after discovering SecurityEnforcementEngine |
+
+---
+
+## Key Discoveries
+
+### Discovery 1: SecurityEnforcementEngine makes per-command Bash patterns redundant
+
+The Jerry CLI has a `SecurityEnforcementEngine` (src/infrastructure/internal/enforcement/) integrated via the PreToolUse hook in `hooks/hooks.json`. It deterministically blocks dangerous Bash commands (destructive deletes, force pushes to protected branches, download-execute patterns, eval, disk formatting, etc.) with 82 test cases. This makes settings.json-level `Bash(command *)` patterns redundant gatekeeping that breaks background agents unable to prompt interactively.
+
+### Discovery 2: Subagent vs skill permission inheritance
+
+Per Anthropic docs (code.claude.com/docs/en/sub-agents): "Subagents inherit the permission context from the main conversation." But skills have a separate `allowed-tools` mechanism, and GitHub #18950 reports Bash permissions don't inherit inside skills. The PreToolUse hook with `permissionDecision: "allow"` for WebSearch/WebFetch is defense-in-depth for this gap.
+
+### Discovery 3: Skill() permission matching uses plugin namespace
+
+A/B testing proved both `Skill(adversary)` (short) and `Skill(jerry:adversary)` (prefixed) work. But the plugin namespace exists to disambiguate when multiple plugins share skill names. `Skill(jerry:*)` wildcard is the collision-safe, future-proof approach — covers all current and future skills without settings updates.
+
+### Discovery 4: Claude Code auto-writes short form
+
+When the user approves a skill permission prompt with "don't ask again", Claude Code writes `Skill(worktracker)` (short form) to settings.local.json — not the prefixed form. This is an implementation detail, not a canonical recommendation.
