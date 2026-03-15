@@ -2,28 +2,11 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "Skill(jerry:adversary)",
-      "Skill(jerry:architecture)",
-      "Skill(jerry:ast)",
-      "Skill(jerry:contract-design)",
-      "Skill(jerry:diataxis)",
-      "Skill(jerry:eng-team)",
-      "Skill(jerry:nasa-se)",
-      "Skill(jerry:orchestration)",
-      "Skill(jerry:pm-pmm)",
-      "Skill(jerry:problem-solving)",
-      "Skill(jerry:prompt-engineering)",
-      "Skill(jerry:red-team)",
-      "Skill(jerry:saucer-boy)",
-      "Skill(jerry:saucer-boy-framework-voice)",
-      "Skill(jerry:test-spec)",
-      "Skill(jerry:transcript)",
-      "Skill(jerry:use-case)",
-      "Skill(jerry:user-experience)",
-      "Skill(jerry:worktracker)",
+      "Skill(jerry:*)",
       "mcp__memory-keeper__*",
       "mcp__context7__*",
-      "mcp__plugin_context7_context7__*"
+      "mcp__plugin_context7_context7__*",
+      "Bash(rm:*)"
     ]
   }
 }
