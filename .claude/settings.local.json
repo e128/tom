@@ -8,5 +8,19 @@
       "mcp__plugin_context7_context7__*",
       "Bash(rm:*)"
     ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "WebFetch|WebSearch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"allow\",\"permissionDecisionReason\":\"WebSearch/WebFetch pre-approved in settings.json allow list. Hook ensures permission propagates to skills and subagents (GitHub #18950 workaround).\"}}'",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
   }
 }
