@@ -6,13 +6,17 @@
 
 | ID | Type | Title | Status | Parent |
 |----|------|-------|--------|--------|
+| EPIC-001 | Epic | Claude Code Schema Validation | in_progress | PROJ-024 |
+| FEAT-001 | Feature | Claude Code Schema Validation Research and Refinement | in_progress | EPIC-001 |
+| STORY-011 | Story | Adversary Sub-Agents: Add WebSearch/WebFetch/Context7 (GH #217) | pending | FEAT-001 |
+| STORY-012 | Story | Audit Skills and Agents for Missing Web Tool Permissions | completed | FEAT-001 |
+| STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions (8 items) | pending | FEAT-001 |
+| STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards (2 items) | pending | FEAT-001 |
 
 ## Completed
 
 | ID | Type | Title | Completed |
 |----|------|-------|-----------|
-| EPIC-001 | Epic | Claude Code Schema Validation | 2026-03-27 |
-| FEAT-001 | Feature | Claude Code Schema Validation Research and Refinement | 2026-03-27 |
 | STORY-001 | Story | Research Anthropic Official Agent Definition Schema | 2026-03-26 |
 | STORY-002 | Story | Research Anthropic Official Skill Definition Schema | 2026-03-26 |
 | STORY-003 | Story | Gap Analysis and Schema Refinement | 2026-03-26 |
@@ -23,6 +27,7 @@
 | STORY-008 | Story | Add Frontmatter Schema Validation to Jerry CLI | 2026-03-27 |
 | STORY-009 | Story | Add Frontmatter Schema Validation to CI Pipeline | 2026-03-27 |
 | STORY-010 | Story | Sync plugin.json Agents List with Actual Agent Files | 2026-03-27 |
+| STORY-012 | Story | Audit Skills and Agents for Missing Web Tool Permissions | 2026-03-27 |
 | EN-001 | Enabler | Security Review of Schema Validation Pipeline | 2026-03-26 |
 | EN-002 | Enabler | Developer Experience Review of Schema Validation | 2026-03-26 |
 | EN-003 | Enabler | Schema Validation Test Suite | 2026-03-27 |
