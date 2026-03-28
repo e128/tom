@@ -12,6 +12,7 @@
 | STORY-012 | Story | Audit Skills and Agents for Missing Web Tool Permissions | completed | FEAT-001 |
 | STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions (8 items) | pending | FEAT-001 |
 | STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards (2 items) | pending | FEAT-001 |
+| STORY-015 | Story | Evaluate and Renumber Tool Security Tier Model (ADR, C4 >= 0.95) | pending | FEAT-001 |
 
 ## Completed
 
