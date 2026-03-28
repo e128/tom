@@ -31,7 +31,7 @@
 | ID | Rule | Consequence | Source Requirements | Verification |
 |----|------|-------------|---------------------|--------------|
 | H-34 | Agent definitions use a dual-file architecture: (a) `.md` files with official Claude Code frontmatter only (`name`, `description`, `model`, `tools`, `mcpServers`), and (b) companion `.governance.yaml` files validated against `docs/schemas/agent-governance-v1.schema.json`. Required governance fields: `version`, `tool_tier`, `identity`. Governance schema validation MUST execute before LLM-based quality scoring for C2+ deliverables. | Agent definition rejected at CI. Structural defects propagate to runtime. | AR-001 (YAML+MD format), AR-002 (required fields), AR-003 (schema validation), QR-003 (output schema) | L5 (CI): JSON Schema validation on PR. L3 (pre-tool): Schema check before agent invocation. |
-| H-35 | Every agent MUST declare constitutional compliance with at minimum P-003 (no recursive subagents), P-020 (user authority), and P-022 (no deception) in `.governance.yaml` `constitution.principles_applied`. Worker agents (invoked via Task) MUST NOT include `Task` in the official `tools` frontmatter field. Every agent MUST declare at minimum 3 entries in `.governance.yaml` `capabilities.forbidden_actions` referencing the constitutional triplet. | Constitutional constraint bypass. Unauthorized recursive delegation. | SR-001 (constitutional compliance), AR-004 (single-level nesting), AR-006 (tool restriction), AR-012 (forbidden actions) | L3 (pre-tool): Schema validates minItems=3. L5 (CI): Grep for P-003/P-020/P-022 presence. |
+| H-35 | Every agent MUST declare constitutional compliance with at minimum P-003 (no recursive subagents), P-020 (user authority), and P-022 (no deception) in `.governance.yaml` `constitution.principles_applied`. Worker agents (invoked via Agent tool) MUST NOT include `Agent` (or its backward-compatible alias `Task`) in the official `tools` frontmatter field. Every agent MUST declare at minimum 3 entries in `.governance.yaml` `capabilities.forbidden_actions` referencing the constitutional triplet. | Constitutional constraint bypass. Unauthorized recursive delegation. | SR-001 (constitutional compliance), AR-004 (single-level nesting), AR-006 (tool restriction), AR-012 (forbidden actions) | L3 (pre-tool): Schema validates minItems=3. L5 (CI): Grep for P-003/P-020/P-022 presence. |
 
 **H-34 Architecture Note:** Agent definitions use a separation-of-concerns architecture:
 - **`.md` YAML frontmatter**: Official Claude Code fields only (12 recognized fields: `name`, `description`, `tools`, `disallowedTools`, `model`, `permissionMode`, `maxTurns`, `skills`, `mcpServers`, `hooks`, `memory`, `background`, `isolation`). Parsed by Claude Code runtime for tool enforcement and agent discovery.
@@ -178,15 +178,15 @@ Jerry enforces a strict single-level nesting constraint (H-01/P-003). The orches
 ```
 MAIN CONTEXT (orchestrator)
     |
-    +-- Worker A (via Task tool)
-    +-- Worker B (via Task tool)
-    +-- Worker C (via Task tool)
+    +-- Worker A (via Agent tool)
+    +-- Worker B (via Agent tool)
+    +-- Worker C (via Agent tool)
 ```
 
 **Constraints:**
 - Only one nesting level: orchestrator to worker. Workers MUST NOT spawn sub-workers. Consequence: unbounded recursion exhausts the context window, violates P-003, and breaks the orchestrator's coordination authority. Instead: return results to the orchestrator, which coordinates all worker invocations.
-- Worker agents MUST NOT include `Task` in `capabilities.allowed_tools` (H-35). Consequence: including Task enables recursive delegation, violating the single-level nesting constraint (P-003/H-01). Instead: declare only T1-T4 tier tools; the Task tool is reserved for T5 orchestrator agents.
-- Orchestrator agents MUST be T5 (Full) tier to access the Task tool.
+- Worker agents MUST NOT include `Agent` (or its backward-compatible alias `Task`) in `capabilities.allowed_tools` (H-35). Consequence: including Agent enables recursive delegation, violating the single-level nesting constraint (P-003/H-01). Instead: declare only T1-T4 tier tools; the Agent tool is reserved for T5 orchestrator agents.
+- Orchestrator agents MUST be T5 (Full) tier to access the Agent tool.
 - Error amplification is ~1.3x with structured handoffs (vs. 17x for uncoordinated topologies per Google DeepMind).
 
 ### Pattern 3: Creator-Critic-Revision (H-14 Integration)
@@ -204,13 +204,13 @@ For C2+ deliverables, the quality pattern operates as:
 
 ### Pattern 4: Fresh Context Reviewer (FC-M-001)
 
-For C3+ deliverables, review agents SHOULD be invoked via the Task tool to ensure context isolation and bias-free evaluation.
+For C3+ deliverables, review agents SHOULD be invoked via the Agent tool to ensure context isolation and bias-free evaluation.
 
 | ID | Standard | Guidance | Source |
 |----|----------|----------|--------|
-| FC-M-001 | For C3+ deliverables, review agents SHOULD be invoked via Task tool to obtain fresh context isolation. For C4 deliverables, a second independent reviewer SHOULD be invoked with a separate Task call, receiving only the artifact and evaluation criteria. | The Task tool inherently provides context isolation: each subagent starts with a clean context window, free from the creator's reasoning artifacts and confirmation bias. When Pattern 3 (Creator-Critic-Revision) uses the Task tool for critic invocation (H-14), the critic already benefits from this isolation. FC-M-001 formalizes this architectural property as an explicit quality pattern. | Anthropic best practices (writer/reviewer fresh context), H-14 (creator-critic-revision), P-003 (single-level nesting) |
+| FC-M-001 | For C3+ deliverables, review agents SHOULD be invoked via Agent tool to obtain fresh context isolation. For C4 deliverables, a second independent reviewer SHOULD be invoked with a separate Agent call, receiving only the artifact and evaluation criteria. | The Agent tool inherently provides context isolation: each subagent starts with a clean context window, free from the creator's reasoning artifacts and confirmation bias. When Pattern 3 (Creator-Critic-Revision) uses the Agent tool for critic invocation (H-14), the critic already benefits from this isolation. FC-M-001 formalizes this architectural property as an explicit quality pattern. | Anthropic best practices (writer/reviewer fresh context), H-14 (creator-critic-revision), P-003 (single-level nesting) |
 
-**Why this works in Jerry:** The orchestrator-worker topology (Pattern 2, P-003 compliant) naturally creates fresh context boundaries. Each Task invocation gives the worker agent only what the orchestrator explicitly passes -- no accumulated reasoning, no sunk-cost bias, no anchoring to prior iterations. This is architecturally equivalent to Anthropic's recommendation to use separate context windows for writers and reviewers.
+**Why this works in Jerry:** The orchestrator-worker topology (Pattern 2, P-003 compliant) naturally creates fresh context boundaries. Each Agent tool invocation gives the worker agent only what the orchestrator explicitly passes -- no accumulated reasoning, no sunk-cost bias, no anchoring to prior iterations. This is architecturally equivalent to Anthropic's recommendation to use separate context windows for writers and reviewers.
 
 **C4 independent review:** At C4 criticality, the tournament review (Pattern 3, Layer 4) already executes all 10 adversarial strategies. FC-M-001 adds an explicit second reviewer invocation that receives only: (a) the artifact file path, (b) the quality gate rubric, and (c) the success criteria -- deliberately excluding prior critic scores and revision history to prevent anchoring.
 
@@ -226,7 +226,7 @@ Five security tiers implement the principle of least privilege (AR-006). **Alway
 | **T2** | Read-Write | T1 + Write, Edit, Bash | Analysis, document production, code generation | ps-analyst, nse-architecture, ps-critic |
 | **T3** | External | T2 + WebSearch, WebFetch, Context7 | Research, exploration, external documentation | ps-researcher, nse-explorer |
 | **T4** | Persistent | T2 + Memory-Keeper | Cross-session state management, orchestration | orch-planner, orch-tracker, nse-requirements |
-| **T5** | Full | T3 + T4 + Task | Orchestration with delegation, full capability | Lead agent, skill orchestrators |
+| **T5** | Full | T3 + T4 + Agent | Orchestration with delegation, full capability | Lead agent, skill orchestrators |
 
 ### Selection Guidelines
 
@@ -234,13 +234,13 @@ Five security tiers implement the principle of least privilege (AR-006). **Alway
 2. **T2 when the agent produces artifacts.** Writing files (reports, analysis, code) requires T2 minimum.
 3. **T3 when external information is needed.** T3 agents MUST include citation guardrails in `guardrails.output_filtering`.
 4. **T4 when cross-session state is required.** T4 agents MUST follow the MCP key pattern: `jerry/{project}/{entity-type}/{entity-id}`.
-5. **T5 requires explicit justification.** The Task tool enables delegation; every T5 assignment MUST document why delegation is necessary.
+5. **T5 requires explicit justification.** The Agent tool enables delegation; every T5 assignment MUST document why delegation is necessary.
 
 ### Tier Constraints
 
 | Constraint | Rationale | Source |
 |------------|-----------|--------|
-| Worker agents MUST NOT be T5 (no Task tool) | Enforces H-01 single-level nesting | AR-004, P-003 |
+| Worker agents MUST NOT be T5 (no Agent tool) | Enforces H-01 single-level nesting | AR-004, P-003 |
 | T3+ agents MUST declare citation guardrails | External data requires source attribution | SR-003 |
 | T4+ agents MUST follow MCP key namespace | Prevents key collision across sessions | MCP-002, mcp-tool-standards.md |
 | Monitor per-agent tool count; alert at 15 tools | Industry-observed threshold where tool selection accuracy degrades (identified in Phase 1 research, ps-researcher-003 external patterns analysis; consistent with general LLM tool-use guidance recommending minimal tool sets for reliable selection) | AP-07 Tool Overload Creep prevention (see `agent-routing-standards.md` Anti-Pattern Catalog) |
@@ -290,7 +290,7 @@ Agent definition content is organized into three tiers that load progressively, 
 | Tier | Content | Max Size | Loading Mechanism |
 |------|---------|----------|-------------------|
 | **Tier 1: Metadata** | Agent name, description, trigger keywords, cognitive mode | ~500 tokens per skill | SKILL.md `description` field, loaded at session start |
-| **Tier 2: Core** | Full YAML frontmatter + Markdown body (identity, purpose, methodology, guardrails, capabilities, output) | ~2,000-8,000 tokens per agent | Agent definition file, loaded when Task tool invokes the agent |
+| **Tier 2: Core** | Full YAML frontmatter + Markdown body (identity, purpose, methodology, guardrails, capabilities, output) | ~2,000-8,000 tokens per agent | Agent definition file, loaded when Agent tool invokes the agent |
 | **Tier 3: Supplementary** | Output templates, prior work artifacts, strategy templates, reference documents, cross-pollination data | Variable (budget-aware) | Read tool during agent execution; governed by CB-01 through CB-05 |
 
 **Tier boundaries:** Tier 1 content MUST be sufficient for routing decisions. Tier 2 content MUST be sufficient for agent execution without Tier 3 loading for routine tasks. Tier 3 loading SHOULD be selective and driven by task-specific needs.
@@ -427,7 +427,7 @@ Each standard maps to an enforcement layer for compliance checking.
 | Standard | PASS | FAIL |
 |----------|------|------|
 | H-34 (Schema validation) | 100% of agent files validate against JSON Schema. Zero validation errors. | Any file missing YAML delimiters, required fields, or failing schema constraints. |
-| H-35 (Constitutional compliance) | All agents include P-003, P-020, P-022 in `constitution.principles_applied`. No worker agent has `Task` in `allowed_tools`. All agents have >= 3 `forbidden_actions`. | Any agent missing constitutional triplet. Any worker with Task tool access. Any agent with < 3 forbidden actions. |
+| H-35 (Constitutional compliance) | All agents include P-003, P-020, P-022 in `constitution.principles_applied`. No worker agent has `Agent` (or alias `Task`) in `allowed_tools`. All agents have >= 3 `forbidden_actions`. | Any agent missing constitutional triplet. Any worker with Agent tool access. Any agent with < 3 forbidden actions. |
 | AD-M-001 through AD-M-010 | Agent follows the standard. | Agent deviates without documented justification. |
 | CB-01 through CB-05 | Context budget guidelines followed during agent execution. | Context budget exceeded without justification. |
 | HD-M-001 through HD-M-005 | Handoff follows protocol. | Handoff validation fails without documented exception. |

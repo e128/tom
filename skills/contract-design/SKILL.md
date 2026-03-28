@@ -1,23 +1,8 @@
 ---
 name: contract-design
-description: >-
-  API contract generation from use case realization artifacts using a novel
-  UC-to-contract transformation algorithm. Transforms use case interaction
-  sequences (produced by /use-case uc-slicer Activity 5) into OpenAPI 3.1
-  specifications with full traceability from API operations to source
-  interaction steps. Validates generated contracts against OpenAPI schema
-  standards. Requires use case artifacts at realization_level =
-  INTERACTION_DEFINED with populated interactions block. Invoke when generating
-  API contracts, OpenAPI specs, endpoint designs, request/response schemas,
-  or operation mappings from use case artifacts.
+description: API contract generation from use case realization artifacts using a novel UC-to-contract transformation algorithm. Transforms use case interaction sequences (produced by /use-case uc-slicer Activity 5) into OpenAPI 3.1 specifications with full traceability from API operations to source interaction steps. Validates generated contracts against OpenAPI schema standards. Requires use case artifacts at realization_level = INTERACTION_DEFINED with populated interactions block. Invoke when generating API contracts, OpenAPI specs, endpoint designs, request/response schemas, or operation mappings from use case artifacts.
 version: "1.0.0"
-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 activation-keywords:
   - "contract design"
   - "contract-design"
