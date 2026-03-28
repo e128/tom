@@ -624,23 +624,9 @@ class ValidateFrontmatterCommandHandler:
                 )
             )
 
-        # Semantic: MCP tools in allowed-tools -> warning
-        allowed = fm.get("allowed-tools")
-        if isinstance(allowed, str):
-            allowed_list = [t.strip() for t in allowed.split(",")]
-        elif isinstance(allowed, list):
-            allowed_list = [str(t) for t in allowed]
-        else:
-            allowed_list = []
-        mcp_in_allowed = [t for t in allowed_list if t.startswith("mcp__")]
-        if mcp_in_allowed:
-            result.warnings.append(
-                (
-                    "allowed-tools",
-                    "mcp_tools_in_allowed_tools",
-                    f"MCP tools may not be grantable via allowed-tools: {mcp_in_allowed}",
-                )
-            )
+        # NOTE: MCP tools (mcp__*) in allowed-tools are valid per Anthropic platform
+        # docs (https://platform.claude.com/docs/en/agent-sdk/custom-tools).
+        # Previously warned here, but the warning was a false positive.
 
         if result.errors:
             result.status = "fail"
