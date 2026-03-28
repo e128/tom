@@ -111,6 +111,7 @@ STORY-012 audit found that two key reference documents have drifted from reality
 | Informed By | STORY-012 | Audit identified all drift items |
 | Depends On | STORY-011 | D-002 matrix update for adv-executor depends on STORY-011 landing first |
 | Depends On | STORY-013 | Tier fixes may change which agents appear in which tier examples |
+| Depends On | STORY-015 | D-001 tier example fixes depend on final tier definitions from renumbering ADR |
 
 ---
 

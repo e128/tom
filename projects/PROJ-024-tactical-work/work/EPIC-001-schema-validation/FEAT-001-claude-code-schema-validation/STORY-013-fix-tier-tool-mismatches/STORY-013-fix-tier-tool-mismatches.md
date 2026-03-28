@@ -157,17 +157,29 @@ STORY-012 audit found 8 inconsistencies where the governance YAML tier declarati
 
 ### Task Inventory
 
-| ID | Title | Status | Owner |
-|----|-------|--------|-------|
-| TASK-001 | Fix M-001: nse-reporter add WebSearch | pending | -- |
-| TASK-002 | Fix M-002: diataxis-explanation tier decision | pending | -- |
-| TASK-003 | Fix M-003: ux-behavior-diagnostician governance T2->T3 | pending | -- |
-| TASK-004 | Fix M-004: nse-requirements tier resolution | pending | -- |
-| TASK-005 | Fix M-005: orchestration SKILL.md vs agents alignment | pending | -- |
-| TASK-006 | Fix M-006: pm-pmm SKILL.md add allowed-tools | pending | -- |
-| TASK-007 | Fix M-007: 6 UX worker agents add disallowedTools: Agent | pending | -- |
-| TASK-008 | Assess M-008: ux-heart-analyst + ux-kano-analyst tier | pending | -- |
-| TASK-009 | Run validation suite to confirm all fixes | pending | -- |
+| ID | Title | Status | Blocked By | Owner |
+|----|-------|--------|-----------|-------|
+| TASK-001 | Fix M-001: nse-reporter add WebSearch | pending | -- | -- |
+| TASK-002 | Fix M-002: diataxis-explanation upgrade to T3 | pending | -- | -- |
+| TASK-003 | Fix M-003: ux-behavior-diagnostician governance T2->T3 | pending | -- | -- |
+| TASK-004 | Fix M-004: nse-requirements tier resolution | **blocked** | STORY-015 | -- |
+| TASK-005 | Fix M-005: orchestration agents add WebSearch/WebFetch | pending | -- | -- |
+| TASK-006 | Fix M-006: pm-pmm SKILL.md add allowed-tools | pending | -- | -- |
+| TASK-007 | Fix M-007: 6 UX worker agents add disallowedTools: Agent | pending | -- | -- |
+| TASK-008 | Fix M-008: ux-heart-analyst + ux-kano-analyst upgrade to T3 | pending | -- | -- |
+| TASK-009 | Run validation suite to confirm all fixes | pending | TASK-001..008 | -- |
+
+### Task Links
+
+- [TASK-001: nse-reporter add WebSearch](./TASK-001/TASK-001-nse-reporter-add-websearch.md)
+- [TASK-002: diataxis-explanation upgrade to T3](./TASK-002/TASK-002-diataxis-explanation-upgrade-t3.md)
+- [TASK-003: ux-behavior-diagnostician governance T2->T3](./TASK-003/TASK-003-ux-behavior-diagnostician-governance-t3.md)
+- [TASK-004: nse-requirements tier resolution](./TASK-004/TASK-004-nse-requirements-tier-resolution.md) **(BLOCKED by STORY-015)**
+- [TASK-005: orchestration agents add web tools](./TASK-005/TASK-005-orchestration-agents-add-web-tools.md)
+- [TASK-006: pm-pmm SKILL.md add allowed-tools](./TASK-006/TASK-006-pm-pmm-add-allowed-tools.md)
+- [TASK-007: 6 UX worker agents add disallowedTools](./TASK-007/TASK-007-ux-workers-add-disallowed-tools.md)
+- [TASK-008: ux-heart-analyst + ux-kano-analyst upgrade to T3](./TASK-008/TASK-008-ux-heart-kano-upgrade-t3.md)
+- [TASK-009: Run validation suite](./TASK-009/TASK-009-run-validation-suite.md)
 
 ---
 
@@ -183,6 +195,8 @@ STORY-012 audit found 8 inconsistencies where the governance YAML tier declarati
 |----------------|------|-------------|
 | Informed By | STORY-012 | Audit identified all mismatches |
 | Related | STORY-011 | adv-executor T2->T3 is a related tier change |
+| Blocked By (TASK-004 only) | STORY-015 | nse-requirements tier fix depends on new tier model |
+| Blocks | STORY-014 | Doc drift fixes depend on tier fixes landing |
 
 ---
 

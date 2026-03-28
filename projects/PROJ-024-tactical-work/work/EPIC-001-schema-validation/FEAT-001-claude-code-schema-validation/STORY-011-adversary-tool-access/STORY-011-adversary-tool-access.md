@@ -145,6 +145,7 @@ The proper mitigation for web-enabled agent security is infrastructure-level net
 | Informed By | STORY-012 | Audit identified the gap and security considerations |
 | Informed By | red-vuln V-003 | Critical finding -- accepted with documented risk |
 | Informed By | eng-security SEC-001 | High finding -- intermediary pattern rejected with rationale |
+| Blocks | STORY-014 D-002 | mcp-tool-standards.md matrix update for adv-executor depends on this landing |
 
 ---
 
