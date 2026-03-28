@@ -164,8 +164,10 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 | red-infra | resolve, query | — | C2 framework documentation |
 | red-social | resolve, query | — | Social engineering methodology |
 
+| adv-executor | resolve, query | — | Fact verification during adversarial strategy execution (STORY-011, GH #217) |
+
 **Not included (by design):**
-- **adv-*** — Self-contained strategy execution; no external research or cross-session state
+- **adv-scorer, adv-selector** — Scoring and strategy selection are self-contained; no external research
 - **wt-*** — Read-only auditing of worktracker files
 - **ps-critic, ps-validator, ps-reviewer** — Quality evaluation; no external library research needed
 - **ps-reporter** — Report generation from existing data

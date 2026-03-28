@@ -8,7 +8,7 @@ PURPOSE: Add web research and MCP tool access to adversary agents to prevent fac
 -->
 
 > **Type:** story
-> **Status:** pending
+> **Status:** in_progress
 > **Priority:** high
 > **Impact:** high
 > **Created:** 2026-03-27T09:00:00Z
@@ -97,6 +97,7 @@ The proper mitigation for web-enabled agent security is infrastructure-level net
 | Prompt injection via deliverable content triggers WebFetch to attacker URL | Low (requires crafted deliverable) | Medium (data exfiltration channel) | Same risk as 49 other T3 agents. Operator awareness. Future: Docker + Envoy network control. |
 | Search result poisoning influences quality findings | Low (requires SEO manipulation targeting niche terms) | Medium (false evidence in findings) | S-014 LLM-as-Judge multi-dimensional scoring; orchestrator can cross-verify. |
 | Quality gate integrity | Low (requires both injection + score manipulation) | High (false PASS on C4 deliverable) | Three-pass scoring history provides drift detection; human review at C4. |
+| Memory-Keeper + web persistence channel (red-vuln F-002, applies to orch agents not adv-executor) | Low (requires prior-session compromise) | Medium (cross-session poisoned data loses provenance) | Citation guardrails added to all orch agents. Future: Docker + Envoy. Formally accepted per STORY-013 wave2-vuln-assessment.md. |
 
 ---
 
@@ -122,11 +123,11 @@ The proper mitigation for web-enabled agent security is infrastructure-level net
 
 | ID | Title | Status | Owner |
 |----|-------|--------|-------|
-| TASK-001 | Update adv-executor.md frontmatter (tools + mcpServers) | pending | -- |
-| TASK-002 | Update adv-executor.governance.yaml (T2->T3, citation guardrails, accepted risk) | pending | -- |
-| TASK-003 | Update adversary SKILL.md allowed-tools | pending | -- |
-| TASK-004 | Update mcp-tool-standards.md Agent Integration Matrix for adv-executor | pending | -- |
-| TASK-005 | Run jerry agents validate-frontmatter to confirm | pending | -- |
+| TASK-001 | Update adv-executor.md frontmatter (tools + mcpServers) | completed | eng-backend |
+| TASK-002 | Update adv-executor.governance.yaml (T2->T3, citation guardrails, accepted risk) | completed | eng-backend |
+| TASK-003 | Update adversary SKILL.md allowed-tools | completed | eng-backend |
+| TASK-004 | Update mcp-tool-standards.md Agent Integration Matrix for adv-executor | completed | -- |
+| TASK-005 | Run jerry agents validate-frontmatter to confirm | completed | -- |
 | TASK-006 | Run full test suite to confirm no regressions | pending | -- |
 
 ---
@@ -155,3 +156,6 @@ The proper mitigation for web-enabled agent security is infrastructure-level net
 |------|--------|--------|-------|
 | 2026-03-27 | adam.nowak | pending | Story created from GitHub issue #217 |
 | 2026-03-27 | adam.nowak | pending | Updated: rejected adv-researcher intermediary, direct web access with accepted risk |
+| 2026-03-28 | adam.nowak | in_progress | Wave 1: eng-backend implemented (4 files). Wave 2: eng-security + red-vuln + ps-reviewer reviewed. DX-HIGH-1 fixed (body text). SEC-001 fixed (pm-pmm). F-002 formally accepted. mcp-tool-standards matrix updated. |
+| 2026-03-28 | adam.nowak | in_progress | Iteration 2: SEC-002/003 citation guardrails, entity statuses, M-003 AC corrected. Score 0.895. |
+| 2026-03-28 | adam.nowak | in_progress | Iteration 3: T3 rationale comment, task statuses updated, orch-planner T4+T3 documented. Score 0.942. |

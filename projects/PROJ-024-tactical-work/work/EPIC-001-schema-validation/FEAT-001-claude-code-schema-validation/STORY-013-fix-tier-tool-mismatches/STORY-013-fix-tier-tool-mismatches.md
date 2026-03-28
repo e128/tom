@@ -8,7 +8,7 @@ PURPOSE: Fix governance YAML tier declarations that don't match actual tools in 
 -->
 
 > **Type:** story
-> **Status:** pending
+> **Status:** in_progress
 > **Priority:** high
 > **Impact:** high
 > **Created:** 2026-03-27T10:00:00Z
@@ -142,7 +142,7 @@ STORY-012 audit found 8 inconsistencies where the governance YAML tier declarati
 
 - [ ] M-001: nse-reporter has both WebSearch and WebFetch
 - [ ] M-002: diataxis-explanation tier decision documented (T3 upgrade or T2 justification)
-- [ ] M-003: ux-behavior-diagnostician governance updated to T3
+- [x] M-003: ux-behavior-diagnostician governance corrected to T2 (frontmatter has T2 tools only; original STORY-012 audit incorrectly reported T3 tools in frontmatter)
 - [ ] M-004: nse-requirements tier resolved (T4 restricted or T5 justified)
 - [ ] M-005: orchestration SKILL.md vs agent tools aligned (intent decided)
 - [ ] M-006: pm-pmm SKILL.md has allowed-tools field
@@ -159,14 +159,14 @@ STORY-012 audit found 8 inconsistencies where the governance YAML tier declarati
 
 | ID | Title | Status | Blocked By | Owner |
 |----|-------|--------|-----------|-------|
-| TASK-001 | Fix M-001: nse-reporter add WebSearch | pending | -- | -- |
-| TASK-002 | Fix M-002: diataxis-explanation upgrade to T3 | pending | -- | -- |
-| TASK-003 | Fix M-003: ux-behavior-diagnostician governance T2->T3 | pending | -- | -- |
+| TASK-001 | Fix M-001: nse-reporter add WebSearch | completed | eng-backend | -- |
+| TASK-002 | Fix M-002: diataxis-explanation upgrade to T3 | completed | eng-backend | -- |
+| TASK-003 | Fix M-003: ux-behavior-diagnostician governance corrected to T2 | completed | eng-security | -- |
 | TASK-004 | Fix M-004: nse-requirements tier resolution | **blocked** | STORY-015 | -- |
-| TASK-005 | Fix M-005: orchestration agents add WebSearch/WebFetch | pending | -- | -- |
-| TASK-006 | Fix M-006: pm-pmm SKILL.md add allowed-tools | pending | -- | -- |
-| TASK-007 | Fix M-007: 6 UX worker agents add disallowedTools: Agent | pending | -- | -- |
-| TASK-008 | Fix M-008: ux-heart-analyst + ux-kano-analyst upgrade to T3 | pending | -- | -- |
+| TASK-005 | Fix M-005: orchestration agents add WebSearch/WebFetch | completed | eng-backend | -- |
+| TASK-006 | Fix M-006: pm-pmm SKILL.md add allowed-tools | completed | eng-backend | -- |
+| TASK-007 | Fix M-007: 6 UX worker agents already have disallowedTools: Task | completed | eng-backend (verified) | -- |
+| TASK-008 | Fix M-008: ux-heart-analyst + ux-kano-analyst upgrade to T3 | completed | eng-backend | -- |
 | TASK-009 | Run validation suite to confirm all fixes | pending | TASK-001..008 | -- |
 
 ### Task Links
@@ -205,3 +205,6 @@ STORY-012 audit found 8 inconsistencies where the governance YAML tier declarati
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-03-27 | adam.nowak | pending | Story created from STORY-012 audit findings |
+| 2026-03-28 | adam.nowak | in_progress | Wave 1: 7 tasks implemented (TASK-004 blocked). Wave 2: eng-security (9 findings), red-vuln (6 findings), ps-reviewer (5 findings). SEC-001/004/005/006 + DX-HIGH-1/2/3 fixed. M-003 corrected (T2 not T3). Citation guardrails added to nse-reporter + orch agents. |
+| 2026-03-28 | adam.nowak | in_progress | Iteration 2: 5 scorer findings fixed. Score 0.82 -> 0.895. |
+| 2026-03-28 | adam.nowak | in_progress | Iteration 3: 4 hygiene fixes. Score 0.895 -> 0.942. |

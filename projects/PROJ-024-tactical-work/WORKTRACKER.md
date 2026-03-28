@@ -8,8 +8,8 @@
 |----|------|-------|--------|--------|
 | EPIC-001 | Epic | Claude Code Schema Validation | in_progress | PROJ-024 |
 | FEAT-001 | Feature | Claude Code Schema Validation Research and Refinement | in_progress | EPIC-001 |
-| STORY-011 | Story | Adversary Sub-Agents: Add WebSearch/WebFetch/Context7 (GH #217) | pending | FEAT-001 |
-| STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions (8 items) | pending | FEAT-001 |
+| STORY-011 | Story | Adversary Sub-Agents: Add WebSearch/WebFetch/Context7 (GH #217) | in_progress | FEAT-001 |
+| STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions (8 items) | in_progress | FEAT-001 |
 | STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards (2 items) | pending | FEAT-001 |
 | STORY-015 | Story | Evaluate and Renumber Tool Security Tier Model (ADR, C4 >= 0.95) | pending | FEAT-001 |
 
