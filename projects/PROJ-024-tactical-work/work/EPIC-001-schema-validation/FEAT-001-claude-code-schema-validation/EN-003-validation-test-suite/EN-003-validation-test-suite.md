@@ -8,7 +8,7 @@ PURPOSE: Create positive and negative test fixtures for schema validation
 -->
 
 > **Type:** enabler
-> **Status:** pending
+> **Status:** completed
 > **Priority:** high
 > **Impact:** high
 > **Enabler Type:** infrastructure

@@ -118,10 +118,21 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 | STORY-001 | Story | Research Anthropic Official Agent Definition Schema | completed | high | 5 |
 | STORY-002 | Story | Research Anthropic Official Skill Definition Schema | completed | high | 5 |
 | STORY-003 | Story | Gap Analysis and Schema Refinement | completed | high | 8 |
-| STORY-004 | Story | Schema Remediation from C4 Review Findings | pending | high | 3 |
+| STORY-004 | Story | Schema Remediation from C4 Review Findings | completed | high | 3 |
+| STORY-005 | Story | Validate All Agent and Skill Definitions Against Schemas | completed | high | 3 |
+| STORY-006 | Story | GitHub Issue Scan for Frontmatter Gotchas | completed | high | 3 |
+| STORY-007 | Story | Update Task->Agent Tool Rename Across Rule Files | completed | high | 3 |
+| STORY-008 | Story | Add Frontmatter Schema Validation to Jerry CLI | completed | high | 5 |
+| STORY-009 | Story | Add Frontmatter Schema Validation to CI Pipeline | completed | high | 3 |
+| STORY-010 | Story | Sync plugin.json Agents List with Actual Agent Files | completed | high | 5 |
+| STORY-011 | Story | Adversary Sub-Agents: Add WebSearch/WebFetch/Context7 (GH #217) | pending | high | 5 |
+| STORY-012 | Story | Audit Skills and Agents for Missing Web Tool Permissions | completed | high | 5 |
+| STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions | pending | high | 5 |
+| STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards | pending | medium | 3 |
+| STORY-015 | Story | Evaluate and Renumber Tool Security Tier Model (ADR) | pending | high | 8 |
 | EN-001 | Enabler | Security Review of Schema Validation Pipeline | completed | high | 5 |
 | EN-002 | Enabler | Developer Experience Review of Schema Validation | completed | medium | 3 |
-| EN-003 | Enabler | Schema Validation Test Suite | pending | high | 5 |
+| EN-003 | Enabler | Schema Validation Test Suite | completed | high | 5 |
 
 ### Work Item Links
 
@@ -129,6 +140,17 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 - [STORY-002: Research Anthropic Official Skill Definition Schema](./STORY-002-research-skill-schema/STORY-002-research-skill-schema.md)
 - [STORY-003: Gap Analysis and Schema Refinement](./STORY-003-gap-analysis-refinement/STORY-003-gap-analysis-refinement.md)
 - [STORY-004: Schema Remediation from C4 Review Findings](./STORY-004-schema-remediation/STORY-004-schema-remediation.md)
+- [STORY-005: Validate All Agent and Skill Definitions Against Schemas](./STORY-005-validate-all-definitions/STORY-005-validate-all-definitions.md)
+- [STORY-006: GitHub Issue Scan for Frontmatter Gotchas](./STORY-006-github-issue-scan/STORY-006-github-issue-scan.md)
+- [STORY-007: Update Task->Agent Tool Rename Across Rule Files](./STORY-007-task-to-agent-rename/STORY-007-task-to-agent-rename.md)
+- [STORY-008: Add Frontmatter Schema Validation to Jerry CLI](./STORY-008-cli-validate-frontmatter/STORY-008-cli-validate-frontmatter.md)
+- [STORY-009: Add Frontmatter Schema Validation to CI Pipeline](./STORY-009-ci-frontmatter-validation/STORY-009-ci-frontmatter-validation.md)
+- [STORY-010: Sync plugin.json Agents List with Actual Agent Files](./STORY-010-plugin-json-agent-sync/STORY-010-plugin-json-agent-sync.md)
+- [STORY-011: Adversary Sub-Agents WebSearch/WebFetch/Context7](./STORY-011-adversary-tool-access/STORY-011-adversary-tool-access.md)
+- [STORY-012: Audit Skills and Agents for Missing Web Tool Permissions](./STORY-012-audit-web-tool-permissions/STORY-012-audit-web-tool-permissions.md)
+- [STORY-013: Fix Tier/Tool Mismatches in Agent Definitions](./STORY-013-fix-tier-tool-mismatches/STORY-013-fix-tier-tool-mismatches.md)
+- [STORY-014: Fix Documentation Drift in Tool/Agent Standards](./STORY-014-fix-documentation-drift/STORY-014-fix-documentation-drift.md)
+- [STORY-015: Evaluate and Renumber Tool Security Tier Model](./STORY-015-tier-model-renumbering/STORY-015-tier-model-renumbering.md)
 - [EN-001: Security Review of Schema Validation Pipeline](./EN-001-security-review/EN-001-security-review.md)
 - [EN-002: Developer Experience Review of Schema Validation](./EN-002-developer-experience-review/EN-002-developer-experience-review.md)
 - [EN-003: Schema Validation Test Suite](./EN-003-validation-test-suite/EN-003-validation-test-suite.md)
@@ -141,10 +163,10 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 +------------------------------------------------------------------+
 |                   FEATURE PROGRESS TRACKER                        |
 +------------------------------------------------------------------+
-| Stories:   [####................] 20% (0/3 completed)             |
-| Enablers:  [....................] 0% (0/2 completed)              |
+| Stories:   [##############......] 67% (10/15 completed)           |
+| Enablers:  [####################] 100% (3/3 completed)            |
 +------------------------------------------------------------------+
-| Overall:   [###.................] 15%                              |
+| Overall:   [##############......] 72%                              |
 +------------------------------------------------------------------+
 ```
 

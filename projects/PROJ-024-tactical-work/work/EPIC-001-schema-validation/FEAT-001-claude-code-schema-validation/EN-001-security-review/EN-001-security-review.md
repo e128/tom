@@ -8,7 +8,7 @@ PURPOSE: Security-focused review of schema validation approach using /eng-team a
 -->
 
 > **Type:** enabler
-> **Status:** pending
+> **Status:** completed
 > **Priority:** high
 > **Impact:** high
 > **Enabler Type:** compliance

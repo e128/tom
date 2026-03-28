@@ -8,12 +8,12 @@ PURPOSE: Update all references to the deprecated "Task" tool name to "Agent" acr
 -->
 
 > **Type:** story
-> **Status:** pending
+> **Status:** completed
 > **Priority:** high
 > **Impact:** high
 > **Created:** 2026-03-27T06:00:00Z
 > **Due:**
-> **Completed:**
+> **Completed:** 2026-03-27T03:00:00Z
 > **Parent:** FEAT-001
 > **Owner:** adam.nowak
 > **Effort:** 3

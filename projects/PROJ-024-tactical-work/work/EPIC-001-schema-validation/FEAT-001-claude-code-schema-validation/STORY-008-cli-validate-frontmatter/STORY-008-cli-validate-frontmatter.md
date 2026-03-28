@@ -8,12 +8,12 @@ PURPOSE: Move frontmatter validation from throwaway script into the jerry CLI
 -->
 
 > **Type:** story
-> **Status:** pending
+> **Status:** completed
 > **Priority:** high
 > **Impact:** medium
 > **Created:** 2026-03-27T06:30:00Z
 > **Due:**
-> **Completed:**
+> **Completed:** 2026-03-27T04:00:00Z
 > **Parent:** FEAT-001
 > **Owner:** adam.nowak
 > **Effort:** 5

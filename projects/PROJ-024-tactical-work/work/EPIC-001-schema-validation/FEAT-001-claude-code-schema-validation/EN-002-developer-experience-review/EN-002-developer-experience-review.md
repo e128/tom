@@ -8,7 +8,7 @@ PURPOSE: UX review of schema validation developer experience using /user-experie
 -->
 
 > **Type:** enabler
-> **Status:** pending
+> **Status:** completed
 > **Priority:** medium
 > **Impact:** medium
 > **Enabler Type:** exploration
