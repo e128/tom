@@ -8,7 +8,7 @@ PURPOSE: ADR-level evaluation of tier model renumbering to close the T3+T4 gap
 -->
 
 > **Type:** story
-> **Status:** pending
+> **Status:** done
 > **Priority:** high
 > **Impact:** high
 > **Created:** 2026-03-27T11:00:00Z
@@ -111,16 +111,16 @@ Each proposal must be evaluated against:
 
 ## Acceptance Criteria
 
-- [ ] ADR produced in Nygard format evaluating at minimum 3 renumbering options
-- [ ] Each option scored against the 7 evaluation criteria
-- [ ] Recommended option selected with full trade-off analysis
-- [ ] Migration plan: every agent's tier change documented
-- [ ] Schema update plan: `agent-governance-v1.schema.json` tool_tier enum
-- [ ] Rule file update plan: `agent-development-standards.md` tier table
-- [ ] Impact on all governance YAMLs quantified
-- [ ] C4 adversarial review at >= 0.95
-- [ ] /user-experience developer ergonomics review of the new model
-- [ ] No existing agent becomes invalid under the new model
+- [x] ADR produced in Nygard format evaluating at minimum 3 renumbering options
+- [x] Each option scored against the 7 evaluation criteria
+- [x] Recommended option selected with full trade-off analysis
+- [x] Migration plan: every agent's tier change documented
+- [x] Schema update plan: `agent-governance-v1.schema.json` tool_tier enum
+- [x] Rule file update plan: `agent-development-standards.md` tier table
+- [x] Impact on all governance YAMLs quantified
+- [x] C4 adversarial review at >= 0.95
+- [x] /user-experience developer ergonomics review of the new model
+- [x] No existing agent becomes invalid under the new model
 
 ---
 
@@ -130,12 +130,12 @@ Each proposal must be evaluated against:
 
 | ID | Title | Status | Owner |
 |----|-------|--------|-------|
-| TASK-001 | Research: enumerate all renumbering options (ps-researcher) | pending | -- |
-| TASK-002 | Analysis: score options against 7 criteria (ps-analyst) | pending | -- |
-| TASK-003 | ADR: produce architecture decision record (ps-architect) | pending | -- |
-| TASK-004 | DX review: developer ergonomics of new tier model (ux-heuristic-eval) | pending | -- |
-| TASK-005 | Migration plan: per-agent tier changes | pending | -- |
-| TASK-006 | C4 adversarial review at >= 0.95 (adv-executor) | pending | -- |
+| TASK-001 | Research: enumerate all renumbering options (ps-researcher) | done | adam.nowak |
+| TASK-002 | Analysis: score options against 7 criteria (ps-analyst) | done | adam.nowak |
+| TASK-003 | ADR: produce architecture decision record (ps-architect) | done | adam.nowak |
+| TASK-004 | DX review: developer ergonomics of new tier model (ux-heuristic-eval) | done | adam.nowak |
+| TASK-005 | Migration plan: per-agent tier changes | done | adam.nowak |
+| TASK-006 | C4 adversarial review at >= 0.95 (adv-scorer) | done | adam.nowak |
 
 ---
 
@@ -166,3 +166,4 @@ Per AE-002: modifying `.context/rules/agent-development-standards.md` (Tool Secu
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-03-27 | adam.nowak | pending | Story created -- T3a rejected, clean renumbering required |
+| 2026-03-28 | adam.nowak | done | ADR-STORY015-001 produced. Recommends Option A (Persistent-First Linear). C4 adversarial review: 0.953 PASS after 5 iterations. DX review completed. |
