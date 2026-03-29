@@ -375,7 +375,7 @@ These agents implement AI-augmented UX methodology for tiny teams through the `/
 
 **Model Tiers:** ux-orchestrator (opus), ux-sprint-facilitator (opus), ux-ai-design-guide (opus), ux-heuristic-evaluator (haiku*); all others (sonnet). *Haiku for high-volume checklist evaluation; escalates to Sonnet per AD-M-009.
 
-**Tool Tiers:** ux-orchestrator is T5 (full, with Task for delegation); all sub-skill agents are T2 or T3 (no Task tool per P-003).
+**Tool Tiers:** ux-orchestrator is T5 (Orchestration, with Task for delegation); all sub-skill agents are T2 or T4 (no Task tool per P-003).
 
 **Wave Architecture:** Sub-skills deploy in 5 criteria-gated waves. Wave 0 (Foundation) deploys the orchestrator. Waves 1-5 deploy sub-skills progressively based on team maturity criteria.
 

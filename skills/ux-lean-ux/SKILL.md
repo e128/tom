@@ -112,11 +112,11 @@ Do NOT use for:
 
 | Agent | Role | Tier | Mode | Model | Output Location |
 |-------|------|------|------|-------|-----------------|
-| `ux-lean-ux-facilitator` | Lean UX hypothesis and experiment facilitation specialist | T3 | Systematic | Sonnet | `skills/ux-lean-ux/output/{engagement-id}/ux-lean-ux-facilitator-{topic-slug}.md` |
+| `ux-lean-ux-facilitator` | Lean UX hypothesis and experiment facilitation specialist | T4 | Systematic | Sonnet | `skills/ux-lean-ux/output/{engagement-id}/ux-lean-ux-facilitator-{topic-slug}.md` |
 
 **STUB:** The agent definition file (`skills/ux-lean-ux/agents/ux-lean-ux-facilitator.md`) currently contains frontmatter, identity, purpose, and guardrails sections only. Full agent body implementation (`<input>`, `<capabilities>`, `<methodology>`, `<output>` sections) is pending Wave 2 completion of PROJ-022 EPIC-003. The SKILL.md specifies the methodology and output contract that the agent will implement.
 
-**Tool tier:** T3 (External) = Read, Write, Edit, Glob, Grep + WebSearch, WebFetch + Context7 MCP. The T3 tier enables access to external Lean UX methodology documentation via Context7 and web search for A/B testing framework references. Bash is intentionally excluded; T3 tier does not require shell access for MCP operations. See `agent-development-standards.md` [Tool Security Tiers] for full tier definitions.
+**Tool tier:** T4 (External) = Read, Write, Edit, Glob, Grep + WebSearch, WebFetch + Context7 MCP. The T4 tier enables access to external Lean UX methodology documentation via Context7 and web search for A/B testing framework references. Bash is intentionally excluded; T4 tier does not require shell access for MCP operations. See `agent-development-standards.md` [Tool Security Tiers] for full tier definitions.
 
 The agent produces output at three levels per AD-M-004:
 - **L0 (Executive Summary):** Top hypotheses with validation status; key assumptions identified; experiment recommendations for stakeholders and cross-framework synthesis input.
@@ -137,7 +137,7 @@ MAIN CONTEXT (user request)
     v
 ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
     |
-    +-- ux-lean-ux-facilitator (T3, Systematic, Sonnet) -- THIS sub-skill's worker
+    +-- ux-lean-ux-facilitator (T4, Systematic, Sonnet) -- THIS sub-skill's worker
     +-- [other sub-skill workers...]
 ```
 

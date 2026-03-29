@@ -116,11 +116,11 @@ Do NOT use for:
 
 | Agent | Role | Tier | Mode | Model | Output Location |
 |-------|------|------|------|-------|-----------------|
-| `ux-sprint-facilitator` | AJ&Smart Design Sprint 2.0 facilitation | T3 | Systematic | Opus | `skills/ux-design-sprint/output/{engagement-id}/ux-sprint-facilitator-{topic-slug}.md` |
+| `ux-sprint-facilitator` | AJ&Smart Design Sprint 2.0 facilitation | T4 | Systematic | Opus | `skills/ux-design-sprint/output/{engagement-id}/ux-sprint-facilitator-{topic-slug}.md` |
 
 **STUB:** The agent definition file (`skills/ux-design-sprint/agents/ux-sprint-facilitator.md`) is pending Wave 5 Phase 2 implementation as part of PROJ-022 EPIC-005. The SKILL.md specifies the methodology and output contract that the agent will implement.
 
-**Tool tier:** T3 (External) = Read, Write, Edit, Glob, Grep, Bash + WebSearch, WebFetch, Context7 MCP. T3 access is required because Design Sprint facilitation benefits from external research during Day 1 expert interviews and Day 2 lightning demos (competitive analysis, industry precedent research). See `.context/rules/agent-development-standards.md` [Tool Security Tiers].
+**Tool tier:** T4 (External) = Read, Write, Edit, Glob, Grep, Bash + WebSearch, WebFetch, Context7 MCP. T4 access is required because Design Sprint facilitation benefits from external research during Day 1 expert interviews and Day 2 lightning demos (competitive analysis, industry precedent research). See `.context/rules/agent-development-standards.md` [Tool Security Tiers].
 
 The agent produces output at three levels per AD-M-004:
 - **L0 (Executive Summary):** Sprint challenge statement; winning solution summary; Day 4 test results (pass/fail per sprint question); top validated findings; recommended next steps.
@@ -139,7 +139,7 @@ MAIN CONTEXT (user request)
     v
 ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
     |
-    +-- ux-sprint-facilitator (T3, Systematic, Opus) -- THIS sub-skill's worker
+    +-- ux-sprint-facilitator (T4, Systematic, Opus) -- THIS sub-skill's worker
     +-- [other sub-skill workers...]
 ```
 
@@ -606,7 +606,7 @@ The following CI gate criteria apply to this sub-skill (full gate definitions in
 
 ## Degraded Mode Behavior
 
-The `ux-sprint-facilitator` operates at T3 (External) and has access to WebSearch, WebFetch, and Context7 MCP. Additionally, it depends on Figma (REQ) for prototype creation and Miro (REQ) for collaborative sprint activities. Both MCP dependencies are required, so degraded mode behavior is significant.
+The `ux-sprint-facilitator` operates at T4 (External) and has access to WebSearch, WebFetch, and Context7 MCP. Additionally, it depends on Figma (REQ) for prototype creation and Miro (REQ) for collaborative sprint activities. Both MCP dependencies are required, so degraded mode behavior is significant.
 
 ### Figma MCP Unavailable
 

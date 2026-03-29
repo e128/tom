@@ -131,11 +131,11 @@ Source: `skills/user-experience/rules/ux-routing-rules.md` [Stage Routing Table]
 
 | Agent | Role | Tier | Mode | Model | Output Location |
 |-------|------|------|------|-------|-----------------|
-| `ux-jtbd-analyst` | JTBD research and analysis specialist | T3 | Divergent | Sonnet | `skills/ux-jtbd/output/{engagement-id}/ux-jtbd-analyst-{topic-slug}.md` |
+| `ux-jtbd-analyst` | JTBD research and analysis specialist | T4 | Divergent | Sonnet | `skills/ux-jtbd/output/{engagement-id}/ux-jtbd-analyst-{topic-slug}.md` |
 
 **Single-agent sub-skill.** The `ux-jtbd-analyst` handles the full JTBD methodology -- from context gathering through job statement synthesis. Complex multi-job engagements are decomposed into multiple invocations by the `ux-orchestrator`, each targeting a specific job domain.
 
-**Tool tier:** T3 (Read-Write + External). The analyst uses WebSearch and WebFetch for secondary research (competitive analysis, domain literature, product reviews) and Context7 for JTBD framework documentation lookup. See `skills/ux-jtbd/agents/ux-jtbd-analyst.md` for the full agent definition and `skills/ux-jtbd/agents/ux-jtbd-analyst.governance.yaml` for governance metadata.
+**Tool tier:** T4 (External). The analyst uses WebSearch and WebFetch for secondary research (competitive analysis, domain literature, product reviews) and Context7 for JTBD framework documentation lookup. See `skills/ux-jtbd/agents/ux-jtbd-analyst.md` for the full agent definition and `skills/ux-jtbd/agents/ux-jtbd-analyst.governance.yaml` for governance metadata.
 
 ---
 
@@ -192,7 +192,7 @@ Produce job map with outcome expectations using Ulwick ODI format.
 )
 ```
 
-Claude Code enforces the agent's `tools` frontmatter -- `ux-jtbd-analyst` only has access to its declared T3 tool tier (Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch).
+Claude Code enforces the agent's `tools` frontmatter -- `ux-jtbd-analyst` only has access to its declared T4 tool tier (Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch).
 
 ### Registration (H-26(c) Exception)
 
@@ -215,7 +215,7 @@ MAIN CONTEXT (user request)
     v
 ux-orchestrator (T5, Opus, Integrative)
     |
-    +-- ux-jtbd-analyst (T3, Divergent, Sonnet)  <-- THIS SUB-SKILL
+    +-- ux-jtbd-analyst (T4, Divergent, Sonnet)  <-- THIS SUB-SKILL
     +-- [other sub-skill agents...]
 ```
 

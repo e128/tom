@@ -123,11 +123,11 @@ Do NOT use for:
 
 | Agent | Role | Tier | Mode | Model | Output Location |
 |-------|------|------|------|-------|-----------------|
-| `ux-inclusive-evaluator` | Inclusive design and WCAG 2.2 accessibility auditor | T3 | Systematic | Sonnet | `skills/ux-inclusive-design/output/{engagement-id}/ux-inclusive-evaluator-{topic-slug}.md` |
+| `ux-inclusive-evaluator` | Inclusive design and WCAG 2.2 accessibility auditor | T4 | Systematic | Sonnet | `skills/ux-inclusive-design/output/{engagement-id}/ux-inclusive-evaluator-{topic-slug}.md` |
 
 **STUB:** The agent definition file (`skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md`) is planned for creation during Wave 3 implementation of PROJ-022 EPIC-004. The SKILL.md specifies the methodology and output contract that the agent will implement. Agent definition file and governance YAML will contain frontmatter, identity, purpose, guardrails, and full body sections (`<input>`, `<capabilities>`, `<methodology>`, `<output>`).
 
-**Tool tier:** T3 (External) = Read, Write, Edit, Glob, Grep + WebSearch, WebFetch + Context7 MCP. The T3 tier enables access to external WCAG specifications, ARIA authoring practices, and accessibility API documentation via Context7 and web search. Bash is intentionally excluded; T3 tier does not require shell access for MCP operations. See `agent-development-standards.md` [Tool Security Tiers] for full tier definitions.
+**Tool tier:** T4 (External) = Read, Write, Edit, Glob, Grep + WebSearch, WebFetch + Context7 MCP. The T4 tier enables access to external WCAG specifications, ARIA authoring practices, and accessibility API documentation via Context7 and web search. Bash is intentionally excluded; T4 tier does not require shell access for MCP operations. See `agent-development-standards.md` [Tool Security Tiers] for full tier definitions.
 
 The agent produces output at three levels per AD-M-004:
 - **L0 (Executive Summary):** Conformance level achieved (A, AA, AAA, or none); critical WCAG violations count; Persona Spectrum coverage summary; top remediation priorities for stakeholders and cross-framework synthesis input.
@@ -148,7 +148,7 @@ MAIN CONTEXT (user request)
     v
 ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
     |
-    +-- ux-inclusive-evaluator (T3, Systematic, Sonnet) -- THIS sub-skill's worker
+    +-- ux-inclusive-evaluator (T4, Systematic, Sonnet) -- THIS sub-skill's worker
     +-- [other sub-skill workers...]
 ```
 

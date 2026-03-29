@@ -109,13 +109,13 @@ Do NOT use for:
 
 | Agent | Role | Tier | Mode | Model | Output Location |
 |-------|------|------|------|-------|-----------------|
-| `ux-heuristic-evaluator`** | Nielsen heuristic evaluation specialist | T3 | Systematic | Haiku* | `skills/ux-heuristic-eval/output/{engagement-id}/ux-heuristic-evaluator-{topic-slug}.md` |
+| `ux-heuristic-evaluator`** | Nielsen heuristic evaluation specialist | T4 | Systematic | Haiku* | `skills/ux-heuristic-eval/output/{engagement-id}/ux-heuristic-evaluator-{topic-slug}.md` |
 
 *Haiku for high-volume checklist evaluation; escalates to Sonnet when: (1) critical finding count >= 3 (severity 3 or 4), (2) Figma MCP benchmark fails pre-launch threshold, or (3) evaluation spans > 50 screens. Escalation is automatic within the orchestrator's routing logic per AD-M-009 model selection justification.
 
 **STUB: The agent definition file (`skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md`) currently contains frontmatter, identity, purpose, and guardrails sections only. Full agent body implementation (`<input>`, `<capabilities>`, `<methodology>`, `<output>` sections) is pending Wave 1 completion of PROJ-022 EPIC-002. The SKILL.md specifies the methodology and output contract that the agent will implement.
 
-**Tool tier:** T3 (External) = Read, Write, Edit, Glob, Grep + WebSearch, WebFetch + Context7 MCP. The T3 tier enables access to external UX standards documentation via Context7 and web search. Bash is intentionally excluded; T3 tier does not require shell access for MCP operations. See `agent-development-standards.md` [Tool Security Tiers] for full tier definitions.
+**Tool tier:** T4 (External) = Read, Write, Edit, Glob, Grep + WebSearch, WebFetch + Context7 MCP. The T4 tier enables access to external UX standards documentation via Context7 and web search. Bash is intentionally excluded; T4 tier does not require shell access for MCP operations. See `agent-development-standards.md` [Tool Security Tiers] for full tier definitions.
 
 The agent produces output at three levels per AD-M-004:
 - **L0 (Executive Summary):** Top 3-5 findings with severity ratings for stakeholders and cross-framework synthesis input.
@@ -136,7 +136,7 @@ MAIN CONTEXT (user request)
     v
 ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
     |
-    +-- ux-heuristic-evaluator (T3, Systematic, Haiku) -- THIS sub-skill's worker
+    +-- ux-heuristic-evaluator (T4, Systematic, Haiku) -- THIS sub-skill's worker
     +-- [other sub-skill workers...]
 ```
 

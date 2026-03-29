@@ -114,11 +114,11 @@ Do NOT use for:
 
 | Agent | Role | Tier | Mode | Model | Output Location |
 |-------|------|------|------|-------|-----------------|
-| `ux-atomic-architect` | Atomic design component taxonomy architect | T3 | Systematic | Sonnet | `skills/ux-atomic-design/output/{engagement-id}/ux-atomic-architect-{topic-slug}.md` |
+| `ux-atomic-architect` | Atomic design component taxonomy architect | T4 | Systematic | Sonnet | `skills/ux-atomic-design/output/{engagement-id}/ux-atomic-architect-{topic-slug}.md` |
 
 **STUB:** The agent definition file (`skills/ux-atomic-design/agents/ux-atomic-architect.md`) is pending Wave 3 Phase 2 implementation as part of PROJ-022 EPIC-003. The SKILL.md specifies the methodology and output contract that the agent will implement.
 
-**Tool tier:** T3 (External) = Read, Write, Edit, Glob, Grep + WebSearch, WebFetch + Context7 MCP. The T3 tier enables access to external component library documentation (Material UI, Radix, Shadcn/ui) via Context7 and web search for Storybook configuration patterns. Bash is intentionally excluded; T3 tier does not require shell access for MCP operations. See `.context/rules/agent-development-standards.md` [Tool Security Tiers] for full tier definitions.
+**Tool tier:** T4 (External) = Read, Write, Edit, Glob, Grep + WebSearch, WebFetch + Context7 MCP. The T4 tier enables access to external component library documentation (Material UI, Radix, Shadcn/ui) via Context7 and web search for Storybook configuration patterns. Bash is intentionally excluded; T4 tier does not require shell access for MCP operations. See `.context/rules/agent-development-standards.md` [Tool Security Tiers] for full tier definitions.
 
 The agent produces output at three levels per AD-M-004:
 - **L0 (Executive Summary):** Top component reuse opportunities; design token consistency score; Storybook coverage percentage; key findings for stakeholders and cross-framework synthesis input.
@@ -139,7 +139,7 @@ MAIN CONTEXT (user request)
     v
 ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
     |
-    +-- ux-atomic-architect (T3, Systematic, Sonnet) -- THIS sub-skill's worker
+    +-- ux-atomic-architect (T4, Systematic, Sonnet) -- THIS sub-skill's worker
     +-- [other sub-skill workers...]
 ```
 

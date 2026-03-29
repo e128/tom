@@ -139,18 +139,18 @@ Do NOT use for:
 | Agent | Role | Tier | Mode | Model | Wave | Output Location |
 |-------|------|------|------|-------|------|-----------------|
 | `ux-orchestrator` | Parent orchestrator: routing, wave gating, cross-framework synthesis | T5 | Integrative | Opus | 0 | `skills/user-experience/output/{engagement-id}/ux-orchestrator-{topic-slug}.md` |
-| `ux-heuristic-evaluator` | Nielsen heuristic evaluation specialist | T3 | Systematic | Haiku* | 1 | `skills/ux-heuristic-eval/output/{engagement-id}/ux-heuristic-evaluator-{topic-slug}.md` |
-| `ux-jtbd-analyst` | Jobs-to-Be-Done research and analysis | T3 | Divergent | Sonnet | 1 | `skills/ux-jtbd/output/{engagement-id}/ux-jtbd-analyst-{topic-slug}.md` |
-| `ux-lean-ux-facilitator` | Lean UX hypothesis and experiment facilitation | T3 | Systematic | Sonnet | 2 | `skills/ux-lean-ux/output/{engagement-id}/ux-lean-ux-facilitator-{topic-slug}.md` |
+| `ux-heuristic-evaluator` | Nielsen heuristic evaluation specialist | T4 | Systematic | Haiku* | 1 | `skills/ux-heuristic-eval/output/{engagement-id}/ux-heuristic-evaluator-{topic-slug}.md` |
+| `ux-jtbd-analyst` | Jobs-to-Be-Done research and analysis | T4 | Divergent | Sonnet | 1 | `skills/ux-jtbd/output/{engagement-id}/ux-jtbd-analyst-{topic-slug}.md` |
+| `ux-lean-ux-facilitator` | Lean UX hypothesis and experiment facilitation | T4 | Systematic | Sonnet | 2 | `skills/ux-lean-ux/output/{engagement-id}/ux-lean-ux-facilitator-{topic-slug}.md` |
 | `ux-heart-analyst` | HEART metrics framework specialist | T2 | Systematic | Sonnet | 2 | `skills/ux-heart-metrics/output/{engagement-id}/ux-heart-analyst-{topic-slug}.md` |
-| `ux-atomic-architect` | Atomic design component taxonomy architect | T3 | Systematic | Sonnet | 3 | `skills/ux-atomic-design/output/{engagement-id}/ux-atomic-architect-{topic-slug}.md` |
-| `ux-inclusive-evaluator` | Inclusive design and accessibility auditor | T3 | Systematic | Sonnet | 3 | `skills/ux-inclusive-design/output/{engagement-id}/ux-inclusive-evaluator-{topic-slug}.md` |
+| `ux-atomic-architect` | Atomic design component taxonomy architect | T4 | Systematic | Sonnet | 3 | `skills/ux-atomic-design/output/{engagement-id}/ux-atomic-architect-{topic-slug}.md` |
+| `ux-inclusive-evaluator` | Inclusive design and accessibility auditor | T4 | Systematic | Sonnet | 3 | `skills/ux-inclusive-design/output/{engagement-id}/ux-inclusive-evaluator-{topic-slug}.md` |
 | `ux-behavior-diagnostician` | Fogg B=MAP behavior bottleneck diagnosis | T2 | Convergent | Sonnet | 4 | `skills/ux-behavior-design/output/{engagement-id}/ux-behavior-diagnostician-{topic-slug}.md` |
 | `ux-kano-analyst` | Kano model feature classification and prioritization | T2 | Convergent | Sonnet | 4 | `skills/ux-kano-model/output/{engagement-id}/ux-kano-analyst-{topic-slug}.md` |
-| `ux-sprint-facilitator` | AJ&Smart Design Sprint 2.0 facilitation | T3 | Systematic | Opus | 5 | `skills/ux-design-sprint/output/{engagement-id}/ux-sprint-facilitator-{topic-slug}.md` |
-| `ux-ai-design-guide` | AI-first interaction design specialist (CONDITIONAL) | T3 | Divergent | Opus | 5 | `skills/ux-ai-first-design/output/{engagement-id}/ux-ai-design-guide-{topic-slug}.md` |
+| `ux-sprint-facilitator` | AJ&Smart Design Sprint 2.0 facilitation | T4 | Systematic | Opus | 5 | `skills/ux-design-sprint/output/{engagement-id}/ux-sprint-facilitator-{topic-slug}.md` |
+| `ux-ai-design-guide` | AI-first interaction design specialist (CONDITIONAL) | T4 | Divergent | Opus | 5 | `skills/ux-ai-first-design/output/{engagement-id}/ux-ai-design-guide-{topic-slug}.md` |
 
-**Tool tier key:** T2 = Read-Write (Read, Write, Edit, Glob, Grep, Bash); T3 = T2 + External (WebSearch, WebFetch, Context7 MCP); T5 = T3 + T4 (Memory-Keeper) + Task (orchestration delegation). See `agent-development-standards.md` [Tool Security Tiers] for full definitions. All tier assignments follow the principle of least privilege (AR-006) — T2 agents (ux-heart-analyst, ux-behavior-diagnostician, ux-kano-analyst) operate on user-provided data only; T3 agents access external UX standards and documentation.
+**Tool tier key:** T2 = Read-Write (Read, Write, Edit, Glob, Grep, Bash); T4 = External (T2 + WebSearch, WebFetch, Context7 MCP, Memory-Keeper); T5 = Orchestration (T4 + Agent/Task). See `agent-development-standards.md` [Tool Security Tiers] for full definitions. All tier assignments follow the principle of least privilege (AR-006) — T2 agents (ux-heart-analyst, ux-behavior-diagnostician, ux-kano-analyst) operate on user-provided data only; T4 agents access external UX standards and documentation.
 
 *Haiku for high-volume checklist evaluation; escalates to Sonnet when: (1) heuristic severity is "critical" (>= 3 critical findings), (2) Figma MCP benchmark fails pre-launch threshold, or (3) evaluation spans > 50 screens. Escalation is automatic within the orchestrator's routing logic per AD-M-009 model selection justification.
 
@@ -171,16 +171,16 @@ MAIN CONTEXT (user request)
     v
 ux-orchestrator (T5, Opus, Integrative) -- routes, gates, synthesizes
     |
-    +-- ux-heuristic-evaluator    (T3, Systematic, Haiku)     [Wave 1]
-    +-- ux-jtbd-analyst           (T3, Divergent, Sonnet)     [Wave 1]
-    +-- ux-lean-ux-facilitator    (T3, Systematic, Sonnet)    [Wave 2]
+    +-- ux-heuristic-evaluator    (T4, Systematic, Haiku)     [Wave 1]
+    +-- ux-jtbd-analyst           (T4, Divergent, Sonnet)     [Wave 1]
+    +-- ux-lean-ux-facilitator    (T4, Systematic, Sonnet)    [Wave 2]
     +-- ux-heart-analyst          (T2, Systematic, Sonnet)    [Wave 2]
-    +-- ux-atomic-architect       (T3, Systematic, Sonnet)    [Wave 3]
-    +-- ux-inclusive-evaluator    (T3, Systematic, Sonnet)    [Wave 3]
+    +-- ux-atomic-architect       (T4, Systematic, Sonnet)    [Wave 3]
+    +-- ux-inclusive-evaluator    (T4, Systematic, Sonnet)    [Wave 3]
     +-- ux-behavior-diagnostician (T2, Convergent, Sonnet)    [Wave 4]
     +-- ux-kano-analyst           (T2, Convergent, Sonnet)    [Wave 4]
-    +-- ux-sprint-facilitator     (T3, Systematic, Opus)      [Wave 5]
-    +-- ux-ai-design-guide        (T3, Divergent, Opus)       [Wave 5 COND]
+    +-- ux-sprint-facilitator     (T4, Systematic, Opus)      [Wave 5]
+    +-- ux-ai-design-guide        (T4, Divergent, Opus)       [Wave 5 COND]
 ```
 
 **Enforcement:** Sub-skill agents declare `disallowedTools: [Task]` in `.md` frontmatter. CI gate validates no sub-skill agent has Task access (documented in `skills/user-experience/rules/ci-checks.md`). Each `.governance.yaml` includes Task prohibition in `capabilities.forbidden_actions` with P-003 consequence statement.
@@ -237,7 +237,7 @@ Produce ranked findings with remediation recommendations.
 )
 ```
 
-Claude Code enforces each agent's `tools` frontmatter -- worker agents only have access to their declared tool tier (T2 or T3).
+Claude Code enforces each agent's `tools` frontmatter -- worker agents only have access to their declared tool tier (T2 or T4).
 
 ---
 

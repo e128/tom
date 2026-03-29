@@ -124,13 +124,13 @@ Do NOT use for:
 
 | Agent | Role | Tier | Mode | Model | Output Location |
 |-------|------|------|------|-------|-----------------|
-| `ux-ai-design-guide` | AI-first interaction design specialist (CONDITIONAL) | T3 | Divergent | Opus | `skills/ux-ai-first-design/output/{engagement-id}/ux-ai-design-guide-{topic-slug}.md` |
+| `ux-ai-design-guide` | AI-first interaction design specialist (CONDITIONAL) | T4 | Divergent | Opus | `skills/ux-ai-first-design/output/{engagement-id}/ux-ai-design-guide-{topic-slug}.md` |
 
 **STUB:** The agent definition file (`skills/ux-ai-first-design/agents/ux-ai-design-guide.md`) is pending Wave 5 Phase 2 implementation as part of PROJ-022 EPIC-005. The SKILL.md specifies the methodology and output contract that the agent will implement.
 
 **CONDITIONAL:** This agent only activates when WSM >= 7.80 AND enabler research (FEAT-020) is complete. The `ux-orchestrator` checks these conditions before routing to this sub-skill.
 
-**Tool tier:** T3 (External) = Read, Write, Edit, Glob, Grep, Bash + WebSearch, WebFetch, Context7 MCP. T3 is required because AI design patterns evolve rapidly; WebSearch and Context7 provide access to current AI SDK documentation and interaction pattern libraries. See `.context/rules/agent-development-standards.md` [Tool Security Tiers].
+**Tool tier:** T4 (External) = Read, Write, Edit, Glob, Grep, Bash + WebSearch, WebFetch, Context7 MCP. T4 is required because AI design patterns evolve rapidly; WebSearch and Context7 provide access to current AI SDK documentation and interaction pattern libraries. See `.context/rules/agent-development-standards.md` [Tool Security Tiers].
 
 The agent produces output at three levels per AD-M-004:
 - **L0 (Executive Summary):** Trust-risk and error-risk classification; selected interaction pattern; top design recommendations; key findings for stakeholders and cross-framework synthesis input.
@@ -149,7 +149,7 @@ MAIN CONTEXT (user request)
     v
 ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
     |
-    +-- ux-ai-design-guide (T3, Divergent, Opus) -- THIS sub-skill's worker [COND]
+    +-- ux-ai-design-guide (T4, Divergent, Opus) -- THIS sub-skill's worker [COND]
     +-- [other sub-skill workers...]
 ```
 
@@ -612,7 +612,7 @@ The following CI gate criteria apply to this sub-skill (full gate definitions in
 
 ## Degraded Mode Behavior
 
-The `ux-ai-design-guide` operates at T3 (External) with access to WebSearch, WebFetch, and Context7 MCP. The following degraded modes apply when external tools or MCP dependencies are unavailable.
+The `ux-ai-design-guide` operates at T4 (External) with access to WebSearch, WebFetch, and Context7 MCP. The following degraded modes apply when external tools or MCP dependencies are unavailable.
 
 ### Figma MCP Unavailable
 
