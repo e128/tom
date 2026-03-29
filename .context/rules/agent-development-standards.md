@@ -1,10 +1,10 @@
 # Agent Development Standards
 
-<!-- VERSION: 1.2.0 | DATE: 2026-02-22 | SOURCE: ADR-PROJ007-001, PROJ-007 Phase 3 Synthesis, V&V Plan, EN-003 | REVISION: EN-003 gap closures (ET-M-001 extended thinking, FC-M-001 fresh context review) -->
+<!-- VERSION: 1.3.0 | DATE: 2026-03-28 | SOURCE: ADR-PROJ007-001, ADR-STORY015-001, STORY-017 | REVISION: STORY-017 tier model renumbering (T3=Persistent, T4=External, T5=Orchestration) -->
 
 > Canonical standards for agent definition format, structural patterns, behavioral constraints, and handoff protocols within the Jerry Framework. All agent definitions MUST reference this file.
 
-<!-- L2-REINJECT: rank=5, content="Agent definitions: YAML frontmatter MUST validate against JSON Schema (H-34). Required YAML fields: name, version, description, model, identity, capabilities, guardrails, output, constitution. Tool tiers T1-T5: always select lowest tier satisfying requirements. Cognitive modes: divergent, convergent, integrative, systematic, forensic. Constitutional triplet (P-003, P-020, P-022) REQUIRED in every agent (H-35)." -->
+<!-- L2-REINJECT: rank=5, content="Agent definitions: YAML frontmatter MUST validate against JSON Schema (H-34). Required YAML fields: name, version, description, model, identity, capabilities, guardrails, output, constitution. Tool tiers T1-T5 (risk-ordered): T1=Read-Only, T2=Read-Write, T3=Persistent (+MK), T4=External (+Web, includes MK), T5=Orchestration (+Agent). Always select lowest tier satisfying requirements. Cognitive modes: divergent, convergent, integrative, systematic, forensic. Constitutional triplet (P-003, P-020, P-022) REQUIRED in every agent (H-34b)." -->
 
 ## Document Sections
 
@@ -186,7 +186,7 @@ MAIN CONTEXT (orchestrator)
 **Constraints:**
 - Only one nesting level: orchestrator to worker. Workers MUST NOT spawn sub-workers. Consequence: unbounded recursion exhausts the context window, violates P-003, and breaks the orchestrator's coordination authority. Instead: return results to the orchestrator, which coordinates all worker invocations.
 - Worker agents MUST NOT include `Agent` (or its backward-compatible alias `Task`) in `capabilities.allowed_tools` (H-35). Consequence: including Agent enables recursive delegation, violating the single-level nesting constraint (P-003/H-01). Instead: declare only T1-T4 tier tools; the Agent tool is reserved for T5 orchestrator agents.
-- Orchestrator agents MUST be T5 (Full) tier to access the Agent tool.
+- Orchestrator agents MUST be T5 (Orchestration) tier to access the Agent tool.
 - Error amplification is ~1.3x with structured handoffs (vs. 17x for uncoordinated topologies per Google DeepMind).
 
 ### Pattern 3: Creator-Critic-Revision (H-14 Integration)
@@ -222,18 +222,20 @@ Five security tiers implement the principle of least privilege (AR-006). **Alway
 
 | Tier | Name | Tools Included | Use Case | Example Agents |
 |------|------|---------------|----------|----------------|
-| **T1** | Read-Only | Read, Glob, Grep | Evaluation, auditing, scoring, validation | adv-executor, adv-scorer, wt-auditor |
-| **T2** | Read-Write | T1 + Write, Edit, Bash | Analysis, document production, code generation | ps-analyst, nse-architecture, ps-critic |
-| **T3** | External | T2 + WebSearch, WebFetch, Context7 | Research, exploration, external documentation | ps-researcher, nse-explorer |
-| **T4** | Persistent | T2 + Memory-Keeper | Cross-session state management, orchestration | orch-planner, orch-tracker, nse-requirements |
-| **T5** | Full | T3 + T4 + Agent | Orchestration with delegation, full capability | Lead agent, skill orchestrators |
+| **T1** | Read-Only | Read, Glob, Grep | Evaluation, auditing, scoring, validation | pe-scorer, diataxis-classifier, sb-voice |
+| **T2** | Read-Write | T1 + Write, Edit, Bash | Analysis, document production, code generation | ps-critic, adv-scorer, uc-author |
+| **T3** | Persistent | T2 + Memory-Keeper | Cross-session state: research caching, phase checkpointing, transcript persistence | ts-parser, ts-extractor |
+| **T4** | External | T3 + WebSearch, WebFetch, Context7 | Research, exploration, external documentation, cross-session research | ps-researcher, eng-architect, red-recon |
+| **T5** | Orchestration | T4 + Agent | Orchestration with delegation, full capability | ux-orchestrator |
 
 ### Selection Guidelines
 
+> **Naming convention:** The `Name` column above uses Short Name form (what's new at each tier). T4's Full Name is "Persistent + External" (cumulative capability), used in DX communication contexts to signal that T4 inherits T3's Memory-Keeper capability. See ADR-STORY015-001 [DX Considerations] for the naming framework.
+
 1. **Default to T1.** If an agent only reads and evaluates, T1 is sufficient.
 2. **T2 when the agent produces artifacts.** Writing files (reports, analysis, code) requires T2 minimum.
-3. **T3 when external information is needed.** T3 agents MUST include citation guardrails in `guardrails.output_filtering`.
-4. **T4 when cross-session state is required.** T4 agents MUST follow the MCP key pattern: `jerry/{project}/{entity-type}/{entity-id}`.
+3. **T3 when cross-session persistence is needed.** Agents doing multi-session work (research spikes, phase checkpointing, transcript persistence) need T3. Memory-Keeper (internal MCP, governed namespace) is lower-risk than web tools (external network, arbitrary URLs); T3 before T4 reflects this risk ordering. T3 agents MUST follow the MCP key namespace: `jerry/{project}/{entity-type}/{entity-id}`.
+4. **T4 when external information is needed.** If your agent also needs web tools, use T4 instead of T3 (T4 includes all T3 capabilities including Memory-Keeper). T4 agents MUST include citation guardrails in `guardrails.output_filtering`. **Note:** eng-\* and red-\* agents are classified T4 but MUST NOT use Memory-Keeper; file-based persistence per P-002 (engagement-scoped output) remains the correct mechanism for these skills.
 5. **T5 requires explicit justification.** The Agent tool enables delegation; every T5 assignment MUST document why delegation is necessary.
 
 ### Tier Constraints
@@ -241,8 +243,9 @@ Five security tiers implement the principle of least privilege (AR-006). **Alway
 | Constraint | Rationale | Source |
 |------------|-----------|--------|
 | Worker agents MUST NOT be T5 (no Agent tool) | Enforces H-01 single-level nesting | AR-004, P-003 |
-| T3+ agents MUST declare citation guardrails | External data requires source attribution | SR-003 |
-| T4+ agents MUST follow MCP key namespace | Prevents key collision across sessions | MCP-002, mcp-tool-standards.md |
+| T3+ agents with Memory-Keeper MUST follow MCP key namespace | Prevents key collision across sessions | MCP-002, mcp-tool-standards.md |
+| T4+ agents MUST declare citation guardrails | External data requires source attribution | SR-003 |
+| eng-\* and red-\* agents MUST NOT use Memory-Keeper despite T4 classification | Engagement-scoped output requires file-based persistence per P-002; MK would create cross-project state pollution | mcp-tool-standards.md, ADR-STORY015-001 RISK-002 |
 | Monitor per-agent tool count; alert at 15 tools | Industry-observed threshold where tool selection accuracy degrades (identified in Phase 1 research, ps-researcher-003 external patterns analysis; consistent with general LLM tool-use guidance recommending minimal tool sets for reliable selection) | AP-07 Tool Overload Creep prevention (see `agent-routing-standards.md` Anti-Pattern Catalog) |
 
 ---
@@ -273,11 +276,11 @@ Five cognitive modes classify how agents reason. The mode is declared in `identi
 
 | Mode | Typical Tool Tier | Model Recommendation | Context Budget Priority |
 |------|-------------------|---------------------|------------------------|
-| divergent | T3+ (external access) | opus (complex reasoning) | Up to 50% tool result allocation per CB-02; may request exception with documented justification |
+| divergent | T4 (external research with cross-session persistence) | opus (complex reasoning) | Up to 50% tool result allocation per CB-02; may request exception with documented justification |
 | convergent | T1 or T2 (focused input) | sonnet or opus | Balanced allocation |
-| integrative | T2 (multiple file reads) | opus (complex synthesis) | Larger user message allocation for multi-source input |
+| integrative | T2 or T3 (multiple file reads, cross-session state) | opus (complex synthesis) | Larger user message allocation for multi-source input |
 | systematic | T1 (read-only preferred) | sonnet or haiku (procedural) | Smaller allocation; systematic work is compact |
-| forensic | T2 or T3 (investigation) | opus (complex reasoning) | Larger reasoning allocation (~35%) |
+| forensic | T2 or T4 (investigation with external research) | opus (complex reasoning) | Larger reasoning allocation (~35%) |
 
 **Consolidation note:** This taxonomy consolidates from 8 modes (nse-requirements-001 PR-002) to 5 modes. The 3 removed modes are subsumed: `strategic` maps to `convergent` (decision-making), `critical` maps to `convergent` (evaluation), `communicative` maps to `divergent` (conversational exploration). The `<methodology>` section captures mode-specific variations that the YAML enum cannot express.
 
@@ -333,16 +336,16 @@ capabilities:
 
 > **Minimum set notice:** The entries above represent the MINIMUM required set per H-34 and H-35. The `forbidden_actions` entries use NPT-009 format (structured negation with consequence) per ADR-002. Agent definitions SHOULD add domain-specific entries beyond these minimums. For example, a T3 research agent should add citation guardrails to `output_filtering`; an orchestration agent should add delegation boundary guardrails to `forbidden_actions`. See [Guardrail Selection by Agent Type](#guardrail-selection-by-agent-type) for type-specific guidance on extending beyond minimums.
 >
-> **VIOLATION label format guidance:** The recommended format `{PRINCIPLE} VIOLATION: NEVER {action} -- Consequence: {impact}` provides three components: (1) the violated principle for traceability, (2) the prohibited action, (3) the consequence for LLM instruction-following effectiveness. T2+ agents SHOULD include tier-specific consequence detail (e.g., "unauthorized file writes corrupt shared state" for T2; "external data ingested without citation degrades research quality" for T3).
+> **VIOLATION label format guidance:** The recommended format `{PRINCIPLE} VIOLATION: NEVER {action} -- Consequence: {impact}` provides three components: (1) the violated principle for traceability, (2) the prohibited action, (3) the consequence for LLM instruction-following effectiveness. T2+ agents SHOULD include tier-specific consequence detail (e.g., "unauthorized file writes corrupt shared state" for T2; "cross-session state pollution via ungoverned MK keys" for T3; "external data ingested without citation degrades research quality" for T4).
 
 ### Guardrail Selection by Agent Type
 
 | Agent Type | Additional Input Validation | Additional Output Filtering | Recommended Fallback |
 |-----------|---------------------------|---------------------------|---------------------|
-| Research (divergent, T3) | URL format validation, source tiering | Source authority tier required, stale data warnings | warn_and_retry |
+| Research (divergent, T4) | URL format validation, source tiering | Source authority tier required, stale data warnings | warn_and_retry |
 | Analysis (convergent, T2) | Input schema validation, artifact path existence | Confidence bounds required, methodology citation | escalate_to_user |
 | Validation (systematic, T1) | Criteria format validation | Binary pass/fail with evidence | persist_and_halt |
-| Orchestration (T4-T5) | Phase state validation, predecessor completion | Progress percentage, blocker enumeration | escalate_to_user |
+| Orchestration (T3 Persistent, T4 External, T5 Orchestration) | Phase state validation, predecessor completion | Progress percentage, blocker enumeration | escalate_to_user |
 | Scoring (convergent, T1) | Rubric schema validation, score range validation | Anti-leniency statement, dimension-level breakdown | warn_and_retry |
 
 ---
@@ -448,12 +451,22 @@ Each standard maps to an enforcement layer for compliance checking.
 | mcp-tool-standards.md | MCP-001, MCP-002, tool governance | `.context/rules/mcp-tool-standards.md` |
 | skill-standards.md | H-25 through H-30, skill structure standards | `.context/rules/skill-standards.md` |
 | Agent Routing Standards | Circuit breaker specification, keyword-first routing, anti-pattern catalog | `.context/rules/agent-routing-standards.md` |
+| ADR-STORY015-001 | Tier model renumbering: Persistent-First Linear (Option A), 7-criteria evaluation, migration plan, DX considerations | `projects/PROJ-024-tactical-work/work/EPIC-001-schema-validation/FEAT-001-claude-code-schema-validation/STORY-015-tier-model-renumbering/ADR-STORY015-001-tier-model-renumbering.md` |
 
 ---
 
-<!-- VERSION: 1.2.0 | DATE: 2026-02-22 | SOURCE: ADR-PROJ007-001, PROJ-007 Phase 3 Synthesis, EN-003 | REVISION: EN-003 gap closures (ET-M-001, FC-M-001) -->
-*Standards Version: 1.2.0*
+## Changelog
+
+| Version | Date | Story | Changes |
+|---------|------|-------|---------|
+| 1.3.0 | 2026-03-28 | STORY-017 | Tier model renumbered per ADR-STORY015-001 Option A (Persistent-First Linear): T3 renamed External→Persistent (+MK), T4 renamed Persistent→External (+Web, includes MK), T5 renamed Full→Orchestration (+Agent). Selection guidelines rewritten with risk-ordering rationale and Short Name/Full Name convention. Tier Constraints table updated: MK namespace from T4+ to T3+, citation guardrails from T3+ to T4+, eng-\*/red-\* MK exclusion row added. Cognitive Mode table and Guardrail Selection table tier annotations updated. L2-REINJECT comment updated with new tier names. ADR-STORY015-001 added to References. |
+| 1.2.0 | 2026-02-22 | EN-003 | ET-M-001 extended thinking, FC-M-001 fresh context review gap closures |
+
+---
+
+<!-- VERSION: 1.3.0 | DATE: 2026-03-28 | SOURCE: ADR-STORY015-001, STORY-017 | REVISION: STORY-017 tier model renumbering: T3=Persistent, T4=External, T5=Orchestration -->
+*Standards Version: 1.3.0*
 *SSOT: `.context/rules/quality-enforcement.md` (H-34 compound registered, H-35 retired as sub-item)*
-*Source: PROJ-007 Agent Patterns -- ADR-PROJ007-001, Phase 3 Synthesis, V&V Plan, Integration Patterns*
+*Source: PROJ-007 Agent Patterns -- ADR-PROJ007-001, Phase 3 Synthesis, V&V Plan, Integration Patterns; ADR-STORY015-001 (tier renumbering)*
 *Created: 2026-02-21*
 *Agent: ps-architect-003*

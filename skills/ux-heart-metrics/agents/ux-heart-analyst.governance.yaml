@@ -3,7 +3,7 @@
 # Runtime config: ux-heart-analyst.md
 
 version: 1.0.0
-tool_tier: T3
+tool_tier: T4
 identity:
   role: HEART Metrics Analyst
   expertise:

@@ -7,7 +7,7 @@ version: 1.1.0
 # verification. T2 caused hallucinated claims ($3.4B vs $25B PANW acquisition).
 # Risk accepted: prompt injection via deliverable -> WebFetch exfil channel.
 # Mitigated by: citation guardrails, operator awareness, future Docker+Envoy.
-tool_tier: T3
+tool_tier: T4
 identity:
   role: Strategy Executor
   expertise:

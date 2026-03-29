@@ -3,7 +3,7 @@
 # Runtime config: ux-jtbd-analyst.md
 version: 0.2.0
 reasoning_effort: medium  # ET-M-001: worker agent (not orchestrator); sonnet model; C2-equivalent task complexity per agent invocation. C4 applies to the overall deliverable quality gate, not individual agent reasoning.
-tool_tier: T3
+tool_tier: T4
 identity:
   role: JTBD Analyst
   expertise:
