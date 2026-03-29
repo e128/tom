@@ -165,6 +165,14 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 | red-social | resolve, query | — | Social engineering methodology |
 
 | adv-executor | resolve, query | — | Fact verification during adversarial strategy execution (STORY-011, GH #217) |
+| ux-orchestrator | resolve, query | — | UX methodology and framework documentation |
+| ux-atomic-architect | resolve, query | — | Component library documentation (Material UI, Radix, Shadcn/ui) |
+| ux-heart-analyst | resolve, query | — | HEART/GSM framework documentation and benchmark data |
+| ux-heuristic-evaluator | resolve, query | — | External UX standards and Nielsen documentation |
+| ux-inclusive-evaluator | resolve, query | — | WCAG specifications, ARIA authoring practices |
+| ux-jtbd-analyst | resolve, query | — | JTBD framework documentation and domain literature |
+| ux-kano-analyst | resolve, query | — | Kano model methodology and survey design references |
+| ux-lean-ux-facilitator | resolve, query | — | Lean UX methodology and experiment design patterns |
 
 **Not included (by design):**
 - **adv-scorer, adv-selector** — Scoring and strategy selection are self-contained; no external research
@@ -172,6 +180,7 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 - **ps-critic, ps-validator, ps-reviewer** — Quality evaluation; no external library research needed
 - **ps-reporter** — Report generation from existing data
 - **eng-*** — T4 (Persistent + External) under the new tier model but MUST NOT use Memory-Keeper. File-based persistence per P-002 (engagement-scoped output) remains the correct mechanism. The T4 tier permits MK as a ceiling; the `.md` frontmatter and this exclusion note prevent actual MK access.
+- **ux-ai-design-guide, ux-sprint-facilitator, ux-behavior-diagnostician** — T4 tools (WebSearch/WebFetch) but no Context7; external research via web search only
 - **pm-product-strategist, pm-business-analyst** — T4 tools (WebSearch/WebFetch) but no Context7; external research via web search only
 - **red-*** — T4 (Persistent + External) under the new tier model but MUST NOT use Memory-Keeper. File-based persistence per P-002 (engagement-scoped output) remains the correct mechanism; scope documents and evidence stored in engagement directories. The T4 tier permits MK as a ceiling; the `.md` frontmatter and this exclusion note prevent actual MK access.
 

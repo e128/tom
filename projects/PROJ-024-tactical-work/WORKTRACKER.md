@@ -8,9 +8,6 @@
 |----|------|-------|--------|--------|
 | EPIC-001 | Epic | Claude Code Schema Validation | in_progress | PROJ-024 |
 | FEAT-001 | Feature | Claude Code Schema Validation Research and Refinement | in_progress | EPIC-001 |
-| STORY-011 | Story | Adversary Sub-Agents: Add WebSearch/WebFetch/Context7 (GH #217) | in_progress | FEAT-001 |
-| STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions (8 items) | in_progress | FEAT-001 |
-| STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards (2 items) | pending | FEAT-001 |
 | EN-004 | Enabler | Memory-Keeper Collision Detection Enhancement | pending | FEAT-001 |
 
 ## Completed
@@ -36,4 +33,7 @@
 | STORY-018 | Story | Execute Governance YAML Migration (51 Files, T1=4 T2=28 T3=2 T4=54 T5=1) | 2026-03-28 |
 | STORY-019 | Story | Tier Model Documentation and Migration Guide (38 ref updates + 2 new docs) | 2026-03-28 |
 | STORY-020 | Story | Security and Access Control Verification (C4 0.953 PASS) | 2026-03-28 |
+| STORY-011 | Story | Adversary Sub-Agents: WebSearch/WebFetch/Context7 (GH #217) | 2026-03-29 |
+| STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions (8/8 complete) | 2026-03-29 |
+| STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards (D-001 + D-002) | 2026-03-29 |
 | EN-003 | Enabler | Schema Validation Test Suite | 2026-03-27 |
