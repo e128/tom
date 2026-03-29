@@ -37,6 +37,7 @@ dependencies = [
     "mdformat>=1.0.0,<2.0.0",
     "mdit-py-plugins>=0.4.0",
     "pyyaml>=6.0",  # EN-005: StalenessDetector ORCHESTRATION.yaml parsing
+    "requests>=2.33.0",
 ]
 
 [project.optional-dependencies]
