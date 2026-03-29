@@ -141,3 +141,4 @@ The tier renumbering changes the meaning of T3 and T4. Existing documentation ac
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-03-28 | adam.nowak | pending | Created -- documentation and DX work for tier renumbering |
+| 2026-03-28 | claude | completed | 38 tier ref updates across 10 SKILL.md + AGENTS.md. 2 ADR deprecation notices. Migration guide + quick-reference card created. Explainer updated. |

@@ -196,3 +196,4 @@ sed -i '' 's/tool_tier: T3_HOLD/tool_tier: T3/' skills/transcript/agents/ts-extr
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-03-28 | adam.nowak | pending | Created -- 51-file migration with 3-step protection pattern |
+| 2026-03-28 | claude | completed | 51 YAMLs migrated (49 T3→T4, 2 T4→T3). Post-migration: T1=4, T2=28, T3=2, T4=54, T5=1. All 89 tool_tier values valid. |

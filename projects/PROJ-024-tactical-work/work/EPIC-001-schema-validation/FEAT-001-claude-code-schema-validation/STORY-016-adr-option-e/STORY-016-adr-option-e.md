@@ -100,3 +100,4 @@ The tier model options explainer (`tier-model-options-explainer.md`) documents 5
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-03-28 | adam.nowak | pending | Created -- ADR has 4 options, explainer has 5; gap identified by user |
+| 2026-03-28 | claude | completed | Option E added to ADR with 7-criteria scoring, sensitivity analysis, FMEA. ADR re-scored 0.950 (C4 PASS). |

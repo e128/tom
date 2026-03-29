@@ -8,12 +8,12 @@ PURPOSE: ADR-level evaluation of tier model renumbering to close the T3+T4 gap
 -->
 
 > **Type:** story
-> **Status:** done
+> **Status:** completed
 > **Priority:** high
 > **Impact:** high
 > **Created:** 2026-03-27T11:00:00Z
 > **Due:**
-> **Completed:**
+> **Completed:** 2026-03-28T18:00:00Z
 > **Parent:** FEAT-001
 > **Owner:** adam.nowak
 > **Effort:** 8

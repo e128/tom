@@ -11,11 +11,6 @@
 | STORY-011 | Story | Adversary Sub-Agents: Add WebSearch/WebFetch/Context7 (GH #217) | in_progress | FEAT-001 |
 | STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions (8 items) | in_progress | FEAT-001 |
 | STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards (2 items) | pending | FEAT-001 |
-| STORY-016 | Story | Add Option E (Tier + Tags) to Tier Model ADR | pending | FEAT-001 |
-| STORY-017 | Story | Implement P0 Rule File Changes for Tier Renumbering | pending | FEAT-001 |
-| STORY-018 | Story | Execute Governance YAML Migration (51 Files) | pending | FEAT-001 |
-| STORY-019 | Story | Tier Model Documentation and Migration Guide | pending | FEAT-001 |
-| STORY-020 | Story | Security and Access Control Verification | pending | FEAT-001 |
 | EN-004 | Enabler | Memory-Keeper Collision Detection Enhancement | pending | FEAT-001 |
 
 ## Completed
@@ -36,4 +31,9 @@
 | EN-001 | Enabler | Security Review of Schema Validation Pipeline | 2026-03-26 |
 | EN-002 | Enabler | Developer Experience Review of Schema Validation | 2026-03-26 |
 | STORY-015 | Story | Evaluate and Renumber Tool Security Tier Model (ADR, C4 0.953 PASS) | 2026-03-28 |
+| STORY-016 | Story | Add Option E to Tier Model ADR (C4 0.950 PASS) | 2026-03-28 |
+| STORY-017 | Story | Implement P0 Rule File Changes for Tier Renumbering (C4 0.954 PASS) | 2026-03-28 |
+| STORY-018 | Story | Execute Governance YAML Migration (51 Files, T1=4 T2=28 T3=2 T4=54 T5=1) | 2026-03-28 |
+| STORY-019 | Story | Tier Model Documentation and Migration Guide (38 ref updates + 2 new docs) | 2026-03-28 |
+| STORY-020 | Story | Security and Access Control Verification (C4 0.953 PASS) | 2026-03-28 |
 | EN-003 | Enabler | Schema Validation Test Suite | 2026-03-27 |

@@ -125,14 +125,20 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 | STORY-008 | Story | Add Frontmatter Schema Validation to Jerry CLI | completed | high | 5 |
 | STORY-009 | Story | Add Frontmatter Schema Validation to CI Pipeline | completed | high | 3 |
 | STORY-010 | Story | Sync plugin.json Agents List with Actual Agent Files | completed | high | 5 |
-| STORY-011 | Story | Adversary Sub-Agents: Add WebSearch/WebFetch/Context7 (GH #217) | pending | high | 5 |
+| STORY-011 | Story | Adversary Sub-Agents: Add WebSearch/WebFetch/Context7 (GH #217) | in_progress | high | 5 |
 | STORY-012 | Story | Audit Skills and Agents for Missing Web Tool Permissions | completed | high | 5 |
-| STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions | pending | high | 5 |
+| STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions | in_progress | high | 5 |
 | STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards | pending | medium | 3 |
-| STORY-015 | Story | Evaluate and Renumber Tool Security Tier Model (ADR) | pending | high | 8 |
+| STORY-015 | Story | Evaluate and Renumber Tool Security Tier Model (ADR) | completed | high | 8 |
+| STORY-016 | Story | Add Option E to Tier Model ADR | completed | high | 3 |
+| STORY-017 | Story | Implement P0 Rule File Changes for Tier Renumbering | completed | high | 5 |
+| STORY-018 | Story | Execute Governance YAML Migration (51 Files) | completed | high | 3 |
+| STORY-019 | Story | Tier Model Documentation and Migration Guide | completed | medium | 5 |
+| STORY-020 | Story | Security and Access Control Verification | completed | high | 3 |
 | EN-001 | Enabler | Security Review of Schema Validation Pipeline | completed | high | 5 |
 | EN-002 | Enabler | Developer Experience Review of Schema Validation | completed | medium | 3 |
 | EN-003 | Enabler | Schema Validation Test Suite | completed | high | 5 |
+| EN-004 | Enabler | Memory-Keeper Collision Detection Enhancement | pending | medium | 5 |
 
 ### Work Item Links
 
@@ -151,9 +157,15 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 - [STORY-013: Fix Tier/Tool Mismatches in Agent Definitions](./STORY-013-fix-tier-tool-mismatches/STORY-013-fix-tier-tool-mismatches.md)
 - [STORY-014: Fix Documentation Drift in Tool/Agent Standards](./STORY-014-fix-documentation-drift/STORY-014-fix-documentation-drift.md)
 - [STORY-015: Evaluate and Renumber Tool Security Tier Model](./STORY-015-tier-model-renumbering/STORY-015-tier-model-renumbering.md)
+- [STORY-016: Add Option E to Tier Model ADR](./STORY-016-adr-option-e/STORY-016-adr-option-e.md)
+- [STORY-017: Implement P0 Rule File Changes for Tier Renumbering](./STORY-017-rule-file-updates/STORY-017-rule-file-updates.md)
+- [STORY-018: Execute Governance YAML Migration (51 Files)](./STORY-018-governance-yaml-migration/STORY-018-governance-yaml-migration.md)
+- [STORY-019: Tier Model Documentation and Migration Guide](./STORY-019-documentation-migration-guide/STORY-019-documentation-migration-guide.md)
+- [STORY-020: Security and Access Control Verification](./STORY-020-security-verification/STORY-020-security-verification.md)
 - [EN-001: Security Review of Schema Validation Pipeline](./EN-001-security-review/EN-001-security-review.md)
 - [EN-002: Developer Experience Review of Schema Validation](./EN-002-developer-experience-review/EN-002-developer-experience-review.md)
 - [EN-003: Schema Validation Test Suite](./EN-003-validation-test-suite/EN-003-validation-test-suite.md)
+- [EN-004: Memory-Keeper Collision Detection Enhancement](./EN-004-mk-collision-detection/EN-004-mk-collision-detection.md)
 
 ---
 
@@ -163,10 +175,10 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 +------------------------------------------------------------------+
 |                   FEATURE PROGRESS TRACKER                        |
 +------------------------------------------------------------------+
-| Stories:   [##############......] 67% (10/15 completed)           |
-| Enablers:  [####################] 100% (3/3 completed)            |
+| Stories:   [################....] 85% (17/20 completed)           |
+| Enablers:  [###############.....] 75% (3/4 completed)             |
 +------------------------------------------------------------------+
-| Overall:   [##############......] 72%                              |
+| Overall:   [################....] 83% (20/24 items)               |
 +------------------------------------------------------------------+
 ```
 
@@ -174,13 +186,16 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 
 | Metric | Value |
 |--------|-------|
-| **Total Stories** | 3 |
-| **Completed Stories** | 0 |
-| **Total Enablers** | 2 |
-| **Completed Enablers** | 0 |
-| **Total Effort (points)** | 26 |
-| **Completed Effort** | 0 |
-| **Completion %** | 15% |
+| **Total Stories** | 20 |
+| **Completed Stories** | 17 |
+| **In Progress Stories** | 2 (STORY-011, STORY-013) |
+| **Pending Stories** | 1 (STORY-014) |
+| **Total Enablers** | 4 |
+| **Completed Enablers** | 3 |
+| **Pending Enablers** | 1 (EN-004) |
+| **Total Effort (points)** | 111 |
+| **Completed Effort** | 93 |
+| **Completion %** | 83% |
 
 ---
 
@@ -204,3 +219,4 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-03-26 | adam.nowak | in_progress | Feature created; STORY-001 and STORY-002 research launched in parallel |
+| 2026-03-28 | claude | in_progress | STORY-015 through STORY-020 completed (tier model renumbering). EN-004 created (pending). 83% complete. |
