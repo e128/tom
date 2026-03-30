@@ -700,6 +700,8 @@ def _handle_agents_validate_frontmatter(args: Any, json_output: bool) -> int:
 
     from src.agents.application.commands.validate_frontmatter_command import (
         ValidateFrontmatterCommand,
+    )
+    from src.agents.application.commands.validate_frontmatter_command_handler import (
         ValidateFrontmatterCommandHandler,
     )
 

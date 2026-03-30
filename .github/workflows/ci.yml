@@ -206,11 +206,8 @@ jobs:
       - name: Install dependencies
         run: uv sync --frozen
 
-      - name: Validate agent and skill frontmatter
+      - name: Validate agent and skill frontmatter (includes P-003 check, STORY-025)
         run: uv run jerry agents validate-frontmatter
-
-      - name: Validate P-003 Agent tool restriction (STORY-022)
-        run: uv run python scripts/validate-agent-frontmatter.py
 
   # ===========================================================================
   # License Header Check (EN-935, FEAT-015)

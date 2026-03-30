@@ -604,6 +604,8 @@ class TestCLIValidateFrontmatter:
         """Full corpus validation via CLI handler returns zero failures."""
         from src.agents.application.commands.validate_frontmatter_command import (
             ValidateFrontmatterCommand,
+        )
+        from src.agents.application.commands.validate_frontmatter_command_handler import (
             ValidateFrontmatterCommandHandler,
         )
 
@@ -622,6 +624,8 @@ class TestCLIValidateFrontmatter:
         """Single agent filter returns exactly one agent result."""
         from src.agents.application.commands.validate_frontmatter_command import (
             ValidateFrontmatterCommand,
+        )
+        from src.agents.application.commands.validate_frontmatter_command_handler import (
             ValidateFrontmatterCommandHandler,
         )
 
