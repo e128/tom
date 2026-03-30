@@ -1,7 +1,7 @@
 # BUG-001: Context Monitoring Tests Fail on 1M Context Window
 
 > **Type:** bug
-> **Status:** pending
+> **Status:** completed
 > **Priority:** critical
 > **Impact:** critical
 > **Created:** 2026-03-30T00:00:00Z

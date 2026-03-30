@@ -1,7 +1,7 @@
 # BUG-002: Pygments CVE-2026-4539 Blocks Git Push
 
 > **Type:** bug
-> **Status:** pending
+> **Status:** completed
 > **Priority:** critical
 > **Impact:** high
 > **Created:** 2026-03-30T00:00:00Z

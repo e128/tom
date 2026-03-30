@@ -1,7 +1,7 @@
 # BUG-003: scripts/tests/test_hooks.py Fails When Collected Alongside tests/
 
 > **Type:** bug
-> **Status:** pending
+> **Status:** completed
 > **Priority:** high
 > **Impact:** medium
 > **Created:** 2026-03-30T00:00:00Z
