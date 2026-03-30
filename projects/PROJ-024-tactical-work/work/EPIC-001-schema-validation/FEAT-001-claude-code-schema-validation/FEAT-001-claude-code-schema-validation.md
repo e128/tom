@@ -140,6 +140,9 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 | EN-001 | Enabler | Security Review of Schema Validation Pipeline | completed | high | 5 |
 | EN-002 | Enabler | Developer Experience Review of Schema Validation | completed | medium | 3 |
 | EN-003 | Enabler | Schema Validation Test Suite | completed | high | 5 |
+| BUG-001 | Bug | Context Monitoring Tests Fail on 1M Context Window | pending | critical | 3 |
+| BUG-002 | Bug | Pygments CVE-2026-4539 Blocks Git Push | pending | critical | 1 |
+| BUG-003 | Bug | scripts/tests Isolation Failure | pending | high | 2 |
 | EN-004 | Enabler | Memory-Keeper Collision Detection Enhancement | pending | medium | 5 |
 
 ### Work Item Links
@@ -169,6 +172,9 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 - [EN-001: Security Review of Schema Validation Pipeline](./EN-001-security-review/EN-001-security-review.md)
 - [EN-002: Developer Experience Review of Schema Validation](./EN-002-developer-experience-review/EN-002-developer-experience-review.md)
 - [EN-003: Schema Validation Test Suite](./EN-003-validation-test-suite/EN-003-validation-test-suite.md)
+- [BUG-001: Context Monitoring Tests Fail on 1M Context Window](./BUG-001-context-monitoring-1m/BUG-001-context-monitoring-1m.md)
+- [BUG-002: Pygments CVE-2026-4539 Blocks Git Push](./BUG-002-pygments-cve/BUG-002-pygments-cve.md)
+- [BUG-003: scripts/tests Isolation Failure](./BUG-003-scripts-tests-isolation/BUG-003-scripts-tests-isolation.md)
 - [EN-004: Memory-Keeper Collision Detection Enhancement](./EN-004-mk-collision-detection/EN-004-mk-collision-detection.md)
 
 ---
