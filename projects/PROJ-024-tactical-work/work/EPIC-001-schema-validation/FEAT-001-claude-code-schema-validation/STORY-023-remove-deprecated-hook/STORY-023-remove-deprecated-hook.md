@@ -1,12 +1,12 @@
 # STORY-023: Remove Deprecated scripts/pre_tool_use.py (GH #177)
 
 > **Type:** story
-> **Status:** pending
+> **Status:** completed
 > **Priority:** medium
 > **Impact:** medium
 > **Created:** 2026-03-30T00:00:00Z
 > **Due:**
-> **Completed:**
+> **Completed:** 2026-03-30T12:00:00Z
 > **Parent:** FEAT-001
 > **Owner:**
 > **Effort:** 1
@@ -45,14 +45,14 @@
 
 ## Acceptance Criteria
 
-- [ ] `scripts/pre_tool_use.py` deleted
-- [ ] Any security guardrail logic not already in the CLI enforcement pipeline is ported to `src/` (Clean Architecture)
-- [ ] No remaining imports or references to the old hook in active code/config
-- [ ] Documentation references updated (CHANGELOG, playbooks) to point to CLI enforcement
-- [ ] `scripts/tests/test_hooks.py` updated to test CLI-based enforcement (not deleted script)
-- [ ] Pre-commit hooks still pass
-- [ ] CI pipeline still passes
-- [ ] Zero new files in `scripts/` (no script replacement)
+- [x] `scripts/pre_tool_use.py` deleted
+- [x] Any security guardrail logic not already in the CLI enforcement pipeline is ported to `src/` (Clean Architecture)
+- [x] No remaining imports or references to the old hook in active code/config
+- [x] Documentation references updated (CHANGELOG, playbooks) to point to CLI enforcement
+- [x] `scripts/tests/test_hooks.py` updated to test CLI-based enforcement (not deleted script)
+- [x] Pre-commit hooks still pass
+- [x] CI pipeline still passes
+- [x] Zero new files in `scripts/` (no script replacement)
 
 ---
 
@@ -70,3 +70,4 @@
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-03-30 | adam.nowak | pending | Created from PROJ-024 session. Linked to GH #177. |
+| 2026-03-30 | adam.nowak | completed | Commit `1597e224`. Deleted script, rewrote 5 test files for CLI pipeline. 16,352 tests green. GH #177 closed. |

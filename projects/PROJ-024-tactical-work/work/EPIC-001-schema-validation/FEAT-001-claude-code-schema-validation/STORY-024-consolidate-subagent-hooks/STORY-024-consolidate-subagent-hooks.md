@@ -1,12 +1,12 @@
 # STORY-024: Consolidate Dual SubagentStop Hooks (GH #178)
 
 > **Type:** story
-> **Status:** pending
+> **Status:** completed
 > **Priority:** medium
 > **Impact:** medium
 > **Created:** 2026-03-30T00:00:00Z
 > **Due:**
-> **Completed:**
+> **Completed:** 2026-03-30T12:00:00Z
 > **Parent:** FEAT-001
 > **Owner:**
 > **Effort:** 2
@@ -45,14 +45,14 @@ SubagentStop hook logic exists in both `scripts/` (standalone) and CLI (`src/`).
 
 ## Acceptance Criteria
 
-- [ ] Single SubagentStop implementation in `src/` (Clean Architecture)
-- [ ] `scripts/subagent_stop.py` deleted (if it exists as standalone)
-- [ ] `.claude/hooks/` entry point invokes via `uv run jerry ...` CLI command
-- [ ] Hook behavior unchanged (same blocking/warning behavior verified by tests)
-- [ ] Tests in `tests/` (not `scripts/tests/`) cover the consolidated implementation
-- [ ] All existing tests pass
-- [ ] No references to the removed duplicate
-- [ ] Zero new files in `scripts/`
+- [x] Single SubagentStop implementation in `src/` (Clean Architecture)
+- [x] `scripts/subagent_stop.py` deleted (if it exists as standalone)
+- [x] `.claude/hooks/` entry point invokes via `uv run jerry ...` CLI command
+- [x] Hook behavior unchanged (same blocking/warning behavior verified by tests)
+- [x] Tests in `tests/` (not `scripts/tests/`) cover the consolidated implementation
+- [x] All existing tests pass
+- [x] No references to the removed duplicate
+- [x] Zero new files in `scripts/`
 
 ---
 
@@ -70,3 +70,4 @@ SubagentStop hook logic exists in both `scripts/` (standalone) and CLI (`src/`).
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-03-30 | adam.nowak | pending | Created from PROJ-024 session. Linked to GH #178. |
+| 2026-03-30 | adam.nowak | completed | Commit `e28514a8`. Deleted standalone script, consolidated hooks.json to single CLI path, rewrote 26 SubagentStop tests. GH #178 closed. |

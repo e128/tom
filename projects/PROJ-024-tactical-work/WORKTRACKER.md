@@ -8,12 +8,6 @@
 |----|------|-------|--------|--------|
 | EPIC-001 | Epic | Claude Code Schema Validation | in_progress | PROJ-024 |
 | FEAT-001 | Feature | Claude Code Schema Validation Research and Refinement | in_progress | EPIC-001 |
-| BUG-004 | Bug | Fix Cross-Project Reference in ADR (pre-existing test failure) | pending | FEAT-001 |
-| STORY-023 | Story | Remove Deprecated scripts/pre_tool_use.py (GH #177) | pending | FEAT-001 |
-| STORY-024 | Story | Consolidate Dual SubagentStop Hooks (GH #178) | pending | FEAT-001 |
-| BUG-005 | Bug | Fix Hook Test Step Definitions (GH #214) | pending | FEAT-001 |
-| STORY-025 | Story | Add jerry schema validate CLI Command (GH #193) | pending | FEAT-001 |
-| BUG-006 | Bug | Fix file_repository.py Hardcoded Path Separator (GH #117) | pending | FEAT-001 |
 | EN-004 | Enabler | Memory-Keeper Collision Detection Enhancement | pending | FEAT-001 |
 
 ## Completed
@@ -46,3 +40,9 @@
 | DISC-001 | Discovery | disallowedTools Redundancy When tools Explicitly Declared | 2026-03-29 |
 | STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards (D-001 + D-002) | 2026-03-29 |
 | EN-003 | Enabler | Schema Validation Test Suite | 2026-03-27 |
+| BUG-004 | Bug | Fix Cross-Project Reference in ADR (GH #228) | 2026-03-30 |
+| BUG-006 | Bug | Fix file_repository.py Hardcoded Path Separator (GH #117) | 2026-03-30 |
+| STORY-023 | Story | Remove Deprecated scripts/pre_tool_use.py (GH #177) | 2026-03-30 |
+| STORY-024 | Story | Consolidate Dual SubagentStop Hooks (GH #178) | 2026-03-30 |
+| BUG-005 | Bug | Fix Hook Test Step Definitions (GH #214) | 2026-03-30 |
+| STORY-025 | Story | Add jerry schema validate CLI Command (GH #193) | 2026-03-30 |

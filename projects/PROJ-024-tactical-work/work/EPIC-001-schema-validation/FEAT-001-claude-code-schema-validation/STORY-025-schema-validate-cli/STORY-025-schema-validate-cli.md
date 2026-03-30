@@ -1,12 +1,12 @@
 # STORY-025: Add jerry schema validate CLI Command (GH #193)
 
 > **Type:** story
-> **Status:** pending
+> **Status:** completed
 > **Priority:** medium
 > **Impact:** high
 > **Created:** 2026-03-30T00:00:00Z
 > **Due:**
-> **Completed:**
+> **Completed:** 2026-03-30T12:00:00Z
 > **Parent:** FEAT-001
 > **Owner:**
 > **Effort:** 2
@@ -46,14 +46,14 @@
 
 ## Acceptance Criteria
 
-- [ ] `jerry agents validate-frontmatter` includes P-003 Agent tool check (string normalization, type-hardened T5, fail-closed governance lookup)
-- [ ] `scripts/validate-agent-frontmatter.py` deleted
-- [ ] `scripts/tests/test_validate_agent_frontmatter.py` moved to `tests/` and tests CLI handler
-- [ ] CI workflow uses single `uv run jerry agents validate-frontmatter` (remove separate script step from ci.yml)
-- [ ] 89/89 agents pass via CLI command
-- [ ] H-10 violation in `validate_frontmatter_command.py` resolved (3 classes split into separate files)
-- [ ] Zero validation scripts remain in `scripts/`
-- [ ] Full test suite passes
+- [x] `jerry agents validate-frontmatter` includes P-003 Agent tool check (string normalization, type-hardened T5, fail-closed governance lookup)
+- [x] `scripts/validate-agent-frontmatter.py` deleted
+- [x] `scripts/tests/test_validate_agent_frontmatter.py` moved to `tests/` and tests CLI handler
+- [x] CI workflow uses single `uv run jerry agents validate-frontmatter` (remove separate script step from ci.yml)
+- [x] 89/89 agents pass via CLI command
+- [x] H-10 violation in `validate_frontmatter_command.py` resolved (3 classes split into separate files)
+- [x] Zero validation scripts remain in `scripts/`
+- [x] Full test suite passes
 
 ---
 
@@ -71,3 +71,4 @@
 | Date | Author | Status | Notes |
 |------|--------|--------|-------|
 | 2026-03-30 | adam.nowak | pending | Created from PROJ-024 session. Linked to GH #193. |
+| 2026-03-30 | adam.nowak | completed | Commit `4600c0ae`. Split H-10 (4 files), ported P-003 check, deleted script + script tests, updated CI. 8 P-003 tests + 41 schema tests green. GH #193 closed. |
