@@ -143,9 +143,9 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 | STORY-023 | Story | Remove Deprecated scripts/pre_tool_use.py (GH #177) | completed | medium | 1 |
 | STORY-024 | Story | Consolidate Dual SubagentStop Hooks (GH #178) | completed | medium | 2 |
 | STORY-025 | Story | Add jerry schema validate CLI Command (GH #193) | completed | medium | 2 |
-| BUG-001 | Bug | Context Monitoring Tests Fail on 1M Context Window | pending | critical | 3 |
-| BUG-002 | Bug | Pygments CVE-2026-4539 Blocks Git Push | pending | critical | 1 |
-| BUG-003 | Bug | scripts/tests Isolation Failure | pending | high | 2 |
+| BUG-001 | Bug | Context Monitoring Tests Fail on 1M Context Window (GH #226) | completed | critical | 3 |
+| BUG-002 | Bug | Pygments CVE-2026-4539 Blocks Git Push (GH #227) | completed | critical | 1 |
+| BUG-003 | Bug | scripts/tests Isolation Failure (GH #228) | completed | high | 2 |
 | BUG-004 | Bug | Fix Cross-Project Reference in ADR (GH #228) | completed | high | 1 |
 | BUG-005 | Bug | Fix Hook Test Step Definitions (GH #214) | completed | high | 3 |
 | BUG-006 | Bug | Fix file_repository.py Hardcoded Path Separator (GH #117) | completed | medium | 1 |
@@ -203,9 +203,9 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 +------------------------------------------------------------------+
 | Stories:   [####################] 100% (23/23 completed)          |
 | Enablers:  [################....] 80% (4/5 completed)             |
-| Bugs:      [################....] 57% (4/7 completed)             |
+| Bugs:      [####################] 100% (7/7 completed)            |
 +------------------------------------------------------------------+
-| Overall:   [##################..] 89% (31/35 items)               |
+| Overall:   [###################.] 97% (34/35 items)               |
 +------------------------------------------------------------------+
 ```
 
@@ -221,11 +221,11 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 | **Completed Enablers** | 4 |
 | **Pending Enablers** | 1 (EN-004) |
 | **Total Bugs** | 7 |
-| **Completed Bugs** | 4 (BUG-004, BUG-005, BUG-006, BUG-007) |
-| **Pending Bugs** | 3 (BUG-001, BUG-002, BUG-003) |
+| **Completed Bugs** | 7 |
+| **Pending Bugs** | 0 |
 | **Total Effort (points)** | 123 |
 | **Completed Effort** | 118 |
-| **Completion %** | 89% |
+| **Completion %** | 97% |
 
 ---
 
@@ -251,4 +251,4 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 | 2026-03-26 | adam.nowak | in_progress | Feature created; STORY-001 and STORY-002 research launched in parallel |
 | 2026-03-28 | claude | in_progress | STORY-015 through STORY-020 completed (tier model renumbering). EN-004 created (pending). 83% complete. |
 | 2026-03-29 | claude | in_progress | STORY-011, STORY-013, STORY-014 closed out with delivery evidence. All 20 stories complete. All DoD + functional + non-functional criteria verified. 96% (23/24). Status remains in_progress: EN-004 (MK collision detection, non-blocking, FMEA RPN=105) is the sole remaining item. |
-| 2026-03-30 | claude | in_progress | CI cleanup sprint: STORY-023/024/025 + BUG-004/005/006/007 + EN-005 completed with delivery evidence. 8 items closed. GH #177, #178, #214, #193, #213, #116 closed. Remaining: EN-004 + BUG-001/002/003. 89% (31/35). |
+| 2026-03-30 | claude | in_progress | CI cleanup sprint: STORY-023/024/025 + BUG-001-007 + EN-005 completed with delivery evidence. All stories and bugs done. GH #117, #177, #178, #193, #213, #214, #226, #227, #228 closed. Sole remaining: EN-004 (MK collision detection). 97% (34/35). |
