@@ -140,10 +140,18 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 | EN-001 | Enabler | Security Review of Schema Validation Pipeline | completed | high | 5 |
 | EN-002 | Enabler | Developer Experience Review of Schema Validation | completed | medium | 3 |
 | EN-003 | Enabler | Schema Validation Test Suite | completed | high | 5 |
+| STORY-023 | Story | Remove Deprecated scripts/pre_tool_use.py (GH #177) | completed | medium | 1 |
+| STORY-024 | Story | Consolidate Dual SubagentStop Hooks (GH #178) | completed | medium | 2 |
+| STORY-025 | Story | Add jerry schema validate CLI Command (GH #193) | completed | medium | 2 |
 | BUG-001 | Bug | Context Monitoring Tests Fail on 1M Context Window | pending | critical | 3 |
 | BUG-002 | Bug | Pygments CVE-2026-4539 Blocks Git Push | pending | critical | 1 |
 | BUG-003 | Bug | scripts/tests Isolation Failure | pending | high | 2 |
+| BUG-004 | Bug | Fix Cross-Project Reference in ADR (GH #228) | completed | high | 1 |
+| BUG-005 | Bug | Fix Hook Test Step Definitions (GH #214) | completed | high | 3 |
+| BUG-006 | Bug | Fix file_repository.py Hardcoded Path Separator (GH #117) | completed | medium | 1 |
+| BUG-007 | Bug | Fix Broken mkdocs Anchor Links (GH #213) | completed | high | 1 |
 | EN-004 | Enabler | Memory-Keeper Collision Detection Enhancement | pending | medium | 5 |
+| EN-005 | Enabler | Add .gitattributes Cross-Platform LF (GH #116) | completed | medium | 1 |
 
 ### Work Item Links
 
@@ -176,6 +184,14 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 - [BUG-002: Pygments CVE-2026-4539 Blocks Git Push](./BUG-002-pygments-cve/BUG-002-pygments-cve.md)
 - [BUG-003: scripts/tests Isolation Failure](./BUG-003-scripts-tests-isolation/BUG-003-scripts-tests-isolation.md)
 - [EN-004: Memory-Keeper Collision Detection Enhancement](./EN-004-mk-collision-detection/EN-004-mk-collision-detection.md)
+- [EN-005: Add .gitattributes Cross-Platform LF (GH #116)](./EN-005-gitattributes/EN-005-gitattributes.md)
+- [STORY-023: Remove Deprecated scripts/pre_tool_use.py (GH #177)](./STORY-023-remove-deprecated-hook/STORY-023-remove-deprecated-hook.md)
+- [STORY-024: Consolidate Dual SubagentStop Hooks (GH #178)](./STORY-024-consolidate-subagent-hooks/STORY-024-consolidate-subagent-hooks.md)
+- [STORY-025: Add jerry schema validate CLI Command (GH #193)](./STORY-025-schema-validate-cli/STORY-025-schema-validate-cli.md)
+- [BUG-004: Fix Cross-Project Reference in ADR (GH #228)](./BUG-004-cross-project-ref/BUG-004-cross-project-ref.md)
+- [BUG-005: Fix Hook Test Step Definitions (GH #214)](./BUG-005-hook-test-step-defs/BUG-005-hook-test-step-defs.md)
+- [BUG-006: Fix file_repository.py Hardcoded Path Separator (GH #117)](./BUG-006-file-repo-path-sep/BUG-006-file-repo-path-sep.md)
+- [BUG-007: Fix Broken mkdocs Anchor Links (GH #213)](./BUG-007-broken-mkdocs-anchors/BUG-007-broken-mkdocs-anchors.md)
 
 ---
 
@@ -185,10 +201,11 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 +------------------------------------------------------------------+
 |                   FEATURE PROGRESS TRACKER                        |
 +------------------------------------------------------------------+
-| Stories:   [####################] 100% (20/20 completed)          |
-| Enablers:  [###############.....] 75% (3/4 completed)             |
+| Stories:   [####################] 100% (23/23 completed)          |
+| Enablers:  [################....] 80% (4/5 completed)             |
+| Bugs:      [################....] 57% (4/7 completed)             |
 +------------------------------------------------------------------+
-| Overall:   [###################.] 96% (23/24 items)               |
+| Overall:   [##################..] 89% (31/35 items)               |
 +------------------------------------------------------------------+
 ```
 
@@ -196,16 +213,19 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 
 | Metric | Value |
 |--------|-------|
-| **Total Stories** | 20 |
-| **Completed Stories** | 20 |
+| **Total Stories** | 23 |
+| **Completed Stories** | 23 |
 | **In Progress Stories** | 0 |
 | **Pending Stories** | 0 |
-| **Total Enablers** | 4 |
-| **Completed Enablers** | 3 |
+| **Total Enablers** | 5 |
+| **Completed Enablers** | 4 |
 | **Pending Enablers** | 1 (EN-004) |
-| **Total Effort (points)** | 111 |
-| **Completed Effort** | 106 |
-| **Completion %** | 96% |
+| **Total Bugs** | 7 |
+| **Completed Bugs** | 4 (BUG-004, BUG-005, BUG-006, BUG-007) |
+| **Pending Bugs** | 3 (BUG-001, BUG-002, BUG-003) |
+| **Total Effort (points)** | 123 |
+| **Completed Effort** | 118 |
+| **Completion %** | 89% |
 
 ---
 
@@ -231,3 +251,4 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 | 2026-03-26 | adam.nowak | in_progress | Feature created; STORY-001 and STORY-002 research launched in parallel |
 | 2026-03-28 | claude | in_progress | STORY-015 through STORY-020 completed (tier model renumbering). EN-004 created (pending). 83% complete. |
 | 2026-03-29 | claude | in_progress | STORY-011, STORY-013, STORY-014 closed out with delivery evidence. All 20 stories complete. All DoD + functional + non-functional criteria verified. 96% (23/24). Status remains in_progress: EN-004 (MK collision detection, non-blocking, FMEA RPN=105) is the sole remaining item. |
+| 2026-03-30 | claude | in_progress | CI cleanup sprint: STORY-023/024/025 + BUG-004/005/006/007 + EN-005 completed with delivery evidence. 8 items closed. GH #177, #178, #214, #193, #213, #116 closed. Remaining: EN-004 + BUG-001/002/003. 89% (31/35). |

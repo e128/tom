@@ -46,3 +46,5 @@
 | STORY-024 | Story | Consolidate Dual SubagentStop Hooks (GH #178) | 2026-03-30 |
 | BUG-005 | Bug | Fix Hook Test Step Definitions (GH #214) | 2026-03-30 |
 | STORY-025 | Story | Add jerry schema validate CLI Command (GH #193) | 2026-03-30 |
+| BUG-007 | Bug | Fix Broken mkdocs Anchor Links (GH #213) | 2026-03-30 |
+| EN-005 | Enabler | Add .gitattributes Cross-Platform LF (GH #116) | 2026-03-30 |
