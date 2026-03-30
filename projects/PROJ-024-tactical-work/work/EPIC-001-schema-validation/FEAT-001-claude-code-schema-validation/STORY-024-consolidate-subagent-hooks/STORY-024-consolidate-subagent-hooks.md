@@ -27,16 +27,31 @@
 
 ## Summary
 
-SubagentStop hook logic exists in both scripts/ and CLI. Consolidate to single implementation to prevent drift and reduce maintenance burden.
+SubagentStop hook logic exists in both `scripts/` (standalone) and CLI (`src/`). The standalone script bypasses Clean Architecture and creates a parallel code path that drifts from the CLI. Consolidate to the CLI implementation only.
+
+---
+
+## Architectural Constraints
+
+| Constraint | Rationale |
+|------------|-----------|
+| **MUST NOT introduce new scripts** | The scripts/ directory is for build tooling only, not runtime hooks. Hook logic belongs in `src/` under Clean Architecture. |
+| **Consolidated implementation MUST live in `src/`** | Domain rules in domain layer, hook handling in application/infrastructure layers. The `.claude/hooks/` entry point invokes `uv run jerry ...` CLI commands. |
+| **MUST follow Clean Architecture** | SubagentStop enforcement logic follows hexagonal layers: domain (stop rules), application (command handler), infrastructure (hook adapter). |
+| **MUST be testable via `tests/`** | Tests go in `tests/` (unit/integration/e2e), not `scripts/tests/`. CLI command is the test boundary. |
 
 ---
 
 ## Acceptance Criteria
 
-- [ ] Single SubagentStop hook implementation (no duplication)
-- [ ] Hook behavior unchanged (same blocking/warning behavior)
+- [ ] Single SubagentStop implementation in `src/` (Clean Architecture)
+- [ ] `scripts/subagent_stop.py` deleted (if it exists as standalone)
+- [ ] `.claude/hooks/` entry point invokes via `uv run jerry ...` CLI command
+- [ ] Hook behavior unchanged (same blocking/warning behavior verified by tests)
+- [ ] Tests in `tests/` (not `scripts/tests/`) cover the consolidated implementation
 - [ ] All existing tests pass
 - [ ] No references to the removed duplicate
+- [ ] Zero new files in `scripts/`
 
 ---
 

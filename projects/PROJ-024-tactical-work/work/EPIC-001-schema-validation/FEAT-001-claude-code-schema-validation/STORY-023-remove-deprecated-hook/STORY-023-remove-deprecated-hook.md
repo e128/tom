@@ -27,16 +27,31 @@
 
 ## Summary
 
-scripts/pre_tool_use.py is deprecated since #150 migration to plugin hooks. Dead code in CI path. Remove the file and update any references.
+`scripts/pre_tool_use.py` is deprecated since #150 migration to plugin hooks. Dead code that bypasses the Jerry CLI. Any security guardrail logic it contains MUST be ported into the CLI enforcement pipeline (Clean Architecture) before deletion -- not replaced with another standalone script.
+
+---
+
+## Architectural Constraints
+
+| Constraint | Rationale |
+|------------|-----------|
+| **MUST NOT introduce new scripts** | Standalone scripts increase surface area, bypass CLI testing infrastructure, and create parallel code paths that drift from the CLI implementation. |
+| **All hook logic MUST route through Jerry CLI** | Hooks invoke `uv run jerry ...` commands. The CLI is the single entry point; enforcement logic lives in `src/` under Clean Architecture layers. |
+| **MUST follow Clean Architecture** | Any security guardrail logic migrated from this script goes into the appropriate hexagonal layer: domain (rules), application (handlers), infrastructure (adapters). |
+| **MUST NOT leave orphaned test dependencies** | `scripts/tests/test_hooks.py` tests this script. Those tests must be updated or removed as part of this work. |
 
 ---
 
 ## Acceptance Criteria
 
-- [ ] scripts/pre_tool_use.py deleted
-- [ ] No remaining imports or references to the old hook
+- [ ] `scripts/pre_tool_use.py` deleted
+- [ ] Any security guardrail logic not already in the CLI enforcement pipeline is ported to `src/` (Clean Architecture)
+- [ ] No remaining imports or references to the old hook in active code/config
+- [ ] Documentation references updated (CHANGELOG, playbooks) to point to CLI enforcement
+- [ ] `scripts/tests/test_hooks.py` updated to test CLI-based enforcement (not deleted script)
 - [ ] Pre-commit hooks still pass
 - [ ] CI pipeline still passes
+- [ ] Zero new files in `scripts/` (no script replacement)
 
 ---
 
