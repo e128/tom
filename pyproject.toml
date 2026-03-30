@@ -38,6 +38,7 @@ dependencies = [
     "mdit-py-plugins>=0.4.0",
     "pyyaml>=6.0",  # EN-005: StalenessDetector ORCHESTRATION.yaml parsing
     "requests>=2.33.0",
+    "pygments>=2.19.3",
 ]
 
 [project.optional-dependencies]
@@ -114,7 +115,7 @@ known-first-party = ["src"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
-testpaths = ["tests"]
+testpaths = ["tests", "scripts/tests"]
 markers = [
     "happy-path: marks tests as happy path scenarios",
     "negative: marks tests as negative/error scenarios",
