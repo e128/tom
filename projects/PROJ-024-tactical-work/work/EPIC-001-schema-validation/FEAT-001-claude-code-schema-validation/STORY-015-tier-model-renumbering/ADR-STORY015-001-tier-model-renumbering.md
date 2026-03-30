@@ -582,7 +582,7 @@ sed -i '' 's/tool_tier: T4_HOLD/tool_tier: T4/' skills/transcript/agents/ts-extr
 | No T3_HOLD | `grep -rl 'T3_HOLD' skills/*/agents/*.governance.yaml` | (empty) |
 | Total | Sum of T1+T2+T3+T4+T5 | 89 |
 
-> **Scope note:** The migration script covers `skills/*/agents/*.governance.yaml` (89 files). Two additional pm-pmm draft governance YAMLs exist in `projects/PROJ-018-pm-pmm-skill/` -- these are development drafts, not active agent definitions, and are excluded from the migration scope. They should be updated manually if/when they are promoted to `skills/`.
+> **Scope note:** The migration script covers `skills/*/agents/*.governance.yaml` (89 files). Two additional pm-pmm draft governance YAMLs exist in the pm-pmm skill development project -- these are development drafts, not active agent definitions, and are excluded from the migration scope. They should be updated manually if/when they are promoted to `skills/`.
 
 ---
 
