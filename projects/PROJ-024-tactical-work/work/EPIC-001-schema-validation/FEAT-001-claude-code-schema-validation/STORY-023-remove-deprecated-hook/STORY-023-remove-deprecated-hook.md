@@ -39,6 +39,7 @@
 | **All hook logic MUST route through Jerry CLI** | Hooks invoke `uv run jerry ...` commands. The CLI is the single entry point; enforcement logic lives in `src/` under Clean Architecture layers. |
 | **MUST follow Clean Architecture** | Any security guardrail logic migrated from this script goes into the appropriate hexagonal layer: domain (rules), application (handlers), infrastructure (adapters). |
 | **MUST NOT leave orphaned test dependencies** | `scripts/tests/test_hooks.py` tests this script. Those tests must be updated or removed as part of this work. |
+| **MUST follow TDD Red/Green/Refactor (H-20)** | Write failing tests for CLI-based enforcement BEFORE porting logic. Red: test fails because CLI doesn't have the check. Green: port logic, test passes. Refactor: clean up. |
 
 ---
 

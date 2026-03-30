@@ -40,6 +40,7 @@
 | **MUST follow Clean Architecture** | Validation logic in `src/agents/application/commands/validate_frontmatter_command.py` (application layer). Schema loading from `docs/schemas/` (infrastructure adapter). |
 | **H-10 resolution required** | The handler file has a pre-existing H-10 violation (3 classes in one file). Must be resolved to allow edits -- split `FrontmatterFileResult`, `ValidateFrontmatterResult`, and `ValidateFrontmatterCommandHandler` into separate files. |
 | **Tests MUST live in `tests/`** | `scripts/tests/test_validate_agent_frontmatter.py` must be moved to `tests/` and rewritten to test the CLI handler, not the deleted script. |
+| **MUST follow TDD Red/Green/Refactor (H-20)** | Write failing test for P-003 check via CLI handler BEFORE porting. Red: test calls handler, no P-003 check, fails. Green: port check from script, test passes. Refactor: delete script + script tests. |
 
 ---
 

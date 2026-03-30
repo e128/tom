@@ -39,6 +39,7 @@ SubagentStop hook logic exists in both `scripts/` (standalone) and CLI (`src/`).
 | **Consolidated implementation MUST live in `src/`** | Domain rules in domain layer, hook handling in application/infrastructure layers. The `.claude/hooks/` entry point invokes `uv run jerry ...` CLI commands. |
 | **MUST follow Clean Architecture** | SubagentStop enforcement logic follows hexagonal layers: domain (stop rules), application (command handler), infrastructure (hook adapter). |
 | **MUST be testable via `tests/`** | Tests go in `tests/` (unit/integration/e2e), not `scripts/tests/`. CLI command is the test boundary. |
+| **MUST follow TDD Red/Green/Refactor (H-20)** | Write failing tests for consolidated CLI SubagentStop BEFORE implementation. Red: test exercises CLI command, fails. Green: consolidate implementation, test passes. Refactor: remove duplicate. |
 
 ---
 
