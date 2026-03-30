@@ -1,10 +1,16 @@
 # TASK-002: Fix M-002 -- diataxis-explanation Upgrade to T3
 
-> **Type:** story
-> **Status:** pending
+> **Type:** task
+> **Status:** completed
 > **Priority:** medium
 > **Created:** 2026-03-28T00:00:00Z
 > **Parent:** STORY-013
+
+---
+
+## Summary
+
+Upgrade diataxis-explanation to T4 with WebSearch/WebFetch.
 
 ---
 

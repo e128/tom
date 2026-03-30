@@ -1,10 +1,16 @@
 # TASK-006: Fix M-006 -- pm-pmm SKILL.md Add allowed-tools
 
-> **Type:** story
-> **Status:** pending
+> **Type:** task
+> **Status:** completed
 > **Priority:** medium
 > **Created:** 2026-03-28T00:00:00Z
 > **Parent:** STORY-013
+
+---
+
+## Summary
+
+Add allowed-tools field to pm-pmm SKILL.md.
 
 ---
 

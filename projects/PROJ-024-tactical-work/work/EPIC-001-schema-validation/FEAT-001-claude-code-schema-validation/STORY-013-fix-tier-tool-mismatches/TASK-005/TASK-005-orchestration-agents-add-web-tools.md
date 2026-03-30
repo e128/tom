@@ -1,10 +1,16 @@
 # TASK-005: Fix M-005 -- orchestration Agents Add Web Tools
 
-> **Type:** story
-> **Status:** pending
+> **Type:** task
+> **Status:** completed
 > **Priority:** medium
 > **Created:** 2026-03-28T00:00:00Z
 > **Parent:** STORY-013
+
+---
+
+## Summary
+
+Add WebSearch/WebFetch to orch-planner, orch-synthesizer, orch-tracker.
 
 ---
 

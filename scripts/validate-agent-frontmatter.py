@@ -55,6 +55,9 @@ DEFAULT_SKILL_GLOBS = [
 ]
 
 # Official Claude Code fields (March 2026)
+# Note: The CLI handler (_AGENT_KNOWN_FIELDS in
+# src/agents/application/commands/validate_frontmatter_command.py)
+# includes additional fields (effort, initialPrompt). Keep in sync.
 AGENT_FIELDS = {
     "name",
     "description",
@@ -70,6 +73,8 @@ AGENT_FIELDS = {
     "background",
     "isolation",
     "color",
+    "effort",
+    "initialPrompt",
 }
 SKILL_FIELDS = {
     "name",
@@ -141,12 +146,48 @@ def validate_agent(fm: dict, schema: dict, file_path: Path) -> tuple[list[str], 
 
     # Semantic: MCP tools in tools field
     tools = fm.get("tools")
+    # Normalise comma-separated string format to list (PyYAML parses
+    # "tools: Read, Write, Agent" as str, not list)
+    if isinstance(tools, str):
+        tools = [t.strip() for t in tools.split(",") if t.strip()]
     if isinstance(tools, list):
         mcp_tools = [t for t in tools if t.startswith("mcp__")]
         if mcp_tools:
             warnings.append(
                 f"  tools: contains MCP tool names {mcp_tools} — use mcpServers field instead"
             )
+
+        # STORY-022: P-003 — Agent/Task tool restricted to T5 orchestrators only.
+        # The tools allowlist is the enforcement layer (DISC-001). If Agent or its
+        # backward-compatible alias Task appears in a non-T5 agent's tools, that
+        # agent can spawn subagents in violation of single-level nesting (H-01).
+        delegation_tools = [t for t in tools if t in ("Agent", "Task")]
+        if delegation_tools:
+            # with_suffix replaces only the last suffix component.
+            # All agent files use single .md suffix; multi-dot names
+            # (e.g. agent.test.md) are not used in this codebase.
+            gov_path = file_path.with_suffix(".governance.yaml")
+            is_t5 = False
+            if gov_path.exists():
+                try:
+                    gov = yaml.safe_load(gov_path.read_text(encoding="utf-8"))
+                    if isinstance(gov, dict):
+                        tier = gov.get("tool_tier")
+                        is_t5 = isinstance(tier, str) and tier == "T5"
+                except (yaml.YAMLError, OSError) as exc:
+                    # fail closed: broken governance = not T5, but warn so
+                    # engineers can diagnose why a legitimate T5 is failing
+                    warnings.append(
+                        f"  tools: could not read {gov_path.name}: {exc} — "
+                        f"assuming non-T5 (fail closed)"
+                    )
+            if not is_t5:
+                errors.append(
+                    f"  tools: contains {delegation_tools} — only T5 orchestrator agents "
+                    f"may have Agent/Task tool access (P-003 violation). "
+                    f"Fix: remove {delegation_tools} from tools list, or set tool_tier: T5 "
+                    f"in {gov_path.name} with documented justification."
+                )
 
     return errors, warnings
 

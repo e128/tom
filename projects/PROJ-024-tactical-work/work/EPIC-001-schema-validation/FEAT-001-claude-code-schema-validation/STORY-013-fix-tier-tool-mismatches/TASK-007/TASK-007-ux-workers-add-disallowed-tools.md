@@ -1,10 +1,16 @@
 # TASK-007: Fix M-007 -- 6 UX Worker Agents Add disallowedTools: Agent
 
-> **Type:** story
-> **Status:** pending
+> **Type:** task
+> **Status:** completed
 > **Priority:** high
 > **Created:** 2026-03-28T00:00:00Z
 > **Parent:** STORY-013
+
+---
+
+## Summary
+
+Add disallowedTools: [Agent] to 6 UX worker agents (expanded to 10 + orchestrator in M-007).
 
 ---
 

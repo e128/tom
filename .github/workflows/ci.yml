@@ -209,6 +209,9 @@ jobs:
       - name: Validate agent and skill frontmatter
         run: uv run jerry agents validate-frontmatter
 
+      - name: Validate P-003 Agent tool restriction (STORY-022)
+        run: uv run python scripts/validate-agent-frontmatter.py
+
   # ===========================================================================
   # License Header Check (EN-935, FEAT-015)
   # ===========================================================================

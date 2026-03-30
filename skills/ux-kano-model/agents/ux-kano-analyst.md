@@ -25,7 +25,7 @@ tools:
   - WebSearch
   - WebFetch
 disallowedTools:
-  - Task
+  - Agent
 mcpServers:
   context7: true
 ---

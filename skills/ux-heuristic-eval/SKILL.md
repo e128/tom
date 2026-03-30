@@ -128,7 +128,7 @@ The agent produces output at three levels per AD-M-004:
 
 ## P-003 Compliance
 
-The `/ux-heuristic-eval` sub-skill contains a single **worker** agent. It is invoked by the `ux-orchestrator` (T5) via the Task tool. The agent does NOT have Task tool access and MUST NOT spawn sub-agents.
+The `/ux-heuristic-eval` sub-skill contains a single **worker** agent. It is invoked by the `ux-orchestrator` (T5) via the Agent tool. The agent does NOT have Agent tool access and MUST NOT spawn sub-agents.
 
 ```
 MAIN CONTEXT (user request)
@@ -141,9 +141,9 @@ ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
 ```
 
 **Enforcement:**
-- `disallowedTools: [Task]` declared in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` frontmatter
+- `disallowedTools: [Agent]` declared in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` frontmatter
 - P-003 prohibition in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.governance.yaml` `capabilities.forbidden_actions`
-- CI gate validates no sub-skill agent has Task access (documented in `skills/user-experience/rules/ci-checks.md`)
+- CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`)
 
 > **Source:** P-003 hierarchy from parent SKILL.md [P-003 Compliance] (lines 174-196).
 
@@ -170,12 +170,12 @@ The `ux-orchestrator` routes these requests to `ux-heuristic-evaluator` based on
 "Have ux-heuristic-evaluator evaluate the form design"
 ```
 
-### Via Task Tool (orchestrator internal)
+### Via Agent Tool (orchestrator internal)
 
-The `ux-orchestrator` invokes the agent via the Task tool:
+The `ux-orchestrator` invokes the agent via the Agent tool:
 
 ```python
-Task(
+Agent(
     description="ux-heuristic-evaluator: Heuristic evaluation of settings page",
     subagent_type="jerry:ux-heuristic-evaluator",
     prompt="""
@@ -454,7 +454,7 @@ All agents in this sub-skill adhere to the **Jerry Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
-| P-003 | NEVER spawn recursive subagents -- worker agent, no Task tool access | Agent hierarchy violation; uncontrolled token consumption |
+| P-003 | NEVER spawn recursive subagents -- worker agent, no Agent tool access | Agent hierarchy violation; uncontrolled token consumption |
 | P-020 | NEVER override user decisions on finding priority or remediation approach | Unauthorized action; trust erosion |
 | P-022 | NEVER inflate severity ratings without specific evidence from the interface | Governance undermined; quality assessment invalidated |
 | P-001 | NEVER present findings without evidence from the interface under review | Unreliable outputs; unfounded claims propagate downstream |
@@ -463,7 +463,7 @@ All agents in this sub-skill adhere to the **Jerry Constitution v1.0**:
 **Per-agent enforcement:** The `ux-heuristic-evaluator` agent declares:
 - `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.governance.yaml`
 - `capabilities.forbidden_actions`: 3 entries in NPT-009 format referencing the constitutional triplet
-- `disallowedTools: [Task]` in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` frontmatter
+- `disallowedTools: [Agent]` in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` frontmatter
 
 ---
 

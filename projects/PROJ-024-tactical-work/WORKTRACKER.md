@@ -34,6 +34,9 @@
 | STORY-019 | Story | Tier Model Documentation and Migration Guide (38 ref updates + 2 new docs) | 2026-03-28 |
 | STORY-020 | Story | Security and Access Control Verification (C4 0.953 PASS) | 2026-03-28 |
 | STORY-011 | Story | Adversary Sub-Agents: WebSearch/WebFetch/Context7 (GH #217) | 2026-03-29 |
-| STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions (8/8 complete) | 2026-03-29 |
+| STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions (M-007 C4 0.954 PASS) | 2026-03-29 |
+| STORY-021 | Story | Add disallowedTools: [Agent] to Non-UX Worker Agents (Defense-in-Depth) | wont_do |
+| STORY-022 | Story | Add Task->Agent CI Validation (C4 0.949 PASS) | 2026-03-29 |
+| DISC-001 | Discovery | disallowedTools Redundancy When tools Explicitly Declared | 2026-03-29 |
 | STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards (D-001 + D-002) | 2026-03-29 |
 | EN-003 | Enabler | Schema Validation Test Suite | 2026-03-27 |

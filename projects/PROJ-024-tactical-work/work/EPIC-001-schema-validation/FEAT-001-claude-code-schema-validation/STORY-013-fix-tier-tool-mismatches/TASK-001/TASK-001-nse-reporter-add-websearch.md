@@ -1,10 +1,16 @@
 # TASK-001: Fix M-001 -- nse-reporter Add WebSearch
 
-> **Type:** story
-> **Status:** pending
+> **Type:** task
+> **Status:** completed
 > **Priority:** medium
 > **Created:** 2026-03-28T00:00:00Z
 > **Parent:** STORY-013
+
+---
+
+## Summary
+
+Add WebSearch to nse-reporter frontmatter tools for T4 compliance.
 
 ---
 

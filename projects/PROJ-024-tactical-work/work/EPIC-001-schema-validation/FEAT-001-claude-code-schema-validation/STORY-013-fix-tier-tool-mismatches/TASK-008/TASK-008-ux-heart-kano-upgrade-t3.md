@@ -1,10 +1,16 @@
 # TASK-008: Fix M-008 -- ux-heart-analyst + ux-kano-analyst Upgrade to T3
 
-> **Type:** story
-> **Status:** pending
+> **Type:** task
+> **Status:** completed
 > **Priority:** medium
 > **Created:** 2026-03-28T00:00:00Z
 > **Parent:** STORY-013
+
+---
+
+## Summary
+
+Upgrade ux-heart-analyst and ux-kano-analyst to T4 with WebSearch/WebFetch.
 
 ---
 

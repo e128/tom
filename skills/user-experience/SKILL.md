@@ -150,7 +150,7 @@ Do NOT use for:
 | `ux-sprint-facilitator` | AJ&Smart Design Sprint 2.0 facilitation | T4 | Systematic | Opus | 5 | `skills/ux-design-sprint/output/{engagement-id}/ux-sprint-facilitator-{topic-slug}.md` |
 | `ux-ai-design-guide` | AI-first interaction design specialist (CONDITIONAL) | T4 | Divergent | Opus | 5 | `skills/ux-ai-first-design/output/{engagement-id}/ux-ai-design-guide-{topic-slug}.md` |
 
-**Tool tier key:** T2 = Read-Write (Read, Write, Edit, Glob, Grep, Bash); T4 = External (T2 + WebSearch, WebFetch, Context7 MCP, Memory-Keeper); T5 = Orchestration (T4 + Agent/Task). See `agent-development-standards.md` [Tool Security Tiers] for full definitions. All tier assignments follow the principle of least privilege (AR-006) — T2 agents (ux-heart-analyst, ux-behavior-diagnostician, ux-kano-analyst) operate on user-provided data only; T4 agents access external UX standards and documentation.
+**Tool tier key:** T2 = Read-Write (Read, Write, Edit, Glob, Grep, Bash); T4 = External (T2 + WebSearch, WebFetch, Context7 MCP, Memory-Keeper); T5 = Orchestration (T4 + Agent). See `agent-development-standards.md` [Tool Security Tiers] for full definitions. All tier assignments follow the principle of least privilege (AR-006) — T2 agents (ux-heart-analyst, ux-behavior-diagnostician, ux-kano-analyst) operate on user-provided data only; T4 agents access external UX standards and documentation.
 
 *Haiku for high-volume checklist evaluation; escalates to Sonnet when: (1) heuristic severity is "critical" (>= 3 critical findings), (2) Figma MCP benchmark fails pre-launch threshold, or (3) evaluation spans > 50 screens. Escalation is automatic within the orchestrator's routing logic per AD-M-009 model selection justification.
 
@@ -163,7 +163,7 @@ All agents produce output at three levels per AD-M-004:
 
 ## P-003 Compliance
 
-The `/user-experience` skill enforces strict single-level nesting per H-01/P-003. Only `ux-orchestrator` has Task tool access. All 10 sub-skill agents are workers that MUST NOT include Task in their tool list.
+The `/user-experience` skill enforces strict single-level nesting per H-01/P-003. Only `ux-orchestrator` has Agent tool access. All 10 sub-skill agents are workers that MUST NOT include Agent in their tool list.
 
 ```
 MAIN CONTEXT (user request)
@@ -183,7 +183,7 @@ ux-orchestrator (T5, Opus, Integrative) -- routes, gates, synthesizes
     +-- ux-ai-design-guide        (T4, Divergent, Opus)       [Wave 5 COND]
 ```
 
-**Enforcement:** Sub-skill agents declare `disallowedTools: [Task]` in `.md` frontmatter. CI gate validates no sub-skill agent has Task access (documented in `skills/user-experience/rules/ci-checks.md`). Each `.governance.yaml` includes Task prohibition in `capabilities.forbidden_actions` with P-003 consequence statement.
+**Enforcement:** Sub-skill agents declare `disallowedTools: [Agent]` in `.md` frontmatter. CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`). Each `.governance.yaml` includes Agent prohibition in `capabilities.forbidden_actions` with P-003 consequence statement.
 
 ---
 
@@ -214,12 +214,12 @@ Request a specific agent by name:
 "I need ux-inclusive-evaluator to review color contrast and screen reader compatibility"
 ```
 
-### Option 3: Native Agent Invocation (Task Tool)
+### Option 3: Native Agent Invocation (Agent Tool)
 
-The orchestrator invokes sub-skill agents as named subagents via Task:
+The orchestrator invokes sub-skill agents as named subagents via Agent:
 
 ```python
-Task(
+Agent(
     description="ux-heuristic-evaluator: Heuristic evaluation of settings page",
     subagent_type="ux-heuristic-evaluator",
     prompt="""
@@ -495,7 +495,7 @@ All agents adhere to the **Jerry Constitution v1.0**:
 **Per-agent enforcement:** Every agent (orchestrator + 10 sub-skill agents) declares in `.governance.yaml`:
 - `constitution.principles_applied`: P-003, P-020, P-022 (minimum; additional principles per agent)
 - `capabilities.forbidden_actions`: Minimum 3 entries in NPT-009 format referencing the constitutional triplet
-- Sub-skill agents: `disallowedTools: [Task]` in `.md` frontmatter (P-003 enforcement)
+- Sub-skill agents: `disallowedTools: [Agent]` in `.md` frontmatter (P-003 enforcement)
 - Domain-specific forbidden actions added per agent role
 
 ---

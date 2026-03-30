@@ -13,7 +13,7 @@ PURPOSE: Fix governance YAML tier declarations that don't match actual tools in 
 > **Impact:** high
 > **Created:** 2026-03-27T10:00:00Z
 > **Due:**
-> **Completed:** 2026-03-29T00:30:00Z
+> **Completed:** 2026-03-29T21:00:00Z
 > **Parent:** FEAT-001
 > **Owner:** adam.nowak
 > **Effort:** 5
@@ -197,6 +197,9 @@ STORY-012 audit found 8 inconsistencies where the governance YAML tier declarati
 | Related | STORY-011 | adv-executor T2->T3 is a related tier change |
 | Blocked By (TASK-004 only) | STORY-015 | nse-requirements tier fix depends on new tier model |
 | Blocks | STORY-014 | Doc drift fixes depend on tier fixes landing |
+| Produced | STORY-021 | Defense-in-depth analysis (wont_do per DISC-001) |
+| Produced | STORY-022 | CI validation for P-003 Agent tool check |
+| Produced | DISC-001 | disallowedTools redundancy finding |
 
 ---
 
@@ -209,3 +212,4 @@ STORY-012 audit found 8 inconsistencies where the governance YAML tier declarati
 | 2026-03-28 | adam.nowak | in_progress | Iteration 2: 5 scorer findings fixed. Score 0.82 -> 0.895. |
 | 2026-03-28 | adam.nowak | in_progress | Iteration 3: 4 hygiene fixes. Score 0.895 -> 0.942. |
 | 2026-03-29 | claude | completed | TASK-004 resolved by tier renumbering (STORY-017/018): T4=External is exact fit for nse-requirements (Web+MK). TASK-009 validation passed: 611 schema, 320 architecture, 62 pm-pmm tests. All 10 ACs verified. |
+| 2026-03-29 | adam.nowak | in_progress | Re-opened: M-007 Task->Agent rename across 11 UX agents + ~100 doc edits across 30 files. C4 /adversary 0.954 PASS (5 iterations). eng-security (5 findings) + red-vuln (6 findings). Produced STORY-021 (wont_do), STORY-022 (completed, C4 0.949 PASS), DISC-001 (disallowedTools redundancy). Worktracker audit: 16 findings fixed. |

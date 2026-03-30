@@ -128,6 +128,8 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 | STORY-011 | Story | Adversary Sub-Agents: Add WebSearch/WebFetch/Context7 (GH #217) | completed | high | 5 |
 | STORY-012 | Story | Audit Skills and Agents for Missing Web Tool Permissions | completed | high | 5 |
 | STORY-013 | Story | Fix Tier/Tool Mismatches in Agent Definitions | completed | high | 5 |
+| STORY-021 | Story | Add disallowedTools to Non-UX Workers (Defense-in-Depth) | wont_do | medium | 3 |
+| STORY-022 | Story | Add Task->Agent CI Validation | completed | high | 1 |
 | STORY-014 | Story | Fix Documentation Drift in Tool/Agent Standards | completed | medium | 3 |
 | STORY-015 | Story | Evaluate and Renumber Tool Security Tier Model (ADR) | completed | high | 8 |
 | STORY-016 | Story | Add Option E to Tier Model ADR | completed | high | 3 |
@@ -155,6 +157,8 @@ Research Anthropic's official Claude Code documentation, GitHub source, and comm
 - [STORY-011: Adversary Sub-Agents WebSearch/WebFetch/Context7](./STORY-011-adversary-tool-access/STORY-011-adversary-tool-access.md)
 - [STORY-012: Audit Skills and Agents for Missing Web Tool Permissions](./STORY-012-audit-web-tool-permissions/STORY-012-audit-web-tool-permissions.md)
 - [STORY-013: Fix Tier/Tool Mismatches in Agent Definitions](./STORY-013-fix-tier-tool-mismatches/STORY-013-fix-tier-tool-mismatches.md)
+- [STORY-021: Add disallowedTools to Non-UX Workers](./STORY-021-non-ux-disallowed-tools/STORY-021-non-ux-disallowed-tools.md)
+- [STORY-022: Add Task->Agent CI Validation](./STORY-022-ci-task-agent-check/STORY-022-ci-task-agent-check.md)
 - [STORY-014: Fix Documentation Drift in Tool/Agent Standards](./STORY-014-fix-documentation-drift/STORY-014-fix-documentation-drift.md)
 - [STORY-015: Evaluate and Renumber Tool Security Tier Model](./STORY-015-tier-model-renumbering/STORY-015-tier-model-renumbering.md)
 - [STORY-016: Add Option E to Tier Model ADR](./STORY-016-adr-option-e/STORY-016-adr-option-e.md)
