@@ -21,6 +21,10 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
+import pytest
+
+pytestmark = [pytest.mark.subprocess]
+
 # Repo root for --directory flag
 _REPO_ROOT = str(Path(__file__).resolve().parents[2])
 
