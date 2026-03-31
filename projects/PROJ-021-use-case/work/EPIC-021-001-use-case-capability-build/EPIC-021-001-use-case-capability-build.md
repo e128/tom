@@ -1,12 +1,12 @@
 # EPIC-021-001: Use Case Capability Build
 
 > **Type:** epic
-> **Status:** in_progress
+> **Status:** completed
 > **Priority:** high
 > **Impact:** high
 > **Created:** 2026-03-08T00:00:00Z
 > **Due:** 2026-03-15T00:00:00Z
-> **Completed:**
+> **Completed:** 2026-03-30T00:00:00Z
 > **Parent:**
 > **Owner:** adam.nowak
 > **Target Quarter:** FY26-Q1
@@ -100,3 +100,4 @@ Build guided use case authoring, BDD test specification generation, and API cont
 |------|--------|--------|-------|
 | 2026-03-08T00:00:00Z | eng-backend | pending | Epic created (original PROJ-021 scope) |
 | 2026-03-11T00:00:00Z | claude | in_progress | Adversary remediation phase — 4 items created from C3 review findings |
+| 2026-03-30T00:00:00Z | Claude | completed | H-32 parity audit: GH #109 is CLOSED. Epic scope delivered (PR #149). Remaining findings tracked under GH #194. |

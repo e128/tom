@@ -1,22 +1,8 @@
 ---
 name: test-spec
-description: >-
-  BDD test specification generation from use case artifacts using Clark's (2018)
-  UC2.0-to-Gherkin transformation algorithm. Transforms structured use case
-  flows (basic flow, alternative flows, extensions) into Gherkin Feature files
-  with Given-When-Then scenarios. Analyzes test coverage completeness against
-  use case flow steps. Requires use case artifacts at detail_level >=
-  ESSENTIAL_OUTLINE from /use-case skill. Invoke when generating test specs,
-  BDD scenarios, Gherkin features, test plans, or analyzing test coverage
-  from use cases.
+description: BDD test specification generation from use case artifacts using Clark's (2018) UC2.0-to-Gherkin transformation algorithm. Transforms structured use case flows (basic flow, alternative flows, extensions) into Gherkin Feature files with Given-When-Then scenarios. Analyzes test coverage completeness against use case flow steps. Requires use case artifacts at detail_level >= ESSENTIAL_OUTLINE from /use-case skill. Invoke when generating test specs, BDD scenarios, Gherkin features, test plans, or analyzing test coverage from use cases.
 version: "1.0.0"
-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 activation-keywords:
   - "test spec"
   - "test-spec"

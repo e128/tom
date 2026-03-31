@@ -21,19 +21,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - **BUG-001**: Memory-keeper MCP tool names corrected across 26 governance files — `store`/`retrieve`/`search`/`list`/`delete` replaced with actual API names `context_save`/`context_get`/`context_search`/`context_session_list`/`context_batch_delete` (#111)
 - **BUG-002**: Version bump regex case sensitivity verified already implemented (src/version/ bounded context with case-insensitive regex) (#132)
+- **BUG-005**: Hook tests rewritten from `scripts/tests/` to `tests/` targeting CLI enforcement — deleted `test_hooks.py`, `test_patterns.py`, removed pytest.ini `--ignore` entries (#214)
+- **BUG-007**: 8 broken mkdocs anchor links fixed across 7 docs files — heading renames in INSTALLATION.md, missing References section in rescore report, truncated nav-table slugs in voice scores (#213)
 - 8 bypass vectors closed: null byte injection, non-string type confusion, subshell cd evasion, multi-space git push, two-stage download-execute, non-rm destructive deletion, path suffix false positives
 - Claude Code settings migrated from deprecated fields to schema-valid configuration — removed invalid `hooks`, `stash`, `grep` fields (#180)
 - Skill-level permission entries added to `settings.local.json` so proactive skill invocations (H-22) don't prompt for permission (#181)
 - Deprecated Bash command patterns (`/bin/bash`, `bash -c`) replaced with direct command syntax in all settings permission entries (#182)
+- `pymdown-extensions` upgraded to 10.21.2 — fixes `filename=None` crash with Pygments 2.20.0 in mkdocs code block rendering
+- Flaky 50-file batch performance test thresholds relaxed from 500ms to 1000ms to handle pre-commit hook concurrent load
 
 ### Changed
 - `hooks.json`: PreToolUse consolidated from dual hooks (standalone script + CLI) to single CLI path; NotebookEdit added to matcher
+- `hooks.json`: SubagentStop consolidated from dual hooks (standalone handoff script + CLI lifecycle) to single CLI path — handoff orchestration superseded by `/orchestration` skill (#178)
 - `hooks/pre-tool-use.py`: Updated wrapper with consolidation documentation
-- `scripts/pre_tool_use.py`: Marked DEPRECATED — superseded by SecurityEnforcementEngine
 - `version-bump.yml`: `workflow_dispatch` now respects `[skip-bump]` marker to prevent double-bumping (F-004)
+- `ci.yml`: Removed redundant `uv run python scripts/validate-agent-frontmatter.py` step — P-003 check now included in `uv run jerry agents validate-frontmatter` (#193)
+- `ValidateFrontmatterCommandHandler`: Split from 1 file (H-10 violation) into 4 files — `validate_frontmatter_command.py`, `validate_frontmatter_command_handler.py`, `frontmatter_file_result.py`, `validate_frontmatter_result.py` (#193)
+- `ValidateFrontmatterCommandHandler`: P-003 Agent/Task tool restriction check ported from standalone script — detects delegation tools in non-T5 agents with governance.yaml tier lookup and fail-closed semantics (#193)
+
+### Removed
+- `scripts/pre_tool_use.py` — deleted, all security enforcement ported to `SecurityEnforcementEngine` via CLI (#177)
+- `scripts/subagent_stop.py` — deleted, lifecycle tracking consolidated to CLI handler (#178)
+- `scripts/validate-agent-frontmatter.py` — deleted, all validation including P-003 check ported to CLI handler (#193)
+- `scripts/tests/` — entire directory removed, all tests migrated to `tests/` (#214)
+- `pytest.ini`: Removed `--ignore` entries for `scripts/tests/test_hooks.py` and `scripts/tests/test_patterns.py`; removed `scripts/tests` from `testpaths`
+
+### Added
+- `.gitattributes` — comprehensive cross-platform line ending normalization (136 lines, red-team reviewed) with LF enforcement for all text files, CRLF for Windows scripts, binary markers, semantic diff drivers (#116)
+- `tests/unit/agents/test_p003_agent_tool_restriction.py` — 8 tests for P-003 Agent tool restriction in CLI handler (#193)
+- `docs/audits/h32-parity-audit-20260330.md` — full cross-project H-32 GitHub Issue parity audit (20 projects, 89 issues, 37 entities)
 
 ### Security
 - Memory-keeper MCP tool names corrected from wrong names (`store`/`retrieve`) to actual API names (`context_save`/`context_get`) in `.claude/settings.local.json`; wildcard `mcp__memory-keeper__*` retained for trusted server access
+- P-003 enforcement consolidated: Agent/Task tool restriction now enforced by single CLI handler with fail-closed governance.yaml lookup, replacing dual-path enforcement (standalone script + CLI) (#193)
 
 ## [0.28.0] - 2026-03-12
 

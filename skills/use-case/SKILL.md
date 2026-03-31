@@ -1,22 +1,8 @@
 ---
 name: use-case
-description: >-
-  Guided use case authoring and decomposition using Cockburn's 12-step writing
-  process and Jacobson UC 2.0 progressive narrative levels. Creates structured
-  use case artifacts with YAML frontmatter validated against
-  use-case-realization-v1.schema.json. Decomposes use cases into
-  implementation-ready slices with INVEST criteria verification and produces
-  realization interaction sequences for downstream /test-spec and
-  /contract-design consumption. Invoke when writing, creating, authoring,
-  elaborating, slicing, decomposing, or realizing use cases.
+description: Guided use case authoring and decomposition using Cockburn's 12-step writing process and Jacobson UC 2.0 progressive narrative levels. Creates structured use case artifacts with YAML frontmatter validated against use-case-realization-v1.schema.json. Decomposes use cases into implementation-ready slices with INVEST criteria verification and produces realization interaction sequences for downstream /test-spec and /contract-design consumption. Invoke when writing, creating, authoring, elaborating, slicing, decomposing, or realizing use cases.
 version: "1.0.0"
-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 activation-keywords:
   - "use case"
   - "use-case"
