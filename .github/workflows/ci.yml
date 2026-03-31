@@ -312,6 +312,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@e06108dd0aef18192324c70427afc47652e63a82 # v7.5.0
+        with:
+          version: "0.10.9"
+
       - name: Install dependencies (pip)
         run: |
           python -m pip install --upgrade pip
@@ -321,10 +326,9 @@ jobs:
       - name: Run tests with coverage
         shell: bash
         run: |
-          # Exclude subprocess tests (require uv) - they run in cli-integration job
           # Exclude llm tests - they are slow, expensive, and run on-demand
           pytest \
-            -m "not subprocess and not llm" \
+            -m "not llm" \
             --cov=src \
             --cov-branch \
             --cov-report=xml \
