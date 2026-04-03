@@ -2,6 +2,7 @@
 name: pe-constraint-gen
 description: NPT Constraint Generator agent — takes user intent descriptions and produces properly formatted NPT-009/NPT-013 constraints with XML wrapping for agent definitions, rule files, and skill documentation. Invoke when generating forbidden actions or behavioral constraints.
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep
 ---
 <identity>

@@ -156,7 +156,7 @@ class HooksPromptSubmitHandler:
                 fill_estimate = self._context_fill_estimator.estimate(transcript_path)
                 tag = self._context_fill_estimator.generate_context_monitor_tag(fill_estimate)
                 context_parts.append(tag)
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 print(
                     f"[hooks/prompt-submit] Context fill estimation failed: {exc}",
                     file=sys.stderr,
@@ -183,7 +183,7 @@ class HooksPromptSubmitHandler:
             reinforcement = self._reinforcement_engine.generate_reinforcement()
             if reinforcement.preamble:
                 context_parts.append(reinforcement.preamble)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/prompt-submit] Reinforcement generation failed: {exc}",
                 file=sys.stderr,
@@ -214,7 +214,7 @@ class HooksPromptSubmitHandler:
             if state is None:
                 return None
             return ThresholdTier(state.last_tier)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/prompt-submit] State file read failed: {exc}",
                 file=sys.stderr,
@@ -280,7 +280,7 @@ class HooksPromptSubmitHandler:
                 "d" if effective_tier == ThresholdTier.EMERGENCY else "c",
                 checkpoint.checkpoint_id,
             )
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/prompt-submit] AE-006 auto-checkpoint failed: {exc}",
                 file=sys.stderr,

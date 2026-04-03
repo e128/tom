@@ -162,7 +162,7 @@ Request a specific agent:
 For programmatic invocation within workflows:
 
 ```python
-Task(
+Agent(
     description="pe-constraint-gen: Generate NPT-013 constraints",
     subagent_type="general-purpose",
     prompt="""

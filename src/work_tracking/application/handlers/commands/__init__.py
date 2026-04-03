@@ -26,9 +26,9 @@ from .create_work_item_command_handler import CreateWorkItemCommandHandler
 from .start_work_item_command_handler import StartWorkItemCommandHandler
 
 __all__ = [
-    "CreateWorkItemCommandHandler",
-    "StartWorkItemCommandHandler",
-    "CompleteWorkItemCommandHandler",
     "BlockWorkItemCommandHandler",
     "CancelWorkItemCommandHandler",
+    "CompleteWorkItemCommandHandler",
+    "CreateWorkItemCommandHandler",
+    "StartWorkItemCommandHandler",
 ]

@@ -135,7 +135,7 @@ class HooksPreCompactHandler:
         if transcript_path:
             try:
                 fill_estimate = self._context_fill_estimator.estimate(transcript_path)
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 print(
                     f"[hooks/pre-compact] Context fill estimation failed: {exc}",
                     file=sys.stderr,
@@ -154,7 +154,7 @@ class HooksPreCompactHandler:
             checkpoint_id = checkpoint.checkpoint_id
             response["checkpoint_id"] = checkpoint_id
             logger.info("Checkpoint created: %s", checkpoint_id)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/pre-compact] Checkpoint creation failed: {exc}",
                 file=sys.stderr,
@@ -168,7 +168,7 @@ class HooksPreCompactHandler:
             if abandoned_session_id:
                 response["session_id"] = abandoned_session_id
                 logger.info("Session abandoned (reason=compaction): %s", abandoned_session_id)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/pre-compact] Session abandonment failed: {exc}",
                 file=sys.stderr,
@@ -212,7 +212,7 @@ class HooksPreCompactHandler:
                 fill_estimate.tier.name,
                 fill_estimate.token_count,
             )
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/pre-compact] State store save failed: {exc}",
                 file=sys.stderr,

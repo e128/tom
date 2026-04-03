@@ -24,8 +24,8 @@ from .session_events import (
 )
 
 __all__ = [
-    "SessionCreated",
-    "SessionCompleted",
     "SessionAbandoned",
+    "SessionCompleted",
+    "SessionCreated",
     "SessionProjectLinked",
 ]

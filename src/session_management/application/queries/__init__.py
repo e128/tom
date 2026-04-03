@@ -16,9 +16,9 @@ from .scan_projects import ScanProjectsQuery
 from .validate_project import ValidateProjectQuery
 
 __all__ = [
-    "ScanProjectsQuery",
-    "ValidateProjectQuery",
     "GetNextProjectNumberQuery",
     "GetProjectContextQuery",
     "GetSessionStatusQuery",
+    "ScanProjectsQuery",
+    "ValidateProjectQuery",
 ]

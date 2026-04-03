@@ -2,7 +2,9 @@
 name: orch-planner
 description: Orchestration Planner agent for multi-agent workflow design, pipeline architecture, and state schema definition
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: purple
 ---
 <agent>
 
@@ -281,7 +283,7 @@ metrics:
 ### Invocation Template
 
 ```python
-Task(
+Agent(
     description="orch-planner: Create workflow plan",
     subagent_type="general-purpose",
     prompt="""

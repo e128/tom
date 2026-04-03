@@ -12,7 +12,7 @@ from .create_session_command_handler import CreateSessionCommandHandler
 from .end_session_command_handler import EndSessionCommandHandler
 
 __all__ = [
+    "AbandonSessionCommandHandler",
     "CreateSessionCommandHandler",
     "EndSessionCommandHandler",
-    "AbandonSessionCommandHandler",
 ]

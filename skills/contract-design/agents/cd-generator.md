@@ -11,8 +11,9 @@ description: >-
   Activity 5. Invoke when generating, creating, deriving, or mapping use case
   interactions to API contracts.
 model: opus
+effort: high
 tools:
-  - Read
+color: blue  - Read
   - Write
   - Edit
   - Glob

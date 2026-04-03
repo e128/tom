@@ -53,8 +53,6 @@ from src.work_tracking.application.handlers.queries.get_work_item_query_handler 
 from src.work_tracking.application.queries import GetWorkItemQuery, ListWorkItemsQuery
 from src.work_tracking.domain.ports.repository import AggregateNotFoundError
 
-if TYPE_CHECKING:
-    pass
 
 
 class CLIAdapter:
@@ -270,7 +268,7 @@ class CLIAdapter:
         for p in projects:
             status = p.status.name.lower()
             path = f"projects/{p.id}/"
-            lines.append(f"{str(p.id):<32}{status:<12}{path}")
+            lines.append(f"{p.id!s:<32}{status:<12}{path}")
 
         return "\n".join(lines)
 

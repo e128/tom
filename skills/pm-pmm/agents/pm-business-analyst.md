@@ -8,6 +8,7 @@ description: >
   Trigger keywords: business case, financial model, market sizing, TAM,
   pricing model, unit economics, LTV, CAC, break-even, NPV, feasibility.
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 <identity>

@@ -96,9 +96,9 @@ TOPOLOGY:
 
 **Invocation:**
 ```
-Task(ps-researcher, "Research API authentication patterns")
-Task(ps-analyst, "Analyze this error log")
-Task(nse-requirements, "Review these requirements")
+Agent(ps-researcher, "Research API authentication patterns")
+Agent(ps-analyst, "Analyze this error log")
+Agent(nse-requirements, "Review these requirements")
 ```
 
 **Use When:**
@@ -139,13 +139,13 @@ state_a       state_b       state_c       state_d
 
 **Invocation:**
 ```
-1. Task(ps-researcher, "Research {topic}")
+1. Agent(ps-researcher, "Research {topic}")
    → research_output
-2. Task(ps-analyst, "Analyze from research_output")
+2. Agent(ps-analyst, "Analyze from research_output")
    → analysis_output
-3. Task(ps-architect, "Design from analysis_output")
+3. Agent(ps-architect, "Design from analysis_output")
    → architecture_output
-4. Task(ps-reviewer, "Review architecture_output")
+4. Agent(ps-reviewer, "Review architecture_output")
    → review_output
 ```
 
@@ -202,9 +202,9 @@ TOPOLOGY:
 **Invocation (Parallel):**
 ```
 # Launch in parallel (single message with multiple Task calls)
-Task(ps-researcher, "Research approach A")
-Task(ps-researcher, "Research approach B")
-Task(ps-researcher, "Research approach C")
+Agent(ps-researcher, "Research approach A")
+Agent(ps-researcher, "Research approach B")
+Agent(ps-researcher, "Research approach C")
 ```
 
 **Use When:**
@@ -270,7 +270,7 @@ TOPOLOGY:
 **Invocation:**
 ```
 # After fan-out completes (barrier)
-Task(ps-synthesizer, "Synthesize findings from: output_a, output_b, output_c")
+Agent(ps-synthesizer, "Synthesize findings from: output_a, output_b, output_c")
 ```
 
 **Synthesizer Agents:**
@@ -400,14 +400,14 @@ TOPOLOGY:
 **Invocation:**
 ```
 # Divergent phase (parallel)
-Task(ps-architect, "Design Option A: microservices")
-Task(ps-architect, "Design Option B: monolith")
-Task(ps-architect, "Design Option C: serverless")
+Agent(ps-architect, "Design Option A: microservices")
+Agent(ps-architect, "Design Option B: monolith")
+Agent(ps-architect, "Design Option C: serverless")
 
 # [BARRIER]
 
 # Convergent phase
-Task(ps-analyst, "Compare options, recommend best path")
+Agent(ps-analyst, "Compare options, recommend best path")
 ```
 
 **Use When:**
@@ -476,12 +476,12 @@ TOPOLOGY:
 **Invocation:**
 ```
 # Producer creates artifact
-Task(ps-architect, "Design authentication system")
+Agent(ps-architect, "Design authentication system")
 
 # Review gate
-Task(ps-reviewer, "Review design against criteria")
+Agent(ps-reviewer, "Review design against criteria")
 # OR for NASA reviews:
-Task(nse-reviewer, "Conduct SRR", review_type="SRR")
+Agent(nse-reviewer, "Conduct SRR", review_type="SRR")
 ```
 
 **Reviewer Agents:**
@@ -568,10 +568,10 @@ quality_score = 0
 
 while quality_score < 0.85 and iteration < 3:
     # Generate/refine
-    Task(ps-architect, f"{'Create' if iteration == 0 else 'Refine'} solution")
+    Agent(ps-architect, f"{'Create' if iteration == 0 else 'Refine'} solution")
 
     # Critique
-    result = Task(ps-critic, "Evaluate solution quality, return score 0-1")
+    result = Agent(ps-critic, "Evaluate solution quality, return score 0-1")
     quality_score = result.score
     iteration += 1
 

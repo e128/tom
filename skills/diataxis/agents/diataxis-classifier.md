@@ -6,6 +6,7 @@ description: >
   quadrant, confidence, and decomposition recommendation. T1 read-only, does not invoke writer agents.
 model: haiku
 effort: low
+color: yellow
 tools: Read, Glob, Grep
 ---
 <!-- Navigation: Identity | Purpose | Input | Capabilities | Methodology | Output | Guardrails -->

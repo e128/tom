@@ -247,7 +247,7 @@ class ContextEstimateHandler:
 
         try:
             agents = self._sub_agent_reader.read_sub_agents(context_window_size)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             logger.warning("Sub-agent reader failed: %s", exc)
             return self._empty_sub_agents()
 

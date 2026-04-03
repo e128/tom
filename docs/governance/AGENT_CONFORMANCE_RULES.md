@@ -106,19 +106,19 @@ All PS agents MUST include the following YAML frontmatter sections:
 
 ```bash
 # Check all agents
-python3 scripts/check_agent_conformance.py
+uv run python scripts/check_agent_conformance.py
 
 # Check only NSE agents
-python3 scripts/check_agent_conformance.py --family nse
+uv run python scripts/check_agent_conformance.py --family nse
 
 # Check only PS agents
-python3 scripts/check_agent_conformance.py --family ps
+uv run python scripts/check_agent_conformance.py --family ps
 
 # Output as JSON (for CI)
-python3 scripts/check_agent_conformance.py --json
+uv run python scripts/check_agent_conformance.py --json
 
 # Verbose output (show passing checks)
-python3 scripts/check_agent_conformance.py --verbose
+uv run python scripts/check_agent_conformance.py --verbose
 ```
 
 ### Pre-commit Hook
@@ -142,7 +142,7 @@ pre-commit run check-agent-conformance --all-files
 For CI pipelines, use JSON output and check exit code:
 
 ```bash
-python3 scripts/check_agent_conformance.py --json > conformance-report.json
+uv run python scripts/check_agent_conformance.py --json > conformance-report.json
 if [ $? -ne 0 ]; then
   echo "Conformance check failed"
   exit 1

@@ -3,6 +3,7 @@ name: orch-tracker
 description: Orchestration State Tracker agent for updating workflow state, registering artifacts, and creating checkpoints
 model: haiku
 effort: low
+color: purple
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 <agent>
@@ -305,7 +306,7 @@ quality:
 ### Invocation Template
 
 ```python
-Task(
+Agent(
     description="orch-tracker: Update state",
     subagent_type="general-purpose",
     prompt="""

@@ -50,8 +50,6 @@ from src.interface.cli.adapter import CLIAdapter
 from src.interface.cli.model_profiles import resolve_model_config
 from src.interface.cli.parser import create_parser
 
-if TYPE_CHECKING:
-    pass
 
 
 def create_cli_adapter() -> CLIAdapter:

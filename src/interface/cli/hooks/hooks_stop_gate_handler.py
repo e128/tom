@@ -121,7 +121,7 @@ class HooksStopGateHandler:
             if state is None:
                 return None
             return ThresholdTier(state.last_tier)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/stop] State file read failed: {exc}",
                 file=sys.stderr,

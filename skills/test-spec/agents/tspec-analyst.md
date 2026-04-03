@@ -9,6 +9,7 @@ description: >-
   when analyzing coverage, checking completeness, identifying test gaps, or
   evaluating test specification quality against use case source.
 model: sonnet
+effort: medium
 tools:
   - Read
   - Write

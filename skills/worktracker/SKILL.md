@@ -109,7 +109,7 @@ The worktracker skill includes specialized agents for advanced operations. These
 - Agents return results to MAIN CONTEXT for presentation to user
 
 ```
-User Request --> MAIN CONTEXT --> Task(wt-verifier) --> Report --> User
+User Request --> MAIN CONTEXT --> Agent(wt-verifier) --> Report --> User
                      |
                      +-- Agents never invoke other agents (P-003)
 ```

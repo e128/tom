@@ -1,5 +1,5 @@
 # Agent System
-*Updated: 2026-04-03T16:00:00Z*
+*Updated: 2026-04-03T18:00:00Z*
 
 Agents are specialized subagents invoked via the Agent tool by orchestrators. Single-file architecture (H-34): `.md` file contains both official Claude Code YAML frontmatter and the system prompt as the markdown body.
 
@@ -45,8 +45,8 @@ Expertise: landscape surveys, external documentation research
 
 ## Deprecations (April 2026)
 
-- **`Task` tool** → renamed to `Agent` in v2.1.63. `Task` still works as a backward-compatible alias. New agents use `Agent`.
-- **`TaskOutput` tool** → deprecated in v2.1.89. Use `Read` on the task output file path instead.
+- **`Task` tool** → renamed to `Agent` in v2.1.63. All skill docs and agent invocation examples have been updated. `Task` remains a backward-compatible alias but is no longer used in this repo.
+- **`TaskOutput` tool** → deprecated in v2.1.89. Use `Read` on the task output file path instead. No active usage in this repo.
 
 ## Cognitive Modes
 
@@ -68,22 +68,36 @@ One nesting level only: orchestrator (T5) → workers (T1–T4). Workers cannot 
 
 ## Effort Field (ET-M-001)
 
-`effort` maps to criticality level. All agents that document "Reasoning effort: Medium" in body text MUST also declare `effort: medium` in frontmatter.
+`effort` maps to criticality level. All 85 agent files now declare `effort`. Orchestrators and T5 agents use `high`.
 
 | Criticality | effort value | Example agents |
 |-------------|-------------|----------------|
-| C1 (haiku, mechanical) | `low` | ps-validator, ts-formatter, adv-selector |
-| C2 (sonnet, standard) | `medium` | ux-heart-analyst, ux-kano-analyst, ps-analyst |
-| C3 (opus, significant) | `high` | (declare explicitly) |
-| C4 (opus, critical/irreversible) | `max` | (Opus 4.6 only) |
+| C1 (haiku, mechanical) | `low` | ps-validator, ts-formatter, adv-selector, diataxis-classifier |
+| C2 (sonnet, standard) | `medium` | ps-analyst, ps-critic, orch-planner, eng-lead |
+| C3 (opus, significant) | `high` | ps-researcher, ps-architect, eng-architect, ux-orchestrator |
+| C4 (opus, critical/irreversible) | `max` | (Opus 4.6 only — not currently assigned) |
 
 ```yaml
 model: haiku
-effort: low   # required for haiku agents per ET-M-001
+effort: low
 
 model: sonnet
-effort: medium  # required when body declares "Reasoning effort: Medium"
+effort: medium
+
+model: opus
+effort: high
 ```
+
+## Color Field (v2.1.91)
+
+`color` is a UI-only display hint for the Claude Code agent panel. Color assignments in this repo:
+
+| Color | Agent group |
+|-------|-------------|
+| `purple` | Orchestrators (ux-orchestrator, orch-planner, orch-synthesizer, orch-tracker, red-lead) |
+| `blue` | Opus research/architecture (ps-researcher, ps-architect, eng-architect, nse-architecture, etc.) |
+| `red` | Security/adversarial (adv-*, eng-security, eng-devsecops, red-recon through red-social) |
+| `yellow` | Haiku validators/reporters (ps-validator, ps-reporter, ts-parser, nse-reporter, etc.) |
 
 ## MCP Servers
 

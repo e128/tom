@@ -38,7 +38,7 @@ The Work Tracker automatically **detects, diagnoses, and recovers** from errors 
 
 ```bash
 # Run any command with --show-health to see health status
-python3 scripts/wt.py --show-health --tracker docs/plans/my-project.md "show progress"
+uv run python scripts/wt.py --show-health --tracker docs/plans/my-project.md "show progress"
 
 # Example output:
 # Overall progress: 85%
@@ -46,7 +46,7 @@ python3 scripts/wt.py --show-health --tracker docs/plans/my-project.md "show pro
 # Health: HEALTHY (100.0% success rate)
 
 # With --verbose for more details:
-python3 scripts/wt.py --show-health --verbose --tracker docs/plans/my-project.md "show progress"
+uv run python scripts/wt.py --show-health --verbose --tracker docs/plans/my-project.md "show progress"
 # Health: HEALTHY (100.0% success rate)
 #   Operations: 1
 #   Failures: 0
@@ -119,7 +119,7 @@ Operations are validated at four levels before execution:
 Use `--show-health` flag to see health status after any operation:
 
 ```bash
-python3 scripts/wt.py --show-health --tracker ... "your command"
+uv run python scripts/wt.py --show-health --tracker ... "your command"
 
 # Output includes:
 Health: HEALTHY (99.5% success rate)
@@ -209,7 +209,7 @@ Command: create initiative 20
 
 **Bypass for trusted workflows:**
 ```bash
-python3 scripts/wt.py --skip-consent --tracker ... "create initiative 20"
+uv run python scripts/wt.py --skip-consent --tracker ... "create initiative 20"
 ```
 
 ---

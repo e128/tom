@@ -31,8 +31,6 @@ from typing import TYPE_CHECKING
 
 from filelock import FileLock
 
-if TYPE_CHECKING:
-    pass
 
 
 class AtomicFileAdapter:

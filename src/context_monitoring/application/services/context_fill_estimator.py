@@ -154,7 +154,7 @@ class ContextFillEstimator:
                 context_window=context_window,
                 context_window_source=context_window_source,
             )
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             logger.warning(
                 "Context estimation failed for %s: %s (fail-open -> NOMINAL)",
                 transcript_path,

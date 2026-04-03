@@ -197,7 +197,7 @@ class InMemoryEventStore:
             True if stream was deleted, False if it didn't exist
         """
         with self._lock:
-            if stream_id in self._streams and self._streams[stream_id]:
+            if self._streams.get(stream_id):
                 del self._streams[stream_id]
                 return True
             return False

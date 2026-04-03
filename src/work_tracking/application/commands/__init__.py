@@ -26,9 +26,9 @@ from .create_work_item_command import CreateWorkItemCommand
 from .start_work_item_command import StartWorkItemCommand
 
 __all__ = [
-    "CreateWorkItemCommand",
-    "StartWorkItemCommand",
-    "CompleteWorkItemCommand",
     "BlockWorkItemCommand",
     "CancelWorkItemCommand",
+    "CompleteWorkItemCommand",
+    "CreateWorkItemCommand",
+    "StartWorkItemCommand",
 ]

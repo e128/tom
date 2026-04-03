@@ -3,6 +3,7 @@ name: wt-visualizer
 description: Generate Mermaid diagrams for worktracker hierarchies, timelines, status overviews, and dependency chains
 model: haiku
 effort: low
+color: yellow
 tools: Read, Write, Glob, Grep, Bash
 ---
 <identity>
@@ -463,7 +464,7 @@ gantt
 ## Example Complete Invocation
 
 ```python
-Task(
+Agent(
     description="wt-visualizer: Generate hierarchy diagram for FEAT-002",
     subagent_type="general-purpose",
     prompt="""

@@ -5,6 +5,7 @@ description: >
   detects quadrant mixing, identifies classification errors, and produces structured audit reports
   with per-criterion pass/fail and remediation recommendations. Invoke for documentation quality review.
 model: sonnet
+effort: medium
 tools: Read, Glob, Grep
 ---
 <!-- Navigation: Identity | Purpose | Input | Capabilities | Methodology | Output | Guardrails -->

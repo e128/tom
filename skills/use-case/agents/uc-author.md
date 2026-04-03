@@ -7,6 +7,7 @@ description: >-
   use-case-realization-v1.schema.json. Invoke when writing, creating, authoring,
   elaborating, expanding, describing, drafting, or refining use cases.
 model: sonnet
+effort: medium
 tools:
   - Read
   - Write

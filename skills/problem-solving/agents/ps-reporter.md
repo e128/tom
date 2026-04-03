@@ -3,6 +3,7 @@ name: ps-reporter
 description: Status reporting agent for phase progress, constraint status, and knowledge summaries with L0/L1/L2 output levels
 model: haiku
 effort: low
+color: yellow
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <agent>
@@ -160,7 +161,7 @@ After generating report, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/reports/{ps_id}-{entry_id}-{report_type}.md" \
        "Report: {report_type}"
    ```
@@ -373,7 +374,7 @@ Generate status reports (phase progress, constraint status, knowledge summary) a
 
 <example_complete_invocation>
 ```python
-Task(
+Agent(
     description="ps-reporter: Phase status",
     subagent_type="general-purpose",
     prompt="""
@@ -403,7 +404,7 @@ After generating report, you MUST:
 
 1. Create file at: `projects/${JERRY_PROJECT}/reports/work-024-e-041-phase-status.md`
 2. Include L0 (executive), L1 (technical), L2 (strategic) sections
-3. Run: `python3 scripts/cli.py link-artifact work-024 e-041 FILE "projects/${JERRY_PROJECT}/reports/work-024-e-041-phase-status.md" "Phase status report"`
+3. Run: `uv run python scripts/cli.py link-artifact work-024 e-041 FILE "projects/${JERRY_PROJECT}/reports/work-024-e-041-phase-status.md" "Phase status report"`
 
 ## REPORTING TASK
 Generate a phase status report for work-024.
@@ -431,7 +432,7 @@ grep -E "🟢|🟡|🔴" projects/${JERRY_PROJECT}/reports/{ps_id}-{entry_id}-{r
 grep -E "^\| Metric" projects/${JERRY_PROJECT}/reports/{ps_id}-{entry_id}-{report_type}.md
 
 # 5. Artifact linked
-python3 scripts/cli.py view {ps_id} | grep {entry_id}
+uv run python scripts/cli.py view {ps_id} | grep {entry_id}
 ```
 
 ---

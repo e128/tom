@@ -58,7 +58,7 @@ The `skills/shared/` directory contains reusable infrastructure that multiple To
 **Usage:** Use the composition script to generate complete agent templates:
 
 ```bash
-python3 scripts/compose_agent_template.py --domain {ps|nse} --output {output-path}
+uv run python scripts/compose_agent_template.py --domain {ps|nse} --output {output-path}
 ```
 
 **Sections:**
@@ -195,7 +195,7 @@ When creating a new agent:
 
 1. Determine domain (ps, nse, orch, etc.)
 2. Create domain extension file if it doesn't exist
-3. Run composition script: `python3 scripts/compose_agent_template.py --domain {domain}`
+3. Run composition script: `uv run python scripts/compose_agent_template.py --domain {domain}`
 4. Replace all `{placeholders}` with agent-specific content
 5. Validate against constitution (P-002, P-003, P-004, P-022)
 6. Register agent in skill's SKILL.md agent table
@@ -229,7 +229,7 @@ Common tasks for skill authors and which shared resource to use:
 
 1. **Pick your domain** - Determine if the agent belongs to `ps` (problem-solving), `nse` (NASA SE), or a new domain
 2. **Check for domain extension** - Look for `{DOMAIN}_EXTENSION.md` in your skill directory (e.g., `PS_EXTENSION.md`)
-3. **Run composition** - `python3 scripts/compose_agent_template.py --domain {domain} --output agents/{agent-name}.md`
+3. **Run composition** - `uv run python scripts/compose_agent_template.py --domain {domain} --output agents/{agent-name}.md`
 4. **Fill placeholders** - Replace all 9 `{PLACEHOLDER}` values with agent-specific content
 5. **Validate** - Ensure P-002 (file persistence), P-003 (no recursive subagents), P-022 (no deception) compliance
 6. **Register** - Add the agent to your skill's SKILL.md agent table

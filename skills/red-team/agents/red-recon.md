@@ -3,7 +3,9 @@ name: red-recon
 description: Reconnaissance Specialist for /red-team. Performs OSINT, network enumeration, service discovery, technology fingerprinting, and attack surface mapping. Feeds adversary TTPs to eng-architect
   via Cross-Skill Integration Point 1 (Threat-Informed Architecture). Operates within reconnaissance scope of the authorized target allowlist.
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: red
 mcpServers:
   context7: true
 ---

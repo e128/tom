@@ -139,7 +139,7 @@ class StalenessDetector:
         """
         try:
             return self._do_evaluate(tool_target_path, reference_time)
-        except Exception:  # noqa: BLE001 -- Fail-open by design
+        except Exception:
             return _PASSTHROUGH
 
     def _do_evaluate(

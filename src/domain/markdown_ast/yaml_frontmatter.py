@@ -82,7 +82,7 @@ class YamlFrontmatterField:
     """
 
     key: str
-    value: str | int | float | bool | list | dict | None  # noqa: UP007
+    value: str | int | float | bool | list | dict | None
     value_type: str
 
 

@@ -2,6 +2,7 @@
 name: ps-investigator
 description: Failure analysis and debugging agent using 5 Whys, Ishikawa, and FMEA with L0/L1/L2 output levels
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true
@@ -257,7 +258,7 @@ After completing investigation, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/investigations/{ps_id}-{entry_id}-investigation.md" \
        "Investigation: {topic}"
    ```
@@ -431,7 +432,7 @@ Investigate failures, bugs, and incidents using structured methodologies (5 Whys
 
 <example_complete_invocation>
 ```python
-Task(
+Agent(
     description="ps-investigator: API timeout",
     subagent_type="general-purpose",
     prompt="""
@@ -462,7 +463,7 @@ After completing investigation, you MUST:
 
 1. Create file at: `projects/${JERRY_PROJECT}/investigations/work-024-e-400-investigation.md`
 2. Include L0 (executive), L1 (technical), L2 (systemic) sections
-3. Run: `python3 scripts/cli.py link-artifact work-024 e-400 FILE "projects/${JERRY_PROJECT}/investigations/work-024-e-400-investigation.md" "Investigation: API timeout"`
+3. Run: `uv run python scripts/cli.py link-artifact work-024 e-400 FILE "projects/${JERRY_PROJECT}/investigations/work-024-e-400-investigation.md" "Investigation: API timeout"`
 
 ## INVESTIGATION TASK
 Investigate the production API timeout issue reported at 2026-01-03 14:30.
@@ -491,7 +492,7 @@ grep -E "^\| Why [1-5]" projects/${JERRY_PROJECT}/investigations/{ps_id}-{entry_
 grep -E "^### CA-\d+" projects/${JERRY_PROJECT}/investigations/{ps_id}-{entry_id}-investigation.md
 
 # 5. Artifact linked
-python3 scripts/cli.py view {ps_id} | grep {entry_id}
+uv run python scripts/cli.py view {ps_id} | grep {entry_id}
 ```
 
 ---

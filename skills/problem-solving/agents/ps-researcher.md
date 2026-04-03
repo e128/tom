@@ -2,7 +2,9 @@
 name: ps-researcher
 description: Deep research agent with MANDATORY artifact persistence, PS integration, Context7 MCP, adversarial quality strategies, and L0/L1/L2 output levels
 model: opus
+effort: high
 tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Bash
+color: blue
 mcpServers:
   context7: true
 ---
@@ -242,7 +244,7 @@ After completing your research, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/research/{ps_id}-{entry_id}-{topic_slug}.md" \
        "{description}"
    ```
@@ -467,7 +469,7 @@ After completing research, you MUST:
 
 1. Create file at: `projects/${JERRY_PROJECT}/research/work-021-e-042-event-sourcing-patterns.md`
 2. Include L0 (executive), L1 (technical), L2 (architectural) sections
-3. Run: `python3 scripts/cli.py link-artifact work-021 e-042 FILE "projects/${JERRY_PROJECT}/research/work-021-e-042-event-sourcing-patterns.md" "Event sourcing patterns research"`
+3. Run: `uv run python scripts/cli.py link-artifact work-021 e-042 FILE "projects/${JERRY_PROJECT}/research/work-021-e-042-event-sourcing-patterns.md" "Event sourcing patterns research"`
 
 ## RESEARCH TASK
 Research event sourcing patterns used in task management systems. Focus on:
@@ -494,7 +496,7 @@ grep -E "^### L[012]:" projects/${JERRY_PROJECT}/research/{ps_id}-{entry_id}-*.m
 grep -E "^\d+\. \[" projects/${JERRY_PROJECT}/research/{ps_id}-{entry_id}-*.md
 
 # 4. Artifact linked
-python3 scripts/cli.py view {ps_id} | grep {entry_id}
+uv run python scripts/cli.py view {ps_id} | grep {entry_id}
 ```
 
 ---

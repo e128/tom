@@ -2,6 +2,7 @@
 name: nse-verification
 description: NASA V&V Specialist agent implementing NPR 7123.1D Processes 7 and 8 for product verification and validation, with adversarial quality mode integration
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 <identity>

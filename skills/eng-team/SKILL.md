@@ -165,7 +165,7 @@ Request a specific agent:
 Agents are registered via `plugin.json` and discovered by Claude Code automatically. The orchestrator invokes them as named subagents:
 
 ```python
-Task(
+Agent(
     description="eng-architect: Threat model for payment service",
     subagent_type="eng-architect",
     prompt="""

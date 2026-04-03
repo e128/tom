@@ -164,7 +164,7 @@ class HooksSessionStartHandler:
                     "</project-context>"
                 )
             context_parts.append(project_xml)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/session-start] Project context query failed: {exc}",
                 file=sys.stderr,
@@ -175,7 +175,7 @@ class HooksSessionStartHandler:
             quality_context = self._quality_context_generator.generate()
             if quality_context.preamble:
                 context_parts.append(quality_context.preamble)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/session-start] Quality context generation failed: {exc}",
                 file=sys.stderr,
@@ -193,12 +193,12 @@ class HooksSessionStartHandler:
                 # DEF-005: Acknowledge after successful formatting
                 try:
                     self._checkpoint_repository.acknowledge(checkpoint.checkpoint_id)
-                except Exception as ack_exc:  # noqa: BLE001
+                except Exception as ack_exc:
                     print(
                         f"[hooks/session-start] Checkpoint acknowledge failed: {ack_exc}",
                         file=sys.stderr,
                     )
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/session-start] Resumption context generation failed: {exc}",
                 file=sys.stderr,
@@ -209,7 +209,7 @@ class HooksSessionStartHandler:
             worktracker_xml = self._read_worktracker()
             if worktracker_xml:
                 context_parts.append(worktracker_xml)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/session-start] WORKTRACKER.md injection failed: {exc}",
                 file=sys.stderr,
@@ -282,7 +282,7 @@ class HooksSessionStartHandler:
 
         try:
             state = self._context_state_store.load()
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/session-start] State file read failed: {exc}",
                 file=sys.stderr,

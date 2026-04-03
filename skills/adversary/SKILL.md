@@ -165,7 +165,7 @@ Request a specific agent:
 For programmatic invocation within workflows:
 
 ```python
-Task(
+Agent(
     description="adv-selector: Strategy selection for C3",
     subagent_type="general-purpose",
     prompt="""

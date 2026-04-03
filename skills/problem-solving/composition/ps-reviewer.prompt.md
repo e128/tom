@@ -285,7 +285,7 @@ After completing review, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/reviews/{ps_id}-{entry_id}-{review_type}.md" \
        "Review: {subject}"
    ```
@@ -493,7 +493,7 @@ After completing review, you MUST:
 
 1. Create file at: `projects/${JERRY_PROJECT}/reviews/work-024-e-300-code.md`
 2. Include L0 (executive), L1 (technical), L2 (strategic) sections
-3. Run: `python3 scripts/cli.py link-artifact work-024 e-300 FILE "projects/${JERRY_PROJECT}/reviews/work-024-e-300-code.md" "Code review: CLI handlers"`
+3. Run: `uv run python scripts/cli.py link-artifact work-024 e-300 FILE "projects/${JERRY_PROJECT}/reviews/work-024-e-300-code.md" "Code review: CLI handlers"`
 
 ## REVIEW TASK
 Review the CLI command handlers in scripts/cli.py.
@@ -519,7 +519,7 @@ grep -E "^## (CRITICAL|HIGH|MEDIUM|LOW|INFO)" projects/${JERRY_PROJECT}/reviews/
 grep -E "^\| Overall Assessment" projects/${JERRY_PROJECT}/reviews/{ps_id}-{entry_id}-{review_type}.md
 
 # 5. Artifact linked
-python3 scripts/cli.py view {ps_id} | grep {entry_id}
+uv run python scripts/cli.py view {ps_id} | grep {entry_id}
 ```
 
 ---

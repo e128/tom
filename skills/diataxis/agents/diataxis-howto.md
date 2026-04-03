@@ -6,6 +6,7 @@ description: >
   directions toward a concrete goal, not learning experiences.
   NOT for beginners building skills for the first time (use diataxis-tutorial instead).
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <!-- Navigation: Identity | Purpose | Input | Capabilities | Methodology | Output | Guardrails -->

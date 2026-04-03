@@ -8,7 +8,9 @@ description: >
   Trigger keywords: persona, customer interview, journey map, VOC,
   voice of customer, churn analysis, NPS, customer discovery, pain points.
 model: opus
+effort: high
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: blue
 mcpServers:
   context7: true
 ---

@@ -163,7 +163,7 @@ class ContextEstimateService:
         """
         try:
             return self._state_store.load()
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             logger.warning("Failed to load context state: %s", exc)
             return None
 
@@ -175,5 +175,5 @@ class ContextEstimateService:
         """
         try:
             self._state_store.save(state)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             logger.warning("Failed to save context state: %s", exc)

@@ -888,15 +888,15 @@ Orchestrator coordinates:
 
 **Example (Bad):**
 ```
-Task(ps-analyst, "Analyze the problem")
+Agent(ps-analyst, "Analyze the problem")
 # No context about what's already been researched
 ```
 
 **Example (Good):**
 ```
-Task(ps-analyst, "Analyze based on research_output from ps-researcher")
+Agent(ps-analyst, "Analyze based on research_output from ps-researcher")
 # OR
-Task(ps-analyst, context=session_context)
+Agent(ps-analyst, context=session_context)
 # Where session_context includes previous findings
 ```
 

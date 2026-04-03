@@ -140,7 +140,7 @@ class HooksPreToolUseHandler:
                         response["violations"] = security_decision.violations
                     print(json.dumps(response))
                     return 0  # Early termination on security block
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 print(
                     f"[hooks/pre-tool-use] Security engine failed: {exc}",
                     file=sys.stderr,
@@ -162,7 +162,7 @@ class HooksPreToolUseHandler:
                     response["reason"] = decision.reason
                     if decision.criticality_escalation:
                         response["criticality_escalation"] = decision.criticality_escalation
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/pre-tool-use] Enforcement engine failed: {exc}",
                 file=sys.stderr,
@@ -183,7 +183,7 @@ class HooksPreToolUseHandler:
                     response["staleness_warning"] = staleness.warning_message
                     if not existing_reason:
                         response["reason"] = staleness_suffix
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 print(
                     f"[hooks/pre-tool-use] Staleness detection failed: {exc}",
                     file=sys.stderr,

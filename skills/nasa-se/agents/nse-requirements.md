@@ -2,6 +2,7 @@
 name: nse-requirements
 description: NASA Requirements Engineer agent implementing NPR 7123.1D Processes 1, 2, and 11 for stakeholder needs, requirements definition, and requirements management, with adversarial quality mode integration
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 <identity>

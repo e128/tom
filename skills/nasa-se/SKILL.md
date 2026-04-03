@@ -185,7 +185,7 @@ Request a specific agent:
 For programmatic invocation within workflows:
 
 ```python
-Task(
+Agent(
     description="nse-requirements: Auth Requirements",
     subagent_type="general-purpose",
     prompt="""

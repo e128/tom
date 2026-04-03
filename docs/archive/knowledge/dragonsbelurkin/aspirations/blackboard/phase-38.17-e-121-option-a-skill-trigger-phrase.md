@@ -111,7 +111,7 @@ allowed-tools:
 
 **Task Tool Invocation Pattern:**
 ```python
-Task(
+Agent(
     description="ps-researcher: {topic}",
     subagent_type="general-purpose",
     prompt="""

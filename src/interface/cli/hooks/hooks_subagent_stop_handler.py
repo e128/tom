@@ -127,7 +127,7 @@ class HooksSubagentStopHandler:
 
             self._save_lifecycle(lifecycle)
             logger.info("Sub-agent %s recorded as completed", agent_id)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             print(
                 f"[hooks/subagent-stop] Lifecycle record failed: {exc}",
                 file=sys.stderr,

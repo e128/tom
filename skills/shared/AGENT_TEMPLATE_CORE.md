@@ -314,7 +314,7 @@ If invoked after another agent, check session.state for relevant output keys.
 
 ### 1. Use Composition Script
 ```bash
-python3 scripts/compose_agent_template.py --domain {ps|nse} --output {output-path}
+uv run python scripts/compose_agent_template.py --domain {ps|nse} --output {output-path}
 ```
 
 ### 2. Copy Composed Template

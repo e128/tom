@@ -291,14 +291,14 @@ Multiple `SKILL.md` files and `mcp-runbook.md` files across the UX skill tree co
 | `skills/user-experience/SKILL.md` | 186, 498 | Same pattern |
 | `skills/ux-jtbd/SKILL.md` | 223 | Same pattern |
 
-Also stale in SKILL.md invocation code examples: the `Task(` call syntax shown in the "Via Task Tool (orchestrator internal)" sections of sub-skill SKILL.md files (e.g., `ux-ai-first-design/SKILL.md` line 196, `ux-lean-ux/SKILL.md` line 180, etc.) shows `Task(` where it should show `Agent(`. These code samples guide developers on how to invoke agents -- stale syntax here would cause `DeprecationWarning` or confusion in new agent compositions.
+Also stale in SKILL.md invocation code examples: the `Agent(` call syntax shown in the "Via Task Tool (orchestrator internal)" sections of sub-skill SKILL.md files (e.g., `ux-ai-first-design/SKILL.md` line 196, `ux-lean-ux/SKILL.md` line 180, etc.) shows `Agent(` where it should show `Agent(`. These code samples guide developers on how to invoke agents -- stale syntax here would cause `DeprecationWarning` or confusion in new agent compositions.
 
 **Remediation:**
 
 A sweep-and-replace across all UX skill SKILL.md and mcp-runbook.md files:
 - Replace `disallowedTools: [Task]` with `disallowedTools: [Agent]` in all prose documentation
 - Replace `` `disallowedTools: [Task]` `` with `` `disallowedTools: [Agent]` `` in code-block examples
-- Replace `Task(` with `Agent(` in invocation code examples within SKILL.md sections titled "Via Task Tool"
+- Replace `Agent(` with `Agent(` in invocation code examples within SKILL.md sections titled "Via Task Tool"
 - Update section titles "Via Task Tool" to "Via Agent Tool" for consistency
 
 This is a documentation sweep, not a functional change. Given the breadth (estimated 40+ occurrences across 15+ files), a systematic grep-based replacement is recommended rather than manual edits.

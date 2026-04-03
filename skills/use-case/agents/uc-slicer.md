@@ -9,6 +9,7 @@ description: >-
   slicing, decomposing, breaking down, preparing, analyzing, or realizing use
   case slices.
 model: sonnet
+effort: medium
 tools:
   - Read
   - Write

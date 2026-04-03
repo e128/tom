@@ -506,7 +506,7 @@ jer:jer:work-tracker:plan:PLAN-2024-01
 **Unified Implementation**:
 ```python
 @dataclass
-class Task(EntityBase):
+class Agent(EntityBase):
     """
     Unified representation - works for all layers:
     - Property graph vertex (NetworkX)

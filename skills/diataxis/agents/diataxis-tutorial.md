@@ -6,6 +6,7 @@ description: >
   Invoke when users need to learn something new through guided hands-on experience.
   NOT for users who need to quickly accomplish a task (use diataxis-howto instead).
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <!-- Navigation: Identity | Purpose | Input | Capabilities | Methodology | Output | Guardrails -->

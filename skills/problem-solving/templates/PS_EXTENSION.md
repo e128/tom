@@ -118,7 +118,7 @@ prior_art:
 2. **Follow template** structure from the specified template file
 3. **Link artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/{output-type}/{artifact-name}.md" \
        "{description}"
    ```
@@ -164,7 +164,7 @@ After completing the task:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/{output-type}/{ps_id}-{entry_id}-{topic_slug}.md" \
        "{description}"
    ```

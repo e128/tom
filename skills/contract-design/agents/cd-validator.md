@@ -10,6 +10,7 @@ description: >-
   validating, checking, verifying, or auditing API contracts generated from
   use cases.
 model: sonnet
+effort: medium
 tools:
   - Read
   - Write

@@ -265,7 +265,7 @@ After completing synthesis, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/synthesis/{ps_id}-{entry_id}-synthesis.md" \
        "Synthesis: {topic}"
    ```
@@ -472,7 +472,7 @@ After completing synthesis, you MUST:
 
 1. Create file at: `projects/${JERRY_PROJECT}/synthesis/work-024-e-500-synthesis.md`
 2. Include L0 (executive), L1 (technical), L2 (strategic) sections
-3. Run: `python3 scripts/cli.py link-artifact work-024 e-500 FILE "projects/${JERRY_PROJECT}/synthesis/work-024-e-500-synthesis.md" "Synthesis: Agent portfolio patterns"`
+3. Run: `uv run python scripts/cli.py link-artifact work-024 e-500 FILE "projects/${JERRY_PROJECT}/synthesis/work-024-e-500-synthesis.md" "Synthesis: Agent portfolio patterns"`
 
 ## SYNTHESIS TASK
 Synthesize the 4 input documents to identify:
@@ -500,7 +500,7 @@ grep -E "^### PAT-\d+" projects/${JERRY_PROJECT}/synthesis/{ps_id}-{entry_id}-sy
 grep -E "^\| .+ \| Research\|Analysis" projects/${JERRY_PROJECT}/synthesis/{ps_id}-{entry_id}-synthesis.md
 
 # 5. Artifact linked
-python3 scripts/cli.py view {ps_id} | grep {entry_id}
+uv run python scripts/cli.py view {ps_id} | grep {entry_id}
 ```
 
 ---

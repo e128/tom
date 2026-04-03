@@ -4,7 +4,9 @@ description: Solution architect and threat modeler for the /eng-team skill. Invo
   decision records, threat models with trust boundaries, and security-first designs. Routes from Step 1 of the /eng-team 8-step workflow. Integrates NIST CSF 2.0 governance and threat intelligence from
   /red-team cross-skill integration.
 model: opus
+effort: high
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: blue
 mcpServers:
   context7: true
 ---

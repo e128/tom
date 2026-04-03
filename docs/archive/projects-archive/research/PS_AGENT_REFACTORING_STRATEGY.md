@@ -249,7 +249,7 @@ The ps-*.md agent portfolio implements a **specialized multi-agent system** foll
 **ADK State Pattern:**
 ```python
 # State management via output_key
-researcher_output = Task(
+researcher_output = Agent(
     agent="ps-researcher",
     output_key="research_findings"  # Writes to session.state
 )
@@ -411,7 +411,7 @@ After completing your task, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE "{output-path}" "{description}"
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE "{output-path}" "{description}"
    ```
 
 DO NOT return transient output only. File creation AND link-artifact are MANDATORY.

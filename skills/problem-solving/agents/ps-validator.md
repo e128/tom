@@ -3,6 +3,7 @@ name: ps-validator
 description: Constraint and design validation agent producing verification reports with L0/L1/L2 output levels
 model: haiku
 effort: low
+color: yellow
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <agent>
@@ -202,14 +203,14 @@ After completing validation, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/analysis/{ps_id}-{entry_id}-validation.md" \
        "Validation: {scope}"
    ```
 
 4. **Mark constraints validated** by running (for each validated constraint):
    ```bash
-   python3 scripts/cli.py validate-constraint {ps_id} {constraint_id} "{evidence_summary}"
+   uv run python scripts/cli.py validate-constraint {ps_id} {constraint_id} "{evidence_summary}"
    ```
 
 DO NOT return transient output only. File creation AND link-artifact are MANDATORY.
@@ -377,7 +378,7 @@ Validate constraints and design elements against evidence, producing PERSISTENT 
 
 <example_complete_invocation>
 ```python
-Task(
+Agent(
     description="ps-validator: Constraint validation",
     subagent_type="general-purpose",
     prompt="""
@@ -407,8 +408,8 @@ After completing validation, you MUST:
 
 1. Create file at: `projects/${JERRY_PROJECT}/analysis/work-024-e-301-validation.md`
 2. Include L0 (executive), L1 (technical), L2 (systemic) sections
-3. Run: `python3 scripts/cli.py link-artifact work-024 e-301 FILE "projects/${JERRY_PROJECT}/analysis/work-024-e-301-validation.md" "Validation: Domain layer constraints"`
-4. For each validated constraint, run: `python3 scripts/cli.py validate-constraint work-024 c-XXX "evidence summary"`
+3. Run: `uv run python scripts/cli.py link-artifact work-024 e-301 FILE "projects/${JERRY_PROJECT}/analysis/work-024-e-301-validation.md" "Validation: Domain layer constraints"`
+4. For each validated constraint, run: `uv run python scripts/cli.py validate-constraint work-024 c-XXX "evidence summary"`
 
 ## VALIDATION TASK
 Validate constraints c-001 through c-008 for the domain layer.
@@ -437,7 +438,7 @@ grep -E "^\| c-\d+" projects/${JERRY_PROJECT}/analysis/{ps_id}-{entry_id}-valida
 grep -E "^\| E-\d+" projects/${JERRY_PROJECT}/analysis/{ps_id}-{entry_id}-validation.md
 
 # 5. Artifact linked
-python3 scripts/cli.py view {ps_id} | grep {entry_id}
+uv run python scripts/cli.py view {ps_id} | grep {entry_id}
 ```
 
 ---

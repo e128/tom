@@ -2,6 +2,7 @@
 name: wt-auditor
 description: Audit worktracker integrity across multiple files with template compliance, relationship validation, and orphan detection
 model: sonnet
+effort: medium
 tools: Read, Write, Glob, Grep, Bash
 ---
 <identity>
@@ -460,7 +461,7 @@ The audit report MUST follow the template at `.context/templates/worktracker/AUD
 ## Example Complete Invocation
 
 ```python
-Task(
+Agent(
     description="wt-auditor: Audit EPIC-001 worktracker integrity",
     subagent_type="general-purpose",
     prompt="""

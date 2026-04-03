@@ -1,5 +1,5 @@
 # Python Patterns
-*Updated: 2026-04-03T14:08:52Z*
+*Updated: 2026-04-03T18:00:00Z*
 
 Python idioms and patterns used in this codebase.
 
@@ -55,6 +55,20 @@ Prefer `@dataclass(frozen=True)` for value objects. Use `@dataclass` for mutable
 ## Async
 
 Tom uses sync code by default. When async is needed (e.g., external calls), use `asyncio.run()` at the boundary rather than propagating `async` throughout.
+
+## Ruff Rules (active)
+
+`pyproject.toml` selects: E, W, F, I, B, C4, UP, S506, TCH, PTH, RUF.
+
+- **TCH** — typing-only imports must live in `TYPE_CHECKING` blocks to reduce runtime overhead. 137 TC001 + 37 TC003 violations exist as of 2026-04-03 — a follow-up remediation pass is pending.
+- **PTH** — use `pathlib.Path` over `os.path`. ~20 violations pending.
+- **RUF** — ruff-specific: unused `noqa`, unsorted `__all__`, mutable class defaults. ~60 violations pending (31 auto-fixable).
+
+The 51 auto-fixable violations (RUF100, TC005, RUF010, RUF019) should be cleaned via `uv run ruff check src/ --fix`.
+
+## Python Version Support
+
+`pyproject.toml` `requires-python = ">=3.11"`. Classifiers cover 3.11, 3.12, 3.13, 3.14. The active `.venv` uses Python 3.14.
 
 ## Related Lode Files
 

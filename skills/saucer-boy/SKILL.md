@@ -153,7 +153,7 @@ Activates the session voice for the current conversation turn.
 ### Option 3: Task Tool Invocation
 
 ```python
-Task(
+Agent(
     description="sb-voice: McConkey conversational response",
     subagent_type="general-purpose",
     model="opus",

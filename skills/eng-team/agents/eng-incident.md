@@ -4,6 +4,7 @@ description: Incident response specialist for the /eng-team skill. Invoked when 
   coordination, or remediation tracking. Produces IR plans and post-deployment security artifacts. Routes from Step 8 (post-deployment) of the /eng-team 8-step workflow. NEW agent filling post-deployment
   gap per Phase 1 research. Activates independently of build workflow.
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true

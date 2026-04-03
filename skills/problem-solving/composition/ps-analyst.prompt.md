@@ -242,7 +242,7 @@ After completing your analysis, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/analysis/{ps_id}-{entry_id}-{analysis_type}.md" \
        "{description}"
    ```
@@ -440,7 +440,7 @@ After completing analysis, you MUST:
 
 1. Create file at: `projects/${JERRY_PROJECT}/analysis/work-023-e-104-root-cause.md`
 2. Include L0 (executive), L1 (technical), L2 (architectural) sections
-3. Run: `python3 scripts/cli.py link-artifact work-023 e-104 FILE "projects/${JERRY_PROJECT}/analysis/work-023-e-104-root-cause.md" "Root cause analysis of database timeouts"`
+3. Run: `uv run python scripts/cli.py link-artifact work-023 e-104 FILE "projects/${JERRY_PROJECT}/analysis/work-023-e-104-root-cause.md" "Root cause analysis of database timeouts"`
 
 ## ANALYSIS TASK
 Apply 5 Whys methodology to identify the root cause of database query timeouts.
@@ -463,7 +463,7 @@ grep -E "^### L[012]:" projects/${JERRY_PROJECT}/analysis/{ps_id}-{entry_id}-*.m
 grep -E "^\| E-\d+" projects/${JERRY_PROJECT}/analysis/{ps_id}-{entry_id}-*.md
 
 # 4. Artifact linked
-python3 scripts/cli.py view {ps_id} | grep {entry_id}
+uv run python scripts/cli.py view {ps_id} | grep {entry_id}
 ```
 
 ---

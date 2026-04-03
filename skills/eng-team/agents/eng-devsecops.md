@@ -4,7 +4,9 @@ description: DevSecOps pipeline engineer for the /eng-team skill. Invoked when u
   or dependency analysis. Produces pipeline configurations and scan result reports. Routes from Step 4 of the /eng-team 8-step workflow. NEW agent absorbing automated tooling from eng-security per Phase
   1 research. Integrates DevSecOps patterns and Google SLSA build automation.
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: red
 mcpServers:
   context7: true
 ---

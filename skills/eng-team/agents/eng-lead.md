@@ -4,6 +4,7 @@ description: Engineering lead and standards enforcer for the /eng-team skill. In
   ownership. Produces implementation plans, standards mappings, and dependency decisions. Routes from Step 2 of the /eng-team 8-step workflow. Integrates MS SDL Requirements phase and NIST SSDF Prepare
   Organization and Protect Software practices.
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true

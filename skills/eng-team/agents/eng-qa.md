@@ -4,6 +4,7 @@ description: Security QA engineer for the /eng-team skill. Invoked when users re
   enforcement. Produces test artifacts with security regression suites and coverage reports. Routes from Step 5 of the /eng-team 8-step workflow. Integrates OWASP Testing Guide and MS SDL Verification phase
   practices.
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true

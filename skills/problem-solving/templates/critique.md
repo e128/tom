@@ -254,7 +254,7 @@ critic_output:
 ### Link Command
 
 ```bash
-python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
     "projects/${JERRY_PROJECT}/critiques/{ps_id}-{entry_id}-iter{iteration}-critique.md" \
     "Critique: Iteration {iteration} - Score {score}"
 ```

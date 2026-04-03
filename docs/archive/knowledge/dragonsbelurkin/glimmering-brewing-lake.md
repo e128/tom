@@ -749,7 +749,7 @@ Ensure smooth upgrade path from v2.x to v3.0.
 │  ─────────────                                                                   │
 │  ┌────────────────────────────────────────────────────────────────────────┐    │
 │  │                                                                        │    │
-│  │  CompleteTask() ──► CheckConsentRequired() ──► ConsentGranted?        │    │
+│  │  CompleteAgent() ──► CheckConsentRequired() ──► ConsentGranted?        │    │
 │  │                              │                      │                  │    │
 │  │                              │                      ├── YES ──► Allow  │    │
 │  │                              │                      │                  │    │

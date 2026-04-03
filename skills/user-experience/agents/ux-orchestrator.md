@@ -8,8 +8,9 @@ description: >
   prioritization, design sprints, or AI interaction design for tiny teams (1-5 people).
   Triggers: UX audit, comprehensive UX review, multi-framework evaluation, UX triage.
 model: opus
+effort: high
 tools:
-  - Read
+color: purple  - Read
   - Write
   - Edit
   - Glob

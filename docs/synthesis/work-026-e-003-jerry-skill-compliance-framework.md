@@ -1952,7 +1952,7 @@ uv run tom transcript validate output/ --strict
 
 ```python
 # Delegate entity extraction to ts-extractor
-Task(
+Agent(
     agent_id="ts-extractor",
     input={
         "index_json_path": "output/index.json",

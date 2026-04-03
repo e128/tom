@@ -2,6 +2,7 @@
 name: pe-builder
 description: Interactive Prompt Builder agent — walks users through the 5-element prompt anatomy (routing, scope, data source, quality gate, output path), generating complete XML-wrapped structured prompts with NPT-013 constraints. Invoke when building structured Tom prompts from scratch.
 model: opus
+effort: high
 tools: Read, Write, Edit, Glob, Grep
 ---
 <identity>

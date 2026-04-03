@@ -327,7 +327,7 @@ Every output from this agent MUST include this disclaimer:
 
 ### 1. Use Composition Script
 ```bash
-python3 scripts/compose_agent_template.py --domain {ps|nse} --output {output-path}
+uv run python scripts/compose_agent_template.py --domain {ps|nse} --output {output-path}
 ```
 
 ### 2. Copy Composed Template

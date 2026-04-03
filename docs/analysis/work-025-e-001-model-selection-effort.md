@@ -89,7 +89,7 @@ model: "haiku"  # ← HARDCODED HERE
 | Component | Current Behavior | Model Source |
 |-----------|------------------|--------------|
 | SKILL.md orchestration | Invokes agents via Task tool | Not specified in SKILL.md |
-| Task tool calls | `Task(subagent_type="general-purpose")` | No model parameter exists |
+| Task tool calls | `Agent(subagent_type="general-purpose")` | No model parameter exists |
 | Agent .md files | YAML frontmatter `model: "haiku"` | Hardcoded in file |
 | Claude Code runtime | Reads agent .md, uses model field | Consumes from YAML |
 
@@ -102,7 +102,7 @@ SKILL.md (skills/transcript/SKILL.md)
     ↓
 Phase 1: CLI parsing (uv run tom transcript parse ...)
     ↓
-Phase 2: Task(subagent_type="general-purpose", prompt="You are ts-extractor...")
+Phase 2: Agent(subagent_type="general-purpose", prompt="You are ts-extractor...")
     ↓
 Claude Code reads: skills/transcript/agents/ts-extractor.md
     ↓
@@ -240,14 +240,14 @@ uv run tom transcript parse file.vtt \
 **Evidence to investigate:**
 ```python
 # Current invocation (from SKILL.md analysis)
-Task(
+Agent(
     description="Extract entities from transcript",
     subagent_type="general-purpose",
     prompt="You are ts-extractor v1.3.0..."
 )
 
 # Does this work?
-Task(
+Agent(
     description="Extract entities from transcript",
     subagent_type="general-purpose",
     model="opus",  # ← CAN WE DO THIS?

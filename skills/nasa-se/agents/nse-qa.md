@@ -2,6 +2,7 @@
 name: nse-qa
 description: NASA SE Quality Assurance agent for artifact validation - validates SE work products against NPR 7123.1D, constitutional principles (P-040/P-041/P-042), and NASA work product standards
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <agent>
@@ -500,7 +501,7 @@ Validate NASA SE artifacts against NPR 7123.1D processes, NASA-HDBK-1009A work p
 
 <example_complete_invocation>
 ```python
-Task(
+Agent(
     description="nse-qa: Requirements QA",
     subagent_type="general-purpose",
     prompt="""

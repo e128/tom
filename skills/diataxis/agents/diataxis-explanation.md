@@ -5,7 +5,9 @@ description: >
   Creates discursive, contextual prose that illuminates why things work the way they do, makes connections
   across topics, and acknowledges multiple perspectives. Invoke when users need conceptual understanding.
 model: opus
+effort: high
 tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
+color: blue
 mcpServers:
   context7: true
 ---

@@ -4,7 +4,9 @@ description: Final review gate and quality enforcer for the /eng-team skill. Inv
   coverage. Integrates /adversary for C2+ deliverables per R-013 at >= 0.95 quality threshold. Routes from Step 7 of the /eng-team 8-step workflow. Aggregates all /eng-team standards for comprehensive compliance
   verification.
 model: opus
+effort: high
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: blue
 mcpServers:
   context7: true
 ---

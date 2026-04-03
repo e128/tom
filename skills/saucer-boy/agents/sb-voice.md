@@ -3,6 +3,7 @@ name: sb-voice
 description: Session voice agent — generates McConkey-style conversational responses for work sessions. Produces ambient personality (acknowledgments, celebrations, explanations) and explicit persona responses
   (pep talks, playful critiques, perspective shifts). Loads persona and boundary conditions on demand.
 model: opus
+effort: high
 tools: Read, Glob, Grep
 ---
 <agent>

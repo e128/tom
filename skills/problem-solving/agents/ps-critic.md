@@ -3,6 +3,7 @@ name: ps-critic
 description: Quality evaluation agent for creator-critic-revision cycles with adversarial strategy integration (S-014 LLM-as-Judge primary) - critiques agent outputs using SSOT quality dimensions and provides
   improvement recommendations
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep
 ---
 <agent>
@@ -378,7 +379,7 @@ After completing evaluation, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/critiques/{ps_id}-{entry_id}-iter{iteration}-critique.md" \
        "Critique: Iteration {iteration}"
    ```
@@ -632,7 +633,7 @@ Evaluate agent outputs against defined criteria for iterative refinement loops, 
 
 <example_complete_invocation>
 ```python
-Task(
+Agent(
     description="ps-critic: Design critique",
     subagent_type="general-purpose",
     prompt="""
@@ -696,7 +697,7 @@ grep -E "Quality Score.*[0-9]\.[0-9]+" projects/${JERRY_PROJECT}/critiques/{ps_i
 grep -E "Recommendation.*(ACCEPT|REVISE|ESCALATE)" projects/${JERRY_PROJECT}/critiques/{ps_id}-{entry_id}-iter{iteration}-critique.md
 
 # 5. Artifact linked
-python3 scripts/cli.py view {ps_id} | grep {entry_id}
+uv run python scripts/cli.py view {ps_id} | grep {entry_id}
 ```
 
 ---

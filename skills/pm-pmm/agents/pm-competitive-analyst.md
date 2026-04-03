@@ -8,6 +8,7 @@ description: >
   Trigger keywords: competitive analysis, battle card, win/loss, competitor,
   Porter's, SWOT, competitive landscape, differentiation, market intelligence.
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true

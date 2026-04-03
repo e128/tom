@@ -275,7 +275,7 @@ class ConfigThresholdAdapter:
             if model_env.lower().endswith(_EXTENDED_CONTEXT_SUFFIX):
                 return _EXTENDED_CONTEXT_WINDOW, "env-1m-detection"
 
-        except Exception:  # noqa: BLE001
+        except Exception:
             logger.warning(
                 "Context window detection failed; returning default %d.",
                 _DEFAULT_CONTEXT_WINDOW_TOKENS,

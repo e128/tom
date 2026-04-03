@@ -844,7 +844,7 @@ onto = get_ontology("http://jerry.ai/ontology/work_tracker.owl")
 
 # Define classes
 with onto:
-    class Task(Thing):
+    class Agent(Thing):
         pass
 
     class Phase(Thing):
@@ -871,7 +871,7 @@ with onto:
         range = [str]
 
 # Create instances
-task_001 = Task("task_001")
+task_001 = Agent("task_001")
 task_001.hasTitle = ["Implement Knowledge Graph"]
 task_001.hasStatus = ["active"]
 

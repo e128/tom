@@ -8,7 +8,9 @@ description: >
   Trigger keywords: GTM, go-to-market, positioning, messaging, MRD,
   launch plan, sales enablement, buyer persona, product marketing, PLG.
 model: opus
+effort: high
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: blue
 mcpServers:
   context7: true
 ---

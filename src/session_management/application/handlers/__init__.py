@@ -24,8 +24,8 @@ from .commands import (
 from .queries import GetSessionStatusQueryHandler
 
 __all__ = [
+    "AbandonSessionCommandHandler",
     "CreateSessionCommandHandler",
     "EndSessionCommandHandler",
-    "AbandonSessionCommandHandler",
     "GetSessionStatusQueryHandler",
 ]

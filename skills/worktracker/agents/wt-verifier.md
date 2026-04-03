@@ -2,6 +2,7 @@
 name: wt-verifier
 description: Verify work item acceptance criteria before closure
 model: sonnet
+effort: medium
 tools: Read, Glob, Grep, Write, Bash
 ---
 <agent>
@@ -313,7 +314,7 @@ User: "Verify EN-001 is ready for closure"
 
 ### Task Invocation
 ```python
-Task(
+Agent(
     description="wt-verifier: Verify EN-001 acceptance criteria",
     subagent_type="general-purpose",
     prompt="""
@@ -646,7 +647,7 @@ Validate that work items meet acceptance criteria and quality gates before statu
 
 <example_invocation>
 ```python
-Task(
+Agent(
     description="wt-verifier: Verify EN-001 acceptance criteria",
     subagent_type="general-purpose",
     prompt="""

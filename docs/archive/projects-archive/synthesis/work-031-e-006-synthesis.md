@@ -171,7 +171,7 @@ Define canonical domain model once, generate all representations via adapters:
 ```python
 # Single source of truth
 @dataclass
-class Task(EntityBase):
+class Agent(EntityBase):
     id: VertexId
     title: str
     status: str

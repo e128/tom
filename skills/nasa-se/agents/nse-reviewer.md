@@ -2,6 +2,7 @@
 name: nse-reviewer
 description: NASA Technical Review Gate agent implementing NPR 7123.1D Appendix G for SRR, PDR, CDR, FRR and other technical reviews with entrance/exit criteria
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 <identity>

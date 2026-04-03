@@ -160,16 +160,16 @@ The composition script:
 
 ```bash
 # Compose PS template (validate only)
-python3 scripts/compose_agent_template.py --domain ps --validate
+uv run python scripts/compose_agent_template.py --domain ps --validate
 
 # Compose and write to default location
-python3 scripts/compose_agent_template.py --domain ps --write-default
+uv run python scripts/compose_agent_template.py --domain ps --write-default
 
 # Compose NSE template
-python3 scripts/compose_agent_template.py --domain nse --write-default
+uv run python scripts/compose_agent_template.py --domain nse --write-default
 
 # Compose to custom output path
-python3 scripts/compose_agent_template.py --domain ps --output custom_template.md
+uv run python scripts/compose_agent_template.py --domain ps --output custom_template.md
 ```
 
 ### Diff Mode
@@ -177,7 +177,7 @@ python3 scripts/compose_agent_template.py --domain ps --output custom_template.m
 Compare composed template with existing file:
 
 ```bash
-python3 scripts/compose_agent_template.py --domain ps --diff
+uv run python scripts/compose_agent_template.py --domain ps --diff
 ```
 
 ### CI Integration
@@ -186,8 +186,8 @@ For continuous integration:
 
 ```bash
 # Validate composition without writing
-python3 scripts/compose_agent_template.py --domain ps --validate
-python3 scripts/compose_agent_template.py --domain nse --validate
+uv run python scripts/compose_agent_template.py --domain ps --validate
+uv run python scripts/compose_agent_template.py --domain nse --validate
 
 # Exit codes:
 # 0 = Success
@@ -203,27 +203,27 @@ python3 scripts/compose_agent_template.py --domain nse --validate
 
 ```bash
 # Validate PS template composition
-python3 scripts/compose_agent_template.py --domain ps --validate
+uv run python scripts/compose_agent_template.py --domain ps --validate
 
 # Validate NSE template composition
-python3 scripts/compose_agent_template.py --domain nse --validate
+uv run python scripts/compose_agent_template.py --domain nse --validate
 ```
 
 ### Agent Conformance Validation
 
 ```bash
 # Check all agents
-python3 scripts/check_agent_conformance.py
+uv run python scripts/check_agent_conformance.py
 
 # Check specific family
-python3 scripts/check_agent_conformance.py --family ps
-python3 scripts/check_agent_conformance.py --family nse
+uv run python scripts/check_agent_conformance.py --family ps
+uv run python scripts/check_agent_conformance.py --family nse
 
 # JSON output (for CI)
-python3 scripts/check_agent_conformance.py --json
+uv run python scripts/check_agent_conformance.py --json
 
 # Verbose output
-python3 scripts/check_agent_conformance.py --verbose
+uv run python scripts/check_agent_conformance.py --verbose
 ```
 
 ---
@@ -244,7 +244,7 @@ Migrate each ps-* agent to the composed template format:
 - [ ] Add `enforcement` section (tier, escalation_path)
 - [ ] Add `session_context` section
 - [ ] Update version to reflect migration
-- [ ] Run conformance check: `python3 scripts/check_agent_conformance.py --family ps`
+- [ ] Run conformance check: `uv run python scripts/check_agent_conformance.py --family ps`
 
 ### ps-analyst
 
@@ -316,7 +316,7 @@ Migrate each nse-* agent to the composed template format:
 - [ ] Add `session_context` section
 - [ ] Ensure `<disclaimer>` and `<nasa_se_methodology>` XML sections present
 - [ ] Update version
-- [ ] Run conformance check: `python3 scripts/check_agent_conformance.py --family nse`
+- [ ] Run conformance check: `uv run python scripts/check_agent_conformance.py --family nse`
 
 ### nse-verification
 
@@ -444,7 +444,7 @@ name: ps-agent-name  # or nse-agent-name
 **Problem**: Agent fails validation after migration
 
 **Solution**:
-1. Run `python3 scripts/check_agent_conformance.py --family <family> --verbose`
+1. Run `uv run python scripts/check_agent_conformance.py --family <family> --verbose`
 2. Check each reported issue
 3. Compare agent with composed template
 4. Update agent to match template structure

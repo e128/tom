@@ -23,6 +23,8 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Software Development :: Libraries :: Application Frameworks",
 ]
 
@@ -43,11 +45,12 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# Dev tooling is managed via [dependency-groups].dev (PEP 735). This section
+# is kept only for external consumers that install via pip extras. Pins here
+# are intentionally loose — authoritative pins live in dependency-groups.dev.
 dev = [
     "mypy>=1.8.0",
-    "ruff>=0.1.0",
-    "filelock>=3.12.0",
-    "jsonschema>=4.21.0",
+    "ruff>=0.14.0",
 ]
 test = [
     "pytest>=8.0.0",
@@ -97,14 +100,17 @@ exclude = [
 
 [tool.ruff.lint]
 select = [
-    "E",   # pycodestyle errors
-    "W",   # pycodestyle warnings
-    "F",   # Pyflakes
-    "I",   # isort
-    "B",   # flake8-bugbear
-    "C4",  # flake8-comprehensions
-    "UP",  # pyupgrade
-    "S506",  # WI-004: Ban unsafe YAML APIs (yaml.load, yaml.unsafe_load) (T-YF-07, M-01)
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # Pyflakes
+    "I",    # isort
+    "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "UP",   # pyupgrade
+    "S506", # WI-004: Ban unsafe YAML APIs (yaml.load, yaml.unsafe_load) (T-YF-07, M-01)
+    "TCH",  # type-checking imports — move to TYPE_CHECKING block to reduce runtime overhead
+    "PTH",  # use pathlib over os.path
+    "RUF",  # ruff-specific rules (mutable class vars, etc.)
 ]
 ignore = [
     "E501",  # line too long (handled by formatter)

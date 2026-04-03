@@ -170,7 +170,7 @@ class CheckpointService:
             Dict with structured fields, or None on parse failure.
         """
         try:
-            import yaml  # noqa: PLC0415
+            import yaml
 
             data = yaml.safe_load(content)
             if not isinstance(data, dict):
@@ -237,7 +237,7 @@ class CheckpointService:
 
             return result
 
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             logger.debug(
                 "YAML parsing failed for ORCHESTRATION.yaml: %s (falling back to raw)",
                 exc,
@@ -260,7 +260,7 @@ class CheckpointService:
             if not self._orchestration_path.exists():
                 return
 
-            import yaml  # noqa: PLC0415
+            import yaml
 
             content = self._orchestration_path.read_text(encoding="utf-8")
             data = yaml.safe_load(content)
@@ -305,7 +305,7 @@ class CheckpointService:
                 "Checkpoint %s written back to ORCHESTRATION.yaml",
                 checkpoint.checkpoint_id,
             )
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             logger.warning(
                 "Failed to write checkpoint back to ORCHESTRATION.yaml: %s (fail-open)",
                 exc,

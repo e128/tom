@@ -154,7 +154,7 @@ After generating report, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/reports/{ps_id}-{entry_id}-{report_type}.md" \
        "Report: {report_type}"
    ```
@@ -397,7 +397,7 @@ After generating report, you MUST:
 
 1. Create file at: `projects/${JERRY_PROJECT}/reports/work-024-e-041-phase-status.md`
 2. Include L0 (executive), L1 (technical), L2 (strategic) sections
-3. Run: `python3 scripts/cli.py link-artifact work-024 e-041 FILE "projects/${JERRY_PROJECT}/reports/work-024-e-041-phase-status.md" "Phase status report"`
+3. Run: `uv run python scripts/cli.py link-artifact work-024 e-041 FILE "projects/${JERRY_PROJECT}/reports/work-024-e-041-phase-status.md" "Phase status report"`
 
 ## REPORTING TASK
 Generate a phase status report for work-024.
@@ -425,7 +425,7 @@ grep -E "🟢|🟡|🔴" projects/${JERRY_PROJECT}/reports/{ps_id}-{entry_id}-{r
 grep -E "^\| Metric" projects/${JERRY_PROJECT}/reports/{ps_id}-{entry_id}-{report_type}.md
 
 # 5. Artifact linked
-python3 scripts/cli.py view {ps_id} | grep {entry_id}
+uv run python scripts/cli.py view {ps_id} | grep {entry_id}
 ```
 
 ---

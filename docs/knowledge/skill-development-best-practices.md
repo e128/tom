@@ -241,7 +241,7 @@ Activate when:
 [Examples]
 
 ### Option 3: Task Tool Invocation
-[Code example with Task() call]
+[Code example with Agent() call]
 
 ---
 

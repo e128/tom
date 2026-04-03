@@ -30,7 +30,7 @@ from .serializer import ISerializer, JsonSerializer
 
 __all__ = [
     "IFileStore",
-    "LocalFileStore",
     "ISerializer",
     "JsonSerializer",
+    "LocalFileStore",
 ]

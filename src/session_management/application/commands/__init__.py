@@ -18,7 +18,7 @@ from .create_session_command import CreateSessionCommand
 from .end_session_command import EndSessionCommand
 
 __all__ = [
+    "AbandonSessionCommand",
     "CreateSessionCommand",
     "EndSessionCommand",
-    "AbandonSessionCommand",
 ]

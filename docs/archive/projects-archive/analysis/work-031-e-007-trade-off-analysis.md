@@ -416,7 +416,7 @@ Scoring each option on 1-5 scale (1=poor, 5=excellent):
        JsonSerializer, ToonSerializer, JsonLdSerializer, RdfSerializer, GraphSonSerializer
    ])
    def test_round_trip(serializer):
-       task = Task(title="Test")
+       task = Agent(title="Test")
        serialized = serializer.serialize(task)
        deserialized = serializer.deserialize(serialized)
        assert task == deserialized

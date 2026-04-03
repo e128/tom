@@ -588,7 +588,7 @@ This decision is supported by **unanimous consensus across 5 independent researc
       JsonSerializer, ToonSerializer, JsonLdSerializer, RdfTurtleSerializer
   ])
   def test_round_trip(serializer):
-      task = Task(title="Test", status="IN_PROGRESS")
+      task = Agent(title="Test", status="IN_PROGRESS")
       serialized = serializer.serialize(task)
       deserialized = serializer.deserialize(serialized)
       assert task == deserialized
@@ -647,7 +647,7 @@ This decision is supported by **unanimous consensus across 5 independent researc
   ```python
   def test_schema_migration_backward_compatibility():
       # Create entity with v1 schema
-      task_v1 = Task(title="Test", status="TODO")
+      task_v1 = Agent(title="Test", status="TODO")
       task_v1.save()
 
       # Apply migration to v2 (adds blocking_reason field)

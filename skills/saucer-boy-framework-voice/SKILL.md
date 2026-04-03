@@ -310,7 +310,7 @@ The orchestrator selects the appropriate agent based on keywords and context.
 ### Option 3: Task Tool Invocation
 
 ```python
-Task(
+Agent(
     description="sb-reviewer: Voice compliance check",
     subagent_type="general-purpose",
     prompt="""

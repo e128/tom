@@ -20,9 +20,9 @@ from src.work_tracking.application.handlers.queries.list_work_items_query_handle
 )
 
 __all__ = [
-    "ListWorkItemsQueryHandler",
     "GetWorkItemQueryHandler",
+    "ListWorkItemsQueryHandler",
     "WorkItemDTO",
-    "WorkItemListDTO",
     "WorkItemDetailDTO",
+    "WorkItemListDTO",
 ]

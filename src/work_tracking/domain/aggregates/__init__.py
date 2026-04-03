@@ -23,6 +23,6 @@ from .work_item import QualityGateNotMetError, WorkItem
 
 __all__ = [
     "AggregateRoot",
-    "WorkItem",
     "QualityGateNotMetError",
+    "WorkItem",
 ]

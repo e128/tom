@@ -3,7 +3,9 @@ name: red-exfil
 description: Data Exfiltration Specialist for /red-team. RoE-GATED -- requires explicit authorization in Rules of Engagement with specified data types. Provides methodology for data identification, exfiltration
   channels, covert communication, and DLP bypass assessment. Owns exfiltration-phase defense evasion (data encoding, encrypted channels). Exfiltration to evidence vault ONLY.
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: red
 mcpServers:
   context7: true
 ---

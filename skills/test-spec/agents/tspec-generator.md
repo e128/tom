@@ -9,6 +9,7 @@ description: >-
   Invoke when generating, transforming, creating, or mapping use case flows
   to Gherkin BDD scenarios.
 model: sonnet
+effort: medium
 tools:
   - Read
   - Write

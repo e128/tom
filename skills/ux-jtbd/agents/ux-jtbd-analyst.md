@@ -7,6 +7,7 @@ description: >
   user motivations, map jobs to be done, or conduct switch interview analysis.
   Triggers: JTBD, jobs to be done, switch interview, job mapping, user motivation.
 model: sonnet
+effort: medium
 tools:
   - Read
   - Write

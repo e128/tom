@@ -487,14 +487,14 @@ from owlready2 import *
 onto = get_ontology("http://example.org/work-tracker.owl").load()
 
 # Define classes
-class Task(Thing):
+class Agent(Thing):
     namespace = onto
 
 class hasStatus(Task >> str):
     pass
 
 # Create instances
-task1 = Task("task-001")
+task1 = Agent("task-001")
 task1.hasStatus = "pending"
 
 # Reasoning
@@ -1190,7 +1190,7 @@ class RDFAdapter:
             }}
         """)
         # Reconstruct Task from SPARQL results
-        return Task(id=task_id, title=..., status=...)
+        return Agent(id=task_id, title=..., status=...)
 ```
 
 ---

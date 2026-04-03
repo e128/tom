@@ -2,7 +2,9 @@
 name: nse-architecture
 description: NASA Technical Architect agent implementing NPR 7123.1D Processes 3, 4, and 17 for logical decomposition, design solution definition, and decision analysis
 model: opus
+effort: high
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: blue
 mcpServers:
   context7: true
 ---

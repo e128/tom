@@ -339,7 +339,7 @@ validator_output:
 When invoking a downstream agent, include the upstream artifact:
 
 ```python
-Task(
+Agent(
     description="ps-architect: Caching ADR",
     subagent_type="general-purpose",
     prompt="""
@@ -464,7 +464,7 @@ State Chain:
 ### Prompt Template for Agent Invocation
 
 ```python
-Task(
+Agent(
     description="ps-{agent-type}: {short-description}",
     subagent_type="general-purpose",
     prompt="""
@@ -496,7 +496,7 @@ After completing your task, you MUST:
 
 1. Create file at: `docs/{type}/{ps_id}-{entry_id}-{slug}.md`
 2. Include L0 (executive), L1 (technical), L2 (strategic) sections
-3. Run: `python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE "{path}" "{description}"`
+3. Run: `uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE "{path}" "{description}"`
 
 ## YOUR TASK
 {Detailed task description}
@@ -508,13 +508,13 @@ After completing your task, you MUST:
 
 ```python
 # Step 1: Research
-research_result = Task(
+research_result = Agent(
     description="ps-researcher: Caching options",
     prompt="... research caching ..."
 )
 
 # Step 2: Analysis (references research)
-analysis_result = Task(
+analysis_result = Agent(
     description="ps-analyst: Trade-off analysis",
     prompt=f"""
     ...
@@ -525,7 +525,7 @@ analysis_result = Task(
 )
 
 # Step 3: Decision (references both)
-decision_result = Task(
+decision_result = Agent(
     description="ps-architect: Caching ADR",
     prompt=f"""
     ...
@@ -553,11 +553,11 @@ decision_result = Task(
 
 ```
 ❌ VIOLATION: Agent spawning another agent
-   ps-researcher → Task(ps-analyst) ← NOT ALLOWED
+   ps-researcher → Agent(ps-analyst) ← NOT ALLOWED
 
 ✅ CORRECT: Orchestrator spawning agents
-   Orchestrator → Task(ps-researcher) ← ALLOWED
-   Orchestrator → Task(ps-analyst) ← ALLOWED
+   Orchestrator → Agent(ps-researcher) ← ALLOWED
+   Orchestrator → Agent(ps-analyst) ← ALLOWED
 ```
 
 ### Medium Constraints (Logged, Requires Justification)

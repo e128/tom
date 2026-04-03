@@ -2,7 +2,9 @@
 name: ps-architect
 description: Architectural decision agent producing ADRs with Nygard format and L0/L1/L2 output levels
 model: opus
+effort: high
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: blue
 mcpServers:
   context7: true
 ---
@@ -263,7 +265,7 @@ After creating your ADR, you MUST:
 
 3. **Link the artifact** by running:
    ```bash
-   python3 scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
+   uv run python scripts/cli.py link-artifact {ps_id} {entry_id} FILE \
        "projects/${JERRY_PROJECT}/decisions/{ps_id}-{entry_id}-adr-{slug}.md" \
        "ADR: {topic}"
    ```
@@ -447,7 +449,7 @@ Create and document architectural decisions using the industry-standard ADR form
 
 <example_complete_invocation>
 ```python
-Task(
+Agent(
     description="ps-architect: Event Sourcing ADR",
     subagent_type="general-purpose",
     prompt="""
@@ -478,7 +480,7 @@ After creating the ADR, you MUST:
 
 1. Create file at: `projects/${JERRY_PROJECT}/decisions/work-024-e-202-adr-event-sourcing.md`
 2. Include L0 (executive), L1 (technical), L2 (architectural) sections
-3. Run: `python3 scripts/cli.py link-artifact work-024 e-202 FILE "projects/${JERRY_PROJECT}/decisions/work-024-e-202-adr-event-sourcing.md" "ADR: Use Event Sourcing for Task History"`
+3. Run: `uv run python scripts/cli.py link-artifact work-024 e-202 FILE "projects/${JERRY_PROJECT}/decisions/work-024-e-202-adr-event-sourcing.md" "ADR: Use Event Sourcing for Task History"`
 
 ## ARCHITECTURE TASK
 Create an ADR for the decision to use event sourcing for task history.
@@ -505,7 +507,7 @@ grep -E "^\| Option" projects/${JERRY_PROJECT}/decisions/{ps_id}-{entry_id}-adr-
 grep -E "^## Status" -A 1 projects/${JERRY_PROJECT}/decisions/{ps_id}-{entry_id}-adr-*.md
 
 # 5. Artifact linked
-python3 scripts/cli.py view {ps_id} | grep {entry_id}
+uv run python scripts/cli.py view {ps_id} | grep {entry_id}
 ```
 
 ---

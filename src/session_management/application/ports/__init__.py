@@ -17,8 +17,8 @@ from .project_repository import IProjectRepository
 from .session_repository import ISessionRepository
 
 __all__ = [
-    "IProjectRepository",
     "IEnvironmentProvider",
+    "IProjectRepository",
     "ISessionRepository",
     "RepositoryError",
 ]

@@ -3,7 +3,9 @@ name: red-lateral
 description: Lateral Movement Specialist for /red-team. Provides methodology for pivoting, tunneling, living-off-the-land techniques, and internal exploitation. Uses C2 during operations but does NOT build
   or manage C2 infrastructure. Owns network-level defense evasion (traffic signaling, protocol tunneling). Operates within authorized internal network range.
 model: sonnet
+effort: medium
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: red
 mcpServers:
   context7: true
 ---

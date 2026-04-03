@@ -13,6 +13,6 @@ from src.work_tracking.application.queries.get_work_item_query import GetWorkIte
 from src.work_tracking.application.queries.list_work_items_query import ListWorkItemsQuery
 
 __all__ = [
-    "ListWorkItemsQuery",
     "GetWorkItemQuery",
+    "ListWorkItemsQuery",
 ]

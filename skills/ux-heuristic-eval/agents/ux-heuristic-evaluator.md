@@ -10,6 +10,7 @@ description: >
   Triggers: heuristic evaluation, usability audit, Nielsen heuristics, interface review.
 model: haiku
 effort: low
+color: yellow
 tools:
   - Read
   - Write

@@ -2,7 +2,9 @@
 name: nse-explorer
 description: NASA Systems Engineering explorer agent implementing NPR 7123.1D Process 17 (Decision Analysis) for divergent thinking, alternative generation, and trade space exploration
 model: opus
+effort: high
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+color: blue
 mcpServers:
   context7: true
 ---

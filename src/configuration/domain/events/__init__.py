@@ -22,7 +22,7 @@ from src.configuration.domain.events.configuration_events import (
 )
 
 __all__ = [
+    "ConfigurationError",
     "ConfigurationLoaded",
     "ConfigurationValueChanged",
-    "ConfigurationError",
 ]

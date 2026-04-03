@@ -125,7 +125,7 @@ Request a specific agent:
 For programmatic invocation within workflows:
 
 ```python
-Task(
+Agent(
     description="ps-researcher: Graph databases",
     subagent_type="general-purpose",
     prompt="""

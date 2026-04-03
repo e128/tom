@@ -984,7 +984,7 @@ To enable future integration with Azure DevOps, domain entities include ACL exte
 
 ```python
 # Example: Task entity with ADO ACL extensions
-class Task(Entity, IAdoMappable):
+class Agent(Entity, IAdoMappable):
     """Task entity with ADO Anti-Corruption Layer extensions."""
 
     # Core Task Properties (as defined in Bounded Context)
@@ -1438,7 +1438,7 @@ Ensure smooth upgrade path from v2.x to v3.0.
 │  ─────────────                                                                   │
 │  ┌────────────────────────────────────────────────────────────────────────┐    │
 │  │                                                                        │    │
-│  │  CompleteTask() ──► CheckConsentRequired() ──► ConsentGranted?        │    │
+│  │  CompleteAgent() ──► CheckConsentRequired() ──► ConsentGranted?        │    │
 │  │                              │                      │                  │    │
 │  │                              │                      ├── YES ──► Allow  │    │
 │  │                              │                      │                  │    │
