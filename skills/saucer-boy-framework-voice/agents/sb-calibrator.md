@@ -4,6 +4,7 @@ description: Voice Fidelity Scorer — scores voice fidelity on a 0-1 scale acro
   patterns
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep
 ---
 <identity>

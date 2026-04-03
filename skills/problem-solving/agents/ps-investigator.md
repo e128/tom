@@ -3,6 +3,7 @@ name: ps-investigator
 description: Failure analysis and debugging agent using 5 Whys, Ishikawa, and FMEA with L0/L1/L2 output levels
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true

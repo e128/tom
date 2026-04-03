@@ -5,6 +5,7 @@ description: Final review gate and quality enforcer for the /eng-team skill. Inv
   verification.
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: blue
 mcpServers:

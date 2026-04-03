@@ -3,6 +3,7 @@ name: nse-reporter
 description: NASA Systems Engineering Status Reporter
 model: haiku
 effort: low
+maxTurns: 10
 color: yellow
 tools: Read, Write, Glob, Grep, WebSearch, WebFetch
 ---

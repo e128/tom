@@ -5,6 +5,7 @@ description: Incident response specialist for the /eng-team skill. Invoked when 
   gap per Phase 1 research. Activates independently of build workflow.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true

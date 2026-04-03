@@ -82,15 +82,17 @@ See `docs/governance/TOM_CONSTITUTION.md` for full governance.
 | `/saucer-boy-framework-voice` | Internal: framework output voice quality gate, persona compliance |
 | `/transcript` | Transcription parsing |
 | `/ast` | Markdown AST: parse, query, validate, modify frontmatter |
-| `/eng-team` | Secure software engineering methodology (10 agents: architecture, implementation, quality, incident response) |
-| `/red-team` | Offensive security testing methodology (11 agents: recon, exploitation, post-exploitation, reporting) |
-| `/pm-pmm` | Product management and product marketing (5 agents: strategy, customer insight, market, business analysis, competitive) |
-| `/prompt-engineering` | Structured prompt construction, NPT constraint generation, prompt quality scoring (3 agents: builder, constraint-gen, scorer) |
-| `/diataxis` | Four-quadrant documentation methodology (6 agents: 4 writers, classifier, auditor) |
-| `/user-experience` | AI-augmented UX methodology for tiny teams (11 agents: orchestrator + 10 framework specialists across 5 criteria-gated waves) |
-| `/use-case` | Guided use case authoring and decomposition (2 agents: Cockburn 12-step author, Jacobson UC 2.0 slicer) |
-| `/test-spec` | BDD test specification from use cases (2 agents: Clark transformation generator, 7 Cs coverage analyst) |
-| `/contract-design` | API contract generation from use cases (2 agents: UC-to-OpenAPI generator, 9-step validator) |
+| `/eng-team` | Secure software engineering methodology (architecture, implementation, quality, incident response agents) |
+| `/red-team` | Offensive security testing methodology (recon, exploitation, post-exploitation, reporting agents) |
+| `/pm-pmm` | Product management and product marketing (strategy, customer insight, market, business analysis, competitive agents) |
+| `/prompt-engineering` | Structured prompt construction, NPT constraint generation, prompt quality scoring (builder, constraint-gen, scorer agents) |
+| `/diataxis` | Four-quadrant documentation methodology (writers, classifier, auditor agents) |
+| `/user-experience` | AI-augmented UX methodology for tiny teams (orchestrator + framework specialists across criteria-gated waves) |
+| `/use-case` | Guided use case authoring and decomposition (Cockburn 12-step author, Jacobson UC 2.0 slicer) |
+| `/test-spec` | BDD test specification from use cases (Clark transformation generator, 7 Cs coverage analyst) |
+| `/contract-design` | API contract generation from use cases (UC-to-OpenAPI generator, validator) |
+| `/bootstrap` | Generate expert-level implementation references for any library, framework, or tool |
+| `/claude-revision` | Periodic health check for agents, skills, CLAUDE.md, rules, and lode memory |
 
 **SessionStart Hook Tags:**
 

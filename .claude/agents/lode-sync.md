@@ -1,5 +1,6 @@
 ---
 name: lode-sync
+model: haiku
 color: yellow
 description: >
   Synchronize lode/ documentation with code changes. Identifies stale docs

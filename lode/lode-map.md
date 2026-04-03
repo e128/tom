@@ -33,6 +33,14 @@ Python patterns and conventions used in this codebase.
 | [python/patterns.md](python/patterns.md) | Python idioms, type hints, async patterns |
 | [python/testing.md](python/testing.md) | BDD test-first, pytest, coverage requirements |
 
+## infrastructure/
+
+Operational maintenance logs and configuration health tracking.
+
+| File | Description |
+|------|-------------|
+| [infrastructure/claude-revision-log.md](infrastructure/claude-revision-log.md) | Persistent memory for `/claude-revision` skill — dated run entries with findings and actions |
+
 ## tmp/
 
 Git-ignored session scraps. Nothing here survives across sessions.

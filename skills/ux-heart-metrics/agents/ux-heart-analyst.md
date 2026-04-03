@@ -11,6 +11,7 @@ description: >
   dashboard metrics, baseline measurement, metric threshold.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

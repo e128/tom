@@ -8,6 +8,7 @@ description: >
   Triggers: JTBD, jobs to be done, switch interview, job mapping, user motivation.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

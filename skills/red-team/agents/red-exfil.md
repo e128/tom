@@ -4,6 +4,7 @@ description: Data Exfiltration Specialist for /red-team. RoE-GATED -- requires e
   channels, covert communication, and DLP bypass assessment. Owns exfiltration-phase defense evasion (data encoding, encrypted channels). Exfiltration to evidence vault ONLY.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: red
 mcpServers:

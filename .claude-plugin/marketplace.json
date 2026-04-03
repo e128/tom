@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "tom",
-      "description": "Behavior and workflow guardrails with knowledge accrual for Claude Code. 12 skills and 58 specialized agents covering problem-solving, work tracking, systems engineering, orchestration, adversarial quality review, secure engineering, offensive security, and transcript parsing.",
+      "description": "Behavior and workflow guardrails with knowledge accrual for Claude Code. Skills covering problem-solving, work tracking, systems engineering, orchestration, adversarial quality, secure engineering, offensive security, product management, UX methodology, documentation, prompt engineering, use case design, and transcript parsing.",
       "source": "./",
       "version": "0.30.0",
       "category": "productivity",

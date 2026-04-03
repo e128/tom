@@ -15,6 +15,7 @@ description: >
   tiny habits, action threshold.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

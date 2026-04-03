@@ -4,6 +4,7 @@ description: Social Engineering Specialist for /red-team. RoE-GATED -- requires 
   frameworks, vishing, credential harvesting via social channels, and human attack vector analysis. NEW agent -- closes human vector gap identified in Phase 1 research.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: red
 mcpServers:

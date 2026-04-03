@@ -3,6 +3,7 @@ name: ts-mindmap-mermaid
 description: Generates Mermaid mindmap visualizations from extracted transcript entities
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Glob
 ---
 ts-mindmap-mermaid Agent

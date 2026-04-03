@@ -373,22 +373,6 @@ When completing synthesis:
 3. **list_artifacts:** Register synthesis document path
 4. **set_timestamp:** Record completion timestamp
 
-## Memory Keeper Integration
-
-### Memory-Keeper MCP Integration
-
-Use Memory-Keeper to retrieve context from prior phases and cross-pipeline sources during synthesis.
-
-**Key Pattern:** `jerry/{project}/orchestration/{workflow-id}`
-
-### When to Use
-
-| Event | Action | Tool |
-|-------|--------|------|
-| Cross-pipeline synthesis | Retrieve prior pipeline context | `mcp__memory-keeper__context_get` |
-| Pattern search | Search stored contexts for themes | `mcp__memory-keeper__context_search` |
-| Multi-session synthesis | Search for prior session findings | `mcp__memory-keeper__context_search` |
-
 </agent>
 
 ---

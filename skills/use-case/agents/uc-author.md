@@ -8,6 +8,7 @@ description: >-
   elaborating, expanding, describing, drafting, or refining use cases.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

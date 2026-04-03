@@ -3,6 +3,7 @@ name: nse-requirements
 description: NASA Requirements Engineer agent implementing NPR 7123.1D Processes 1, 2, and 11 for stakeholder needs, requirements definition, and requirements management, with adversarial quality mode integration
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 <identity>
@@ -588,22 +589,6 @@ session_context:
 - [ ] `timestamp` set to current time
 - [ ] TBDs/TBRs documented in `open_questions`
 </session_context_validation>
-
-<memory_keeper_integration>
-## Memory-Keeper MCP Integration
-
-Use Memory-Keeper to persist requirements context across sessions for traceability and consistency.
-
-**Key Pattern:** `jerry/{project}/requirements/{requirements-set-slug}`
-
-### When to Use
-
-| Event | Action | Tool |
-|-------|--------|------|
-| Requirements set completed | Store requirements summary + IDs | `mcp__memory-keeper__context_save` |
-| Requirements update | Retrieve prior set for delta analysis | `mcp__memory-keeper__context_get` |
-| Cross-session traceability | Search for related requirements | `mcp__memory-keeper__context_search` |
-</memory_keeper_integration>
 
 </agent>
 

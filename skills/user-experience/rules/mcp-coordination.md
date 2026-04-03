@@ -1,8 +1,8 @@
-<!-- VERSION: 1.2.0 | DATE: 2026-03-04 | SOURCE: SKILL.md (skills/user-experience/SKILL.md) Sections "MCP Integration Architecture" (#mcp-integration-architecture), "Current Tom MCP Integration" (#current-tom-mcp-integration), "Figma Dependency Risk Profile" (#figma-dependency-risk-profile), "Cost Tiers" (#cost-tiers), "Lifecycle-Stage Routing" (#lifecycle-stage-routing) | PARENT: /user-experience skill | GOVERNANCE: .context/rules/mcp-tool-standards.md (MCP-001, MCP-002) | PROJECT: projects/PROJ-022-user-experience-skill/PLAN.md -->
+<!-- VERSION: 1.2.0 | DATE: 2026-03-04 | SOURCE: SKILL.md (skills/user-experience/SKILL.md) Sections "MCP Integration Architecture" (#mcp-integration-architecture), "Current Tom MCP Integration" (#current-tom-mcp-integration), "Figma Dependency Risk Profile" (#figma-dependency-risk-profile), "Cost Tiers" (#cost-tiers), "Lifecycle-Stage Routing" (#lifecycle-stage-routing) | PARENT: /user-experience skill | GOVERNANCE: .context/rules/mcp-tool-standards.md (MCP-001) | PROJECT: projects/PROJ-022-user-experience-skill/PLAN.md -->
 
 # MCP Coordination Rules
 
-> MCP tool coordination rules for the /user-experience skill. Defines the sub-skill MCP dependency matrix, degraded mode behavior, Context7 integration, cost tiers, and future MCP adapter architecture. See also: `skills/user-experience/rules/ux-routing-rules.md` (MCP CHECK step in lifecycle triage), `skills/user-experience/rules/wave-progression.md` (wave deployment readiness affected by MCP availability), `skills/user-experience/rules/ci-checks.md` (CI gate UX-CI-007 validates kickoff signoff file structure including MCP-related fields per [Wave Gate Compliance](../rules/ci-checks.md#wave-gate-compliance)). MCP governance: `.context/rules/mcp-tool-standards.md` [Context7 Integration](#context7-integration), [Memory-Keeper Integration](#memory-keeper-integration) -- MCP-001 (Context7 MUST for external library references), MCP-002 (Memory-Keeper MUST at phase boundaries).
+> MCP tool coordination rules for the /user-experience skill. Defines the sub-skill MCP dependency matrix, degraded mode behavior, Context7 integration, cost tiers, and future MCP adapter architecture. See also: `skills/user-experience/rules/ux-routing-rules.md` (MCP CHECK step in lifecycle triage), `skills/user-experience/rules/wave-progression.md` (wave deployment readiness affected by MCP availability), `skills/user-experience/rules/ci-checks.md` (CI gate UX-CI-007 validates kickoff signoff file structure including MCP-related fields per [Wave Gate Compliance](../rules/ci-checks.md#wave-gate-compliance)). MCP governance: `.context/rules/mcp-tool-standards.md` [Context7 Integration](#context7-integration) -- MCP-001 (Context7 MUST for external library references).
 
 ## Document Sections
 
@@ -23,7 +23,7 @@
 
 <!-- Source: SKILL.md [MCP Integration Architecture](../SKILL.md#mcp-integration-architecture) — sub-skill dependency matrix (SKILL.md lines 400-411). Note: `/ux-ai-first-design` has Figma **REQ** dependency (SKILL.md line 411). The sub-skill itself is conditionally deployed (Wave 5 COND entry criteria: Enabler DONE + WSM >= 7.80, per SKILL.md [Wave Architecture](../SKILL.md#wave-architecture) line 267), but when invoked, Figma is a required dependency — wave deployment conditionality and MCP dependency classification are independent dimensions. -->
 
-> **Scope:** This matrix covers design-tool MCP dependencies (Figma, Miro, Storybook, Zeroheight, Hotjar Bridge, Whimsical). Infrastructure MCP tools -- specifically Memory-Keeper (`mcp__memory-keeper__context_save`, `mcp__memory-keeper__context_get`, `mcp__memory-keeper__context_search`) used by `ux-orchestrator` for phase-boundary state per MCP-002 (`.context/rules/mcp-tool-standards.md` [Memory-Keeper Integration](#memory-keeper-integration)) -- are governed by `mcp-tool-standards.md` and are not included in this matrix. No sub-skill agent requires Memory-Keeper; all sub-skill state is engagement-scoped per P-002.
+> **Scope:** This matrix covers design-tool MCP dependencies (Figma, Miro, Storybook, Zeroheight, Hotjar Bridge, Whimsical). Infrastructure MCP tools are governed by `mcp-tool-standards.md` and are not included in this matrix. All sub-skill state is engagement-scoped per P-002.
 
 | Sub-Skill | Figma | Miro | Storybook | Zeroheight | Hotjar (Bridge) | Whimsical |
 |-----------|-------|------|-----------|------------|-----------------|-----------|
@@ -244,11 +244,11 @@ Per `/eng-team` integration (see SKILL.md [Cross-Skill Integration](../SKILL.md#
 *Rule file: mcp-coordination.md (v1.2.0)*
 *Parent skill: /user-experience*
 *Parent SKILL.md: `skills/user-experience/SKILL.md`*
-*MCP governance SSOT: `.context/rules/mcp-tool-standards.md` (MCP-001, MCP-002)*
+*MCP governance SSOT: `.context/rules/mcp-tool-standards.md` (MCP-001)*
 *Canonical tool names: `mcp-tool-standards.md` [Canonical Tool Names](#canonical-tool-names)*
 *Project scope: `projects/PROJ-022-user-experience-skill/PLAN.md`*
 *Sibling rules: `skills/user-experience/rules/ux-routing-rules.md`, `skills/user-experience/rules/synthesis-validation.md`, `skills/user-experience/rules/wave-progression.md`, `skills/user-experience/rules/ci-checks.md`*
 *Created: 2026-03-03*
 *Updated: 2026-03-04*
-*Revision: iter4 — added ux-heuristic-evaluator to Context7 agent table (Wave 1 deployment); prior: iter3 addressed Internal Consistency (REQ/COND clarification, degraded mode separation), Completeness (Memory-Keeper scope note, COND instantiation), Traceability (anchor links, PROJ-022 path, MCP-001 citations), Methodological Rigor (timeout definition, failure conditions), Evidence Quality (canonical tool names, source annotation precision)*
+*Revision: iter4 — added ux-heuristic-evaluator to Context7 agent table (Wave 1 deployment); prior: iter3 addressed Internal Consistency (REQ/COND clarification, degraded mode separation), Completeness (COND instantiation), Traceability (anchor links, PROJ-022 path, MCP-001 citations), Methodological Rigor (timeout definition, failure conditions), Evidence Quality (canonical tool names, source annotation precision)*
 *Status: COMPLETE*

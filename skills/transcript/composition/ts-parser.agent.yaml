@@ -28,8 +28,6 @@ tools:
   - file_write
   - file_search_glob
   - shell_execute
-  mcp:
-  - memory-keeper
   forbidden:
   - agent_delegate
 tool_tier: T4

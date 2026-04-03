@@ -1,5 +1,6 @@
 ---
 name: lode-capture-agent
+model: haiku
 color: yellow
 description: >
   Classifies an insight from the current conversation, routes it to the correct lode file,
@@ -34,7 +35,7 @@ Enforces current-state lode style: no changelog entries, only durable facts.
 | Practices, code style, conventions, workflow | `lode/practices.md` |
 | Terminology, domain words, definitions, Tom, context rot | `lode/terminology.md` |
 | Projects, PROJ, project structure, plans | `lode/framework/work-tracking.md` |
-| Context7, MCP, memory-keeper, MCP tools | `lode/framework/rules.md` |
+| Context7, MCP, MCP tools | `lode/framework/rules.md` |
 
 ## Workflow
 

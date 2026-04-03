@@ -37,8 +37,6 @@ tools:
   - file_search_glob
   - file_search_content
   - shell_execute
-  mcp:
-  - memory-keeper
   forbidden:
   - agent_delegate
 tool_tier: T4

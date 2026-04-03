@@ -10,6 +10,7 @@ description: >-
   to Gherkin BDD scenarios.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

@@ -16,6 +16,7 @@ description: >
   reader, contrast, cognitive load, inclusive design, a11y, persona spectrum.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

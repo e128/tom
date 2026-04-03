@@ -1,5 +1,6 @@
 ---
 name: simplification-agent
+model: sonnet
 color: orange
 description: >
   Audits skills and agents for compensatory scaffolding — instructions that exist to work

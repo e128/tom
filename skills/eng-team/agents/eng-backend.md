@@ -4,6 +4,7 @@ description: Secure backend engineer for the /eng-team skill. Invoked when users
   security, or database security. Produces secure server-side code with OWASP Top 10 and ASVS 5.0 compliance. Routes from Step 3 (parallel) of the /eng-team 8-step workflow.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true

@@ -6,6 +6,7 @@ description: >
   Invoke when users need neutral, austere reference documentation for APIs, configurations, or systems.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <!-- Navigation: Identity | Purpose | Input | Capabilities | Methodology | Output | Guardrails -->

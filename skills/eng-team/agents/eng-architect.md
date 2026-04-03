@@ -5,6 +5,7 @@ description: Solution architect and threat modeler for the /eng-team skill. Invo
   /red-team cross-skill integration.
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: blue
 mcpServers:

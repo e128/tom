@@ -3,6 +3,7 @@ name: orch-tracker
 description: Orchestration State Tracker agent for updating workflow state, registering artifacts, and creating checkpoints
 model: haiku
 effort: low
+maxTurns: 10
 color: purple
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
@@ -371,22 +372,6 @@ When sending context to next agent:
 4. **set_timestamp:** Record update timestamp
 </session_context_protocol>
 
-<memory_keeper_integration>
-### Memory-Keeper MCP Integration
-
-Use Memory-Keeper to persist state checkpoints and phase boundary summaries.
-
-**Key Pattern:** `jerry/{project}/orchestration/{workflow-id}/phase-{N}`
-
-### When to Use
-
-| Event | Action | Tool |
-|-------|--------|------|
-| Phase completion checkpoint | Store phase results + metrics | `mcp__memory-keeper__context_save` |
-| Session resume | Retrieve last checkpoint | `mcp__memory-keeper__context_get` |
-| Quality gate results | Store QG scores for cross-reference | `mcp__memory-keeper__context_save` |
-| Cross-phase lookup | Search prior phase context | `mcp__memory-keeper__context_search` |
-
 </agent>
 
 ---
@@ -394,6 +379,5 @@ Use Memory-Keeper to persist state checkpoints and phase boundary summaries.
 *Agent Version: 2.2.0*
 *Skill: orchestration*
 *Updated: 2026-02-14 - EN-709: Added quality score tracking, gate enforcement, iteration counting*
-</memory_keeper_integration>
 
 </agent>

@@ -9,8 +9,9 @@ description: >
   Triggers: UX audit, comprehensive UX review, multi-framework evaluation, UX triage.
 model: opus
 effort: high
+maxTurns: 25
 tools:
-color: purple  - Read
+  - Read
   - Write
   - Edit
   - Glob
@@ -19,16 +20,12 @@ color: purple  - Read
   - Agent
   - WebSearch
   - WebFetch
+color: purple
 mcpServers:
   context7:
     tools:
       - mcp__context7__resolve-library-id
       - mcp__context7__query-docs
-  memory-keeper:
-    tools:
-      - mcp__memory-keeper__context_save
-      - mcp__memory-keeper__context_get
-      - mcp__memory-keeper__context_search
 ---
 
 <!-- Agent Definition: ux-orchestrator -->

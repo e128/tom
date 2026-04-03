@@ -9,6 +9,7 @@ description: >
   launch plan, sales enablement, buyer persona, product marketing, PLG.
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: blue
 mcpServers:

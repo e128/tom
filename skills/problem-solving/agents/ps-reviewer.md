@@ -3,6 +3,7 @@ name: ps-reviewer
 description: Quality review agent for code, design, architecture, and security reviews with adversarial quality strategies and L0/L1/L2 output levels
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <agent>

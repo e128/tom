@@ -4,6 +4,7 @@ description: Engagement Lead & Scope Authority for /red-team. Creates and manage
   MANDATORY FIRST agent -- no other agent operates without an active scope. Covers methodology selection, team coordination, operational OPSEC enforcement, findings QA, and methodology adaptation.
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: purple
 mcpServers:

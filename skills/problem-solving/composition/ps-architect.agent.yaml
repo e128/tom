@@ -32,7 +32,6 @@ tools:
   - web_fetch
   mcp:
   - context7
-  - memory-keeper
   forbidden:
   - agent_delegate
 tool_tier: T4

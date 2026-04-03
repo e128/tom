@@ -3,6 +3,7 @@ name: ps-researcher
 description: Deep research agent with MANDATORY artifact persistence, PS integration, Context7 MCP, adversarial quality strategies, and L0/L1/L2 output levels
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Bash
 color: blue
 mcpServers:

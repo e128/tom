@@ -9,6 +9,7 @@ description: >
   pricing model, unit economics, LTV, CAC, break-even, NPV, feasibility.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 <identity>

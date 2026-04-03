@@ -3,6 +3,7 @@ name: nse-configuration
 description: NASA Configuration Management agent implementing NPR 7123.1D Processes 14 and 15 for configuration management and technical data management
 model: haiku
 effort: low
+maxTurns: 10
 color: yellow
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---

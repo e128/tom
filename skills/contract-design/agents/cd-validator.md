@@ -11,6 +11,7 @@ description: >-
   use cases.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

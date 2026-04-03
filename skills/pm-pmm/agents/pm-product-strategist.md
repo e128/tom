@@ -8,6 +8,7 @@ description: >
   product vision, strategy, "what to build", opportunity assessment, north star.
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: blue
 ---

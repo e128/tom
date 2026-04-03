@@ -4,10 +4,10 @@
   "description": "Framework for behavior and workflow guardrails with knowledge accrual",
   "author": {
     "name": "Tom Framework Contributors",
-    "url": "https://github.com/geekatron/jerry"
+    "url": "https://github.com/e128/tom"
   },
   "license": "Apache-2.0",
-  "repository": "https://github.com/geekatron/jerry",
+  "repository": "https://github.com/e128/tom",
   "keywords": [
     "tom",
     "workflow",

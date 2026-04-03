@@ -7,7 +7,7 @@ paths:
 # Skill Development Standards
 
 > Rules for building, structuring, and registering Tom framework skills.
-> Based on Anthropic's "Complete Guide to Building Skills for Claude" (January 2026) and Tom's established conventions across 8 production skills.
+> Based on Anthropic's "Complete Guide to Building Skills for Claude" (January 2026) and Tom's established conventions across its production skills (see CLAUDE.md for current list).
 
 <!-- L2-REINJECT: rank=7, content="Skills: SKILL.md exact case, kebab-case folder, no README.md (H-25). Description WHAT+WHEN+triggers, repo-relative paths, register in CLAUDE.md+AGENTS.md (H-26). Navigation table REQUIRED (H-23)." -->
 
@@ -164,7 +164,7 @@ For critical validations, consider bundling a script in `scripts/` that performs
 
 ### Existing Skills
 
-Rules H-25 and H-26 apply to all new skills immediately. Existing production skills (9 as of 2026-02-19) SHOULD be audited for compliance. Non-compliant existing skills MUST have a compliance issue filed in the worktracker.
+Rules H-25 and H-26 apply to all new skills immediately. Existing production skills SHOULD be audited for compliance. Non-compliant existing skills MUST have a compliance issue filed in the worktracker.
 
 ---
 

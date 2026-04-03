@@ -4,6 +4,7 @@ description: Vulnerability Analyst for /red-team. Performs vulnerability identif
   from red-recon and produces prioritized vulnerability reports for red-exploit. Operates within analysis scope with read-only target interaction.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: red
 mcpServers:

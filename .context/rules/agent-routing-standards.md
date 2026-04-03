@@ -94,7 +94,7 @@
 
 ## Layered Routing Architecture
 
-The routing framework uses three layers with graceful escalation. Only Layer 0 (explicit) and Layer 1 (keyword) are implemented at current scale (8 skills). Layers 2 and 3 are designed for future activation per the [Scaling Roadmap](#scaling-roadmap).
+The routing framework uses three layers with graceful escalation. Only Layer 0 (explicit) and Layer 1 (keyword) are implemented at current scale (31 skills). Layers 2 and 3 are designed for future activation per the [Scaling Roadmap](#scaling-roadmap).
 
 ```
     User Request
@@ -229,7 +229,7 @@ If multiple candidates remain after Step 2:
 2. If the highest-priority candidate is 2+ priority levels above the next: route to highest priority (clear separation).
 3. If priority gap is < 2: escalate to Layer 2 (ambiguous).
 
-**2-level gap derivation:** The 2-level gap threshold is a conservative starting value: with 7 skills spanning priority 1-7, a 1-level gap is common between adjacent skills; requiring a 2-level gap ensures meaningful separation rather than arbitrary adjacency ordering. This threshold SHOULD be recalibrated when the skill count changes or routing accuracy data from the observability framework becomes available (RT-M-009).
+**2-level gap derivation:** The 2-level gap threshold is a conservative starting value: with 18 skill entries spanning priority 1-15, a 1-level gap is common between adjacent skills; requiring a 2-level gap ensures meaningful separation rather than arbitrary adjacency ordering. This threshold SHOULD be recalibrated when the skill count changes or routing accuracy data from the observability framework becomes available (RT-M-009).
 
 ### Routing Outcomes
 
@@ -476,8 +476,8 @@ The routing architecture evolves through four phases, each triggered by measurab
 
 | Phase | Skill Count | Architecture | Transition Trigger | Effort |
 |-------|-------------|-------------|-------------------|--------|
-| **Phase 0** (current) | 8 | Keyword-only (current mandatory-skill-usage.md) | -- | None |
-| **Phase 1** (immediate) | 8 | Enhanced keyword: negative keywords + priority + compound triggers | This standard is accepted | Low |
+| **Phase 0** (current) | 31 | Keyword-only (current mandatory-skill-usage.md) | -- | None |
+| **Phase 1** (immediate) | 31 | Enhanced keyword: negative keywords + priority + compound triggers | This standard is accepted | Low |
 | **Phase 2** (10-15 skills) | 10-15 | Phase 1 + rule-based decision tree (Layer 2) | Any 2 of: 10+ collision zones, false negative rate > 40%, user override rate > 30% | Medium |
 | **Phase 3** (15-20 skills) | 15-20 | Phase 2 + LLM-as-Router (Layer 3) | Any 2 of: Layer 2 failure rate > 20%, novel request rate > 15%, trigger map > 1,500 tokens | Medium |
 

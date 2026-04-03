@@ -13,6 +13,7 @@ description: >
   component library.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

@@ -4,6 +4,7 @@ description: Persistence Specialist for /red-team. RoE-GATED -- requires explici
   and rootkit methodology. Owns persistence-phase defense evasion (indicator removal, timestomping). Operates only on already-compromised hosts within authorized scope.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: red
 mcpServers:

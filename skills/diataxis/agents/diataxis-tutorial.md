@@ -7,6 +7,7 @@ description: >
   NOT for users who need to quickly accomplish a task (use diataxis-howto instead).
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <!-- Navigation: Identity | Purpose | Input | Capabilities | Methodology | Output | Guardrails -->

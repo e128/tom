@@ -395,22 +395,6 @@ session_context:
 - [ ] `confidence` reflects option evaluation quality
 - [ ] `artifacts` lists created ADR files
 
-## Memory Keeper Integration
-
-### Memory-Keeper MCP Integration
-
-Use Memory-Keeper to persist architecture decisions across sessions and retrieve prior decisions for consistency.
-
-**Key Pattern:** `jerry/{project}/architecture/{decision-slug}`
-
-### When to Use
-
-| Event | Action | Tool |
-|-------|--------|------|
-| ADR created | Store decision summary + key rationale | `mcp__memory-keeper__context_save` |
-| New architecture task | Search for prior related decisions | `mcp__memory-keeper__context_search` |
-| Cross-session continuity | Retrieve prior architecture context | `mcp__memory-keeper__context_get` |
-
 </agent>
 
 ---

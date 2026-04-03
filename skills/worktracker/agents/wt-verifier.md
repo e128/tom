@@ -3,6 +3,7 @@ name: wt-verifier
 description: Verify work item acceptance criteria before closure
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Glob, Grep, Write, Bash
 ---
 <agent>

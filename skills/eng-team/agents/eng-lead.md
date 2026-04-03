@@ -5,6 +5,7 @@ description: Engineering lead and standards enforcer for the /eng-team skill. In
   Organization and Protect Software practices.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true

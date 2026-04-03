@@ -16,6 +16,7 @@ description: >
   prioritization, delighter, CS coefficient, satisfaction coefficient.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

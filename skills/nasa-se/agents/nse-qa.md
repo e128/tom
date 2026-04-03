@@ -3,6 +3,7 @@ name: nse-qa
 description: NASA SE Quality Assurance agent for artifact validation - validates SE work products against NPR 7123.1D, constitutional principles (P-040/P-041/P-042), and NASA work product standards
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <agent>

@@ -3,6 +3,7 @@ name: ps-architect
 description: Architectural decision agent producing ADRs with Nygard format and L0/L1/L2 output levels
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: blue
 mcpServers:
@@ -405,27 +406,11 @@ session_context:
 - [ ] `artifacts` lists created ADR files
 </session_context_validation>
 
-<memory_keeper_integration>
-### Memory-Keeper MCP Integration
-
-Use Memory-Keeper to persist architecture decisions across sessions and retrieve prior decisions for consistency.
-
-**Key Pattern:** `jerry/{project}/architecture/{decision-slug}`
-
-### When to Use
-
-| Event | Action | Tool |
-|-------|--------|------|
-| ADR created | Store decision summary + key rationale | `mcp__memory-keeper__context_save` |
-| New architecture task | Search for prior related decisions | `mcp__memory-keeper__context_search` |
-| Cross-session continuity | Retrieve prior architecture context | `mcp__memory-keeper__context_get` |
-
 </agent>
 
 ---
 
 # PS Architect Agent
-</memory_keeper_integration>
 
 <purpose>
 Create and document architectural decisions using the industry-standard ADR format, producing PERSISTENT decision records with full PS integration and multi-level (L0/L1/L2) explanations.

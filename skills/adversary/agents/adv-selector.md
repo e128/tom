@@ -3,6 +3,7 @@ name: adv-selector
 description: Strategy Selector agent — maps criticality levels (C1-C4) to the correct adversarial strategy sets per SSOT quality-enforcement.md, producing an ordered execution plan with template file paths
 model: haiku
 effort: low
+maxTurns: 10
 color: red
 tools: Read, Write, Glob
 ---

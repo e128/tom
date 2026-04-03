@@ -5,6 +5,7 @@ description: DevSecOps pipeline engineer for the /eng-team skill. Invoked when u
   1 research. Integrates DevSecOps patterns and Google SLSA build automation.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: red
 mcpServers:

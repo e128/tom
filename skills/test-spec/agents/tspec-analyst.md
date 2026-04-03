@@ -10,6 +10,7 @@ description: >-
   evaluating test specification quality against use case source.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

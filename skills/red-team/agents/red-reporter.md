@@ -5,6 +5,7 @@ description: Engagement Reporter & Documentation Specialist for /red-team. Gener
   data.
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: blue
 mcpServers:

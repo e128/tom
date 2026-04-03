@@ -15,7 +15,8 @@ description: >
   UX, human-AI interaction, AI transparency, AI error handling, AI onboarding,
   progressive AI disclosure, trust-risk, error-risk.
 model: opus
-effort: medium
+effort: high
+maxTurns: 25
 tools:
   - Read
   - Write

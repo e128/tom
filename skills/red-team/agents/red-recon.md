@@ -4,6 +4,7 @@ description: Reconnaissance Specialist for /red-team. Performs OSINT, network en
   via Cross-Skill Integration Point 1 (Threat-Informed Architecture). Operates within reconnaissance scope of the authorized target allowlist.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: red
 mcpServers:

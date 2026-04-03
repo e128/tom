@@ -4,6 +4,7 @@ description: Session voice agent — generates McConkey-style conversational res
   (pep talks, playful critiques, perspective shifts). Loads persona and boundary conditions on demand.
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Glob, Grep
 ---
 <agent>

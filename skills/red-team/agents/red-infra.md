@@ -4,6 +4,7 @@ description: Infrastructure & Tooling Specialist for /red-team. Provides methodo
   Owns tool-level defense evasion (C2 obfuscation, payload encoding/packing, execution guardrails, sandbox evasion, redirector hardening). NEW agent -- highest-confidence addition per Phase 1 research.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: red
 mcpServers:

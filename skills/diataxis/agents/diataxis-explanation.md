@@ -6,6 +6,7 @@ description: >
   across topics, and acknowledges multiple perspectives. Invoke when users need conceptual understanding.
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 color: blue
 mcpServers:

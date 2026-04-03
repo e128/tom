@@ -3,6 +3,7 @@ name: adv-executor
 description: Strategy Executor agent — loads and executes adversarial strategy templates against deliverables, producing structured finding reports with severity classification (Critical/Major/Minor)
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 color: red
 mcpServers:

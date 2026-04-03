@@ -11,6 +11,7 @@ description: >
   MVP experiment, validated learning, experiment design, hypothesis backlog.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools:
   - Read
   - Write

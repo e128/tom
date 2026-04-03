@@ -4,6 +4,7 @@ description: Voice Transformation agent — rewrites framework output text from 
   before presenting the result
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit
 ---
 <identity>

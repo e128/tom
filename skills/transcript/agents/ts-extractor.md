@@ -3,6 +3,7 @@ name: ts-extractor
 description: Extracts semantic entities (speakers, actions, decisions, questions, topics) from parsed transcripts
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Glob
 ---
 ts-extractor Agent
@@ -970,19 +971,6 @@ FILTER OUT:
 ### Forward Links
 - [ts-formatter.md](./ts-formatter.md) - Downstream agent
 - [SKILL.md](../SKILL.md) - Skill definition
-
----
-
-## Memory-Keeper MCP Integration
-
-Use Memory-Keeper to persist extraction results for multi-session workflows and cross-reference.
-
-**Key Pattern:** `jerry/{project}/transcript/{packet-id}/extraction`
-
-| Event | Action | Tool |
-|-------|--------|------|
-| Extraction complete | Store extraction summary + entity counts | `mcp__memory-keeper__context_save` |
-| Session resume | Retrieve prior extraction context | `mcp__memory-keeper__context_get` |
 
 ---
 

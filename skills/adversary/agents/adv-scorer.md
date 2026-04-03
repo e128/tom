@@ -4,6 +4,7 @@ description: Quality Scorer agent — implements S-014 LLM-as-Judge rubric scori
   verdict
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep
 color: red
 ---

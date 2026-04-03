@@ -6,6 +6,7 @@ description: >
   with per-criterion pass/fail and remediation recommendations. Invoke for documentation quality review.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Glob, Grep
 ---
 <!-- Navigation: Identity | Purpose | Input | Capabilities | Methodology | Output | Guardrails -->

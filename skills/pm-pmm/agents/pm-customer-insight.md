@@ -9,6 +9,7 @@ description: >
   voice of customer, churn analysis, NPS, customer discovery, pain points.
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: blue
 mcpServers:

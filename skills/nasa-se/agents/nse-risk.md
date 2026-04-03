@@ -3,6 +3,7 @@ name: nse-risk
 description: NASA Risk Manager agent implementing NPR 7123.1D Process 13 and NPR 8000.4C for technical risk management, with adversarial quality mode integration
 model: opus
 effort: high
+maxTurns: 25
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: blue
 ---

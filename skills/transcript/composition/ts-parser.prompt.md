@@ -539,19 +539,6 @@ This state is passed to ts-extractor for entity extraction.
 
 ---
 
-## Memory-Keeper MCP Integration
-
-Use Memory-Keeper to persist transcript parsing session context for multi-session workflows.
-
-**Key Pattern:** `jerry/{project}/transcript/{packet-id}`
-
-| Event | Action | Tool |
-|-------|--------|------|
-| Parsing session complete | Store parse summary + chunk count | `mcp__memory-keeper__context_save` |
-| Session resume | Retrieve prior parsing context | `mcp__memory-keeper__context_get` |
-
----
-
 ## Document History
 
 | Version | Date | Author | Changes |

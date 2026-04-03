@@ -15,7 +15,8 @@ description: >
   map sketch decide test, 4-day sprint, design sprint 2.0, AJ Smart sprint,
   validate prototype, test with users, sprint facilitation.
 model: opus
-effort: medium
+effort: high
+maxTurns: 25
 tools:
   - Read
   - Write

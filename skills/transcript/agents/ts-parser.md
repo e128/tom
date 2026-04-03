@@ -3,6 +3,7 @@ name: ts-parser
 description: 'Strategy Pattern orchestrator for hybrid parsing: Python delegation for VTT, LLM fallback for others'
 model: haiku
 effort: low
+maxTurns: 10
 color: yellow
 tools: Read, Write, Glob, Bash
 ---
@@ -542,19 +543,6 @@ This state is passed to ts-extractor for entity extraction.
 - [SKILL.md](../SKILL.md) - Skill definition (orchestration)
 - [VTT Parser](../src/parser/vtt_parser.py) - Python VTT parser (DELEGATOR target)
 - [Transcript Chunker](../src/chunker/transcript_chunker.py) - Python chunker (STEP 4)
-
----
-
-## Memory-Keeper MCP Integration
-
-Use Memory-Keeper to persist transcript parsing session context for multi-session workflows.
-
-**Key Pattern:** `jerry/{project}/transcript/{packet-id}`
-
-| Event | Action | Tool |
-|-------|--------|------|
-| Parsing session complete | Store parse summary + chunk count | `mcp__memory-keeper__context_save` |
-| Session resume | Retrieve prior parsing context | `mcp__memory-keeper__context_get` |
 
 ---
 

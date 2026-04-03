@@ -3,6 +3,7 @@ name: ps-synthesizer
 description: Meta-analysis agent for synthesizing patterns across multiple research outputs with adversarial quality strategies and L0/L1/L2 output levels
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true

@@ -4,6 +4,7 @@ description: Privilege Escalation Specialist for /red-team. Provides methodology
   Owns credential-based defense evasion (access token manipulation). Limited to already-compromised hosts only.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 color: red
 mcpServers:

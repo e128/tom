@@ -9,6 +9,7 @@ description: >
   Porter's, SWOT, competitive landscape, differentiation, market intelligence.
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true

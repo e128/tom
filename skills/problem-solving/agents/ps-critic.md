@@ -4,6 +4,7 @@ description: Quality evaluation agent for creator-critic-revision cycles with ad
   improvement recommendations
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep
 ---
 <agent>

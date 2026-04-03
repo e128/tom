@@ -7,6 +7,7 @@ description: >
   NOT for beginners building skills for the first time (use diataxis-tutorial instead).
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <!-- Navigation: Identity | Purpose | Input | Capabilities | Methodology | Output | Guardrails -->

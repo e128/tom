@@ -12,13 +12,15 @@ description: >-
   interactions to API contracts.
 model: opus
 effort: high
+maxTurns: 25
 tools:
-color: blue  - Read
+  - Read
   - Write
   - Edit
   - Glob
   - Grep
   - Bash
+color: blue
 ---
 
 <identity>

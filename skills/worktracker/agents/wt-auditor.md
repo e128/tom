@@ -3,6 +3,7 @@ name: wt-auditor
 description: Audit worktracker integrity across multiple files with template compliance, relationship validation, and orphan detection
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Glob, Grep, Bash
 ---
 <identity>

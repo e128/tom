@@ -4,6 +4,7 @@ description: Voice Compliance Reviewer — evaluates framework output text again
   fixes
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep
 ---
 <identity>

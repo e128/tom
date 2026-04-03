@@ -35,8 +35,6 @@ tools:
   - shell_execute
   - web_search
   - web_fetch
-  mcp:
-  - memory-keeper
   forbidden:
   - agent_delegate
 tool_tier: T4

@@ -3,6 +3,7 @@ name: nse-integration
 description: NASA System Integration agent implementing NPR 7123.1D Processes 6 and 12 for product integration and interface management
 model: sonnet
 effort: medium
+maxTurns: 15
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 <identity>

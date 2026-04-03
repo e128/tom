@@ -968,19 +968,6 @@ FILTER OUT:
 
 ---
 
-## Memory-Keeper MCP Integration
-
-Use Memory-Keeper to persist extraction results for multi-session workflows and cross-reference.
-
-**Key Pattern:** `jerry/{project}/transcript/{packet-id}/extraction`
-
-| Event | Action | Tool |
-|-------|--------|------|
-| Extraction complete | Store extraction summary + entity counts | `mcp__memory-keeper__context_save` |
-| Session resume | Retrieve prior extraction context | `mcp__memory-keeper__context_get` |
-
----
-
 ## Document History
 
 | Version | Date | Author | Changes |
