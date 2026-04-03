@@ -905,7 +905,7 @@ def get_git_info(data: dict, config: dict) -> tuple[str, bool, int] | None:
 
     try:
         result = subprocess.run(
-            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            ["git", "--no-optional-locks", "rev-parse", "--abbrev-ref", "HEAD"],
             cwd=cwd,
             capture_output=True,
             encoding="utf-8",
@@ -924,7 +924,7 @@ def get_git_info(data: dict, config: dict) -> tuple[str, bool, int] | None:
             branch = branch[: max_len - 3] + "..."
 
         result = subprocess.run(
-            ["git", "status", "--porcelain"],
+            ["git", "--no-optional-locks", "status", "--porcelain"],
             cwd=cwd,
             capture_output=True,
             encoding="utf-8",
