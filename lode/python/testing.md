@@ -1,7 +1,7 @@
 # Testing
-*Updated: 2026-04-03T14:09:30Z*
+*Updated: 2026-04-03T15:51:45Z*
 
-BDD test-first development at 90% line coverage (H-20). Tests live in `tests/` and `scripts/tests/` (both paths are active per `pyproject.toml` `testpaths`).
+BDD test-first development at 90% line coverage (H-20). Tests live in `tests/`. (`pyproject.toml` `testpaths` also references `scripts/tests/` but that directory does not yet exist.)
 
 ## Test-First Workflow (H-20)
 
@@ -33,12 +33,18 @@ tests/
     architecture/       # architectural constraint tests
     security/           # security/adversarial scenarios
     regression/         # regression test suites
+    bootstrap/          # bootstrap/composition root tests
+    fixtures/           # shared test fixtures
+    hooks/              # hook tests
+    llm/                # LLM integration tests
+    project_validation/ # project validation tests
+    schemas/            # schema validation tests
+    system/             # system-level tests
     session_management/
     work_tracking/
     shared_kernel/
     infrastructure/
     interface/
-scripts/tests/          # scripts-layer tests (also in testpaths)
 ```
 
 ## Markers

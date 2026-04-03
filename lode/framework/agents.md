@@ -1,5 +1,5 @@
 # Agent System
-*Updated: 2026-04-03T18:00:00Z*
+*Updated: 2026-04-03T15:51:45Z*
 
 Agents are specialized subagents invoked via the Agent tool by orchestrators. Single-file architecture (H-34): `.md` file contains both official Claude Code YAML frontmatter and the system prompt as the markdown body.
 
@@ -68,7 +68,7 @@ One nesting level only: orchestrator (T5) → workers (T1–T4). Workers cannot 
 
 ## Effort Field (ET-M-001)
 
-`effort` maps to criticality level. All 85 agent files now declare `effort`. Orchestrators and T5 agents use `high`.
+`effort` maps to criticality level. All agent files declare `effort` (see `skills/*/agents/` for current count). Orchestrators and T5 agents use `high`.
 
 | Criticality | effort value | Example agents |
 |-------------|-------------|----------------|

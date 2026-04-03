@@ -1,5 +1,5 @@
 # Lode Map
-*Updated: 2026-04-03T14:08:54Z*
+*Updated: 2026-04-03T15:51:45Z*
 
 Hierarchical index of all lode files. Read this first to orient — don't explore the codebase until you've checked here.
 
@@ -20,7 +20,7 @@ Tom framework internals — architecture, rules, skills, agents, CLI, work track
 | [framework/architecture.md](framework/architecture.md) | Hexagonal architecture, layer isolation, domain model |
 | [framework/rules.md](framework/rules.md) | HARD rules, quality gate, enforcement layers |
 | [framework/skills.md](framework/skills.md) | Skills system: SKILL.md format, routing, trigger map |
-| [framework/agents.md](framework/agents.md) | Agent definition format, governance YAML, tool tiers |
+| [framework/agents.md](framework/agents.md) | Agent definition format, effort/color fields, cognitive modes |
 | [framework/cli.md](framework/cli.md) | tom CLI commands: session, items, projects |
 | [framework/work-tracking.md](framework/work-tracking.md) | Worktracker entities, hierarchy, WTI rules |
 

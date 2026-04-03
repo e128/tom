@@ -1,5 +1,5 @@
 # Python Patterns
-*Updated: 2026-04-03T18:00:00Z*
+*Updated: 2026-04-03T15:51:45Z*
 
 Python idioms and patterns used in this codebase.
 
@@ -58,13 +58,12 @@ Tom uses sync code by default. When async is needed (e.g., external calls), use 
 
 ## Ruff Rules (active)
 
-`pyproject.toml` selects: E, W, F, I, B, C4, UP, S506, TCH, PTH, RUF.
+`pyproject.toml` selects: E, W, F, I, B, C4, UP, S506, TCH, PTH, RUF. Ignores: E501 (line length, handled by formatter), B017 (pytest.raises used intentionally).
 
-- **TCH** — typing-only imports must live in `TYPE_CHECKING` blocks to reduce runtime overhead. 137 TC001 + 37 TC003 violations exist as of 2026-04-03 — a follow-up remediation pass is pending.
-- **PTH** — use `pathlib.Path` over `os.path`. ~20 violations pending.
-- **RUF** — ruff-specific: unused `noqa`, unsorted `__all__`, mutable class defaults. ~60 violations pending (31 auto-fixable).
-
-The 51 auto-fixable violations (RUF100, TC005, RUF010, RUF019) should be cleaned via `uv run ruff check src/ --fix`.
+- **S506** — ban unsafe YAML APIs (`yaml.load`, `yaml.unsafe_load`)
+- **TCH** — typing-only imports must live in `TYPE_CHECKING` blocks to reduce runtime overhead
+- **PTH** — use `pathlib.Path` over `os.path`
+- **RUF** — ruff-specific: unused `noqa`, unsorted `__all__`, mutable class defaults
 
 ## Python Version Support
 

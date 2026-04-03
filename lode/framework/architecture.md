@@ -1,5 +1,5 @@
 # Architecture
-*Updated: 2026-04-03T14:08:35Z*
+*Updated: 2026-04-03T15:51:45Z*
 
 Tom uses hexagonal (ports and adapters) architecture with strict layer isolation enforced by H-07.
 
@@ -32,7 +32,7 @@ graph TD
 - `src/domain/` — entities, value objects, domain services, repository interfaces (ports)
 - `src/application/` — use cases, command/query handlers
 - `src/infrastructure/` — file-based adapters, external integrations
-- `src/interface/` — CLI commands (Click/Typer)
+- `src/interface/` — CLI commands (argparse)
 - `src/agents/` — agent entity management (canonical agents, generated artifacts)
 - `src/configuration/` — configuration aggregates and domain events
 - `src/context_monitoring/` — context-fill monitoring and events
