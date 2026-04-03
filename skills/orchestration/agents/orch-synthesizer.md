@@ -3,8 +3,6 @@ name: orch-synthesizer
 description: Orchestration Synthesizer agent for cross-document synthesis, pattern extraction, and final workflow recommendations
 model: sonnet
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
-mcpServers:
-  memory-keeper: true
 ---
 <agent>
 

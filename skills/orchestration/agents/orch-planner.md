@@ -3,8 +3,6 @@ name: orch-planner
 description: Orchestration Planner agent for multi-agent workflow design, pipeline architecture, and state schema definition
 model: sonnet
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
-mcpServers:
-  memory-keeper: true
 ---
 <agent>
 

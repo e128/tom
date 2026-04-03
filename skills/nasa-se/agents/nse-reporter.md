@@ -2,6 +2,7 @@
 name: nse-reporter
 description: NASA Systems Engineering Status Reporter
 model: haiku
+effort: low
 tools: Read, Write, Glob, Grep, WebSearch, WebFetch
 ---
 <identity>

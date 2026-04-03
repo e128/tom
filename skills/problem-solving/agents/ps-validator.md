@@ -2,6 +2,7 @@
 name: ps-validator
 description: Constraint and design validation agent producing verification reports with L0/L1/L2 output levels
 model: haiku
+effort: low
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <agent>

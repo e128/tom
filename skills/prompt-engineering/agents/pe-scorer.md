@@ -2,6 +2,7 @@
 name: pe-scorer
 description: Prompt Quality Scorer agent — evaluates prompts against the 7-criterion rubric (C1 Task Specificity through C7 Positive Framing), returning dimension-level scores, weighted composite, tier classification, and targeted improvement suggestions. Invoke when scoring or evaluating prompt quality.
 model: haiku
+effort: low
 tools: Read, Glob, Grep
 ---
 <identity>

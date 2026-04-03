@@ -2,6 +2,7 @@
 name: wt-visualizer
 description: Generate Mermaid diagrams for worktracker hierarchies, timelines, status overviews, and dependency chains
 model: haiku
+effort: low
 tools: Read, Write, Glob, Grep, Bash
 ---
 <identity>

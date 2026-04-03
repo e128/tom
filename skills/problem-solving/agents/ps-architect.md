@@ -5,7 +5,6 @@ model: opus
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 mcpServers:
   context7: true
-  memory-keeper: true
 ---
 <agent>
 

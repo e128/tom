@@ -3,8 +3,6 @@ name: ts-extractor
 description: Extracts semantic entities (speakers, actions, decisions, questions, topics) from parsed transcripts
 model: sonnet
 tools: Read, Write, Glob
-mcpServers:
-  memory-keeper: true
 ---
 ts-extractor Agent
 

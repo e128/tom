@@ -5,6 +5,7 @@ description: >
   (practical/theoretical, acquisition/application) and returns a structured classification with
   quadrant, confidence, and decomposition recommendation. T1 read-only, does not invoke writer agents.
 model: haiku
+effort: low
 tools: Read, Glob, Grep
 ---
 <!-- Navigation: Identity | Purpose | Input | Capabilities | Methodology | Output | Guardrails -->

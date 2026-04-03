@@ -9,6 +9,7 @@ description: >
   critical finding count >= 3, Figma benchmark fails, or evaluation spans > 50 screens.
   Triggers: heuristic evaluation, usability audit, Nielsen heuristics, interface review.
 model: haiku
+effort: low
 tools:
   - Read
   - Write

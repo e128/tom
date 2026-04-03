@@ -2,6 +2,7 @@
 name: ts-formatter
 description: Generates formatted Markdown output with packet structure, file splitting, and bidirectional linking per ADR-007 golden template specification
 model: haiku
+effort: low
 tools: Read, Write, Glob
 ---
 ts-formatter Agent

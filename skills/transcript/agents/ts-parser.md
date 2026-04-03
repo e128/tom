@@ -2,9 +2,8 @@
 name: ts-parser
 description: 'Strategy Pattern orchestrator for hybrid parsing: Python delegation for VTT, LLM fallback for others'
 model: haiku
+effort: low
 tools: Read, Write, Glob, Bash
-mcpServers:
-  memory-keeper: true
 ---
 ts-parser Agent
 
