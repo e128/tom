@@ -145,7 +145,7 @@ ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
 
 **Enforcement:**
 - `disallowedTools: [Agent]` declared in `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` frontmatter
-- P-003 prohibition in `skills/ux-design-sprint/agents/ux-sprint-facilitator.governance.yaml` `capabilities.forbidden_actions`
+- P-003 prohibition in `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` guardrails section
 - CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`)
 
 ---
@@ -204,7 +204,7 @@ Create file at: skills/ux-design-sprint/output/UX-0012/ux-sprint-facilitator-mob
 )
 ```
 
-> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-sprint-facilitator.governance.yaml` per AD-M-007. Fields are enumerated below:
+> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-sprint-facilitator.md` per AD-M-007. Fields are enumerated below:
 
 **on_receive fields:**
 
@@ -599,7 +599,7 @@ The following CI gate criteria apply to this sub-skill (full gate definitions in
 | Gate | Check | Enforcement |
 |------|-------|-------------|
 | **No Agent tool access** | `disallowedTools: [Agent]` present in agent frontmatter; agent MUST NOT have Agent in `tools` list | L5 (CI): grep agent frontmatter for Agent tool presence |
-| **P-003 forbidden action** | `capabilities.forbidden_actions` in `.governance.yaml` MUST include P-003 recursive subagent prohibition | L5 (CI): schema validation of governance YAML against `docs/schemas/agent-governance-v1.schema.json` |
+| **P-003 forbidden action** | Agent `.md` guardrails section MUST include P-003 recursive subagent prohibition | L5 (CI): grep agent files for P-003/P-020/P-022 presence |
 | **Output schema validation** | Agent output MUST contain all Required Output Sections (Executive Summary, Sprint Context, Day 1-4, Strategic Implications, Synthesis Judgments Summary, Handoff Data) | L4 (post-tool): section heading presence check on output artifact |
 
 ---
@@ -689,7 +689,7 @@ All agents in this sub-skill adhere to the **Tom Constitution v1.0**:
 | P-011 | NEVER recommend next steps without supporting evidence from Day 4 testing | Unsupported recommendations; confidence inflated without basis |
 
 **Per-agent enforcement:** The `ux-sprint-facilitator` agent declares:
-- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002, P-004, P-011 in `skills/ux-design-sprint/agents/ux-sprint-facilitator.governance.yaml`
+- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002, P-004, P-011 in `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` guardrails section
 - `capabilities.forbidden_actions`: 3 entries in NPT-009 format referencing the constitutional triplet
 - `disallowedTools: [Agent]` in `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` frontmatter
 
@@ -726,7 +726,7 @@ This sub-skill follows a parent-routed registration model per H-26. Sub-skills a
 > This sub-skill follows a two-phase implementation sequence:
 >
 > - **Wave 5 Phase 1 (this deliverable):** SKILL.md specification -- methodology, output format, routing integration, template stub, cross-framework integration, and quality gate criteria. This document is the Phase 1 artifact.
-> - **Wave 5 Phase 2 (pending):** Agent implementation -- `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` (agent definition with `<input>`, `<capabilities>`, `<methodology>`, `<output>` sections) and `skills/ux-design-sprint/agents/ux-sprint-facilitator.governance.yaml` (governance metadata). Tracked under PROJ-022 EPIC-005.
+> - **Wave 5 Phase 2 (pending):** Agent implementation -- `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` (agent definition with YAML frontmatter, `<input>`, `<capabilities>`, `<methodology>`, `<output>`, and `<guardrails>` sections). Tracked under PROJ-022 EPIC-005.
 
 ---
 
@@ -763,7 +763,7 @@ This sub-skill follows a parent-routed registration model per H-26. Sub-skills a
 |--------|---------|------|
 | Parent SKILL.md | Sub-skill scope, wave architecture, routing, MCP dependencies, synthesis protocol | `skills/user-experience/SKILL.md` |
 | Agent definition | Agent frontmatter, identity, expertise, guardrails | `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` [PLANNED] |
-| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-design-sprint/agents/ux-sprint-facilitator.governance.yaml` [PLANNED] |
+| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` (YAML frontmatter + guardrails section) |
 | UX routing rules | Lifecycle-stage routing, handoff data contracts, common intent resolution | `skills/user-experience/rules/ux-routing-rules.md` |
 | Synthesis validation | Confidence gate protocol, per-sub-skill confidence map, signal extraction criteria | `skills/user-experience/rules/synthesis-validation.md` |
 | Wave progression | Wave 5 entry criteria, signoff requirements | `skills/user-experience/rules/wave-progression.md` |

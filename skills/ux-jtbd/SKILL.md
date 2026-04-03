@@ -135,7 +135,7 @@ Source: `skills/user-experience/rules/ux-routing-rules.md` [Stage Routing Table]
 
 **Single-agent sub-skill.** The `ux-jtbd-analyst` handles the full JTBD methodology -- from context gathering through job statement synthesis. Complex multi-job engagements are decomposed into multiple invocations by the `ux-orchestrator`, each targeting a specific job domain.
 
-**Tool tier:** T4 (External). The analyst uses WebSearch and WebFetch for secondary research (competitive analysis, domain literature, product reviews) and Context7 for JTBD framework documentation lookup. See `skills/ux-jtbd/agents/ux-jtbd-analyst.md` for the full agent definition and `skills/ux-jtbd/agents/ux-jtbd-analyst.governance.yaml` for governance metadata.
+**Tool tier:** T4 (External). The analyst uses WebSearch and WebFetch for secondary research (competitive analysis, domain literature, product reviews) and Context7 for JTBD framework documentation lookup. See `skills/ux-jtbd/agents/ux-jtbd-analyst.md` for the full agent definition (governance is embedded in the agent `.md` file's YAML frontmatter and guardrails section).
 
 ---
 
@@ -221,7 +221,7 @@ ux-orchestrator (T5, Opus, Integrative)
 
 **Enforcement:**
 - `disallowedTools: [Agent]` declared in `skills/ux-jtbd/agents/ux-jtbd-analyst.md` frontmatter
-- P-003 prohibition in `skills/ux-jtbd/agents/ux-jtbd-analyst.governance.yaml` `capabilities.forbidden_actions`
+- P-003 prohibition in `skills/ux-jtbd/agents/ux-jtbd-analyst.md` guardrails section
 - CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`)
 
 ---
@@ -656,7 +656,7 @@ Validation sources that advance MEDIUM to HIGH confidence:
 
 | Agent | Definition | Governance |
 |-------|-----------|------------|
-| ux-jtbd-analyst | `skills/ux-jtbd/agents/ux-jtbd-analyst.md` | `skills/ux-jtbd/agents/ux-jtbd-analyst.governance.yaml` |
+| ux-jtbd-analyst | `skills/ux-jtbd/agents/ux-jtbd-analyst.md` | Embedded in agent `.md` (YAML frontmatter + guardrails section) |
 
 ### Parent Skill
 

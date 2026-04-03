@@ -29,8 +29,7 @@ mcpServers:
 ---
 
 <!-- Agent Definition: ux-orchestrator -->
-<!-- Dual-file architecture per H-34: this .md file + companion .governance.yaml -->
-<!-- Companion: skills/user-experience/agents/ux-orchestrator.governance.yaml -->
+<!-- Single-file architecture per H-34: governance embedded in YAML frontmatter + guardrails section -->
 
 <identity>
 

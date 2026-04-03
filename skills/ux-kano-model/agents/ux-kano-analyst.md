@@ -468,7 +468,7 @@ If any step would require delegating to another agent, HALT and return:
 *Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `skills/ux-kano-model/SKILL.md`*
 *Agent Standards: `.context/rules/agent-development-standards.md`*
-*Governance File: `skills/ux-kano-model/agents/ux-kano-analyst.governance.yaml`*
+*Governance: Embedded in this file (YAML frontmatter + guardrails section)*
 *Parent Skill: `/user-experience` v1.0.0*
 *Wave: 4 (Advanced Analytics)*
 *Project: PROJ-022 User Experience Skill*

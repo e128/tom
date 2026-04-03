@@ -174,26 +174,24 @@ projects/PROJ-021/use-cases/UC-AUTH-001-validate-credentials.md
 into slices with INVEST verification.
 ```
 
-### Task Tool Invocation (composition file)
+### Agent Tool Invocation
 
 ```yaml
-# Invoke uc-author via Task tool
-task:
-  agent: skills/use-case/composition/uc-author.agent.yaml
-  prompt: |
-    Create a use case for user credential validation in the AUTH domain.
-    Goal level: USER_GOAL. Target detail level: ESSENTIAL_OUTLINE.
-    Output path: projects/PROJ-021/use-cases/UC-AUTH-001-validate-credentials.md
+# Invoke uc-author via Agent tool
+agent: uc-author
+prompt: |
+  Create a use case for user credential validation in the AUTH domain.
+  Goal level: USER_GOAL. Target detail level: ESSENTIAL_OUTLINE.
+  Output path: projects/PROJ-021/use-cases/UC-AUTH-001-validate-credentials.md
 ```
 
 ```yaml
-# Invoke uc-slicer via Task tool
-task:
-  agent: skills/use-case/composition/uc-slicer.agent.yaml
-  prompt: |
-    Slice the use case at:
-    projects/PROJ-021/use-cases/UC-AUTH-001-validate-credentials.md
-    Perform Activities 2, 4, and 5. Create worktracker Story entities.
+# Invoke uc-slicer via Agent tool
+agent: uc-slicer
+prompt: |
+  Slice the use case at:
+  projects/PROJ-021/use-cases/UC-AUTH-001-validate-credentials.md
+  Perform Activities 2, 4, and 5. Create worktracker Story entities.
 ```
 
 ---
@@ -388,13 +386,7 @@ This 2D matrix shows which `(detail_level, realization_level)` combinations are 
 | File | Purpose |
 |------|---------|
 | `skills/use-case/agents/uc-author.md` | uc-author agent definition |
-| `skills/use-case/agents/uc-author.governance.yaml` | uc-author governance metadata |
 | `skills/use-case/agents/uc-slicer.md` | uc-slicer agent definition |
-| `skills/use-case/agents/uc-slicer.governance.yaml` | uc-slicer governance metadata |
-| `skills/use-case/composition/uc-author.agent.yaml` | uc-author canonical agent YAML (Task invocation) |
-| `skills/use-case/composition/uc-author.prompt.md` | uc-author system prompt copy |
-| `skills/use-case/composition/uc-slicer.agent.yaml` | uc-slicer canonical agent YAML (Task invocation) |
-| `skills/use-case/composition/uc-slicer.prompt.md` | uc-slicer system prompt copy |
 | `skills/use-case/rules/use-case-writing-rules.md` | Cockburn 12-step + Jacobson UC 2.0 imperative rules |
 | `skills/use-case/templates/use-case-brief.template.md` | BRIEFLY_DESCRIBED output template |
 | `skills/use-case/templates/use-case-casual.template.md` | BULLETED_OUTLINE output template |

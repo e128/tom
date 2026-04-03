@@ -371,7 +371,7 @@ Handoff threshold rules define the minimum data a component must carry to qualif
 |-------------|------|---------|---------|
 | **Parent SKILL.md** | `skills/ux-atomic-design/SKILL.md` | v1.2.0 | Sub-skill definition; methodology overview; agent routing |
 | **Agent definition** | `skills/ux-atomic-design/agents/ux-atomic-architect.md` | v1.0.1 | Agent frontmatter, system prompt, output section (handoff threshold) |
-| **Governance YAML** | `skills/ux-atomic-design/agents/ux-atomic-architect.governance.yaml` | v1.0.1 | Enforcement metadata: quality_threshold, quality_gate (S-014) |
+| **Agent governance** | `skills/ux-atomic-design/agents/ux-atomic-architect.md` (YAML frontmatter + guardrails section) | v1.0.1 | Enforcement metadata: quality_threshold, quality_gate (S-014) |
 | **MCP runbook** | `skills/ux-atomic-design/rules/mcp-runbook.md` | v1.0.0 | Context7 integration; Storybook degraded mode protocol |
 | **Output template** | `skills/ux-atomic-design/templates/component-inventory-template.md` | v1.0.0 | Report template consumed by architect agent |
 | **Wave progression** | `skills/user-experience/rules/wave-progression.md` | unversioned (no VERSION header) | Wave 3 (Design System) entry conditions; Wave 2 completion is a prerequisite |

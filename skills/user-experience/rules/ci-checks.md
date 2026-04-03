@@ -99,194 +99,98 @@ echo "PASS: All sub-skill agents declare disallowedTools: [Agent]"
 
 <!-- Source: H-34(b) (agent-development-standards.md [Guardrails Template] -- minimum 3 forbidden_actions entries referencing P-003, P-020, P-022). -->
 
-**Check:** All sub-skill agent `.governance.yaml` files include the constitutional triplet (P-003, P-020, P-022) in `capabilities.forbidden_actions` with minimum 3 entries per H-34(b).
+**Check:** All sub-skill agent `.md` files include the constitutional triplet (P-003, P-020, P-022) in their guardrails section with minimum 3 forbidden action entries per H-34(b).
 
-**Scope:** All files matching `skills/ux-*/agents/*.governance.yaml`.
+**Scope:** All files matching `skills/ux-*/agents/*.md`.
 
-**Pass criteria:** Every `.governance.yaml` file under `skills/ux-*/agents/` contains at least 3 entries in `capabilities.forbidden_actions`, with at least one entry referencing each of P-003, P-020, and P-022.
+**Pass criteria:** Every agent `.md` file under `skills/ux-*/agents/` contains references to P-003, P-020, and P-022 in its guardrails section.
 
 **Implementation pattern:**
 
 ```bash
 # UX-CI-003: Forbidden Actions P-003
-# Source: H-34(b) (constitutional compliance -- min 3 forbidden_actions with P-003, P-020, P-022)
-for yaml_file in skills/ux-*/agents/*.governance.yaml; do
-  [ -f "$yaml_file" ] || continue
-  # Count forbidden_actions array entries (lines starting with "  - " under forbidden_actions:)
-  # Use sed to extract only the forbidden_actions block, then count array entries
-  fa_block=$(sed -n '/^\s*forbidden_actions:/,/^\s*[a-z_][a-z_]*:/{ /^\s*forbidden_actions:/d; /^\s*[a-z_][a-z_]*:/d; p; }' "$yaml_file")
-  fa_count=$(echo "$fa_block" | grep -c '^\s*-' || true)
-  if [ "$fa_count" -lt 3 ]; then
-    echo "FAIL: $yaml_file has fewer than 3 forbidden_actions entries (found $fa_count, required >= 3)"
-    exit 1
-  fi
-  # Verify each constitutional principle is referenced within the forbidden_actions block
+# Source: H-34(b) (constitutional compliance -- P-003, P-020, P-022 in guardrails section)
+for md_file in skills/ux-*/agents/*.md; do
+  [ -f "$md_file" ] || continue
+  # Verify each constitutional principle is referenced in the agent definition
   for principle in "P-003" "P-020" "P-022"; do
-    if ! echo "$fa_block" | grep -q "$principle"; then
-      echo "FAIL: $yaml_file missing $principle in capabilities.forbidden_actions"
+    if ! grep -q "$principle" "$md_file"; then
+      echo "FAIL: $md_file missing $principle in guardrails section"
       exit 1
     fi
   done
 done
-echo "PASS: All governance files include constitutional triplet in forbidden_actions (>= 3 entries)"
+echo "PASS: All agent files include constitutional triplet in guardrails section"
 ```
 
 ---
 
 ## Schema Validation
 
-<!-- Source: H-34 (agent-development-standards.md [Agent Definition Schema] -- dual-file architecture, governance YAML validation against JSON Schema). -->
+<!-- Source: H-34 (agent-development-standards.md [Agent Definition Schema] -- single-file architecture, agent .md YAML frontmatter validation). -->
 
-### UX-CI-004: Governance YAML Schema
+### UX-CI-004: Agent Frontmatter Schema (RETIRED)
 
-<!-- Source: H-34 (agent-development-standards.md [Agent Definition Schema] -- "Governance schema validation MUST execute before LLM-based quality scoring for C2+ deliverables"). Tool: check-jsonschema per H-05 (UV-only Python -- uv run for all execution). -->
+> **RETIRED:** This check previously validated separate `.governance.yaml` files against a JSON Schema. Agent governance is now embedded in the agent `.md` file's YAML frontmatter and guardrails section per H-34. Frontmatter validation is handled by the framework-wide `validate-agent-frontmatter` CI gate. This check is retained as a tombstone to preserve gate ID continuity.
 
-**Check:** All governance YAML files validate against the canonical JSON Schema.
+### UX-CI-005: Required Agent Fields
 
-**Scope:** All files matching `skills/ux-*/agents/*.governance.yaml` AND `skills/user-experience/agents/*.governance.yaml`.
+<!-- Source: H-34 (agent-development-standards.md [Agent Definition Schema] -- required frontmatter fields: name, description). -->
 
-**Schema:** `docs/schemas/agent-governance-v1.schema.json`
+**Check:** All agent `.md` files contain the minimum required YAML frontmatter fields per `agent-development-standards.md`.
 
-**Pass criteria:** Zero validation errors across all governance YAML files.
-
-**Implementation pattern:**
-
-```bash
-# UX-CI-004: Governance YAML Schema Validation
-# Source: H-34 (agent-development-standards.md [Agent Definition Schema])
-# Tool: check-jsonschema via uv run per H-05 (UV-only Python execution)
-schema_file="docs/schemas/agent-governance-v1.schema.json"
-if [ ! -f "$schema_file" ]; then
-  echo "FAIL: Schema file not found: $schema_file"
-  exit 1
-fi
-for yaml_file in skills/ux-*/agents/*.governance.yaml skills/user-experience/agents/*.governance.yaml; do
-  [ -f "$yaml_file" ] || continue
-  if ! uv run check-jsonschema --schemafile "$schema_file" "$yaml_file"; then
-    echo "FAIL: $yaml_file fails schema validation against $schema_file"
-    exit 1
-  fi
-done
-echo "PASS: All governance YAML files validate against $schema_file"
-```
-
-### UX-CI-005: Required Governance Fields
-
-<!-- Source: H-34 (agent-development-standards.md [Governance Fields (`.governance.yaml` file)] -- required fields table: version, tool_tier, identity.role, identity.expertise, identity.cognitive_mode, constitution.principles_applied, capabilities.forbidden_actions). -->
-
-**Check:** All governance YAML files contain the minimum required fields per `agent-development-standards.md` [Governance Fields] required fields table.
-
-**Scope:** All files matching `skills/ux-*/agents/*.governance.yaml` AND `skills/user-experience/agents/*.governance.yaml`.
+**Scope:** All files matching `skills/ux-*/agents/*.md` AND `skills/user-experience/agents/*.md`.
 
 **Required fields:**
-- `version` (semantic versioning pattern `^\d+\.\d+\.\d+$`)
-- `tool_tier` (T1-T5 enum)
-- `identity.role` (non-empty string)
-- `identity.expertise` (array, min 2 entries)
-- `identity.cognitive_mode` (enum: divergent, convergent, integrative, systematic, forensic)
-- `constitution.principles_applied` (array, min 3 entries, MUST include P-003, P-020, P-022)
-- `capabilities.forbidden_actions` (array, min 3 entries)
+- `name` (kebab-case, non-empty)
+- `description` (non-empty)
 
 **Implementation pattern:**
 
 ```bash
-# UX-CI-005: Required Governance Fields
-# Source: H-34 (agent-development-standards.md [Governance Fields] required fields table)
-for yaml_file in skills/ux-*/agents/*.governance.yaml skills/user-experience/agents/*.governance.yaml; do
-  [ -f "$yaml_file" ] || continue
-  # Check version field exists and matches semver pattern
-  if ! grep -qE '^version:\s+"?[0-9]+\.[0-9]+\.[0-9]+"?' "$yaml_file"; then
-    echo "FAIL: $yaml_file missing or invalid version (must be semver per AD-M-002)"
-    exit 1
-  fi
-  # Check tool_tier field exists and is T1-T5
-  if ! grep -qE '^tool_tier:\s+"?T[1-5]"?' "$yaml_file"; then
-    echo "FAIL: $yaml_file missing or invalid tool_tier (must be T1-T5 per agent-development-standards.md [Tool Security Tiers])"
-    exit 1
-  fi
-  # Check identity.role exists (non-empty string under identity block)
-  identity_block=$(sed -n '/^identity:/,/^[a-z]/p' "$yaml_file")
-  if ! echo "$identity_block" | grep -qE '^\s+role:\s+".+"'; then
-    echo "FAIL: $yaml_file missing identity.role (required per H-34)"
-    exit 1
-  fi
-  # Check identity.expertise has at least 2 entries (AD-M-005)
-  expertise_count=$(echo "$identity_block" | sed -n '/expertise:/,/^\s*[a-z]/p' | grep -c '^\s*-' || true)
-  if [ "$expertise_count" -lt 2 ]; then
-    echo "FAIL: $yaml_file has fewer than 2 identity.expertise entries (found $expertise_count, required >= 2 per AD-M-005)"
-    exit 1
-  fi
-  # Check identity.cognitive_mode is valid enum
-  if ! echo "$identity_block" | grep -qE 'cognitive_mode:\s+"?(divergent|convergent|integrative|systematic|forensic)"?'; then
-    echo "FAIL: $yaml_file missing or invalid identity.cognitive_mode (must be one of: divergent, convergent, integrative, systematic, forensic)"
-    exit 1
-  fi
-  # Check constitution.principles_applied has at least 3 entries including P-003, P-020, P-022
-  principles_block=$(sed -n '/principles_applied:/,/^[a-z]/p' "$yaml_file")
-  principles_count=$(echo "$principles_block" | grep -c '^\s*-' || true)
-  if [ "$principles_count" -lt 3 ]; then
-    echo "FAIL: $yaml_file has fewer than 3 constitution.principles_applied entries (found $principles_count)"
-    exit 1
-  fi
-  for principle in "P-003" "P-020" "P-022"; do
-    if ! echo "$principles_block" | grep -q "$principle"; then
-      echo "FAIL: $yaml_file missing $principle in constitution.principles_applied (required per H-34(b))"
-      exit 1
-    fi
-  done
-  # Check capabilities.forbidden_actions has at least 3 entries (overlaps UX-CI-003; checked here for field presence)
-  fa_block=$(sed -n '/forbidden_actions:/,/^\s*[a-z_]*:/{ /forbidden_actions:/d; /^\s*[a-z_]*:/d; p; }' "$yaml_file")
-  fa_count=$(echo "$fa_block" | grep -c '^\s*-' || true)
-  if [ "$fa_count" -lt 3 ]; then
-    echo "FAIL: $yaml_file has fewer than 3 capabilities.forbidden_actions entries (found $fa_count, required >= 3 per H-34(b))"
-    exit 1
-  fi
-done
-echo "PASS: All governance files contain required fields with valid values"
-```
-
-### UX-CI-006: Frontmatter-Governance Consistency
-
-<!-- Source: H-34 (agent-development-standards.md [H-34 Architecture Note] -- dual-file architecture requires .md name field to match .governance.yaml filename pattern for agent discovery and governance pairing). -->
-
-**Check:** The `.md` frontmatter `name` field matches the `.governance.yaml` filename pattern, ensuring dual-file architecture integrity.
-
-**Scope:** All agent dual-file pairs under `skills/ux-*/agents/` and `skills/user-experience/agents/`.
-
-**Pass criteria:** For each agent, the `.md` `name` field equals the `.governance.yaml` filename without the `.governance.yaml` extension. Every `.governance.yaml` file has a corresponding `.md` file.
-
-**Implementation pattern:**
-
-```bash
-# UX-CI-006: Frontmatter-Governance Consistency
-# Source: H-34 (agent-development-standards.md [H-34 Architecture Note] -- dual-file architecture)
-for yaml_file in skills/ux-*/agents/*.governance.yaml skills/user-experience/agents/*.governance.yaml; do
-  [ -f "$yaml_file" ] || continue
-  # Derive expected name from governance filename (strip path and .governance.yaml)
-  expected_name=$(basename "$yaml_file" .governance.yaml)
-  # Find corresponding .md file
-  md_file="${yaml_file%.governance.yaml}.md"
-  if [ ! -f "$md_file" ]; then
-    echo "FAIL: No matching .md file for $yaml_file (expected $md_file per H-34 dual-file architecture)"
-    exit 1
-  fi
-  # Extract name field from .md YAML frontmatter (between first two --- delimiters)
-  actual_name=$(sed -n '2,/^---$/p' "$md_file" | grep -E '^name:\s+' | head -1 | sed 's/^name:\s*//' | tr -d '"' | tr -d "'" | xargs)
-  if [ "$actual_name" != "$expected_name" ]; then
-    echo "FAIL: $md_file name '$actual_name' does not match governance filename '$expected_name' (H-34 dual-file consistency)"
-    exit 1
-  fi
-done
-# Reverse check: every .md file should have a .governance.yaml
+# UX-CI-005: Required Agent Fields
+# Source: H-34 (agent-development-standards.md [Agent Definition Schema])
 for md_file in skills/ux-*/agents/*.md skills/user-experience/agents/*.md; do
   [ -f "$md_file" ] || continue
-  yaml_file="${md_file%.md}.governance.yaml"
-  if [ ! -f "$yaml_file" ]; then
-    echo "FAIL: No matching .governance.yaml for $md_file (expected $yaml_file per H-34 dual-file architecture)"
+  # Check name field exists in YAML frontmatter
+  if ! sed -n '2,/^---$/p' "$md_file" | grep -qE '^name:\s+.+'; then
+    echo "FAIL: $md_file missing name in YAML frontmatter (required per H-34)"
+    exit 1
+  fi
+  # Check description field exists in YAML frontmatter
+  if ! sed -n '2,/^---$/p' "$md_file" | grep -qE '^description:\s+.+'; then
+    echo "FAIL: $md_file missing description in YAML frontmatter (required per H-34)"
     exit 1
   fi
 done
-echo "PASS: All agent name fields match governance filenames (dual-file pairs consistent)"
+echo "PASS: All agent files contain required frontmatter fields"
+```
+
+### UX-CI-006: Agent Name-Filename Consistency
+
+<!-- Source: H-34 (agent-development-standards.md [H-34 Architecture Note] -- single-file architecture, name field matches filename). -->
+
+**Check:** The `.md` frontmatter `name` field matches the filename (without `.md` extension).
+
+**Scope:** All agent files under `skills/ux-*/agents/` and `skills/user-experience/agents/`.
+
+**Pass criteria:** For each agent, the `.md` `name` field equals the filename without the `.md` extension.
+
+**Implementation pattern:**
+
+```bash
+# UX-CI-006: Agent Name-Filename Consistency
+# Source: H-34 (agent-development-standards.md -- name field matches filename)
+for md_file in skills/ux-*/agents/*.md skills/user-experience/agents/*.md; do
+  [ -f "$md_file" ] || continue
+  expected_name=$(basename "$md_file" .md)
+  actual_name=$(sed -n '2,/^---$/p' "$md_file" | grep -E '^name:\s+' | head -1 | sed 's/^name:\s*//' | tr -d '"' | tr -d "'" | xargs)
+  if [ "$actual_name" != "$expected_name" ]; then
+    echo "FAIL: $md_file name '$actual_name' does not match filename '$expected_name'"
+    exit 1
+  fi
+done
+echo "PASS: All agent name fields match filenames"
 ```
 
 ---
@@ -716,10 +620,10 @@ echo "PASS: LOW confidence template compliance check complete"
 |---------|-----------|---------|-------|---------------|----------|--------|
 | UX-CI-001 | Agent Tool Grep | [P-003 Enforcement](#p-003-enforcement) | `skills/ux-*/agents/*.md` | Zero Agent matches in sub-skill tools frontmatter | Yes | H-01 (P-003), H-34(b) |
 | UX-CI-002 | disallowedTools Declaration | [P-003 Enforcement](#p-003-enforcement) | `skills/ux-*/agents/*.md` | All sub-skills declare `disallowedTools: [Agent]` | Yes | H-34(b) |
-| UX-CI-003 | Forbidden Actions P-003 | [P-003 Enforcement](#p-003-enforcement) | `skills/ux-*/agents/*.governance.yaml` | All governance files have >= 3 forbidden_actions entries referencing P-003, P-020, P-022 | Yes | H-34(b) |
-| UX-CI-004 | Governance YAML Schema | [Schema Validation](#schema-validation) | `skills/ux-*/agents/*.governance.yaml` | Zero schema validation errors against `agent-governance-v1.schema.json` | Yes | H-34 |
-| UX-CI-005 | Required Governance Fields | [Schema Validation](#schema-validation) | `skills/ux-*/agents/*.governance.yaml` | All required fields present with valid values | Yes | H-34 |
-| UX-CI-006 | Frontmatter-Governance Consistency | [Schema Validation](#schema-validation) | Agent dual-file pairs | `.md` name field matches `.governance.yaml` filename | Yes | H-34 |
+| UX-CI-003 | Forbidden Actions P-003 | [P-003 Enforcement](#p-003-enforcement) | `skills/ux-*/agents/*.md` | All agent files reference P-003, P-020, P-022 in guardrails section | Yes | H-34(b) |
+| UX-CI-004 | Agent Frontmatter Schema | [Schema Validation](#schema-validation) | -- | RETIRED (governance now embedded in agent `.md` files) | -- | H-34 |
+| UX-CI-005 | Required Agent Fields | [Schema Validation](#schema-validation) | `skills/ux-*/agents/*.md` | All agent files have required frontmatter fields (name, description) | Yes | H-34 |
+| UX-CI-006 | Agent Name-Filename Consistency | [Schema Validation](#schema-validation) | Agent `.md` files | `.md` name field matches filename | Yes | H-34 |
 | UX-CI-007 | Signoff File Structure | [Wave Gate Compliance](#wave-gate-compliance) | `skills/user-experience/output/*SIGNOFF*.md` | All required fields non-empty; score >= 0.85; MCP ownership in kickoff | Yes | wave-progression.md |
 | UX-CI-008 | Signoff Ordering | [Wave Gate Compliance](#wave-gate-compliance) | `skills/user-experience/output/` | Sequential signoff file existence | Yes | wave-progression.md |
 | UX-CI-009 | Keyword Collision Check | [Trigger Map Validation](#trigger-map-validation) | `mandatory-skill-usage.md` Detected Keywords column (column 2) | Zero unmitigated collisions in trigger map keyword columns | Warning | RT-M-004 |
@@ -816,7 +720,7 @@ echo "PASS: All blocking gates passed ($warnings warning(s))"
 | Wave Progression Rules | Signoff requirements, wave transition gates (0.85 threshold), bypass mechanism | `skills/user-experience/rules/wave-progression.md` |
 | Synthesis Validation Rules | Confidence classification, required traceability, gate enforcement mechanisms | `skills/user-experience/rules/synthesis-validation.md` |
 | MCP Coordination Rules | MCP ownership validation for kickoff signoff | `skills/user-experience/rules/mcp-coordination.md` |
-| Governance Schema | JSON Schema for .governance.yaml validation | `docs/schemas/agent-governance-v1.schema.json` |
+| Agent Definition Standards | Agent `.md` single-file architecture, YAML frontmatter, guardrails | `.context/rules/agent-development-standards.md` |
 | ADR-PROJ022-002 | Wave criteria gates design decision (0.85 threshold rationale, distinct from H-13's 0.92) | `projects/PROJ-022-user-experience-skill/decisions/ADR-PROJ022-002-wave-criteria-gates.md` |
 
 ---

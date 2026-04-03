@@ -143,7 +143,7 @@ ux-orchestrator (T5, Opus, Integrative) -- routes, gates, synthesizes
     +-- ux-kano-analyst (T2, Convergent, Sonnet) [Wave 4] -- THIS SUB-SKILL
 ```
 
-**Enforcement:** The `ux-kano-analyst` agent declares `disallowedTools: [Agent]` in `.md` frontmatter. The `.governance.yaml` includes Agent prohibition in `capabilities.forbidden_actions` with P-003 consequence statement.
+**Enforcement:** The `ux-kano-analyst` agent declares `disallowedTools: [Agent]` in `.md` frontmatter. The agent `.md` guardrails section includes Agent prohibition with P-003 consequence statement.
 
 ---
 
@@ -195,7 +195,7 @@ Create file at: skills/ux-kano-model/output/UX-0001/ux-kano-analyst-dashboard-fe
 )
 ```
 
-> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-kano-analyst.governance.yaml` per AD-M-007. Fields are enumerated below:
+> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-kano-analyst.md` per AD-M-007. Fields are enumerated below:
 
 **on_receive fields:**
 
@@ -639,7 +639,7 @@ All agents in this sub-skill adhere to the **Tom Constitution v1.0**:
 | P-002 | NEVER leave Kano classification results or priority matrices in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
 
 **Per-agent enforcement:** The `ux-kano-analyst` agent declares:
-- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-kano-model/agents/ux-kano-analyst.governance.yaml`
+- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-kano-model/agents/ux-kano-analyst.md` guardrails section
 - `capabilities.forbidden_actions`: 3 entries in NPT-009 format referencing the constitutional triplet
 - `disallowedTools: [Agent]` in `skills/ux-kano-model/agents/ux-kano-analyst.md` frontmatter
 
@@ -672,7 +672,7 @@ This sub-skill follows a parent-routed registration model. Sub-skills are not in
 
 ## Deployment Status
 
-> **Wave 4 Sub-Skill -- Planned.** This sub-skill is part of Wave 4 (Advanced Analytics) of PROJ-022. The companion agent file (`skills/ux-kano-model/agents/ux-kano-analyst.md`) and governance file (`skills/ux-kano-model/agents/ux-kano-analyst.governance.yaml`) are planned for creation during Wave 4 implementation of PROJ-022 EPIC-005. The SKILL.md itself is complete and specifies the methodology, output format, and routing integration that the agent will implement.
+> **Wave 4 Sub-Skill -- Planned.** This sub-skill is part of Wave 4 (Advanced Analytics) of PROJ-022. The agent file (`skills/ux-kano-model/agents/ux-kano-analyst.md`) with embedded governance (YAML frontmatter + guardrails section) is planned for creation during Wave 4 implementation of PROJ-022 EPIC-005. The SKILL.md itself is complete and specifies the methodology, output format, and routing integration that the agent will implement.
 
 ---
 
@@ -711,7 +711,7 @@ This sub-skill follows a parent-routed registration model. Sub-skills are not in
 |--------|---------|------|
 | Parent SKILL.md | Sub-skill scope, wave architecture, routing, MCP dependencies, synthesis protocol | `skills/user-experience/SKILL.md` |
 | Agent definition | Agent frontmatter, identity, expertise, guardrails | `skills/ux-kano-model/agents/ux-kano-analyst.md` [PLANNED: Wave 4] |
-| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-kano-model/agents/ux-kano-analyst.governance.yaml` [PLANNED: Wave 4] |
+| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-kano-model/agents/ux-kano-analyst.md` (YAML frontmatter + guardrails section) |
 | UX routing rules | Lifecycle-stage routing, handoff data contracts, common intent resolution | `skills/user-experience/rules/ux-routing-rules.md` |
 | MCP coordination | MCP dependency matrix, degraded mode behavior | `skills/user-experience/rules/mcp-coordination.md` |
 | Synthesis validation | Confidence gate protocol, per-sub-skill confidence map | `skills/user-experience/rules/synthesis-validation.md` |

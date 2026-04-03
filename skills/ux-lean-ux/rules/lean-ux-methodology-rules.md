@@ -445,7 +445,7 @@ Lean UX facilitation output maps to the S-014 LLM-as-Judge rubric dimensions (`.
 |-------------|------|---------|---------|
 | **Parent SKILL.md** | `skills/ux-lean-ux/SKILL.md` | v1.2.0 | Sub-skill definition; methodology overview; agent routing |
 | **Agent definition** | `skills/ux-lean-ux/agents/ux-lean-ux-facilitator.md` | v1.1.0 | Agent frontmatter, system prompt, output section (handoff threshold) |
-| **Governance YAML** | `skills/ux-lean-ux/agents/ux-lean-ux-facilitator.governance.yaml` | v1.1.0 | Enforcement metadata: quality_threshold (0.95), quality_gate (S-014) |
+| **Agent governance** | `skills/ux-lean-ux/agents/ux-lean-ux-facilitator.md` (YAML frontmatter + guardrails section) | v1.1.0 | Enforcement metadata: quality_threshold (0.95), quality_gate (S-014) |
 | **Wave progression** | `skills/user-experience/rules/wave-progression.md` | unversioned -- tracked via git history | Wave 2 (Data-Ready) entry conditions; Wave 1 completion is a prerequisite for Lean UX invocation |
 | **Synthesis validation** | `skills/user-experience/rules/synthesis-validation.md` | v1.1.0 | Confidence classification shared taxonomy; Sub-Skill Synthesis Output Map |
 | **MCP runbook** | `skills/user-experience/rules/mcp-coordination.md` | unversioned -- tracked via git history | Miro MCP integration; degraded-mode disclosure requirements |

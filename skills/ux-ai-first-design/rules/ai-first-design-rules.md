@@ -396,7 +396,7 @@ AI-First Interaction Design output maps to the S-014 LLM-as-Judge rubric dimensi
 |-------------|------|---------|---------|
 | **Parent SKILL.md** | `skills/ux-ai-first-design/SKILL.md` | v1.1.0 | Sub-skill definition; methodology overview; agent routing |
 | **Agent definition** | `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` | v1.0.0 | Agent frontmatter, system prompt, output section (handoff threshold) |
-| **Governance YAML** | `skills/ux-ai-first-design/agents/ux-ai-design-guide.governance.yaml` | v1.0.0 | Enforcement metadata: quality_threshold (0.95), quality_gate (S-014) |
+| **Agent governance** | `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` (YAML frontmatter + guardrails section) | v1.0.0 | Enforcement metadata: quality_threshold (0.95), quality_gate (S-014) |
 | **Output template** | `skills/ux-ai-first-design/templates/ai-first-design-template.md` | v1.0.0 | Report template consumed by design guide agent |
 | **Wave progression** | `skills/user-experience/rules/wave-progression.md` | v1.2.0 | Wave 5 (Process Intensives) entry conditions; WSM >= 7.80 threshold |
 | **Synthesis validation** | `skills/user-experience/rules/synthesis-validation.md` | v1.1.0 | Confidence classification shared taxonomy; Sub-Skill Synthesis Output Map |

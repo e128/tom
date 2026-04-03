@@ -2,7 +2,7 @@
 # Tom Framework v2.1.0
 # Single Source of Truth for tool definitions and agent permissions
 #
-# Document ID: JERRY-TOOL-REG-001
+# Document ID: TOM-TOOL-REG-001
 # Last Updated: 2026-01-12
 # Created By: WI-SAO-017 (Centralize Tool Registry)
 # Schema Evolution: See docs/schemas/SCHEMA_VERSIONING.md
@@ -253,47 +253,23 @@ agent_permissions:
   # CORE AGENTS (.claude/agents/)
   # --------------------------------------------------------------------------
   core_agents:
-    orchestrator:
-      file: ".claude/agents/orchestrator.md"
-      model: "opus"
-      tools:
-        - Task          # Can delegate to subagents
-        - Read
-        - Write
-        - Edit
-        - Glob
-        - Grep
-        - TodoWrite
-        - Bash
-        - AskUserQuestion
-      special_permissions:
-        - "Task delegation (P-003 root level)"
-        - "User interaction via AskUserQuestion"
-
-    qa-engineer:
-      file: ".claude/agents/qa-engineer.md"
+    lode-sync:
+      file: ".claude/agents/lode-sync.md"
       model: "sonnet"
-      tools:
-        - Read
-        - Write
-        - Edit
-        - Glob
-        - Grep
-        - Bash
-      focus: "Test design, execution, quality validation"
+      tools: [Read, Edit, Grep, Glob, Bash, Write]
+      focus: "Synchronize lode/ documentation with code changes"
 
-    security-auditor:
-      file: ".claude/agents/security-auditor.md"
+    lode-capture-agent:
+      file: ".claude/agents/lode-capture-agent.md"
       model: "sonnet"
-      tools:
-        - Read
-        - Write
-        - Edit
-        - Glob
-        - Grep
-        - Bash
-        - WebSearch     # For CVE research
-      focus: "Vulnerability assessment, threat modeling, secure design review"
+      tools: [Read, Glob, Grep, Edit, Write, Bash]
+      focus: "Classify and route insights to lode files"
+
+    simplification-agent:
+      file: ".claude/agents/simplification-agent.md"
+      model: "sonnet"
+      tools: [Read, Glob, Grep, Bash, Write, Edit]
+      focus: "Audit skills and agents for compensatory scaffolding"
 
   # --------------------------------------------------------------------------
   # PROBLEM-SOLVING AGENTS (skills/problem-solving/agents/)

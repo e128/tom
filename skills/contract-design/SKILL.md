@@ -169,11 +169,11 @@ projects/PROJ-021/contracts/UC-AUTH-001-validate-credentials.openapi.yaml
 against projects/PROJ-021/use-cases/UC-AUTH-001-validate-credentials.md
 ```
 
-### Task Tool Invocation (composition file)
+### Agent Tool Invocation
 
 ```yaml
-# cd-generator invocation via composition file
-from: skills/contract-design/composition/cd-generator.agent.yaml
+# cd-generator invocation via Agent tool
+agent: cd-generator
 session_context:
   artifact_path: "projects/${JERRY_PROJECT}/use-cases/UC-{DOMAIN}-{NNN}-{slug}.md"
   output_path: "projects/${JERRY_PROJECT}/contracts/UC-{DOMAIN}-{NNN}-{slug}.openapi.yaml"
@@ -410,13 +410,7 @@ If missing interactions: run /use-case uc-slicer Activity 5 first
 | File | Purpose |
 |------|---------|
 | `skills/contract-design/agents/cd-generator.md` | cd-generator agent definition (F-02) |
-| `skills/contract-design/agents/cd-generator.governance.yaml` | cd-generator governance metadata (F-03) |
 | `skills/contract-design/agents/cd-validator.md` | cd-validator agent definition (F-04) |
-| `skills/contract-design/agents/cd-validator.governance.yaml` | cd-validator governance metadata (F-05) |
-| `skills/contract-design/composition/cd-generator.agent.yaml` | Task tool invocation config for cd-generator (F-06) |
-| `skills/contract-design/composition/cd-generator.prompt.md` | System prompt for Task tool invocation (F-07) |
-| `skills/contract-design/composition/cd-validator.agent.yaml` | Task tool invocation config for cd-validator (F-08) |
-| `skills/contract-design/composition/cd-validator.prompt.md` | System prompt for Task tool invocation (F-09) |
 | `skills/contract-design/templates/openapi-template.yaml` | OpenAPI 3.1 output template (F-10) |
 | `skills/contract-design/templates/asyncapi-template.yaml` | AsyncAPI 3.0 scaffolding -- deferred (F-11) |
 | `skills/contract-design/templates/cloudevents-template.yaml` | CloudEvents 1.0 scaffolding -- deferred (F-12) |

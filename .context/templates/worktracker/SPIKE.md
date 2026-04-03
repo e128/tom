@@ -314,7 +314,7 @@ Once DONE, a spike CANNOT be reopened (research is complete).
 | INV-SP02: findings documented when DONE | Spike closed without documenting findings | /worktracker skill enforcement | Manual review at completion |
 
 <!--
-JERRY ALIGNMENT:
+TOM ALIGNMENT:
   existing_type: "WorkType.SPIKE"
   existing_property: "requires_quality_gates = False"
   changes_needed: "None - already exists with correct semantics"

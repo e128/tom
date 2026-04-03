@@ -142,7 +142,7 @@ ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
 
 **Enforcement:**
 - `disallowedTools: [Agent]` declared in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` frontmatter
-- P-003 prohibition in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.governance.yaml` `capabilities.forbidden_actions`
+- P-003 prohibition in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` guardrails section
 - CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`)
 
 > **Source:** P-003 hierarchy from parent SKILL.md [P-003 Compliance] (lines 174-196).
@@ -197,7 +197,7 @@ Create file at: skills/ux-heuristic-eval/output/UX-0001/ux-heuristic-evaluator-s
 )
 ```
 
-> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-heuristic-evaluator.governance.yaml` per AD-M-007. The on_receive steps validate engagement ID, product context, and prior evaluation findings. The on_send steps include severity-rated findings, heuristic coverage summary, and remediation recommendations.
+> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-heuristic-evaluator.md` per AD-M-007. The on_receive steps validate engagement ID, product context, and prior evaluation findings. The on_send steps include severity-rated findings, heuristic coverage summary, and remediation recommendations.
 
 > **Source:** Invocation pattern from parent SKILL.md [Invoking an Agent] (lines 200-250).
 
@@ -238,7 +238,7 @@ Each finding receives a severity rating on the 0-4 scale. Severity determines re
 
 **Cross-framework threshold:** Findings with severity >= 2 (Minor usability problem or higher) are included in handoffs to downstream sub-skills (Behavior Design, HEART Metrics). Findings with severity 0-1 (Not a problem, Cosmetic only) are included in the full report but not propagated to cross-framework handoffs unless specifically requested.
 
-> **Source:** Severity scale from Jakob Nielsen, "Severity Ratings for Usability Problems" (1994). Referenced in agent governance file `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.governance.yaml` [output_filtering: all_findings_must_have_severity_rating] and parent SKILL.md [Available Agents] footnote (line 165: "severity-rated findings").
+> **Source:** Severity scale from Jakob Nielsen, "Severity Ratings for Usability Problems" (1994). Referenced in agent definition `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` guardrails section and parent SKILL.md [Available Agents] footnote (line 165: "severity-rated findings").
 
 ### Evaluation Workflow
 
@@ -360,7 +360,7 @@ Each finding follows a consistent structure:
 - **Effort:** {Low | Medium | High}
 ```
 
-> **Source:** Output location from parent SKILL.md [Available Agents] (line 152) and governance file `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.governance.yaml` [output.location].
+> **Source:** Output location from parent SKILL.md [Available Agents] (line 152) and agent definition `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` output section.
 
 ---
 
@@ -461,7 +461,7 @@ All agents in this sub-skill adhere to the **Tom Constitution v1.0**:
 | P-002 | NEVER leave evaluation output in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
 
 **Per-agent enforcement:** The `ux-heuristic-evaluator` agent declares:
-- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.governance.yaml`
+- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` guardrails section
 - `capabilities.forbidden_actions`: 3 entries in NPT-009 format referencing the constitutional triplet
 - `disallowedTools: [Agent]` in `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` frontmatter
 
@@ -518,7 +518,7 @@ This sub-skill follows a parent-routed registration model. Sub-skills are not in
 |--------|---------|------|
 | Parent SKILL.md | Sub-skill scope, wave architecture, routing, MCP dependencies, synthesis protocol | `skills/user-experience/SKILL.md` |
 | Agent definition | Agent frontmatter, identity, expertise, guardrails | `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` |
-| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.governance.yaml` |
+| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` (YAML frontmatter + guardrails section) |
 | UX routing rules | Lifecycle-stage routing, CRISIS sequence, handoff data contracts | `skills/user-experience/rules/ux-routing-rules.md` |
 | MCP coordination | Figma REQ dependency, degraded mode behavior, Context7 usage | `skills/user-experience/rules/mcp-coordination.md` |
 | Synthesis validation | Confidence gate protocol, per-sub-skill confidence map | `skills/user-experience/rules/synthesis-validation.md` |

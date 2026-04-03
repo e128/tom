@@ -153,7 +153,7 @@ Source: `skills/user-experience/rules/ux-routing-rules.md` [Stage Routing Table]
 
 **Single-agent sub-skill.** The `ux-heart-analyst` handles the full HEART methodology -- from dimension selection through metric specification. Complex multi-feature engagements are decomposed into multiple invocations by the `ux-orchestrator`, each targeting a specific product area or feature.
 
-**Tool tier:** T2 (Read-Write). The analyst operates on user-provided data only and does not require external web access for its core methodology. The HEART framework is self-contained in the agent definition and methodology rules. See `skills/ux-heart-metrics/agents/ux-heart-analyst.md` for the full agent definition and `skills/ux-heart-metrics/agents/ux-heart-analyst.governance.yaml` for governance metadata.
+**Tool tier:** T2 (Read-Write). The analyst operates on user-provided data only and does not require external web access for its core methodology. The HEART framework is self-contained in the agent definition and methodology rules. See `skills/ux-heart-metrics/agents/ux-heart-analyst.md` for the full agent definition (governance is embedded in the agent `.md` file's YAML frontmatter and guardrails section).
 
 ---
 
@@ -240,7 +240,7 @@ ux-orchestrator (T5, Opus, Integrative)
 
 **Enforcement:**
 - `disallowedTools: [Agent]` declared in `skills/ux-heart-metrics/agents/ux-heart-analyst.md` frontmatter
-- P-003 prohibition in `skills/ux-heart-metrics/agents/ux-heart-analyst.governance.yaml` `capabilities.forbidden_actions`
+- P-003 prohibition in `skills/ux-heart-metrics/agents/ux-heart-analyst.md` guardrails section
 - CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`)
 
 ---
@@ -745,7 +745,7 @@ Validation sources that advance LOW threshold recommendations to MEDIUM:
 
 | Agent | Definition | Governance |
 |-------|-----------|------------|
-| ux-heart-analyst | `skills/ux-heart-metrics/agents/ux-heart-analyst.md` | `skills/ux-heart-metrics/agents/ux-heart-analyst.governance.yaml` |
+| ux-heart-analyst | `skills/ux-heart-metrics/agents/ux-heart-analyst.md` | Embedded in agent `.md` (YAML frontmatter + guardrails section) |
 
 ### Parent Skill
 

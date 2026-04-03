@@ -160,28 +160,26 @@ Use tspec-analyst to produce a coverage report for
 UC-AUTH-001-validate-credentials.feature.md.
 ```
 
-### Task Tool Invocation (composition file)
+### Agent Tool Invocation
 
 ```yaml
-# Invoke tspec-generator via Task tool
-task:
-  agent: skills/test-spec/composition/tspec-generator.agent.yaml
-  prompt: |
-    Transform use case at projects/PROJ-021/use-cases/UC-AUTH-001-validate-credentials.md
-    into a Gherkin Feature file. Output path:
-    projects/PROJ-021/test-specs/UC-AUTH-001-validate-credentials.feature.md
+# Invoke tspec-generator via Agent tool
+agent: tspec-generator
+prompt: |
+  Transform use case at projects/PROJ-021/use-cases/UC-AUTH-001-validate-credentials.md
+  into a Gherkin Feature file. Output path:
+  projects/PROJ-021/test-specs/UC-AUTH-001-validate-credentials.feature.md
 ```
 
 ```yaml
-# Invoke tspec-analyst via Task tool
-task:
-  agent: skills/test-spec/composition/tspec-analyst.agent.yaml
-  prompt: |
-    Analyze coverage for:
-    Feature file: projects/PROJ-021/test-specs/UC-AUTH-001-validate-credentials.feature.md
-    Source UC: projects/PROJ-021/use-cases/UC-AUTH-001-validate-credentials.md
-    Output coverage report to:
-    projects/PROJ-021/test-specs/UC-AUTH-001-validate-credentials-coverage.md
+# Invoke tspec-analyst via Agent tool
+agent: tspec-analyst
+prompt: |
+  Analyze coverage for:
+  Feature file: projects/PROJ-021/test-specs/UC-AUTH-001-validate-credentials.feature.md
+  Source UC: projects/PROJ-021/use-cases/UC-AUTH-001-validate-credentials.md
+  Output coverage report to:
+  projects/PROJ-021/test-specs/UC-AUTH-001-validate-credentials-coverage.md
 ```
 
 ---
@@ -340,13 +338,7 @@ Before invoking tspec-generator, verify your use case artifact has:
 | File | Purpose |
 |------|---------|
 | `skills/test-spec/agents/tspec-generator.md` | tspec-generator agent definition |
-| `skills/test-spec/agents/tspec-generator.governance.yaml` | tspec-generator governance metadata |
 | `skills/test-spec/agents/tspec-analyst.md` | tspec-analyst agent definition |
-| `skills/test-spec/agents/tspec-analyst.governance.yaml` | tspec-analyst governance metadata |
-| `skills/test-spec/composition/tspec-generator.agent.yaml` | tspec-generator canonical agent YAML (Task invocation) |
-| `skills/test-spec/composition/tspec-generator.prompt.md` | tspec-generator system prompt copy |
-| `skills/test-spec/composition/tspec-analyst.agent.yaml` | tspec-analyst canonical agent YAML (Task invocation) |
-| `skills/test-spec/composition/tspec-analyst.prompt.md` | tspec-analyst system prompt copy |
 | `skills/test-spec/rules/clark-transformation-rules.md` | Clark (2018) mapping algorithm as imperative rules |
 | `skills/test-spec/templates/bdd-scenario.template.md` | Feature file output template |
 | `skills/test-spec/templates/test-plan.template.md` | Test plan output template |

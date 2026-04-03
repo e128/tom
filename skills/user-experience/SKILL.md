@@ -183,7 +183,7 @@ ux-orchestrator (T5, Opus, Integrative) -- routes, gates, synthesizes
     +-- ux-ai-design-guide        (T4, Divergent, Opus)       [Wave 5 COND]
 ```
 
-**Enforcement:** Sub-skill agents declare `disallowedTools: [Agent]` in `.md` frontmatter. CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`). Each `.governance.yaml` includes Agent prohibition in `capabilities.forbidden_actions` with P-003 consequence statement.
+**Enforcement:** Sub-skill agents declare `disallowedTools: [Agent]` in `.md` frontmatter. CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`). Each agent `.md` guardrails section includes Agent prohibition with P-003 consequence statement.
 
 ---
 
@@ -492,9 +492,9 @@ All agents adhere to the **Tom Constitution v1.0**:
 | P-004 | NEVER omit reasoning provenance or source documentation | Untraceable decisions; audit trail broken |
 | P-011 | NEVER make recommendations without supporting evidence | Unsupported recommendations; confidence inflated without basis |
 
-**Per-agent enforcement:** Every agent (orchestrator + 10 sub-skill agents) declares in `.governance.yaml`:
-- `constitution.principles_applied`: P-003, P-020, P-022 (minimum; additional principles per agent)
-- `capabilities.forbidden_actions`: Minimum 3 entries in NPT-009 format referencing the constitutional triplet
+**Per-agent enforcement:** Every agent (orchestrator + 10 sub-skill agents) declares in its `.md` file's guardrails section:
+- Constitutional principles applied: P-003, P-020, P-022 (minimum; additional principles per agent)
+- Forbidden actions: Minimum 3 entries in NPT-009 format referencing the constitutional triplet
 - Sub-skill agents: `disallowedTools: [Agent]` in `.md` frontmatter (P-003 enforcement)
 - Domain-specific forbidden actions added per agent role
 
@@ -552,19 +552,19 @@ All agents adhere to the **Tom Constitution v1.0**:
 
 > **Status key:** `Exists (stub)` = stub file created with frontmatter and minimal sections. `[PLANNED: Wave N]` = file not yet created; created during that wave's implementation in PROJ-022.
 
-| Agent | Definition | Governance | Status |
-|-------|-----------|------------|--------|
-| ux-orchestrator | `skills/user-experience/agents/ux-orchestrator.md` | `skills/user-experience/agents/ux-orchestrator.governance.yaml` | Exists (stub) |
-| ux-heuristic-evaluator | `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` | `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.governance.yaml` | Exists (stub) |
-| ux-jtbd-analyst | `skills/ux-jtbd/agents/ux-jtbd-analyst.md` | `skills/ux-jtbd/agents/ux-jtbd-analyst.governance.yaml` | Exists (stub) |
-| ux-lean-ux-facilitator | `skills/ux-lean-ux/agents/ux-lean-ux-facilitator.md` | `skills/ux-lean-ux/agents/ux-lean-ux-facilitator.governance.yaml` | [PLANNED: Wave 2] |
-| ux-heart-analyst | `skills/ux-heart-metrics/agents/ux-heart-analyst.md` | `skills/ux-heart-metrics/agents/ux-heart-analyst.governance.yaml` | [PLANNED: Wave 2] |
-| ux-atomic-architect | `skills/ux-atomic-design/agents/ux-atomic-architect.md` | `skills/ux-atomic-design/agents/ux-atomic-architect.governance.yaml` | [PLANNED: Wave 3] |
-| ux-inclusive-evaluator | `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md` | `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.governance.yaml` | [PLANNED: Wave 3] |
-| ux-behavior-diagnostician | `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` | `skills/ux-behavior-design/agents/ux-behavior-diagnostician.governance.yaml` | [PLANNED: Wave 4] |
-| ux-kano-analyst | `skills/ux-kano-model/agents/ux-kano-analyst.md` | `skills/ux-kano-model/agents/ux-kano-analyst.governance.yaml` | [PLANNED: Wave 4] |
-| ux-sprint-facilitator | `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` | `skills/ux-design-sprint/agents/ux-sprint-facilitator.governance.yaml` | [PLANNED: Wave 5] |
-| ux-ai-design-guide | `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` | `skills/ux-ai-first-design/agents/ux-ai-design-guide.governance.yaml` | [PLANNED: Wave 5] |
+| Agent | Definition (includes embedded governance) | Status |
+|-------|---------------------------------------------|--------|
+| ux-orchestrator | `skills/user-experience/agents/ux-orchestrator.md` | Exists (stub) |
+| ux-heuristic-evaluator | `skills/ux-heuristic-eval/agents/ux-heuristic-evaluator.md` | Exists (stub) |
+| ux-jtbd-analyst | `skills/ux-jtbd/agents/ux-jtbd-analyst.md` | Exists (stub) |
+| ux-lean-ux-facilitator | `skills/ux-lean-ux/agents/ux-lean-ux-facilitator.md` | [PLANNED: Wave 2] |
+| ux-heart-analyst | `skills/ux-heart-metrics/agents/ux-heart-analyst.md` | [PLANNED: Wave 2] |
+| ux-atomic-architect | `skills/ux-atomic-design/agents/ux-atomic-architect.md` | [PLANNED: Wave 3] |
+| ux-inclusive-evaluator | `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md` | [PLANNED: Wave 3] |
+| ux-behavior-diagnostician | `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` | [PLANNED: Wave 4] |
+| ux-kano-analyst | `skills/ux-kano-model/agents/ux-kano-analyst.md` | [PLANNED: Wave 4] |
+| ux-sprint-facilitator | `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` | [PLANNED: Wave 5] |
+| ux-ai-design-guide | `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` | [PLANNED: Wave 5] |
 
 ### Rule Files
 

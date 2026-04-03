@@ -388,7 +388,7 @@ Behavior Design facilitation output maps to the S-014 LLM-as-Judge rubric dimens
 |-------------|------|---------|---------|
 | **Parent SKILL.md** | `skills/ux-behavior-design/SKILL.md` | v1.5.0 | Sub-skill definition; methodology overview; agent routing |
 | **Agent definition** | `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` | v1.2.0 | Agent frontmatter, system prompt, output section (handoff threshold) |
-| **Governance YAML** | `skills/ux-behavior-design/agents/ux-behavior-diagnostician.governance.yaml` | v1.2.0 | Enforcement metadata: quality_threshold (0.95), quality_gate (S-014) |
+| **Agent governance** | `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` (YAML frontmatter + guardrails section) | v1.2.0 | Enforcement metadata: quality_threshold (0.95), quality_gate (S-014) |
 | **Output template** | `skills/ux-behavior-design/templates/bmap-diagnosis-template.md` | v1.4.0 | Report template consumed by diagnostician agent |
 | **Wave progression** | `skills/user-experience/rules/wave-progression.md` | v1.2.0 | Wave 4 (Advanced Analytics) entry conditions; Wave 3 completion is a prerequisite |
 | **Synthesis validation** | `skills/user-experience/rules/synthesis-validation.md` | v1.1.0 | Confidence classification shared taxonomy; Sub-Skill Synthesis Output Map |

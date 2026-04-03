@@ -145,7 +145,7 @@ ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
 
 **Enforcement:**
 - `disallowedTools: [Agent]` declared in `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` frontmatter
-- P-003 prohibition in `skills/ux-behavior-design/agents/ux-behavior-diagnostician.governance.yaml` `capabilities.forbidden_actions`
+- P-003 prohibition in `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` guardrails section
 - CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`)
 
 ---
@@ -205,7 +205,7 @@ Create file at: skills/ux-behavior-design/output/UX-0001/ux-behavior-diagnostici
 )
 ```
 
-> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-behavior-diagnostician.governance.yaml` per AD-M-007. Fields are enumerated below:
+> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-behavior-diagnostician.md` per AD-M-007. Fields are enumerated below:
 
 **on_receive fields:**
 
@@ -592,7 +592,7 @@ The following CI gate criteria apply to this sub-skill (full gate definitions in
 | Gate | Check | Enforcement |
 |------|-------|-------------|
 | **No Agent tool access** | `disallowedTools: [Agent]` present in agent frontmatter; agent MUST NOT have Agent in `tools` list | L5 (CI): grep agent frontmatter for Agent tool presence |
-| **P-003 forbidden action** | `capabilities.forbidden_actions` in `.governance.yaml` MUST include P-003 recursive subagent prohibition | L5 (CI): schema validation of governance YAML against `docs/schemas/agent-governance-v1.schema.json` |
+| **P-003 forbidden action** | Agent `.md` guardrails section MUST include P-003 recursive subagent prohibition | L5 (CI): grep agent files for P-003/P-020/P-022 presence |
 | **Output schema validation** | Agent output MUST contain all Required Output Sections (Executive Summary, Engagement Context, Behavior State Map, Bottleneck Diagnosis, Intervention Recommendations, Strategic Implications, Synthesis Judgments Summary, Handoff Data) | L4 (post-tool): section heading presence check on output artifact |
 
 ---
@@ -659,7 +659,7 @@ All agents in this sub-skill adhere to the **Tom Constitution v1.0**:
 | P-002 | NEVER leave bottleneck diagnoses or intervention recommendations in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
 
 **Per-agent enforcement:** The `ux-behavior-diagnostician` agent declares:
-- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-behavior-design/agents/ux-behavior-diagnostician.governance.yaml`
+- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` guardrails section
 - `capabilities.forbidden_actions`: 3 entries in NPT-009 format referencing the constitutional triplet
 - `disallowedTools: [Agent]` in `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` frontmatter
 
@@ -695,7 +695,7 @@ This sub-skill follows a parent-routed registration model per H-26. Sub-skills a
 > This sub-skill follows a two-phase implementation sequence:
 >
 > - **Wave 4 Phase 1 (this deliverable):** SKILL.md specification -- methodology, output format, routing integration, template stub, cross-framework integration, and quality gate criteria. This document is the Phase 1 artifact.
-> - **Wave 4 Phase 2 (pending):** Agent implementation -- `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` (agent definition with `<input>`, `<capabilities>`, `<methodology>`, `<output>` sections) and `skills/ux-behavior-design/agents/ux-behavior-diagnostician.governance.yaml` (governance metadata). Tracked under PROJ-022 EPIC-004.
+> - **Wave 4 Phase 2 (pending):** Agent implementation -- `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` (agent definition with YAML frontmatter, `<input>`, `<capabilities>`, `<methodology>`, `<output>`, and `<guardrails>` sections). Tracked under PROJ-022 EPIC-004.
 
 ---
 
@@ -731,7 +731,7 @@ This sub-skill follows a parent-routed registration model per H-26. Sub-skills a
 |--------|---------|------|
 | Parent SKILL.md | Sub-skill scope, wave architecture, routing, MCP dependencies, synthesis protocol | `skills/user-experience/SKILL.md` |
 | Agent definition | Agent frontmatter, identity, expertise, guardrails | `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` [PLANNED] |
-| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-behavior-design/agents/ux-behavior-diagnostician.governance.yaml` [PLANNED] |
+| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-behavior-design/agents/ux-behavior-diagnostician.md` (YAML frontmatter + guardrails section) |
 | UX routing rules | Lifecycle-stage routing, handoff data contracts, common intent resolution, CRISIS routing [PARTIAL: EPIC-001] | `skills/user-experience/rules/ux-routing-rules.md` |
 | Synthesis validation | Confidence gate protocol, per-sub-skill confidence map, signal extraction criteria | `skills/user-experience/rules/synthesis-validation.md` [STUB: EPIC-001] |
 | Wave progression | Wave 4 entry criteria, signoff requirements | `skills/user-experience/rules/wave-progression.md` |

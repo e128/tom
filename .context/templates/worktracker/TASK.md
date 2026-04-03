@@ -283,7 +283,7 @@ This is audit trail evidence (proving work was done), not knowledge evidence (re
 | INV-T02: remaining_work <= original_estimate | Time tracking inconsistency | Manual review | Time tracking audit |
 
 <!--
-JERRY ALIGNMENT:
+TOM ALIGNMENT:
   existing_type: "WorkType.TASK"
   changes_needed: "None - already exists"
 

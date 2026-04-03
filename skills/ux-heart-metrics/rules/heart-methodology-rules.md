@@ -588,7 +588,7 @@ Before persisting the HEART metrics output, the analyst MUST verify all items in
 | Agent Development Standards (H-34) | `.context/rules/agent-development-standards.md` |
 | Synthesis Validation Rules | `skills/user-experience/rules/synthesis-validation.md` |
 | Agent Definition | `skills/ux-heart-metrics/agents/ux-heart-analyst.md` |
-| Agent Governance | `skills/ux-heart-metrics/agents/ux-heart-analyst.governance.yaml` |
+| Agent Governance | `skills/ux-heart-metrics/agents/ux-heart-analyst.md` (YAML frontmatter + guardrails section) |
 | Parent SKILL.md | `skills/ux-heart-metrics/SKILL.md` |
 | Parent Skill | `skills/user-experience/SKILL.md` |
 

@@ -155,7 +155,7 @@ ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
 
 **Enforcement:**
 - `disallowedTools: [Agent]` declared in `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` frontmatter
-- P-003 prohibition in `skills/ux-ai-first-design/agents/ux-ai-design-guide.governance.yaml` `capabilities.forbidden_actions`
+- P-003 prohibition in `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` guardrails section
 - CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`)
 
 ---
@@ -222,7 +222,7 @@ Create file at: skills/ux-ai-first-design/output/UX-0001/ux-ai-design-guide-reco
 )
 ```
 
-> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-ai-design-guide.governance.yaml` per AD-M-007. Fields are enumerated below:
+> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-ai-design-guide.md` per AD-M-007. Fields are enumerated below:
 
 **on_receive fields:**
 
@@ -605,7 +605,7 @@ The following CI gate criteria apply to this sub-skill (full gate definitions in
 | Gate | Check | Enforcement |
 |------|-------|-------------|
 | **No Agent tool access** | `disallowedTools: [Agent]` present in agent frontmatter; agent MUST NOT have Agent in `tools` list | L5 (CI): grep agent frontmatter for Agent tool presence |
-| **P-003 forbidden action** | `capabilities.forbidden_actions` in `.governance.yaml` MUST include P-003 recursive subagent prohibition | L5 (CI): schema validation of governance YAML against `docs/schemas/agent-governance-v1.schema.json` |
+| **P-003 forbidden action** | Agent `.md` guardrails section MUST include P-003 recursive subagent prohibition | L5 (CI): grep agent files for P-003/P-020/P-022 presence |
 | **Output schema validation** | Agent output MUST contain all Required Output Sections (Executive Summary, Engagement Context, Trust-Risk Assessment, Error-Risk Assessment, Interaction Pattern Specification, Feedback Loop Design, Progressive Disclosure Plan, AI Transparency Assessment, Strategic Implications, Synthesis Judgments Summary, Handoff Data) | L4 (post-tool): section heading presence check on output artifact |
 
 ---
@@ -690,7 +690,7 @@ All agents in this sub-skill adhere to the **Tom Constitution v1.0**:
 | P-002 | NEVER leave AI interaction design recommendations in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
 
 **Per-agent enforcement:** The `ux-ai-design-guide` agent declares:
-- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-ai-first-design/agents/ux-ai-design-guide.governance.yaml`
+- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` guardrails section
 - `capabilities.forbidden_actions`: 3 entries in NPT-009 format referencing the constitutional triplet
 - `disallowedTools: [Agent]` in `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` frontmatter
 
@@ -734,7 +734,7 @@ This sub-skill follows a parent-routed registration model per H-26. Sub-skills a
 > This sub-skill follows a two-phase implementation sequence:
 >
 > - **Wave 5 Phase 1 (this deliverable):** SKILL.md specification -- methodology, output format, routing integration, template stub, cross-framework integration, and quality gate criteria. This document is the Phase 1 artifact.
-> - **Wave 5 Phase 2 (pending):** Agent implementation -- `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` (agent definition with `<input>`, `<capabilities>`, `<methodology>`, `<output>` sections) and `skills/ux-ai-first-design/agents/ux-ai-design-guide.governance.yaml` (governance metadata). Tracked under PROJ-022 EPIC-005.
+> - **Wave 5 Phase 2 (pending):** Agent implementation -- `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` (agent definition with YAML frontmatter, `<input>`, `<capabilities>`, `<methodology>`, `<output>`, and `<guardrails>` sections). Tracked under PROJ-022 EPIC-005.
 >
 > **CONDITIONAL NOTE:** Even after Phase 2 implementation, this sub-skill only activates when WSM >= 7.80 AND enabler FEAT-020 is complete. Until these conditions are met, the `ux-orchestrator` routes AI product design requests to `/ux-heuristic-eval` with PAIR protocol.
 
@@ -784,7 +784,7 @@ This sub-skill follows a parent-routed registration model per H-26. Sub-skills a
 |--------|---------|------|
 | Parent SKILL.md | Sub-skill scope, wave architecture, routing, MCP dependencies, synthesis protocol | `skills/user-experience/SKILL.md` |
 | Agent definition | Agent frontmatter, identity, expertise, guardrails | `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` [PLANNED] |
-| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-ai-first-design/agents/ux-ai-design-guide.governance.yaml` [PLANNED] |
+| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-ai-first-design/agents/ux-ai-design-guide.md` (YAML frontmatter + guardrails section) |
 | UX routing rules | Lifecycle-stage routing, handoff data contracts, common intent resolution, CONDITIONAL routing | `skills/user-experience/rules/ux-routing-rules.md` |
 | Synthesis validation | Confidence gate protocol, per-sub-skill confidence map, signal extraction criteria | `skills/user-experience/rules/synthesis-validation.md` [Cross-Framework Synthesis Protocol] |
 | Wave progression | Wave 5 entry criteria, signoff requirements | `skills/user-experience/rules/wave-progression.md` |

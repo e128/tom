@@ -419,7 +419,7 @@ Design Sprint facilitation output maps to the S-014 LLM-as-Judge rubric dimensio
 
 | ID | Rule | Tier | Consequence of Violation |
 |----|------|------|--------------------------|
-| SPR-040 | The quality gate threshold applies to the overall sprint report, not to individual day outputs. Baseline threshold: >= 0.92 (H-13 per `.context/rules/quality-enforcement.md` Section "Quality Gate", C2+). At C4 criticality (e.g., user-specified or auto-escalated per AE-002/AE-004), the threshold is >= 0.95 (governance source: ux-sprint-facilitator.governance.yaml enforcement.quality_threshold). | HARD | Deliverable rejected per H-13; revision required |
+| SPR-040 | The quality gate threshold applies to the overall sprint report, not to individual day outputs. Baseline threshold: >= 0.92 (H-13 per `.context/rules/quality-enforcement.md` Section "Quality Gate", C2+). At C4 criticality (e.g., user-specified or auto-escalated per AE-002/AE-004), the threshold is >= 0.95 (governance source: ux-sprint-facilitator.md guardrails section). | HARD | Deliverable rejected per H-13; revision required |
 | SPR-041 | Completeness scoring MUST verify all four sprint days are documented. An output missing any sprint day receives a 0 on the Completeness dimension. | HARD | Completeness dimension zeroed; composite score drops below threshold |
 | SPR-042 | Evidence Quality scoring MUST penalize undisclosed degraded mode operation. If the agent operated without Figma or Miro without the P-022 degraded mode banner, Evidence Quality receives a 0 score. | HARD | Evidence Quality dimension zeroed; P-022 violation |
 | SPR-043 | Internal Consistency scoring MUST verify that sprint verdicts are logically consistent with observation grid pattern analysis. A "Pass" verdict on a sprint question where the observation grid shows < 3 positive observations is a consistency failure. | HARD | Internal Consistency dimension penalized; logically inconsistent verdicts cannot be trusted for downstream decision-making |
@@ -434,7 +434,7 @@ Design Sprint facilitation output maps to the S-014 LLM-as-Judge rubric dimensio
 |-------------|------|---------|---------|
 | **Parent SKILL.md** | `skills/ux-design-sprint/SKILL.md` | v1.1.0 | Sub-skill definition; methodology overview; agent routing |
 | **Agent definition** | `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` | v1.0.0 | Agent frontmatter, system prompt, output section (handoff threshold) |
-| **Governance YAML** | `skills/ux-design-sprint/agents/ux-sprint-facilitator.governance.yaml` | v1.0.0 | Enforcement metadata: quality_threshold (0.95), quality_gate (S-014), post_completion_checks |
+| **Agent governance** | `skills/ux-design-sprint/agents/ux-sprint-facilitator.md` (YAML frontmatter + guardrails section) | v1.0.0 | Enforcement metadata: quality_threshold (0.95), quality_gate (S-014), post_completion_checks |
 | **Output template** | `skills/ux-design-sprint/templates/design-sprint-template.md` | v1.0.0 | Report template consumed by facilitator agent |
 | **Wave progression** | `skills/user-experience/rules/wave-progression.md` | v1.2.0 | Wave 5 (Process Intensives) entry conditions; Wave 4 completion is a prerequisite |
 | **Synthesis validation** | `skills/user-experience/rules/synthesis-validation.md` | v1.1.0 | Confidence classification shared taxonomy; Sub-Skill Synthesis Output Map; minimum-confidence aggregation rule |

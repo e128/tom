@@ -289,7 +289,7 @@ Kano Model output maps to the S-014 LLM-as-Judge rubric dimensions (`.context/ru
 |-------------|------|---------|---------|
 | **Parent SKILL.md** | `skills/ux-kano-model/SKILL.md` | v1.2.0 | Sub-skill definition; methodology overview; agent routing |
 | **Agent definition** | `skills/ux-kano-model/agents/ux-kano-analyst.md` | v1.1.0 | Agent frontmatter, system prompt, output section |
-| **Governance YAML** | `skills/ux-kano-model/agents/ux-kano-analyst.governance.yaml` | v1.1.0 | Enforcement metadata: quality gate, tool tier |
+| **Agent governance** | `skills/ux-kano-model/agents/ux-kano-analyst.md` (YAML frontmatter + guardrails section) | v1.1.0 | Enforcement metadata: quality gate, tool tier |
 | **Wave progression** | `skills/user-experience/rules/wave-progression.md` | unversioned | Wave 4 entry conditions; Wave 3 completion prerequisite |
 | **Synthesis validation** | `skills/user-experience/rules/synthesis-validation.md` | v1.1.0 | Confidence classification taxonomy; Sub-Skill Synthesis Output Map |
 | **Output templates** | `skills/ux-kano-model/templates/` | -- | Survey and feature priority templates consumed by agent |

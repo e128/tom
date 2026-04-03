@@ -108,10 +108,8 @@ Scenarios are organized into four Features: `uc-author Agent`, `uc-slicer Agent`
 
 | File ID | File | Scenarios |
 |---------|------|-----------|
-| F-02 | `skills/use-case/agents/uc-author.md` | A-001 through A-010, E-001, E-002, E-003 |
-| F-03 | `skills/use-case/agents/uc-author.governance.yaml` | A-005, A-006, A-009, E-003 |
-| F-04 | `skills/use-case/agents/uc-slicer.md` | S-001 through S-009, E-001, E-002, E-003 |
-| F-05 | `skills/use-case/agents/uc-slicer.governance.yaml` | S-003, S-005, S-006, S-007, E-003 |
+| F-02 | `skills/use-case/agents/uc-author.md` (includes governance in YAML frontmatter + guardrails) | A-001 through A-010, A-005, A-006, A-009, E-001, E-002, E-003 |
+| F-04 | `skills/use-case/agents/uc-slicer.md` (includes governance in YAML frontmatter + guardrails) | S-001 through S-009, S-003, S-005, S-006, S-007, E-001, E-002, E-003 |
 | F-11 | `skills/use-case/templates/use-case-brief.template.md` | A-004 |
 | F-12 | `skills/use-case/templates/use-case-casual.template.md` | A-001, A-003 |
 | F-10 | `skills/use-case/templates/use-case-realization.template.md` | A-003, S-001 |

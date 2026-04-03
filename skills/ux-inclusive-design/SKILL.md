@@ -154,7 +154,7 @@ ux-orchestrator (T5, Opus, Integrative) -- parent orchestrator
 
 **Enforcement:**
 - `disallowedTools: [Agent]` declared in `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md` frontmatter
-- P-003 prohibition in `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.governance.yaml` `capabilities.forbidden_actions`
+- P-003 prohibition in `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md` guardrails section
 - CI gate validates no sub-skill agent has Agent access (documented in `skills/user-experience/rules/ci-checks.md`)
 
 > **Source:** P-003 hierarchy from parent SKILL.md [P-003 Compliance].
@@ -217,7 +217,7 @@ Create file at: skills/ux-inclusive-design/output/UX-0001/ux-inclusive-evaluator
 )
 ```
 
-> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-inclusive-evaluator.governance.yaml` per AD-M-007. Fields are enumerated below:
+> **Governance codification (AD-M-007):** The session_context contract (on_receive/on_send) is specified in `ux-inclusive-evaluator.md` per AD-M-007. Fields are enumerated below:
 
 **on_receive fields:**
 
@@ -592,7 +592,7 @@ All agents in this sub-skill adhere to the **Tom Constitution v1.0**:
 | P-002 | NEVER leave accessibility audit results or persona spectrum analyses in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
 
 **Per-agent enforcement:** The `ux-inclusive-evaluator` agent declares:
-- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.governance.yaml`
+- `constitution.principles_applied`: P-003, P-020, P-022, P-001, P-002 in `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md` guardrails section
 - `capabilities.forbidden_actions`: 3 entries in NPT-009 format referencing the constitutional triplet
 - `disallowedTools: [Agent]` in `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md` frontmatter
 
@@ -625,7 +625,7 @@ This sub-skill follows a parent-routed registration model. Sub-skills are not in
 
 ## Deployment Status
 
-> **Wave 3 Sub-Skill -- Planned.** This sub-skill is part of Wave 3 (Design System) of PROJ-022. The companion agent file (`skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md`) and governance file (`skills/ux-inclusive-design/agents/ux-inclusive-evaluator.governance.yaml`) are planned for creation during Wave 3 implementation of PROJ-022 EPIC-004. The SKILL.md itself is complete and specifies the methodology, output format, and routing integration that the agent will implement.
+> **Wave 3 Sub-Skill -- Planned.** This sub-skill is part of Wave 3 (Design System) of PROJ-022. The agent file (`skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md`) with embedded governance (YAML frontmatter + guardrails section) is planned for creation during Wave 3 implementation of PROJ-022 EPIC-004. The SKILL.md itself is complete and specifies the methodology, output format, and routing integration that the agent will implement.
 
 ---
 
@@ -663,7 +663,7 @@ This sub-skill follows a parent-routed registration model. Sub-skills are not in
 |--------|---------|------|
 | Parent SKILL.md | Sub-skill scope, wave architecture, routing, MCP dependencies, synthesis protocol | `skills/user-experience/SKILL.md` |
 | Agent definition | Agent frontmatter, identity, expertise, guardrails | `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md` [PLANNED: Wave 3] |
-| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.governance.yaml` [PLANNED: Wave 3] |
+| Agent governance | Tool tier, forbidden actions, output validation, constitutional compliance | `skills/ux-inclusive-design/agents/ux-inclusive-evaluator.md` (YAML frontmatter + guardrails section) |
 | UX routing rules | Lifecycle-stage routing, handoff data contracts, common intent resolution | `skills/user-experience/rules/ux-routing-rules.md` |
 | MCP coordination | Figma REQ dependency, degraded mode behavior, Context7 usage | `skills/user-experience/rules/mcp-coordination.md` |
 | Synthesis validation | Confidence gate protocol, per-sub-skill confidence map | `skills/user-experience/rules/synthesis-validation.md` |
