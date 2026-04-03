@@ -132,7 +132,7 @@ All outputs are **persisted to files**, surviving context compaction and buildin
 
 ## Features
 
-- **Structured Problem-Solving**: 8 specialized agents (researcher, analyst, architect, validator, synthesizer, reviewer, investigator, reporter)
+- **Structured Problem-Solving**: 9 specialized agents (researcher, analyst, architect, critic, validator, synthesizer, reviewer, investigator, reporter)
 - **Work Tracking**: Local task management with status, priorities, and dependencies
 - **Knowledge Accrual**: Persistent artifacts in `docs/` that survive session boundaries
 - **NASA Systems Engineering**: NPR 7123.1D processes for mission-grade rigor
