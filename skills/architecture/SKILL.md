@@ -36,8 +36,7 @@ activation-keywords:
 |---------|---------|
 | [Purpose](#purpose) | What this skill does |
 | [When to Use This Skill](#when-to-use-this-skill) | Activation triggers |
-| [Available Agents](#available-agents) | Agent registry for this skill |
-| [Commands](#commands) | CLI commands and examples |
+| [Task Types](#task-types) | What output to produce per request type |
 | [Architectural Principles](#architectural-principles) | Core design principles |
 | [Layer Dependency Rules](#layer-dependency-rules) | Import boundary enforcement |
 | [Templates](#templates) | Available templates |
@@ -56,7 +55,7 @@ This SKILL.md serves multiple audiences:
 | Level | Audience | Sections to Focus On |
 |-------|----------|---------------------|
 | **L0 (ELI5)** | New users, stakeholders | [Purpose](#purpose), [When to Use](#when-to-use-this-skill), [Architectural Principles](#architectural-principles) |
-| **L1 (Engineer)** | Developers implementing features | [Commands](#commands), [Layer Dependency Rules](#layer-dependency-rules), [References](#references) |
+| **L1 (Engineer)** | Developers implementing features | [Task Types](#task-types), [Layer Dependency Rules](#layer-dependency-rules), [References](#references) |
 | **L2 (Architect)** | System designers | [Architectural Principles](#architectural-principles), [Constitutional Compliance](#constitutional-compliance) |
 
 ---
@@ -93,237 +92,16 @@ Activate when:
 
 ---
 
-## Available Agents
+## Task Types
 
-This skill provides command-based analysis rather than agent-based workflows. Commands are invoked via natural language or explicit requests.
+When asked to work with architecture, produce the appropriate output based on the request:
 
-| Command | Purpose | Output Location |
-|---------|---------|-----------------|
-| `analyze` | Verify architectural compliance of a component | Console + optional file |
-| `diagram` | Generate architecture visualizations | Console or specified file path |
-| `review` | Review design documents against checklists | Console + optional file |
-| `decision` | Create an Architecture Decision Record | `docs/design/ADR_NNN_*.md` |
-
----
-
-## Commands
-
-### Analyze Component
-
-Analyze a component's architectural compliance.
-
-```
-@architecture analyze <path> [--depth DEPTH]
-```
-
-**Arguments:**
-- `path`: Path to component (file or directory)
-- `--depth`: Analysis depth (`surface`, `deep`) (default: `surface`)
-
-**Example:**
-```
-@architecture analyze src/domain/
-```
-
-**Output:**
-```
-Architecture Analysis: src/domain/
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Layer: Domain (Innermost)
-Compliance: ✓ PASS
-
-Checks:
-  ✓ No external package imports
-  ✓ No imports from application/
-  ✓ No imports from infrastructure/
-  ✓ No imports from interface/
-  ✓ Entities use dataclasses
-  ✓ Value objects are frozen
-
-Components Found:
-  - aggregates/work_item.py (Aggregate Root)
-  - aggregates/project.py (Aggregate Root)
-  - value_objects/status.py (Value Object)
-  - ports/repository.py (Secondary Port)
-
-Recommendations:
-  - Consider adding domain events for state changes
-```
-
----
-
-### Generate Diagram
-
-Generate architecture diagrams.
-
-```
-@architecture diagram <type> [--output PATH] [--format FORMAT]
-```
-
-**Arguments:**
-- `type`: `hexagonal`, `component`, `sequence`, `data-flow`
-- `--output`: Output file path
-- `--format`: `mermaid`, `plantuml`, `ascii` (default: `mermaid`)
-
-**Example:**
-```
-@architecture diagram hexagonal --format mermaid
-```
-
-**Output:**
-```mermaid
-graph TB
-    subgraph "Interface Layer"
-        CLI[CLI Adapter]
-        API[API Adapter]
-    end
-
-    subgraph "Application Layer"
-        UC[Use Cases]
-        CMD[Commands]
-        QRY[Queries]
-    end
-
-    subgraph "Domain Layer"
-        AGG[Aggregates]
-        VO[Value Objects]
-        EVT[Domain Events]
-        PORT[Ports]
-    end
-
-    subgraph "Infrastructure Layer"
-        REPO[Repository Adapter]
-        MSG[Messaging Adapter]
-    end
-
-    CLI --> UC
-    API --> UC
-    UC --> CMD
-    UC --> QRY
-    CMD --> AGG
-    QRY --> AGG
-    AGG --> PORT
-    PORT -.-> REPO
-    EVT -.-> MSG
-```
-
----
-
-### Review Design
-
-Review a design document or proposed change.
-
-```
-@architecture review <path> [--checklist CHECKLIST]
-```
-
-**Arguments:**
-- `path`: Path to design document or code
-- `--checklist`: Checklist to apply (`hexagonal`, `ddd`, `solid`, `all`)
-
-**Example:**
-```
-@architecture review docs/design/AUTH_DESIGN.md --checklist hexagonal
-```
-
-**Output:**
-```
-Architecture Review: AUTH_DESIGN.md
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Checklist: Hexagonal Architecture
-
-Domain Layer:
-  ✓ Business logic isolated from infrastructure
-  ✓ Entities enforce invariants
-  ⚠ Missing domain events for state changes
-
-Ports:
-  ✓ IUserRepository defined as protocol
-  ✓ ITokenService defined as protocol
-  ✗ INotifier port missing for notifications
-
-Adapters:
-  ✓ JWTTokenAdapter implements ITokenService
-  ✓ SQLiteUserRepository implements IUserRepository
-  ⚠ Consider adding InMemory adapters for testing
-
-Dependency Direction:
-  ✓ Domain has no outward dependencies
-  ✓ Application depends only on domain
-  ✓ Infrastructure implements domain ports
-
-Overall: PASS with recommendations
-
-Recommendations:
-1. Add UserRegistered domain event
-2. Define INotifier port for email notifications
-3. Create InMemoryUserRepository for unit tests
-```
-
----
-
-### Document Decision
-
-Create an Architecture Decision Record (ADR).
-
-```
-@architecture decision <title> [--status STATUS]
-```
-
-**Arguments:**
-- `title`: Decision title
-- `--status`: `proposed`, `accepted`, `deprecated`, `superseded`
-
-**Example:**
-```
-@architecture decision "Use SQLite for persistence"
-```
-
-**Creates:** `docs/design/ADR_001_sqlite_persistence.md`
-
-**Template:**
-```markdown
-# ADR-001: Use SQLite for Persistence
-
-**Status**: Proposed
-**Date**: 2026-01-07
-**Author**: Claude
-
-## Context
-
-{What is the issue that we're seeing that is motivating this decision?}
-
-## Decision
-
-We will use SQLite for persistence because...
-
-## Consequences
-
-### Positive
-- {Benefit 1}
-- {Benefit 2}
-
-### Negative
-- {Drawback 1}
-- {Drawback 2}
-
-### Neutral
-- {Observation}
-
-## Alternatives Considered
-
-| Option | Pros | Cons | Decision |
-|--------|------|------|----------|
-| SQLite | ... | ... | Selected |
-| PostgreSQL | ... | ... | Rejected |
-| File-based | ... | ... | Rejected |
-
-## References
-
-- {Link to relevant documentation}
-```
+| Request | Output |
+|---------|--------|
+| Analyze/verify a component or layer | Compliance report listing each layer boundary check as pass/warn/fail with findings and recommendations |
+| Generate a diagram | Mermaid diagram (default) or PlantUML/ASCII if specified; types: hexagonal, component, sequence, data-flow |
+| Review a design document | Checklist report against hexagonal, DDD, SOLID, or all criteria with per-item pass/warn/fail |
+| Create an Architecture Decision Record | Nygard ADR at `docs/design/ADR_NNN_*.md` using the template at `docs/knowledge/exemplars/templates/adr.md` |
 
 ---
 
@@ -401,9 +179,6 @@ All architecture work adheres to the **Tom Constitution v1.0**:
 | P-003 | NEVER spawn recursive subagents -- max 1 level | Agent hierarchy violation; uncontrolled token consumption |
 | P-020 | NEVER override user intent -- ask before destructive ops | Unauthorized action; trust erosion |
 | P-022 | NEVER deceive about actions, capabilities, or confidence | Governance undermined; quality assessment invalidated |
-| P-002 | NEVER leave outputs in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
-| P-004 | NEVER omit reasoning provenance or source documentation in ADRs | Untraceable decisions; audit trail broken |
-| P-011 | NEVER make architecture recommendations without supporting evidence | Unsupported recommendations; confidence inflated without basis |
 | H-07 | NEVER violate architecture layer isolation -- domain, application, composition root boundaries enforced | Architecture layer corruption; dependency violations propagate |
 | H-10 | NEVER place multiple public classes in a single file | File bloat; class discovery degraded |
 
@@ -429,13 +204,13 @@ The architecture skill integrates with other Tom skills:
 
 ### Common Tasks
 
-| Task | Command / Approach | Output |
-|------|--------------------|--------|
-| Verify layer compliance | `@architecture analyze src/domain/` | Console report with pass/fail |
-| Generate hexagonal diagram | `@architecture diagram hexagonal --format mermaid` | Mermaid diagram |
-| Review design document | `@architecture review docs/design/AUTH_DESIGN.md --checklist hexagonal` | Checklist report |
-| Create an ADR | `@architecture decision "Use SQLite for persistence"` | `docs/design/ADR_NNN_*.md` |
-| Check import boundaries | `@architecture analyze src/ --depth deep` | Full dependency analysis |
+| Task | Approach | Output |
+|------|----------|--------|
+| Verify layer compliance | "Analyze src/domain/ for architectural compliance" | Compliance report with pass/warn/fail per check |
+| Generate hexagonal diagram | "Generate a hexagonal architecture diagram in Mermaid" | Mermaid diagram |
+| Review design document | "Review docs/design/AUTH_DESIGN.md against hexagonal checklist" | Checklist report |
+| Create an ADR | "Create an ADR for [decision title]" | `docs/design/ADR_NNN_*.md` |
+| Check import boundaries | "Do a deep analysis of src/ for import boundary violations" | Full dependency analysis |
 
 ### Decision Workflow Summary
 
@@ -444,8 +219,8 @@ The architecture skill integrates with other Tom skills:
 | 1. Identify need | Recognize architectural choice required | Problem statement |
 | 2. Research options | Use `/problem-solving` for analysis | Research findings |
 | 3. Evaluate trade-offs | Use `/nasa-se` for formal trade study | Trade study matrix |
-| 4. Document decision | `@architecture decision "<title>"` | ADR in `docs/design/` |
-| 5. Validate compliance | `@architecture analyze <path>` | Compliance report |
+| 4. Document decision | "Create an ADR for [title]" | ADR in `docs/design/` |
+| 5. Validate compliance | "Analyze [path] for architectural compliance" | Compliance report |
 
 ---
 

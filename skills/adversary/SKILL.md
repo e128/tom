@@ -71,15 +71,7 @@ Activate when:
 - Pairing S-003 (Steelman) before S-002 (Devil's Advocate) per H-16
 - Needing a standalone quality assessment without revision cycles
 
-NEVER invoke this skill when:
-- Task requires iterative creator-critic-revision loop -- Consequence: Adversarial one-shot assessment applied to iterative work produces premature rejection without revision pathway; use `/problem-solving` with ps-critic instead
-- Task is routine code review for quick defect checks -- Consequence: Full adversarial strategy template execution (S-001 through S-014) applied to routine defect detection wastes significant context budget on strategy selection and template loading; use ps-reviewer instead
-- Task is binary constraint validation (pass/fail compliance) -- Consequence: Adversarial strategies assess quality dimensions, not binary constraint compliance; traceability matrices not generated; use ps-validator instead
-- Work is routine code changes at C1 criticality -- Consequence: Full adversarial overhead (adv-selector, adv-executor, adv-scorer) applied to C1 routine tasks consumes disproportionate context budget for low-risk work; use self-review (S-010) only
-- Defects or bugs have obvious solutions -- Consequence: Adversarial quality assessment evaluates existing deliverables, not diagnose root causes; use `/problem-solving` for root-cause analysis instead
-- User explicitly requests a quick review without adversarial rigor -- Consequence: Overriding user preference violates P-020 (user authority); respect the request
-
-See [Routing Disambiguation](#routing-disambiguation) for full exclusion conditions with consequences.
+See [Routing Disambiguation](#routing-disambiguation) for exclusion conditions and when to use other skills instead.
 
 > **Note:** Use `/adversary` for adversarial code review (e.g., red team security review, tournament quality assessment of code artifacts). Use `ps-reviewer` for routine defect detection.
 
@@ -110,27 +102,7 @@ Both agents produce comparable scores from the same rubric; the choice depends o
 
 ## P-003 Compliance
 
-All adversary agents are **workers**, NOT orchestrators. The MAIN CONTEXT (Claude session) orchestrates the workflow.
-
-```
-P-003 AGENT HIERARCHY:
-======================
-
-  +-------------------+
-  | MAIN CONTEXT      |  <-- Orchestrator (Claude session)
-  | (orchestrator)    |
-  +-------------------+
-     |        |        |
-     v        v        v
-  +------+ +------+ +------+
-  | adv- | | adv- | | adv- |   <-- Workers (max 1 level)
-  |select| |exec  | |scorer|
-  +------+ +------+ +------+
-
-  Agents CANNOT invoke other agents.
-  Agents CANNOT spawn subagents.
-  Only MAIN CONTEXT orchestrates the sequence.
-```
+All adversary agents are workers, not orchestrators. The main context (Claude session) orchestrates the sequence — adv-selector, adv-executor, and adv-scorer cannot invoke each other.
 
 ---
 
@@ -380,10 +352,6 @@ All agents adhere to the **Tom Constitution v1.0**:
 | P-003 | NEVER spawn recursive subagents -- max 1 level | Agent hierarchy violation; uncontrolled token consumption |
 | P-020 | NEVER override user intent -- ask before destructive ops | Unauthorized action; trust erosion |
 | P-022 | NEVER deceive about actions, capabilities, or confidence | Governance undermined; quality assessment invalidated |
-| P-001 | NEVER present findings without evidence or rubric-based scoring | Unreliable outputs; unfounded claims propagate downstream |
-| P-002 | NEVER leave outputs in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
-| P-004 | NEVER omit strategy IDs, template paths, or evidence citations | Untraceable decisions; audit trail broken |
-| P-011 | NEVER make findings without tying them to specific deliverable evidence | Unsupported recommendations; confidence inflated without basis |
 
 ---
 

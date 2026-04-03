@@ -172,84 +172,10 @@ User Request: "I need to understand why our tests are slow and fix it"
 
 ### State Passing Between Agents
 
-Agents can reference each other's output using state keys:
-
-| Agent | Output Key | Provides |
-|-------|------------|----------|
-| ps-researcher | `researcher_output` | Research findings, sources |
-| ps-analyst | `analyst_output` | Root cause, recommendations |
-| ps-architect | `architect_output` | Decision, alternatives |
-| ps-validator | `validator_output` | Validation status, gaps |
-| ps-synthesizer | `synthesizer_output` | Patterns, themes |
-| ps-reviewer | `reviewer_output` | Findings, assessment |
-| ps-investigator | `investigator_output` | Root cause, corrective actions |
-| ps-reporter | `reporter_output` | Metrics, health status |
+Agents hand off state via the file paths listed in the Available Agents table. Pass the output file path from the upstream agent as context to the downstream agent's prompt.
 
 ---
 
-## Tool Invocation Examples
-
-Each agent uses the allowed tools differently. Here are concrete examples:
-
-### Research Tasks (ps-researcher)
-
-```
-1. Find existing research documents:
-   Glob(pattern="docs/research/**/*.md")
-   → Returns list of prior research to reference
-
-2. Search for industry sources:
-   WebSearch(query="event sourcing Python patterns 2026")
-   → Find current industry guidance
-
-3. Create research output (MANDATORY per P-002):
-   Write(
-       file_path="docs/research/work-024-e-001-event-sourcing.md",
-       content="# Research: Event Sourcing in Python\n\n## L0: Executive Summary\n..."
-   )
-   → Persist findings - transient output VIOLATES P-002
-```
-
-### Analysis Tasks (ps-analyst)
-
-```
-1. Find prior analyses to reference:
-   Glob(pattern="docs/analysis/**/*.md")
-
-2. Search for specific patterns in codebase:
-   Grep(pattern="try|except|raise", path="src/", output_mode="content", -C=2)
-   → Find error handling patterns for root cause analysis
-
-3. Read existing documentation:
-   Read(file_path="docs/research/work-024-e-001-event-sourcing.md")
-   → Load prior research to inform analysis
-
-4. Create analysis output (MANDATORY per P-002):
-   Write(
-       file_path="docs/analysis/work-024-e-002-root-cause.md",
-       content="# Root Cause Analysis: Build Failures\n\n## L0: Executive Summary\n..."
-   )
-```
-
-### Architecture Tasks (ps-architect)
-
-```
-1. Find existing ADRs for consistency:
-   Glob(pattern="docs/decisions/**/*.md")
-   → Reference prior decisions
-
-2. Research architectural patterns:
-   WebFetch(url="https://martinfowler.com/eaaDev/EventSourcing.html",
-            prompt="Extract key benefits and trade-offs of event sourcing")
-
-3. Create ADR output (MANDATORY per P-002):
-   Write(
-       file_path="docs/decisions/work-024-e-003-adr-persistence.md",
-       content="# ADR-042: Use Event Sourcing for Task History\n\n## Status\nPROPOSED\n..."
-   )
-```
-
----
 
 ## Mandatory Persistence (P-002)
 
@@ -362,10 +288,6 @@ All agents adhere to the **Tom Constitution v1.0**:
 | P-003 | NEVER spawn recursive subagents -- max 1 level | Agent hierarchy violation; uncontrolled token consumption |
 | P-020 | NEVER override user intent -- ask before destructive ops | Unauthorized action; trust erosion |
 | P-022 | NEVER deceive about actions, capabilities, or confidence | Governance undermined; quality assessment invalidated |
-| P-001 | NEVER present findings without evidence or source citations | Unreliable outputs; unfounded claims propagate downstream |
-| P-002 | NEVER leave outputs in transient context only -- persist to files | Context rot vulnerability; artifacts lost on session compaction |
-| P-004 | NEVER omit reasoning provenance or source documentation | Untraceable decisions; audit trail broken |
-| P-011 | NEVER make recommendations without supporting evidence | Unsupported recommendations; confidence inflated without basis |
 
 ---
 
