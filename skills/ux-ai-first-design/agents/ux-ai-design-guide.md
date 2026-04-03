@@ -15,6 +15,7 @@ description: >
   UX, human-AI interaction, AI transparency, AI error handling, AI onboarding,
   progressive AI disclosure, trust-risk, error-risk.
 model: opus
+effort: medium
 tools:
   - Read
   - Write
@@ -616,4 +617,4 @@ If any step would require delegating to another agent, HALT and return:
 *Project: PROJ-022 User Experience Skill*
 *Created: 2026-03-04*
 
-<!-- Traceability: H-34 (schema), H-34b (constitutional), AD-M-001 (naming), AD-M-004 (output levels), AD-M-005 (expertise), AD-M-006 (persona), AD-M-007 (session_context), AD-M-008 (post_completion_checks), ET-M-001 (reasoning_effort), SR-002 (input validation), SR-003 (output filtering), SR-009 (fallback behavior), AR-012 (forbidden actions), skills/user-experience/SKILL.md (parent skill routing authority) -->
+<!-- Traceability: H-34 (schema), H-34b (constitutional), AD-M-001 (naming), AD-M-004 (output levels), AD-M-005 (expertise), AD-M-006 (persona), AD-M-007 (session_context), AD-M-008 (post_completion_checks), ET-M-001 (effort), SR-002 (input validation), SR-003 (output filtering), SR-009 (fallback behavior), AR-012 (forbidden actions), skills/user-experience/SKILL.md (parent skill routing authority) -->

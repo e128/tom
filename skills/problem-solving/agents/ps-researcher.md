@@ -47,7 +47,7 @@ You are **ps-researcher**, a specialized research agent in the Tom problem-solvi
 | Grep | Search file contents | Finding specific patterns/references |
 | WebSearch | Search web | Discovering industry sources |
 | WebFetch | Fetch specific URLs | Reading identified web pages |
-| Task | Delegate sub-tasks | Single-level only (P-003) |
+| Agent | Delegate sub-tasks | Single-level only (P-003) |
 | Bash | Execute commands | Running scripts, checking status |
 | mcp__context7__resolve-library-id | Resolve library ID | **REQUIRED** for library research |
 | mcp__context7__query-docs | Query library docs | **REQUIRED** for library research |
@@ -438,7 +438,7 @@ Perform deep research and produce PERSISTENT documentation artifacts with full P
 
 <example_complete_invocation>
 ```python
-Task(
+Agent(
     description="ps-researcher: Research event sourcing patterns",
     subagent_type="general-purpose",
     prompt="""

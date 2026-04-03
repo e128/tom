@@ -33,7 +33,7 @@
 | H-34 | Agent definitions use a single `.md` file with: (a) official Claude Code YAML frontmatter (`name`, `description`, `model`, `tools`, etc.) and (b) a markdown body as the system prompt containing identity, methodology, guardrails, and output specs as XML-tagged or markdown sections. Worker agents MUST NOT include `Agent` (or alias `Task`) in `tools`. Every agent MUST include constitutional compliance with P-003, P-020, and P-022 in its `<guardrails>` section with at least 3 `forbidden_actions`. | Agent definition structurally invalid. Constitutional constraint bypass. | AR-001 (YAML+MD format), SR-001 (constitutional compliance), AR-004 (single-level nesting) | L5 (CI): Grep for P-003/P-020/P-022 presence in agent files. |
 
 **H-34 Architecture Note:** Agent definitions use a single-file architecture:
-- **`.md` YAML frontmatter**: Official Claude Code fields (12 recognized: `name`, `description`, `tools`, `disallowedTools`, `model`, `permissionMode`, `maxTurns`, `skills`, `mcpServers`, `hooks`, `memory`, `background`, `isolation`). Parsed by Claude Code runtime for tool enforcement and agent discovery.
+- **`.md` YAML frontmatter**: Official Claude Code fields (15 recognized as of April 2026: `name`, `description`, `tools`, `disallowedTools`, `model`, `permissionMode`, `maxTurns`, `skills`, `mcpServers`, `hooks`, `memory`, `background`, `effort`, `isolation`, `color`; plus `initialPrompt` for main-session agents). Parsed by Claude Code runtime for tool enforcement and agent discovery.
 - **`.md` markdown body**: System prompt content visible to the agent LLM. Contains identity, methodology, guardrails, and output specifications as XML-tagged or markdown sections.
 
 **HARD Rule Budget:** H-34 (and sub-item H-35) registered in `quality-enforcement.md` HARD Rule Index. Current budget: 25/25 rules at ceiling.
@@ -58,7 +58,7 @@
 | AD-M-008 | Agents SHOULD declare `validation.post_completion_checks` listing verifiable post-completion assertions. | Examples: `verify_file_created`, `verify_navigation_table`, `verify_citations_present`. Enables deterministic quality checking before LLM scoring. | QR-003 (output validation) |
 | AD-M-009 | Agent model selection SHOULD be justified per cognitive demands. | `opus` for complex reasoning, research, architecture, synthesis. `sonnet` for balanced analysis, standard production tasks. `haiku` for fast repetitive tasks, formatting, validation. | PR-007 (model selection) |
 | AD-M-010 | New agents SHOULD declare MCP tool usage in the `tools` frontmatter field. Research/documentation agents SHOULD use Context7. | Aligns with MCP-M-002 from `mcp-tool-standards.md`. | AR-006 (tool restriction), MCP-M-002 |
-| ET-M-001 | Agent definitions SHOULD declare `reasoning_effort` aligned with criticality level. Mapping: C1=default, C2=medium, C3=high, C4=max. Orchestrator agents SHOULD use `high` or `max`. Validation-only agents (e.g., ps-validator, wt-auditor) MAY use `default`. | Orthogonal to AD-M-009 (model selection): model determines *which* model reasons, reasoning_effort determines *how deeply* it reasons. Extended thinking allocation scales with decision criticality to balance thoroughness against token cost. | Anthropic best practices (extended thinking), quality-enforcement.md criticality levels |
+| ET-M-001 | Agent definitions SHOULD declare `effort` aligned with criticality level. Valid values: `low`, `medium`, `high`, `max` (`max` is Opus 4.6 only). Mapping: C1=low, C2=medium, C3=high, C4=max. Orchestrator agents SHOULD use `high` or `max`. Validation-only agents (e.g., ps-validator, wt-auditor) SHOULD use `low`. | Orthogonal to AD-M-009 (model selection): model determines *which* model reasons, `effort` determines *how deeply* it reasons. Overrides session effort level while the subagent is active. Added in Claude Code v2.1.80. | Anthropic best practices (extended thinking), quality-enforcement.md criticality levels |
 
 ### Context Budget Standards
 
@@ -90,23 +90,28 @@ Agent definitions use a single `.md` file per H-34.
 
 ### Frontmatter Fields (`.md` file)
 
-Only Claude Code's 12 official fields are permitted in YAML frontmatter. All other fields are silently ignored by Claude Code.
+Only Claude Code's officially recognised fields are permitted in YAML frontmatter. All other fields are silently ignored by Claude Code. As of April 2026 (v2.1.91) there are **15 supported fields** plus `initialPrompt` for main-session agents.
 
 | Field | Type | Required | Purpose |
 |-------|------|----------|---------|
 | `name` | string | Yes | Agent identifier (kebab-case) |
 | `description` | string | Yes | When Claude should delegate to this agent |
-| `model` | enum | No | `sonnet`, `opus`, `haiku` (default: inherit) |
-| `tools` | string/array | No | Allowed tools. **Inherits ALL if omitted.** |
-| `disallowedTools` | string/array | No | Tools to deny |
+| `model` | enum | No | `sonnet`, `opus`, `haiku`, or full model ID (default: `inherit`) |
+| `tools` | string/array | No | Allowed tools. **Inherits ALL if omitted.** Use `Agent(name)` to restrict which subagents can be spawned. |
+| `disallowedTools` | string/array | No | Tools to deny. Applied before `tools` when both set. |
 | `mcpServers` | object | No | MCP servers available (e.g., `context7`) |
-| `permissionMode` | enum | No | `default`, `acceptEdits`, `dontAsk`, `bypassPermissions`, `plan` |
+| `permissionMode` | enum | No | `default`, `acceptEdits`, `auto`, `dontAsk`, `bypassPermissions`, `plan` |
 | `maxTurns` | number | No | Max agentic turns |
-| `skills` | array | No | Skills to preload |
-| `hooks` | object | No | Lifecycle hooks |
-| `memory` | enum | No | `user`, `project`, `local` |
-| `background` | boolean | No | Run as background task |
-| `isolation` | enum | No | `worktree` |
+| `skills` | array | No | Skills to preload (subagents do NOT inherit parent skills) |
+| `hooks` | object | No | Lifecycle hooks (not supported in plugin subagents) |
+| `memory` | enum | No | `user` (`~/.claude/agent-memory/<name>/`), `project` (`.claude/agent-memory/<name>/`), `local` |
+| `background` | boolean | No | `true` to always run as a background task |
+| `effort` | enum | No | `low`, `medium`, `high`, `max` (`max` = Opus 4.6 only). Overrides session effort while active. Added v2.1.80. |
+| `isolation` | enum | No | `worktree` — runs in a temporary git worktree; auto-cleaned if no changes |
+| `color` | enum | No | UI display color: `red`, `blue`, `green`, `yellow`, `purple`, `orange`, `pink`, `cyan` |
+| `initialPrompt` | string | No | Auto-submitted as first user turn when agent runs as main session agent (`--agent` flag). Not used for subagents. Added v2.1.83. |
+
+**Deprecation note (v2.1.63):** The `Task` tool was renamed to `Agent`. `Task` remains as a backward-compatible alias. New agent definitions SHOULD use `Agent`. The `TaskOutput` tool is deprecated (v2.1.89) — use `Read` on the task output file path instead.
 
 ### Markdown Body Sections
 
@@ -421,12 +426,13 @@ Each standard maps to an enforcement layer for compliance checking.
 | Version | Date | Story | Changes |
 |---------|------|-------|---------|
 | 1.3.0 | 2026-03-28 | STORY-017 | Tier model renumbered per ADR-STORY015-001 Option A (Persistent-First Linear): T3 renamed External→Persistent (+MK), T4 renamed Persistent→External (+Web, includes MK), T5 renamed Full→Orchestration (+Agent). Selection guidelines rewritten with risk-ordering rationale and Short Name/Full Name convention. Tier Constraints table updated: MK namespace from T4+ to T3+, citation guardrails from T3+ to T4+, eng-\*/red-\* MK exclusion row added. Cognitive Mode table and Guardrail Selection table tier annotations updated. L2-REINJECT comment updated with new tier names. ADR-STORY015-001 added to References. |
+| 1.4.0 | 2026-04-03 | -- | April 2026 Claude Code sync (v2.1.91): frontmatter table updated 12→15 fields; added `effort`, `color`, `initialPrompt`; updated `permissionMode` with `auto` value; fixed ET-M-001 field name `reasoning_effort` → `effort`, updated value mapping (default→low); added deprecation note for `Task`→`Agent` rename (v2.1.63) and `TaskOutput` (v2.1.89). |
 | 1.2.0 | 2026-02-22 | EN-003 | ET-M-001 extended thinking, FC-M-001 fresh context review gap closures |
 
 ---
 
-<!-- VERSION: 1.3.0 | DATE: 2026-03-28 | SOURCE: ADR-STORY015-001, STORY-017 | REVISION: STORY-017 tier model renumbering: T3=Persistent, T4=External, T5=Orchestration -->
-*Standards Version: 1.3.0*
+<!-- VERSION: 1.4.0 | DATE: 2026-04-03 | SOURCE: April 2026 Claude Code v2.1.91 guidance | REVISION: frontmatter schema sync, ET-M-001 field rename, Task→Agent deprecation -->
+*Standards Version: 1.4.0*
 *SSOT: `.context/rules/quality-enforcement.md` (H-34 compound registered, H-35 retired as sub-item)*
 *Source: PROJ-007 Agent Patterns -- ADR-PROJ007-001, Phase 3 Synthesis, V&V Plan, Integration Patterns; ADR-STORY015-001 (tier renumbering)*
 *Created: 2026-02-21*

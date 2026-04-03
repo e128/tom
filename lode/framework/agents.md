@@ -1,20 +1,32 @@
 # Agent System
-*Updated: 2026-04-03T15:00:00Z*
+*Updated: 2026-04-03T16:00:00Z*
 
 Agents are specialized subagents invoked via the Agent tool by orchestrators. Single-file architecture (H-34): `.md` file contains both official Claude Code YAML frontmatter and the system prompt as the markdown body.
 
 ## Single-File Architecture
 
-**`.md` YAML frontmatter** — Official Claude Code fields only:
+**`.md` YAML frontmatter** — 15 official Claude Code fields (as of April 2026, v2.1.91):
+
 ```yaml
 ---
 name: ps-researcher
 description: >
   Research agent for surveys and landscape analysis...
 model: opus
+effort: medium            # low | medium | high | max (max=Opus 4.6 only) — v2.1.80
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+disallowedTools: Agent    # worker agents always disallow Agent (P-003)
+permissionMode: default   # default | acceptEdits | auto | dontAsk | bypassPermissions | plan
+mcpServers:
+  context7: true
+memory: project           # user | project | local
+background: false
+isolation: worktree       # runs in isolated git worktree
+color: blue               # red | blue | green | yellow | purple | orange | pink | cyan (UI only)
 ---
 ```
+
+`initialPrompt` is a 16th field supported only for main-session agents (`--agent` flag) — not for subagents.
 
 **`.md` markdown body** — System prompt with XML-tagged sections:
 ```markdown
@@ -30,6 +42,11 @@ Expertise: landscape surveys, external documentation research
 - P-022 VIOLATION: NEVER misrepresent capabilities — Consequence: ...
 </guardrails>
 ```
+
+## Deprecations (April 2026)
+
+- **`Task` tool** → renamed to `Agent` in v2.1.63. `Task` still works as a backward-compatible alias. New agents use `Agent`.
+- **`TaskOutput` tool** → deprecated in v2.1.89. Use `Read` on the task output file path instead.
 
 ## Cognitive Modes
 
@@ -49,13 +66,23 @@ Every agent MUST declare P-003, P-020, P-022 in the `<guardrails>` section with 
 
 One nesting level only: orchestrator (T5) → workers (T1–T4). Workers cannot spawn sub-workers.
 
-## Effort Field
+## Effort Field (ET-M-001)
 
-All haiku agents declare `effort: low` — prevents extended thinking inheritance from parent context and signals mechanical/low-complexity execution. Opus agents do not declare effort (default is appropriate for complex tasks). Sonnet agents omit effort unless they have unusual complexity needs.
+`effort` maps to criticality level. All agents that document "Reasoning effort: Medium" in body text MUST also declare `effort: medium` in frontmatter.
+
+| Criticality | effort value | Example agents |
+|-------------|-------------|----------------|
+| C1 (haiku, mechanical) | `low` | ps-validator, ts-formatter, adv-selector |
+| C2 (sonnet, standard) | `medium` | ux-heart-analyst, ux-kano-analyst, ps-analyst |
+| C3 (opus, significant) | `high` | (declare explicitly) |
+| C4 (opus, critical/irreversible) | `max` | (Opus 4.6 only) |
 
 ```yaml
 model: haiku
-effort: low   # required for haiku agents
+effort: low   # required for haiku agents per ET-M-001
+
+model: sonnet
+effort: medium  # required when body declares "Reasoning effort: Medium"
 ```
 
 ## MCP Servers

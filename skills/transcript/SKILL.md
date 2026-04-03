@@ -1010,11 +1010,7 @@ The transcript skill responds to these natural language patterns:
 ```
 
 **Detection Algorithm:**
-1. Scan for activation keywords (transcript, meeting, parse, extract)
-2. Extract file path from message (if present)
-3. Identify implied options (e.g., "without mindmaps" → `--no-mindmap`)
-4. Map natural language to equivalent CLI command
-5. Execute Phase 1 via tom CLI with detected parameters
+Parse the user's message for the transcript file path, output directory, and implied options (e.g., "without mindmaps" → `--no-mindmap`, "high quality" → `--model-extractor opus`, domain context → `--domain`), then construct and execute the equivalent `uv run tom transcript parse` invocation.
 
 ---
 

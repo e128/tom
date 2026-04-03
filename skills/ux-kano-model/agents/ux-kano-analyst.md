@@ -15,6 +15,7 @@ description: >
   attractive, one-dimensional, performance feature, feature classification, feature
   prioritization, delighter, CS coefficient, satisfaction coefficient.
 model: sonnet
+effort: medium
 tools:
   - Read
   - Write
