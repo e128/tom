@@ -4,7 +4,7 @@
 
 > Canonical standards for agent definition format, structural patterns, behavioral constraints, and handoff protocols within the Tom Framework. All agent definitions MUST reference this file.
 
-<!-- L2-REINJECT: rank=5, content="Agent definitions: YAML frontmatter MUST validate against JSON Schema (H-34). Required YAML fields: name, version, description, model, identity, capabilities, guardrails, output, constitution. Tool tiers T1-T5 (risk-ordered): T1=Read-Only, T2=Read-Write, T3=Persistent (+MK), T4=External (+Web, includes MK), T5=Orchestration (+Agent). Always select lowest tier satisfying requirements. Cognitive modes: divergent, convergent, integrative, systematic, forensic. Constitutional triplet (P-003, P-020, P-022) REQUIRED in every agent (H-34b)." -->
+<!-- L2-REINJECT: rank=5, content="Agent definitions: single .md file with YAML frontmatter (H-34). Required frontmatter: name, description, model, tools. Tool tiers T1-T5 (risk-ordered): T1=Read-Only, T2=Read-Write, T3=Persistent (file-based), T4=External (+Web+Context7), T5=Orchestration (+Agent). Always select lowest tier satisfying requirements. Cognitive modes: divergent, convergent, integrative, systematic, forensic. Constitutional triplet (P-003, P-020, P-022) REQUIRED in every agent (H-34b)." -->
 
 ## Document Sections
 
@@ -30,15 +30,13 @@
 
 | ID | Rule | Consequence | Source Requirements | Verification |
 |----|------|-------------|---------------------|--------------|
-| H-34 | Agent definitions use a dual-file architecture: (a) `.md` files with official Claude Code frontmatter only (`name`, `description`, `model`, `tools`, `mcpServers`), and (b) companion `.governance.yaml` files validated against `docs/schemas/agent-governance-v1.schema.json`. Required governance fields: `version`, `tool_tier`, `identity`. Governance schema validation MUST execute before LLM-based quality scoring for C2+ deliverables. | Agent definition rejected at CI. Structural defects propagate to runtime. | AR-001 (YAML+MD format), AR-002 (required fields), AR-003 (schema validation), QR-003 (output schema) | L5 (CI): JSON Schema validation on PR. L3 (pre-tool): Schema check before agent invocation. |
-| H-35 | Every agent MUST declare constitutional compliance with at minimum P-003 (no recursive subagents), P-020 (user authority), and P-022 (no deception) in `.governance.yaml` `constitution.principles_applied`. Worker agents (invoked via Agent tool) MUST NOT include `Agent` (or its backward-compatible alias `Task`) in the official `tools` frontmatter field. Every agent MUST declare at minimum 3 entries in `.governance.yaml` `capabilities.forbidden_actions` referencing the constitutional triplet. | Constitutional constraint bypass. Unauthorized recursive delegation. | SR-001 (constitutional compliance), AR-004 (single-level nesting), AR-006 (tool restriction), AR-012 (forbidden actions) | L3 (pre-tool): Schema validates minItems=3. L5 (CI): Grep for P-003/P-020/P-022 presence. |
+| H-34 | Agent definitions use a single `.md` file with: (a) official Claude Code YAML frontmatter (`name`, `description`, `model`, `tools`, etc.) and (b) a markdown body as the system prompt containing identity, methodology, guardrails, and output specs as XML-tagged or markdown sections. Worker agents MUST NOT include `Agent` (or alias `Task`) in `tools`. Every agent MUST include constitutional compliance with P-003, P-020, and P-022 in its `<guardrails>` section with at least 3 `forbidden_actions`. | Agent definition structurally invalid. Constitutional constraint bypass. | AR-001 (YAML+MD format), SR-001 (constitutional compliance), AR-004 (single-level nesting) | L5 (CI): Grep for P-003/P-020/P-022 presence in agent files. |
 
-**H-34 Architecture Note:** Agent definitions use a separation-of-concerns architecture:
-- **`.md` YAML frontmatter**: Official Claude Code fields only (12 recognized fields: `name`, `description`, `tools`, `disallowedTools`, `model`, `permissionMode`, `maxTurns`, `skills`, `mcpServers`, `hooks`, `memory`, `background`, `isolation`). Parsed by Claude Code runtime for tool enforcement and agent discovery.
+**H-34 Architecture Note:** Agent definitions use a single-file architecture:
+- **`.md` YAML frontmatter**: Official Claude Code fields (12 recognized: `name`, `description`, `tools`, `disallowedTools`, `model`, `permissionMode`, `maxTurns`, `skills`, `mcpServers`, `hooks`, `memory`, `background`, `isolation`). Parsed by Claude Code runtime for tool enforcement and agent discovery.
 - **`.md` markdown body**: System prompt content visible to the agent LLM. Contains identity, methodology, guardrails, and output specifications as XML-tagged or markdown sections.
-- **`.governance.yaml`**: Machine-readable governance metadata validated by `docs/schemas/agent-governance-v1.schema.json`. Contains version, tool_tier, identity, persona, capabilities, guardrails, constitution, validation, and domain-specific extensions. The deprecated `docs/schemas/agent-definition-v1.schema.json` is retained for reference only.
 
-**HARD Rule Budget:** H-34 and H-35 are consolidated into compound H-34 in `quality-enforcement.md` HARD Rule Index (H-35 retired as sub-item b). Current budget: 25/25 rules at ceiling.
+**HARD Rule Budget:** H-34 (and sub-item H-35) registered in `quality-enforcement.md` HARD Rule Index. Current budget: 25/25 rules at ceiling.
 
 ---
 
@@ -55,11 +53,11 @@
 | AD-M-003 | Agent description SHOULD include WHAT the agent does, WHEN to invoke it, and at least one trigger keyword. Maximum 1024 characters. No XML tags. | Aligns with H-28 (skill description standards). Description quality directly affects routing accuracy (AP-01 Keyword Tunnel prevention). | AR-009 (description quality), H-28 |
 | AD-M-004 | Agents producing stakeholder-facing deliverables SHOULD declare all three output levels (`L0`, `L1`, `L2`) in `output.levels`. | L0: Executive summary. L1: Technical detail. L2: Strategic implications. Internal-only agents MAY omit L0. | PR-008 (output levels) |
 | AD-M-005 | Agent `identity.expertise` SHOULD contain at minimum 2 specific domain competencies. | Generic expertise ("analysis", "writing") degrades routing signal quality. Prefer specific: "FMEA risk analysis", "hexagonal architecture patterns". | PR-003 (expertise domains) |
-| AD-M-006 | Agents SHOULD declare `persona` (tone, communication_style, audience_level) in `.governance.yaml` for consistent output voice. | `tone` and `communication_style` are free-form strings (not enums). RECOMMENDED values -- tone: professional, technical, consultative, analytical, rigorous, methodical. communication_style: consultative, directive, analytical, direct, structured, evidence-based. audience_level enum: adaptive, expert, intermediate, beginner. `character` field MAY be added for extended persona descriptions. | PR-005 (persona) |
+| AD-M-006 | Agents SHOULD declare persona (tone, communication_style, audience_level) in the `<identity>` section of the `.md` body for consistent output voice. | Tone and communication_style are free-form. RECOMMENDED tone values: professional, technical, consultative, analytical. RECOMMENDED style values: consultative, directive, analytical, direct. audience_level: adaptive, expert, intermediate, beginner. | PR-005 (persona) |
 | AD-M-007 | Agents SHOULD declare `session_context` with `on_receive` and `on_send` processing steps for structured handoff participation. | Defines how the agent processes inbound handoff data and constructs outbound handoffs. See [Handoff Protocol](#handoff-protocol). | HR-001 (structured format), HR-002 (required fields) |
 | AD-M-008 | Agents SHOULD declare `validation.post_completion_checks` listing verifiable post-completion assertions. | Examples: `verify_file_created`, `verify_navigation_table`, `verify_citations_present`. Enables deterministic quality checking before LLM scoring. | QR-003 (output validation) |
 | AD-M-009 | Agent model selection SHOULD be justified per cognitive demands. | `opus` for complex reasoning, research, architecture, synthesis. `sonnet` for balanced analysis, standard production tasks. `haiku` for fast repetitive tasks, formatting, validation. | PR-007 (model selection) |
-| AD-M-010 | New agents SHOULD declare MCP tool usage in `capabilities.allowed_tools`. Research/documentation agents SHOULD use Context7; cross-session agents SHOULD use Memory-Keeper. | Aligns with MCP-M-002 from `mcp-tool-standards.md`. | AR-006 (tool restriction), MCP-M-002 |
+| AD-M-010 | New agents SHOULD declare MCP tool usage in the `tools` frontmatter field. Research/documentation agents SHOULD use Context7. | Aligns with MCP-M-002 from `mcp-tool-standards.md`. | AR-006 (tool restriction), MCP-M-002 |
 | ET-M-001 | Agent definitions SHOULD declare `reasoning_effort` aligned with criticality level. Mapping: C1=default, C2=medium, C3=high, C4=max. Orchestrator agents SHOULD use `high` or `max`. Validation-only agents (e.g., ps-validator, wt-auditor) MAY use `default`. | Orthogonal to AD-M-009 (model selection): model determines *which* model reasons, reasoning_effort determines *how deeply* it reasons. Extended thinking allocation scales with decision criticality to balance thoroughness against token cost. | Anthropic best practices (extended thinking), quality-enforcement.md criticality levels |
 
 ### Context Budget Standards
@@ -88,9 +86,9 @@
 
 ## Agent Definition Schema
 
-Agent definitions use a dual-file architecture per H-34.
+Agent definitions use a single `.md` file per H-34.
 
-### Official Frontmatter Fields (`.md` file)
+### Frontmatter Fields (`.md` file)
 
 Only Claude Code's 12 official fields are permitted in YAML frontmatter. All other fields are silently ignored by Claude Code.
 
@@ -101,7 +99,7 @@ Only Claude Code's 12 official fields are permitted in YAML frontmatter. All oth
 | `model` | enum | No | `sonnet`, `opus`, `haiku` (default: inherit) |
 | `tools` | string/array | No | Allowed tools. **Inherits ALL if omitted.** |
 | `disallowedTools` | string/array | No | Tools to deny |
-| `mcpServers` | object | No | MCP servers available (by name: `context7`, `memory-keeper`) |
+| `mcpServers` | object | No | MCP servers available (e.g., `context7`) |
 | `permissionMode` | enum | No | `default`, `acceptEdits`, `dontAsk`, `bypassPermissions`, `plan` |
 | `maxTurns` | number | No | Max agentic turns |
 | `skills` | array | No | Skills to preload |
@@ -109,38 +107,6 @@ Only Claude Code's 12 official fields are permitted in YAML frontmatter. All oth
 | `memory` | enum | No | `user`, `project`, `local` |
 | `background` | boolean | No | Run as background task |
 | `isolation` | enum | No | `worktree` |
-
-### Governance Fields (`.governance.yaml` file)
-
-Validated by `docs/schemas/agent-governance-v1.schema.json`. Sub-objects (`identity`, `persona`, `capabilities`, `guardrails`, `output`, `validation`) allow domain-specific extensions via `additionalProperties: true`.
-
-**Required fields:**
-
-| Field | Type | Constraint | Source |
-|-------|------|------------|--------|
-| `version` | string | Pattern: `^\d+\.\d+\.\d+$` | AR-008 |
-| `tool_tier` | enum | `T1`, `T2`, `T3`, `T4`, `T5` | agent-development-standards (Tool Security Tiers) |
-| `identity.role` | string | Unique within parent skill | PR-001 |
-| `identity.expertise` | array | Min 2 entries | PR-003 |
-| `identity.cognitive_mode` | enum | `divergent`, `convergent`, `integrative`, `systematic`, `forensic` | PR-002 |
-
-**Recommended fields:**
-
-| Field | Type | Purpose | Source |
-|-------|------|---------|--------|
-| `persona` | object | Tone (free-form string), communication_style (free-form string), audience_level, character | PR-005 |
-| `capabilities.forbidden_actions` | array | Min 3 entries; MUST include P-003, P-020, P-022 references. RECOMMENDED NPT-009 format: `{PRINCIPLE} VIOLATION: NEVER {action} -- Consequence: {impact}` | AR-012, ADR-002 |
-| `capabilities.forbidden_action_format` | enum | Optional. Tracks NPT format level: `NPT-009-complete`, `NPT-009-partial`, `NPT-014`. Omission implies NPT-014 (legacy). | ADR-002 D-003 |
-| `guardrails.input_validation` | array or object | Both formats accepted. Min 1 validation rule. | SR-002 |
-| `guardrails.output_filtering` | array | Min 3 entries (strings) | SR-003 |
-| `guardrails.fallback_behavior` | string | Pattern: `^[a-z_]+$`. Standard values: `warn_and_retry`, `escalate_to_user`, `persist_and_halt`. Domain-specific values allowed. | SR-009 |
-| `output.required` | boolean | Whether agent produces file artifact | PR-008 |
-| `output.location` | string | Required when `output.required` is `true` | AR-010 |
-| `output.levels` | array | Both enum-array (`[L0, L1, L2]`) and object-array formats accepted | PR-008 |
-| `constitution.principles_applied` | array | Min 3 entries; MUST include P-003, P-020, P-022 | SR-001 |
-| `validation.post_completion_checks` | array | Declarative verification assertions | QR-003 |
-| `session_context` | object | Handoff on_receive/on_send protocol | HR-001, HR-002 |
-| `enforcement` | object | Quality gate tier and escalation path | QR-001 |
 
 ### Markdown Body Sections
 
@@ -224,18 +190,16 @@ Five security tiers implement the principle of least privilege (AR-006). **Alway
 |------|------|---------------|----------|----------------|
 | **T1** | Read-Only | Read, Glob, Grep | Evaluation, auditing, scoring, validation | pe-scorer, diataxis-classifier, sb-voice |
 | **T2** | Read-Write | T1 + Write, Edit, Bash | Analysis, document production, code generation | ps-critic, adv-scorer, uc-author |
-| **T3** | Persistent | T2 + Memory-Keeper | Cross-session state: research caching, phase checkpointing, transcript persistence | ts-parser, ts-extractor |
-| **T4** | External | T3 + WebSearch, WebFetch, Context7 | Research, exploration, external documentation, cross-session research | ps-researcher, eng-architect, red-recon |
+| **T3** | Persistent | T2 (file-based output) | Agents that produce file artifacts as cross-session state | ts-parser, ts-extractor |
+| **T4** | External | T3 + WebSearch, WebFetch, Context7 | Research, exploration, external documentation | ps-researcher, eng-architect, red-recon |
 | **T5** | Orchestration | T4 + Agent | Orchestration with delegation, full capability | ux-orchestrator |
 
 ### Selection Guidelines
 
-> **Naming convention:** The `Name` column above uses Short Name form (what's new at each tier). T4's Full Name is "Persistent + External" (cumulative capability), used in DX communication contexts to signal that T4 inherits T3's Memory-Keeper capability. See ADR-STORY015-001 [DX Considerations] for the naming framework.
-
 1. **Default to T1.** If an agent only reads and evaluates, T1 is sufficient.
 2. **T2 when the agent produces artifacts.** Writing files (reports, analysis, code) requires T2 minimum.
-3. **T3 when cross-session persistence is needed.** Agents doing multi-session work (research spikes, phase checkpointing, transcript persistence) need T3. Memory-Keeper (internal MCP, governed namespace) is lower-risk than web tools (external network, arbitrary URLs); T3 before T4 reflects this risk ordering. T3 agents MUST follow the MCP key namespace: `jerry/{project}/{entity-type}/{entity-id}`.
-4. **T4 when external information is needed.** If your agent also needs web tools, use T4 instead of T3 (T4 includes all T3 capabilities including Memory-Keeper). T4 agents MUST include citation guardrails in `guardrails.output_filtering`. **Note:** eng-\* and red-\* agents are classified T4 but MUST NOT use Memory-Keeper; file-based persistence per P-002 (engagement-scoped output) remains the correct mechanism for these skills.
+3. **T3 when file-based cross-session persistence is the primary output.** Use file artifacts (not MCP) for cross-session state.
+4. **T4 when external information is needed.** Adds web tools and Context7. T4 agents MUST include citation guardrails in their `<guardrails>` section.
 5. **T5 requires explicit justification.** The Agent tool enables delegation; every T5 assignment MUST document why delegation is necessary.
 
 ### Tier Constraints
@@ -243,10 +207,8 @@ Five security tiers implement the principle of least privilege (AR-006). **Alway
 | Constraint | Rationale | Source |
 |------------|-----------|--------|
 | Worker agents MUST NOT be T5 (no Agent tool) | Enforces H-01 single-level nesting | AR-004, P-003 |
-| T3+ agents with Memory-Keeper MUST follow MCP key namespace | Prevents key collision across sessions | MCP-002, mcp-tool-standards.md |
 | T4+ agents MUST declare citation guardrails | External data requires source attribution | SR-003 |
-| eng-\* and red-\* agents MUST NOT use Memory-Keeper despite T4 classification | Engagement-scoped output requires file-based persistence per P-002; MK would create cross-project state pollution | mcp-tool-standards.md, ADR-STORY015-001 RISK-002 |
-| Monitor per-agent tool count; alert at 15 tools | Industry-observed threshold where tool selection accuracy degrades (identified in Phase 1 research, ps-researcher-003 external patterns analysis; consistent with general LLM tool-use guidance recommending minimal tool sets for reliable selection) | AP-07 Tool Overload Creep prevention (see `agent-routing-standards.md` Anti-Pattern Catalog) |
+| Monitor per-agent tool count; alert at 15 tools | Industry-observed threshold where tool selection accuracy degrades | AP-07 Tool Overload Creep prevention (see `agent-routing-standards.md`) |
 
 ---
 
@@ -276,9 +238,9 @@ Five cognitive modes classify how agents reason. The mode is declared in `identi
 
 | Mode | Typical Tool Tier | Model Recommendation | Context Budget Priority |
 |------|-------------------|---------------------|------------------------|
-| divergent | T4 (external research with cross-session persistence) | opus (complex reasoning) | Up to 50% tool result allocation per CB-02; may request exception with documented justification |
+| divergent | T4 (external research) | opus (complex reasoning) | Up to 50% tool result allocation per CB-02; may request exception with documented justification |
 | convergent | T1 or T2 (focused input) | sonnet or opus | Balanced allocation |
-| integrative | T2 or T3 (multiple file reads, cross-session state) | opus (complex synthesis) | Larger user message allocation for multi-source input |
+| integrative | T2 or T3 (multiple file reads, file-based state) | opus (complex synthesis) | Larger user message allocation for multi-source input |
 | systematic | T1 (read-only preferred) | sonnet or haiku (procedural) | Smaller allocation; systematic work is compact |
 | forensic | T2 or T4 (investigation with external research) | opus (complex reasoning) | Larger reasoning allocation (~35%) |
 
@@ -336,7 +298,7 @@ capabilities:
 
 > **Minimum set notice:** The entries above represent the MINIMUM required set per H-34 and H-35. The `forbidden_actions` entries use NPT-009 format (structured negation with consequence) per ADR-002. Agent definitions SHOULD add domain-specific entries beyond these minimums. For example, a T3 research agent should add citation guardrails to `output_filtering`; an orchestration agent should add delegation boundary guardrails to `forbidden_actions`. See [Guardrail Selection by Agent Type](#guardrail-selection-by-agent-type) for type-specific guidance on extending beyond minimums.
 >
-> **VIOLATION label format guidance:** The recommended format `{PRINCIPLE} VIOLATION: NEVER {action} -- Consequence: {impact}` provides three components: (1) the violated principle for traceability, (2) the prohibited action, (3) the consequence for LLM instruction-following effectiveness. T2+ agents SHOULD include tier-specific consequence detail (e.g., "unauthorized file writes corrupt shared state" for T2; "cross-session state pollution via ungoverned MK keys" for T3; "external data ingested without citation degrades research quality" for T4).
+> **VIOLATION label format guidance:** The recommended format `{PRINCIPLE} VIOLATION: NEVER {action} -- Consequence: {impact}` provides three components: (1) the violated principle for traceability, (2) the prohibited action, (3) the consequence for LLM instruction-following effectiveness. T2+ agents SHOULD include tier-specific consequence detail (e.g., "unauthorized file writes corrupt shared state" for T2; "external data ingested without citation degrades research quality" for T4).
 
 ### Guardrail Selection by Agent Type
 
@@ -345,7 +307,7 @@ capabilities:
 | Research (divergent, T4) | URL format validation, source tiering | Source authority tier required, stale data warnings | warn_and_retry |
 | Analysis (convergent, T2) | Input schema validation, artifact path existence | Confidence bounds required, methodology citation | escalate_to_user |
 | Validation (systematic, T1) | Criteria format validation | Binary pass/fail with evidence | persist_and_halt |
-| Orchestration (T3 Persistent, T4 External, T5 Orchestration) | Phase state validation, predecessor completion | Progress percentage, blocker enumeration | escalate_to_user |
+| Orchestration (T3, T4, T5) | Phase state validation, predecessor completion | Progress percentage, blocker enumeration | escalate_to_user |
 | Scoring (convergent, T1) | Rubric schema validation, score range validation | Anti-leniency statement, dimension-level breakdown | warn_and_retry |
 
 ---
@@ -429,8 +391,7 @@ Each standard maps to an enforcement layer for compliance checking.
 
 | Standard | PASS | FAIL |
 |----------|------|------|
-| H-34 (Schema validation) | 100% of agent files validate against JSON Schema. Zero validation errors. | Any file missing YAML delimiters, required fields, or failing schema constraints. |
-| H-35 (Constitutional compliance) | All agents include P-003, P-020, P-022 in `constitution.principles_applied`. No worker agent has `Agent` (or alias `Task`) in `allowed_tools`. All agents have >= 3 `forbidden_actions`. | Any agent missing constitutional triplet. Any worker with Agent tool access. Any agent with < 3 forbidden actions. |
+| H-34 (Agent definition format) | All agent `.md` files have valid YAML frontmatter with `name` and `description`. Constitutional triplet present in `<guardrails>` section. Worker agents do not include `Agent` in `tools`. | Any file missing required frontmatter. Any agent without P-003/P-020/P-022 guardrails. |
 | AD-M-001 through AD-M-010 | Agent follows the standard. | Agent deviates without documented justification. |
 | CB-01 through CB-05 | Context budget guidelines followed during agent execution. | Context budget exceeded without justification. |
 | HD-M-001 through HD-M-005 | Handoff follows protocol. | Handoff validation fails without documented exception. |
@@ -448,7 +409,7 @@ Each standard maps to an enforcement layer for compliance checking.
 | Barrier 3 NSE-to-PS Handoff | V&V criteria for rule files, per-agent guidance | `projects/PROJ-007-agent-patterns/orchestration/agent-patterns-20260221-001/cross-pollination/barrier-3/nse-to-ps/handoff.md` |
 | quality-enforcement.md | Quality gate SSOT (H-13, H-14, criticality levels, enforcement architecture) | `.context/rules/quality-enforcement.md` |
 | mandatory-skill-usage.md | H-22 proactive skill invocation, trigger map | `.context/rules/mandatory-skill-usage.md` |
-| mcp-tool-standards.md | MCP-001, MCP-002, tool governance | `.context/rules/mcp-tool-standards.md` |
+| mcp-tool-standards.md | MCP-001 (Context7), tool governance | `.context/rules/mcp-tool-standards.md` |
 | skill-standards.md | H-25 through H-30, skill structure standards | `.context/rules/skill-standards.md` |
 | Agent Routing Standards | Circuit breaker specification, keyword-first routing, anti-pattern catalog | `.context/rules/agent-routing-standards.md` |
 | ADR-STORY015-001 | Tier model renumbering: Persistent-First Linear (Option A), 7-criteria evaluation, migration plan, DX considerations | `projects/PROJ-024-tactical-work/work/EPIC-001-schema-validation/FEAT-001-claude-code-schema-validation/STORY-015-tier-model-renumbering/ADR-STORY015-001-tier-model-renumbering.md` |

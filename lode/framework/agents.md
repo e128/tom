@@ -1,9 +1,9 @@
 # Agent System
-*Updated: 2026-04-03T14:09:10Z*
+*Updated: 2026-04-03*
 
-Agents are specialized subagents invoked via the Agent tool by orchestrators. Dual-file architecture (H-34): `.md` for Claude Code, `.governance.yaml` for governance metadata.
+Agents are specialized subagents invoked via the Agent tool by orchestrators. Single-file architecture (H-34): `.md` file contains both official Claude Code YAML frontmatter and the system prompt as the markdown body.
 
-## Dual-File Architecture
+## Single-File Architecture
 
 **`.md` YAML frontmatter** — Official Claude Code fields only:
 ```yaml
@@ -16,21 +16,19 @@ tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 ```
 
-**`.governance.yaml`** — Validated against `docs/schemas/agent-governance-v1.schema.json`:
-```yaml
-version: "1.0.0"
-tool_tier: T4
-identity:
-  role: "Research Specialist"
-  expertise: ["landscape surveys", "external documentation research"]
-  cognitive_mode: divergent
-capabilities:
-  forbidden_actions:
-    - "P-003 VIOLATION: NEVER spawn recursive subagents — Consequence: ..."
-    - "P-020 VIOLATION: NEVER override user decisions — Consequence: ..."
-    - "P-022 VIOLATION: NEVER misrepresent capabilities — Consequence: ..."
-constitution:
-  principles_applied: [P-003, P-020, P-022]
+**`.md` markdown body** — System prompt with XML-tagged sections:
+```markdown
+<identity>
+Role: Research Specialist
+Cognitive mode: divergent
+Expertise: landscape surveys, external documentation research
+</identity>
+
+<guardrails>
+- P-003 VIOLATION: NEVER spawn recursive subagents — Consequence: ...
+- P-020 VIOLATION: NEVER override user decisions — Consequence: ...
+- P-022 VIOLATION: NEVER misrepresent capabilities — Consequence: ...
+</guardrails>
 ```
 
 ## Cognitive Modes
@@ -43,9 +41,9 @@ constitution:
 | systematic | Validation, compliance checking | ps-validator |
 | forensic | Root cause analysis, debugging | ps-investigator |
 
-## Constitutional Triplet (H-35)
+## Constitutional Triplet (H-34)
 
-Every agent MUST declare P-003, P-020, P-022 in both `constitution.principles_applied` and `capabilities.forbidden_actions` (min 3 entries). Worker agents MUST NOT have `Agent` in their tools list.
+Every agent MUST declare P-003, P-020, P-022 in the `<guardrails>` section with at least 3 `forbidden_actions` entries. Worker agents MUST NOT have `Agent` in their `tools` list.
 
 ## Orchestrator-Worker Topology (H-01)
 
@@ -54,4 +52,4 @@ One nesting level only: orchestrator (T5) → workers (T1–T4). Workers cannot 
 ## Related Lode Files
 
 - [skills.md](skills.md) — skills that contain agents
-- [rules.md](rules.md) — H-34, H-35, H-01 details
+- [rules.md](rules.md) — H-34, H-01 details

@@ -103,7 +103,7 @@ Constraint-bearing artifacts SHOULD be tested for context compaction survival. W
 | Rule files with L2-REINJECT markers | Low (L2 re-injection survives compaction) | Verify L2 markers cover critical constraints |
 | Rule files without L2-REINJECT markers | High (L1-only, lost on compaction) | Verify Tier B compensating controls exist |
 | SKILL.md files | Medium (Tier 1 metadata reloaded; methodology lost) | Verify trigger keywords survive in routing layer |
-| Agent definitions (.md + .governance.yaml) | Medium (reloaded on Task invocation) | Verify schema validation gates are deterministic (L3/L5) |
+| Agent definitions (.md) | Medium (reloaded on Task invocation) | Verify constitutional triplet in guardrails section |
 | Templates (.context/templates/) | High (loaded on-demand, not re-injected) | Verify template constraints have external enforcement |
 
 ### Test Structure

@@ -9,7 +9,7 @@
 - **Python execution**: `uv run` only — never `python` or `pip` directly
 - **Architecture**: Hexagonal (domain / application / infrastructure / interface layers)
 - **Skills**: `skills/` directory — each has a `SKILL.md` file
-- **Agents**: `skills/*/agents/` — dual-file format (`.md` + `.governance.yaml`)
+- **Agents**: `skills/*/agents/` — single `.md` file (YAML frontmatter + system prompt body)
 - **Rules**: `.context/rules/` — auto-loaded at session start via `.claude/rules/` symlink
 - **Active projects**: `projects/` directory, managed via `/worktracker` skill
 

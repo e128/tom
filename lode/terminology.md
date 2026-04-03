@@ -24,9 +24,9 @@ Tom-specific terms and their meanings. One term per line.
 ## Skills and Agents
 
 - **Skill** — a `/slash-command` capability; lives in `skills/{name}/SKILL.md`
-- **Agent** — a specialized subagent; lives in `skills/{name}/agents/{agent}.md` with companion `.governance.yaml`
+- **Agent** — a specialized subagent; lives in `skills/{name}/agents/{agent}.md`
 - **Trigger map** — the keyword-to-skill routing table in `mandatory-skill-usage.md`
-- **T1–T5 tiers** — tool security tiers (T1=Read-Only, T2=Read-Write, T3=Persistent+MK, T4=External+Web+MK, T5=Orchestration+Agent); each tier is cumulative — T4 inherits T3's Memory-Keeper access
+- **T1–T5 tiers** — tool security tiers (T1=Read-Only, T2=Read-Write, T3=Persistent, T4=Persistent+External, T5=Orchestration+Agent); each tier is cumulative
 - **H-22** — the HARD rule mandating proactive skill invocation; violations require rework
 - **Circuit breaker** — max 3 routing hops before halting and escalating to user (H-36)
 

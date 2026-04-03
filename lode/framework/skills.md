@@ -1,5 +1,5 @@
 # Skills System
-*Updated: 2026-04-03T14:08:45Z*
+*Updated: 2026-04-03*
 
 Skills are `/slash-command` capabilities. Each lives in `skills/{name}/SKILL.md`. Agents live in `skills/{name}/agents/`. Skills are invoked proactively by keyword detection (H-22).
 
@@ -9,8 +9,7 @@ Skills are `/slash-command` capabilities. Each lives in `skills/{name}/SKILL.md`
 skills/{name}/
     SKILL.md              # skill definition: name, description, agents, methodology
     agents/
-        {agent}.md        # agent definition (official Claude Code YAML frontmatter)
-        {agent}.governance.yaml   # governance metadata (H-34)
+        {agent}.md        # agent definition (official Claude Code YAML frontmatter + system prompt)
 ```
 
 ## Key Skills Reference
@@ -42,9 +41,7 @@ Negative keywords suppress false-positive matches. Priority ordering resolves co
 
 ## Agent Standards (H-34)
 
-Agent definitions use dual-file architecture:
-- `.md` file: official Claude Code YAML frontmatter (name, description, tools, model, etc.)
-- `.governance.yaml`: validated against `docs/schemas/agent-governance-v1.schema.json`
+Agent definitions use a single `.md` file with official Claude Code YAML frontmatter (name, description, tools, model, etc.) and the system prompt as the markdown body.
 
 Constitutional triplet (required in every agent): P-003 (no recursive subagents), P-020 (user authority), P-022 (no deception).
 
@@ -54,7 +51,7 @@ Constitutional triplet (required in every agent): P-003 (no recursive subagents)
 |------|-------|----------|
 | T1 | Read, Glob, Grep | Evaluation, auditing |
 | T2 | T1 + Write, Edit, Bash | Document production |
-| T3 | T2 + Memory-Keeper | Cross-session state |
+| T3 | T2 (file-based persistence only) | Analysis with output artifacts |
 | T4 | T3 + WebSearch, WebFetch, Context7 | Research, external docs |
 | T5 | T4 + Agent | Orchestration |
 
