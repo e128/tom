@@ -193,7 +193,7 @@ orchestration/{WORKFLOW_ID}/
 
 ## 7. Execution Constraints
 
-### 7.1 Hard Constraints (Jerry Constitution)
+### 7.1 Hard Constraints (Tom Constitution)
 
 | Constraint | ID | Enforcement |
 |------------|----|----|

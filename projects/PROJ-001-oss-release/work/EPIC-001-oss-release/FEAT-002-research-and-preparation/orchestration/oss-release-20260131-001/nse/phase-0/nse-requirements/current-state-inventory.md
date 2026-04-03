@@ -68,7 +68,7 @@ codebase statistics, dependencies, and GitHub repository state.
 | Item | Path | Status | Notes |
 |------|------|--------|-------|
 | Design Standards | `/docs/design/PYTHON-ARCHITECTURE-STANDARDS.md` | Complete | Architecture overview |
-| Jerry Constitution | `/docs/governance/JERRY_CONSTITUTION.md` | Complete | Agent governance |
+| Jerry Constitution | `/docs/governance/TOM_CONSTITUTION.md` | Complete | Agent governance |
 | Behavior Tests | `/docs/governance/BEHAVIOR_TESTS.md` | Complete | 18 test scenarios |
 | Agent Conformance | `/docs/governance/AGENT_CONFORMANCE_RULES.md` | Complete | Conformance rules |
 | Worktracker Templates | `/.context/templates/worktracker/` | Complete | 10 templates |

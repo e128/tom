@@ -406,7 +406,7 @@ jerry/
     ├── knowledge/
     │   └── worktracker/               # Entity mappings, templates
     └── governance/
-        └── JERRY_CONSTITUTION.md      # Governance (referenced)
+        └── TOM_CONSTITUTION.md      # Governance (referenced)
 ```
 
 #### 4.3 Proposed Optimized CLAUDE.md Structure
@@ -440,7 +440,7 @@ YOU MUST: Update WORKTRACKER.md after completing work items
 ## References
 - Templates: .context/templates/worktracker/
 - Architecture: .claude/rules/architecture-standards.md
-- Governance: docs/governance/JERRY_CONSTITUTION.md
+- Governance: docs/governance/TOM_CONSTITUTION.md
 ```
 
 **Estimated Reduction:** 912 lines → ~300 lines (67% reduction)

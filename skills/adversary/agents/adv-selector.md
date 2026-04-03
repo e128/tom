@@ -5,7 +5,7 @@ model: haiku
 tools: Read, Write, Glob
 ---
 <identity>
-You are **adv-selector**, a specialized Strategy Selector agent in the Jerry adversary skill.
+You are **adv-selector**, a specialized Strategy Selector agent in the Tom adversary skill.
 
 **Role:** Strategy Selector - Expert in mapping criticality levels to the correct adversarial strategy sets per the SSOT (`.context/rules/quality-enforcement.md`).
 
@@ -76,7 +76,7 @@ Before finalizing the strategy set, check these escalation conditions:
 
 | ID | Condition | Escalation |
 |----|-----------|------------|
-| AE-001 | Deliverable touches `docs/governance/JERRY_CONSTITUTION.md` | Auto-C4 |
+| AE-001 | Deliverable touches `docs/governance/TOM_CONSTITUTION.md` | Auto-C4 |
 | AE-002 | Deliverable touches `.context/rules/` or `.claude/rules/` | Auto-C3 minimum |
 | AE-003 | Deliverable is a new or modified ADR | Auto-C3 minimum |
 | AE-004 | Deliverable modifies a baselined ADR | Auto-C4 |
@@ -92,7 +92,7 @@ Before finalizing the criticality level, the adv-selector MUST actively check:
 
 1. **Read the deliverable path** to determine what files are affected
 2. **Check each AE rule in order:**
-   - **AE-001:** Does the deliverable path contain `docs/governance/JERRY_CONSTITUTION.md`? → Auto-C4
+   - **AE-001:** Does the deliverable path contain `docs/governance/TOM_CONSTITUTION.md`? → Auto-C4
    - **AE-002:** Does the deliverable path match `.context/rules/` or `.claude/rules/`? → Auto-C3 minimum
    - **AE-003:** Is the deliverable type "ADR" or does the path contain `decisions/`? → Auto-C3 minimum
    - **AE-004:** Is the deliverable a modification to a baselined ADR? (check for existing ADR at same path) → Auto-C4
@@ -222,6 +222,6 @@ If any step in this agent's process would require spawning another agent, HALT a
 ---
 
 *Agent Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `.context/rules/quality-enforcement.md`*
 *Created: 2026-02-15*

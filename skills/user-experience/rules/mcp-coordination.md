@@ -1,4 +1,4 @@
-<!-- VERSION: 1.2.0 | DATE: 2026-03-04 | SOURCE: SKILL.md (skills/user-experience/SKILL.md) Sections "MCP Integration Architecture" (#mcp-integration-architecture), "Current Jerry MCP Integration" (#current-jerry-mcp-integration), "Figma Dependency Risk Profile" (#figma-dependency-risk-profile), "Cost Tiers" (#cost-tiers), "Lifecycle-Stage Routing" (#lifecycle-stage-routing) | PARENT: /user-experience skill | GOVERNANCE: .context/rules/mcp-tool-standards.md (MCP-001, MCP-002) | PROJECT: projects/PROJ-022-user-experience-skill/PLAN.md -->
+<!-- VERSION: 1.2.0 | DATE: 2026-03-04 | SOURCE: SKILL.md (skills/user-experience/SKILL.md) Sections "MCP Integration Architecture" (#mcp-integration-architecture), "Current Tom MCP Integration" (#current-tom-mcp-integration), "Figma Dependency Risk Profile" (#figma-dependency-risk-profile), "Cost Tiers" (#cost-tiers), "Lifecycle-Stage Routing" (#lifecycle-stage-routing) | PARENT: /user-experience skill | GOVERNANCE: .context/rules/mcp-tool-standards.md (MCP-001, MCP-002) | PROJECT: projects/PROJ-022-user-experience-skill/PLAN.md -->
 
 # MCP Coordination Rules
 
@@ -70,7 +70,7 @@ When MCP tools are unavailable, all agents operate in **text-only mode**: users 
 
 ### Currently Exercisable Fallbacks
 
-These degraded modes apply to MCP tools that are available in the current Jerry infrastructure and can be tested now.
+These degraded modes apply to MCP tools that are available in the current Tom infrastructure and can be tested now.
 
 | MCP Tool | Canonical Name | Degraded Mode | Impact |
 |----------|---------------|--------------|--------|
@@ -126,7 +126,7 @@ Figma is the highest-risk MCP dependency: 4 sub-skills require it (REQ), 2 are e
 
 ## Context7 Usage
 
-<!-- Source: SKILL.md [Current Jerry MCP Integration](../SKILL.md#current-jerry-mcp-integration) (SKILL.md lines 434-439) and `.context/rules/mcp-tool-standards.md` MCP-001 ([Context7 Integration](#context7-integration)). Canonical tool names sourced from `mcp-tool-standards.md` [Canonical Tool Names](#canonical-tool-names). -->
+<!-- Source: SKILL.md [Current Tom MCP Integration](../SKILL.md#current-tom-mcp-integration) (SKILL.md lines 434-439) and `.context/rules/mcp-tool-standards.md` MCP-001 ([Context7 Integration](#context7-integration)). Canonical tool names sourced from `mcp-tool-standards.md` [Canonical Tool Names](#canonical-tool-names). -->
 
 ### Currently Available MCP Integration
 
@@ -234,7 +234,7 @@ MCP Adapter Pattern:
 
 Per `/eng-team` integration (see SKILL.md [Cross-Skill Integration](../SKILL.md#cross-skill-integration)):
 
-- MCP credential handling follows Jerry's MCP tool standards (`.context/rules/mcp-tool-standards.md`).
+- MCP credential handling follows Tom's MCP tool standards (`.context/rules/mcp-tool-standards.md`).
 - OAuth tokens for Figma/Miro MUST NOT be stored in agent context or output files.
 - API keys MUST be managed via environment variables or secrets management (see `.claude/settings.local.json` for runtime MCP server configuration per `mcp-tool-standards.md` [References](#references)).
 - Adapter health probes MUST NOT expose authentication state in error messages.

@@ -55,14 +55,14 @@ AC-3 (89 existing agents pass): Stated as met (89/89 pass). Acceptance per the i
 
 AC-2 (CI pipeline runs the check on every PR): NOT MET.
 
-The CI `frontmatter-validation` job (`.github/workflows/ci.yml`, line 210) invokes `uv run jerry agents validate-frontmatter` -- the CLI command handler at `src/agents/application/commands/validate_frontmatter_command.py`. That handler was read in full (lines 427-516). It contains zero P-003/Agent/Task/tool_tier logic. The P-003 check implemented in `scripts/validate-agent-frontmatter.py` is not invoked by the CI pipeline's frontmatter validation job. No other CI job directly calls the script either -- the `plugin-validation` and `template-validation` jobs are unrelated.
+The CI `frontmatter-validation` job (`.github/workflows/ci.yml`, line 210) invokes `uv run tom agents validate-frontmatter` -- the CLI command handler at `src/agents/application/commands/validate_frontmatter_command.py`. That handler was read in full (lines 427-516). It contains zero P-003/Agent/Task/tool_tier logic. The P-003 check implemented in `scripts/validate-agent-frontmatter.py` is not invoked by the CI pipeline's frontmatter validation job. No other CI job directly calls the script either -- the `plugin-validation` and `template-validation` jobs are unrelated.
 
 The `test-pip` and `test-uv` matrix jobs run `pytest -m "not subprocess and not llm"` against `src/`. The new tests live in `scripts/tests/test_validate_agent_frontmatter.py` -- outside the `src/` or `tests/` directories that the CI test matrix runs. There is no evidence the script tests are picked up by the CI coverage/test jobs.
 
-This gap means: the P-003 check exists in the script and passes tests, but the actual enforcement layer the CI uses does not contain it. A non-T5 agent with `Agent` in its `tools` list would pass `jerry agents validate-frontmatter` silently.
+This gap means: the P-003 check exists in the script and passes tests, but the actual enforcement layer the CI uses does not contain it. A non-T5 agent with `Agent` in its `tools` list would pass `tom agents validate-frontmatter` silently.
 
 **Improvement Path:**
-Port the P-003 check logic to `ValidateFrontmatterCommandHandler._validate_agent_file()` in `src/agents/application/commands/validate_frontmatter_command.py`. The logic is proven -- copy the `delegation_tools` detection and `.governance.yaml` T5 lookup. Alternatively, integrate the script's output into the `frontmatter-validation` CI step alongside `jerry agents validate-frontmatter`. Either path closes the AC-2 gap.
+Port the P-003 check logic to `ValidateFrontmatterCommandHandler._validate_agent_file()` in `src/agents/application/commands/validate_frontmatter_command.py`. The logic is proven -- copy the `delegation_tools` detection and `.governance.yaml` T5 lookup. Alternatively, integrate the script's output into the `frontmatter-validation` CI step alongside `tom agents validate-frontmatter`. Either path closes the AC-2 gap.
 
 ---
 

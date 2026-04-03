@@ -23,14 +23,14 @@ Use this mapping to determine which lode files are affected by code changes:
 
 | Changed Path Pattern | Affected Lode Files |
 |---------------------|---------------------|
-| `src/jerry/session_management/**` | `lode/framework/session.md`, `lode/summary.md` |
-| `src/jerry/work_tracking/**` | `lode/framework/work-tracking.md`, `lode/summary.md` |
-| `src/jerry/domain/**` | `lode/framework/architecture.md`, `lode/summary.md` |
-| `src/jerry/interface/**` | `lode/framework/cli.md` |
-| `src/jerry/infrastructure/**` | `lode/framework/architecture.md` |
-| `src/jerry/application/**` | `lode/framework/architecture.md` |
-| `src/jerry/shared_kernel/**` | `lode/framework/architecture.md` |
-| `src/jerry/**` | `lode/summary.md` |
+| `src/session_management/**` | `lode/framework/session.md`, `lode/summary.md` |
+| `src/work_tracking/**` | `lode/framework/work-tracking.md`, `lode/summary.md` |
+| `src/domain/**` | `lode/framework/architecture.md`, `lode/summary.md` |
+| `src/interface/**` | `lode/framework/cli.md` |
+| `src/infrastructure/**` | `lode/framework/architecture.md` |
+| `src/application/**` | `lode/framework/architecture.md` |
+| `src/shared_kernel/**` | `lode/framework/architecture.md` |
+| `src/**` | `lode/summary.md` |
 | `skills/**` | `lode/framework/skills.md` |
 | `.context/rules/**` | `lode/framework/rules.md` |
 | `docs/**` | `lode/framework/architecture.md` |

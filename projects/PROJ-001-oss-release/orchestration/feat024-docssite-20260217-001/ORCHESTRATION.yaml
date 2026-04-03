@@ -42,7 +42,7 @@ workflow:
     rationale: "Documentation site tooling — reversible within 1 day; 3-10 files affected; no governance/rules/.context touched; no security-relevant code"
     auto_escalation_triggers:
       - id: "AE-001"
-        condition: "Touches docs/governance/JERRY_CONSTITUTION.md"
+        condition: "Touches docs/governance/TOM_CONSTITUTION.md"
         triggered: false
       - id: "AE-002"
         condition: "Touches .context/rules/ or .claude/rules/"

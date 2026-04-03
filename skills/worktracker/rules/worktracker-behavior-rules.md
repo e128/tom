@@ -46,7 +46,7 @@ These rules ensure the worktracker remains a **single source of truth** that is 
 ## Content Quality Rules
 
 > **Enforcement Level:** HARD
-> **Source:** PROJ-005-jerry-process-improvements (ADO skill pattern extraction + industry research)
+> **Source:** PROJ-005-tom-process-improvements (ADO skill pattern extraction + industry research)
 > **Added:** 2026-02-17
 > **Reference:** `worktracker-content-standards.md` for detailed examples, anti-patterns, and writing guidance
 

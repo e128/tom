@@ -5,8 +5,8 @@
 Contract tests for SessionStart hook output compliance.
 
 These tests verify that the hook output conforms to the Claude Code
-hook response format. The hook is invoked via the Jerry CLI:
-    jerry --json hooks session-start
+hook response format. The hook is invoked via the Tom CLI:
+    tom --json hooks session-start
 
 Expected Format (EN-006 architecture):
     {
@@ -18,7 +18,7 @@ Test Distribution per testing-standards.md:
     - Focus: External interface compliance
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - EN-007: Hook Wrapper Scripts
     - Phase 3: Contract Tests (T-020 to T-026)
 """
@@ -67,7 +67,7 @@ def temp_project_with_context(tmp_path: Path) -> Path:
     (project_dir / "PLAN.md").write_text("# Test Plan")
 
     # Create local context
-    local_dir = tmp_path / ".jerry" / "local"
+    local_dir = tmp_path / ".tom" / "local"
     local_dir.mkdir(parents=True)
     context_file = local_dir / "context.toml"
     context_file.write_text('[context]\nactive_project = "PROJ-001-test"\n')
@@ -83,7 +83,7 @@ def run_hook_cli(
     """Run the hooks session-start CLI command and capture output.
 
     Args:
-        project_root: Jerry plugin root directory
+        project_root: Tom plugin root directory
         project_dir: Optional project directory to set as CLAUDE_PROJECT_DIR
         stdin_data: JSON to pass as stdin (default: empty object)
 
@@ -98,7 +98,7 @@ def run_hook_cli(
     env.pop("JERRY_PROJECT", None)
 
     return subprocess.run(
-        ["uv", "run", "jerry", "--json", "hooks", "session-start"],
+        ["uv", "run", "tom", "--json", "hooks", "session-start"],
         input=stdin_data,
         capture_output=True,
         text=True,
@@ -234,7 +234,7 @@ class TestXmlTagsInAdditionalContext:
         env["JERRY_PROJECT"] = "PROJ-004-context-resilience"
 
         result = subprocess.run(
-            ["uv", "run", "jerry", "--json", "hooks", "session-start"],
+            ["uv", "run", "tom", "--json", "hooks", "session-start"],
             input="{}",
             capture_output=True,
             text=True,
@@ -249,11 +249,11 @@ class TestXmlTagsInAdditionalContext:
 
         # At least one project-related tag should be present
         has_project_context = "<project-context>" in additional_context
-        has_jerry_project = "<jerry-project>" in additional_context
+        has_jerry_project = "<tom-project>" in additional_context
 
         assert has_project_context or has_jerry_project, (
             "additionalContext should contain project XML tags.\n"
-            f"Expected: <project-context> or <jerry-project>\n"
+            f"Expected: <project-context> or <tom-project>\n"
             f"Actual content: {additional_context[:500]}..."
         )
 
@@ -264,7 +264,7 @@ class TestXmlTagsInAdditionalContext:
         """<project-context> tag contains required fields.
 
         When a project is active, the <project-context> tag should include
-        <jerry-project> and <project-id>.
+        <tom-project> and <project-id>.
         """
         # Act
         result = run_hook_cli(project_root)
@@ -275,8 +275,8 @@ class TestXmlTagsInAdditionalContext:
 
         # If project-context is present, verify required fields
         if "<project-context>" in additional_context:
-            assert "<jerry-project>" in additional_context, (
-                "<project-context> should contain <jerry-project> element"
+            assert "<tom-project>" in additional_context, (
+                "<project-context> should contain <tom-project> element"
             )
             assert "<project-id>" in additional_context, (
                 "<project-context> should contain <project-id> element"
@@ -339,7 +339,7 @@ class TestHookErrorHandling:
 
         # Act
         result = subprocess.run(
-            ["uv", "run", "jerry", "--json", "hooks", "session-start"],
+            ["uv", "run", "tom", "--json", "hooks", "session-start"],
             input="{}",
             capture_output=True,
             text=True,

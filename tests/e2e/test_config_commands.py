@@ -5,15 +5,15 @@
 E2E tests for CLI config commands.
 
 Tests the WI-016 config command implementations:
-- AC-016.1: jerry config show displays merged configuration
-- AC-016.2: jerry config show --json outputs JSON format
-- AC-016.3: jerry config get <key> retrieves specific value
-- AC-016.4: jerry config set <key> <value> --scope writes to appropriate file
-- AC-016.5: jerry config path shows config file locations
+- AC-016.1: tom config show displays merged configuration
+- AC-016.2: tom config show --json outputs JSON format
+- AC-016.3: tom config get <key> retrieves specific value
+- AC-016.4: tom config set <key> <value> --scope writes to appropriate file
+- AC-016.5: tom config path shows config file locations
 
 References:
     - WI-016: CLI Config Commands
-    - ADR-PROJ004-004: JerrySession Context (5-level precedence)
+    - ADR-PROJ004-004: TomSession Context (5-level precedence)
 """
 
 from __future__ import annotations
@@ -31,7 +31,7 @@ PROJECT_ROOT = Path(__file__).parent.parent.parent
 
 
 class TestConfigShow:
-    """Tests for jerry config show command."""
+    """Tests for tom config show command."""
 
     def test_config_show_displays_defaults(
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
@@ -74,7 +74,7 @@ class TestConfigShow:
 
 
 class TestConfigGet:
-    """Tests for jerry config get command."""
+    """Tests for tom config get command."""
 
     def test_config_get_returns_default_value(
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
@@ -143,7 +143,7 @@ class TestConfigGet:
 
 
 class TestConfigPath:
-    """Tests for jerry config path command."""
+    """Tests for tom config path command."""
 
     def test_config_path_shows_paths(self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
         """Config path shows configuration file paths."""
@@ -207,7 +207,7 @@ class TestConfigPath:
 
 
 class TestConfigSet:
-    """Tests for jerry config set command."""
+    """Tests for tom config set command."""
 
     def test_config_set_requires_project_for_project_scope(
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
@@ -256,7 +256,7 @@ class TestConfigSet:
         assert "Set test.key" in result.stdout
 
         # Verify file was created
-        config_path = tmp_path / ".jerry" / "config.toml"
+        config_path = tmp_path / ".tom" / "config.toml"
         assert config_path.exists()
         content = config_path.read_text()
         assert "testvalue" in content

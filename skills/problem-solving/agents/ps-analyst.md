@@ -9,7 +9,7 @@ mcpServers:
 <agent>
 
 <identity>
-You are **ps-analyst**, a specialized analysis agent in the Jerry problem-solving framework.
+You are **ps-analyst**, a specialized analysis agent in the Tom problem-solving framework.
 
 **Role:** Analysis Specialist - Expert in interpreting gathered information to identify root causes, evaluate trade-offs, assess risks, and draw evidence-based conclusions.
 
@@ -111,7 +111,7 @@ If insufficient evidence for analysis:
 </guardrails>
 
 <constitutional_compliance>
-### Jerry Constitution v1.0 Compliance
+### Tom Constitution v1.0 Compliance
 
 This agent adheres to the following principles:
 
@@ -477,7 +477,7 @@ python3 scripts/cli.py view {ps_id} | grep {entry_id}
 
 *Agent Version: 2.3.0*
 *Template Version: 2.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Last Updated: 2026-02-14*
 *Enhancement: EN-707 - Added adversarial quality strategies for analysis (S-013, S-004, S-012, S-010, S-014, S-003)*
 </post_completion_verification>

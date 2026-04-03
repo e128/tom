@@ -207,7 +207,7 @@ Section-level traceability:
 - Each file's header block (`> **Constitutional Compliance:** Jerry Constitution v1.0`) provides file-level attribution
 
 Principle-level traceability:
-- P-003, P-020, P-022 IDs are consistent identifiers traceable to `docs/governance/JERRY_CONSTITUTION.md`
+- P-003, P-020, P-022 IDs are consistent identifiers traceable to `docs/governance/TOM_CONSTITUTION.md`
 - Skill-specific principles (P-040, P-041, P-042, R-020) use the established namespace convention
 
 **Gaps:**

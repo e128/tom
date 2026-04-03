@@ -28,20 +28,20 @@ import pytest
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 
 
-def _find_jerry_executable() -> str:
-    """Find the jerry executable - works in both venv and CI environments."""
+def _find_tom_executable() -> str:
+    """Find the tom executable - works in both venv and CI environments."""
     # Try venv path first (local development)
-    venv_jerry = PROJECT_ROOT / ".venv" / "bin" / "jerry"
-    if venv_jerry.exists():
-        return str(venv_jerry)
+    venv_tom = PROJECT_ROOT / ".venv" / "bin" / "tom"
+    if venv_tom.exists():
+        return str(venv_tom)
 
     # Try system path (CI environment with pip install -e .)
-    system_jerry = shutil.which("jerry")
-    if system_jerry:
-        return system_jerry
+    system_tom = shutil.which("tom")
+    if system_tom:
+        return system_tom
 
     # Fallback: use python -m src.interface.cli.main
-    pytest.skip("jerry executable not found - run 'uv sync' or 'pip install -e .'")
+    pytest.skip("tom executable not found - run 'uv sync' or 'pip install -e .'")
     return ""  # Never reached
 
 
@@ -49,9 +49,9 @@ class TestTranscriptModelSelectionE2E:
     """E2E tests for transcript parse with model selection."""
 
     @pytest.fixture
-    def jerry_cmd(self) -> str:
-        """Get path to jerry command."""
-        return _find_jerry_executable()
+    def tom_cmd(self) -> str:
+        """Get path to tom command."""
+        return _find_tom_executable()
 
     @pytest.fixture
     def temp_transcript(self, tmp_path: Path) -> Path:
@@ -70,7 +70,7 @@ Speaker 2: This is a test.
         return transcript_file
 
     def test_transcript_parse_with_economy_profile_exits_zero(
-        self, jerry_cmd: str, temp_transcript: Path
+        self, tom_cmd: str, temp_transcript: Path
     ) -> None:
         """Transcript parse with economy profile should work (smoke test).
 
@@ -79,7 +79,7 @@ Speaker 2: This is a test.
         """
         result = subprocess.run(
             [
-                jerry_cmd,
+                tom_cmd,
                 "transcript",
                 "parse",
                 str(temp_transcript),
@@ -98,12 +98,12 @@ Speaker 2: This is a test.
         assert "Traceback" not in result.stderr
 
     def test_transcript_parse_with_quality_profile_exits_zero(
-        self, jerry_cmd: str, temp_transcript: Path
+        self, tom_cmd: str, temp_transcript: Path
     ) -> None:
         """Transcript parse with quality profile should work (smoke test)."""
         result = subprocess.run(
             [
-                jerry_cmd,
+                tom_cmd,
                 "transcript",
                 "parse",
                 str(temp_transcript),
@@ -122,12 +122,12 @@ Speaker 2: This is a test.
         assert "Traceback" not in result.stderr
 
     def test_transcript_parse_with_profile_and_override_exits_zero(
-        self, jerry_cmd: str, temp_transcript: Path
+        self, tom_cmd: str, temp_transcript: Path
     ) -> None:
         """Transcript parse with profile + override should work (smoke test)."""
         result = subprocess.run(
             [
-                jerry_cmd,
+                tom_cmd,
                 "transcript",
                 "parse",
                 str(temp_transcript),
@@ -148,12 +148,12 @@ Speaker 2: This is a test.
         assert "Traceback" not in result.stderr
 
     def test_transcript_parse_with_all_model_flags_exits_zero(
-        self, jerry_cmd: str, temp_transcript: Path
+        self, tom_cmd: str, temp_transcript: Path
     ) -> None:
         """Transcript parse with all five model flags should work (smoke test)."""
         result = subprocess.run(
             [
-                jerry_cmd,
+                tom_cmd,
                 "transcript",
                 "parse",
                 str(temp_transcript),
@@ -180,7 +180,7 @@ Speaker 2: This is a test.
         assert "Traceback" not in result.stderr
 
     def test_transcript_parse_invalid_profile_exits_one(
-        self, jerry_cmd: str, temp_transcript: Path
+        self, tom_cmd: str, temp_transcript: Path
     ) -> None:
         """Transcript parse with invalid profile should exit with error message.
 
@@ -188,7 +188,7 @@ Speaker 2: This is a test.
         """
         result = subprocess.run(
             [
-                jerry_cmd,
+                tom_cmd,
                 "transcript",
                 "parse",
                 str(temp_transcript),
@@ -208,10 +208,10 @@ Speaker 2: This is a test.
         output = result.stdout + result.stderr
         assert "invalid-profile" in output.lower() or "invalid choice" in output.lower()
 
-    def test_transcript_parse_help_shows_model_flags(self, jerry_cmd: str) -> None:
+    def test_transcript_parse_help_shows_model_flags(self, tom_cmd: str) -> None:
         """Transcript parse help should show all model selection flags."""
         result = subprocess.run(
-            [jerry_cmd, "transcript", "parse", "--help"],
+            [tom_cmd, "transcript", "parse", "--help"],
             capture_output=True,
             text=True,
             cwd=PROJECT_ROOT,
@@ -227,10 +227,10 @@ Speaker 2: This is a test.
         assert "--model-critic" in result.stdout
         assert "--profile" in result.stdout
 
-    def test_transcript_parse_help_shows_profile_choices(self, jerry_cmd: str) -> None:
+    def test_transcript_parse_help_shows_profile_choices(self, tom_cmd: str) -> None:
         """Transcript parse help should show all profile choices."""
         result = subprocess.run(
-            [jerry_cmd, "transcript", "parse", "--help"],
+            [tom_cmd, "transcript", "parse", "--help"],
             capture_output=True,
             text=True,
             cwd=PROJECT_ROOT,
@@ -249,9 +249,9 @@ class TestTranscriptModelSelectionJSON:
     """E2E tests for JSON output with model selection."""
 
     @pytest.fixture
-    def jerry_cmd(self) -> str:
-        """Get path to jerry command."""
-        return _find_jerry_executable()
+    def tom_cmd(self) -> str:
+        """Get path to tom command."""
+        return _find_tom_executable()
 
     @pytest.fixture
     def temp_transcript(self, tmp_path: Path) -> Path:
@@ -267,7 +267,7 @@ Speaker 1: Hello world.
         return transcript_file
 
     def test_transcript_parse_json_output_is_valid_json(
-        self, jerry_cmd: str, temp_transcript: Path
+        self, tom_cmd: str, temp_transcript: Path
     ) -> None:
         """Transcript parse with --json should output valid JSON.
 
@@ -277,7 +277,7 @@ Speaker 1: Hello world.
         """
         result = subprocess.run(
             [
-                jerry_cmd,
+                tom_cmd,
                 "--json",  # Global flag must come before namespace
                 "transcript",
                 "parse",
@@ -311,14 +311,14 @@ class TestModelConfigurationFlow:
     """E2E tests for model configuration flowing through the system."""
 
     @pytest.fixture
-    def jerry_cmd(self) -> str:
-        """Get path to jerry command."""
-        return _find_jerry_executable()
+    def tom_cmd(self) -> str:
+        """Get path to tom command."""
+        return _find_tom_executable()
 
-    def test_model_selection_documented_in_help(self, jerry_cmd: str) -> None:
+    def test_model_selection_documented_in_help(self, tom_cmd: str) -> None:
         """Main help should document model selection feature."""
         result = subprocess.run(
-            [jerry_cmd, "transcript", "--help"],
+            [tom_cmd, "transcript", "--help"],
             capture_output=True,
             text=True,
             cwd=PROJECT_ROOT,
@@ -327,14 +327,14 @@ class TestModelConfigurationFlow:
         assert result.returncode == 0
         assert "parse" in result.stdout
 
-    def test_all_profiles_accessible_via_cli(self, jerry_cmd: str) -> None:
+    def test_all_profiles_accessible_via_cli(self, tom_cmd: str) -> None:
         """All four profiles should be accessible via CLI.
 
         This test validates that the profile choices in the CLI parser
         match the profiles defined in model_profiles.py.
         """
         result = subprocess.run(
-            [jerry_cmd, "transcript", "parse", "--help"],
+            [tom_cmd, "transcript", "parse", "--help"],
             capture_output=True,
             text=True,
             cwd=PROJECT_ROOT,
@@ -352,9 +352,9 @@ class TestModelValidationE2E:
     """E2E tests for model validation at CLI level."""
 
     @pytest.fixture
-    def jerry_cmd(self) -> str:
-        """Get path to jerry command."""
-        return _find_jerry_executable()
+    def tom_cmd(self) -> str:
+        """Get path to tom command."""
+        return _find_tom_executable()
 
     @pytest.fixture
     def temp_transcript(self, tmp_path: Path) -> Path:
@@ -369,7 +369,7 @@ Test content.
         )
         return transcript_file
 
-    def test_invalid_model_value_rejected(self, jerry_cmd: str, temp_transcript: Path) -> None:
+    def test_invalid_model_value_rejected(self, tom_cmd: str, temp_transcript: Path) -> None:
         """Invalid model value should be rejected with error message.
 
         Note: Validation may happen at argparse level or ModelConfig level.
@@ -377,7 +377,7 @@ Test content.
         """
         result = subprocess.run(
             [
-                jerry_cmd,
+                tom_cmd,
                 "transcript",
                 "parse",
                 str(temp_transcript),
@@ -397,7 +397,7 @@ Test content.
         # May have "invalid" or "invalid-model" in error message
         assert "invalid" in output.lower()
 
-    def test_case_sensitivity_of_model_values(self, jerry_cmd: str, temp_transcript: Path) -> None:
+    def test_case_sensitivity_of_model_values(self, tom_cmd: str, temp_transcript: Path) -> None:
         """Model values should be case-sensitive (lowercase only).
 
         Values like "Haiku", "HAIKU", "Sonnet" should be rejected.
@@ -406,7 +406,7 @@ Test content.
         # Test uppercase
         result = subprocess.run(
             [
-                jerry_cmd,
+                tom_cmd,
                 "transcript",
                 "parse",
                 str(temp_transcript),
@@ -421,7 +421,7 @@ Test content.
         # Should fail (case-sensitive)
         assert result.returncode in (1, 2)
 
-    def test_all_valid_models_accepted(self, jerry_cmd: str, temp_transcript: Path) -> None:
+    def test_all_valid_models_accepted(self, tom_cmd: str, temp_transcript: Path) -> None:
         """All three valid model values should be accepted.
 
         Values: haiku, sonnet, opus
@@ -429,7 +429,7 @@ Test content.
         for model in ["haiku", "sonnet", "opus"]:
             result = subprocess.run(
                 [
-                    jerry_cmd,
+                    tom_cmd,
                     "transcript",
                     "parse",
                     str(temp_transcript),

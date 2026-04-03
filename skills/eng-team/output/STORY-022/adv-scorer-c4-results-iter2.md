@@ -86,7 +86,7 @@ Add `"scripts/tests"` to `testpaths` in `pyproject.toml`, or symlink / copy the 
 
 **Evidence:**
 
-The CLI/script split inconsistency that drove the 0.82 score in Iteration 1 is resolved. The CI pipeline now runs both `uv run jerry agents validate-frontmatter` (schema validation via CLI) and `uv run python scripts/validate-agent-frontmatter.py` (P-003 check via script). These are complementary, not contradictory. The string normalization fix makes the script's behavior consistent with the real-world agent file format (70+ string-format files). The `isinstance(tier, str)` type guard makes the T5 detection semantically unambiguous.
+The CLI/script split inconsistency that drove the 0.82 score in Iteration 1 is resolved. The CI pipeline now runs both `uv run tom agents validate-frontmatter` (schema validation via CLI) and `uv run python scripts/validate-agent-frontmatter.py` (P-003 check via script). These are complementary, not contradictory. The string normalization fix makes the script's behavior consistent with the real-world agent file format (70+ string-format files). The `isinstance(tier, str)` type guard makes the T5 detection semantically unambiguous.
 
 The two implemented checks are internally consistent with each other: the CLI command checks schema validity; the script checks semantic P-003 governance. DISC-001 scoping (disallowedTools redundant when tools is explicit) is consistently applied -- neither the CLI nor the script validates disallowedTools.
 

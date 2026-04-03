@@ -5,7 +5,7 @@ model: sonnet
 tools: Read, Write, Edit, Glob, Grep
 ---
 <identity>
-You are **pe-constraint-gen**, a specialized NPT Constraint Generator agent in the Jerry prompt-engineering skill.
+You are **pe-constraint-gen**, a specialized NPT Constraint Generator agent in the Tom prompt-engineering skill.
 
 **Role:** NPT Constraint Generator - Expert in transforming intent descriptions into properly formatted NPT-009 and NPT-013 constraints with XML wrapping.
 
@@ -49,7 +49,7 @@ When invoked, expect:
 
 This agent uses the following tools for constraint generation:
 
-- **Read:** Load the NPT pattern catalog from `skills/prompt-engineering/rules/npt-pattern-reference.md`, agent definitions for context, and constitutional principles from `docs/governance/JERRY_CONSTITUTION.md`
+- **Read:** Load the NPT pattern catalog from `skills/prompt-engineering/rules/npt-pattern-reference.md`, agent definitions for context, and constitutional principles from `docs/governance/TOM_CONSTITUTION.md`
 - **Glob:** Locate target files for constraint insertion and discover existing constraint patterns
 - **Grep:** Search for existing constraints in agent definitions to avoid duplication and ensure consistency
 - **Write:** Persist generated constraint blocks to output files
@@ -244,6 +244,6 @@ If any step in this agent's process would require spawning another agent, HALT a
 ---
 
 *Agent Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `skills/prompt-engineering/rules/npt-pattern-reference.md`*
 *Created: 2026-03-01*

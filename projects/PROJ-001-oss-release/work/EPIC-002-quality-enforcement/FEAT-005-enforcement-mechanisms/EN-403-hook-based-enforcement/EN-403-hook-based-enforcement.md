@@ -144,7 +144,7 @@ Additionally, the Barrier-1 ADV-to-ENF handoff specifies that hooks must trigger
 - **0.92 quality threshold** must be injected via UserPromptSubmit as part of V-024 context reinforcement
 - **Creator-critic-revision cycle** (minimum 3 iterations) must be enforced -- hooks must ensure the cycle is not bypassed
 - **Decision criticality escalation (C1-C4)** must inform which adversarial strategies are triggered by hooks
-- **Mandatory escalation** for artifacts touching `docs/governance/JERRY_CONSTITUTION.md` or `.claude/rules/` (auto-C3+)
+- **Mandatory escalation** for artifacts touching `docs/governance/TOM_CONSTITUTION.md` or `.claude/rules/` (auto-C3+)
 
 ### Token Budget for UserPromptSubmit (V-024)
 

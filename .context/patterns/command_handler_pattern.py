@@ -1,5 +1,5 @@
 """
-Command/Query Handler Pattern - Canonical CQRS implementation for Jerry Framework.
+Command/Query Handler Pattern - Canonical CQRS implementation for Tom Framework.
 
 Commands modify state and return None. Queries read state and return DTOs.
 Handlers are injected with dependencies, receive data via handle() method.

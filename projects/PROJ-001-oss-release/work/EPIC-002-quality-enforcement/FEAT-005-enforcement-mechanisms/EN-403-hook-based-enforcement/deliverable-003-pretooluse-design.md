@@ -556,7 +556,7 @@ class PreToolEnforcementEngine:
         Returns criticality level (C3 or C4) or None.
         """
         governance_patterns = [
-            ("docs/governance/JERRY_CONSTITUTION.md", "C4"),
+            ("docs/governance/TOM_CONSTITUTION.md", "C4"),
             ("docs/governance/", "C3"),
             (".claude/rules/", "C3"),
             (".context/rules/", "C3"),
@@ -618,7 +618,7 @@ from __future__ import annotations
 
 # Files that trigger automatic C3+ escalation (REQ-403-061)
 GOVERNANCE_FILES: dict[str, str] = {
-    "docs/governance/JERRY_CONSTITUTION.md": "C4",
+    "docs/governance/TOM_CONSTITUTION.md": "C4",
     "docs/governance/": "C3",
     ".claude/rules/": "C3",
     ".context/rules/": "C3",
@@ -820,7 +820,7 @@ Any Write or Edit operation targeting the following files triggers automatic C3+
 
 | File Pattern | Criticality Level | Rationale |
 |-------------|------------------|-----------|
-| `docs/governance/JERRY_CONSTITUTION.md` | C4 (Critical) | Constitution changes are irreversible governance decisions |
+| `docs/governance/TOM_CONSTITUTION.md` | C4 (Critical) | Constitution changes are irreversible governance decisions |
 | `docs/governance/` | C3 (Significant) | Governance documents require deep review |
 | `.claude/rules/` | C3 (Significant) | Rules changes affect all subsequent sessions |
 | `.context/rules/` | C3 (Significant) | Canonical rules source |

@@ -227,7 +227,7 @@ class TestSessionHookIsolation:
         It should NOT import any src/ modules directly at the top level.
 
         EN-007: Thin wrapper scripts live in hooks/ directory and delegate
-        to jerry hooks CLI commands via subprocess.
+        to tom hooks CLI commands via subprocess.
         """
         hook_path = project_root / "hooks" / "session-start.py"
         assert hook_path.exists(), f"Hook script not found at {hook_path}"
@@ -297,34 +297,34 @@ class TestEntryPoints:
         """T-029: No duplicate entry points in pyproject.toml.
 
         There should be only ONE entry point for session management.
-        `jerry-session-start` was a workaround that should be removed.
+        `tom-session-start` was a workaround that should be removed.
         """
         pyproject_path = project_root / "pyproject.toml"
         assert pyproject_path.exists(), "pyproject.toml not found"
 
         content = pyproject_path.read_text()
 
-        # Check for jerry-session-start entry point
-        # Pattern: jerry-session-start = "..." in [project.scripts] section
-        has_session_start_entry = "jerry-session-start" in content
+        # Check for tom-session-start entry point
+        # Pattern: tom-session-start = "..." in [project.scripts] section
+        has_session_start_entry = "tom-session-start" in content
 
         assert not has_session_start_entry, (
-            "pyproject.toml contains 'jerry-session-start' entry point.\n"
+            "pyproject.toml contains 'tom-session-start' entry point.\n"
             "This duplicate entry point should be removed.\n"
-            "The session hook should call 'jerry projects context' instead."
+            "The session hook should call 'tom projects context' instead."
         )
 
-    def test_jerry_entry_point_exists(
+    def test_tom_entry_point_exists(
         self,
         project_root: Path,
     ) -> None:
-        """Main 'jerry' entry point must exist."""
+        """Main 'tom' entry point must exist."""
         pyproject_path = project_root / "pyproject.toml"
         content = pyproject_path.read_text()
 
-        # The main jerry entry point should exist
-        assert 'jerry = "' in content or "jerry = '" in content, (
-            "pyproject.toml missing 'jerry' entry point.\nThis is the main CLI entry point."
+        # The main tom entry point should exist
+        assert 'tom = "' in content or "tom = '" in content, (
+            "pyproject.toml missing 'tom' entry point.\nThis is the main CLI entry point."
         )
 
 
@@ -353,7 +353,7 @@ class TestRogueFilesRemoved:
             f"Rogue file exists: {rogue_file}\n"
             f"This file violates hexagonal architecture (TD-004).\n"
             f"It imports infrastructure directly from interface layer.\n"
-            f"Delete this file and use 'jerry projects context' instead."
+            f"Delete this file and use 'tom projects context' instead."
         )
 
 

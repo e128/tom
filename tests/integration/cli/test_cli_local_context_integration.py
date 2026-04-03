@@ -4,7 +4,7 @@
 """
 Integration tests for CLI local context support.
 
-Tests that the CLI correctly reads project context from .jerry/local/context.toml
+Tests that the CLI correctly reads project context from .tom/local/context.toml
 when JERRY_PROJECT environment variable is not set.
 
 These tests verify the full wiring: CLI → dispatcher → handler → adapter → filesystem.
@@ -68,20 +68,20 @@ def env_without_jerry_project(project_root: Path) -> dict[str, str]:
 
 @pytest.fixture
 def temp_local_context(tmp_path: Path) -> Path:
-    """Create a temporary .jerry/local/context.toml file."""
-    local_dir = tmp_path / ".jerry" / "local"
+    """Create a temporary .tom/local/context.toml file."""
+    local_dir = tmp_path / ".tom" / "local"
     local_dir.mkdir(parents=True)
     context_file = local_dir / "context.toml"
     return context_file
 
 
-def run_jerry_with_cwd(
+def run_tom_with_cwd(
     args: list[str],
     project_root: Path,
     env: dict[str, str],
     cwd: Path | None = None,
 ) -> subprocess.CompletedProcess[str]:
-    """Execute jerry CLI via uv run with custom working directory.
+    """Execute tom CLI via uv run with custom working directory.
 
     Args:
         args: Command arguments (e.g., ["projects", "context"])
@@ -93,7 +93,7 @@ def run_jerry_with_cwd(
         CompletedProcess with stdout, stderr, and returncode
     """
     return subprocess.run(
-        ["uv", "run", "jerry", *args],
+        ["uv", "run", "tom", *args],
         capture_output=True,
         text=True,
         env=env,
@@ -115,7 +115,7 @@ class TestCLILocalContextHappyPath:
         env_without_jerry_project: dict[str, str],
         tmp_path: Path,
     ) -> None:
-        """CLI reads active_project from .jerry/local/context.toml when JERRY_PROJECT not set.
+        """CLI reads active_project from .tom/local/context.toml when JERRY_PROJECT not set.
 
         This tests the full wiring: CLI → dispatcher → handler → adapter → filesystem.
         EN-001 T-015.
@@ -123,23 +123,23 @@ class TestCLILocalContextHappyPath:
         Expected to FAIL until bootstrap.py is updated to wire FilesystemLocalContextAdapter.
         """
         # Arrange - create local context file
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
-        context_file.write_text('[context]\nactive_project = "PROJ-007-jerry-bugs"\n')
+        context_file.write_text('[context]\nactive_project = "PROJ-007-tom-bugs"\n')
 
         # Also create projects dir structure expected by CLI
         projects_dir = tmp_path / "projects"
         projects_dir.mkdir()
-        (projects_dir / "PROJ-007-jerry-bugs").mkdir()
-        (projects_dir / "PROJ-007-jerry-bugs" / "PLAN.md").write_text("# Plan")
+        (projects_dir / "PROJ-007-tom-bugs").mkdir()
+        (projects_dir / "PROJ-007-tom-bugs" / "PLAN.md").write_text("# Plan")
 
         # Set CLAUDE_PROJECT_DIR to tmp_path so CLI looks there
         env = env_without_jerry_project.copy()
         env["CLAUDE_PROJECT_DIR"] = str(tmp_path)
 
         # Act
-        result = run_jerry_with_cwd(
+        result = run_tom_with_cwd(
             ["--json", "projects", "context"],
             project_root=project_root,
             env=env,
@@ -151,7 +151,7 @@ class TestCLILocalContextHappyPath:
         data = json.loads(result.stdout)
 
         # The project should be set from local context
-        assert data["jerry_project"] == "PROJ-007-jerry-bugs", (
+        assert data["jerry_project"] == "PROJ-007-tom-bugs", (
             f"Expected project from local context, got: {data['jerry_project']}"
         )
 
@@ -166,22 +166,22 @@ class TestCLILocalContextHappyPath:
         EN-001 T-014 - Validates JSON output structure when using local context.
         """
         # Arrange - create local context file
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
-        context_file.write_text('[context]\nactive_project = "PROJ-007-jerry-bugs"\n')
+        context_file.write_text('[context]\nactive_project = "PROJ-007-tom-bugs"\n')
 
         # Create projects structure
         projects_dir = tmp_path / "projects"
         projects_dir.mkdir()
-        (projects_dir / "PROJ-007-jerry-bugs").mkdir()
-        (projects_dir / "PROJ-007-jerry-bugs" / "PLAN.md").write_text("# Plan")
+        (projects_dir / "PROJ-007-tom-bugs").mkdir()
+        (projects_dir / "PROJ-007-tom-bugs" / "PLAN.md").write_text("# Plan")
 
         env = env_without_jerry_project.copy()
         env["CLAUDE_PROJECT_DIR"] = str(tmp_path)
 
         # Act
-        result = run_jerry_with_cwd(
+        result = run_tom_with_cwd(
             ["--json", "projects", "context"],
             project_root=project_root,
             env=env,
@@ -200,8 +200,8 @@ class TestCLILocalContextHappyPath:
         assert "next_number" in data, "Missing next_number field"
 
         # Verify values when using local context
-        assert data["jerry_project"] == "PROJ-007-jerry-bugs"
-        assert data["project_id"] == "PROJ-007-jerry-bugs"
+        assert data["jerry_project"] == "PROJ-007-tom-bugs"
+        assert data["project_id"] == "PROJ-007-tom-bugs"
 
     def test_env_var_takes_precedence_over_local_context(
         self,
@@ -213,7 +213,7 @@ class TestCLILocalContextHappyPath:
         Precedence: env > local > discovery
         """
         # Arrange - create local context with one project
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text('[context]\nactive_project = "PROJ-002-from-local"\n')
@@ -233,7 +233,7 @@ class TestCLILocalContextHappyPath:
         env["PYTHONPATH"] = str(project_root)
 
         # Act
-        result = run_jerry_with_cwd(
+        result = run_tom_with_cwd(
             ["--json", "projects", "context"],
             project_root=project_root,
             env=env,
@@ -263,7 +263,7 @@ class TestCLILocalContextNegative:
         env_without_jerry_project: dict[str, str],
         tmp_path: Path,
     ) -> None:
-        """Missing .jerry/local/context.toml should fall through to discovery.
+        """Missing .tom/local/context.toml should fall through to discovery.
 
         When neither env var nor local context provides project,
         CLI should show available projects for selection.
@@ -279,7 +279,7 @@ class TestCLILocalContextNegative:
         env["CLAUDE_PROJECT_DIR"] = str(tmp_path)
 
         # Act
-        result = run_jerry_with_cwd(
+        result = run_tom_with_cwd(
             ["--json", "projects", "context"],
             project_root=project_root,
             env=env,
@@ -303,7 +303,7 @@ class TestCLILocalContextNegative:
     ) -> None:
         """Invalid project format in local context should return validation error."""
         # Arrange - create local context with invalid format
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text('[context]\nactive_project = "invalid-format"\n')
@@ -316,7 +316,7 @@ class TestCLILocalContextNegative:
         env["CLAUDE_PROJECT_DIR"] = str(tmp_path)
 
         # Act
-        result = run_jerry_with_cwd(
+        result = run_tom_with_cwd(
             ["--json", "projects", "context"],
             project_root=project_root,
             env=env,
@@ -352,12 +352,12 @@ class TestCLILocalContextEdgeCases:
         env_without_jerry_project: dict[str, str],
         tmp_path: Path,
     ) -> None:
-        """Empty .jerry/local/context.toml should fall through to discovery.
+        """Empty .tom/local/context.toml should fall through to discovery.
 
         Edge case: File exists but has no content.
         """
         # Arrange - create empty local context file
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text("")  # Empty file
@@ -372,7 +372,7 @@ class TestCLILocalContextEdgeCases:
         env["CLAUDE_PROJECT_DIR"] = str(tmp_path)
 
         # Act
-        result = run_jerry_with_cwd(
+        result = run_tom_with_cwd(
             ["--json", "projects", "context"],
             project_root=project_root,
             env=env,

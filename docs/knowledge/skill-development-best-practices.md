@@ -1,8 +1,8 @@
-# Skill Development Best Practices — Jerry Framework
+# Skill Development Best Practices — Tom Framework
 
-> Synthesized from [Anthropic's Complete Guide to Building Skills for Claude](anthropic-skill-development-guide.pdf) and Jerry's established skill conventions (adversary, problem-solving, orchestration, worktracker, nasa-se, architecture, transcript, bootstrap).
+> Synthesized from [Anthropic's Complete Guide to Building Skills for Claude](anthropic-skill-development-guide.pdf) and Tom's established skill conventions (adversary, problem-solving, orchestration, worktracker, nasa-se, architecture, transcript, bootstrap).
 
-> **Scope:** This document covers structural requirements and conventions for Jerry skill development. It does not cover agent definition standards (see `.context/rules/agent-development-standards.md`), quality enforcement thresholds (see `.context/rules/quality-enforcement.md`), or per-quadrant documentation writing standards (see `skills/diataxis/rules/diataxis-standards.md`).
+> **Scope:** This document covers structural requirements and conventions for Tom skill development. It does not cover agent definition standards (see `.context/rules/agent-development-standards.md`), quality enforcement thresholds (see `.context/rules/quality-enforcement.md`), or per-quadrant documentation writing standards (see `skills/diataxis/rules/diataxis-standards.md`).
 
 <!-- Diataxis classification: This knowledge document is primarily REFERENCE (structured specifications) with HOW-TO sections (registration steps, checklist) and EXPLANATION sections (design rationale). Future decomposition: extract registration steps into a how-to guide, extract rationale paragraphs into companion explanation. -->
 
@@ -11,7 +11,7 @@
 | Section | Purpose |
 |---------|---------|
 | [Anthropic Universal Requirements](#anthropic-universal-requirements) | Official platform requirements from Anthropic |
-| [Jerry Framework Conventions](#jerry-framework-conventions) | Jerry-specific patterns observed across 8 production skills |
+| [Tom Framework Conventions](#tom-framework-conventions) | Tom-specific patterns observed across 8 production skills |
 | [Structural Checklist](#structural-checklist) | Combined pre-ship checklist |
 | [Gap Analysis Template](#gap-analysis-template) | How to evaluate a skill against best practices |
 | [References](#references) |  Source documents |
@@ -66,12 +66,12 @@ your-skill-name/
 | `compatibility` | Environment requirements (1-500 chars) |
 | `metadata` | Custom key-value pairs (author, version, mcp-server) |
 
-**Jerry addition:**
+**Tom addition:**
 
 | Field | Purpose |
 |-------|---------|
-| `version` | Semantic version (Jerry convention, maps to Anthropic's `metadata.version`) |
-| `activation-keywords` | Explicit keyword list for skill routing (Jerry convention) |
+| `version` | Semantic version (Tom convention, maps to Anthropic's `metadata.version`) |
+| `activation-keywords` | Explicit keyword list for skill routing (Tom convention) |
 
 ### Description Field — The Most Critical Piece
 
@@ -150,13 +150,13 @@ Solution: [How to fix]
 
 ---
 
-## Jerry Framework Conventions
+## Tom Framework Conventions
 
 > Observed across: `/adversary`, `/problem-solving`, `/orchestration`, `/worktracker`, `/nasa-se`, `/architecture`, `/transcript`, `/bootstrap`
 
-### YAML Frontmatter — Jerry Pattern
+### YAML Frontmatter — Tom Pattern
 
-Every Jerry skill uses these frontmatter fields:
+Every Tom skill uses these frontmatter fields:
 
 ```yaml
 ---
@@ -171,21 +171,21 @@ activation-keywords:
 ---
 ```
 
-**Jerry-specific fields not in Anthropic's spec:**
+**Tom-specific fields not in Anthropic's spec:**
 - `version` — Semantic versioning at frontmatter level (not nested under metadata)
 - `allowed-tools` — Comma-separated tool list (not quoted glob patterns)
-- `activation-keywords` — YAML array of trigger phrases for Jerry's skill routing
+- `activation-keywords` — YAML array of trigger phrases for Tom's skill routing
 
-### SKILL.md Body — Jerry Pattern
+### SKILL.md Body — Tom Pattern
 
-All Jerry skills follow this structural pattern:
+All Tom skills follow this structural pattern:
 
 ```markdown
 # Skill Name
 
 > **Version:** X.Y.Z
-> **Framework:** Jerry [Domain] ([Abbreviation])
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom [Domain] ([Abbreviation])
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **SSOT Reference:** [path to SSOT if applicable]
 
 ## Document Audience (Triple-Lens)
@@ -287,7 +287,7 @@ Activate when:
 ---
 
 *Skill Version: X.Y.Z*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `path/to/ssot.md`*
 *Created: YYYY-MM-DD*
 ```
@@ -349,7 +349,7 @@ Agent files define:
 
 <!-- Diataxis note: This section contains HOW-TO content (imperative registration steps). For the full step-by-step guide, see the companion how-to: projects/PROJ-013-diataxis/work/samples/howto-register-skill.md -->
 
-When a new skill is added to Jerry, it MUST be registered in:
+When a new skill is added to Tom, it MUST be registered in:
 
 | File | What to Add |
 |------|-------------|
@@ -377,7 +377,7 @@ When a new skill is added to Jerry, it MUST be registered in:
 - [ ] SKILL.md under 5,000 words
 - [ ] No README.md in skill folder
 
-**Jerry framework requirements:**
+**Tom framework requirements:**
 - [ ] Version blockquote header (Version, Framework, Constitutional Compliance)
 - [ ] Triple-Lens audience table with preamble
 - [ ] Purpose section with Key Capabilities
@@ -422,7 +422,7 @@ Use this to evaluate an existing skill against best practices:
 | Examples included | ✅/❌ | |
 | Error handling | ✅/❌ | |
 
-### Jerry Conventions
+### Tom Conventions
 | Convention | Status | Notes |
 |------------|--------|-------|
 | Version blockquote | ✅/❌ | |
@@ -458,13 +458,13 @@ Use this to evaluate an existing skill against best practices:
 
 ## Related
 
-- **Tutorial:** [Learn to create a Jerry skill](../../projects/PROJ-013-diataxis/work/samples/tutorial-create-jerry-skill.md) -- Hands-on introduction to building your first skill
+- **Tutorial:** [Learn to create a Tom skill](../../projects/PROJ-013-diataxis/work/samples/tutorial-create-tom-skill.md) -- Hands-on introduction to building your first skill
 - **How-To Guide:** [How to register a skill](../../projects/PROJ-013-diataxis/work/samples/howto-register-skill.md) -- Step-by-step registration process
 - **Reference:** [Skill Development Standards](../../.context/rules/skill-standards.md) -- HARD/MEDIUM rule specifications (H-25, H-26)
-- **Explanation:** [About Jerry's Context Rot Problem](../../projects/PROJ-013-diataxis/work/samples/explanation-context-rot.md) -- Why skills use progressive disclosure
+- **Explanation:** [About Tom's Context Rot Problem](../../projects/PROJ-013-diataxis/work/samples/explanation-context-rot.md) -- Why skills use progressive disclosure
 
 ---
 
 *Synthesized: 2026-02-19*
 *Diataxis audit: 2026-02-27 (see projects/PROJ-013-diataxis/work/audits/audit-skill-development-best-practices.md)*
-*Sources: Anthropic Skill Guide (Jan 2026), Jerry Framework Skills v0.2.3*
+*Sources: Anthropic Skill Guide (Jan 2026), Tom Framework Skills v0.2.3*

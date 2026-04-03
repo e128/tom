@@ -332,7 +332,7 @@ Very actionable for the 80% case. Four gaps reduce actionability in edge cases t
 ### Dimension 6: Traceability (Weight: 0.10)
 
 **Evidence — Well-Traced:**
-- All constitutional references cite specific principles with traceability to docs/governance/JERRY_CONSTITUTION.md
+- All constitutional references cite specific principles with traceability to docs/governance/TOM_CONSTITUTION.md
 - Handoff schema: `docs/schemas/handoff-v2.schema.json` by exact path
 - Governance schema: `docs/schemas/agent-governance-v1.schema.json` cited in governance.yaml header
 - T5 justification documented with reason (Task tool delegation to 10 sub-skills)

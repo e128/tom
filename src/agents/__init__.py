@@ -10,7 +10,7 @@ Provides vendor-agnostic agent definition management:
 - Extract pipeline to reverse-engineer canonical from existing files
 - Validation and drift detection
 
-CLI: jerry agents build|extract|validate|list|diff
+CLI: tom agents build|extract|validate|list|diff
 
 References:
     - ADR-PROJ010-003: LLM Portability Architecture

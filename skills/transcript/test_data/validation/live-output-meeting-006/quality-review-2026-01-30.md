@@ -485,7 +485,7 @@ All 15 questions have confidence >= 0.95 (Tier 1).
 - ADR-003: Bidirectional Deep Linking
 - ADR-004: File Splitting Strategy
 - CON-CHUNK-001: Max 500 segments per chunk
-- P-001: Truth and Accuracy (Jerry Constitution)
+- P-001: Truth and Accuracy (Tom Constitution)
 
 **Verdict:** **FAIL** (0.78 < 0.90 threshold)
 

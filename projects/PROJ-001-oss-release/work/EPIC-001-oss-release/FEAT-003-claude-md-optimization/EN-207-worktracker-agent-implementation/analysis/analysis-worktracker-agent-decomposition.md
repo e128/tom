@@ -739,7 +739,7 @@ User: "Verify EN-001 is ready for closure"
 
 ### References
 
-- Jerry Constitution v1.0 - `docs/governance/JERRY_CONSTITUTION.md`
+- Jerry Constitution v1.0 - `docs/governance/TOM_CONSTITUTION.md`
 - PS Agent Template - `skills/problem-solving/agents/PS_AGENT_TEMPLATE.md`
 - Worktracker Behavior Rules - `skills/worktracker/rules/worktracker-behavior-rules.md`
 - Orchestration Skill - `skills/orchestration/SKILL.md`

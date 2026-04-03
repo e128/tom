@@ -94,7 +94,7 @@ The primary inconsistency from iteration 2 is closed. The STORY-022 entity now s
 
 The stated implementation outcome ("89/89 agents pass, 6/6 tests pass") is now consistent with the story status. The code, tests, CI, and story entity all represent the same implementation state. `pytest.ini` and `pyproject.toml` are both updated consistently (not just one of the two).
 
-The two CI steps are complementary and non-contradictory: `uv run jerry agents validate-frontmatter` (schema validation) at line 210 and `uv run python scripts/validate-agent-frontmatter.py` (P-003 semantic check) at line 213.
+The two CI steps are complementary and non-contradictory: `uv run tom agents validate-frontmatter` (schema validation) at line 210 and `uv run python scripts/validate-agent-frontmatter.py` (P-003 semantic check) at line 213.
 
 **Gaps:**
 

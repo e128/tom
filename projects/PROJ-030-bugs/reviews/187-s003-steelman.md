@@ -92,7 +92,7 @@ on:
       # --- Documentation site (published separately, not part of plugin) ---
       # Product-relevant docs/ subdirs intentionally NOT excluded:
       #   docs/schemas/    — runtime validation schemas (validate-agent-frontmatter.py)
-      #   docs/governance/ — JERRY_CONSTITUTION.md, C4-escalation (AE-001)
+      #   docs/governance/ — TOM_CONSTITUTION.md, C4-escalation (AE-001)
       #   docs/knowledge/  — knowledge files loaded by agents at runtime
       #   docs/design/     — ADRs; baselined ADR changes trigger AE-004 (C4)
       #   docs/experience/ — learnings captured by agents

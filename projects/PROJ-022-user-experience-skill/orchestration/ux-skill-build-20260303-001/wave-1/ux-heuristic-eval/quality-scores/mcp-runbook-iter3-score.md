@@ -122,7 +122,7 @@ Internal references use specific anchor syntax throughout: `skills/user-experien
 
 **Improvement Path:**
 
-Add version pins for referenced rule files (e.g., "`mcp-tool-standards.md` v1.3.1" or "per `.context/rules/mcp-tool-standards.md` [Canonical Tool Names]"). Add constitutional principle citations for the prohibited tools (e.g., "Task | Worker agent; P-003 prohibition per `docs/governance/JERRY_CONSTITUTION.md`").
+Add version pins for referenced rule files (e.g., "`mcp-tool-standards.md` v1.3.1" or "per `.context/rules/mcp-tool-standards.md` [Canonical Tool Names]"). Add constitutional principle citations for the prohibited tools (e.g., "Task | Worker agent; P-003 prohibition per `docs/governance/TOM_CONSTITUTION.md`").
 
 ---
 

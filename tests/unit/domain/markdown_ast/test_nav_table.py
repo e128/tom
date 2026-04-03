@@ -5,7 +5,7 @@
 Unit tests for navigation table helpers.
 
 Tests cover:
-    - AC-ST008-1: Find navigation table in a Jerry document (first table after frontmatter)
+    - AC-ST008-1: Find navigation table in a Tom document (first table after frontmatter)
     - AC-ST008-2: Extract section names and anchor links from navigation table
     - AC-ST008-3: Validate every ## heading has a navigation entry
     - AC-ST008-4: Validate every navigation link resolves to a valid heading anchor
@@ -23,7 +23,7 @@ from __future__ import annotations
 
 import pytest
 
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.nav_table import (
     NavEntry,
     NavValidationResult,
@@ -225,26 +225,26 @@ class TestExtractNavTable:
 
     def test_returns_list_for_valid_document(self) -> None:
         """extract_nav_table() returns a list for a document with nav table."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = extract_nav_table(doc)
         assert result is not None
         assert isinstance(result, list)
 
     def test_returns_none_when_no_nav_table(self) -> None:
         """extract_nav_table() returns None when no nav table is present."""
-        doc = JerryDocument.parse(MISSING_NAV_TABLE_DOC)
+        doc = TomDocument.parse(MISSING_NAV_TABLE_DOC)
         result = extract_nav_table(doc)
         assert result is None
 
     def test_returns_none_for_empty_document(self) -> None:
         """extract_nav_table() returns None for an empty document."""
-        doc = JerryDocument.parse("")
+        doc = TomDocument.parse("")
         result = extract_nav_table(doc)
         assert result is None
 
     def test_entries_are_nav_entry_instances(self) -> None:
         """extract_nav_table() returns a list of NavEntry instances."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = extract_nav_table(doc)
         assert result is not None
         for entry in result:
@@ -252,14 +252,14 @@ class TestExtractNavTable:
 
     def test_correct_number_of_entries(self) -> None:
         """extract_nav_table() extracts the correct number of nav entries."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = extract_nav_table(doc)
         assert result is not None
         assert len(result) == 3
 
     def test_entry_section_names(self) -> None:
         """extract_nav_table() correctly extracts section names."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = extract_nav_table(doc)
         assert result is not None
         names = [e.section_name for e in result]
@@ -269,7 +269,7 @@ class TestExtractNavTable:
 
     def test_entry_anchors(self) -> None:
         """extract_nav_table() correctly extracts anchor links."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = extract_nav_table(doc)
         assert result is not None
         anchors = [e.anchor for e in result]
@@ -279,7 +279,7 @@ class TestExtractNavTable:
 
     def test_entry_descriptions(self) -> None:
         """extract_nav_table() correctly extracts descriptions."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = extract_nav_table(doc)
         assert result is not None
         descs = [e.description for e in result]
@@ -289,7 +289,7 @@ class TestExtractNavTable:
 
     def test_entry_line_numbers_are_non_negative(self) -> None:
         """extract_nav_table() assigns non-negative (0-based) line numbers."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = extract_nav_table(doc)
         assert result is not None
         for entry in result:
@@ -297,7 +297,7 @@ class TestExtractNavTable:
 
     def test_entry_line_numbers_are_ordered(self) -> None:
         """extract_nav_table() assigns increasing line numbers in order."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = extract_nav_table(doc)
         assert result is not None
         line_nums = [e.line_number for e in result]
@@ -305,14 +305,14 @@ class TestExtractNavTable:
 
     def test_two_entry_nav_table(self) -> None:
         """extract_nav_table() works with a two-entry nav table."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC_WITH_ANCHORS_ONLY)
+        doc = TomDocument.parse(VALID_JERRY_DOC_WITH_ANCHORS_ONLY)
         result = extract_nav_table(doc)
         assert result is not None
         assert len(result) == 2
 
     def test_no_nav_table_returns_none_for_short_doc(self) -> None:
         """extract_nav_table() returns None for a short doc with no table."""
-        doc = JerryDocument.parse(SHORT_DOC)
+        doc = TomDocument.parse(SHORT_DOC)
         result = extract_nav_table(doc)
         assert result is None
 
@@ -328,7 +328,7 @@ class TestExtractNavTable:
 | H-01 | No recursive | P-003 |
 | H-02 | User authority | P-020 |
 """
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = extract_nav_table(doc)
         assert result is None
 
@@ -376,56 +376,56 @@ class TestValidateNavTable:
 
     def test_returns_nav_validation_result(self) -> None:
         """validate_nav_table() returns a NavValidationResult instance."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = validate_nav_table(doc)
         assert isinstance(result, NavValidationResult)
 
     def test_valid_document_passes(self) -> None:
         """validate_nav_table() marks a fully valid document as valid."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = validate_nav_table(doc)
         assert result.is_valid is True
 
     def test_valid_document_no_missing_entries(self) -> None:
         """validate_nav_table() reports no missing entries for a valid document."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = validate_nav_table(doc)
         assert result.missing_entries == []
 
     def test_valid_document_no_orphaned_entries(self) -> None:
         """validate_nav_table() reports no orphaned entries for a valid document."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = validate_nav_table(doc)
         assert result.orphaned_entries == []
 
     def test_valid_document_entries_populated(self) -> None:
         """validate_nav_table() populates entries list for a valid document."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = validate_nav_table(doc)
         assert len(result.entries) == 3
 
     def test_missing_nav_table_is_invalid(self) -> None:
         """validate_nav_table() reports invalid when no nav table exists."""
-        doc = JerryDocument.parse(MISSING_NAV_TABLE_DOC)
+        doc = TomDocument.parse(MISSING_NAV_TABLE_DOC)
         result = validate_nav_table(doc)
         assert result.is_valid is False
 
     def test_missing_nav_table_has_missing_entries(self) -> None:
         """validate_nav_table() reports all ## headings as missing when no nav table."""
-        doc = JerryDocument.parse(MISSING_NAV_TABLE_DOC)
+        doc = TomDocument.parse(MISSING_NAV_TABLE_DOC)
         result = validate_nav_table(doc)
         # MISSING_NAV_TABLE_DOC has 3 ## headings: Summary, Details, Conclusion
         assert len(result.missing_entries) == 3
 
     def test_missing_nav_table_empty_entries(self) -> None:
         """validate_nav_table() returns empty entries list when no nav table."""
-        doc = JerryDocument.parse(MISSING_NAV_TABLE_DOC)
+        doc = TomDocument.parse(MISSING_NAV_TABLE_DOC)
         result = validate_nav_table(doc)
         assert result.entries == []
 
     def test_orphaned_entry_detected(self) -> None:
         """validate_nav_table() detects nav entries with no matching heading."""
-        doc = JerryDocument.parse(ORPHANED_ENTRY_DOC)
+        doc = TomDocument.parse(ORPHANED_ENTRY_DOC)
         result = validate_nav_table(doc)
         assert result.is_valid is False
         orphaned_names = [e.section_name for e in result.orphaned_entries]
@@ -433,32 +433,32 @@ class TestValidateNavTable:
 
     def test_missing_heading_detected(self) -> None:
         """validate_nav_table() detects ## headings missing from nav table."""
-        doc = JerryDocument.parse(MISSING_HEADING_DOC)
+        doc = TomDocument.parse(MISSING_HEADING_DOC)
         result = validate_nav_table(doc)
         assert result.is_valid is False
         assert "Unlisted Section" in result.missing_entries
 
     def test_missing_heading_listed_section_not_flagged(self) -> None:
         """validate_nav_table() does not flag headings that are in the nav table."""
-        doc = JerryDocument.parse(MISSING_HEADING_DOC)
+        doc = TomDocument.parse(MISSING_HEADING_DOC)
         result = validate_nav_table(doc)
         assert "Summary" not in result.missing_entries
 
     def test_empty_document_is_invalid(self) -> None:
         """validate_nav_table() marks an empty document as invalid."""
-        doc = JerryDocument.parse("")
+        doc = TomDocument.parse("")
         result = validate_nav_table(doc)
         assert result.is_valid is False
 
     def test_empty_document_empty_entries(self) -> None:
         """validate_nav_table() returns empty entries for empty document."""
-        doc = JerryDocument.parse("")
+        doc = TomDocument.parse("")
         result = validate_nav_table(doc)
         assert result.entries == []
 
     def test_document_sections_heading_excluded_from_missing(self) -> None:
         """validate_nav_table() excludes the 'Document Sections' heading itself."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = validate_nav_table(doc)
         # 'Document Sections' is the nav table heading and should not be
         # reported as missing from the nav table
@@ -466,7 +466,7 @@ class TestValidateNavTable:
 
     def test_valid_simple_document_passes(self) -> None:
         """validate_nav_table() correctly validates a simple two-section document."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC_WITH_ANCHORS_ONLY)
+        doc = TomDocument.parse(VALID_JERRY_DOC_WITH_ANCHORS_ONLY)
         result = validate_nav_table(doc)
         assert result.is_valid is True
         assert result.missing_entries == []
@@ -474,14 +474,14 @@ class TestValidateNavTable:
 
     def test_nav_validation_result_has_entries(self) -> None:
         """NavValidationResult entries attribute contains NavEntry objects."""
-        doc = JerryDocument.parse(VALID_JERRY_DOC)
+        doc = TomDocument.parse(VALID_JERRY_DOC)
         result = validate_nav_table(doc)
         for entry in result.entries:
             assert isinstance(entry, NavEntry)
 
     def test_orphaned_entry_result_entries_populated(self) -> None:
         """validate_nav_table() still populates entries even when there are orphans."""
-        doc = JerryDocument.parse(ORPHANED_ENTRY_DOC)
+        doc = TomDocument.parse(ORPHANED_ENTRY_DOC)
         result = validate_nav_table(doc)
         # entries should be populated even when invalid
         assert len(result.entries) > 0
@@ -503,7 +503,7 @@ class TestValidateNavTable:
 
 Content here.
 """
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = validate_nav_table(doc)
         # The anchor #wrong-anchor does not match heading_to_anchor("Summary") = "summary"
         assert result.is_valid is False
@@ -531,7 +531,7 @@ Content here.
 
 More content.
 """
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = validate_nav_table(doc)
         assert result.is_valid is False
         assert len(result.missing_entries) >= 1

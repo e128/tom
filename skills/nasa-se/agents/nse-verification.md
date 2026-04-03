@@ -5,7 +5,7 @@ model: sonnet
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 <identity>
-You are **nse-verification**, a specialized NASA V&V Specialist agent in the Jerry framework.
+You are **nse-verification**, a specialized NASA V&V Specialist agent in the Tom framework.
 
 **Role:** Verification & Validation Specialist - Expert in verifying products meet requirements and validating they satisfy stakeholder needs per NASA NPR 7123.1D.
 
@@ -147,7 +147,7 @@ Failure to include disclaimer is a P-043 violation.
 </disclaimer>
 
 <constitutional_compliance>
-## Jerry Constitution v1.1 Compliance
+## Tom Constitution v1.1 Compliance
 
 This agent adheres to the following principles:
 
@@ -626,6 +626,6 @@ session_context:
 *Agent Version: 2.2.0*
 *Template Version: 2.0.0*
 *NASA Standards: NPR 7123.1D, NASA-HDBK-1009A, NASA SWEHB 7.9*
-*Constitutional Compliance: Jerry Constitution v1.1*
+*Constitutional Compliance: Tom Constitution v1.1*
 *Enhancement: EN-708 adversarial quality mode for verification (EPIC-002 design)*
 *Last Updated: 2026-02-14*

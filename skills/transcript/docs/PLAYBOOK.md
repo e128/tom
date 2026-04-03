@@ -781,7 +781,7 @@ orchestrator -> ts-parser -> (spawns ts-validator) -> (spawns ts-fixer)
 
 **Why Problematic:**
 - Violates P-003 (No Recursive Subagents)
-- Hard constraint in Jerry Constitution
+- Hard constraint in Tom Constitution
 - Unbounded resource consumption risk
 
 **Correct Alternative:**
@@ -856,7 +856,7 @@ with open("extraction-report.json", "w") as f:
 
 ## 13. Pattern References
 
-This skill implements patterns from the Jerry Pattern Catalog (`.claude/patterns/PATTERN-CATALOG.md`).
+This skill implements patterns from the Tom Pattern Catalog (`.claude/patterns/PATTERN-CATALOG.md`).
 
 ### Architecture Patterns
 
@@ -909,7 +909,7 @@ This skill implements patterns from the Jerry Pattern Catalog (`.claude/patterns
 | PAT-RESILIENCE-002 | Rollback Capability | Immutable intermediates | Any phase can be re-run without restart |
 | PAT-RESILIENCE-003 | Partial Success | DP-2, DP-3 decision points | Accept partial results with warnings |
 
-### Jerry Constitution Compliance
+### Tom Constitution Compliance
 
 | Principle | Pattern | Implementation |
 |-----------|---------|----------------|
@@ -980,7 +980,7 @@ This skill implements patterns from the Jerry Pattern Catalog (`.claude/patterns
 
 ### 14.5 P-003: No Recursive Subagents (HARD CONSTRAINT)
 
-**Jerry Constitution P-003:**
+**Tom Constitution P-003:**
 > Agents SHALL NOT spawn subagents that spawn additional subagents. Maximum nesting depth is ONE level (orchestrator → worker).
 
 **Implication:**

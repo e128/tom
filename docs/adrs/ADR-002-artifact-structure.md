@@ -42,7 +42,7 @@ A 1-hour meeting transcript contains ~10,000-15,000 words (~13K-20K tokens), but
 | C-003 | Files must be self-contained (readable in isolation) | Session independence |
 | C-004 | Directory structure must support future extensions | Extensibility |
 | C-005 | Navigation must work without reading all content | Efficiency |
-| C-006 | Output must be compatible with Jerry worktracker | IR-004, IR-005 |
+| C-006 | Output must be compatible with Tom worktracker | IR-004, IR-005 |
 
 ### Forces
 
@@ -169,7 +169,7 @@ Session-identified directory with numbered subdirectories and master index.
 - Session ID provides uniqueness
 - Index enables efficient navigation
 - Numbered ordering maintains structure
-- Dedicated workitems directory for Jerry integration
+- Dedicated workitems directory for Tom integration
 - Room for future categories
 
 **Cons:**
@@ -198,7 +198,7 @@ Session-identified directory with numbered subdirectories and master index.
 
 2. **Organized Navigation (C-005):** The 00-index.md file provides a manifest with token counts, allowing Claude to plan which files to read without loading all content.
 
-3. **Jerry Integration (C-006):** The dedicated 08-workitems/ directory provides a clear location for suggested tasks that can be imported into worktracker.
+3. **Tom Integration (C-006):** The dedicated 08-workitems/ directory provides a clear location for suggested tasks that can be imported into worktracker.
 
 4. **Future Extensibility (C-004):** New categories can be added as 09-xxx/, 10-xxx/ without disrupting existing structure.
 
@@ -225,7 +225,7 @@ Session-identified directory with numbered subdirectories and master index.
 
 3. **Session Portability:** Complete packet can be moved/copied; all paths are relative.
 
-4. **Integration Ready:** 08-workitems/ provides ready-made location for Jerry worktracker import.
+4. **Integration Ready:** 08-workitems/ provides ready-made location for Tom worktracker import.
 
 5. **Scalable:** Can handle transcripts of any length through file splitting.
 
@@ -295,7 +295,7 @@ When `topics.md` exceeds 35K tokens:
 | 1 | Implement token counting in output-formatter | ps-architect | Pending |
 | 2 | Create index template with token counts | ps-architect | Pending |
 | 3 | Implement file splitting logic | ps-architect | Pending |
-| 4 | Define 08-workitems schema for Jerry | ps-architect | Pending |
+| 4 | Define 08-workitems schema for Tom | ps-architect | Pending |
 | 5 | Create session ID generator | ps-architect | Pending |
 
 ### Validation Criteria
@@ -327,7 +327,7 @@ When `topics.md` exceeds 35K tokens:
 | 2 | EN-003 REQUIREMENTS-SPECIFICATION.md | Requirements | NFR-001, DEC-005 |
 | 3 | Pinecone Chunking Strategies | Industry | Token management patterns |
 | 4 | Chroma Context Rot Research | Research | Performance degradation evidence |
-| 5 | Jerry Constitution P-002 | Governance | File persistence requirement |
+| 5 | Tom Constitution P-002 | Governance | File persistence requirement |
 | 6 | ADR-001 Agent Architecture | Decision | Agent responsibilities |
 
 ---

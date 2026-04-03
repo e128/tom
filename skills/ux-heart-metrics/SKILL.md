@@ -31,8 +31,8 @@ allowed-tools:
 # HEART Metrics Sub-Skill
 
 > **Version:** 1.2.0
-> **Framework:** Jerry User-Experience / HEART Metrics (Google)
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom User-Experience / HEART Metrics (Google)
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **Parent Skill:** `/user-experience` (`skills/user-experience/SKILL.md`)
 > **Project:** PROJ-022 User Experience Skill | Wave 2 (Lean UX + Measurement)
 
@@ -194,7 +194,7 @@ The `ux-orchestrator` dispatches to `ux-heart-analyst` via Agent:
 ```python
 Agent(
     description="ux-heart-analyst: HEART metrics for checkout flow",
-    subagent_type="jerry:ux-heart-analyst",
+    subagent_type="tom:ux-heart-analyst",
     prompt="""
 ## UX CONTEXT (REQUIRED)
 - **Engagement ID:** UX-0003
@@ -613,7 +613,7 @@ The following shows populated rows from a HEART metrics analysis of an e-commerc
 
 ## Cross-Framework Integration
 
-HEART output serves as downstream measurement for multiple upstream sub-skills. The `ux-orchestrator` manages handoff data between sub-skills via the Jerry handoff protocol (`docs/schemas/handoff-v2.schema.json` -- planned; not yet committed to repository; schema specified in `.context/rules/agent-development-standards.md` [Handoff Protocol]).
+HEART output serves as downstream measurement for multiple upstream sub-skills. The `ux-orchestrator` manages handoff data between sub-skills via the Tom handoff protocol (`docs/schemas/handoff-v2.schema.json` -- planned; not yet committed to repository; schema specified in `.context/rules/agent-development-standards.md` [Handoff Protocol]).
 
 ### Upstream Handoff Contracts (Receives From)
 
@@ -799,7 +799,7 @@ Validation sources that advance LOW threshold recommendations to MEDIUM:
 <!-- VERSION: 1.2.0 | DATE: 2026-03-04 | SOURCE: PROJ-022-user-experience-skill/PLAN.md | PARENT: /user-experience skill | REVISION: iter2 precision fixes — evidence quality (Baymard specific citation, NPS bibliographic entry, Phase 5 dashboard citation), methodological rigor (goal adjudication guidance, signal-to-metric edge cases), internal consistency (tools/allowed-tools reconciliation, AGENTS.md section-name reference) -->
 *Sub-Skill Version: 1.2.0*
 *Parent Skill: `/user-experience` (`skills/user-experience/SKILL.md`)*
-*Constitutional Compliance: Jerry Constitution v1.0 (P-003, P-020, P-022, P-001, P-002)*
+*Constitutional Compliance: Tom Constitution v1.0 (P-003, P-020, P-022, P-001, P-002)*
 *SSOT: `.context/rules/quality-enforcement.md`*
 *Project: PROJ-022 User Experience Skill | Wave 2*
 *Created: 2026-03-04*

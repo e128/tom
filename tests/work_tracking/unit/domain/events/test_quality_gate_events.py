@@ -168,7 +168,7 @@ class TestGateCheckCompleted:
             passed=True,
             duration_ms=45000,
             output_summary="All 100 tests passed",
-            artifact_path=".jerry/evidence/test-run-123.xml",
+            artifact_path=".tom/evidence/test-run-123.xml",
         )
         payload = event._payload()
 
@@ -177,7 +177,7 @@ class TestGateCheckCompleted:
         assert payload["passed"] is True
         assert payload["duration_ms"] == 45000
         assert payload["output_summary"] == "All 100 tests passed"
-        assert payload["artifact_path"] == ".jerry/evidence/test-run-123.xml"
+        assert payload["artifact_path"] == ".tom/evidence/test-run-123.xml"
 
     def test_from_dict_restores_event(self) -> None:
         """from_dict restores event correctly."""
@@ -260,7 +260,7 @@ class TestGateExecutionCompleted:
             total_duration_ms=120000,
             checks_passed=4,
             checks_failed=0,
-            evidence_path=".jerry/evidence/L2-exec-123.json",
+            evidence_path=".tom/evidence/L2-exec-123.json",
         )
         payload = event._payload()
 
@@ -269,7 +269,7 @@ class TestGateExecutionCompleted:
         assert payload["total_duration_ms"] == 120000
         assert payload["checks_passed"] == 4
         assert payload["checks_failed"] == 0
-        assert payload["evidence_path"] == ".jerry/evidence/L2-exec-123.json"
+        assert payload["evidence_path"] == ".tom/evidence/L2-exec-123.json"
 
     def test_from_dict_restores_event(self) -> None:
         """from_dict restores event correctly."""

@@ -78,7 +78,7 @@ content-type: application/json; charset=utf-8
 **Commands:**
 ```
 curl -sI https://jerry.geekatron.org/INSTALLATION/ | head -1
-curl -sI https://jerry.geekatron.org/governance/JERRY_CONSTITUTION/ | head -1
+curl -sI https://jerry.geekatron.org/governance/TOM_CONSTITUTION/ | head -1
 curl -sI https://jerry.geekatron.org/playbooks/problem-solving/ | head -1
 ```
 
@@ -115,7 +115,7 @@ Content-Length: 162
 | HTTPS HTTP/2 200 | PASS | TLS active; HTTP/2 confirmed |
 | Search index HTTP 200 + JSON | PASS | Functional search endpoint |
 | INSTALLATION/ nav page 200 | PASS | Getting-Started section functional |
-| JERRY_CONSTITUTION/ nav page 200 | PASS | Governance section functional |
+| TOM_CONSTITUTION/ nav page 200 | PASS | Governance section functional |
 | problem-solving/ nav page 200 | PASS | Guides section functional |
 | HTTP 301 redirect | PASS | HTTPS enforcement confirmed |
 

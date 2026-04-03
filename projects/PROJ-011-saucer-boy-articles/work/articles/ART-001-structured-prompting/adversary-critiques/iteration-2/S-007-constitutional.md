@@ -5,7 +5,7 @@
 **Criticality:** C3 (public-facing branded article; >10 files in review chain; reputational impact)
 **Date:** 2026-02-23
 **Reviewer:** adv-executor (S-007, iteration 2)
-**Constitutional Context:** JERRY_CONSTITUTION.md (P-001 through P-043), quality-enforcement.md (H-01 through H-36), Voice Constitution boundary conditions
+**Constitutional Context:** TOM_CONSTITUTION.md (P-001 through P-043), quality-enforcement.md (H-01 through H-36), Voice Constitution boundary conditions
 **Prior Iteration:** `adversary-critiques/iteration-1-v2/S-007-constitutional.md` reviewed `draft-5-llm-tell-clean.md`; this review evaluates `draft-6-iteration-2.md` which incorporates citation additions and evidence grounding fixes recommended by the iteration-2 S-014 score (0.919 REVISE).
 **Anti-leniency protocol:** Active. Scoring what is on the page. Brand publication context: this is a public artifact under the Jerry Framework name. Leniency bias is actively counteracted by comparing against the strongest published practitioner articles in prompt engineering.
 

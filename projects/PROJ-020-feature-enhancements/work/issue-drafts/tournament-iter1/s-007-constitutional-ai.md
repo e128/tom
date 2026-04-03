@@ -8,7 +8,7 @@
 - **Criticality:** C4
 - **Executed:** 2026-03-03T00:00:00Z
 - **Reviewer:** adv-executor (S-007)
-- **Constitutional Context:** JERRY_CONSTITUTION.md v1.0 (P-001 through P-043), quality-enforcement.md HARD Rule Index (H-01 through H-36), mandatory-skill-usage.md, markdown-navigation-standards.md, agent-development-standards.md, agent-routing-standards.md
+- **Constitutional Context:** TOM_CONSTITUTION.md v1.0 (P-001 through P-043), quality-enforcement.md HARD Rule Index (H-01 through H-36), mandatory-skill-usage.md, markdown-navigation-standards.md, agent-development-standards.md, agent-routing-standards.md
 
 ---
 
@@ -18,7 +18,7 @@
 - Document deliverables: `markdown-navigation-standards.md` (H-23), `quality-enforcement.md`
 - Architecture/design documents: `agent-development-standards.md` (H-34, H-35/H-34b), `agent-routing-standards.md` (H-36)
 - Skill definitions: `skill-standards.md` (H-25, H-26)
-- Governance: `JERRY_CONSTITUTION.md` (P-001 through P-043)
+- Governance: `TOM_CONSTITUTION.md` (P-001 through P-043)
 - Cross-cutting: `quality-enforcement.md` HARD Rule Index
 
 **Auto-escalation check:** This deliverable touches agent/skill architecture (AE-003/AE-005 proximity). Criticality is already C4 — no further escalation needed.
@@ -34,10 +34,10 @@
 | H-26 | Skill description WHAT+WHEN+triggers, repo-relative paths, CLAUDE.md+AGENTS.md registration | HARD | skill-standards.md | YES | Issue defines skill SKILL.md requirements and registration path |
 | H-34 | Agent definitions validate against JSON Schema; dual-file `.md`+`.governance.yaml` architecture | HARD | agent-development-standards.md | YES | Issue specifies agent definitions for 11 agents |
 | H-36 | Circuit breaker max 3 hops; keyword-first routing | HARD | agent-routing-standards.md | YES | Issue defines routing architecture for the skill |
-| P-001 | Truth and Accuracy -- cite sources, acknowledge uncertainty | SOFT | JERRY_CONSTITUTION.md | YES | Issue makes factual claims about frameworks, statistics |
-| P-003 | No recursive subagents -- max 1 level | HARD | JERRY_CONSTITUTION.md | YES | Issue specifies agent hierarchy (P-003 compliance referenced explicitly) |
-| P-021 | Transparency of Limitations | MEDIUM | JERRY_CONSTITUTION.md | YES | Issue documents limitations |
-| P-022 | No Deception -- confidence levels, capabilities | HARD | JERRY_CONSTITUTION.md | YES | Issue makes confidence claims about AI outputs |
+| P-001 | Truth and Accuracy -- cite sources, acknowledge uncertainty | SOFT | TOM_CONSTITUTION.md | YES | Issue makes factual claims about frameworks, statistics |
+| P-003 | No recursive subagents -- max 1 level | HARD | TOM_CONSTITUTION.md | YES | Issue specifies agent hierarchy (P-003 compliance referenced explicitly) |
+| P-021 | Transparency of Limitations | MEDIUM | TOM_CONSTITUTION.md | YES | Issue documents limitations |
+| P-022 | No Deception -- confidence levels, capabilities | HARD | TOM_CONSTITUTION.md | YES | Issue makes confidence claims about AI outputs |
 | AD-M-001 | Agent name kebab-case `{skill-prefix}-{function}` pattern | MEDIUM | agent-development-standards.md | YES | 11 agent names defined |
 | AD-M-002 | Semantic versioning for agents | MEDIUM | agent-development-standards.md | PARTIAL | No version numbers specified for agents |
 | AD-M-003 | Agent description WHAT+WHEN+trigger keywords, <1024 chars | MEDIUM | agent-development-standards.md | YES | Agent descriptions implied |
@@ -46,7 +46,7 @@
 | RT-M-002 | Each skill SHOULD have >= 3 positive trigger keywords | MEDIUM | agent-routing-standards.md | YES | Issue specifies trigger map entry |
 | RT-M-003 | Enhanced 5-column trigger map format | MEDIUM | agent-routing-standards.md | YES | Issue references trigger map registration |
 | NAV-001 | Navigation table required | HARD (H-23) | markdown-navigation-standards.md | YES | Document is 1047 lines |
-| P-011 | Evidence-Based Decisions | MEDIUM | JERRY_CONSTITUTION.md | YES | Issue makes selection decisions with cited backing |
+| P-011 | Evidence-Based Decisions | MEDIUM | TOM_CONSTITUTION.md | YES | Issue makes selection decisions with cited backing |
 
 ---
 

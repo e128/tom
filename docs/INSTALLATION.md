@@ -1,4 +1,4 @@
-# Jerry Framework Installation Guide
+# Tom Framework Installation Guide
 
 > Your AI coding partner just got guardrails, knowledge accrual, and a whole crew of specialized agents. Let's get you set up and shredding.
 
@@ -11,7 +11,7 @@
 | Section | Purpose |
 |---------|---------|
 | [Prerequisites](#prerequisites) | What you need before dropping in |
-| [Which Install Method?](#which-install-method) | Four paths, one Jerry — pick the line that fits your setup |
+| [Which Install Method?](#which-install-method) | Four paths, one Tom — pick the line that fits your setup |
 | [Install from GitHub](#install-from-github) | Persistent install via Claude Code's plugin system (~2 min) |
 | [Enable Hooks](#enable-hooks-early-access) | Session context and quality enforcement (early access — hooks may fail silently) |
 | [Capability Matrix](#capability-matrix) | What works with and without uv |
@@ -19,8 +19,8 @@
 | [Session Install](#session-install-plugin-dir-flag) | Session-only install — skills available immediately, no configuration |
 | [Configuration](#configuration) | Project setup — required for skills to work |
 | [Verification](#verification) | Confirm everything landed |
-| [Using Jerry](#using-jerry) | Getting started with skills |
-| [Developer Setup](#developer-setup) | Contributing to Jerry's codebase |
+| [Using Tom](#using-tom) | Getting started with skills |
+| [Developer Setup](#developer-setup) | Contributing to Tom's codebase |
 | [Troubleshooting](#troubleshooting) | When things don't land clean — common fixes |
 | [Updating](#updating) | Pull latest changes — GitHub users vs local clone |
 | [Uninstallation](#uninstallation) | Clean removal: plugin, source, and local files |
@@ -35,13 +35,13 @@
 
 | Software | Required? | Purpose |
 |----------|-----------|---------|
-| [Claude Code](https://code.claude.com/docs/en/quickstart) 1.0.33+ | **Yes** | The AI coding assistant Jerry extends |
+| [Claude Code](https://code.claude.com/docs/en/quickstart) 1.0.33+ | **Yes** | The AI coding assistant Tom extends |
 | SSH key configured for GitHub | **No** — [HTTPS alternative available](#install-from-github) | The `owner/repo` shorthand clones via SSH; HTTPS URL works without SSH |
 | [uv](https://docs.astral.sh/uv/) | Recommended | Enables hooks (session context, quality enforcement) |
 
 > **Network access:** The GitHub install method needs outbound access to `github.com` (and `raw.githubusercontent.com` for plugin discovery). If you install uv for hooks, the installer reaches `astral.sh`. The Local Clone method requires `github.com` only for the initial clone — after that, no network access is needed. For fully air-gapped environments, see [Air-gapped install](#air-gapped-install) under Local Clone.
 
-> **Why does SSH come up?** When you add a plugin source using the `owner/repo` shorthand (e.g., `geekatron/jerry`), Claude Code clones the repository via SSH. Even though Jerry's repo is public, the `owner/repo` format defaults to SSH. If you don't have SSH keys configured for GitHub, you'll see "Permission denied (publickey)." The fix is simple: use the full HTTPS URL instead. Both commands do the same thing. See [Install from GitHub](#install-from-github) for both options side by side.
+> **Why does SSH come up?** When you add a plugin source using the `owner/repo` shorthand (e.g., `geekatron/tom`), Claude Code clones the repository via SSH. Even though Tom's repo is public, the `owner/repo` format defaults to SSH. If you don't have SSH keys configured for GitHub, you'll see "Permission denied (publickey)." The fix is simple: use the full HTTPS URL instead. Both commands do the same thing. See [Install from GitHub](#install-from-github) for both options side by side.
 
 > **Don't have Claude Code yet?** No worries — install it first via Anthropic's [Claude Code quickstart](https://code.claude.com/docs/en/quickstart). Takes a few minutes. We'll be here when you get back.
 
@@ -51,7 +51,7 @@
 
 ## Which Install Method?
 
-Four install methods — all get you the same Jerry. Pick the line that fits your setup.
+Four install methods — all get you the same Tom. Pick the line that fits your setup.
 
 | Your Situation | Method | Time |
 |----------------|--------|------|
@@ -70,37 +70,37 @@ Not sure which to pick? Start with [Install from GitHub](#install-from-github) u
 
 Jerry is a **community Claude Code plugin** hosted on [GitHub](https://github.com/geekatron/jerry). It is not part of the official Anthropic plugin catalog — you install it directly from the GitHub repository using Claude Code's built-in plugin system.
 
-> **What does "marketplace" mean here?** Claude Code uses the word "marketplace" in its `/plugin marketplace` commands, but for community plugins like Jerry, it just means "register a plugin source." Any GitHub repository with a `.claude-plugin/marketplace.json` file can serve as a plugin source. Jerry's GitHub repository is its own marketplace. This is separate from the [official Anthropic marketplace](https://github.com/anthropics/claude-plugins-official), which is automatically available in Claude Code and contains Anthropic-curated plugins.
+> **What does "marketplace" mean here?** Claude Code uses the word "marketplace" in its `/plugin marketplace` commands, but for community plugins like Tom, it just means "register a plugin source." Any GitHub repository with a `.claude-plugin/marketplace.json` file can serve as a plugin source. Tom's GitHub repository is its own marketplace. This is separate from the [official Anthropic marketplace](https://github.com/anthropics/claude-plugins-official), which is automatically available in Claude Code and contains Anthropic-curated plugins.
 
 > **Where do I type these commands?** All `/plugin` commands are typed into Claude Code's chat input — the same text box where you send messages to the AI. Type the command and press Enter. These are not terminal commands.
 
 > **Arriving from the HTTPS row in the table above?** Use the HTTPS command in Step 1 below (the second row in the table). It works without SSH keys.
 
-**Step 1: Add the Jerry repository as a plugin source**
+**Step 1: Add the Tom repository as a plugin source**
 
 Pick whichever command matches your setup — all three do the same thing:
 
 | Your Setup | Command |
 |------------|---------|
-| **SSH key configured** (shorthand) | `/plugin marketplace add geekatron/jerry` |
-| **SSH key configured** (explicit URL) | `/plugin marketplace add git@github.com:geekatron/jerry.git` |
+| **SSH key configured** (shorthand) | `/plugin marketplace add geekatron/tom` |
+| **SSH key configured** (explicit URL) | `/plugin marketplace add git@github.com:geekatron/tom.git` |
 | **No SSH key (or not sure)** | `/plugin marketplace add https://github.com/geekatron/jerry.git` |
 
 > The `owner/repo` shorthand resolves to SSH under the hood — it's equivalent to the explicit SSH URL. Both require an SSH key configured for GitHub. The HTTPS URL works without SSH keys.
 
-This tells Claude Code where to find Jerry. Nothing is installed yet — you're just registering the source.
+This tells Claude Code where to find Tom. Nothing is installed yet — you're just registering the source.
 
 > **SSH authentication failed?** If you see "Permission denied (publickey)", use the HTTPS command from the table above. It clones over HTTPS — no SSH keys needed.
 
 **Step 2: Verify the source registered**
 
-Run this to confirm Jerry's marketplace source was added:
+Run this to confirm Tom's marketplace source was added:
 
 ```
 /plugin marketplace list
 ```
 
-You should see `jerry-framework` in the output. This is the source name you'll use in the next step. If you don't see it, re-run Step 1.
+You should see `tom-framework` in the output. This is the source name you'll use in the next step. If you don't see it, re-run Step 1.
 
 > **Shortcut:** You can also type `/plugin market list` — Claude Code accepts `market` as shorthand for `marketplace`.
 
@@ -109,26 +109,26 @@ You should see `jerry-framework` in the output. This is the source name you'll u
 Use the source name from Step 2's output as the `@suffix`:
 
 ```
-/plugin install jerry@<name-from-step-2>
+/plugin install tom@<name-from-step-2>
 ```
 
-If Step 2 showed `jerry-framework` (the default), the command is:
+If Step 2 showed `tom-framework` (the default), the command is:
 
 ```
-/plugin install jerry@jerry-framework
+/plugin install tom@tom-framework
 ```
 
-This downloads and activates Jerry's skills, agents, and hooks. The format is `plugin-name@source-name` — `jerry` is the plugin name and the part after `@` is the source name you verified in Step 2.
+This downloads and activates Tom's skills, agents, and hooks. The format is `plugin-name@source-name` — `tom` is the plugin name and the part after `@` is the source name you verified in Step 2.
 
-> **"Plugin not found"?** The source name must match exactly what `/plugin marketplace list` shows. Re-run Step 2 and copy the name from the output. The source name comes from Jerry's [`.claude-plugin/marketplace.json`](https://github.com/geekatron/jerry/blob/main/.claude-plugin/marketplace.json) — you can inspect it to verify.
+> **"Plugin not found"?** The source name must match exactly what `/plugin marketplace list` shows. Re-run Step 2 and copy the name from the output. The source name comes from Tom's [`.claude-plugin/marketplace.json`](https://github.com/geekatron/jerry/blob/main/.claude-plugin/marketplace.json) — you can inspect it to verify.
 
 **Step 4: Confirm it landed**
 
 1. Run `/plugin` in Claude Code
 2. Go to the **Installed** tab
-3. Verify `jerry` appears in the list
+3. Verify `tom` appears in the list
 
-If `jerry` appears, you're in. Head to [Configuration](#configuration) to set up your first project, then [Verification](#verification) to confirm everything's firing.
+If `tom` appears, you're in. Head to [Configuration](#configuration) to set up your first project, then [Verification](#verification) to confirm everything's firing.
 
 ### Installation Scope
 
@@ -137,20 +137,20 @@ During install, Claude Code asks which scope to use:
 | Scope | Effect | When to Use |
 |-------|--------|-------------|
 | **User** (default) | Installs for you across all projects | Personal use — this is what most people want |
-| **Project** | Added to `.claude/settings.json` (version-controlled) | Team-wide — everyone who clones the repo gets Jerry |
+| **Project** | Added to `.claude/settings.json` (version-controlled) | Team-wide — everyone who clones the repo gets Tom |
 | **Local** | Only you, only this repository | Testing a specific version |
 
-**Recommendation:** Use **User** for personal use. Use **Project** when you want your whole team using Jerry — the settings file is committed to version control, so new team members get Jerry the moment they clone.
+**Recommendation:** Use **User** for personal use. Use **Project** when you want your whole team using Tom — the settings file is committed to version control, so new team members get Tom the moment they clone.
 
 ### Interactive Installation (after adding the source)
 
-> **Important:** Jerry won't appear in the Discover tab until you complete [Step 1](#install-from-github) above (adding the plugin source via CLI). The Discover tab shows plugins from all registered marketplaces — Jerry is a community plugin, not part of the official Anthropic catalog, so it only appears after you add its source.
+> **Important:** Tom won't appear in the Discover tab until you complete [Step 1](#install-from-github) above (adding the plugin source via CLI). The Discover tab shows plugins from all registered marketplaces — Tom is a community plugin, not part of the official Anthropic catalog, so it only appears after you add its source.
 
 After completing [Step 1](#install-from-github), you can also install through the `/plugin` UI:
 
 1. Run `/plugin`
-2. Navigate to the **Discover** tab — Jerry will appear here because you registered its source
-3. Find `jerry` and press Enter
+2. Navigate to the **Discover** tab — Tom will appear here because you registered its source
+3. Find `tom` and press Enter
 4. Select your installation scope
 
 > **Something not working?** If the GitHub path gives you trouble, the [Local Clone](#local-clone) method always works. Then [file an issue](https://github.com/geekatron/jerry/issues) so we can smooth the primary path.
@@ -163,7 +163,7 @@ After completing [Step 1](#install-from-github), you can also install through th
 > 1. Start a new Claude Code session and check whether the `<project-context>` tag appears (SessionStart hook)
 > 2. If the tag is absent, check the `/plugin` **Errors** tab and [GitHub Issues tagged `hooks`](https://github.com/geekatron/jerry/issues?q=label%3Ahooks) for known issues
 
-Skills work the moment you install. Hooks are the next level — they're what keep Jerry dialed across your entire session: auto-loading context at startup, reinforcing quality rules every prompt, catching state before compaction wipes it, and keeping the agent hierarchy honest. Think of hooks as Jerry's immune system — the skills are the muscles, but hooks keep everything running clean underneath.
+Skills work the moment you install. Hooks are the next level — they're what keep Tom dialed across your entire session: auto-loading context at startup, reinforcing quality rules every prompt, catching state before compaction wipes it, and keeping the agent hierarchy honest. Think of hooks as Tom's immune system — the skills are the muscles, but hooks keep everything running clean underneath.
 
 They need [uv](https://docs.astral.sh/uv/). It takes 30 seconds.
 
@@ -173,7 +173,7 @@ They need [uv](https://docs.astral.sh/uv/). It takes 30 seconds.
 |------|-------------|
 | SessionStart | Auto-loads project context, rules, and quality framework at session start |
 | UserPromptSubmit | Re-injects critical rules every prompt to combat context rot (L2 enforcement) |
-| PreCompact | Saves critical context before compaction — Jerry's defense against losing state when the context window fills |
+| PreCompact | Saves critical context before compaction — Tom's defense against losing state when the context window fills |
 | PreToolUse | AST-based validation and security guardrails before tool calls execute (L3 enforcement) |
 | SubagentStop | Enforces single-level subagent hierarchy and captures orchestration handoffs (P-003) |
 | Stop | Context stop gate — preserves session state on exit |
@@ -219,16 +219,16 @@ Once uv is installed, hooks should activate automatically the next time you star
 | Subagent hierarchy enforcement | No | Yes |
 | Session state preservation on exit | No | Yes |
 
-Without uv, you get the skills but not the guardrails. Everything still works — but the enforcement architecture that keeps Jerry honest across long sessions stays dark. Install uv. It's worth the 30 seconds.
+Without uv, you get the skills but not the guardrails. Everything still works — but the enforcement architecture that keeps Tom honest across long sessions stays dark. Install uv. It's worth the 30 seconds.
 
 ---
 
 ## Local Clone
 
-Same Jerry, different delivery route. Use this method if you:
+Same Tom, different delivery route. Use this method if you:
 
 - Are in a **network-restricted environment** that blocks Claude Code's GitHub access
-- Want **offline** access to Jerry's source
+- Want **offline** access to Tom's source
 - Need to **pin a specific version** (e.g., `git clone --branch v0.21.0`)
 - Want to **inspect the code** before installing
 
@@ -255,10 +255,10 @@ git clone https://github.com/geekatron/jerry.git "$env:USERPROFILE\plugins\jerry
 In Claude Code (all `/plugin` commands are typed into Claude Code's chat input, not your terminal):
 
 ```
-/plugin marketplace add ~/plugins/jerry
+/plugin marketplace add ~/plugins/tom
 ```
 
-**Windows (Claude Code):** Use forward slashes — `/plugin marketplace add C:/Users/YOUR_USERNAME/plugins/jerry`
+**Windows (Claude Code):** Use forward slashes — `/plugin marketplace add C:/Users/YOUR_USERNAME/plugins/tom`
 
 Replace `YOUR_USERNAME` with your actual Windows username. To find the full path, run `echo $env:USERPROFILE` in PowerShell.
 
@@ -267,10 +267,10 @@ Replace `YOUR_USERNAME` with your actual Windows username. To find the full path
 Run `/plugin marketplace list` to confirm the source registered, then install using the name from the list:
 
 ```
-/plugin install jerry@<name-from-list>
+/plugin install tom@<name-from-list>
 ```
 
-If the list showed `jerry-framework` (the default), the command is `/plugin install jerry@jerry-framework`.
+If the list showed `tom-framework` (the default), the command is `/plugin install tom@tom-framework`.
 
 > **"Plugin not found"?** The source name must match exactly what `/plugin marketplace list` shows. See [Plugin not found](#plugin-not-found-after-adding-source) in Troubleshooting.
 
@@ -279,7 +279,7 @@ If the list showed `jerry-framework` (the default), the command is `/plugin inst
 If you prefer SSH (e.g., you already have an SSH key configured with GitHub):
 
 ```bash
-git clone git@github.com:geekatron/jerry.git ~/plugins/jerry
+git clone git@github.com:geekatron/tom.git ~/plugins/tom
 ```
 
 All subsequent steps are the same. See [GitHub's SSH documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for key setup.
@@ -289,14 +289,14 @@ All subsequent steps are the same. See [GitHub's SSH documentation](https://docs
 For fully air-gapped environments where `github.com` is blocked entirely:
 
 1. Clone the repository from a machine with GitHub access
-2. Transfer the `jerry/` directory to the restricted machine via your organization's approved file transfer method
+2. Transfer the `tom/` directory to the restricted machine via your organization's approved file transfer method
 3. Proceed from [Step 2: Add as a local plugin source](#step-2-add-as-a-local-plugin-source) using the local path
 
 > **uv in air-gapped environments:** The uv installer also requires network access (to `astral.sh`). For air-gapped uv installation, download a release binary from [uv GitHub releases](https://github.com/astral-sh/uv/releases) and place it in `~/.local/bin/` manually.
 
 ### Version pinning
 
-To pin Jerry to a specific release:
+To pin Tom to a specific release:
 
 ```bash
 git clone --branch v0.21.0 https://github.com/geekatron/jerry.git ~/plugins/jerry
@@ -308,14 +308,14 @@ See [releases](https://github.com/geekatron/jerry/releases) for available tags.
 
 ## Session Install (Plugin Dir Flag)
 
-Want to try Jerry without any configuration? Clone the repo and point Claude Code at it directly — skills are available immediately, no plugin source setup needed:
+Want to try Tom without any configuration? Clone the repo and point Claude Code at it directly — skills are available immediately, no plugin source setup needed:
 
 ```bash
 # Clone if you haven't already
 git clone https://github.com/geekatron/jerry.git ~/plugins/jerry
 
-# Start Claude Code with Jerry loaded
-claude --plugin-dir ~/plugins/jerry
+# Start Claude Code with Tom loaded
+claude --plugin-dir ~/plugins/tom
 ```
 
 Skills are available immediately — no `/plugin install` needed. Try `/problem-solving` in Claude Code's chat input to see what you're working with.
@@ -328,11 +328,11 @@ Skills are available immediately — no `/plugin install` needed. Try `/problem-
 
 ### Project Setup (Required for Skills)
 
-This is where Jerry goes from installed to yours. Jerry organizes your work into projects — each one is a workspace where your research, decisions, and work items build up over time. It's how Jerry remembers what you're working on across sessions, even when the context window resets.
+This is where Tom goes from installed to yours. Tom organizes your work into projects — each one is a workspace where your research, decisions, and work items build up over time. It's how Tom remembers what you're working on across sessions, even when the context window resets.
 
 Most skills need an active project to operate. Without one, you'll see `<project-required>` messages instead of skill output. Four steps and you're set.
 
-1. **Navigate to your repository** (the one where you want Jerry to work):
+1. **Navigate to your repository** (the one where you want Tom to work):
 
    ```bash
    cd /path/to/your/repo
@@ -348,7 +348,7 @@ Most skills need an active project to operate. Without one, you'll see `<project
    $env:JERRY_PROJECT = "PROJ-001-my-project"
    ```
 
-   > **Project naming:** The format is `PROJ-{NNN}-{slug}` and it matters — Jerry's CLI and hooks validate this pattern. If you use a different format (e.g., `my-project` instead of `PROJ-001-my-project`), you'll see `<project-error>` messages. Pick any slug that describes your work (e.g., `PROJ-001-my-api`). Your first project is typically `PROJ-001`.
+   > **Project naming:** The format is `PROJ-{NNN}-{slug}` and it matters — Tom's CLI and hooks validate this pattern. If you use a different format (e.g., `my-project` instead of `PROJ-001-my-project`), you'll see `<project-error>` messages. Pick any slug that describes your work (e.g., `PROJ-001-my-api`). Your first project is typically `PROJ-001`.
 
 3. **Make it persistent** (so you don't lose it when you close the terminal):
 
@@ -370,15 +370,15 @@ Most skills need an active project to operate. Without one, you'll see `<project
 
    ```bash
    # macOS/Linux
-   mkdir -p projects/PROJ-001-my-project/.jerry/data/items
+   mkdir -p projects/PROJ-001-my-project/.tom/data/items
 
    # Windows PowerShell
-   New-Item -ItemType Directory -Force -Path "projects\PROJ-001-my-project\.jerry\data\items"
+   New-Item -ItemType Directory -Force -Path "projects\PROJ-001-my-project\.tom\data\items"
    ```
 
-   > **Don't have a repository yet?** Jerry works in any directory. Create one: `mkdir my-project && cd my-project && git init`, then run the `mkdir` command above. Jerry doesn't require an existing codebase.
+   > **Don't have a repository yet?** Tom works in any directory. Create one: `mkdir my-project && cd my-project && git init`, then run the `mkdir` command above. Tom doesn't require an existing codebase.
 
-   > The `.jerry/` directory contains operational state and is gitignored — do not commit it. If you don't have a `.gitignore` yet: `echo '.jerry/' >> .gitignore`. Jerry auto-creates additional subdirectories (`work/`, `decisions/`, `orchestration/`) as skills produce output. You only need the base structure above.
+   > The `.tom/` directory contains operational state and is gitignored — do not commit it. If you don't have a `.gitignore` yet: `echo '.tom/' >> .gitignore`. Tom auto-creates additional subdirectories (`work/`, `decisions/`, `orchestration/`) as skills produce output. You only need the base structure above.
 
 The SessionStart hook auto-loads project context when you start Claude Code. If you skip this section, skills will prompt you to set up a project when you invoke them — you'll know because you'll see `<project-required>` in the output.
 
@@ -390,7 +390,7 @@ The SessionStart hook auto-loads project context when you start Claude Code. If 
 
 1. In Claude Code, run `/plugin`
 2. Go to the **Installed** tab
-3. Verify `jerry` appears in the list
+3. Verify `tom` appears in the list
 
 ### Hooks verification
 
@@ -406,19 +406,19 @@ If you installed uv and set `JERRY_PROJECT`, start a new Claude Code session. Th
 
 You should see the problem-solving skill activate — it'll describe itself and list its available agents (researcher, analyst, architect, and the rest of the crew). That's the whole crew reporting for duty. You're live.
 
-> **Seeing `<project-required>`?** This is the most common post-install issue — Jerry installed fine, but no project is configured. Go to [Configuration](#configuration) and set `JERRY_PROJECT`. Make sure you ran the `mkdir` command from your **repository root**, not your home directory.
+> **Seeing `<project-required>`?** This is the most common post-install issue — Tom installed fine, but no project is configured. Go to [Configuration](#configuration) and set `JERRY_PROJECT`. Make sure you ran the `mkdir` command from your **repository root**, not your home directory.
 
 ### Check for errors
 
 1. Run `/plugin`
 2. Go to the **Errors** tab
-3. Verify no errors related to `jerry`
+3. Verify no errors related to `tom`
 
 ---
 
-## Using Jerry
+## Using Tom
 
-> **New to Jerry?** Start by trying `/problem-solving` on a question you're working on, or `/worktracker` to set up your first work items. Each skill guides you through what it needs. Let it rip.
+> **New to Tom?** Start by trying `/problem-solving` on a question you're working on, or `/worktracker` to set up your first work items. Each skill guides you through what it needs. Let it rip.
 
 ### Available Skills
 
@@ -448,13 +448,13 @@ Skill outputs are persisted to your project's work directory and docs directory,
 | Research, analysis, reviews | `projects/{JERRY_PROJECT}/` subdirectories |
 | Orchestration artifacts | `projects/{JERRY_PROJECT}/orchestration/` |
 
-These files survive context compaction and session boundaries. That's Jerry's core value — your work persists even when the context window doesn't.
+These files survive context compaction and session boundaries. That's Tom's core value — your work persists even when the context window doesn't.
 
 ---
 
 ## Developer Setup
 
-> **This section is for contributors to the Jerry codebase.** If you installed Jerry as a plugin, you're done — go build something great.
+> **This section is for contributors to the Tom codebase.** If you installed Tom as a plugin, you're done — go build something great.
 
 See [CONTRIBUTING.md](https://github.com/geekatron/jerry/blob/main/CONTRIBUTING.md) for full development setup, coding standards, and platform-specific notes.
 
@@ -463,7 +463,7 @@ See [CONTRIBUTING.md](https://github.com/geekatron/jerry/blob/main/CONTRIBUTING.
 **macOS / Linux:**
 ```bash
 git clone https://github.com/geekatron/jerry.git
-cd jerry
+cd tom
 make setup    # Installs deps + pre-commit hooks
 make test     # Run test suite
 ```
@@ -471,7 +471,7 @@ make test     # Run test suite
 **Windows:**
 ```bash
 git clone https://github.com/geekatron/jerry.git
-cd jerry
+cd tom
 uv sync                        # Install dependencies
 uv run pre-commit install      # Install pre-commit hooks
 uv run pytest --tb=short -q    # Run test suite
@@ -487,7 +487,7 @@ Installation has a few rough edges — most of them are SSH or project configura
 
 **`<project-required>` or `<project-error>`**
 
-This is the most common post-install issue. It means Jerry installed successfully but no project is configured — the skills need somewhere to write their output.
+This is the most common post-install issue. It means Tom installed successfully but no project is configured — the skills need somewhere to write their output.
 
 **Cause:** `JERRY_PROJECT` is not set, points to a non-existent project, or the project directory was created in the wrong location.
 
@@ -513,7 +513,7 @@ This is the second most common issue. The `owner/repo` shorthand uses SSH by def
 
 2. **Set up SSH keys** (if you use GitHub regularly):
    - Follow [GitHub's SSH key guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-   - After setup, retry: `/plugin marketplace add geekatron/jerry`
+   - After setup, retry: `/plugin marketplace add geekatron/tom`
 
 3. **Configure Git to rewrite SSH to HTTPS globally** (fixes it for all Git operations):
    ```bash
@@ -546,13 +546,13 @@ If you're seeing an error that isn't about SSH authentication, check these:
 
 ### Plugin not found after adding source
 
-If `/plugin install jerry@jerry-framework` returns "plugin not found," the source name doesn't match what Claude Code registered. If you followed [Step 2](#install-from-github) and already ran `/plugin marketplace list`, use the name you saw there. Otherwise:
+If `/plugin install tom@tom-framework` returns "plugin not found," the source name doesn't match what Claude Code registered. If you followed [Step 2](#install-from-github) and already ran `/plugin marketplace list`, use the name you saw there. Otherwise:
 
 1. Run `/plugin marketplace list` to see the actual source name
-2. Use that name: `/plugin install jerry@<actual-name-from-list>`
-3. If the source doesn't appear at all, try removing and re-adding: `/plugin marketplace remove jerry-framework` then re-run the add command
+2. Use that name: `/plugin install tom@<actual-name-from-list>`
+3. If the source doesn't appear at all, try removing and re-adding: `/plugin marketplace remove tom-framework` then re-run the add command
 
-The source name comes from Jerry's [`.claude-plugin/marketplace.json`](https://github.com/geekatron/jerry/blob/main/.claude-plugin/marketplace.json) and should be `jerry-framework`, but it may register differently depending on how the source was added.
+The source name comes from Tom's [`.claude-plugin/marketplace.json`](https://github.com/geekatron/jerry/blob/main/.claude-plugin/marketplace.json) and should be `tom-framework`, but it may register differently depending on how the source was added.
 
 ### Hook Issues
 
@@ -594,13 +594,13 @@ Hooks are in early access — some may fail silently. Here's how to diagnose:
    - macOS/Linux: `rm -rf ~/.claude/plugins/cache`
    - Windows: `Remove-Item -Recurse -Force "$env:USERPROFILE\.claude\plugins\cache"`
 3. Restart Claude Code
-4. Reinstall: `/plugin uninstall jerry` then re-run the install command
+4. Reinstall: `/plugin uninstall tom` then re-run the install command
 
 ### Path Issues on Windows
 
 If you see "path not found" when adding a local plugin source:
 
-- Use forward slashes in Claude Code: `C:/Users/name/plugins/jerry`
+- Use forward slashes in Claude Code: `C:/Users/name/plugins/tom`
 - Avoid backslashes or environment variables in the Claude Code command
 
 ---
@@ -609,26 +609,26 @@ If you see "path not found" when adding a local plugin source:
 
 ### GitHub-installed users
 
-Jerry updates when the source repository updates. To pull the latest:
+Tom updates when the source repository updates. To pull the latest:
 
 ```
-/plugin marketplace update jerry-framework
+/plugin marketplace update tom-framework
 ```
 
 > **Source name differs?** Use the name from `/plugin marketplace list`: `/plugin marketplace update <name-from-list>`.
 
-> **Auto-updates:** Community marketplaces like Jerry have auto-update disabled by default. To enable automatic updates at startup: run `/plugin`, go to the **Marketplaces** tab, select your Jerry source, and enable auto-update.
+> **Auto-updates:** Community marketplaces like Tom have auto-update disabled by default. To enable automatic updates at startup: run `/plugin`, go to the **Marketplaces** tab, select your Tom source, and enable auto-update.
 
 ### Local clone users
 
 ```bash
-cd ~/plugins/jerry && git pull origin main
+cd ~/plugins/tom && git pull origin main
 ```
 
 Then refresh in Claude Code:
 
 ```
-/plugin marketplace update jerry-framework
+/plugin marketplace update tom-framework
 ```
 
 > **Source name differs?** Use the name from `/plugin marketplace list`.
@@ -640,15 +640,15 @@ Then refresh in Claude Code:
 ### Remove the Plugin
 
 ```
-/plugin uninstall jerry@jerry-framework
+/plugin uninstall tom@tom-framework
 ```
 
-> **Source name differs?** Use the name from `/plugin marketplace list`: `/plugin uninstall jerry@<name-from-list>`.
+> **Source name differs?** Use the name from `/plugin marketplace list`: `/plugin uninstall tom@<name-from-list>`.
 
 ### Remove the Plugin Source
 
 ```
-/plugin marketplace remove jerry-framework
+/plugin marketplace remove tom-framework
 ```
 
 > **Not sure of the source name?** Run `/plugin marketplace list` to check.
@@ -661,12 +661,12 @@ Only applicable if you used the local clone method:
 
 **macOS/Linux:**
 ```bash
-rm -rf ~/plugins/jerry
+rm -rf ~/plugins/tom
 ```
 
 **Windows PowerShell:**
 ```powershell
-Remove-Item -Recurse -Force "$env:USERPROFILE\plugins\jerry"
+Remove-Item -Recurse -Force "$env:USERPROFILE\plugins\tom"
 ```
 
 That's it. Clean slate.
@@ -686,4 +686,4 @@ If something's broken, file it. If something's confusing, file that too. The doc
 
 ## License
 
-Jerry Framework is open source under the [Apache License 2.0](https://github.com/geekatron/jerry/blob/main/LICENSE).
+Tom Framework is open source under the [Apache License 2.0](https://github.com/geekatron/jerry/blob/main/LICENSE).

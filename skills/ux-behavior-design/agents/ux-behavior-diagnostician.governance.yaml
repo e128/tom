@@ -57,13 +57,13 @@ output:
   - L1
   - L2
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - "P-003: No Recursive Subagents (Hard) - Worker agent; no agent delegation capability"
   - "P-020: User Authority (Hard) - User decides bottleneck classification, intervention priorities, and target behavior scope"
   - "P-022: No Deception (Hard) - Factor ratings presented with evidence and confidence levels; bottleneck diagnoses MEDIUM confidence; interventions LOW confidence; degraded mode disclosed"
-  - "P-001: Truth and Accuracy (Soft, per JERRY_CONSTITUTION.md Article I) - All factor ratings cite evidence or mark inferences explicitly; all bottleneck classifications show elimination algorithm trace"
-  - "P-002: File Persistence (Medium, per JERRY_CONSTITUTION.md Article I) - All outputs persisted to skill output directory"
+  - "P-001: Truth and Accuracy (Soft, per TOM_CONSTITUTION.md Article I) - All factor ratings cite evidence or mark inferences explicitly; all bottleneck classifications show elimination algorithm trace"
+  - "P-002: File Persistence (Medium, per TOM_CONSTITUTION.md Article I) - All outputs persisted to skill output directory"
 validation:
   post_completion_checks:
   - verify_file_created

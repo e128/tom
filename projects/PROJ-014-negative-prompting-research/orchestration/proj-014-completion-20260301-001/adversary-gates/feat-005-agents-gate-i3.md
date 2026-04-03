@@ -150,7 +150,7 @@ No action required on this dimension.
   - pe-constraint-gen: `skills/prompt-engineering/rules/npt-pattern-reference.md`
   - pe-scorer: `.context/rules/prompt-quality.md`
 - All governance YAML headers cite `docs/schemas/agent-governance-v1.schema.json`
-- `constitution.reference: docs/governance/JERRY_CONSTITUTION.md` in all 3 YAMLs
+- `constitution.reference: docs/governance/TOM_CONSTITUTION.md` in all 3 YAMLs
 - Constitutional principle references in `principles_applied` are all verifiable (P-002, P-003, P-004, P-011, P-020, P-022 all exist in the Jerry Constitution)
 - AD-M-009 model rationale comments cite `agent-development-standards.md Cognitive Mode Taxonomy` — the referenced table exists and supports the model selection claims
 - pe-constraint-gen forbidden_action entry includes specific PROJ-014 evidence path: `projects/PROJ-014-negative-prompting-research/orchestration/neg-prompting-20260227-001/phase-6/final-synthesis.md` — this is an exemplary evidence citation tying the forbidden action to research findings
@@ -192,7 +192,7 @@ No action required on this dimension.
 **Evidence:**
 - Schema traceability: all YAML headers reference `docs/schemas/agent-governance-v1.schema.json`
 - Version + SSOT + date in all .md footers: `*Agent Version: 1.0.0*`, `*Constitutional Compliance: Jerry Constitution v1.0*`, `*Created: 2026-03-01*`
-- `constitution.reference: docs/governance/JERRY_CONSTITUTION.md` provides constitutional traceability chain
+- `constitution.reference: docs/governance/TOM_CONSTITUTION.md` provides constitutional traceability chain
 - `forbidden_action_format: NPT-009-complete` provides format version traceability
 - H-34/H-35 operationally traceable through the dual-file split (schema validates governance; .md validates runtime behavior)
 - pe-scorer `output.levels` L2 exclusion: comment present in governance YAML (`# L2 excluded: pe-scorer produces focused evaluation scores, not strategic analysis. Per AD-M-004 exception for internal-only agents.`) — full traceability for the design decision

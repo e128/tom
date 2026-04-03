@@ -2,7 +2,7 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Jerry Framework — Quality enforcement with je ne sais quoi.
+Tom Framework — Quality enforcement with je ne sais quoi.
 
 Named for a framework. Inspired by a person who demonstrated
 that taking your work seriously and taking yourself seriously
@@ -34,8 +34,8 @@ References:
 try:
     from importlib.metadata import version
 
-    __version__ = version("jerry")
+    __version__ = version("tom")
 except Exception:
     __version__ = "dev"
 
-__author__ = "Jerry Framework Contributors"
+__author__ = "Tom Framework Contributors"

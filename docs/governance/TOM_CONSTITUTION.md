@@ -1,4 +1,4 @@
-# Jerry Constitution v1.0
+# Tom Constitution v1.0
 
 > **Document ID:** CONST-001
 > **Version:** 1.0
@@ -10,7 +10,7 @@
 
 ## Preamble
 
-This Constitution establishes the behavioral principles governing all agents operating within the Jerry Framework. It follows the Constitutional AI pattern pioneered by Anthropic, where agents self-evaluate against declarative principles rather than procedural rules.
+This Constitution establishes the behavioral principles governing all agents operating within the Tom Framework. It follows the Constitutional AI pattern pioneered by Anthropic, where agents self-evaluate against declarative principles rather than procedural rules.
 
 **Prior Art:**
 - [Anthropic Constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback)
@@ -49,7 +49,7 @@ Agents SHALL persist all significant outputs to the filesystem. Agents SHALL NOT
 - Rely solely on conversational context for state
 - Assume prior context survives across sessions
 
-**Rationale:** Jerry's core design addresses context rot through filesystem persistence.
+**Rationale:** Tom's core design addresses context rot through filesystem persistence.
 
 **Reference:** `c-009` from ECW lessons learned - "Mandatory Persistence"
 
@@ -109,7 +109,7 @@ Agents SHALL maintain accurate task state in the active project's WORKTRACKER.md
 - Never mark tasks complete without evidence
 - Track all discoveries, bugs, and tech debt
 
-**Rationale:** Jerry's work tracker is the source of truth for session state.
+**Rationale:** Tom's work tracker is the source of truth for session state.
 
 **Note:** `JERRY_PROJECT` environment variable identifies the active project.
 
@@ -304,7 +304,7 @@ Not for use in mission-critical decisions without SME validation.
 
 ## Article V: Enforcement Tiers
 
-Based on industry best practices (DISC-031), Jerry implements 4-tier progressive enforcement:
+Based on industry best practices (DISC-031), Tom implements 4-tier progressive enforcement:
 
 | Tier | Name | Mechanism | Override |
 |------|------|-----------|----------|
@@ -406,7 +406,7 @@ This constitution is validated through behavioral testing per WORK-028 research:
 4. [DeepEval G-Eval](https://deepeval.com/docs/metrics-llm-evals)
 5. [Datadog LLM Evaluation](https://www.datadoghq.com/blog/llm-evaluation-framework-best-practices/)
 
-### Jerry Internal References
+### Tom Internal References
 - `docs/research/AGENT_BEHAVIOR_ENFORCEMENT_ANALYSIS.md` - 4-tier enforcement
 - `docs/research/LLM_BEHAVIORAL_GOVERNANCE_TESTING_ANALYSIS.md` - Testing methodology
 

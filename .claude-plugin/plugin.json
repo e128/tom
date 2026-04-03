@@ -1,15 +1,15 @@
 {
-  "name": "jerry",
+  "name": "tom",
   "version": "0.30.0",
   "description": "Framework for behavior and workflow guardrails with knowledge accrual",
   "author": {
-    "name": "Jerry Framework Contributors",
+    "name": "Tom Framework Contributors",
     "url": "https://github.com/geekatron/jerry"
   },
   "license": "Apache-2.0",
   "repository": "https://github.com/geekatron/jerry",
   "keywords": [
-    "jerry",
+    "tom",
     "workflow",
     "guardrails",
     "knowledge-management",

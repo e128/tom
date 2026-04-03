@@ -48,24 +48,24 @@ def discover_projects(root: Path) -> list[Path]:
 # ROOT DETECTION
 # =============================================================================
 
-# Marker files that indicate the Jerry framework root directory
+# Marker files that indicate the Tom framework root directory
 _ROOT_MARKERS = ("pyproject.toml", "CLAUDE.md")
 
 
 def _find_project_root(start: Path) -> Path:
     """
-    Find the Jerry framework root directory by looking for marker files.
+    Find the Tom framework root directory by looking for marker files.
 
     This function walks up from the starting directory until it finds a directory
     containing one of the marker files (pyproject.toml or CLAUDE.md). This approach
-    works regardless of what the repository directory is named (jerry, jerry-agent-cleanup,
+    works regardless of what the repository directory is named (tom, tom-agent-cleanup,
     my-fork, etc.).
 
     Args:
         start: The starting directory to search from.
 
     Returns:
-        Path to the Jerry framework root directory.
+        Path to the Tom framework root directory.
 
     Raises:
         RuntimeError: If no root directory can be found.
@@ -84,9 +84,9 @@ def _find_project_root(start: Path) -> Path:
 
     # If we reach here, we've hit the filesystem root without finding a marker
     raise RuntimeError(
-        f"Could not find Jerry framework root directory. "
+        f"Could not find Tom framework root directory. "
         f"Searched from {start} looking for: {_ROOT_MARKERS}. "
-        f"Ensure you are running tests from within the Jerry repository."
+        f"Ensure you are running tests from within the Tom repository."
     )
 
 
@@ -98,7 +98,7 @@ def _find_project_root(start: Path) -> Path:
 @pytest.fixture(scope="session")
 def project_root() -> Path:
     """
-    Return the Jerry framework root directory.
+    Return the Tom framework root directory.
 
     Uses marker file detection (pyproject.toml, CLAUDE.md) to find the root,
     making the fixture work regardless of the repository directory name.

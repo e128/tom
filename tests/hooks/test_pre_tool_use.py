@@ -5,7 +5,7 @@
 
 These tests validate the security guardrail hook returns correct decision values
 and properly blocks dangerous operations, using the consolidated CLI enforcement
-path (``uv run jerry hooks pre-tool-use``).
+path (``uv run tom hooks pre-tool-use``).
 
 References:
     - TD-003: Add hook decision value tests
@@ -43,7 +43,7 @@ def run_hook(tool_name: str, tool_input: dict[str, Any]) -> tuple[int, dict[str,
     )
 
     result = subprocess.run(
-        ["uv", "run", "--directory", _REPO_ROOT, "jerry", "--json", "hooks", "pre-tool-use"],
+        ["uv", "run", "--directory", _REPO_ROOT, "tom", "--json", "hooks", "pre-tool-use"],
         input=input_json,
         capture_output=True,
         text=True,

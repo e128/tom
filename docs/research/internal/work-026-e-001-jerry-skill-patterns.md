@@ -1,8 +1,8 @@
-# Jerry Skill Pattern Research
+# Tom Skill Pattern Research
 
 > **PS ID:** work-026
 > **Entry ID:** e-001
-> **Topic:** Jerry Skill Architecture Patterns
+> **Topic:** Tom Skill Architecture Patterns
 > **Date:** 2026-01-30
 > **Researcher:** ps-researcher v2.2.0
 
@@ -10,7 +10,7 @@
 
 ## L0: Executive Summary (ELI5)
 
-Jerry skills are like specialized teams with well-defined roles and workflows. Each skill (like problem-solving, NASA SE, and orchestration) is a collection of expert agents who work together following proven patterns. The architecture uses three key principles:
+Tom skills are like specialized teams with well-defined roles and workflows. Each skill (like problem-solving, NASA SE, and orchestration) is a collection of expert agents who work together following proven patterns. The architecture uses three key principles:
 
 1. **Clear Identity** - Every skill and agent knows exactly what they do, like job descriptions
 2. **Structured Workflows** - Step-by-step playbooks and templates ensure consistency
@@ -64,7 +64,7 @@ activation-keywords:
 | **State Passing Between Agents** | State key registry | ✅ All 3 |
 | **Tool Invocation Examples** | Concrete tool usage | ✅ All 3 |
 | **Mandatory Persistence (P-002)** | File output requirement | ✅ All 3 |
-| **Constitutional Compliance** | Jerry Constitution mapping | ✅ All 3 |
+| **Constitutional Compliance** | Tom Constitution mapping | ✅ All 3 |
 | **Quick Reference** | Common workflows table | ✅ All 3 |
 | **Agent Details** | Links to agent specs | ✅ All 3 |
 
@@ -169,7 +169,7 @@ validation:
 
 # Constitutional Compliance
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied: [...]
 
 # Enforcement Tier
@@ -631,7 +631,7 @@ description: "{step-by-step guidance summary}"
 version: "X.Y.Z"
 skill: "{skill-name}"
 template: PLAYBOOK_TEMPLATE.md v1.0.0
-constitutional_compliance: Jerry Constitution v1.0
+constitutional_compliance: Tom Constitution v1.0
 patterns_covered: [...]
 agents_covered: [...]
 ---
@@ -857,7 +857,7 @@ enforcement:
 │   ├── Orchestration Flow      # Multi-agent coordination
 │   ├── State Passing           # State key registry
 │   ├── Tool Examples           # Concrete usage
-│   ├── Constitutional          # Jerry Constitution mapping
+│   ├── Constitutional          # Tom Constitution mapping
 │   └── Quick Reference         # Command cheat sheet
 │
 ├── PLAYBOOK.md                 # Implementation Guide (Triple-Lens)

@@ -7,7 +7,7 @@ This command instructs the system to parse a transcript file (VTT/SRT)
 and optionally generate chunked output.
 
 References:
-    - TDD-FEAT-004 Section 11: Jerry CLI Integration
+    - TDD-FEAT-004 Section 11: Tom CLI Integration
     - TASK-251: Implement CLI Transcript Namespace
     - EN-020: Python Parser Implementation
     - EN-021: Chunking Strategy

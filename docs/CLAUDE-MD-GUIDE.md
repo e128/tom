@@ -1,6 +1,6 @@
 # CLAUDE.md Contributor Guide
 
-> How Jerry's context loading works and how to modify it.
+> How Tom's context loading works and how to modify it.
 
 ## Document Sections
 
@@ -16,7 +16,7 @@
 
 ## Context Architecture
 
-Jerry uses a **tiered hybrid loading strategy** to manage Claude Code's context window:
+Tom uses a **tiered hybrid loading strategy** to manage Claude Code's context window:
 
 | Tier | Content | Loading | Size |
 |------|---------|---------|------|
@@ -25,12 +25,12 @@ Jerry uses a **tiered hybrid loading strategy** to manage Claude Code's context 
 | 3 | `skills/*/SKILL.md` | On-demand via `/skill` invocation | ~1,500+ lines |
 | 4 | Reference docs | Explicit file access when needed | Unlimited |
 
-**Why this matters:** LLM performance degrades as context fills ([Context Rot](https://research.trychroma.com/context-rot)). By loading only what's needed, Jerry maintains high-quality responses across long sessions.
+**Why this matters:** LLM performance degrades as context fills ([Context Rot](https://research.trychroma.com/context-rot)). By loading only what's needed, Tom maintains high-quality responses across long sessions.
 
 ### File Locations
 
 ```
-jerry/
+tom/
 ├── CLAUDE.md                    # Tier 1 - Always loaded (~80 lines)
 ├── .context/                    # Canonical source (version-controlled)
 │   ├── rules/                   # Behavioral rules

@@ -115,7 +115,7 @@ Every excluded dimension MUST be documented in the HEART Dimension Selection tab
 
 ### All-Five Override
 
-When the user explicitly requests all five dimensions (P-020: `docs/governance/JERRY_CONSTITUTION.md`), the analyst MUST comply but SHOULD note capacity implications: "All 5 HEART dimensions selected per user request. For tiny teams (1-5 people), monitoring 5 dimensions simultaneously requires significant analytics investment. Consider prioritizing 2-3 dimensions for initial instrumentation and adding remaining dimensions in subsequent measurement cycles."
+When the user explicitly requests all five dimensions (P-020: `docs/governance/TOM_CONSTITUTION.md`), the analyst MUST comply but SHOULD note capacity implications: "All 5 HEART dimensions selected per user request. For tiny teams (1-5 people), monitoring 5 dimensions simultaneously requires significant analytics investment. Consider prioritizing 2-3 dimensions for initial instrumentation and adding remaining dimensions in subsequent measurement cycles."
 
 ---
 

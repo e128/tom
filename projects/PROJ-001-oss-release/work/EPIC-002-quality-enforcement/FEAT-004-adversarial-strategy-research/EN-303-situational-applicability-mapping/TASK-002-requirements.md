@@ -301,7 +301,7 @@ The decision tree **SHALL** accept token budget state (unconstrained, constraine
 
 ### REQ-303-026: Governance Auto-Escalation
 
-The decision tree **SHALL** automatically escalate to C3+ for any artifact touching `docs/governance/JERRY_CONSTITUTION.md` or `.claude/rules/`, regardless of the criticality level initially determined by other dimensions.
+The decision tree **SHALL** automatically escalate to C3+ for any artifact touching `docs/governance/TOM_CONSTITUTION.md` or `.claude/rules/`, regardless of the criticality level initially determined by other dimensions.
 
 - **Parent:** FR-011
 - **Verification:** D -- Demonstrate auto-escalation for a constitution-modifying artifact initially assessed at C1

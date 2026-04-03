@@ -22,7 +22,7 @@ Architecture Tests automatically enforce architectural constraints such as layer
 
 ---
 
-## Jerry Architecture Tests
+## Tom Architecture Tests
 
 ### Layer Dependency Tests
 
@@ -447,13 +447,13 @@ pytest tests/architecture/ --tb=short
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Architecture tests run with every PR. Failures block merge.
+> **Tom Decision**: Architecture tests run with every PR. Failures block merge.
 
-> **Jerry Decision**: New architectural rules are added as tests before being documented.
+> **Tom Decision**: New architectural rules are added as tests before being documented.
 
-> **Jerry Decision**: Shared kernel is the only allowed cross-boundary import.
+> **Tom Decision**: Shared kernel is the only allowed cross-boundary import.
 
 ---
 

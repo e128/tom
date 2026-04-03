@@ -134,7 +134,7 @@ The most likely failure mode: A new OSS contributor reads CLAUDE.md, sees H-01 t
 | CLAUDE.md is 83 lines | `wc -l CLAUDE.md` = 83 | VERIFIED |
 | H-01 through H-06 listed | Lines 33-38 | VERIFIED |
 | Nav pointer to `quality-enforcement.md` resolves | `.context/rules/quality-enforcement.md` exists | VERIFIED |
-| Nav pointer to `JERRY_CONSTITUTION.md` resolves | `docs/governance/JERRY_CONSTITUTION.md` exists | VERIFIED |
+| Nav pointer to `TOM_CONSTITUTION.md` resolves | `docs/governance/TOM_CONSTITUTION.md` exists | VERIFIED |
 | Navigation table says "H-01 to H-04" | Line 12: `Constitutional HARD rules H-01 to H-04` | DISCREPANCY -- actual scope is H-01 to H-06 |
 | `/adversary` skill listed | Line 74 | VERIFIED (added post-FEAT-003) |
 

@@ -5,7 +5,7 @@
 **Criticality:** C4
 **Date:** 2026-03-03
 **Reviewer:** adv-executor (S-007)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.0 (P-001 through P-043); quality-enforcement.md HARD Rule Index (H-01 through H-36); markdown-navigation-standards.md (H-23); mandatory-skill-usage.md (H-22); agent-development-standards.md (H-34)
+**Constitutional Context:** TOM_CONSTITUTION.md v1.0 (P-001 through P-043); quality-enforcement.md HARD Rule Index (H-01 through H-36); markdown-navigation-standards.md (H-23); mandatory-skill-usage.md (H-22); agent-development-standards.md (H-34)
 
 ---
 
@@ -244,12 +244,12 @@ Add a secondary "Section 1 Contents" table within Section 1 that anchors to the 
 
 | Principle ID | Name | Tier | Source | Applicable? |
 |-------------|------|------|--------|-------------|
-| P-001 | Truth and Accuracy | MEDIUM (Soft enforcement) | JERRY_CONSTITUTION.md | YES — document makes empirical claims about framework properties |
-| P-002 | File Persistence | HARD (Medium enforcement) | JERRY_CONSTITUTION.md | YES — deliverable is a persisted file ✓ |
-| P-003 | No Recursive Subagents | HARD (Hard enforcement) | JERRY_CONSTITUTION.md | NOT APPLICABLE — this is a design document, not an agent definition |
-| P-004 | Explicit Provenance | MEDIUM (Soft enforcement) | JERRY_CONSTITUTION.md | YES — scoring decisions require documented rationale |
-| P-011 | Evidence-Based Decisions | MEDIUM (Soft enforcement) | JERRY_CONSTITUTION.md | YES — framework selection based on scored criteria |
-| P-022 | No Deception | HARD (Hard enforcement) | JERRY_CONSTITUTION.md | YES — document must not misrepresent analysis confidence |
+| P-001 | Truth and Accuracy | MEDIUM (Soft enforcement) | TOM_CONSTITUTION.md | YES — document makes empirical claims about framework properties |
+| P-002 | File Persistence | HARD (Medium enforcement) | TOM_CONSTITUTION.md | YES — deliverable is a persisted file ✓ |
+| P-003 | No Recursive Subagents | HARD (Hard enforcement) | TOM_CONSTITUTION.md | NOT APPLICABLE — this is a design document, not an agent definition |
+| P-004 | Explicit Provenance | MEDIUM (Soft enforcement) | TOM_CONSTITUTION.md | YES — scoring decisions require documented rationale |
+| P-011 | Evidence-Based Decisions | MEDIUM (Soft enforcement) | TOM_CONSTITUTION.md | YES — framework selection based on scored criteria |
+| P-022 | No Deception | HARD (Hard enforcement) | TOM_CONSTITUTION.md | YES — document must not misrepresent analysis confidence |
 | H-23 | Navigation table required | HARD | markdown-navigation-standards.md | YES — document is >30 lines |
 | H-31 | Clarify before acting | HARD | quality-enforcement.md | YES — document governs future implementation decisions |
 

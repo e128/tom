@@ -123,7 +123,7 @@ This document specifies end-to-end test cases for all three hook-based enforceme
 | **ID** | TC-UPS-005 |
 | **Objective** | Verify full reinforcement for critical (C4) prompts |
 | **Preconditions** | Keyword detection configured for C4 triggers |
-| **Input** | Critical prompt: "Update the JERRY_CONSTITUTION.md governance document" |
+| **Input** | Critical prompt: "Update the TOM_CONSTITUTION.md governance document" |
 | **Steps** | 1. Invoke hook with governance-critical prompt. 2. Verify maximum content. |
 | **Expected Output** | Maximum enforcement content (~600 tokens); criticality="C4"; all 7 blocks present with maximum detail |
 | **Pass Criteria** | Token count at budget ceiling (~600); all content blocks at maximum detail; criticality="C4" |
@@ -156,8 +156,8 @@ This document specifies end-to-end test cases for all three hook-based enforceme
 | 6 | "Add a new domain event for task completion" | C2 | 200-500 |
 | 7 | "Modify the .claude/rules/coding-standards.md file" | C3 | 400-600 |
 | 8 | "Update the architecture-standards.md with new layer rules" | C3 | 400-600 |
-| 9 | "Update the JERRY_CONSTITUTION.md governance document" | C4 | 500-600 |
-| 10 | "Modify docs/governance/JERRY_CONSTITUTION.md to add a new principle" | C4 | 500-600 |
+| 9 | "Update the TOM_CONSTITUTION.md governance document" | C4 | 500-600 |
+| 10 | "Modify docs/governance/TOM_CONSTITUTION.md to add a new principle" | C4 | 500-600 |
 
 ### TC-UPS-007: Adaptive Content Selection
 
@@ -334,7 +334,7 @@ This document specifies end-to-end test cases for all three hook-based enforceme
 |-------|-------|
 | **ID** | TC-PTU-004 |
 | **Objective** | Verify criticality escalation to C4 for governance files |
-| **Input** | Write to `docs/governance/JERRY_CONSTITUTION.md` |
+| **Input** | Write to `docs/governance/TOM_CONSTITUTION.md` |
 | **Expected Output** | EnforcementDecision(action="approve", criticality_escalation="C4") or block depending on content |
 | **Requirements** | REQ-403-036, REQ-403-062 |
 | **Verification** | Test |

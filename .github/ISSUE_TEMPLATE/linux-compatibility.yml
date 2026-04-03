@@ -1,11 +1,11 @@
 name: Linux Compatibility Issue
-description: Report a problem specific to running Jerry on Linux
+description: Report a problem specific to running Tom on Linux
 labels: ["linux", "bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping improve Jerry's Linux support! Please fill in as much detail as you can.
+        Thanks for helping improve Tom's Linux support! Please fill in as much detail as you can.
 
   - type: input
     id: distro

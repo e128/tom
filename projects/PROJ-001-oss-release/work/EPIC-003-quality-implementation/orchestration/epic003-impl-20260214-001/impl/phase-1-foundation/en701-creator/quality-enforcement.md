@@ -77,7 +77,7 @@
 
 | ID | Condition | Escalation |
 |----|-----------|------------|
-| AE-001 | Touches `docs/governance/JERRY_CONSTITUTION.md` | Auto-C4 |
+| AE-001 | Touches `docs/governance/TOM_CONSTITUTION.md` | Auto-C4 |
 | AE-002 | Touches `.context/rules/` or `.claude/rules/` | Auto-C3 minimum |
 | AE-003 | New or modified ADR | Auto-C3 minimum |
 | AE-004 | Modifies baselined ADR | Auto-C4 |

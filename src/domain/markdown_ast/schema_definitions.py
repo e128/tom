@@ -2,7 +2,7 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Extended schema definitions for all Jerry markdown file types.
+Extended schema definitions for all Tom markdown file types.
 
 Provides schema constants for the 9 new file-type schemas (WI-014, WI-015)
 and constructs the frozen default ``SchemaRegistry`` containing all 15 schemas

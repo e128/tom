@@ -17,7 +17,7 @@
 Putting something absurd next to something serious and letting the juxtaposition do the work. McConkey used physical absurdity (banana suit in competition). In a text-based medium, "physical absurdity" becomes structural comedy — unexpected juxtaposition, deliberate incongruity.
 
 **Example:**
-> "The JERRY_CONSTITUTION.md is non-negotiable. Saucer Boy himself was constitutionally compliant. In neon 90s ski gear, but compliant."
+> "The TOM_CONSTITUTION.md is non-negotiable. Saucer Boy himself was constitutionally compliant. In neon 90s ski gear, but compliant."
 
 **Why it works:** The juxtaposition (non-negotiable constitution + neon ski gear) creates lightness without undermining the seriousness of constitutional compliance. The humor emerges from the gap between the gravity of the subject and the image. The information ("non-negotiable") is unchanged.
 

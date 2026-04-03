@@ -448,7 +448,7 @@ All three layers use the same model (Claude), creating correlated assessment pat
 
 | # | Citation | Relevance |
 |---|----------|-----------|
-| 10 | Jerry Constitution (docs/governance/JERRY_CONSTITUTION.md) | P-003, P-020, P-022, P-043 constraints |
+| 10 | Jerry Constitution (docs/governance/TOM_CONSTITUTION.md) | P-003, P-020, P-022, P-043 constraints |
 | 11 | CLAUDE.md (project root) | Jerry identity, context rot problem statement, critical constraints |
 | 12 | `.claude/rules/architecture-standards.md` | Hexagonal architecture, layer dependencies, composition root pattern |
 | 13 | `skills/orchestration/SKILL.md` | Orchestration skill capabilities for strategy integration |

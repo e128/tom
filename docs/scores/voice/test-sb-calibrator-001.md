@@ -167,5 +167,5 @@ CLEAR. No boundary conditions triggered.
 
 *Agent: sb-calibrator v1.0.0*
 *Skill: saucer-boy-framework-voice v1.1.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Scored: 2026-02-20*

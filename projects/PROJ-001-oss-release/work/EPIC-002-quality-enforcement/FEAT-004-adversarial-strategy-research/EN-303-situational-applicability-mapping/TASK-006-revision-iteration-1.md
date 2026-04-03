@@ -89,7 +89,7 @@ The estimated post-revision quality score is **~0.94**, above the 0.92 threshold
 
 **Changes:**
 - Added explicit precedence rule **PR-001**: "Auto-escalation overrides phase downgrade. If criticality was elevated by AE-001 through AE-005, phase modifiers SHALL NOT reduce the criticality below the auto-escalated level."
-- Added rationale: auto-escalation encodes hard governance constraints (FR-011, JERRY_CONSTITUTION); phase modifiers encode soft workflow optimization preferences.
+- Added rationale: auto-escalation encodes hard governance constraints (FR-011, TOM_CONSTITUTION); phase modifiers encode soft workflow optimization preferences.
 - Updated all phase modifier entries for PH-EXPLORE at C2, C3, and C4 to reference PR-001 with explicit notes: "BUT see PR-001 -- if auto-escalated, do not downgrade below escalated level."
 
 **Where:** TASK-004, new "Precedence Rule (PR-001)" paragraph after AE rules, and updated PH-EXPLORE lines in C2/C3/C4 primary paths.

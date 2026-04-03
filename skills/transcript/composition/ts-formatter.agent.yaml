@@ -50,7 +50,7 @@ guardrails:
   - verify_schema_version_in_frontmatter
   fallback_behavior: warn_and_retry
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-001: Truth and Accuracy (Soft - accurate entity representation)'
   - 'P-002: File Persistence (Medium - all packet files created)'

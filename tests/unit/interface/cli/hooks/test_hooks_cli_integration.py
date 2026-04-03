@@ -5,15 +5,15 @@
 Unit tests for hooks CLI integration (parser and adapter).
 
 BDD scenarios:
-    - jerry hooks --help shows hooks subcommands
-    - jerry hooks prompt-submit is registered in parser
-    - jerry hooks session-start is registered in parser
-    - jerry hooks pre-compact is registered in parser
-    - jerry hooks pre-tool-use is registered in parser
+    - tom hooks --help shows hooks subcommands
+    - tom hooks prompt-submit is registered in parser
+    - tom hooks session-start is registered in parser
+    - tom hooks pre-compact is registered in parser
+    - tom hooks pre-tool-use is registered in parser
     - Adapter routes hooks_command to correct handler
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - PROJ-004: Context Resilience
 """
 
@@ -34,32 +34,32 @@ class TestHooksNamespaceRegisteredInParser:
     """BDD: hooks subcommands registered in CLI parser."""
 
     def test_hooks_namespace_parseable(self) -> None:
-        """jerry hooks can be parsed without error."""
+        """tom hooks can be parsed without error."""
         parser = create_parser()
         args = parser.parse_args(["hooks", "prompt-submit"])
         assert args.namespace == "hooks"
         assert args.hooks_command == "prompt-submit"
 
     def test_hooks_prompt_submit_registered(self) -> None:
-        """jerry hooks prompt-submit is a valid command."""
+        """tom hooks prompt-submit is a valid command."""
         parser = create_parser()
         args = parser.parse_args(["hooks", "prompt-submit"])
         assert args.hooks_command == "prompt-submit"
 
     def test_hooks_session_start_registered(self) -> None:
-        """jerry hooks session-start is a valid command."""
+        """tom hooks session-start is a valid command."""
         parser = create_parser()
         args = parser.parse_args(["hooks", "session-start"])
         assert args.hooks_command == "session-start"
 
     def test_hooks_pre_compact_registered(self) -> None:
-        """jerry hooks pre-compact is a valid command."""
+        """tom hooks pre-compact is a valid command."""
         parser = create_parser()
         args = parser.parse_args(["hooks", "pre-compact"])
         assert args.hooks_command == "pre-compact"
 
     def test_hooks_pre_tool_use_registered(self) -> None:
-        """jerry hooks pre-tool-use is a valid command."""
+        """tom hooks pre-tool-use is a valid command."""
         parser = create_parser()
         args = parser.parse_args(["hooks", "pre-tool-use"])
         assert args.hooks_command == "pre-tool-use"

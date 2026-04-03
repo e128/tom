@@ -225,7 +225,7 @@ The invocation protocol automatically detects criticality based on the artifact 
 
 | Signal | Criticality | Source |
 |--------|-------------|--------|
-| Modifies `JERRY_CONSTITUTION.md` | C3 minimum (AE-001) | Auto-escalation |
+| Modifies `TOM_CONSTITUTION.md` | C3 minimum (AE-001) | Auto-escalation |
 | Modifies `.claude/rules/` | C3 minimum (AE-002) | Auto-escalation |
 | New or modified ADR | C3 minimum (AE-003) | Auto-escalation |
 | Modifies baselined ADR | C4 (AE-004) | Auto-escalation |

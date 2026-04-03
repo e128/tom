@@ -22,7 +22,7 @@ Projections are event handlers that build read-optimized views (read models) fro
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Projection Port
 
@@ -495,13 +495,13 @@ def test_projection_manager_routes_to_multiple_projections():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Projections are in-memory for simplicity. File-based persistence for development, database-backed for production (future).
+> **Tom Decision**: Projections are in-memory for simplicity. File-based persistence for development, database-backed for production (future).
 
-> **Jerry Decision**: Each projection is responsible for one read model. Multiple projections can handle the same event type.
+> **Tom Decision**: Each projection is responsible for one read model. Multiple projections can handle the same event type.
 
-> **Jerry Decision**: Projection handler methods follow `_on_{EventTypeName}` naming convention for automatic routing.
+> **Tom Decision**: Projection handler methods follow `_on_{EventTypeName}` naming convention for automatic routing.
 
 ---
 

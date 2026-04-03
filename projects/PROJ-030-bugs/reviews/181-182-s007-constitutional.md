@@ -5,7 +5,7 @@
 **Criticality:** C4 (governance/framework infrastructure file; AE-002 applies — `.claude/` rules/config; also touches permission enforcement for all agents)
 **Date:** 2026-03-14
 **Reviewer:** adv-executor (S-007)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.6.0, docs/reference/claude-code-permissions.md, mcp-tool-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.6.0, docs/reference/claude-code-permissions.md, mcp-tool-standards.md
 
 ---
 

@@ -7,8 +7,8 @@ LayeredConfigAdapter - Layered Configuration with Precedence
 Implements the IConfigurationProvider port with layered configuration sources.
 Precedence order (highest to lowest):
 1. Environment Variables (JERRY_*)
-2. Project Config (projects/PROJ-*/.jerry/config.toml)
-3. Root Config (.jerry/config.toml)
+2. Project Config (projects/PROJ-*/.tom/config.toml)
+3. Root Config (.tom/config.toml)
 4. Code Defaults
 
 Implementation Notes:
@@ -20,7 +20,7 @@ Implementation Notes:
 References:
     - WI-014: Layered Config Adapter work item
     - PROJ-004-e-004: Configuration Precedence research
-    - ADR-PROJ004-001: JerryFramework Aggregate (IConfigurationLoader port)
+    - ADR-PROJ004-001: TomFramework Aggregate (IConfigurationLoader port)
 """
 
 from __future__ import annotations
@@ -83,13 +83,13 @@ class LayeredConfigAdapter:
 
     Attributes:
         env_adapter: Adapter for environment variable configuration
-        root_config: Configuration from root .jerry/config.toml
-        project_config: Configuration from project .jerry/config.toml
+        root_config: Configuration from root .tom/config.toml
+        project_config: Configuration from project .tom/config.toml
         defaults: Default configuration values
 
     Example:
         >>> adapter = LayeredConfigAdapter(
-        ...     root_config_path=Path(".jerry/config.toml"),
+        ...     root_config_path=Path(".tom/config.toml"),
         ...     defaults={"logging.level": "INFO"}
         ... )
         >>> adapter.get("logging.level")

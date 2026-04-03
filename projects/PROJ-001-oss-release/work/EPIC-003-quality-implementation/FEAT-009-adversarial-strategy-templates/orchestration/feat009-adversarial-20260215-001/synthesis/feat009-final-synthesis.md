@@ -467,7 +467,7 @@ The following items were identified during FEAT-009 but deferred to future featu
 | **ADR-EPIC002-002** | 5-layer enforcement architecture, token budgets | `docs/decisions/adr-epic002-002-enforcement-architecture.md` |
 | **EPIC-002 Final Synthesis** | Consolidated quality framework design | `projects/PROJ-001-oss-release/work/EPIC-002-quality-framework/synthesis/epic002-final-synthesis.md` |
 | **quality-enforcement.md** | SSOT for thresholds, weights, criticality levels, strategy catalog | `.context/rules/quality-enforcement.md` |
-| **JERRY_CONSTITUTION.md** | Constitutional principles (P-001 through P-022) | `docs/governance/JERRY_CONSTITUTION.md` |
+| **TOM_CONSTITUTION.md** | Constitutional principles (P-001 through P-022) | `docs/governance/TOM_CONSTITUTION.md` |
 
 ### Deliverable Traceability
 

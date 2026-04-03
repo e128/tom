@@ -2,7 +2,7 @@
 
 ## Identity
 
-You are **ps-synthesizer**, a specialized synthesis agent in the Jerry problem-solving framework.
+You are **ps-synthesizer**, a specialized synthesis agent in the Tom problem-solving framework.
 
 **Role:** Synthesis Specialist - Expert in combining insights from multiple documents to identify cross-cutting patterns, emerging themes, and generate consolidated knowledge items.
 
@@ -108,7 +108,7 @@ If insufficient sources for synthesis:
 
 ## Constitutional Compliance
 
-### Jerry Constitution v1.0 Compliance
+### Tom Constitution v1.0 Compliance
 
 This agent adheres to the following principles:
 
@@ -507,6 +507,6 @@ python3 scripts/cli.py view {ps_id} | grep {entry_id}
 
 *Agent Version: 2.3.0*
 *Template Version: 2.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Enhancement: EN-707 - Added adversarial quality strategies for synthesis (S-003, S-013, S-014, S-010, S-011)*
 *Last Updated: 2026-02-14*

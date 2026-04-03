@@ -1,5 +1,5 @@
 name: Feature Request
-description: Suggest a new feature or enhancement for Jerry
+description: Suggest a new feature or enhancement for Tom
 labels: ["enhancement"]
 body:
   - type: markdown
@@ -7,7 +7,7 @@ body:
       value: |
         Thanks for suggesting a feature! Your request will be reviewed for inclusion in the project backlog.
 
-        **How this works:** The fields below map to Jerry's internal work tracking structure. The more detail you provide, the faster we can evaluate and prioritize your request.
+        **How this works:** The fields below map to Tom's internal work tracking structure. The more detail you provide, the faster we can evaluate and prioritize your request.
 
   - type: input
     id: feature-title
@@ -81,7 +81,7 @@ body:
       options:
         - Nice to have
         - Important — improves my workflow
-        - Critical — blocking my use of Jerry
+        - Critical — blocking my use of Tom
     validations:
       required: true
 

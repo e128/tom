@@ -22,7 +22,7 @@ Persistence Adapters are secondary adapters that implement repository ports for 
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Filesystem Adapter
 
@@ -54,7 +54,7 @@ class FilesystemProjectAdapter:
         └── PROJ-001-example/
             ├── PLAN.md
             ├── WORKTRACKER.md
-            └── .jerry/
+            └── .tom/
                 └── config.json
 
     Design Notes:
@@ -64,7 +64,7 @@ class FilesystemProjectAdapter:
     """
 
     PROJECTS_DIR = "projects"
-    CONFIG_FILE = ".jerry/config.json"
+    CONFIG_FILE = ".tom/config.json"
 
     def __init__(self, base_path: Path | str | None = None) -> None:
         """Initialize with optional base path.
@@ -109,8 +109,8 @@ class FilesystemProjectAdapter:
 
         # Create directory structure
         project_path.mkdir(parents=True, exist_ok=True)
-        (project_path / ".jerry").mkdir(exist_ok=True)
-        (project_path / ".jerry/data/items").mkdir(parents=True, exist_ok=True)
+        (project_path / ".tom").mkdir(exist_ok=True)
+        (project_path / ".tom/data/items").mkdir(parents=True, exist_ok=True)
 
         # Create required files
         self._create_if_missing(project_path / "PLAN.md", self._plan_template())
@@ -341,7 +341,7 @@ class JsonFileRepository:
     Useful for development and debugging.
 
     Storage Format:
-        .jerry/data/{type}/{id}.json
+        .tom/data/{type}/{id}.json
     """
 
     def __init__(
@@ -359,7 +359,7 @@ class JsonFileRepository:
             serializer: Function to convert aggregate to dict
             deserializer: Function to convert dict to aggregate
         """
-        self._base = base_path / ".jerry/data" / aggregate_type
+        self._base = base_path / ".tom/data" / aggregate_type
         self._serialize = serializer
         self._deserialize = deserializer
 
@@ -460,13 +460,13 @@ def test_adapter_implements_port():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Projects stored as directory structures with JSON config.
+> **Tom Decision**: Projects stored as directory structures with JSON config.
 
-> **Jerry Decision**: In-memory adapters for unit tests, file-based for development.
+> **Tom Decision**: In-memory adapters for unit tests, file-based for development.
 
-> **Jerry Decision**: All adapters implement the same port interface for interchangeability.
+> **Tom Decision**: All adapters implement the same port interface for interchangeability.
 
 ---
 

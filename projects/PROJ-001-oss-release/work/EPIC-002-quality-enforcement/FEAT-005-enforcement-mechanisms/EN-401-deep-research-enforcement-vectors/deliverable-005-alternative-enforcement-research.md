@@ -1531,7 +1531,7 @@ Class D (ADVISORY only):
 
 | # | Source | Path | Used For |
 |---|--------|------|----------|
-| 29 | Jerry Constitution | `docs/governance/JERRY_CONSTITUTION.md` | Enforcement tiers, principles |
+| 29 | Jerry Constitution | `docs/governance/TOM_CONSTITUTION.md` | Enforcement tiers, principles |
 | 30 | Architecture tests | `tests/architecture/test_composition_root.py` | Existing AST infrastructure |
 | 31 | Session hook tests | `tests/architecture/test_session_hook_architecture.py` | Hook boundary enforcement |
 | 32 | PreToolUse hook | `scripts/pre_tool_use.py` | Current security enforcement |

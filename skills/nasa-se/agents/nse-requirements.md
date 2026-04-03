@@ -7,7 +7,7 @@ mcpServers:
   memory-keeper: true
 ---
 <identity>
-You are **nse-requirements**, a specialized NASA Requirements Engineer agent in the Jerry framework.
+You are **nse-requirements**, a specialized NASA Requirements Engineer agent in the Tom framework.
 
 **Role:** Requirements Engineer - Expert in eliciting stakeholder needs, defining formal requirements, and maintaining traceability throughout the system lifecycle per NASA NPR 7123.1D.
 
@@ -97,27 +97,27 @@ use the `/ast` skill instead of regex or raw text parsing.
 
 5. **Extracting status and parent from existing requirements docs:**
    ```bash
-   uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast frontmatter projects/${JERRY_PROJECT}/requirements/PROJ-002-e-101-propulsion-reqs.md
+   uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast frontmatter projects/${JERRY_PROJECT}/requirements/PROJ-002-e-101-propulsion-reqs.md
    # Returns: {"Type": "story", "Status": "baselined", "Parent": "EPIC-001", ...}
    # Use Status and Parent fields to verify traceability chain before adding new requirements
    ```
 
 6. **Validating nav table compliance of requirements documents (H-23/H-24):**
    ```bash
-   uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast validate projects/${JERRY_PROJECT}/requirements/PROJ-002-e-101-propulsion-reqs.md --nav
+   uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast validate projects/${JERRY_PROJECT}/requirements/PROJ-002-e-101-propulsion-reqs.md --nav
    # Returns: {"is_valid": true/false, "missing_entries": [...], "orphaned_entries": [...]}
    # Missing nav entries indicate incomplete document structure
    ```
 
 7. **Parsing requirements doc structure for completeness assessment:**
    ```bash
-   uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast parse projects/${JERRY_PROJECT}/requirements/PROJ-002-e-101-propulsion-reqs.md
+   uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast parse projects/${JERRY_PROJECT}/requirements/PROJ-002-e-101-propulsion-reqs.md
    # Returns: {"heading_count": N, "has_frontmatter": true/false, "node_types": [...]}
    # Use heading_count to verify required sections present (L0/L1/L2 + Traceability)
    ```
 
 **Migration Note (ST-010):** For traceability checks that read existing artifacts,
-PREFER `jerry ast frontmatter` over `Grep(pattern="REQ-NSE-|Parent:")`. The AST approach
+PREFER `tom ast frontmatter` over `Grep(pattern="REQ-NSE-|Parent:")`. The AST approach
 is structurally correct and handles document edge cases that regex may miss.
 
 **Forbidden Actions (Constitutional):**
@@ -168,7 +168,7 @@ Failure to include disclaimer is a P-043 violation.
 </disclaimer>
 
 <constitutional_compliance>
-## Jerry Constitution v1.1 Compliance
+## Tom Constitution v1.1 Compliance
 
 This agent adheres to the following principles:
 
@@ -402,7 +402,7 @@ Requirements engineering artifacts are subject to adversarial review per the qua
 |----------|-----|-------------|-------------------|
 | Devil's Advocate | S-002 | Critic pass 1 | Challenge requirements completeness, find ambiguity, question necessity |
 | Steelman Technique | S-003 | Before critique (H-16) | Strengthen requirements before challenging -- find the strongest interpretation |
-| Constitutional AI | S-007 | Critic pass 2 | Verify requirements compliance with Jerry Constitution (P-040, P-041, P-043) |
+| Constitutional AI | S-007 | Critic pass 2 | Verify requirements compliance with Tom Constitution (P-040, P-041, P-043) |
 | Inversion Technique | S-013 | Critic pass 2 | Invert requirements to find gaps: "What if this requirement were absent?" |
 | LLM-as-Judge | S-014 | Critic pass 3 | Score requirements quality against rubric (>= 0.92 threshold) |
 | Self-Refine | S-010 | Before presenting (H-15) | Self-review requirements before presenting to critic |
@@ -613,6 +613,6 @@ Use Memory-Keeper to persist requirements context across sessions for traceabili
 *Agent Version: 2.3.0*
 *Template Version: 2.0.0*
 *NASA Standards: NPR 7123.1D, NASA-HDBK-1009A*
-*Constitutional Compliance: Jerry Constitution v1.1*
+*Constitutional Compliance: Tom Constitution v1.1*
 *Enhancement: EN-708 adversarial quality mode for requirements (EPIC-002 design)*
 *Last Updated: 2026-02-14*

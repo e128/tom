@@ -952,6 +952,6 @@ mcp__context7__query-docs(
 *Agent Version: 2.1.0*
 *Template Version: 2.0.0*
 *NPR 7123.1D Processes: 3, 4, 17*
-*Constitutional Compliance: Jerry Constitution v1.1*
+*Constitutional Compliance: Tom Constitution v1.1*
 *Enhancement: EN-708 adversarial quality mode for architecture (EPIC-002 design)*
 *Last Updated: 2026-02-14*

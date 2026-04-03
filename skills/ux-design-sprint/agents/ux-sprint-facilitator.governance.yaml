@@ -62,13 +62,13 @@ output:
   - L1
   - L2
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - "P-003: No Recursive Subagents (Hard) - Worker agent; no agent delegation capability"
   - "P-020: User Authority (Hard) - Decider has final say on solution direction; user decides sprint challenge scope and priorities"
   - "P-022: No Deception (Hard) - Sprint findings presented with evidence and confidence levels; Day 4 strong themes HIGH confidence; sketch selection MEDIUM confidence; degraded mode disclosed"
-  - "P-001: Truth and Accuracy (Soft, per JERRY_CONSTITUTION.md Article I) - All Day 4 findings cite specific user observations from interview grid; all sprint verdicts cite observation count and pattern strength"
-  - "P-002: File Persistence (Medium, per JERRY_CONSTITUTION.md Article I) - All outputs persisted to skill output directory; all four days of sprint artifacts written to files"
+  - "P-001: Truth and Accuracy (Soft, per TOM_CONSTITUTION.md Article I) - All Day 4 findings cite specific user observations from interview grid; all sprint verdicts cite observation count and pattern strength"
+  - "P-002: File Persistence (Medium, per TOM_CONSTITUTION.md Article I) - All outputs persisted to skill output directory; all four days of sprint artifacts written to files"
 validation:
   post_completion_checks:
   - verify_file_created

@@ -1,5 +1,5 @@
 # Practices
-*Updated: 2026-04-03T00:00:00Z*
+*Updated: 2026-04-03T14:08:55Z*
 
 Key conventions, workflow rules, and project patterns. The source of truth for how to work in this repo.
 
@@ -8,7 +8,7 @@ Key conventions, workflow rules, and project patterns. The source of truth for h
 All Python execution uses `uv run` (never `python` directly). Dependencies use `uv add` (never `pip install`). This is HARD rule H-05 — violations corrupt the environment.
 
 ```bash
-uv run jerry session start          # run the CLI
+uv run tom session start          # run the CLI
 uv run pytest tests/                # run tests
 uv add some-package                 # add a dependency
 uv sync                             # sync environment
@@ -21,9 +21,9 @@ BDD test-first (Red phase first) at 90% line coverage. Tests live in `tests/`. U
 ## Session Workflow
 
 1. Set `JERRY_PROJECT` environment variable (required by H-04)
-2. Run `jerry session start` — loads project context
+2. Run `tom session start` — loads project context
 3. Do work
-4. Run `jerry session end` — persists session state
+4. Run `tom session end` — persists session state
 5. After any code change, update the affected lode files (post-change verification)
 
 ## Skill Invocation

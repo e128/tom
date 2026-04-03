@@ -1,6 +1,6 @@
 # Claude Code Permission Syntax Reference
 
-> Specification of Claude Code permission syntax, settings file format, evaluation semantics, and Jerry-specific configuration findings.
+> Specification of Claude Code permission syntax, settings file format, evaluation semantics, and Tom-specific configuration findings.
 
 <!-- Quality criteria: skills/diataxis/rules/diataxis-standards.md Section 1 (R-01 through R-07) -->
 <!-- Anti-patterns to avoid: RAP-01 (marketing claims), RAP-02 (instructions/recipes), RAP-03 (narrative explanation) -->
@@ -18,7 +18,7 @@
 | [Skill Permissions](#skill-permissions) | `Skill(name)` pattern syntax |
 | [Bash Command Permissions](#bash-command-permissions) | `Bash(command pattern)` syntax and word-boundary behavior |
 | [File Access Permissions](#file-access-permissions) | Read, Write, Edit path patterns and glob wildcards |
-| [Jerry Configuration Findings](#jerry-configuration-findings) | Unverified fields and patterns in Jerry's committed settings |
+| [Tom Configuration Findings](#tom-configuration-findings) | Unverified fields and patterns in Tom's committed settings |
 
 ---
 
@@ -60,9 +60,9 @@ Claude Code settings files use JSON. The canonical `permissions` object contains
 
 > Source: [Claude Code Settings](https://code.claude.com/docs/en/settings)
 
-### FINDING-001: Undocumented field names in Jerry's committed settings
+### FINDING-001: Undocumented field names in Tom's committed settings
 
-Jerry's `.claude/settings.json` uses `permissions.allowed_tools` and `permissions.require_approval`. These field names do not appear in the Claude Code official documentation. The documented field names are `permissions.allow`, `permissions.deny`, and `permissions.ask`.
+Tom's `.claude/settings.json` uses `permissions.allowed_tools` and `permissions.require_approval`. These field names do not appear in the Claude Code official documentation. The documented field names are `permissions.allow`, `permissions.deny`, and `permissions.ask`.
 
 | Observed field | Documented equivalent | Status |
 |----------------|-----------------------|--------|
@@ -199,7 +199,7 @@ The space before `*` is required. This form matches skill invocations where the 
 **Example:**
 
 ```json
-"allow": ["Skill(jerry *)"]
+"allow": ["Skill(tom *)"]
 ```
 
 ### `Skill` (bare, in deny array)
@@ -225,20 +225,20 @@ Plugin skills use a `plugin-name:skill-name` namespace. This namespace prevents 
 
 ### FINDING-002: Colon-namespaced Skill permission form
 
-Jerry's `.claude/settings.local.json` contains entries of the form `Skill(jerry:skill-name)`. The documented `Skill()` permission syntax specifies `Skill(name)` and `Skill(name *)`. The colon-namespaced form `Skill(jerry:name)` does not appear as a documented permission pattern.
+Tom's `.claude/settings.local.json` contains entries of the form `Skill(tom:skill-name)`. The documented `Skill()` permission syntax specifies `Skill(name)` and `Skill(name *)`. The colon-namespaced form `Skill(tom:name)` does not appear as a documented permission pattern.
 
 | Observed form | Documentation basis | Status |
 |---------------|---------------------|--------|
-| `Skill(jerry:adversary)` | Plugin skill namespace documented for skill identity, not confirmed as permission pattern | UNVERIFIED |
+| `Skill(tom:adversary)` | Plugin skill namespace documented for skill identity, not confirmed as permission pattern | UNVERIFIED |
 | `Skill(adversary)` | Matches documented `Skill(name)` pattern | Documented |
 
-**Required action:** Test whether `Skill(jerry:adversary)` entries in `allow` produce different behavior from `Skill(adversary)` entries alone. Determine whether removing the colon-namespaced form breaks skill invocation approval.
+**Required action:** Test whether `Skill(tom:adversary)` entries in `allow` produce different behavior from `Skill(adversary)` entries alone. Determine whether removing the colon-namespaced form breaks skill invocation approval.
 
 > Source: [Claude Code Skills](https://code.claude.com/docs/en/skills)
 
 ### FINDING-003: Skills with no permission entries
 
-Of the 16 registered Jerry skills, 9 have no entries in the `allow` array of `.claude/settings.local.json`.
+Of the 16 registered Tom skills, 9 have no entries in the `allow` array of `.claude/settings.local.json`.
 
 | Skills with entries | Skills without entries |
 |---------------------|------------------------|
@@ -317,9 +317,9 @@ The `:*` suffix (e.g., `Bash(echo:*)`) is a legacy form. The documented replacem
 
 > Source: [Claude Code Permissions](https://code.claude.com/docs/en/permissions) — direct quote: "The legacy :* suffix syntax is equivalent to * but is deprecated."
 
-### FINDING-004: Deprecated `:*` syntax in Jerry settings
+### FINDING-004: Deprecated `:*` syntax in Tom settings
 
-Jerry's `.claude/settings.local.json` contains multiple entries using the deprecated `:*` form, for example `Bash(echo:*)`, `Bash(ls:*)`, `Bash(find:*)`, and all `Bash(git ...:*)` entries.
+Tom's `.claude/settings.local.json` contains multiple entries using the deprecated `:*` form, for example `Bash(echo:*)`, `Bash(ls:*)`, `Bash(find:*)`, and all `Bash(git ...:*)` entries.
 
 | Status | Description |
 |--------|-------------|
@@ -368,14 +368,14 @@ File access permission strings apply to the `Read`, `Write`, and `Edit` tool per
 
 ---
 
-## Jerry Configuration Findings
+## Tom Configuration Findings
 
 This section consolidates all FINDING entries from the sections above, cross-referenced for navigation.
 
 | ID | Location | Issue | Status | Action |
 |----|----------|-------|--------|--------|
 | FINDING-001 | `.claude/settings.json` | `permissions.allowed_tools` and `permissions.require_approval` are not documented field names; documented names are `allow`, `deny`, `ask` | UNVERIFIED | Validate against JSON schema at `https://json.schemastore.org/claude-code-settings.json` |
-| FINDING-002 | `.claude/settings.local.json` | `Skill(jerry:name)` colon-namespaced form is not documented as a permission pattern | UNVERIFIED | Test whether removing colon-namespaced entries changes approval behavior |
+| FINDING-002 | `.claude/settings.local.json` | `Skill(tom:name)` colon-namespaced form is not documented as a permission pattern | UNVERIFIED | Test whether removing colon-namespaced entries changes approval behavior |
 | FINDING-003 | `.claude/settings.local.json` | 9 of 16 registered skills have no `allow` entries; approval behavior for these skills is untested | UNTESTED | Determine whether absent `allow` entries trigger approval prompts |
 | FINDING-004 | `.claude/settings.local.json` | All `Bash(command:*)` entries use the deprecated `:*` suffix form | DEPRECATED | Migrate to `Bash(command *)` (space before `*`) |
 
@@ -384,4 +384,4 @@ This section consolidates all FINDING entries from the sections above, cross-ref
 ## Related
 
 - **Explanation:** [About Claude Code permission scopes and merge behavior](../design/) — Design rationale and architectural context
-- **How-To Guide:** [How to add a new skill permission to Jerry settings](../../.context/) — Task-oriented configuration instructions
+- **How-To Guide:** [How to add a new skill permission to Tom settings](../../.context/) — Task-oriented configuration instructions

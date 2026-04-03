@@ -9,7 +9,7 @@ Sources with lower values have higher precedence.
 
 References:
     - WI-009: Configuration Value Objects
-    - ADR-PROJ004-004: JerrySession Context (5-level precedence)
+    - ADR-PROJ004-004: TomSession Context (5-level precedence)
     - PAT-VO-002: Enum Value Object pattern
 
 Exports:
@@ -30,9 +30,9 @@ class ConfigSource(IntEnum):
 
     Precedence Order (highest to lowest):
         1. ENV (1): Environment variables (JERRY_*)
-        2. SESSION_LOCAL (2): .jerry/local/context.toml
+        2. SESSION_LOCAL (2): .tom/local/context.toml
         3. PROJECT (3): projects/PROJ-*/config.toml
-        4. FRAMEWORK (4): .jerry/config.toml
+        4. FRAMEWORK (4): .tom/config.toml
         5. DEFAULT (5): Code defaults
 
     Attributes:
@@ -85,9 +85,9 @@ class ConfigSource(IntEnum):
         """
         descriptions = {
             ConfigSource.ENV: "Environment variables (JERRY_*)",
-            ConfigSource.SESSION_LOCAL: ".jerry/local/context.toml",
+            ConfigSource.SESSION_LOCAL: ".tom/local/context.toml",
             ConfigSource.PROJECT: "projects/PROJ-*/config.toml",
-            ConfigSource.FRAMEWORK: ".jerry/config.toml",
+            ConfigSource.FRAMEWORK: ".tom/config.toml",
             ConfigSource.DEFAULT: "Code defaults",
         }
         return descriptions.get(self, "Unknown source")

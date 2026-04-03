@@ -21,8 +21,8 @@ activation-keywords:
 # Heuristic Evaluation Sub-Skill
 
 > **Version:** 1.0.0
-> **Framework:** Jerry User-Experience -- Heuristic Evaluation
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom User-Experience -- Heuristic Evaluation
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **Parent Skill:** `/user-experience` (`skills/user-experience/SKILL.md`)
 > **Wave:** 1 (Zero-Dependency)
 > **Project:** PROJ-022 User Experience Skill | GitHub Issue [#138](https://github.com/geekatron/jerry/issues/138)
@@ -177,7 +177,7 @@ The `ux-orchestrator` invokes the agent via the Agent tool:
 ```python
 Agent(
     description="ux-heuristic-evaluator: Heuristic evaluation of settings page",
-    subagent_type="jerry:ux-heuristic-evaluator",
+    subagent_type="tom:ux-heuristic-evaluator",
     prompt="""
 ## UX CONTEXT (REQUIRED)
 - **Engagement ID:** UX-0001
@@ -401,7 +401,7 @@ This sub-skill is in **Wave 1** (Zero-Dependency). It requires only KICKOFF-SIGN
 
 ### Downstream Handoffs
 
-This sub-skill produces findings that feed into other sub-skills via the Jerry handoff protocol (`docs/schemas/handoff-v2.schema.json`).
+This sub-skill produces findings that feed into other sub-skills via the Tom handoff protocol (`docs/schemas/handoff-v2.schema.json`).
 
 | To Sub-Skill | Handoff Artifact | Key Fields | Trigger |
 |-------------|-----------------|-----------|---------|
@@ -450,7 +450,7 @@ Heuristic evaluation outputs include synthesis hypotheses that carry confidence 
 
 ## Constitutional Compliance
 
-All agents in this sub-skill adhere to the **Jerry Constitution v1.0**:
+All agents in this sub-skill adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -551,7 +551,7 @@ This sub-skill follows a parent-routed registration model. Sub-skills are not in
 
 *Sub-Skill Version: 1.0.0*
 *Parent Skill: `/user-experience` v1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Wave: 1 (Zero-Dependency)*
 *SSOT: `skills/user-experience/SKILL.md`*
 *Project: PROJ-022 User Experience Skill*

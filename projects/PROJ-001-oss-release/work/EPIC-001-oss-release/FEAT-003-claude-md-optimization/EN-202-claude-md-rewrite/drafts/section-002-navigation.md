@@ -26,7 +26,7 @@ BUGS APPLIED:
 | Orchestration | `/orchestration` skill |
 | Templates | `.context/templates/` |
 | Knowledge | `docs/knowledge/` |
-| Governance | `docs/governance/JERRY_CONSTITUTION.md` |
+| Governance | `docs/governance/TOM_CONSTITUTION.md` |
 
 **Key:** (A) = Auto-loaded by Claude Code at session start.
 
@@ -98,7 +98,7 @@ REMEDIATIONS APPLIED: REM-001, REM-002
 | Transcript | `/transcript` skill |
 | Templates | `.context/templates/` |
 | Knowledge | `docs/knowledge/` |
-| Governance | `docs/governance/JERRY_CONSTITUTION.md` |
+| Governance | `docs/governance/TOM_CONSTITUTION.md` |
 
 **Key:** (A) = Auto-loaded by Claude Code at session start.
 
@@ -144,7 +144,7 @@ Iteration 2 PASSES quality gate.
 | Transcript | `/transcript` skill |
 | Templates | `.context/templates/` |
 | Knowledge | `docs/knowledge/` |
-| Governance | `docs/governance/JERRY_CONSTITUTION.md` |
+| Governance | `docs/governance/TOM_CONSTITUTION.md` |
 
 **Key:** (A) = Auto-loaded by Claude Code at session start.
 

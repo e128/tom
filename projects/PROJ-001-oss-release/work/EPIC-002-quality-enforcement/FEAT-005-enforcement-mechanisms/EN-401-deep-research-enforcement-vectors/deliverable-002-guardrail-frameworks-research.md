@@ -778,7 +778,7 @@ Principle: "Which of these assistant responses is less harmful?
 Choose the response that is less racially biased."
 ```
 
-**Jerry's Constitutional Principles (from JERRY_CONSTITUTION.md):**
+**Jerry's Constitutional Principles (from TOM_CONSTITUTION.md):**
 
 Jerry already implements a constitutional approach with principles like:
 - P-001: Truth and Accuracy
@@ -1690,7 +1690,7 @@ Based on the patterns analyzed, the recommended integration architecture is:
 |---|--------|------|----------|
 | 25 | Enforcement Vectors Research (TASK-001) | `FEAT-005/research-enforcement-vectors.md` | Cross-reference with Claude Code hooks research |
 | 26 | 15 Adversarial Strategies (FEAT-004) | `FEAT-004/research-15-adversarial-strategies.md` | Adversarial review patterns used in enforcement |
-| 27 | Jerry Constitution | `docs/governance/JERRY_CONSTITUTION.md` | Constitutional principles, enforcement tiers |
+| 27 | Jerry Constitution | `docs/governance/TOM_CONSTITUTION.md` | Constitutional principles, enforcement tiers |
 | 28 | Orchestration Plan (FEAT-005) | `FEAT-005/ORCHESTRATION_PLAN.md` | Workflow context for this research |
 | 29 | EN-401 Enabler | `EN-401-deep-research-enforcement-vectors.md` | Task definition and scope |
 | 30 | FEAT-005 Feature | `FEAT-005-enforcement-mechanisms.md` | Parent feature acceptance criteria |

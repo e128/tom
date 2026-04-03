@@ -16,9 +16,9 @@
 
 | Principle | Tier | Source | Applicable |
 |-----------|------|--------|------------|
-| P-003: No recursive subagents | HARD | JERRY_CONSTITUTION.md | YES — skill declares agent hierarchy |
-| P-020: User authority | HARD | JERRY_CONSTITUTION.md | YES — skill describes user decision points |
-| P-022: No deception | HARD | JERRY_CONSTITUTION.md | YES — skill involves AI synthesis confidence |
+| P-003: No recursive subagents | HARD | TOM_CONSTITUTION.md | YES — skill declares agent hierarchy |
+| P-020: User authority | HARD | TOM_CONSTITUTION.md | YES — skill describes user decision points |
+| P-022: No deception | HARD | TOM_CONSTITUTION.md | YES — skill involves AI synthesis confidence |
 | H-22: Proactive skill invocation / trigger map | HARD | mandatory-skill-usage.md | YES — skill must be registered in trigger map |
 | H-23: Navigation table (NAV-001) | HARD | markdown-navigation-standards.md | YES — document over 30 lines |
 | H-25: Skill naming and structure | HARD | skill-standards.md | YES — SKILL.md naming, folder structure |

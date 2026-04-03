@@ -136,7 +136,7 @@ The traceability improvement from v0.4.0 is substantial. The initial score was 0
 
 - The References section now provides 35 numbered sources with URLs and access dates, enabling external verification
 - 23 inline citations create claim-to-source tracing within the document
-- The Traceability section lists five source documents with their roles: the EPIC-001 parent document, the initial research artifact, the supplemental research artifact, quality-enforcement.md, and JERRY_CONSTITUTION.md
+- The Traceability section lists five source documents with their roles: the EPIC-001 parent document, the initial research artifact, the supplemental research artifact, quality-enforcement.md, and TOM_CONSTITUTION.md
 - The epistemic note traces the citation history across versions (v0.5.0 corrections, v0.6.0-v0.7.0 citation expansion)
 - FEAT cross-references are complete: all seven downstream features (FEAT-002 through FEAT-007) are referenced in the HTML comment metadata and have dedicated implementation notes
 
@@ -184,7 +184,7 @@ All passages in quote block format (`>` markdown syntax) were examined for prope
 
 | Quote | Location | Attribution | Citation | Status |
 |-------|----------|-------------|----------|--------|
-| "The JERRY_CONSTITUTION.md is non-negotiable..." | Line 135 | Framework example (not a McConkey quote) | N/A — illustrative | ACCEPTABLE |
+| "The TOM_CONSTITUTION.md is non-negotiable..." | Line 135 | Framework example (not a McConkey quote) | N/A — illustrative | ACCEPTABLE |
 | "Quality gate passed. Score: 0.94..." | Line 139 | Framework example | N/A — illustrative | ACCEPTABLE |
 | "Whether it was steep, extreme descent..." | Line 75 | McConkey direct quote | [23] SnowBrains | VERIFIED |
 | "They still don't get it..." | Line 79 | McConkey direct quote | [10] Denver Post 2006 | VERIFIED |

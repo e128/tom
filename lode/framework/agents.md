@@ -1,5 +1,5 @@
 # Agent System
-*Updated: 2026-04-03T00:00:00Z*
+*Updated: 2026-04-03T14:09:10Z*
 
 Agents are specialized subagents invoked via the Agent tool by orchestrators. Dual-file architecture (H-34): `.md` for Claude Code, `.governance.yaml` for governance metadata.
 
@@ -12,7 +12,7 @@ name: ps-researcher
 description: >
   Research agent for surveys and landscape analysis...
 model: opus
-tools: Read, Glob, Grep, Write, Bash, WebSearch, WebFetch
+tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 ```
 

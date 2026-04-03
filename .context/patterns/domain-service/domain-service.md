@@ -32,7 +32,7 @@ Use a Domain Service when:
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Quality Validator Service
 
@@ -443,13 +443,13 @@ def test_dependency_validator_detects_cycle():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Domain services are stateless. Configuration is passed via constructor, data via method parameters.
+> **Tom Decision**: Domain services are stateless. Configuration is passed via constructor, data via method parameters.
 
-> **Jerry Decision**: Domain services may accept repository interfaces for cross-aggregate queries, but must not perform writes.
+> **Tom Decision**: Domain services may accept repository interfaces for cross-aggregate queries, but must not perform writes.
 
-> **Jerry Decision**: Domain services raise domain exceptions (InvariantViolationError, QualityGateError), not generic exceptions.
+> **Tom Decision**: Domain services raise domain exceptions (InvariantViolationError, QualityGateError), not generic exceptions.
 
 ---
 

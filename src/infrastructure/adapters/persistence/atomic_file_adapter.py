@@ -9,7 +9,7 @@ This adapter ensures data integrity during concurrent access and crash recovery.
 
 Implementation Notes:
     - Uses filelock.FileLock for cross-platform file locking (Windows + POSIX)
-    - Lock files are stored in a centralized lock directory (.jerry/local/locks/)
+    - Lock files are stored in a centralized lock directory (.tom/local/locks/)
     - Atomic writes use tempfile + os.replace for crash safety
     - Locks auto-release on process termination (OS-level guarantee)
 
@@ -54,9 +54,9 @@ class AtomicFileAdapter:
         """Initialize the adapter with a lock directory.
 
         Args:
-            lock_dir: Directory for lock files. Defaults to .jerry/local/locks/
+            lock_dir: Directory for lock files. Defaults to .tom/local/locks/
         """
-        self._lock_dir = lock_dir or Path(".jerry/local/locks")
+        self._lock_dir = lock_dir or Path(".tom/local/locks")
 
     @property
     def lock_dir(self) -> Path:

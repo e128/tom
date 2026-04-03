@@ -173,7 +173,7 @@ Adding the BULLETED_OUTLINE line range to the methodology table would bring this
 - Schema $comment blocks trace each property to file-organization.md line numbers and source authors (Cockburn Ch. N, Jacobson UC 2.0)
 - Implementation summary maps every file to architecture specification IDs (F-02 through F-17)
 - DEV entries provide full deviation records with justification grounded in source documents
-- Constitution reference present in both governance YAMLs: `reference: docs/governance/JERRY_CONSTITUTION.md`
+- Constitution reference present in both governance YAMLs: `reference: docs/governance/TOM_CONSTITUTION.md`
 - Schema $id uses versioned URL: https://jerry-framework.dev/schemas/use-case-realization/v1.0.0
 
 **Gaps:**

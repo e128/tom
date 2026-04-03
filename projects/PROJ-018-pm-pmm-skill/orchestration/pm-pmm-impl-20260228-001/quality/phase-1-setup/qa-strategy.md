@@ -161,7 +161,7 @@ The `/pm-pmm` skill is classified **C3 (Significant)** per quality-enforcement.m
 
 | Strategy | ID | Applies To | Rationale |
 |----------|----|------------|-----------|
-| Constitutional AI Critique | S-007 | All 3 agent .md files, all 3 .governance.yaml | Primary concern: every agent must embed P-003/P-020/P-022 constitutional triplet with >= 3 forbidden actions. S-007 reads the full agent definition against the JERRY_CONSTITUTION. |
+| Constitutional AI Critique | S-007 | All 3 agent .md files, all 3 .governance.yaml | Primary concern: every agent must embed P-003/P-020/P-022 constitutional triplet with >= 3 forbidden actions. S-007 reads the full agent definition against the TOM_CONSTITUTION. |
 | Devil's Advocate | S-002 | SKILL.md routing triggers, agent boundaries | Challenges: Are the routing triggers distinct enough? Could two agents be merged? Are the discovery/delivery mode boundaries genuinely non-overlapping? |
 | LLM-as-Judge | S-014 | All Phase 2 artifacts | Quantitative scoring. Each agent .md and .governance.yaml is scored independently, then a cross-agent consistency sub-score is applied. |
 | Pre-Mortem Analysis | S-004 | Agent interaction model | Asks: "The customer-insight agent returns sensitive user data to product-strategist. What are the failure scenarios for each information flow?" |
@@ -464,7 +464,7 @@ ORCH-C05 prohibits using one agent for all adversary strategies. This is an anch
 |-------|-------|
 | Strategy | S-007 Constitutional AI Critique |
 | Executor isolation | Dedicated Task invocation. Receives: artifact file path, constitutional triplet checklist, governance YAML schema |
-| Context given | JERRY_CONSTITUTION.md reference, H-34/H-35 rule text, constitutional triplet (P-003, P-020, P-022) |
+| Context given | TOM_CONSTITUTION.md reference, H-34/H-35 rule text, constitutional triplet (P-003, P-020, P-022) |
 | Context withheld | Other strategy findings, prior iteration scores, creator rationale |
 | Output format | Per-principle compliance table: PASS / FAIL / CONDITIONAL per principle, with quoted evidence from the artifact |
 | Applies at | Phases 1, 2, 3, 4 |

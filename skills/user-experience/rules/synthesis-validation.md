@@ -248,9 +248,9 @@ Cross-framework synthesis operates on textual output from sub-skills. It does no
 
 | Principle | Description | Authoritative Source |
 |-----------|-------------|---------------------|
-| P-003 | No recursive subagents; max 1 level | `docs/governance/JERRY_CONSTITUTION.md` |
-| P-020 | User authority; never override user decisions | `docs/governance/JERRY_CONSTITUTION.md` |
-| P-022 | No deception about actions, capabilities, or confidence | `docs/governance/JERRY_CONSTITUTION.md` |
+| P-003 | No recursive subagents; max 1 level | `docs/governance/TOM_CONSTITUTION.md` |
+| P-020 | User authority; never override user decisions | `docs/governance/TOM_CONSTITUTION.md` |
+| P-022 | No deception about actions, capabilities, or confidence | `docs/governance/TOM_CONSTITUTION.md` |
 | H-13 | Quality threshold >= 0.92 for C2+ deliverables | `.context/rules/quality-enforcement.md#quality-gate` |
 | H-14 | Creator-critic-revision cycle, minimum 3 iterations | `.context/rules/quality-enforcement.md#quality-gate` |
 

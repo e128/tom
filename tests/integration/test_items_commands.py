@@ -199,7 +199,7 @@ class TestEventPersistence:
         repo.save(work_item)
 
         # Verify event file exists
-        events_dir = tmp_path / ".jerry" / "data" / "events"
+        events_dir = tmp_path / ".tom" / "data" / "events"
         event_files = list(events_dir.glob("*.jsonl"))
         assert len(event_files) == 1
 
@@ -240,7 +240,7 @@ class TestEventPersistence:
         repo.save(work_item)
 
         # Verify events file has both events
-        events_dir = tmp_path / ".jerry" / "data" / "events"
+        events_dir = tmp_path / ".tom" / "data" / "events"
         event_files = list(events_dir.glob("*.jsonl"))
         assert len(event_files) == 1
 
@@ -419,7 +419,7 @@ class TestWorkItemLifecycle:
         repo.save(work_item)
 
         # Verify all events are persisted
-        events_dir = tmp_path / ".jerry" / "data" / "events"
+        events_dir = tmp_path / ".tom" / "data" / "events"
         event_files = list(events_dir.glob("*.jsonl"))
         assert len(event_files) == 1
 

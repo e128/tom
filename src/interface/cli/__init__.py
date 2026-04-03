@@ -4,11 +4,11 @@
 """
 CLI Interface - Command Line Adapters
 
-This package contains command-line interface adapters for Jerry Framework.
+This package contains command-line interface adapters for Tom Framework.
 These are primary adapters that drive the application.
 
 Modules:
-    - main: Main CLI entry point (jerry command)
+    - main: Main CLI entry point (tom command)
 
 EN-001: Removed session_start module (TD-004). Session hook now calls main CLI.
 """

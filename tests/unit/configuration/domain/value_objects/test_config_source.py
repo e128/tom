@@ -159,7 +159,7 @@ class TestConfigSourceDisplayName:
 class TestConfigSourceDescription:
     """Tests for description property."""
 
-    def test_env_description_mentions_jerry(self) -> None:
+    def test_env_description_mentions_tom(self) -> None:
         """ENV description mentions JERRY_ prefix."""
         assert "JERRY_" in ConfigSource.ENV.description
 

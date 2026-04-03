@@ -1,5 +1,5 @@
 """
-Session Context Types for Jerry Framework
+Session Context Types for Tom Framework
 
 Generated from: docs/schemas/session_context.json
 Schema Version: 1.0.0

@@ -13,7 +13,7 @@ from enum import Enum, auto
 
 
 class ProjectStatus(Enum):
-    """Lifecycle status of a Jerry project.
+    """Lifecycle status of a Tom project.
 
     States:
         UNKNOWN: Status could not be determined (e.g., missing WORKTRACKER.md)

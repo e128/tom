@@ -5,7 +5,7 @@
 Integration tests for PreToolUse hook with AST enforcement.
 
 Tests the full hook pipeline by invoking the CLI-based enforcement
-(``uv run jerry hooks pre-tool-use``) which runs SecurityEnforcementEngine
+(``uv run tom hooks pre-tool-use``) which runs SecurityEnforcementEngine
 (security checks) + PreToolEnforcementEngine (architecture).
 
 References:
@@ -36,7 +36,7 @@ def run_hook(tool_name: str, tool_input: dict) -> tuple[int, dict | None, str]:
     input_data = json.dumps({"tool_name": tool_name, "tool_input": tool_input})
 
     result = subprocess.run(
-        ["uv", "run", "--directory", _REPO_ROOT, "jerry", "--json", "hooks", "pre-tool-use"],
+        ["uv", "run", "--directory", _REPO_ROOT, "tom", "--json", "hooks", "pre-tool-use"],
         input=input_data,
         capture_output=True,
         text=True,

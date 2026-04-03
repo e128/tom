@@ -75,7 +75,7 @@ def _make_assistant_entry(
 @pytest.fixture()
 def lifecycle_path(tmp_path: Path) -> Path:
     """Path for the lifecycle JSON file."""
-    return tmp_path / ".jerry" / "local" / "subagent-lifecycle.json"
+    return tmp_path / ".tom" / "local" / "subagent-lifecycle.json"
 
 
 @pytest.fixture()

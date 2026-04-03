@@ -167,8 +167,8 @@ It embraces:
 | Context | Recommended Option | Rationale |
 |---------|-------------------|-----------|
 | CLI session start | Option A compact | Clean, fast, recognizable |
-| `jerry --version` | Option A or B full | Splash-worthy, sets the tone |
-| `jerry session end` (all items done) | Option C full (box-art) | Celebration context; matches established box-art pattern |
+| `tom --version` | Option A or B full | Splash-worthy, sets the tone |
+| `tom session end` (all items done) | Option C full (box-art) | Celebration context; matches established box-art pattern |
 | README / documentation | Option A full | Most readable in markdown code blocks |
 | Error states | None | Logo is for positive moments, not interruptions |
 
@@ -281,7 +281,7 @@ Two-space indent. Dimension name followed by colon and value. No bullets for sco
 **Level 3 — Instructional steps** (error recovery, setup):
 
 ```
-  1. jerry projects list          # see what's available
+  1. tom projects list          # see what's available
   2. export JERRY_PROJECT=PROJ-003-je-ne-sais-quoi
 ```
 

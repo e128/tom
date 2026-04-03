@@ -10,7 +10,7 @@
 - **Executed:** 2026-02-25T00:00:00Z
 - **Reviewer:** adv-executor
 - **Iteration:** 3 (prior: `docs/reviews/iteration-1-s007-constitutional.md` 0.86 REVISE, `docs/reviews/iteration-2-s007-constitutional.md` 0.95 PASS)
-- **Constitutional Context:** JERRY_CONSTITUTION.md v1.0 (P-001 through P-043); quality-enforcement.md H-01 through H-36; markdown-navigation-standards.md (H-23, H-24, NAV-001 through NAV-006)
+- **Constitutional Context:** TOM_CONSTITUTION.md v1.0 (P-001 through P-043); quality-enforcement.md H-01 through H-36; markdown-navigation-standards.md (H-23, H-24, NAV-001 through NAV-006)
 
 ---
 
@@ -79,21 +79,21 @@ Scope: document deliverable (public-facing OSS installation guide). Same constit
 
 | Principle | Tier | Source | Applicable | Rationale |
 |-----------|------|--------|------------|-----------|
-| P-001 (Truth and Accuracy) | SOFT | JERRY_CONSTITUTION.md | Yes | All factual claims in a public OSS guide must be verifiable |
-| P-022 (No Deception) | HARD | JERRY_CONSTITUTION.md | Yes | Must not mislead users about capabilities, versions, or behavior |
+| P-001 (Truth and Accuracy) | SOFT | TOM_CONSTITUTION.md | Yes | All factual claims in a public OSS guide must be verifiable |
+| P-022 (No Deception) | HARD | TOM_CONSTITUTION.md | Yes | Must not mislead users about capabilities, versions, or behavior |
 | H-23 (Navigation table required) | HARD | quality-enforcement.md + markdown-navigation-standards.md | Yes | Document is >30 lines and Claude-consumed |
 | H-24 (Anchor links required in nav table) | HARD | quality-enforcement.md + markdown-navigation-standards.md | Yes | Nav table section names must use anchor links |
 | NAV-002 (Nav table placement) | MEDIUM | markdown-navigation-standards.md | Yes | Placement should be after frontmatter, before first content |
 | NAV-003 (Nav table format) | MEDIUM | markdown-navigation-standards.md | Yes | Should use two-column `Section | Purpose` format |
 | NAV-004 (Nav table coverage) | MEDIUM | markdown-navigation-standards.md | Yes | All major (`##`) sections should be listed |
 | NAV-005 (Entry descriptions) | MEDIUM | markdown-navigation-standards.md | Yes | Each entry should have a purpose description |
-| P-004 (Explicit Provenance) | MEDIUM | JERRY_CONSTITUTION.md | Partial | External links and version claims should be verifiable |
-| P-003 (No Recursive Subagents) | HARD | JERRY_CONSTITUTION.md | No | Guide is a user document, not an agent implementation |
+| P-004 (Explicit Provenance) | MEDIUM | TOM_CONSTITUTION.md | Partial | External links and version claims should be verifiable |
+| P-003 (No Recursive Subagents) | HARD | TOM_CONSTITUTION.md | No | Guide is a user document, not an agent implementation |
 | H-07 (Architecture layer isolation) | HARD | quality-enforcement.md | No | Applies to code, not documentation |
 | H-10 (One class per file) | HARD | quality-enforcement.md | No | Applies to code, not documentation |
 | H-11 (Type hints + docstrings) | HARD | quality-enforcement.md | No | Applies to Python code, not documentation |
 | H-20 (Testing standards) | HARD | quality-enforcement.md | No | Applies to code, not documentation |
-| P-040 through P-043 (NASA SE) | HARD/MEDIUM | JERRY_CONSTITUTION.md | No | NSE-agent-specific principles, not document review |
+| P-040 through P-043 (NASA SE) | HARD/MEDIUM | TOM_CONSTITUTION.md | No | NSE-agent-specific principles, not document review |
 
 **Active constitutional scope:** P-001, P-022, H-23, H-24, NAV-002, NAV-003, NAV-004, NAV-005
 

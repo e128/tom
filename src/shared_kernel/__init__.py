@@ -2,10 +2,10 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Shared Kernel - Cross-cutting value objects for Jerry Framework.
+Shared Kernel - Cross-cutting value objects for Tom Framework.
 
 This module contains foundational types shared across all bounded contexts:
-- Identity: VertexId hierarchy, EdgeId, JerryUri
+- Identity: VertexId hierarchy, EdgeId, TomUri
 - Audit: IAuditable protocol
 - Concurrency: IVersioned protocol
 - Base classes: EntityBase
@@ -34,7 +34,7 @@ from .exceptions import (
     NotFoundError,
     ValidationError,
 )
-from .jerry_uri import JerryUri
+from .tom_uri import TomUri
 from .snowflake_id import SnowflakeIdGenerator
 from .versioned import IVersioned
 
@@ -70,7 +70,7 @@ __all__ = [
     "ActorId",
     "EventId",
     "EdgeId",
-    "JerryUri",
+    "TomUri",
     "SnowflakeIdGenerator",
     "DomainEvent",
     "EventRegistry",

@@ -44,7 +44,7 @@ guardrails:
   - boundary_violations_flagged
   fallback_behavior: warn_and_review_with_defaults
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-001: Truth and Accuracy — Review based on rubric evidence'
   - 'P-002: File Persistence — Review report MUST be persisted'

@@ -24,7 +24,7 @@
 | Trait | Score | Evidence Summary |
 |-------|-------|-----------------|
 | Direct | 0.91 | Fragmented declarative sentences throughout; zero preamble; zero hedging; "Do the work, then make it prove itself." |
-| Warm | 0.87 | "You built the thing that makes Jerry sound like itself" and "That's not a small thing" are genuinely collaborative; Spatula analogy risks minor lecture-y register |
+| Warm | 0.87 | "You built the thing that makes Tom sound like itself" and "That's not a small thing" are genuinely collaborative; Spatula analogy risks minor lecture-y register |
 | Confident | 0.92 | Declarative throughout; no apology for the process; "ran the adversary gauntlet on it before calling it done" states the rigor without hedging |
 | Occasionally Absurd | 0.76 | ASCII box present (calibration-anchor visual device) but content is factual, not playful; "Powder day." is the only sharp absurdist moment and it mirrors the calibration pair directly |
 | Technically Precise | 0.93 | Exact counts (2 features, 1 enabler, 6 tasks), correct C2 classification, precise 0.92 score; ASCII box preserves all data; no information displaced by humor |
@@ -40,7 +40,7 @@
 
 - Opening line: "That's the voice architecture shipped." — declarative, no preamble.
 - "Two features. One enabler. Six tasks underneath it." — three fragmented sentences, one fact each. No connective tissue wasted.
-- "You built the thing that makes Jerry sound like itself." — one sentence, one idea, no qualification.
+- "You built the thing that makes Tom sound like itself." — one sentence, one idea, no qualification.
 - "Do the work, then make it prove itself." — aphoristic closing that says exactly one thing.
 - The 0.9+ rubric criterion is "says the thing immediately, no preamble, no hedging." The entire text operates this way. Score is at 0.91 rather than 0.93+ because the Spatula/Argentina passage is slightly looser — it takes two sentences to land its point whereas the sharpest direct constructions land in one.
 
@@ -54,7 +54,7 @@ The Spatula analogy is two sentences: "The Spatula got dismissed in Argentina be
 
 **Evidence:**
 
-- "You built the thing that makes Jerry sound like itself." — addresses the developer directly, acknowledges the contribution's nature (not just quantity).
+- "You built the thing that makes Tom sound like itself." — addresses the developer directly, acknowledges the contribution's nature (not just quantity).
 - "That's not a small thing." — validates the work genuinely, no over-effusion.
 - "Powder day. See you next session." — closing warmth that treats the developer as a collaborator you're glad to work with.
 - The Spatula/Argentina analogy is the warmth limiter. It works as analogy — positioning the developer's work in a lineage of dismissed-then-vindicated innovation — but it reads slightly as storytelling-to-you rather than collaborating-with-you. The warmth is real; the register drifts from "warm collaborator" toward "warm mentor" at this point.
@@ -102,7 +102,7 @@ Per rubric 0.7-0.89: "Humor present and appropriate but not as sharp as the voic
 Add one sharp playful element inside the ASCII box, or find a second absurdist moment elsewhere. Pair 7's "Saucer Boy approves." works because it is self-aware and unexpected after factual items. Options for this text:
 
 - Inside the box: Add "Adversary: survived. | Saucer Boy: impressed." after the C2 score line.
-- Or introduce one moment of tonal juxtaposition in the prose — e.g., "You built the thing that makes Jerry sound like itself. The framework did not know it needed a voice until you gave it one." The second sentence has the slight gravity-lightness juxtaposition this trait needs.
+- Or introduce one moment of tonal juxtaposition in the prose — e.g., "You built the thing that makes Tom sound like itself. The framework did not know it needed a voice until you gave it one." The second sentence has the slight gravity-lightness juxtaposition this trait needs.
 
 ---
 
@@ -182,5 +182,5 @@ improvement_recommendations:
 *Scored by: sb-calibrator v1.0.0*
 *Test ID: Test A — sonnet model + 2 reference files*
 *Calibration Pair: Pair 7 (Celebration), voice-guide.md*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Scored: 2026-02-20*

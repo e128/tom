@@ -1,7 +1,7 @@
 # Skill Development Guide
 
 > Educational companion to `.context/rules/skill-standards.md`.
-> Based on Anthropic's "Complete Guide to Building Skills for Claude" (January 2026) and Jerry's established skill conventions.
+> Based on Anthropic's "Complete Guide to Building Skills for Claude" (January 2026) and Tom's established skill conventions.
 
 ## Document Sections
 
@@ -16,7 +16,7 @@
 | [Testing Your Skill](#testing-your-skill) | Three rigor levels, iteration signals |
 | [Troubleshooting](#troubleshooting) | Common issues and solutions |
 | [Distribution](#distribution) | Hosting, installation, positioning |
-| [Jerry Framework Conventions](#jerry-framework-conventions) | Jerry-specific structural patterns |
+| [Tom Framework Conventions](#tom-framework-conventions) | Tom-specific structural patterns |
 | [References](#references) | Source documents |
 
 ---
@@ -682,7 +682,7 @@ Measure the skill's impact by comparing with and without:
 
 ### Skill Creator Tool
 
-> **Note:** The `skill-creator` tool referenced in Anthropic's guide is a Claude.ai feature, not a Jerry CLI tool. For Jerry skill development, use the canonical pattern (`.context/patterns/skill-development/skill-structure.md`) as your starting template and validate against `.context/rules/skill-standards.md`.
+> **Note:** The `skill-creator` tool referenced in Anthropic's guide is a Claude.ai feature, not a Tom CLI tool. For Tom skill development, use the canonical pattern (`.context/patterns/skill-development/skill-structure.md`) as your starting template and validate against `.context/rules/skill-standards.md`.
 
 For Claude.ai users, the skill-creator tool supports:
 
@@ -766,7 +766,7 @@ Claude will quote the description back to you, showing exactly how it interprets
 
 ## Distribution
 
-> **Jerry Framework Note:** The following sections describe Anthropic's general skill distribution model (Claude.ai upload, API, GitHub hosting). Jerry skills are deployed via the repository filesystem — see [Context Distribution Architecture](#context-distribution-architecture) in Jerry Framework Conventions below. The general distribution guidance is included for completeness and for skills intended for community sharing outside Jerry.
+> **Tom Framework Note:** The following sections describe Anthropic's general skill distribution model (Claude.ai upload, API, GitHub hosting). Tom skills are deployed via the repository filesystem — see [Context Distribution Architecture](#context-distribution-architecture) in Tom Framework Conventions below. The general distribution guidance is included for completeness and for skills intended for community sharing outside Tom.
 >
 > **H-25 Reminder:** The skill folder (`skills/your-skill-name/`) MUST NOT contain `README.md`. For GitHub hosting, the README belongs at the *hosting repository root*, not inside the skill folder. All skill documentation goes in `SKILL.md` or `references/`.
 
@@ -813,13 +813,13 @@ When describing your skill for distribution:
 
 ---
 
-## Jerry Framework Conventions
+## Tom Framework Conventions
 
-Jerry skills follow additional conventions beyond the Anthropic standard. These conventions ensure consistency across all Jerry skills and integration with the Jerry quality framework.
+Tom skills follow additional conventions beyond the Anthropic standard. These conventions ensure consistency across all Tom skills and integration with the Tom quality framework.
 
 ### Context Distribution Architecture
 
-Jerry uses a two-layer architecture for context distribution:
+Tom uses a two-layer architecture for context distribution:
 
 - **`.context/`** — Claude-agnostic source of truth. Contains `rules/`, `guides/`, `patterns/`, `templates/`. Works with any AI coding assistant.
 - **`.claude/`** — Claude Code-specific layer. Contains **symlinks** to `.context/` subdirectories, making them auto-loaded by Claude Code at session start.
@@ -844,7 +844,7 @@ Jerry uses a two-layer architecture for context distribution:
 
 ### YAML Frontmatter Additions
 
-Jerry skills extend the standard frontmatter with additional fields:
+Tom skills extend the standard frontmatter with additional fields:
 
 ```yaml
 ---
@@ -868,14 +868,14 @@ activation-keywords:
 
 ### SKILL.md Body Structure
 
-Jerry SKILL.md files follow a consistent structure:
+Tom SKILL.md files follow a consistent structure:
 
 ```markdown
 # Skill Name
 
 > **Version:** X.Y.Z
-> **Framework:** Jerry [Domain] ([Abbreviation])
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom [Domain] ([Abbreviation])
+> **Constitutional Compliance:** Tom Constitution v1.0
 
 ## Document Sections
 
@@ -938,12 +938,12 @@ This SKILL.md serves multiple audiences:
 [Source documents, related skills, external links]
 
 ---
-*[Skill Name] Skill v{version} | Jerry Framework*
+*[Skill Name] Skill v{version} | Tom Framework*
 ```
 
 ### File References
 
-All file references in Jerry skills MUST use full repo-relative paths:
+All file references in Tom skills MUST use full repo-relative paths:
 
 ```markdown
 # Correct
@@ -1018,5 +1018,5 @@ New skills must be registered in three locations:
 
 *Guide Version: 1.0.0*
 *Corresponds to: `.context/rules/skill-standards.md` v1.1.0*
-*Source: Anthropic Skill Guide (Jan 2026) + Jerry Framework v0.2.3*
+*Source: Anthropic Skill Guide (Jan 2026) + Tom Framework v0.2.3*
 *Created: 2026-02-19*

@@ -2,9 +2,9 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-DocumentTypeDetector - Jerry markdown file type detection.
+DocumentTypeDetector - Tom markdown file type detection.
 
-Detects the document type of a Jerry markdown file using a path-first,
+Detects the document type of a Tom markdown file using a path-first,
 structure-fallback strategy. Path patterns use first-match-wins semantics
 against an ordered list. Structural cues use a defined priority order for
 conflicting signals.
@@ -26,7 +26,7 @@ References:
     - H-10: DocumentType enum co-located with DocumentTypeDetector per ADR.
 
 Exports:
-    DocumentType: Enum classifying Jerry markdown file types.
+    DocumentType: Enum classifying Tom markdown file types.
     DocumentTypeDetector: Detector class with ``detect()`` class method.
 """
 
@@ -38,7 +38,7 @@ from enum import Enum
 
 
 class DocumentType(Enum):
-    """Jerry markdown file type classification.
+    """Tom markdown file type classification.
 
     Each value represents a distinct file type with its own metadata format
     and body structure conventions.
@@ -60,7 +60,7 @@ class DocumentType(Enum):
 
 
 class DocumentTypeDetector:
-    """Detect Jerry markdown file type from path patterns and structural cues.
+    """Detect Tom markdown file type from path patterns and structural cues.
 
     Uses path-first, structure-fallback with first-match-wins semantics.
     Path patterns are checked in order; the first match wins.
@@ -276,7 +276,7 @@ def _normalize_path(file_path: str) -> str:
     """Normalize file path to forward-slash POSIX form for pattern matching.
 
     Strips leading ``./`` and converts backslashes. If the path is absolute
-    and contains a recognizable Jerry repository root marker, extracts the
+    and contains a recognizable Tom repository root marker, extracts the
     relative portion.
 
     Args:

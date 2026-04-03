@@ -5,7 +5,7 @@
 **Criticality:** C4 (Tournament Iteration 3)
 **Date:** 2026-03-03T00:00:00Z
 **Reviewer:** adv-executor (S-007)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.0 (P-001–P-043), quality-enforcement.md HARD Rule Index (H-01–H-36), markdown-navigation-standards.md (H-23, NAV-002–NAV-005)
+**Constitutional Context:** TOM_CONSTITUTION.md v1.0 (P-001–P-043), quality-enforcement.md HARD Rule Index (H-01–H-36), markdown-navigation-standards.md (H-23, NAV-002–NAV-005)
 **Execution ID:** 20260303T-ITER3
 
 ---
@@ -208,13 +208,13 @@ Add a qualification to the Section 3.8 acceptance criterion (d) acknowledging th
 |-----------|------|--------|------------|--------|
 | H-23: Navigation table required | HARD | markdown-navigation-standards.md | YES | COMPLIANT |
 | H-31: Clarify when ambiguous | HARD | quality-enforcement.md | YES | COMPLIANT (DECISION REQUIRED notices) |
-| P-001: Truth/Accuracy | SOFT | JERRY_CONSTITUTION.md | YES | PARTIAL (CC-002, CC-003) |
-| P-002: File persistence | MEDIUM | JERRY_CONSTITUTION.md | YES | COMPLIANT (deliverable persisted) |
-| P-004: Explicit provenance | SOFT | JERRY_CONSTITUTION.md | YES | COMPLIANT |
-| P-010: Task tracking integrity | MEDIUM | JERRY_CONSTITUTION.md | PARTIAL (worktracker entities specified in doc) | COMPLIANT (Enabler entity specified with full schema) |
-| P-011: Evidence-based decisions | SOFT | JERRY_CONSTITUTION.md | YES | COMPLIANT |
-| P-021: Transparency of limitations | SOFT | JERRY_CONSTITUTION.md | YES | COMPLIANT (extensive disclosure) |
-| P-022: No deception | HARD | JERRY_CONSTITUTION.md | YES | COMPLIANT |
+| P-001: Truth/Accuracy | SOFT | TOM_CONSTITUTION.md | YES | PARTIAL (CC-002, CC-003) |
+| P-002: File persistence | MEDIUM | TOM_CONSTITUTION.md | YES | COMPLIANT (deliverable persisted) |
+| P-004: Explicit provenance | SOFT | TOM_CONSTITUTION.md | YES | COMPLIANT |
+| P-010: Task tracking integrity | MEDIUM | TOM_CONSTITUTION.md | PARTIAL (worktracker entities specified in doc) | COMPLIANT (Enabler entity specified with full schema) |
+| P-011: Evidence-based decisions | SOFT | TOM_CONSTITUTION.md | YES | COMPLIANT |
+| P-021: Transparency of limitations | SOFT | TOM_CONSTITUTION.md | YES | COMPLIANT (extensive disclosure) |
+| P-022: No deception | HARD | TOM_CONSTITUTION.md | YES | COMPLIANT |
 | NAV-002: Table placement | MEDIUM | markdown-navigation-standards.md | YES | COMPLIANT |
 | NAV-003: Table format | MEDIUM | markdown-navigation-standards.md | YES | COMPLIANT |
 | NAV-004: Section coverage | MEDIUM | markdown-navigation-standards.md | YES | COMPLIANT |

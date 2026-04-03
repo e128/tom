@@ -22,7 +22,7 @@ The Generic Repository is a domain port that abstracts aggregate persistence. It
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Port Definition
 
@@ -363,13 +363,13 @@ def test_repository_detects_concurrency_conflict():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Repositories are protocol-based ports, not abstract base classes. This enables better testing and composition.
+> **Tom Decision**: Repositories are protocol-based ports, not abstract base classes. This enables better testing and composition.
 
-> **Jerry Decision**: Event-sourced repositories append events, not snapshots. Snapshots are optional optimization (PAT-REPO-003).
+> **Tom Decision**: Event-sourced repositories append events, not snapshots. Snapshots are optional optimization (PAT-REPO-003).
 
-> **Jerry Decision**: Domain-specific queries return aggregate collections, not DTOs. For read-optimized queries, use projections.
+> **Tom Decision**: Domain-specific queries return aggregate collections, not DTOs. For read-optimized queries, use projections.
 
 ---
 

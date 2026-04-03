@@ -15,13 +15,13 @@
 The Transcript Skill needs to process VTT/SRT/TXT transcript files and extract structured information (speakers, action items, decisions, questions). This requires defining an agent architecture that:
 
 1. Handles domain-specific transcript processing tasks
-2. Integrates with the existing Jerry framework
+2. Integrates with the existing Tom framework
 3. Maintains quality through review mechanisms
-4. Complies with Jerry Constitutional principles (P-002, P-003, P-022)
+4. Complies with Tom Constitutional principles (P-002, P-003, P-022)
 
 ### Background
 
-The Jerry framework already provides 24+ specialized agents across multiple skills:
+The Tom framework already provides 24+ specialized agents across multiple skills:
 - **problem-solving**: 8 agents (ps-researcher, ps-analyst, ps-architect, ps-critic, etc.)
 - **nasa-se**: 10 agents for systems engineering processes
 - **orchestration**: 3 agents for workflow coordination
@@ -30,7 +30,7 @@ The Jerry framework already provides 24+ specialized agents across multiple skil
 The Transcript Skill must decide whether to extend existing agents, create fully custom agents, or adopt a hybrid approach.
 
 **Research conducted** (see `research/adr-001-research.md`):
-- Jerry Framework agent patterns and templates
+- Tom Framework agent patterns and templates
 - Microsoft Azure AI Agent Design Patterns (Sequential, Concurrent, Handoff)
 - Google Cloud Agentic AI Patterns (Multi-Agent Sequential, Review & Critique)
 - Requirements from EN-003 (40 requirements, including IR-005 Hexagonal Architecture)
@@ -39,8 +39,8 @@ The Transcript Skill must decide whether to extend existing agents, create fully
 
 | ID | Constraint | Source |
 |----|------------|--------|
-| C-001 | Maximum ONE level of agent nesting (orchestrator → worker) | P-003 Jerry Constitution |
-| C-002 | All agent outputs must persist to filesystem | P-002 Jerry Constitution |
+| C-001 | Maximum ONE level of agent nesting (orchestrator → worker) | P-003 Tom Constitution |
+| C-002 | All agent outputs must persist to filesystem | P-002 Tom Constitution |
 | C-003 | Must integrate with SKILL.md interface | IR-004 Requirements |
 | C-004 | Must follow hexagonal architecture patterns | IR-005 Requirements |
 | C-005 | Processing time < 10 seconds for 1-hour transcript | NFR-001 Requirements |
@@ -48,7 +48,7 @@ The Transcript Skill must decide whether to extend existing agents, create fully
 
 ### Forces
 
-1. **Consistency vs. Customization:** Extending existing Jerry agents ensures consistency but limits domain-specific behavior. Custom agents provide flexibility but may diverge from framework patterns.
+1. **Consistency vs. Customization:** Extending existing Tom agents ensures consistency but limits domain-specific behavior. Custom agents provide flexibility but may diverge from framework patterns.
 
 2. **Performance vs. Quality:** Rule-based extraction is fast but less accurate. LLM-based extraction is accurate but slower. Need tiered approach per PAT-001.
 
@@ -60,7 +60,7 @@ The Transcript Skill must decide whether to extend existing agents, create fully
 
 ## Options Considered
 
-### Option 1: Extend Existing Jerry Agents (Prompt-Only)
+### Option 1: Extend Existing Tom Agents (Prompt-Only)
 
 Use existing ps-researcher, ps-analyst, and ps-architect agents with domain-specific prompts for transcript processing.
 
@@ -76,9 +76,9 @@ skills/transcript/
 
 **Pros:**
 - Minimal new code; leverages existing, tested agents
-- Automatic compliance with Jerry patterns
+- Automatic compliance with Tom patterns
 - Fast to implement (days, not weeks)
-- Consistent with other Jerry skills
+- Consistent with other Tom skills
 
 **Cons:**
 - ps-* agents designed for problem-solving, not data processing pipelines
@@ -120,7 +120,7 @@ skills/transcript/
 **Cons:**
 - Reinvents review/quality patterns that ps-critic already provides
 - More code to write, test, and maintain
-- May diverge from Jerry conventions over time
+- May diverge from Tom conventions over time
 - Longer development timeline
 
 **Fit with Constraints:**
@@ -133,7 +133,7 @@ skills/transcript/
 
 ### Option 3: Hybrid Architecture (Recommended)
 
-Create custom domain-specific agents for transcript processing tasks, but reuse Jerry's ps-critic agent for quality assurance.
+Create custom domain-specific agents for transcript processing tasks, but reuse Tom's ps-critic agent for quality assurance.
 
 **Structure:**
 ```
@@ -146,7 +146,7 @@ skills/transcript/
 └── prompts/
     └── (agent-specific prompts)
 
-# Integration with existing Jerry agents:
+# Integration with existing Tom agents:
 # - @problem-solving ps-critic for quality review
 # - @problem-solving ps-researcher for optional deep analysis
 ```
@@ -210,7 +210,7 @@ skills/transcript/
 
 3. **Performance Optimized:** Custom agents can implement rule-based extraction as default, meeting NFR-001 (<10s processing).
 
-4. **Framework Consistency:** Reusing ps-critic ensures Transcript Skill follows same quality patterns as other Jerry skills.
+4. **Framework Consistency:** Reusing ps-critic ensures Transcript Skill follows same quality patterns as other Tom skills.
 
 5. **Clear Responsibilities:**
    - transcript-parser: Format detection, parsing, normalization
@@ -233,7 +233,7 @@ skills/transcript/
 | Risk | Probability | Impact | Mitigation |
 |------|-------------|--------|------------|
 | ps-critic integration issues | LOW | MEDIUM | Test cross-skill invocation in isolation first |
-| Custom agent drift from Jerry patterns | LOW | LOW | Use PS_AGENT_TEMPLATE.md as base |
+| Custom agent drift from Tom patterns | LOW | LOW | Use PS_AGENT_TEMPLATE.md as base |
 | Performance regression with ps-critic loop | MEDIUM | LOW | Make critic review optional; threshold-based |
 | Context rot in long transcripts | MEDIUM | HIGH | Implement chunking in transcript-parser |
 
@@ -282,7 +282,7 @@ skills/transcript/
 | 3 | Microsoft AI Agent Design Patterns | Industry | Sequential/Concurrent patterns |
 | 4 | Google Agentic AI Patterns | Industry | Review & Critique pattern |
 | 5 | PS_AGENT_TEMPLATE.md | Framework | Agent template structure |
-| 6 | Jerry Constitution v1.0 | Governance | P-002, P-003, P-022 constraints |
+| 6 | Tom Constitution v1.0 | Governance | P-002, P-003, P-022 constraints |
 | 7 | SKILL.md (problem-solving) | Framework | ps-critic integration reference |
 
 ---

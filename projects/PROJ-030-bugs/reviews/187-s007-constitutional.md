@@ -5,7 +5,7 @@
 **Criticality:** C2 (Standard)
 **Date:** 2026-03-12
 **Reviewer:** adv-executor (S-007)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.0 (P-001–P-043); quality-enforcement.md (H-01–H-36); python-environment.md (H-05)
+**Constitutional Context:** TOM_CONSTITUTION.md v1.0 (P-001–P-043); quality-enforcement.md (H-01–H-36); python-environment.md (H-05)
 
 ---
 
@@ -37,8 +37,8 @@
 
 | Principle | Tier | Source | Applicable? | Rationale |
 |-----------|------|--------|-------------|-----------|
-| P-020: User Authority | HARD | JERRY_CONSTITUTION.md | YES | `workflow_dispatch` manual trigger must respect user intent |
-| P-022: No Deception | HARD | JERRY_CONSTITUTION.md | YES | YAML comments describe filter behavior; must be accurate |
+| P-020: User Authority | HARD | TOM_CONSTITUTION.md | YES | `workflow_dispatch` manual trigger must respect user intent |
+| P-022: No Deception | HARD | TOM_CONSTITUTION.md | YES | YAML comments describe filter behavior; must be accurate |
 | H-05: UV-only Python | HARD | python-environment.md | YES | Workflow invokes `uv run`, `uv sync`, `uv tool install` |
 | H-13: Quality threshold >= 0.92 | HARD | quality-enforcement.md | YES | Workflow implements version gate; lockfile/sync integrity controls relevant |
 | H-31: Clarify when ambiguous | HARD | quality-enforcement.md | YES | Assessed: no ambiguity found in trigger semantics that requires user clarification |
@@ -48,8 +48,8 @@
 | H-10: One class per file | HARD | architecture-standards.md | NOT APPLICABLE | YAML CI workflow; no Python classes |
 | H-11: Type hints + docstrings | HARD | coding-standards.md | NOT APPLICABLE | YAML CI workflow; no Python code in this file |
 | H-23: Markdown navigation | HARD | markdown-navigation-standards.md | NOT APPLICABLE | YAML file, not a markdown document |
-| P-001: Truth and Accuracy | SOFT | JERRY_CONSTITUTION.md | ASSESSED | Comments cite GitHub Actions docs with source URLs; evidence-based. No inaccuracies found. |
-| P-004: Explicit Provenance | MEDIUM | JERRY_CONSTITUTION.md | ASSESSED | Comments reference prior findings (red-exploit, eng-security), bug IDs (BUG-002, BUG-003), and source URLs. Compliant. |
+| P-001: Truth and Accuracy | SOFT | TOM_CONSTITUTION.md | ASSESSED | Comments cite GitHub Actions docs with source URLs; evidence-based. No inaccuracies found. |
+| P-004: Explicit Provenance | MEDIUM | TOM_CONSTITUTION.md | ASSESSED | Comments reference prior findings (red-exploit, eng-security), bug IDs (BUG-002, BUG-003), and source URLs. Compliant. |
 
 ---
 

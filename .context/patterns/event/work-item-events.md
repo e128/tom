@@ -22,7 +22,7 @@ WorkItem domain events capture all state changes to work items. Each event repre
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Event Definitions
 
@@ -541,13 +541,13 @@ def test_aggregate_applies_events_correctly():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Each event class lives in work_item_events.py for cohesion. Separate files only if event count exceeds 15.
+> **Tom Decision**: Each event class lives in work_item_events.py for cohesion. Separate files only if event count exceeds 15.
 
-> **Jerry Decision**: Events include both `timestamp` (inherited from DomainEvent) and action-specific timestamps (e.g., `completed_at`).
+> **Tom Decision**: Events include both `timestamp` (inherited from DomainEvent) and action-specific timestamps (e.g., `completed_at`).
 
-> **Jerry Decision**: Event Registry provides centralized deserialization. All events must be registered.
+> **Tom Decision**: Event Registry provides centralized deserialization. All events must be registered.
 
 ---
 

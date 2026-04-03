@@ -27,7 +27,7 @@
 
 ## Overview
 
-The Jerry Framework uses a **Federated Template Architecture** for agent definitions.
+The Tom Framework uses a **Federated Template Architecture** for agent definitions.
 This architecture separates shared agent structure (~73%) from domain-specific content,
 enabling consistent maintenance while preserving domain specializations.
 
@@ -459,7 +459,7 @@ name: ps-agent-name  # or nse-agent-name
 | [AGENT_TEMPLATE_CORE.md](../../skills/shared/AGENT_TEMPLATE_CORE.md) | Core template |
 | [PS_EXTENSION.md](../../skills/problem-solving/agents/PS_EXTENSION.md) | PS domain extension |
 | [NSE_EXTENSION.md](../../skills/nasa-se/agents/NSE_EXTENSION.md) | NSE domain extension |
-| [Jerry Constitution](../governance/JERRY_CONSTITUTION.md) | Agent governance |
+| [Tom Constitution](../governance/TOM_CONSTITUTION.md) | Agent governance |
 
 ---
 

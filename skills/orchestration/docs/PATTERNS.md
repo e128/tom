@@ -8,7 +8,7 @@
 
 ## Overview
 
-This document describes orchestration patterns supported by the Jerry orchestration skill, based on industry best practices from Microsoft, LangGraph, CrewAI, and NASA SE.
+This document describes orchestration patterns supported by the Tom orchestration skill, based on industry best practices from Microsoft, LangGraph, CrewAI, and NASA SE.
 
 ---
 
@@ -140,7 +140,7 @@ PIPELINE A                              PIPELINE B
 └──────┘ └──────┘ └──────┘
 ```
 
-**Note:** In Jerry, the MAIN CONTEXT acts as manager, not a spawned agent (P-003 compliant).
+**Note:** In Tom, the MAIN CONTEXT acts as manager, not a spawned agent (P-003 compliant).
 
 ---
 

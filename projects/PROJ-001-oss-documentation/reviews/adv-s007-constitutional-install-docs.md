@@ -21,7 +21,7 @@
 - **Criticality:** C2 (Standard — public-facing docs, reversible in 1 day, 4 files)
 - **Executed:** 2026-02-18
 - **Reviewer:** adv-executor v1.0.0
-- **Constitutional Context:** Jerry Constitution (docs/governance/JERRY_CONSTITUTION.md), quality-enforcement.md v1.3.0 (H-01 through H-24), markdown-navigation-standards.md (H-23, H-24), python-environment.md (H-05, H-06), CLAUDE.md (H-04)
+- **Constitutional Context:** Jerry Constitution (docs/governance/TOM_CONSTITUTION.md), quality-enforcement.md v1.3.0 (H-01 through H-24), markdown-navigation-standards.md (H-23, H-24), python-environment.md (H-05, H-06), CLAUDE.md (H-04)
 
 ---
 

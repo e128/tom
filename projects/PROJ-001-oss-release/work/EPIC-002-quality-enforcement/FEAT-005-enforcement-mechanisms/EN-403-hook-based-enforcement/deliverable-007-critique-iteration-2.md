@@ -231,7 +231,7 @@ The largest gains are in Internal Consistency (+0.19) from resolving B-001 (per-
 
 | Path | EN-403 TASK-003 | EN-403 TASK-004 | EN-404 TASK-003 | EN-404 TASK-004 |
 |------|----------------|----------------|----------------|----------------|
-| `docs/governance/JERRY_CONSTITUTION.md` (C4) | Checked (line 559) | Not explicit (implicit via docs/governance/) | Not in escalation table | N/A |
+| `docs/governance/TOM_CONSTITUTION.md` (C4) | Checked (line 559) | Not explicit (implicit via docs/governance/) | Not in escalation table | N/A |
 | `docs/governance/` (C3) | Checked (line 560) | Referenced in criticality | In escalation table (line 301) | N/A |
 | `.context/rules/` (C3) | Checked (line 562) | In auto-escalation (line 382) | In escalation table (line 301) | In Pattern 6 (line 239) |
 | `.claude/rules/` (C3) | Checked (line 561) | In auto-escalation (line 382) | In escalation table (line 302) with note | In Pattern 6 (line 239) |

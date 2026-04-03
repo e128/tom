@@ -1,6 +1,6 @@
-# PAT-SKILL-001: Jerry Skill Structure
+# PAT-SKILL-001: Tom Skill Structure
 
-> Canonical structure for Jerry framework skills. Combines Anthropic's universal skill requirements with Jerry-specific conventions.
+> Canonical structure for Tom framework skills. Combines Anthropic's universal skill requirements with Tom-specific conventions.
 > **SSOT:** Rules H-25 through H-30 are defined in `.context/rules/skill-standards.md` v1.1.0. This pattern MUST be updated when skill-standards.md changes.
 
 ## Document Sections
@@ -9,7 +9,7 @@
 |---------|---------|
 | [Pattern Summary](#pattern-summary) | ID, status, source |
 | [Structure](#structure) | Directory layout |
-| [SKILL.md Template](#skillmd-template-jerry) | Frontmatter + body template |
+| [SKILL.md Template](#skillmd-template-tom) | Frontmatter + body template |
 | [Key Rules](#key-rules) | HARD rule summary |
 | [Workflow Patterns](#workflow-patterns) | Five proven patterns |
 | [Anti-Patterns](#anti-patterns) | What to avoid |
@@ -20,10 +20,10 @@
 | Attribute | Value |
 |-----------|-------|
 | **ID** | PAT-SKILL-001 |
-| **Name** | Jerry Skill Structure |
+| **Name** | Tom Skill Structure |
 | **Status** | MANDATORY |
 | **Category** | Skill Development |
-| **Source** | Anthropic Skill Guide + Jerry Framework Conventions |
+| **Source** | Anthropic Skill Guide + Tom Framework Conventions |
 | **SSOT Version** | skill-standards.md v1.1.0 |
 
 ## Structure
@@ -41,7 +41,7 @@ skills/your-skill-name/
 └── assets/               # Optional — templates, etc.
 ```
 
-## SKILL.md Template (Jerry)
+## SKILL.md Template (Tom)
 
 ```yaml
 ---
@@ -60,8 +60,8 @@ activation-keywords:
 # Skill Name
 
 > **Version:** X.Y.Z
-> **Framework:** Jerry [Domain] ([Abbreviation])
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom [Domain] ([Abbreviation])
+> **Constitutional Compliance:** Tom Constitution v1.0
 
 ## Document Sections
 
@@ -117,7 +117,7 @@ Do NOT use when: [anti-patterns]
 (Full repo-relative paths)
 
 *Skill Version: X.Y.Z*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 ```
 
 ## Key Rules

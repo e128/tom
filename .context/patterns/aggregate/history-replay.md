@@ -22,7 +22,7 @@ The History Replay pattern enables reconstituting aggregates from their event st
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Load from History
 
@@ -209,7 +209,7 @@ For aggregates with many events, snapshots improve performance:
 class SnapshotOptimizedRepository:
     """Repository with snapshot support for long event streams."""
 
-    SNAPSHOT_FREQUENCY = 10  # Per Jerry Design Canon
+    SNAPSHOT_FREQUENCY = 10  # Per Tom Design Canon
 
     def get(self, id: WorkItemId) -> WorkItem | None:
         """Load from snapshot + recent events."""
@@ -256,7 +256,7 @@ class SnapshotOptimizedRepository:
             )
 ```
 
-> **Jerry Decision**: Snapshot every 10 events. This balances storage cost with replay performance.
+> **Tom Decision**: Snapshot every 10 events. This balances storage cost with replay performance.
 
 ---
 

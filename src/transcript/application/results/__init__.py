@@ -6,7 +6,7 @@
 This module provides result data classes for transcript commands.
 
 References:
-    - TDD-FEAT-004 Section 11: Jerry CLI Integration
+    - TDD-FEAT-004 Section 11: Tom CLI Integration
     - TASK-251: Implement CLI Transcript Namespace
 """
 

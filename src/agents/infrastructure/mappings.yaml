@@ -1,5 +1,5 @@
 # Abstract ↔ Vendor Tool and Model Mappings
-# Used by jerry agents build to translate canonical definitions to vendor format.
+# Used by tom agents build to translate canonical definitions to vendor format.
 #
 # References:
 #   - ADR-PROJ010-003: LLM Portability Architecture

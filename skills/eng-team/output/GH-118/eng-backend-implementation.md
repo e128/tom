@@ -57,7 +57,7 @@ This implementation enforces **H-05 (UV-only Python environment, HARD rule)**:
 
 > "MUST use `uv run` for all Python execution. NEVER use `python`, `pip`, or `pip3` directly."
 
-The implementation removes all direct `python3` calls and replaces them with `uv run python`, ensuring project-managed Python execution per the Jerry Framework constitution.
+The implementation removes all direct `python3` calls and replaces them with `uv run python`, ensuring project-managed Python execution per the Tom Framework constitution.
 
 Additionally, the error guidance respects **P-020 (User Authority)** by providing actionable instructions (`brew install coreutils`) rather than failing silently or making assumptions about the user's environment.
 
@@ -396,7 +396,7 @@ is_within_tree() {
 | Dependency | Risk Level | Mitigation |
 |------------|------------|------------|
 | `greadlink` | Low | Optional; improves performance when available |
-| `uv` | Low | Project-mandated (H-05); already required for Jerry |
+| `uv` | Low | Project-mandated (H-05); already required for Tom |
 | `readlink` | Very Low | Standard POSIX utility; always available |
 
 ### Evolution Path
@@ -444,18 +444,18 @@ sudo mv /usr/local/bin/greadlink.bak /usr/local/bin/greadlink
 $ ./scripts/migration/verify-symlinks.sh -v .
 
 [INFO] Running PRE-MIGRATION symlink verification...
-[INFO] Source directory: /Users/evorun/workspace/jerry
+[INFO] Source directory: /Users/evorun/workspace/tom
 [INFO]
 [INFO] Analyzing symlinks...
 [INFO]
-[DEBUG] Analyzing: /Users/evorun/workspace/jerry/.claude/patterns
-[DEBUG]   Resolved to: /Users/evorun/workspace/jerry/.context/patterns
+[DEBUG] Analyzing: /Users/evorun/workspace/tom/.claude/patterns
+[DEBUG]   Resolved to: /Users/evorun/workspace/tom/.context/patterns
 [DEBUG]   Relative path: .context/patterns
-[SAFE] /Users/evorun/workspace/jerry/.claude/patterns -> /Users/evorun/workspace/jerry/.context/patterns
-[DEBUG] Analyzing: /Users/evorun/workspace/jerry/.claude/rules
-[DEBUG]   Resolved to: /Users/evorun/workspace/jerry/.context/rules
+[SAFE] /Users/evorun/workspace/tom/.claude/patterns -> /Users/evorun/workspace/tom/.context/patterns
+[DEBUG] Analyzing: /Users/evorun/workspace/tom/.claude/rules
+[DEBUG]   Resolved to: /Users/evorun/workspace/tom/.context/rules
 [DEBUG]   Relative path: .context/rules
-[SAFE] /Users/evorun/workspace/jerry/.claude/rules -> /Users/evorun/workspace/jerry/.context/rules
+[SAFE] /Users/evorun/workspace/tom/.claude/rules -> /Users/evorun/workspace/tom/.context/rules
 [INFO]
 [INFO] ============================================================
 [INFO]                     SYMLINK VERIFICATION SUMMARY

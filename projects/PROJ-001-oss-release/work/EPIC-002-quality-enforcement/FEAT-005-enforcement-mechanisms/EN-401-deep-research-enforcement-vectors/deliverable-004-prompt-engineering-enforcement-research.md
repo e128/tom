@@ -1472,7 +1472,7 @@ Each recommended pattern maps to existing constitutional principles:
 
 | # | Source | Path | Relevance |
 |---|--------|------|-----------|
-| 15 | Jerry Constitution | `docs/governance/JERRY_CONSTITUTION.md` | Self-critique protocol (Art. VI), enforcement tiers (Art. V) |
+| 15 | Jerry Constitution | `docs/governance/TOM_CONSTITUTION.md` | Self-critique protocol (Art. VI), enforcement tiers (Art. V) |
 | 16 | ps-researcher agent | `skills/problem-solving/agents/ps-researcher.md` | XML tag structure, checklist, Constitutional compliance |
 | 17 | Mandatory Skill Usage | `.claude/rules/mandatory-skill-usage.md` | Imperative language patterns |
 | 18 | Python Environment | `.claude/rules/python-environment.md` | FORBIDDEN/CORRECT enforcement language |

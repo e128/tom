@@ -254,7 +254,7 @@ sources.
   `getting-started.md` as the authority for artifact persistence guarantees.
 
 **Minor gap:** `problem-solving.md` and `orchestration.md` reference
-`docs/governance/JERRY_CONSTITUTION.md` auto-escalation indirectly via the
+`docs/governance/TOM_CONSTITUTION.md` auto-escalation indirectly via the
 quality-enforcement.md link. The AE rules are cited correctly, but users unfamiliar with
 the governance structure would need to follow multiple links to understand the full
 escalation chain. This is a depth-of-evidence issue, not a quality problem.

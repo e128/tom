@@ -308,7 +308,7 @@ Strong evidence chain:
 - `reasoning_effort: max` — justified by inline comment citing ET-M-001 and C4 criticality (traceable to `agent-development-standards.md` ET-M-001)
 - `cognitive_mode: integrative` — justified by inline comment explaining cross-framework synthesis primary function
 - `forbidden_action_format: NPT-009-complete` — traceable to `agent-development-standards.md` ADR-002 and `capabilities.forbidden_action_format` enum
-- `constitution.reference: docs/governance/JERRY_CONSTITUTION.md` — direct document citation
+- `constitution.reference: docs/governance/TOM_CONSTITUTION.md` — direct document citation
 - Engagement ID format comment (line 60) cross-references .md Phase 4 Step 1 for the format definition
 - SKILL.md Agent Roster reference in forbidden_actions[0] provides living cross-reference (MNR-001 fix)
 
@@ -343,7 +343,7 @@ Minor actionability gap: `output.location` uses `{type}` as a variable but the v
 Traceability elements present:
 - Header comments cite schema, runtime config (lines 1-3): `# Validated by: docs/schemas/agent-governance-v1.schema.json` and `# Runtime config: ux-orchestrator.md`
 - `forbidden_action_format: NPT-009-complete` traces to ADR-002
-- `constitution.reference` traces to `docs/governance/JERRY_CONSTITUTION.md`
+- `constitution.reference` traces to `docs/governance/TOM_CONSTITUTION.md`
 - Each `principles_applied` entry names the principle ID (P-003, P-020, P-022, P-001, P-002, P-004) — traceable to constitution document
 - `reasoning_effort` comment cites `ET-M-001` — traceable to `agent-development-standards.md`
 - Tool tier comment cites P-003 — traceable to constitution

@@ -419,7 +419,7 @@ Ready to proceed with remaining VIS tests:
 | Generated Diagram | VIS-005-empty-project-diagram.md |
 | Implementation Guide | VIS-005-implementation-guide.md |
 | Agent Definition | skills/worktracker/agents/wt-visualizer.md |
-| Constitution | docs/governance/JERRY_CONSTITUTION.md |
+| Constitution | docs/governance/TOM_CONSTITUTION.md |
 | Task Specification | TASK-010-integration-testing.md |
 
 ---

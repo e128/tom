@@ -159,11 +159,11 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "tokens_cached": 81,  # Cyan for cached tokens
         "compaction": 213,  # Pink for compaction indicator
     },
-    # Jerry Framework integration (FEAT-002)
-    "jerry": {
-        "enabled": True,  # Try calling jerry context estimate for domain data
+    # Tom Framework integration (FEAT-002)
+    "tom": {
+        "enabled": True,  # Try calling tom context estimate for domain data
         "command": "",  # Override command; empty = auto-detect via CLAUDE_PLUGIN_ROOT
-        "timeout": 3,  # Timeout in seconds for jerry subprocess
+        "timeout": 3,  # Timeout in seconds for tom subprocess
     },
     # Layout settings (multi-line support)
     "layout": {
@@ -417,11 +417,11 @@ def _get_claude_config_dir() -> Path | None:
         return None
 
 
-def _find_jerry_plugin_root() -> str | None:
-    """Find Jerry's install path from Claude Code's installed plugins registry.
+def _find_tom_plugin_root() -> str | None:
+    """Find Tom's install path from Claude Code's installed plugins registry.
 
-    Reads the installed_plugins.json to find the jerry plugin's installPath.
-    Works for any user who has jerry installed as a Claude Code plugin.
+    Reads the installed_plugins.json to find the tom plugin's installPath.
+    Works for any user who has tom installed as a Claude Code plugin.
     Cross-platform: handles ~/.claude (macOS/Linux) and %APPDATA%/claude (Windows).
 
     Returns the installPath string or None if not found.
@@ -434,7 +434,7 @@ def _find_jerry_plugin_root() -> str | None:
         return None
     try:
         data = json.loads(registry.read_text(encoding="utf-8"))
-        entries = data.get("plugins", {}).get("jerry@jerry-framework", [])
+        entries = data.get("plugins", {}).get("tom@tom-framework", [])
         for entry in entries:
             install_path = entry.get("installPath", "")
             if install_path and os.path.isdir(install_path):
@@ -444,18 +444,18 @@ def _find_jerry_plugin_root() -> str | None:
     return None
 
 
-def _build_jerry_command(config: dict, data: dict) -> list[str] | None:
-    """Build the jerry context estimate command.
+def _build_tom_command(config: dict, data: dict) -> list[str] | None:
+    """Build the tom context estimate command.
 
     Resolution order:
-    1. Explicit jerry.command in config file (user override)
+    1. Explicit tom.command in config file (user override)
     2. CLAUDE_PLUGIN_ROOT env var (set by Claude Code for hooks)
     3. Claude Code installed plugins registry (~/.claude/plugins/installed_plugins.json)
     4. Workspace project_dir fallback
 
-    Returns None if Jerry is not available.
+    Returns None if Tom is not available.
     """
-    override = config.get("jerry", {}).get("command", "")
+    override = config.get("tom", {}).get("command", "")
     if override:
         return override.split()
 
@@ -466,21 +466,21 @@ def _build_jerry_command(config: dict, data: dict) -> list[str] | None:
             "run",
             "--directory",
             plugin_root,
-            "jerry",
+            "tom",
             "--json",
             "context",
             "estimate",
         ]
 
     # Auto-discover from Claude Code's plugin registry
-    registry_root = _find_jerry_plugin_root()
+    registry_root = _find_tom_plugin_root()
     if registry_root:
         return [
             "uv",
             "run",
             "--directory",
             registry_root,
-            "jerry",
+            "tom",
             "--json",
             "context",
             "estimate",
@@ -494,7 +494,7 @@ def _build_jerry_command(config: dict, data: dict) -> list[str] | None:
             "run",
             "--directory",
             project_dir,
-            "jerry",
+            "tom",
             "--json",
             "context",
             "estimate",
@@ -503,22 +503,22 @@ def _build_jerry_command(config: dict, data: dict) -> list[str] | None:
     return None
 
 
-def try_jerry_estimate(input_json: str, config: dict, data: dict) -> dict[str, Any] | None:
-    """Try calling jerry context estimate for enhanced domain computation.
+def try_tom_estimate(input_json: str, config: dict, data: dict) -> dict[str, Any] | None:
+    """Try calling tom context estimate for enhanced domain computation.
 
-    Returns Jerry's response dict or None if unavailable/failed.
+    Returns Tom's response dict or None if unavailable/failed.
     Falls back silently — the statusline continues with standalone computation.
     """
-    jerry_config = config.get("jerry", {})
-    if not jerry_config.get("enabled", True):
+    tom_config = config.get("tom", {})
+    if not tom_config.get("enabled", True):
         return None
 
-    cmd = _build_jerry_command(config, data)
+    cmd = _build_tom_command(config, data)
     if cmd is None:
-        debug_log("Jerry not available: no command found")
+        debug_log("Tom not available: no command found")
         return None
 
-    timeout = jerry_config.get("timeout", 3)
+    timeout = tom_config.get("timeout", 3)
 
     try:
         # Clear VIRTUAL_ENV to prevent uv venv mismatch when the statusline
@@ -533,16 +533,16 @@ def try_jerry_estimate(input_json: str, config: dict, data: dict) -> dict[str, A
             env=env,
         )
         if result.returncode == 0 and result.stdout.strip():
-            jerry_data = json.loads(result.stdout.strip())
-            debug_log(f"Jerry response received: tier={safe_get(jerry_data, 'context', 'tier')}")
-            return jerry_data
-        debug_log(f"Jerry failed: exit={result.returncode}, stderr={result.stderr[:200]}")
+            tom_data = json.loads(result.stdout.strip())
+            debug_log(f"Tom response received: tier={safe_get(tom_data, 'context', 'tier')}")
+            return tom_data
+        debug_log(f"Tom failed: exit={result.returncode}, stderr={result.stderr[:200]}")
     except subprocess.TimeoutExpired:
-        debug_log(f"Jerry timed out after {timeout}s")
+        debug_log(f"Tom timed out after {timeout}s")
     except FileNotFoundError:
-        debug_log("Jerry command not found")
+        debug_log("Tom command not found")
     except (json.JSONDecodeError, OSError) as e:
-        debug_log(f"Jerry error: {e}")
+        debug_log(f"Tom error: {e}")
 
     return None
 
@@ -1038,8 +1038,8 @@ def build_model_segment(data: dict, config: dict) -> str:
         return f"{color}{display_name}{reset}"
 
 
-def _jerry_tier_to_color(tier: str, colors: dict) -> int:
-    """Map Jerry's ThresholdTier to ANSI color code.
+def _tom_tier_to_color(tier: str, colors: dict) -> int:
+    """Map Tom's ThresholdTier to ANSI color code.
 
     Mapping: NOMINAL/LOW → green, WARNING → yellow, CRITICAL/EMERGENCY → red.
     """
@@ -1053,22 +1053,22 @@ def _jerry_tier_to_color(tier: str, colors: dict) -> int:
     return colors["green"]
 
 
-def build_context_segment(data: dict, config: dict, jerry_data: dict | None = None) -> str:
+def build_context_segment(data: dict, config: dict, tom_data: dict | None = None) -> str:
     """Build the context window usage segment.
 
-    Uses Jerry's domain data (tier, fill_percentage) when available,
+    Uses Tom's domain data (tier, fill_percentage) when available,
     falling back to standalone computation.
     """
     colors = config["colors"]
     icon = "📊 " if config["display"]["use_emoji"] else ""
 
-    # Use Jerry data if available (ST-004/ST-005)
-    jerry_context = safe_get(jerry_data, "context") if jerry_data else None
-    if jerry_context and isinstance(jerry_context, dict):
-        percentage = jerry_context.get("fill_percentage", 0)
-        is_estimated = jerry_context.get("is_estimated", False)
-        tier = jerry_context.get("tier", "NOMINAL")
-        color_code = _jerry_tier_to_color(tier, colors)
+    # Use Tom data if available (ST-004/ST-005)
+    tom_context = safe_get(tom_data, "context") if tom_data else None
+    if tom_context and isinstance(tom_context, dict):
+        percentage = tom_context.get("fill_percentage", 0)
+        is_estimated = tom_context.get("is_estimated", False)
+        tier = tom_context.get("tier", "NOMINAL")
+        color_code = _tom_tier_to_color(tier, colors)
     else:
         # Fallback: standalone computation with hardcoded thresholds
         percentage, _used, _total, is_estimated = extract_context_info(data, config)
@@ -1147,19 +1147,19 @@ def build_session_segment(data: dict, config: dict) -> str:
     return f"{icon}{color}{duration_str} {tokens_str}tok{reset}"
 
 
-def build_compaction_segment(data: dict, config: dict, jerry_data: dict | None = None) -> str:
+def build_compaction_segment(data: dict, config: dict, tom_data: dict | None = None) -> str:
     """Build the compaction indicator segment.
 
-    Uses Jerry's compaction detection when available, falling back
+    Uses Tom's compaction detection when available, falling back
     to standalone state-file-based detection.
     Format: 📉 150k→46k
     """
-    # Use Jerry data if available (ST-005)
-    jerry_compaction = safe_get(jerry_data, "compaction") if jerry_data else None
-    if jerry_compaction and isinstance(jerry_compaction, dict):
-        compacted = jerry_compaction.get("detected", False)
-        from_tokens = jerry_compaction.get("from_tokens", 0)
-        to_tokens = jerry_compaction.get("to_tokens", 0)
+    # Use Tom data if available (ST-005)
+    tom_compaction = safe_get(tom_data, "compaction") if tom_data else None
+    if tom_compaction and isinstance(tom_compaction, dict):
+        compacted = tom_compaction.get("detected", False)
+        from_tokens = tom_compaction.get("from_tokens", 0)
+        to_tokens = tom_compaction.get("to_tokens", 0)
     else:
         # Fallback: standalone compaction detection
         compacted, from_tokens, to_tokens = extract_compaction_info(data, config)
@@ -1180,17 +1180,17 @@ def build_compaction_segment(data: dict, config: dict, jerry_data: dict | None =
     return f"{icon}{color}{from_str}{arrow}{to_str}{reset}"
 
 
-def build_sub_agents_segment(jerry_data: dict | None, config: dict) -> str:
-    """Build the sub-agents summary segment from Jerry data.
+def build_sub_agents_segment(tom_data: dict | None, config: dict) -> str:
+    """Build the sub-agents summary segment from Tom data.
 
     Shows active/completed agent counts and total context usage.
-    Only displayed when Jerry data is available and agents exist.
+    Only displayed when Tom data is available and agents exist.
     Format: 🤖 2↑14↓ 892k ctx
     """
-    if jerry_data is None:
+    if tom_data is None:
         return ""
 
-    sub_agents = safe_get(jerry_data, "sub_agents")
+    sub_agents = safe_get(tom_data, "sub_agents")
     if not sub_agents or not isinstance(sub_agents, dict):
         return ""
 
@@ -1290,16 +1290,16 @@ def _build_segment_by_name(
     name: str,
     data: dict,
     config: dict,
-    jerry_data: dict | None,
+    tom_data: dict | None,
     compact: bool,
 ) -> str | None:
     """Build a single segment by name. Returns None if segment is disabled or empty."""
     segments_config = config["segments"]
 
     # Check if segment is enabled in segments config.
-    # sub_agents is Jerry-only and defaults to True when Jerry data exists.
+    # sub_agents is Tom-only and defaults to True when Tom data exists.
     if name == "sub_agents":
-        if jerry_data is None:
+        if tom_data is None:
             return None
     elif not segments_config.get(name, False):
         return None
@@ -1312,7 +1312,7 @@ def _build_segment_by_name(
     if name == "model":
         return build_model_segment(data, config)
     elif name == "context":
-        return build_context_segment(data, config, jerry_data=jerry_data)
+        return build_context_segment(data, config, tom_data=tom_data)
     elif name == "cost":
         return build_cost_segment(data, config)
     elif name == "tokens":
@@ -1320,11 +1320,11 @@ def _build_segment_by_name(
     elif name == "session":
         return build_session_segment(data, config)
     elif name == "sub_agents":
-        if jerry_data:
-            return build_sub_agents_segment(jerry_data, config)
+        if tom_data:
+            return build_sub_agents_segment(tom_data, config)
         return None
     elif name == "compaction":
-        seg = build_compaction_segment(data, config, jerry_data=jerry_data)
+        seg = build_compaction_segment(data, config, tom_data=tom_data)
         return seg if seg else None
     elif name == "tools":
         seg = build_tools_segment(data, config)
@@ -1339,10 +1339,10 @@ def _build_segment_by_name(
         return None
 
 
-def build_status_line(data: dict, config: dict, jerry_data: dict | None = None) -> str:
+def build_status_line(data: dict, config: dict, tom_data: dict | None = None) -> str:
     """Build the complete status line from all segments.
 
-    When jerry_data is available (FEAT-002), uses Jerry's domain
+    When tom_data is available (FEAT-002), uses Tom's domain
     computation for context/compaction/sub-agent segments. All other
     segments use the raw Claude Code data.
 
@@ -1380,7 +1380,7 @@ def build_status_line(data: dict, config: dict, jerry_data: dict | None = None) 
             segment_names = lines_config[line_key]
             line_segments = []
             for name in segment_names:
-                seg = _build_segment_by_name(name, data, config, jerry_data, compact)
+                seg = _build_segment_by_name(name, data, config, tom_data, compact)
                 if seg:
                     line_segments.append(seg)
             if line_segments:
@@ -1395,7 +1395,7 @@ def build_status_line(data: dict, config: dict, jerry_data: dict | None = None) 
             segments.append(build_model_segment(data, config))
 
         if segments_config["context"]:
-            segments.append(build_context_segment(data, config, jerry_data=jerry_data))
+            segments.append(build_context_segment(data, config, tom_data=tom_data))
 
         if segments_config["cost"]:
             segments.append(build_cost_segment(data, config))
@@ -1407,14 +1407,14 @@ def build_status_line(data: dict, config: dict, jerry_data: dict | None = None) 
             if segments_config["session"]:
                 segments.append(build_session_segment(data, config))
 
-            # Sub-agents segment (Jerry-only, FEAT-002)
-            if jerry_data:
-                sub_agents_segment = build_sub_agents_segment(jerry_data, config)
+            # Sub-agents segment (Tom-only, FEAT-002)
+            if tom_data:
+                sub_agents_segment = build_sub_agents_segment(tom_data, config)
                 if sub_agents_segment:
                     segments.append(sub_agents_segment)
 
             if segments_config.get("compaction", True):
-                compaction_segment = build_compaction_segment(data, config, jerry_data=jerry_data)
+                compaction_segment = build_compaction_segment(data, config, tom_data=tom_data)
                 if compaction_segment:
                     segments.append(compaction_segment)
 
@@ -1462,10 +1462,10 @@ def main() -> None:
             print("ECW: Parse error")
             return
 
-        # FEAT-002: Try Jerry for enhanced domain computation
-        jerry_data = try_jerry_estimate(input_data, config, data)
+        # FEAT-002: Try Tom for enhanced domain computation
+        tom_data = try_tom_estimate(input_data, config, data)
 
-        status_line = build_status_line(data, config, jerry_data=jerry_data)
+        status_line = build_status_line(data, config, tom_data=tom_data)
         print(status_line)
 
     except Exception as e:

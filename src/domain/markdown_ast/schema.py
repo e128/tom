@@ -2,10 +2,10 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Schema validation engine for Jerry worktracker entity documents.
+Schema validation engine for Tom worktracker entity documents.
 
 Provides a schema definition API and a validation engine that checks
-JerryDocument instances against structural schemas.  Structural errors
+TomDocument instances against structural schemas.  Structural errors
 (missing required frontmatter fields, invalid field values, missing required
 sections, missing navigation tables) are reported as ValidationViolation
 objects collected in a ValidationReport.
@@ -21,7 +21,7 @@ Usage::
         EPIC_SCHEMA,
     )
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     report = validate_document(doc, EPIC_SCHEMA)
     if not report.is_valid:
         for v in report.violations:
@@ -37,10 +37,10 @@ References:
 Exports:
     FieldRule: Rule for a single frontmatter field.
     SectionRule: Rule for a required ## heading section.
-    EntitySchema: Schema definition for a Jerry worktracker entity type.
+    EntitySchema: Schema definition for a Tom worktracker entity type.
     ValidationViolation: A single schema violation found during validation.
     ValidationReport: Complete validation report for a document against a schema.
-    validate_document: Validate a JerryDocument against an EntitySchema.
+    validate_document: Validate a TomDocument against an EntitySchema.
     get_entity_schema: Look up a built-in schema by entity type name.
     EPIC_SCHEMA: Built-in schema for Epic entities.
     FEATURE_SCHEMA: Built-in schema for Feature entities.
@@ -56,7 +56,7 @@ import re
 from dataclasses import dataclass
 
 from src.domain.markdown_ast.frontmatter import extract_frontmatter
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.nav_table import validate_nav_table
 
 # ---------------------------------------------------------------------------
@@ -67,7 +67,7 @@ from src.domain.markdown_ast.nav_table import validate_nav_table
 @dataclass(frozen=True)
 class FieldRule:
     """
-    Rule for a single frontmatter field in a Jerry entity document.
+    Rule for a single frontmatter field in a Tom entity document.
 
     Defines whether the field is required and what values are acceptable.
     When ``allowed_values`` is set, the field value must be one of the listed
@@ -94,7 +94,7 @@ class FieldRule:
 @dataclass(frozen=True)
 class SectionRule:
     """
-    Rule for a required ## heading section in a Jerry entity document.
+    Rule for a required ## heading section in a Tom entity document.
 
     Attributes:
         heading: The expected heading text as it appears in the markdown source
@@ -113,7 +113,7 @@ class SectionRule:
 @dataclass(frozen=True)
 class EntitySchema:
     """
-    Schema definition for a Jerry worktracker entity type.
+    Schema definition for a Tom worktracker entity type.
 
     Encapsulates all structural rules for a single entity type: which
     frontmatter fields are required and what values they accept, which
@@ -204,9 +204,9 @@ class ValidationReport:
 # ---------------------------------------------------------------------------
 
 
-def validate_document(doc: JerryDocument, schema: EntitySchema) -> ValidationReport:
+def validate_document(doc: TomDocument, schema: EntitySchema) -> ValidationReport:
     """
-    Validate a JerryDocument against an EntitySchema.
+    Validate a TomDocument against an EntitySchema.
 
     Checks the document for:
     1. **Frontmatter field rules**: required fields present, allowed values
@@ -216,7 +216,7 @@ def validate_document(doc: JerryDocument, schema: EntitySchema) -> ValidationRep
        the document must pass H-23/H-24 nav table validation.
 
     Args:
-        doc: The JerryDocument to validate.
+        doc: The TomDocument to validate.
         schema: The EntitySchema defining the structural rules.
 
     Returns:
@@ -224,7 +224,7 @@ def validate_document(doc: JerryDocument, schema: EntitySchema) -> ValidationRep
         when no ``"error"`` severity violations are present.
 
     Examples:
-        >>> doc = JerryDocument.parse(source)
+        >>> doc = TomDocument.parse(source)
         >>> report = validate_document(doc, EPIC_SCHEMA)
         >>> report.is_valid
         True

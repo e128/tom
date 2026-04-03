@@ -27,24 +27,24 @@ The industry has evolved through three eras of AI development:
 | **Era 2** | 2024-2025 | Context Engineering - Curating optimal context |
 | **Era 3** | 2025+ | Agent Engineering - Designing reusable agents |
 
-The Jerry framework already uses prompt-based agents successfully across 24+ agents in problem-solving, nasa-se, and orchestration skills. DEC-006 established the principle: "Phased agents: Prompt-based first, Python later."
+The Tom framework already uses prompt-based agents successfully across 24+ agents in problem-solving, nasa-se, and orchestration skills. DEC-006 established the principle: "Phased agents: Prompt-based first, Python later."
 
 **Research conducted** (see `research/adr-005-research.md`):
 - Anthropic Claude Code skills and subagents documentation
 - Industry AI agent framework comparison (LangChain, CrewAI, AutoGen)
-- Jerry framework PS_AGENT_TEMPLATE.md patterns
+- Tom framework PS_AGENT_TEMPLATE.md patterns
 - Migration path analysis between approaches
 
 ### Constraints
 
 | ID | Constraint | Source |
 |----|------------|--------|
-| C-001 | Agents must follow PS_AGENT_TEMPLATE.md structure | Jerry Framework |
-| C-002 | Maximum ONE level of agent nesting | P-003 Jerry Constitution |
-| C-003 | All agent outputs must persist to filesystem | P-002 Jerry Constitution |
+| C-001 | Agents must follow PS_AGENT_TEMPLATE.md structure | Tom Framework |
+| C-002 | Maximum ONE level of agent nesting | P-003 Tom Constitution |
+| C-003 | All agent outputs must persist to filesystem | P-002 Tom Constitution |
 | C-004 | Processing time < 10 seconds for 1-hour transcript | NFR-001 Requirements |
 | C-005 | Must integrate with ps-critic for quality review | ADR-001 Decision |
-| C-006 | Must support model selection (opus/sonnet/haiku) | Jerry Pattern |
+| C-006 | Must support model selection (opus/sonnet/haiku) | Tom Pattern |
 
 ### Forces
 
@@ -52,7 +52,7 @@ The Jerry framework already uses prompt-based agents successfully across 24+ age
 
 2. **Simplicity vs. Flexibility:** Prompt files are simple to create and version but may hit limitations. Python code handles edge cases better but adds complexity.
 
-3. **Consistency vs. Customization:** Following Jerry patterns ensures consistency but may not address all transcript-specific needs. Custom patterns offer flexibility but diverge from framework.
+3. **Consistency vs. Customization:** Following Tom patterns ensures consistency but may not address all transcript-specific needs. Custom patterns offer flexibility but diverge from framework.
 
 4. **Now vs. Later:** Building Python infrastructure now front-loads work. Deferring to Phase 2 risks technical debt if migration is needed.
 
@@ -62,7 +62,7 @@ The Jerry framework already uses prompt-based agents successfully across 24+ age
 
 ### Option 1: Prompt-Based Only (YAML/Markdown)
 
-Implement all agents as Markdown files with YAML frontmatter, following the established Jerry pattern.
+Implement all agents as Markdown files with YAML frontmatter, following the established Tom pattern.
 
 **Structure:**
 ```
@@ -85,7 +85,7 @@ skills/transcript/agents/
 **Pros:**
 - Fastest development cycle (edit → run)
 - Simple version control (diff-friendly)
-- Consistent with Jerry framework patterns
+- Consistent with Tom framework patterns
 - No Python infrastructure needed
 - Easy team collaboration
 
@@ -220,7 +220,7 @@ skills/transcript/
 
 2. **Fastest MVP Delivery (C-004):** Prompt-based agents can be created in hours, not days. Phase 1 delivery meets the target timeline while Phase 2 provides escape hatch for performance issues.
 
-3. **Framework Consistency (C-001):** Using AGENT.md format following PS_AGENT_TEMPLATE.md ensures Transcript Skill agents are consistent with the 24+ existing Jerry agents.
+3. **Framework Consistency (C-001):** Using AGENT.md format following PS_AGENT_TEMPLATE.md ensures Transcript Skill agents are consistent with the 24+ existing Tom agents.
 
 4. **Risk Management:** Clear migration triggers prevent premature optimization while ensuring scalability path exists. The triggers are measurable and objective.
 
@@ -317,7 +317,7 @@ output:
   levels: [L0, L1, L2]
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-002: File Persistence (Medium)"
     - "P-003: No Recursive Subagents (Hard)"

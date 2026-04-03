@@ -6,7 +6,7 @@
 **Date:** 2026-02-17
 **Reviewer:** adv-executor (S-007)
 **Iteration:** 1
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.0, quality-enforcement.md v1.3.0, markdown-navigation-standards.md, python-environment.md, coding-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.0, quality-enforcement.md v1.3.0, markdown-navigation-standards.md, python-environment.md, coding-standards.md
 
 ---
 
@@ -37,7 +37,7 @@ The following constitutional sources were loaded for this review:
 
 | Source | Principles Loaded |
 |--------|------------------|
-| `docs/governance/JERRY_CONSTITUTION.md` | P-001 through P-043 (selectively applicable) |
+| `docs/governance/TOM_CONSTITUTION.md` | P-001 through P-043 (selectively applicable) |
 | `.context/rules/quality-enforcement.md` | H-01 through H-24 (HARD rule index) |
 | `.context/rules/markdown-navigation-standards.md` | H-23, H-24, NAV-001 through NAV-006 |
 | `.context/rules/python-environment.md` | H-05, H-06 |
@@ -45,7 +45,7 @@ The following constitutional sources were loaded for this review:
 
 ### Auto-Escalation Check
 
-- AE-001 (constitution): NOT triggered — deliverables do not touch `JERRY_CONSTITUTION.md`
+- AE-001 (constitution): NOT triggered — deliverables do not touch `TOM_CONSTITUTION.md`
 - AE-002 (rules/templates): NOT triggered — deliverables touch `LICENSE`, `NOTICE`, `pyproject.toml` (none are `.context/rules/` or `.claude/rules/`)
 - AE-003 (ADR): NOT triggered — no ADR created or modified
 - AE-004 (baselined ADR): NOT triggered

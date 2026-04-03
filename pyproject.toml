@@ -1,12 +1,12 @@
 [project]
-name = "jerry"
+name = "tom"
 version = "0.30.0"
 description = "A framework for behavior and workflow guardrails with knowledge accrual"
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.11"
 authors = [
-    { name = "Jerry Framework Contributors" }
+    { name = "Tom Framework Contributors" }
 ]
 keywords = [
     "claude-code",
@@ -62,7 +62,7 @@ transcript = [
 ]
 
 [project.scripts]
-jerry = "src.interface.cli.main:main"
+tom = "src.interface.cli.main:main"
 # EN-001: Removed deprecated session entry point (TD-005). Hook now calls main CLI
 
 [build-system]

@@ -469,7 +469,7 @@ mode_configuration:
   # Auto-escalation rules
   auto_escalation:
     - id: "AE-001"
-      condition: "modifies JERRY_CONSTITUTION.md"
+      condition: "modifies TOM_CONSTITUTION.md"
       effect: "escalate to C3 minimum"
     - id: "AE-002"
       condition: "modifies .claude/rules/*"

@@ -121,7 +121,7 @@ Shane McConkey wasn't just a skier. He was a **philosophy in motion**:
 | C.R.E.A.M. | Wu-Tang Clan | 1993 | "Context Rules Everything Around Me" — the core thesis |
 | Ain't No Half Steppin' | Big Daddy Kane | 1988 | Quality gate >= 0.92. No shortcuts. H-13 |
 | Moment of Truth | Gang Starr | 1998 | The quality gate pass/fail moment |
-| My Philosophy | KRS-One | 1988 | Constitutional principles. JERRY_CONSTITUTION.md |
+| My Philosophy | KRS-One | 1988 | Constitutional principles. TOM_CONSTITUTION.md |
 | N.Y. State of Mind | Nas | 1994 | Deep focus. The /problem-solving skill in audio form |
 
 ### Hip Hop — Modern

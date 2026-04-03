@@ -2,7 +2,7 @@
 
 <!-- VERSION: 1.2.0 | DATE: 2026-02-22 | PS-ID: PROJ-007 | AGENT: ps-architect-002 | CRITICALITY: C4 | REVISION: Barrier 3 revision — 5 scorer findings addressed (F-001 through F-005) -->
 
-> Architecture Decision Record for the canonical routing and trigger framework within the Jerry framework. Codifies how user requests are routed to the appropriate skill/agent, incorporating layered routing, enhanced trigger maps, circuit breakers, multi-skill combination, anti-patterns, and scaling roadmap.
+> Architecture Decision Record for the canonical routing and trigger framework within the Tom framework. Codifies how user requests are routed to the appropriate skill/agent, incorporating layered routing, enhanced trigger maps, circuit breakers, multi-skill combination, anti-patterns, and scaling roadmap.
 
 ## Document Sections
 
@@ -31,9 +31,9 @@
 
 ## L0: Executive Summary
 
-This ADR establishes the canonical approach to routing user requests to the appropriate skill and agent within the Jerry framework. The decision preserves keyword-based routing as the deterministic fast path (Layer 1), introduces a rule-based decision tree for disambiguation (Layer 2), and defines an LLM-based fallback for ambiguous or novel requests (Layer 3). Only Layer 1 enhancements -- negative keywords, priority ordering, and compound triggers -- are recommended for immediate implementation. Layers 2 and 3 are designed now but deferred until empirical scaling triggers are met (approximately 15 and 20+ skills respectively).
+This ADR establishes the canonical approach to routing user requests to the appropriate skill and agent within the Tom framework. The decision preserves keyword-based routing as the deterministic fast path (Layer 1), introduces a rule-based decision tree for disambiguation (Layer 2), and defines an LLM-based fallback for ambiguous or novel requests (Layer 3). Only Layer 1 enhancements -- negative keywords, priority ordering, and compound triggers -- are recommended for immediate implementation. Layers 2 and 3 are designed now but deferred until empirical scaling triggers are met (approximately 15 and 20+ skills respectively).
 
-The central trade-off resolved by this ADR is **routing accuracy versus system complexity**. At Jerry's current 8-skill, 37-agent scale, keyword routing achieves an estimated 65-80% deterministic match rate. Enhancing the keyword layer with negative keywords and priority ordering raises this to an estimated 75-90% at near-zero additional complexity or token cost. These coverage estimates are based on enumerated plausible intents, not measured against actual user request data; empirical validation via the observability framework (Section 7) is required to refine them. The remaining ambiguous cases are handled by agent judgment today; the layered architecture provides a structured escalation path for when this becomes insufficient.
+The central trade-off resolved by this ADR is **routing accuracy versus system complexity**. At Tom's current 8-skill, 37-agent scale, keyword routing achieves an estimated 65-80% deterministic match rate. Enhancing the keyword layer with negative keywords and priority ordering raises this to an estimated 75-90% at near-zero additional complexity or token cost. These coverage estimates are based on enumerated plausible intents, not measured against actual user request data; empirical validation via the observability framework (Section 7) is required to refine them. The remaining ambiguous cases are handled by agent judgment today; the layered architecture provides a structured escalation path for when this becomes insufficient.
 
 This ADR also codifies 8 routing anti-patterns with detection heuristics and prevention rules, defines a circuit breaker specification (max 3 routing hops per RR-006), establishes a multi-skill combination protocol, and provides a structured observability format for routing decisions. The scaling roadmap defines concrete triggers for each architectural transition, avoiding premature complexity while ensuring the framework can evolve without breaking changes.
 
@@ -53,7 +53,7 @@ This ADR is at C4 criticality (architecture/governance, baselined once accepted)
 
 ### Current State
 
-Jerry's routing operates through a single-layer keyword trigger map defined in `mandatory-skill-usage.md`, an L1 auto-loaded rule consuming approximately 600 tokens. The mechanism has three implicit tiers:
+Tom's routing operates through a single-layer keyword trigger map defined in `mandatory-skill-usage.md`, an L1 auto-loaded rule consuming approximately 600 tokens. The mechanism has three implicit tiers:
 
 1. **Explicit invocation:** User types a slash command (e.g., `/problem-solving`). Deterministic, zero ambiguity. Bypasses all trigger matching.
 2. **Keyword detection:** Agent scans the user request for keywords matching the trigger map. If keywords from a skill's trigger list appear, the agent proactively invokes that skill per H-22.
@@ -455,7 +455,7 @@ Eight routing anti-patterns identified through Phase 1-2 analysis. Each entry in
 | **Description** | Routing relies exclusively on keyword matching, creating a narrow "tunnel" through which only keyword-matching requests reach the appropriate skill. Requests expressed in different vocabulary are silently dropped, falling through to undocumented agent judgment. |
 | **Detection Heuristic** | (1) Users frequently re-phrase requests to trigger skills. (2) Agent invokes skills inconsistently for semantically equivalent requests. (3) Keyword list has not been updated in more than 3 months. (4) User manually invokes skills via slash commands that should have triggered automatically. |
 | **Prevention Rule** | (1) Audit keyword coverage quarterly against actual user requests. (2) Maintain synonym lists for each keyword. (3) Track routing "misses" where agent judgment overrides keyword routing. (4) Expand trigger map per Section 2.2 enhanced format. |
-| **Jerry Example** | In the current trigger map (Phase 0), user says "debug this concurrency issue." `/problem-solving` is not invoked because "debug" is not in the Phase 0 trigger list. Agent handles the request without the skill's structured research methodology. (The enhanced trigger map in Section 2.2 adds "debug" as a positive keyword for `/problem-solving`, resolving this gap.) |
+| **Tom Example** | In the current trigger map (Phase 0), user says "debug this concurrency issue." `/problem-solving` is not invoked because "debug" is not in the Phase 0 trigger list. Agent handles the request without the skill's structured research methodology. (The enhanced trigger map in Section 2.2 adds "debug" as a positive keyword for `/problem-solving`, resolving this gap.) |
 
 **Source:** ps-analyst-002 AP-01; ps-researcher-002 RQ-04 Finding 4.2.
 
@@ -467,7 +467,7 @@ Eight routing anti-patterns identified through Phase 1-2 analysis. Each entry in
 | **Description** | Trigger keywords are added without collision analysis, creating a "bag" of overlapping triggers with no conflict resolution. Multiple skills match simultaneously with no priority ordering or negative keyword disambiguation. |
 | **Detection Heuristic** | (1) Multiple skills frequently match a single request. (2) Routing behavior is inconsistent for the same request across sessions. (3) The trigger map has overlapping terms between skills without documented resolution. (4) More than 30% of routing decisions involve multi-skill ambiguity. |
 | **Prevention Rule** | (1) Cross-reference all trigger keywords across skills before adding new ones. (2) Implement negative keywords per Section 2.3. (3) Define explicit priority ordering per Section 2.2. (4) Require compound triggers for broad terms. |
-| **Jerry Example** | In the current trigger map (Phase 0), user says "review this architecture for risk." Both `/nasa-se` ("risk", "technical review") and `/adversary` ("review", "risk" via pre-mortem) match. Without priority ordering, the agent's choice is non-deterministic across sessions. (The enhanced trigger map in Section 2.2 resolves this via negative keywords and priority ordering.) |
+| **Tom Example** | In the current trigger map (Phase 0), user says "review this architecture for risk." Both `/nasa-se` ("risk", "technical review") and `/adversary` ("review", "risk" via pre-mortem) match. Without priority ordering, the agent's choice is non-deterministic across sessions. (The enhanced trigger map in Section 2.2 resolves this via negative keywords and priority ordering.) |
 
 **Source:** ps-analyst-002 AP-02; 4 documented collision zones in current trigger map.
 
@@ -479,7 +479,7 @@ Eight routing anti-patterns identified through Phase 1-2 analysis. Each entry in
 | **Description** | Context degrades through serial agent handoffs as each agent summarizes and re-interprets prior context. Original intent and detail are progressively lost. Information loss compounds at each boundary. |
 | **Detection Heuristic** | (1) Downstream agents ask questions already answered by upstream agents. (2) Final output contradicts or ignores early-stage findings. (3) More tokens spent on coordination than actual work. (4) Agent handoff summaries get progressively shorter through a chain. |
 | **Prevention Rule** | (1) Use structured handoff schemas with required fields (Section 4.3). (2) Include artifact file path references instead of summarizing file contents. (3) Define explicit success criteria at each handoff. (4) Cap `context_summary` length to force conciseness without allowing arbitrary truncation. |
-| **Jerry Example** | ps-researcher produces a 900-line research document. Handoff to ps-analyst includes a 3-sentence summary. ps-analyst misses a critical finding buried in the research. The synthesized output lacks a key recommendation. |
+| **Tom Example** | ps-researcher produces a 900-line research document. Handoff to ps-analyst includes a 3-sentence summary. ps-analyst misses a critical finding buried in the research. The synthesized output lacks a key recommendation. |
 
 **Source:** ps-analyst-002 AP-03; ps-researcher-002 RQ-06 Finding 6.2 ("free-text handoffs are the primary source of context loss"); nse-risk-001 R-T02 (error amplification RPN=15).
 
@@ -491,7 +491,7 @@ Eight routing anti-patterns identified through Phase 1-2 analysis. Each entry in
 | **Description** | Agents repeatedly hand off to each other without convergence. Agent A routes to Agent B, which routes back to Agent A, consuming tokens without progress. This is distinct from the creator-critic revision cycle (which is bounded by H-14). |
 | **Detection Heuristic** | (1) Same agent pair exchanges control more than 2 times. (2) Token consumption per orchestration run exceeds 2x expected budget. (3) Quality scores plateau or oscillate without improvement across iterations. (4) The `routing_history` contains repeated `from -> to` pairs. |
 | **Prevention Rule** | (1) Implement circuit breaker with max 3 hops (Section 3). (2) Detect cycles via `routing_history` pair matching. (3) Mandatory human escalation when circuit breaker triggers (AE-006). (4) Set maximum iteration counts per criticality level (C1: 3, C2: 5, C3: 7, C4: 10). |
-| **Jerry Example** | ps-critic scores a deliverable at 0.89. Creator revises to 0.90. ps-critic re-scores at 0.89. This oscillation continues because H-14 sets a floor (3 iterations) but no ceiling. The circuit breaker pattern (Section 3) halts after 3 consecutive iterations with score delta less than 0.01. |
+| **Tom Example** | ps-critic scores a deliverable at 0.89. Creator revises to 0.90. ps-critic re-scores at 0.89. This oscillation continues because H-14 sets a floor (3 iterations) but no ceiling. The circuit breaker pattern (Section 3) halts after 3 consecutive iterations with score delta less than 0.01. |
 
 **Source:** ps-analyst-002 AP-04; nse-requirements-001 RR-006 (max 3 hops); ps-investigator-001 RF-04 (RPN=252).
 
@@ -503,7 +503,7 @@ Eight routing anti-patterns identified through Phase 1-2 analysis. Each entry in
 | **Description** | Tasks are routed to specialized agents when a general-purpose agent with tools would suffice. The coordination overhead (context setup, handoff, result integration) exceeds the specialization benefit. |
 | **Detection Heuristic** | (1) Agent invocations for tasks completed in fewer than 5 tool calls. (2) Specialist agent output is nearly identical to what the orchestrator could produce. (3) Token overhead from agent spawning exceeds the task's total token budget. (4) High agent invocation count with low value-add per invocation. |
 | **Prevention Rule** | (1) Apply Anthropic's complexity-first decision framework: start with direct work, escalate to agent only when needed. (2) Define minimum complexity thresholds for agent invocation (e.g., task requires domain-specific methodology, multi-step analysis, or specialized tool access). (3) Monitor agent invocation-to-value ratio. |
-| **Jerry Example** | User asks "What files are in the src/ directory?" The orchestrator routes to ps-researcher, which spawns a full research investigation. A simple `ls` command would have answered the question in one tool call. |
+| **Tom Example** | User asks "What files are in the src/ directory?" The orchestrator routes to ps-researcher, which spawns a full research investigation. A simple `ls` command would have answered the question in one tool call. |
 
 **Source:** ps-analyst-002 AP-05; ps-researcher-003 Finding 3.1 (Anthropic 2024: "Adding frameworks prematurely before understanding underlying mechanics").
 
@@ -515,7 +515,7 @@ Eight routing anti-patterns identified through Phase 1-2 analysis. Each entry in
 | **Description** | Tasks that would benefit from specialist agents are handled by the generalist orchestrator. Quality suffers because the generalist lacks domain-specific methodology, structured decomposition, and specialized tool access. |
 | **Detection Heuristic** | (1) Orchestrator struggles with domain-specific tasks (multiple failed attempts, long reasoning chains). (2) Output quality for domain tasks is measurably lower than when the specialist is invoked. (3) User manually invokes skills that should have been proactively invoked per H-22. (4) Keyword trigger map has gaps for common request vocabulary. |
 | **Prevention Rule** | (1) Expand trigger keyword coverage per Section 2.2. (2) Monitor for user-initiated skill invocations as a signal of routing failure. (3) Define "complexity indicators" that trigger automatic skill invocation: file count greater than 3, presence of domain jargon, multi-step requirements, or need for structured methodology. |
-| **Jerry Example** | In the current trigger map (Phase 0), user says "Help me figure out why the tests are failing." The orchestrator attempts debugging without invoking `/problem-solving`. The ps-investigator agent (forensic cognitive mode) would apply structured 5 Whys analysis and produce a higher-quality root cause assessment. (The enhanced trigger map in Section 2.2 adds "figure out" and "what went wrong" as positive keywords for `/problem-solving`.) |
+| **Tom Example** | In the current trigger map (Phase 0), user says "Help me figure out why the tests are failing." The orchestrator attempts debugging without invoking `/problem-solving`. The ps-investigator agent (forensic cognitive mode) would apply structured 5 Whys analysis and produce a higher-quality root cause assessment. (The enhanced trigger map in Section 2.2 adds "figure out" and "what went wrong" as positive keywords for `/problem-solving`.) |
 
 **Source:** ps-analyst-002 AP-06; mandatory-skill-usage.md H-22 (proactive invocation mandate).
 
@@ -527,7 +527,7 @@ Eight routing anti-patterns identified through Phase 1-2 analysis. Each entry in
 | **Description** | As the framework grows, individual agents accumulate tool access until they exceed the 15-20 tool threshold where tool selection accuracy degrades. Each new MCP server adds tools that agents may not need. |
 | **Detection Heuristic** | (1) Agent has access to more than 15 tools. (2) Agent frequently selects wrong tools for tasks. (3) Tool descriptions consume more than 10% of the agent's context window. (4) New MCP servers are added without per-agent tool allowlist review. |
 | **Prevention Rule** | (1) Enforce tool allowlists per agent via `capabilities.allowed_tools` (AR-006). (2) Monitor tool count per agent; alert at 15. (3) Apply the T1-T5 tool security tier model: always select the lowest tier that satisfies requirements. (4) Periodically audit agent tool access and remove unused tools. |
-| **Jerry Example** | As Jerry adds more MCP servers, each agent inherits all MCP tools by default. An agent with 14 native tools + 8 MCP tools = 22 tools, exceeding the Anthropic-documented threshold. The agent starts selecting Memory-Keeper tools when it should be using Context7. |
+| **Tom Example** | As Tom adds more MCP servers, each agent inherits all MCP tools by default. An agent with 14 native tools + 8 MCP tools = 22 tools, exceeding the Anthropic-documented threshold. The agent starts selecting Memory-Keeper tools when it should be using Context7. |
 
 **Source:** ps-analyst-002 AP-07; ps-researcher-002 RQ-08 Finding 8.4 (Anthropic threshold: 20+ tools); nse-architecture-001 Pattern 5 (Tool Restriction), T1-T5 tiers.
 
@@ -538,8 +538,8 @@ Eight routing anti-patterns identified through Phase 1-2 analysis. Each entry in
 | **Name** | Context-Blind Routing |
 | **Description** | Routing decisions are made based solely on the current request text, ignoring contextual factors (project phase, file types being edited, conversation history, prior routing decisions, context fill level) that would improve accuracy. |
 | **Detection Heuristic** | (1) Same keyword routes to different skills depending on project phase, but routing does not account for phase. (2) Routing ignores file types being edited. (3) Routing does not consider which skills have already been invoked in the current session. (4) Routing decision quality degrades as context window fills (context rot affecting Layer 3). |
-| **Prevention Rule** | (1) Layer 2 decision tree incorporates contextual signals: file type, project phase, prior skill context, conversation history. (2) Use Jerry's auto-escalation rules (AE-001 through AE-006) as context-aware routing triggers. (3) Implement session-level routing context tracking (Section 3.2, `routing_history`). |
-| **Jerry Example** | During an orchestration workflow where the current phase is "Phase 2: Analysis," a keyword match for "research" triggers `/problem-solving` research mode instead of recognizing that analysis (not research) is the appropriate activity for the current phase. |
+| **Prevention Rule** | (1) Layer 2 decision tree incorporates contextual signals: file type, project phase, prior skill context, conversation history. (2) Use Tom's auto-escalation rules (AE-001 through AE-006) as context-aware routing triggers. (3) Implement session-level routing context tracking (Section 3.2, `routing_history`). |
+| **Tom Example** | During an orchestration workflow where the current phase is "Phase 2: Analysis," a keyword match for "research" triggers `/problem-solving` research mode instead of recognizing that analysis (not research) is the appropriate activity for the current phase. |
 
 **Source:** ps-analyst-002 AP-08; ps-researcher-002 RQ-04 Finding 4.3 (contextual trigger conditions).
 
@@ -547,7 +547,7 @@ Eight routing anti-patterns identified through Phase 1-2 analysis. Each entry in
 
 The most severe systemic risk from routing anti-patterns is the **"Bag of Agents"** topology, where agents operate without coordinated routing or structured handoffs. Research from Google DeepMind (cited in ps-researcher-002) documents **17x error amplification** in uncoordinated multi-agent systems compared to single-agent execution.
 
-Jerry's formal topology (orchestrator-worker with P-003 single-level nesting) reduces this amplification to an estimated **~1.3x** (internal estimate, assuming structured 2-level hierarchy with formal handoff protocols eliminates ~92% of boundary errors observed in unstructured systems; subject to empirical validation). However, this reduction depends on three architectural elements remaining intact:
+Tom's formal topology (orchestrator-worker with P-003 single-level nesting) reduces this amplification to an estimated **~1.3x** (internal estimate, assuming structured 2-level hierarchy with formal handoff protocols eliminates ~92% of boundary errors observed in unstructured systems; subject to empirical validation). However, this reduction depends on three architectural elements remaining intact:
 
 1. **Structured handoffs** (Section 4.3) -- prevents information loss at boundaries
 2. **Circuit breakers** (Section 3) -- prevents runaway routing loops
@@ -656,7 +656,7 @@ Routing records are persisted as part of the session's worktracker entry, follow
 | 2 | explicit | 0 | /adversary | -- (slash command) | -- | 1.0 | No |
 ```
 
-This format is human-readable in markdown, parseable by automated tooling, and consistent with Jerry's existing worktracker conventions.
+This format is human-readable in markdown, parseable by automated tooling, and consistent with Tom's existing worktracker conventions.
 
 #### 7.3 Identifying Keyword Coverage Gaps
 
@@ -732,8 +732,8 @@ The migration from the current `mandatory-skill-usage.md` to the enhanced format
 |---|-----------|-------|---------------------|
 | A1 | **Keep keyword-only with no enhancements** | 4.25 | Does not address the 4 documented collision zones or the estimated 40-60% semantic gap. Acceptable at current scale but creates technical debt for scaling. |
 | A2 | **Implement full LLM-as-Router immediately** | 3.05 | +0.05 TS-3 delta does not justify the complexity at 8 skills. Token cost of ~1,000-1,500 per invocation for every routing decision is wasteful when keyword matching resolves an estimated ~65-80% of cases. |
-| A3 | **Semantic/embedding-based routing** | 3.50 | Requires embedding infrastructure (vector store, embedding model) that Jerry does not have. High implementation cost for marginal accuracy improvement over enhanced keywords at current scale. |
-| A4 | **ML classifier routing** | 3.35 | Requires training data and training pipeline. Jerry's 37-agent, 8-skill scale is too small for traditional ML classification to justify the infrastructure. |
+| A3 | **Semantic/embedding-based routing** | 3.50 | Requires embedding infrastructure (vector store, embedding model) that Tom does not have. High implementation cost for marginal accuracy improvement over enhanced keywords at current scale. |
+| A4 | **ML classifier routing** | 3.35 | Requires training data and training pipeline. Tom's 37-agent, 8-skill scale is too small for traditional ML classification to justify the infrastructure. |
 | A5 | **Decision tree only (no LLM fallback)** | 3.95 | Strong deterministic option but cannot handle novel request types or contextual disambiguation. Viable as Layer 2 but insufficient as the sole routing mechanism at 20+ skills. |
 | A6 | **Implement all three layers immediately** | 3.95 | Over-engineering for current scale. Layers 2 and 3 add complexity that is not justified until the scaling triggers defined in Section 6 are met. Violates the principle of "failing to measure performance before increasing complexity." |
 
@@ -791,7 +791,7 @@ All file paths are repo-root-relative.
 | 4 documented collision zones | R-005 Section 1.3 |
 | 40-60% keyword coverage estimate (pending empirical validation) | R-005 Section 4.1 |
 | 17x error amplification (Bag of Agents) | R-004 TS-1, R-007 AR-004 rationale (Google DeepMind) |
-| ~1.3x amplification with Jerry's formal topology (internal estimate; subject to empirical validation) | R-010 Cross-Agent Consensus #3 |
+| ~1.3x amplification with Tom's formal topology (internal estimate; subject to empirical validation) | R-010 Cross-Agent Consensus #3 |
 | +0.05 TS-3 delta (keyword vs. layered) | R-004 TS-3, R-006 ADR-002 |
 | 0.5-1.1% context window cost for LLM routing | R-005 Section 6.4 |
 | ~15 skill threshold for keyword breakdown | R-005 Section 3.2 |
@@ -812,7 +812,7 @@ Applied S-010 Self-Refine before finalizing. The following checklist verifies co
 | 2. Enhanced Trigger Map Design | Yes | Full 7-skill enhanced trigger map, negative keyword algorithm, confidence threshold, 3 worked examples |
 | 3. Circuit Breaker Specification | Yes | Max depth, detection mechanism (hop counter + cycle detection), termination behavior |
 | 4. Multi-Skill Combination Protocol | Yes | Combination triggers, ordering rules, context sharing schema |
-| 5. Anti-Pattern Catalog (8 anti-patterns) | Yes | All 8 from ps-analyst-002 with name, description, detection heuristic, prevention rule, Jerry example |
+| 5. Anti-Pattern Catalog (8 anti-patterns) | Yes | All 8 from ps-analyst-002 with name, description, detection heuristic, prevention rule, Tom example |
 | 6. Scaling Roadmap | Yes | 5 phases with measurable transition triggers |
 | 7. Routing Observability | Yes | YAML log format, structured markdown format, coverage gap detection signals |
 | Consequences (migration, token cost, risks, trade-offs) | Yes | 7 positive, 5 negative with mitigations, migration path, trade-off summary |
@@ -858,7 +858,7 @@ Applied S-010 Self-Refine before finalizing. The following checklist verifies co
 
 ### Identified Limitations
 
-1. **Coverage estimates are approximations.** The 40-60% keyword coverage figure and the 75-90% post-enhancement estimate are based on enumerated plausible intents, not measured against actual user request data. Jerry does not currently collect routing decision data to validate these estimates. Estimated coverage improvement is pending empirical validation via the observability framework (Section 7), which is designed to provide this data.
+1. **Coverage estimates are approximations.** The 40-60% keyword coverage figure and the 75-90% post-enhancement estimate are based on enumerated plausible intents, not measured against actual user request data. Tom does not currently collect routing decision data to validate these estimates. Estimated coverage improvement is pending empirical validation via the observability framework (Section 7), which is designed to provide this data.
 
 2. **Confidence threshold is provisional.** The 0.70 threshold for LLM fallback activation is an informed estimate, not empirically calibrated. The ADR explicitly calls for calibration against the first 50-100 Layer 3 routing events.
 
@@ -866,7 +866,7 @@ Applied S-010 Self-Refine before finalizing. The following checklist verifies co
 
 4. **Scaling projections extrapolate from a small sample.** The collision zone growth rate is extrapolated from 4 observed collisions across 49 keywords. The actual growth curve depends on whether new skills occupy distinct domains (sublinear growth) or overlap with existing ones (superlinear growth).
 
-5. **The "Bag of Agents" 17x amplification figure is from a single source (Google DeepMind)** and applies to uncoordinated topologies. Jerry's formal topology mitigates this but the exact reduction factor (~1.3x) is an estimate from the NSE cross-pollination handoff, not independently measured.
+5. **The "Bag of Agents" 17x amplification figure is from a single source (Google DeepMind)** and applies to uncoordinated topologies. Tom's formal topology mitigates this but the exact reduction factor (~1.3x) is an estimate from the NSE cross-pollination handoff, not independently measured.
 
 ---
 

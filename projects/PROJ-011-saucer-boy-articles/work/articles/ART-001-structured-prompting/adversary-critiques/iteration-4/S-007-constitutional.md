@@ -5,7 +5,7 @@
 **Criticality:** C3 (public-facing branded article; >10 files in review chain; reputational impact)
 **Date:** 2026-02-23
 **Reviewer:** adv-executor (S-007, iteration 4 -- final round)
-**Constitutional Context:** JERRY_CONSTITUTION.md (P-001 through P-043), quality-enforcement.md (H-01 through H-36), Voice Constitution boundary conditions
+**Constitutional Context:** TOM_CONSTITUTION.md (P-001 through P-043), quality-enforcement.md (H-01 through H-36), Voice Constitution boundary conditions
 **Prior Iteration:** `adversary-critiques/iteration-3/S-007-constitutional.md` reviewed `draft-7-iteration-3.md`; this review evaluates `draft-8-iteration-4.md` which incorporates five targeted changes from draft-7.
 **Anti-leniency protocol:** Active. This is the final round. I am treating this as a fresh evaluation against constitutional principles, not as a rubber-stamp of the prior iteration's PASS. Scoring what is on the page. The prior iteration's 0.957 composite and 0.96 constitutional compliance set a high bar; any regression must be detected. Any inflation must be justified. I am comparing against the strongest published practitioner articles in prompt engineering, not against prior drafts.
 

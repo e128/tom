@@ -2,9 +2,9 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Jerry CLI - Primary Adapter for Command-Line Interface v0.1.0.
+Tom CLI - Primary Adapter for Command-Line Interface v0.1.0.
 
-This module provides the main entry point for the Jerry CLI tool.
+This module provides the main entry point for the Tom CLI tool.
 It follows hexagonal architecture principles:
 - Bootstrap module creates and wires all dependencies
 - CLIAdapter translates CLI protocol to use case calls via dispatcher
@@ -12,17 +12,17 @@ It follows hexagonal architecture principles:
 
 v0.1.0 Breaking Changes:
 - CLI restructured into namespaces: session, items, projects
-- 'jerry init' replaced by 'jerry projects context'
+- 'tom init' replaced by 'tom projects context'
 - New namespaces for work tracking and session management
 
 Usage:
-    jerry --help                           # Show help
-    jerry --version                        # Show version
-    jerry projects context                 # Display project context (was 'init')
-    jerry projects list                    # List all projects
-    jerry projects validate <id>           # Validate a project
-    jerry session start/end/status         # Session management
-    jerry items list/show/create           # Work item management
+    tom --help                           # Show help
+    tom --version                        # Show version
+    tom projects context                 # Display project context (was 'init')
+    tom projects list                    # List all projects
+    tom projects validate <id>           # Validate a project
+    tom session start/end/status         # Session management
+    tom items list/show/create           # Work item management
 
 Exit Codes:
     0: Success
@@ -82,7 +82,7 @@ def create_cli_adapter() -> CLIAdapter:
 
 
 def main() -> int:
-    """Main entry point for the Jerry CLI.
+    """Main entry point for the Tom CLI.
 
     Returns:
         Exit code (0=success, 1=error, 2=invalid usage)
@@ -97,7 +97,7 @@ def main() -> int:
 
     json_output = getattr(args, "json", False)
 
-    # EE-008: jerry why (works without project configuration)
+    # EE-008: tom why (works without project configuration)
     if args.namespace == "why":
         return _handle_why()
 
@@ -143,7 +143,7 @@ def _handle_session(adapter: CLIAdapter, args: Any, json_output: bool) -> int:
         Exit code
     """
     if args.command is None:
-        print("No session command specified. Use 'jerry session --help'.")
+        print("No session command specified. Use 'tom session --help'.")
         return 1
 
     if args.command == "start":
@@ -181,7 +181,7 @@ def _handle_items(adapter: CLIAdapter, args: Any, json_output: bool) -> int:
         Exit code
     """
     if args.command is None:
-        print("No items command specified. Use 'jerry items --help'.")
+        print("No items command specified. Use 'tom items --help'.")
         return 1
 
     if args.command == "list":
@@ -241,7 +241,7 @@ def _handle_projects(adapter: CLIAdapter, args: Any, json_output: bool) -> int:
         Exit code
     """
     if args.command is None:
-        print("No projects command specified. Use 'jerry projects --help'.")
+        print("No projects command specified. Use 'tom projects --help'.")
         return 1
 
     if args.command == "context":
@@ -273,7 +273,7 @@ def _handle_config(adapter: CLIAdapter, args: Any, json_output: bool) -> int:
         - WI-016: CLI Config Commands
     """
     if args.command is None:
-        print("No config command specified. Use 'jerry config --help'.")
+        print("No config command specified. Use 'tom config --help'.")
         return 1
 
     if args.command == "show":
@@ -316,7 +316,7 @@ def _handle_transcript(adapter: CLIAdapter, args: Any, json_output: bool) -> int
         - TASK-251: Implement CLI Transcript Namespace
     """
     if args.command is None:
-        print("No transcript command specified. Use 'jerry transcript --help'.")
+        print("No transcript command specified. Use 'tom transcript --help'.")
         return 1
 
     if args.command == "parse":
@@ -368,10 +368,10 @@ def _handle_context(args: Any) -> int:
         Exit code (always 0 for fail-open).
 
     References:
-        - EN-012: jerry context estimate CLI Command
+        - EN-012: tom context estimate CLI Command
     """
     if args.command is None:
-        print("No context command specified. Use 'jerry context --help'.")
+        print("No context command specified. Use 'tom context --help'.")
         return 1
 
     if args.command == "estimate":
@@ -404,7 +404,7 @@ def _handle_ast(args: Any, json_output: bool) -> int:
         Exit code: 0 (success), 1 (validation failure), 2 (parse error).
 
     References:
-        - ST-004: Add jerry ast CLI Commands
+        - ST-004: Add tom ast CLI Commands
     """
     from src.interface.cli.ast_commands import (
         ast_detect,
@@ -420,7 +420,7 @@ def _handle_ast(args: Any, json_output: bool) -> int:
     )
 
     if args.command is None:
-        print("No ast command specified. Use 'jerry ast --help'.")
+        print("No ast command specified. Use 'tom ast --help'.")
         return 1
 
     if args.command == "parse":
@@ -469,7 +469,7 @@ def _handle_agents(args: Any, json_output: bool) -> int:
         - ADR-PROJ010-003: LLM Portability Architecture
     """
     if args.command is None:
-        print("No agents command specified. Use 'jerry agents --help'.")
+        print("No agents command specified. Use 'tom agents --help'.")
         return 1
 
     from src.agents.infrastructure.adapters.claude_code_adapter import (
@@ -668,7 +668,7 @@ def _handle_agents(args: Any, json_output: bool) -> int:
                 )
             else:
                 print(
-                    f"\n{drift_count} file(s) out of sync. Run 'jerry agents build' to regenerate."
+                    f"\n{drift_count} file(s) out of sync. Run 'tom agents build' to regenerate."
                 )
 
         return 1 if drift_count > 0 else 0
@@ -681,7 +681,7 @@ def _handle_agents(args: Any, json_output: bool) -> int:
 
 
 def _handle_agents_validate_frontmatter(args: Any, json_output: bool) -> int:
-    """Handle the 'jerry agents validate-frontmatter' subcommand.
+    """Handle the 'tom agents validate-frontmatter' subcommand.
 
     Validates YAML frontmatter in skills/*/agents/*.md and skills/*/SKILL.md
     against the official Claude Code JSON schemas. Supports --agent and --skill
@@ -859,7 +859,7 @@ def _handle_ci(args: Any, json_output: bool) -> int:
         - BUG-002: Version bump regex rejects uppercase scopes
     """
     if args.command is None:
-        print("No ci command specified. Use 'jerry ci --help'.")
+        print("No ci command specified. Use 'tom ci --help'.")
         return 1
 
     if args.command == "detect-bump-type":
@@ -898,7 +898,7 @@ def _handle_why() -> int:
         Exit code (always 0)
     """
     print(
-        "Why does Jerry exist?\n"
+        "Why does Tom exist?\n"
         "\n"
         "Joy and excellence are not trade-offs. They're multipliers.\n"
         "\n"
@@ -927,11 +927,11 @@ def _handle_hooks(adapter: CLIAdapter, args: Any) -> int:
         Exit code
 
     References:
-        - EN-006: jerry hooks CLI Command Namespace
+        - EN-006: tom hooks CLI Command Namespace
     """
     hooks_command = getattr(args, "hooks_command", None)
     if hooks_command is None:
-        print("Error: No hooks command specified. Use 'jerry hooks --help'")
+        print("Error: No hooks command specified. Use 'tom hooks --help'")
         return 1
 
     # Read hook input from stdin

@@ -17,7 +17,7 @@ The following META TODO items **MUST ALWAYS BE ON YOUR LIST**. These survive con
 
 ### Project & Workflow Context
 
-- **META:** You are in project `{JerryProjectId}` | Workflow Id: `{WorkflowId}`
+- **META:** You are in project `{TomProjectId}` | Workflow Id: `{WorkflowId}`
 - **META:** Keep your TODO list in sync with the orchestration plan showing the previous phase, current phase and next phase → current phase must show all tasks/subagents
 
 ### Work Tracker Sync

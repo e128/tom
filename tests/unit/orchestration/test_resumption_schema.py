@@ -548,7 +548,7 @@ class TestCompactionEventsValidation:
                     "active_phase": 2,
                     "active_gate": "qg-2",
                     "active_gate_iteration": 1,
-                    "checkpoint_file": ".jerry/checkpoints/cx-001-checkpoint.json",
+                    "checkpoint_file": ".tom/checkpoints/cx-001-checkpoint.json",
                     "acknowledged": False,
                 },
             ],

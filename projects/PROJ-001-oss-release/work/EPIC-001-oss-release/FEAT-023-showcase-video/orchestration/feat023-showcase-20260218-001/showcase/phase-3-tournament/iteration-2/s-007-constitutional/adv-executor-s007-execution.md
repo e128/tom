@@ -5,7 +5,7 @@
 **Criticality:** C4
 **Date:** 2026-02-18
 **Reviewer:** adv-executor (S-007, Iteration 2)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md
 **Execution ID:** 20260218T2
 
 ---
@@ -35,27 +35,27 @@ SUBSTANTIAL compliance with residual minor gaps: 0 Critical, 0 Major, 3 Minor fi
 
 **Deliverable Type:** Marketing/communications document (video script). Architecture, coding, testing, and Python environment rules (H-05 through H-12, H-20, H-21) do not apply to this deliverable type.
 
-**Auto-escalation check:** The deliverable does not touch `.context/rules/`, `docs/governance/JERRY_CONSTITUTION.md`, or any ADR. AE-001 through AE-006 do not trigger. Criticality remains C4 per orchestration plan assignment.
+**Auto-escalation check:** The deliverable does not touch `.context/rules/`, `docs/governance/TOM_CONSTITUTION.md`, or any ADR. AE-001 through AE-006 do not trigger. Criticality remains C4 per orchestration plan assignment.
 
 | Principle ID | Name | Tier | Source | Applicable? | Rationale |
 |---|---|---|---|---|---|
-| P-001 | Truth and Accuracy | Soft | JERRY_CONSTITUTION.md Art. I | YES | Script makes factual claims about test counts, agent counts, quality gate threshold |
-| P-002 | File Persistence | Medium | JERRY_CONSTITUTION.md Art. I | NO | Process constraint for agent outputs; not a document content rule |
-| P-003 | No Recursive Subagents | Hard | JERRY_CONSTITUTION.md Art. I | NO | Process constraint on agent spawning; not applicable to script content |
-| P-004 | Explicit Provenance | Soft | JERRY_CONSTITUTION.md Art. I | YES | Claims require documented sourcing in self-review |
-| P-005 | Graceful Degradation | Soft | JERRY_CONSTITUTION.md Art. I | NO | Runtime error handling principle; not applicable to document content |
-| P-010 | Task Tracking Integrity | Medium | JERRY_CONSTITUTION.md Art. II | NO | Operational procedure; not applicable to script content |
-| P-011 | Evidence-Based Decisions | Medium | JERRY_CONSTITUTION.md Art. II | YES | Stats must be evidence-backed and verifiable |
-| P-012 | Scope Discipline | Soft | JERRY_CONSTITUTION.md Art. II | NO | Process constraint on scope creep; not applicable to script content |
-| P-020 | User Authority | Hard | JERRY_CONSTITUTION.md Art. III | YES | Script claims about governance must accurately represent user override authority |
-| P-021 | Transparency of Limitations | Medium | JERRY_CONSTITUTION.md Art. III | YES | Capability claims and unverified URL require transparency |
-| P-022 | No Deception | Hard | JERRY_CONSTITUTION.md Art. III | YES | Attribution language, framework descriptions must be accurate |
-| P-030 | Clear Handoffs | Medium | JERRY_CONSTITUTION.md Art. IV | NO | Collaboration handoff procedure; not applicable to script content |
-| P-031 | Respect Agent Boundaries | Soft | JERRY_CONSTITUTION.md Art. IV | NO | Multi-agent coordination constraint; not applicable to script content |
-| P-040 | Requirements Traceability | Medium | JERRY_CONSTITUTION.md Art. IV.5 | NO | NSE-specific; this is not a NASA SE deliverable |
-| P-041 | V&V Coverage | Medium | JERRY_CONSTITUTION.md Art. IV.5 | NO | NSE-specific; not applicable |
-| P-042 | Risk Transparency | Medium | JERRY_CONSTITUTION.md Art. IV.5 | NO | NSE-specific; not applicable |
-| P-043 | AI Guidance Disclaimer | Hard | JERRY_CONSTITUTION.md Art. IV.5 | NO | NSE-specific (required only for NASA SE skill outputs); not applicable to marketing scripts |
+| P-001 | Truth and Accuracy | Soft | TOM_CONSTITUTION.md Art. I | YES | Script makes factual claims about test counts, agent counts, quality gate threshold |
+| P-002 | File Persistence | Medium | TOM_CONSTITUTION.md Art. I | NO | Process constraint for agent outputs; not a document content rule |
+| P-003 | No Recursive Subagents | Hard | TOM_CONSTITUTION.md Art. I | NO | Process constraint on agent spawning; not applicable to script content |
+| P-004 | Explicit Provenance | Soft | TOM_CONSTITUTION.md Art. I | YES | Claims require documented sourcing in self-review |
+| P-005 | Graceful Degradation | Soft | TOM_CONSTITUTION.md Art. I | NO | Runtime error handling principle; not applicable to document content |
+| P-010 | Task Tracking Integrity | Medium | TOM_CONSTITUTION.md Art. II | NO | Operational procedure; not applicable to script content |
+| P-011 | Evidence-Based Decisions | Medium | TOM_CONSTITUTION.md Art. II | YES | Stats must be evidence-backed and verifiable |
+| P-012 | Scope Discipline | Soft | TOM_CONSTITUTION.md Art. II | NO | Process constraint on scope creep; not applicable to script content |
+| P-020 | User Authority | Hard | TOM_CONSTITUTION.md Art. III | YES | Script claims about governance must accurately represent user override authority |
+| P-021 | Transparency of Limitations | Medium | TOM_CONSTITUTION.md Art. III | YES | Capability claims and unverified URL require transparency |
+| P-022 | No Deception | Hard | TOM_CONSTITUTION.md Art. III | YES | Attribution language, framework descriptions must be accurate |
+| P-030 | Clear Handoffs | Medium | TOM_CONSTITUTION.md Art. IV | NO | Collaboration handoff procedure; not applicable to script content |
+| P-031 | Respect Agent Boundaries | Soft | TOM_CONSTITUTION.md Art. IV | NO | Multi-agent coordination constraint; not applicable to script content |
+| P-040 | Requirements Traceability | Medium | TOM_CONSTITUTION.md Art. IV.5 | NO | NSE-specific; this is not a NASA SE deliverable |
+| P-041 | V&V Coverage | Medium | TOM_CONSTITUTION.md Art. IV.5 | NO | NSE-specific; not applicable |
+| P-042 | Risk Transparency | Medium | TOM_CONSTITUTION.md Art. IV.5 | NO | NSE-specific; not applicable |
+| P-043 | AI Guidance Disclaimer | Hard | TOM_CONSTITUTION.md Art. IV.5 | NO | NSE-specific (required only for NASA SE skill outputs); not applicable to marketing scripts |
 | H-13 | Quality threshold >= 0.92 | HARD | quality-enforcement.md | YES — referenced in script | The script cites the 0.92 gate; the citation must be accurate |
 | H-23 | Navigation table REQUIRED | HARD | markdown-navigation-standards.md | YES | Document > 30 lines |
 | H-24 | Anchor links REQUIRED | HARD | markdown-navigation-standards.md | YES | Navigation table must use anchor links |

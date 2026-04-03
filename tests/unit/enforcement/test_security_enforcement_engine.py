@@ -83,7 +83,7 @@ class TestBlockedWritePaths:
     @pytest.mark.parametrize(
         "file_path",
         [
-            "/Users/adam/workspace/jerry/src/main.py",
+            "/Users/adam/workspace/tom/src/main.py",
             "src/domain/model.py",
             "/tmp/test_output.txt",
         ],
@@ -329,7 +329,7 @@ class TestEditToolChecks:
         decision = engine.evaluate(
             tool_name="Edit",
             tool_input={
-                "file_path": "/Users/adam/workspace/jerry/src/main.py",
+                "file_path": "/Users/adam/workspace/tom/src/main.py",
                 "old_string": "old",
                 "new_string": "new",
             },

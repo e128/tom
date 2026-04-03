@@ -267,7 +267,7 @@ Citation format in action items:
 
 3. **Re-run with token-based chunking:**
    ```bash
-   uv run jerry transcript parse <file.vtt> --output-dir <dir>
+   uv run tom transcript parse <file.vtt> --output-dir <dir>
    ```
 
 4. **Verify chunk sizes after generation:**
@@ -494,7 +494,7 @@ If mindmap generation fails repeatedly:
 
 ## Pattern References
 
-This runbook's troubleshooting procedures align with Jerry patterns:
+This runbook's troubleshooting procedures align with Tom patterns:
 
 | Pattern ID | Pattern Name | Runbook Application |
 |------------|--------------|---------------------|
@@ -521,7 +521,7 @@ This runbook's troubleshooting procedures align with Jerry patterns:
 - [ts-mindmap-ascii.md](../agents/ts-mindmap-ascii.md) - ASCII mindmap agent
 - [ts-critic-extension.md](../validation/ts-critic-extension.md) - Mindmap validation criteria (MM-*/AM-*)
 - [ADR-006](../../../docs/adrs/ADR-006-mindmap-pipeline-integration.md) - Mindmap Pipeline Integration Decision
-- [Jerry Pattern Catalog](../../../.claude/patterns/PATTERN-CATALOG.md) - Full pattern reference
+- [Tom Pattern Catalog](../../../.claude/patterns/PATTERN-CATALOG.md) - Full pattern reference
 
 ---
 

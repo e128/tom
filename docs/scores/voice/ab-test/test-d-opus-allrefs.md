@@ -189,4 +189,4 @@ improvement_recommendations:
 *Skill: saucer-boy-framework-voice v1.1.0*
 *Test ID: Test D — opus model + all 10 reference files*
 *Scored: 2026-02-20*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*

@@ -8,7 +8,7 @@
 
 ## Overview
 
-Application Services (implemented as Command/Query Handlers in Jerry) orchestrate use cases by coordinating domain objects, repositories, and infrastructure. They define the application's boundary and transaction scope.
+Application Services (implemented as Command/Query Handlers in Tom) orchestrate use cases by coordinating domain objects, repositories, and infrastructure. They define the application's boundary and transaction scope.
 
 ---
 
@@ -22,9 +22,9 @@ Application Services (implemented as Command/Query Handlers in Jerry) orchestrat
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
-In Jerry, Application Services are implemented as **Command Handlers** and **Query Handlers** following the CQRS pattern.
+In Tom, Application Services are implemented as **Command Handlers** and **Query Handlers** following the CQRS pattern.
 
 ### Command Handler (Write Operation)
 
@@ -379,13 +379,13 @@ def test_query_handler_returns_dto_not_entity():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Application services are Command/Query Handlers. No separate "service" class.
+> **Tom Decision**: Application services are Command/Query Handlers. No separate "service" class.
 
-> **Jerry Decision**: Command handlers return `list[DomainEvent]`. Query handlers return DTOs.
+> **Tom Decision**: Command handlers return `list[DomainEvent]`. Query handlers return DTOs.
 
-> **Jerry Decision**: All dependencies are injected via constructor. No service locator pattern.
+> **Tom Decision**: All dependencies are injected via constructor. No service locator pattern.
 
 ---
 

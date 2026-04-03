@@ -16,7 +16,7 @@ Design Principles:
     - **Valid JSON always**: The response is always valid JSON.
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - EN-705: L2 Per-Prompt Reinforcement Hook
     - ST-006: Graduated Escalation
     - PROJ-004: Context Resilience
@@ -199,7 +199,7 @@ class HooksPromptSubmitHandler:
     def _load_state_tier(self) -> ThresholdTier | None:
         """Load the last known tier from the cross-invocation state file.
 
-        The state file is written by ``jerry context estimate`` (status line)
+        The state file is written by ``tom context estimate`` (status line)
         and contains the most recent context tier classification.
 
         Fail-open: returns None on any failure.

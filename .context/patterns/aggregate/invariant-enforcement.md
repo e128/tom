@@ -22,7 +22,7 @@ Invariant Enforcement ensures that aggregates protect their business rules. An a
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Invariant Categories
 
@@ -328,13 +328,13 @@ def test_quality_gate_required_for_completion():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: All invariant violations raise specific exceptions, never generic `ValueError` or `Exception`. This enables precise error handling.
+> **Tom Decision**: All invariant violations raise specific exceptions, never generic `ValueError` or `Exception`. This enables precise error handling.
 
-> **Jerry Decision**: State machine transitions are validated in value objects (WorkItemStatus), not in aggregate methods. This centralizes transition logic.
+> **Tom Decision**: State machine transitions are validated in value objects (WorkItemStatus), not in aggregate methods. This centralizes transition logic.
 
-> **Jerry Decision**: Quality gate is enforced at completion time, not as a separate validation step. This ensures quality is always checked.
+> **Tom Decision**: Quality gate is enforced at completion time, not as a separate validation step. This ensures quality is always checked.
 
 ---
 

@@ -8,7 +8,7 @@
 
 ## Overview
 
-This playbook documents how to develop a Claude Code plugin without duplicating code, including local development workflows, permanent installation options, and gotchas specific to Jerry's project structure.
+This playbook documents how to develop a Claude Code plugin without duplicating code, including local development workflows, permanent installation options, and gotchas specific to Tom's project structure.
 
 ---
 
@@ -16,7 +16,7 @@ This playbook documents how to develop a Claude Code plugin without duplicating 
 
 1. [Plugin Structure Requirements](#plugin-structure-requirements)
 2. [Development Workflow Options](#development-workflow-options)
-3. [Jerry Project Structure Analysis](#jerry-project-structure-analysis)
+3. [Tom Project Structure Analysis](#tom-project-structure-analysis)
 4. [Gotchas and Conflicts](#gotchas-and-conflicts)
 5. [Recommended Actions](#recommended-actions)
 6. [Quick Reference](#quick-reference)
@@ -75,7 +75,7 @@ The manifest file **MUST** be named `plugin.json` (not `manifest.json`):
 
 ```json
 {
-  "name": "jerry"
+  "name": "tom"
 }
 ```
 
@@ -94,8 +94,8 @@ claude --plugin-dir ./path/to/plugin
 # Load multiple plugins
 claude --plugin-dir ./plugin-one --plugin-dir ./plugin-two
 
-# With Jerry specifically
-claude --plugin-dir /path/to/jerry
+# With Tom specifically
+claude --plugin-dir /path/to/tom
 ```
 
 **Limitation**: Must specify every time you launch Claude Code.
@@ -104,7 +104,7 @@ claude --plugin-dir /path/to/jerry
 
 ```bash
 # Add to ~/.zshrc or ~/.bashrc
-alias cc='claude --plugin-dir /path/to/jerry'
+alias cc='claude --plugin-dir /path/to/tom'
 ```
 
 ---
@@ -116,22 +116,22 @@ alias cc='claude --plugin-dir /path/to/jerry'
 #### Step 1: Create Marketplace Directory
 
 ```bash
-mkdir -p ~/.claude-marketplaces/jerry-local/.claude-plugin
+mkdir -p ~/.claude-marketplaces/tom-local/.claude-plugin
 ```
 
 #### Step 2: Create `marketplace.json`
 
 ```json
 {
-  "name": "jerry-local",
+  "name": "tom-local",
   "owner": {
     "name": "Your Name",
     "email": "your@email.com"
   },
   "plugins": [
     {
-      "name": "jerry",
-      "source": "/absolute/path/to/jerry",
+      "name": "tom",
+      "source": "/absolute/path/to/tom",
       "description": "Framework for behavior and workflow guardrails"
     }
   ]
@@ -141,13 +141,13 @@ mkdir -p ~/.claude-marketplaces/jerry-local/.claude-plugin
 #### Step 3: Add Marketplace via CLI
 
 ```bash
-/plugin marketplace add ~/.claude-marketplaces/jerry-local
+/plugin marketplace add ~/.claude-marketplaces/tom-local
 ```
 
 #### Step 4: Install Plugin
 
 ```bash
-/plugin install jerry@jerry-local
+/plugin install tom@tom-local
 ```
 
 #### Alternative: Configure in settings.json
@@ -157,7 +157,7 @@ Add to `~/.claude/settings.json` (global) or `.claude/settings.json` (project):
 ```json
 {
   "extraKnownMarketplaces": {
-    "jerry-local": {
+    "tom-local": {
       "source": {
         "source": "directory",
         "path": "/absolute/path/to/marketplace-dir"
@@ -165,7 +165,7 @@ Add to `~/.claude/settings.json` (global) or `.claude/settings.json` (project):
     }
   },
   "enabledPlugins": {
-    "jerry@jerry-local": true
+    "tom@tom-local": true
   }
 }
 ```
@@ -178,20 +178,20 @@ Add to `~/.claude/settings.json` (global) or `.claude/settings.json` (project):
 
 ```bash
 # Install to project scope (creates .claude/plugins/)
-/plugin install jerry@jerry-local --scope project
+/plugin install tom@tom-local --scope project
 
 # Install to local scope (gitignored)
-/plugin install jerry@jerry-local --scope local
+/plugin install tom@tom-local --scope local
 ```
 
 ---
 
-## Jerry Project Structure Analysis
+## Tom Project Structure Analysis
 
 ### Current Structure
 
 ```
-jerry/
+tom/
 ├── .claude/                    # Claude Code PROJECT configuration
 │   ├── agents/                 # Agent definitions
 │   ├── commands/               # Slash commands
@@ -234,7 +234,7 @@ jerry/
 
 ### Gotcha 1: `manifest.json` vs `plugin.json`
 
-**Problem**: Jerry uses `manifest.json` but Claude Code expects `plugin.json`.
+**Problem**: Tom uses `manifest.json` but Claude Code expects `plugin.json`.
 
 **Impact**: Plugin may not be recognized when loaded via `--plugin-dir`.
 
@@ -255,7 +255,7 @@ ln -s manifest.json .claude-plugin/plugin.json
 2. **Plugin components** (agents/, commands/) - expected at plugin root
 
 **Impact**:
-- When running in the Jerry repo, `.claude/` works as project config
+- When running in the Tom repo, `.claude/` works as project config
 - When distributing as a plugin, agents/commands in `.claude/` won't auto-discover
 
 **Current Behavior**:
@@ -264,7 +264,7 @@ ln -s manifest.json .claude-plugin/plugin.json
 
 **Auto-Discovery Expectation**:
 ```
-jerry/
+tom/
 ├── agents/           # Claude Code expects here for auto-discovery
 ├── commands/         # Claude Code expects here for auto-discovery
 └── .claude/          # Only project settings
@@ -312,7 +312,7 @@ But Claude Code's **standard plugin format** auto-discovers from directories.
 
 ### Gotcha 5: Running Claude Code IN the Plugin Directory
 
-**Problem**: When you run `claude` inside the Jerry directory:
+**Problem**: When you run `claude` inside the Tom directory:
 1. `.claude/settings.json` is loaded as **project** config
 2. If loaded via `--plugin-dir .`, it's ALSO a **plugin**
 
@@ -335,7 +335,7 @@ But Claude Code's **standard plugin format** auto-discovers from directories.
 2. **Add shell alias for development**:
    ```bash
    # ~/.zshrc
-   alias jerry-dev='claude --plugin-dir /path/to/jerry'
+   alias tom-dev='claude --plugin-dir /path/to/tom'
    ```
 
 ### Short-Term (Minor Restructure)
@@ -353,7 +353,7 @@ But Claude Code's **standard plugin format** auto-discovers from directories.
 
 4. **Separate concerns**:
    ```
-   jerry/
+   tom/
    ├── .claude/                  # Project config ONLY
    │   ├── settings.json
    │   ├── settings.local.json
@@ -384,19 +384,19 @@ But Claude Code's **standard plugin format** auto-discovers from directories.
 claude --plugin-dir .
 
 # Multiple plugins
-claude --plugin-dir ./jerry --plugin-dir ./other-plugin
+claude --plugin-dir ./tom --plugin-dir ./other-plugin
 
 # Add local marketplace
 /plugin marketplace add ./path/to/marketplace
 
 # Install from local marketplace
-/plugin install jerry@jerry-local
+/plugin install tom@tom-local
 
 # List installed plugins
 /plugin list
 
 # Check plugin status
-/plugin info jerry@jerry-local
+/plugin info tom@tom-local
 ```
 
 ### Settings Locations

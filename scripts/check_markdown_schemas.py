@@ -4,7 +4,7 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Pre-commit hook: Markdown schema validation for Jerry worktracker entities.
+Pre-commit hook: Markdown schema validation for Tom worktracker entities.
 
 Validates staged markdown files against their entity schemas. Only files
 in the ``projects/*/work/`` hierarchy with recognized entity prefixes
@@ -36,7 +36,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.schema import (
     ValidationViolation,
     get_entity_schema,
@@ -111,7 +111,7 @@ def detect_schema_from_path(file_path: str) -> str | None:
 def validate_file(file_path: str, schema_type: str) -> list[ValidationViolation]:
     """Validate a single file against the specified entity schema.
 
-    Reads the file, parses it as a JerryDocument, and validates it against
+    Reads the file, parses it as a TomDocument, and validates it against
     the built-in schema for the given entity type. Returns any violations
     found. If the file cannot be read, returns an empty list (graceful skip).
 
@@ -137,7 +137,7 @@ def validate_file(file_path: str, schema_type: str) -> list[ValidationViolation]
     except (OSError, UnicodeDecodeError):
         return []
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     schema = get_entity_schema(schema_type)
     report = validate_document(doc, schema)
 

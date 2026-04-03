@@ -5,7 +5,7 @@
 ## Before You Begin
 
 You need:
-- Write access to the `geekatron/jerry` repository
+- Write access to the `geekatron/tom` repository
 - `git` and `gh` CLI installed and authenticated
 - The [SHA-to-version mapping table](../reference/ci-cd-pipeline-security.md#sha-pinning) open for reference
 
@@ -144,4 +144,4 @@ To confirm an action resolved to the expected version during a run, open the run
 ## Related
 
 - **Reference:** [CI/CD Pipeline Security Controls](../reference/ci-cd-pipeline-security.md#sha-pinning) — SHA-to-version mapping table and workflow matrix
-- **Explanation:** [About the Jerry CI/CD Supply Chain Security Model](../explanation/ci-cd-supply-chain-security.md) — Why SHA pinning is used and how the pipeline security model is designed
+- **Explanation:** [About the Tom CI/CD Supply Chain Security Model](../explanation/ci-cd-supply-chain-security.md) — Why SHA pinning is used and how the pipeline security model is designed

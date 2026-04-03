@@ -85,7 +85,7 @@ The runbook is the strongest document in the set structurally. The steelmanned v
 
 > "After Step 4, you should see output similar to: 'Invoking ps-researcher for: best practices for writing readable Python code... Output saved to projects/PROJ-001-my-first-project/docs/research/ps-researcher-YYYYMMDD-HHMMSS.md'. The exact filename includes a timestamp; the directory and agent prefix are consistent. If you do not see output similar to this, consult the Troubleshooting section."
 >
-> "All output artifacts are written to disk immediately upon agent completion. This is not optional or configurable — it is enforced by [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence) (file persistence requirement), a constitutional principle of the framework. The guarantee is: if an agent ran, a file exists."
+> "All output artifacts are written to disk immediately upon agent completion. This is not optional or configurable — it is enforced by [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence) (file persistence requirement), a constitutional principle of the framework. The guarantee is: if an agent ran, a file exists."
 
 **H-04 Explanation** (`docs/runbooks/getting-started.md`, Step 2)
 
@@ -110,7 +110,7 @@ The original explains H-04 accurately. The steelmanned version preemptively addr
 | SM-009-20260218 | H-04 explanation does not preempt obvious "why can't Jerry infer project?" objection | Minor | "Without JERRY_PROJECT, the SessionStart hook cannot load project context" | Add: inference not used because multiple projects may be open simultaneously; explicit scope avoids silent mis-scoping | Methodological Rigor |
 | SM-010-20260218 | index.md Known Limitations section does not specify roadmap timeline | Minor | "Optimization for token efficiency and best-practice alignment is planned for upcoming releases" | Replace "upcoming" with explicit signal: "targeted for post-v1.0 release" or link to roadmap if available | Completeness |
 | SM-011-20260218 | BOOTSTRAP.md Rollback section uses `rm` without `-i` flag warning for junction points on Windows | Minor | `rm .claude/rules .claude/patterns` shown as Windows alternative without caveat | Add note that Windows junction rollback uses `rmdir` not `rm`, and that the wrong command silently deletes directory contents | Actionability |
-| SM-012-20260218 | INSTALLATION.md Developer Setup architecture overview is terse — no link to deeper architecture doc | Minor | Four-line hexagonal architecture diagram with brief labels | Link to `docs/governance/JERRY_CONSTITUTION.md` or an architecture doc for contributors who want more than a schematic | Completeness |
+| SM-012-20260218 | INSTALLATION.md Developer Setup architecture overview is terse — no link to deeper architecture doc | Minor | Four-line hexagonal architecture diagram with brief labels | Link to `docs/governance/TOM_CONSTITUTION.md` or an architecture doc for contributors who want more than a schematic | Completeness |
 | SM-013-20260218 | getting-started.md Next Steps section lists playbooks but omits the adversary skill | Minor | Three playbook links: problem-solving, orchestration, transcript | Add `/adversary` playbook link when available; or note it as a forthcoming resource so users know it exists | Completeness |
 
 ---
@@ -249,7 +249,7 @@ The original explains H-04 accurately. The steelmanned version preemptively addr
 > "All skill agents persist their output to your project directory as guaranteed by P-002 (file persistence requirement)."
 
 **Strengthened Content:**
-> "All skill agents persist their output to your project directory as guaranteed by [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence) (file persistence requirement). P-002 is a constitutional principle — it is not configurable or bypassable by individual agents. The inference you can draw: if an agent completed without error, a file exists. If no file exists after a reported completion, that is a bug, not expected behavior."
+> "All skill agents persist their output to your project directory as guaranteed by [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence) (file persistence requirement). P-002 is a constitutional principle — it is not configurable or bypassable by individual agents. The inference you can draw: if an agent completed without error, a file exists. If no file exists after a reported completion, that is a bug, not expected behavior."
 
 **Rationale:** The current mention of P-002 is a citation without explanation. The practical implication — "if it ran, there's a file; if there's no file, something is wrong" — is valuable signal for a new user debugging Step 5 failures. Making the constitutional status explicit also calibrates user expectations: they should not expect to configure output paths away.
 

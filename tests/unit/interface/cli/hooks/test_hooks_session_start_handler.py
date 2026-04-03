@@ -11,7 +11,7 @@ BDD scenarios:
     - Handler returns valid JSON even when project context query fails
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - PROJ-004: Context Resilience
 """
 

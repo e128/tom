@@ -80,7 +80,7 @@ output:
   - L1
   - L2
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - "P-003: No Recursive Subagents (Hard) - Only orchestrator has Agent; sub-skills are workers"
   - "P-020: User Authority (Hard) - User decides wave progression, bypass, and synthesis acceptance"

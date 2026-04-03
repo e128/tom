@@ -606,5 +606,5 @@ If an agent times out:
 ---
 
 *Orchestration Guide Version: 2.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Last Updated: 2026-01-08*

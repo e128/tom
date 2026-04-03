@@ -502,7 +502,7 @@ Add a symmetry note to the Analytical Principles section: "The principle 'NEVER 
 
 ## S-007: Constitutional AI Critique
 
-**Constitutional framework applied:** Jerry Constitution (JERRY_CONSTITUTION.md), P-001 through P-022, HARD Rules H-01 through H-36.
+**Constitutional framework applied:** Jerry Constitution (TOM_CONSTITUTION.md), P-001 through P-022, HARD Rules H-01 through H-36.
 
 **Protocol: Principle-by-principle review of applicable principles.**
 

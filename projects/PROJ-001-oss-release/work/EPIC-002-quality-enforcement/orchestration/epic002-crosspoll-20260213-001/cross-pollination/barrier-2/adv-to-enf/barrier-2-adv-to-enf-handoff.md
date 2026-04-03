@@ -414,14 +414,14 @@ These rules fire BEFORE decision tree traversal and may override the initial cri
 
 | Rule | Condition | Effect | Source |
 |------|-----------|--------|--------|
-| **AE-001** | Artifact modifies `docs/governance/JERRY_CONSTITUTION.md` | Escalate to C3 minimum | FR-011 |
+| **AE-001** | Artifact modifies `docs/governance/TOM_CONSTITUTION.md` | Escalate to C3 minimum | FR-011 |
 | **AE-002** | Artifact modifies any file in `.claude/rules/` | Escalate to C3 minimum | FR-011 |
 | **AE-003** | Artifact is a new or modified ADR | Escalate to C3 minimum | TASK-001 |
 | **AE-004** | Artifact modifies existing baselined ADR | Escalate to C4 | TASK-001 |
 | **AE-005** | Artifact modifies security-relevant code (auth, crypto, access control) | Escalate to C3 minimum | TASK-001 |
 | **AE-006** | Token budget is EXHAUST and criticality is C3+ | Add mandatory human escalation flag | Escalation Decision Logic |
 
-**Precedence Rule (PR-001):** Auto-escalation overrides phase downgrade. If criticality was elevated by AE-001 through AE-005, phase modifiers SHALL NOT reduce the criticality below the auto-escalated level. Rationale: auto-escalation encodes hard governance constraints (FR-011, JERRY_CONSTITUTION); phase modifiers encode soft workflow optimization.
+**Precedence Rule (PR-001):** Auto-escalation overrides phase downgrade. If criticality was elevated by AE-001 through AE-005, phase modifiers SHALL NOT reduce the criticality below the auto-escalated level. Rationale: auto-escalation encodes hard governance constraints (FR-011, TOM_CONSTITUTION); phase modifiers encode soft workflow optimization.
 
 **Source:** EN-303 TASK-004, Auto-Escalation Rules (lines 92-121).
 

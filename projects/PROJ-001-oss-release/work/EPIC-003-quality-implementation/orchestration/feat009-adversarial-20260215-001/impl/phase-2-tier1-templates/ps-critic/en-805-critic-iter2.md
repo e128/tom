@@ -6,7 +6,7 @@
 **Date:** 2026-02-15
 **Reviewer:** ps-critic (adversarial quality reviewer)
 **Iteration:** 2 of 3 (H-14 cycle)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.2.0, TEMPLATE-FORMAT.md v1.1.0
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.2.0, TEMPLATE-FORMAT.md v1.1.0
 
 ---
 
@@ -47,7 +47,7 @@ Tracking resolution of all 8 findings from iteration 1 critic report.
 | CC-001 | Major | PARTIALLY RESOLVED | Line 213-218 now includes disclaimer: "template-specific operational values, NOT sourced from quality-enforcement.md SSOT" and Note clarifying SSOT threshold. Penalty model contextualized. | Disclaimer acknowledges non-SSOT status but does NOT provide sourcing. Model remains novel. See REM-001. |
 | CC-002 | Major | FULLY RESOLVED | Line 102 now lists ALL keywords: "MUST, SHALL, NEVER, FORBIDDEN, REQUIRED, CRITICAL" (HARD), "SHOULD, RECOMMENDED, PREFERRED, EXPECTED" (MEDIUM), "MAY, CONSIDER, OPTIONAL, SUGGESTED" (SOFT). Matches quality-enforcement.md lines 105-107 exactly. | None |
 | CC-003 | Major | PARTIALLY RESOLVED | Line 127 now includes H-rule quick reference instruction: "Review quality-enforcement.md lines 38-63 for the complete H-rule index." Decision not to embed full table is acceptable for template brevity. | Instruction references specific line numbers which may change if quality-enforcement.md is updated. See REM-002. |
-| CC-004 | Minor | FULLY RESOLVED | Line 61 expanded to: "ALL Standard+ deliverables MUST undergo constitutional review (H-18) against JERRY_CONSTITUTION.md principles P-001–P-043 and HARD rules H-01–H-24." | None |
+| CC-004 | Minor | FULLY RESOLVED | Line 61 expanded to: "ALL Standard+ deliverables MUST undergo constitutional review (H-18) against TOM_CONSTITUTION.md principles P-001–P-043 and HARD rules H-01–H-24." | None |
 | CC-005 | Major | FULLY RESOLVED | Line 173 now includes edge case guidance: "If 5+ MEDIUM violations cluster in same file/module/component, CONSIDER escalating to Critical. If 10+ SOFT violations cluster around same architectural concern, CONSIDER escalating to Major. If SOFT violation has architectural impact, CONSIDER escalating to Major. Document escalation rationale." | None |
 | CC-006 | Minor | FULLY RESOLVED | Line 100 now clarifies scope: "Constitutional sources include governance and behavioral rules; operational state files reviewed for P-010 compliance if deliverable affects task tracking." (implicit in context; not explicitly added but scope is clarified via Step 1 procedure). | Actually NOT explicitly added per my review of lines 100-101. However, Step 1 procedure (line 119-128) adequately clarifies type-based loading. Acceptable. |
 | CC-007 | Major | FULLY RESOLVED | Line 226 now includes verification instruction: "Verify calculation: Example verification: If 2 Critical + 3 Major + 5 Minor violations, penalty = 2(0.10) + 3(0.05) + 5(0.02) = 0.20 + 0.15 + 0.10 = 0.45. Base score 1.00 - 0.45 = 0.55 → REJECTED. See Example 1 (line 415)." | None |
@@ -296,7 +296,7 @@ Issues from iteration 1 that are PARTIALLY RESOLVED and warrant optional refinem
 1. Elevated to quality-enforcement.md SSOT (add penalty model constants), OR
 2. Replaced with qualitative guidance (remove deterministic calculation, use professional judgment)
 
-**Recommendation:** OPTIONAL. For current C3 template, disclaimer is adequate. If this template is used for C4 constitutional reviews (e.g., reviewing JERRY_CONSTITUTION.md changes), revisit penalty model sourcing.
+**Recommendation:** OPTIONAL. For current C3 template, disclaimer is adequate. If this template is used for C4 constitutional reviews (e.g., reviewing TOM_CONSTITUTION.md changes), revisit penalty model sourcing.
 
 **Estimated Effort:** 1 hour (elevate to SSOT) OR 30 minutes (replace with qualitative guidance)
 

@@ -211,7 +211,7 @@ output:
   levels: [L0, L1, L2]
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-002: File Persistence (Medium)"
     - "P-003: No Recursive Subagents (Hard)"
@@ -260,7 +260,7 @@ forbidden_actions:
   - "Use Task tool that spawns further Tasks"
 ```
 
-**Source:** Jerry Constitution, `docs/governance/JERRY_CONSTITUTION.md`
+**Source:** Jerry Constitution, `docs/governance/TOM_CONSTITUTION.md`
 
 #### 2.4 State Passing Between Agents
 

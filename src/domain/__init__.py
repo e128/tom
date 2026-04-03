@@ -2,7 +2,7 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Domain layer for Jerry Framework.
+Domain layer for Tom Framework.
 
 Contains pure domain logic with no external infrastructure dependencies.
 

@@ -22,7 +22,7 @@ WorkItem is the primary aggregate root in the Work Tracking bounded context. It 
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ```python
 # File: src/work_tracking/domain/aggregates/work_item.py
@@ -402,13 +402,13 @@ def test_work_item_reconstitutes_from_history():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: WorkItem is the only aggregate in work tracking. Phase and Plan are separate aggregates referenced by ID, not nested. This keeps aggregates small and focused.
+> **Tom Decision**: WorkItem is the only aggregate in work tracking. Phase and Plan are separate aggregates referenced by ID, not nested. This keeps aggregates small and focused.
 
-> **Jerry Decision**: Quality gate check is enforced at completion time. Cannot complete without `quality_passed=True` (or explicit override).
+> **Tom Decision**: Quality gate check is enforced at completion time. Cannot complete without `quality_passed=True` (or explicit override).
 
-> **Jerry Decision**: Cancelled items are terminal. To "uncancel", create a new work item referencing the old one.
+> **Tom Decision**: Cancelled items are terminal. To "uncancel", create a new work item referencing the old one.
 
 ---
 

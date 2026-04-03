@@ -1,6 +1,6 @@
-# Getting Started with Jerry
+# Getting Started with Tom
 
-> Follow this runbook to go from a freshly installed Jerry instance to your first successful skill invocation. By the end you will have a configured project, a running session, and a persisted output artifact on disk.
+> Follow this runbook to go from a freshly installed Tom instance to your first successful skill invocation. By the end you will have a configured project, a running session, and a persisted output artifact on disk.
 
 ## Document Sections
 
@@ -16,15 +16,15 @@
 
 ## Prerequisites
 
-> **Start state:** You have completed the Jerry installation documented in [`../INSTALLATION.md`](../INSTALLATION.md). Do not proceed until the criteria below are met.
+> **Start state:** You have completed the Tom installation documented in [`../INSTALLATION.md`](../INSTALLATION.md). Do not proceed until the criteria below are met.
 
 - [ ] **Claude Code 1.0.33+** is installed — confirm with `claude --version`
-- [ ] **The Jerry plugin is installed** in Claude Code — run `/plugin`, go to the **Installed** tab, and verify `jerry` appears
+- [ ] **The Tom plugin is installed** in Claude Code — run `/plugin`, go to the **Installed** tab, and verify `tom` appears
 - [ ] **(Recommended) `uv` is installed** and on your PATH — confirm with `uv --version`. Hooks (session context, quality enforcement) require uv. Skills work without it.
 
 If these are not in place, complete the installation steps in [`../INSTALLATION.md`](../INSTALLATION.md) first, then return here.
 
-> **Tested with:** uv 0.5.x, Jerry v0.2.2, Claude Code 1.0.33+. If you are using different versions, the commands in this runbook should still work but minor output differences are possible.
+> **Tested with:** uv 0.5.x, Tom v0.2.2, Claude Code 1.0.33+. If you are using different versions, the commands in this runbook should still work but minor output differences are possible.
 
 ---
 
@@ -38,10 +38,10 @@ Create the project directory structure:
 
 ```bash
 # macOS / Linux
-mkdir -p projects/PROJ-001-my-first-project/.jerry/data/items
+mkdir -p projects/PROJ-001-my-first-project/.tom/data/items
 
 # Windows PowerShell
-New-Item -ItemType Directory -Force -Path "projects\PROJ-001-my-first-project\.jerry\data\items"
+New-Item -ItemType Directory -Force -Path "projects\PROJ-001-my-first-project\.tom\data\items"
 ```
 
 Create the two required project files:
@@ -56,17 +56,17 @@ New-Item -ItemType File -Force -Path "projects\PROJ-001-my-first-project\PLAN.md
 New-Item -ItemType File -Force -Path "projects\PROJ-001-my-first-project\WORKTRACKER.md"
 ```
 
-Expected result: The path `projects/PROJ-001-my-first-project/` exists and contains `PLAN.md`, `WORKTRACKER.md`, and the `.jerry/data/items/` subdirectory.
+Expected result: The path `projects/PROJ-001-my-first-project/` exists and contains `PLAN.md`, `WORKTRACKER.md`, and the `.tom/data/items/` subdirectory.
 
-> **What are these files?** `PLAN.md` holds your project's implementation plan and scope. `WORKTRACKER.md` is the project-level work manifest — Jerry's skills and agents write work item entries (tasks, enablers, bugs, decisions) into this file as they execute, giving you a single-file view of all tracked work. You can inspect `WORKTRACKER.md` at any time to see what Jerry has tracked for your project.
+> **What are these files?** `PLAN.md` holds your project's implementation plan and scope. `WORKTRACKER.md` is the project-level work manifest — Tom's skills and agents write work item entries (tasks, enablers, bugs, decisions) into this file as they execute, giving you a single-file view of all tracked work. You can inspect `WORKTRACKER.md` at any time to see what Tom has tracked for your project.
 
-> **Naming convention:** Project IDs follow the pattern `PROJ-{NNN}-{slug}` (e.g., `PROJ-001-my-first-project`). Use any slug that describes your work. You can list existing projects with `jerry projects list`.
+> **Naming convention:** Project IDs follow the pattern `PROJ-{NNN}-{slug}` (e.g., `PROJ-001-my-first-project`). Use any slug that describes your work. You can list existing projects with `tom projects list`.
 
 ---
 
 ### Step 2: Set the JERRY_PROJECT Environment Variable
 
-Jerry reads the `JERRY_PROJECT` environment variable to determine which project is active. This variable must be set in the same terminal session where you run Claude Code.
+Tom reads the `JERRY_PROJECT` environment variable to determine which project is active. This variable must be set in the same terminal session where you run Claude Code.
 
 ```bash
 # macOS / Linux
@@ -88,17 +88,17 @@ echo $env:JERRY_PROJECT
 
 Expected output: `PROJ-001-my-first-project`
 
-> **Why is this required (H-04)?** Jerry's hooks, skills, and output paths all depend on knowing which project is active. Without `JERRY_PROJECT`, the SessionStart hook cannot load project context, and any skill that attempts to write an output artifact will fail or write to an incorrect location. This is a hard constraint that cannot be bypassed.
+> **Why is this required (H-04)?** Tom's hooks, skills, and output paths all depend on knowing which project is active. Without `JERRY_PROJECT`, the SessionStart hook cannot load project context, and any skill that attempts to write an output artifact will fail or write to an incorrect location. This is a hard constraint that cannot be bypassed.
 
 > **Make it persistent:** To avoid setting the variable every session, add the `export` line to your shell profile (`~/.zshrc`, `~/.bashrc`, or `~/.profile`). On Windows, set it as a user environment variable via System Properties > Environment Variables.
 
 ---
 
-### Step 3: Start a Jerry Session
+### Step 3: Start a Tom Session
 
-Open Claude Code in the same terminal session where `JERRY_PROJECT` is set. Jerry's SessionStart hook runs automatically when Claude Code starts.
+Open Claude Code in the same terminal session where `JERRY_PROJECT` is set. Tom's SessionStart hook runs automatically when Claude Code starts.
 
-> **Note:** The `jerry` CLI command is available when you have a local clone with uv configured (run from the clone directory with `uv run jerry`). If you installed Jerry as a plugin without cloning, the SessionStart hook still fires automatically — you do not need the CLI. Skip the explicit command below and proceed to reading the hook output.
+> **Note:** The `tom` CLI command is available when you have a local clone with uv configured (run from the clone directory with `uv run tom`). If you installed Tom as a plugin without cloning, the SessionStart hook still fires automatically — you do not need the CLI. Skip the explicit command below and proceed to reading the hook output.
 
 The SessionStart hook will respond with one of three XML-tagged outputs. Read the output carefully — each tag requires a different action:
 
@@ -122,7 +122,7 @@ If you see `<project-context>`, your session is active and you are ready to invo
 
 ### Step 4: Invoke the Problem-Solving Skill
 
-The problem-solving skill is the recommended first skill for new Jerry users. It has the lowest friction (no additional prerequisites beyond project setup) and demonstrates Jerry's core value: turning a natural language research or analysis request into a persisted, structured output artifact.
+The problem-solving skill is the recommended first skill for new Tom users. It has the lowest friction (no additional prerequisites beyond project setup) and demonstrates Tom's core value: turning a natural language research or analysis request into a persisted, structured output artifact.
 
 The skill activates automatically when your message contains trigger keywords: **research**, **analyze**, **investigate**, **explore**, **root cause**, or **why**.
 
@@ -142,7 +142,7 @@ Investigate the root cause of context rot in large LLM sessions.
 
 > **Explicit invocation:** If trigger keywords don't activate the skill, invoke it directly with `/problem-solving`. This always works regardless of message phrasing.
 
-Jerry will invoke the problem-solving skill, run through its research and analysis agents, and save the output artifact to your project directory.
+Tom will invoke the problem-solving skill, run through its research and analysis agents, and save the output artifact to your project directory.
 
 Expected behavior:
 - Claude responds by activating the problem-solving skill — you will see a message indicating which agent was selected (e.g., "Invoking ps-researcher...") and where its output will be saved
@@ -174,7 +174,7 @@ ls projects/PROJ-001-my-first-project/
 Get-ChildItem projects\PROJ-001-my-first-project\
 ```
 
-All skill agents persist their output to your project directory as guaranteed by [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence) (file persistence requirement). The specific subdirectory depends on which agent ran — for example, `ps-researcher` writes to `docs/research/`, `ps-analyst` writes to `docs/analysis/`, and `ps-synthesizer` writes to `docs/synthesis/`. See the [Problem-Solving Playbook](../playbooks/problem-solving.md#agent-reference) for the full agent-to-directory mapping.
+All skill agents persist their output to your project directory as guaranteed by [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence) (file persistence requirement). The specific subdirectory depends on which agent ran — for example, `ps-researcher` writes to `docs/research/`, `ps-analyst` writes to `docs/analysis/`, and `ps-synthesizer` writes to `docs/synthesis/`. See the [Problem-Solving Playbook](../playbooks/problem-solving.md#agent-reference) for the full agent-to-directory mapping.
 
 ```bash
 # macOS / Linux — check for any new files recursively
@@ -193,7 +193,7 @@ Expected result: One or more `.md` files exist under `projects/PROJ-001-my-first
 > **End state:** You have a configured project with `JERRY_PROJECT` set, a successful session start showing `<project-context>`, and at least one persisted output artifact created by the problem-solving skill.
 
 - [ ] `JERRY_PROJECT` is set and resolves to an existing project directory containing `PLAN.md` and `WORKTRACKER.md`
-- [ ] `jerry session start` (or Claude Code startup) produced `<project-context>` output — not `<project-required>` or `<project-error>`
+- [ ] `tom session start` (or Claude Code startup) produced `<project-context>` output — not `<project-required>` or `<project-error>`
 - [ ] At least one output artifact (`.md` file) exists under `projects/PROJ-001-my-first-project/` that was created by the problem-solving skill invocation
 
 ---
@@ -202,17 +202,17 @@ Expected result: One or more `.md` files exist under `projects/PROJ-001-my-first
 
 | Symptom | Cause | Resolution |
 |---------|-------|------------|
-| `jerry session start` outputs `<project-required>` | `JERRY_PROJECT` environment variable is not set, or is set in a different terminal session than Claude Code | Run `export JERRY_PROJECT=PROJ-NNN-slug` (macOS/Linux) or `$env:JERRY_PROJECT = "PROJ-NNN-slug"` (Windows PowerShell) in the same terminal session, then restart Claude Code |
-| `jerry session start` outputs `<project-error>` | `JERRY_PROJECT` points to a project directory that is missing required files | Verify the directory `projects/$JERRY_PROJECT/` exists and contains both `PLAN.md` and `WORKTRACKER.md`; create any missing files with `touch` (macOS/Linux) or `New-Item` (Windows), then retry |
+| `tom session start` outputs `<project-required>` | `JERRY_PROJECT` environment variable is not set, or is set in a different terminal session than Claude Code | Run `export JERRY_PROJECT=PROJ-NNN-slug` (macOS/Linux) or `$env:JERRY_PROJECT = "PROJ-NNN-slug"` (Windows PowerShell) in the same terminal session, then restart Claude Code |
+| `tom session start` outputs `<project-error>` | `JERRY_PROJECT` points to a project directory that is missing required files | Verify the directory `projects/$JERRY_PROJECT/` exists and contains both `PLAN.md` and `WORKTRACKER.md`; create any missing files with `touch` (macOS/Linux) or `New-Item` (Windows), then retry |
 | No output artifact created after skill invocation | `JERRY_PROJECT` was not set when Claude Code started, so skill output has no project context to write to | Confirm `JERRY_PROJECT` is set (`echo $JERRY_PROJECT`), restart Claude Code in the same terminal session, start a new session, and retry the skill invocation |
 | `<project-context>` appears but skill does not activate | Trigger keyword not present in your message, or message phrasing did not match the skill's activation pattern | Use one of the exact trigger keywords: research, analyze, investigate, explore, root cause, why — for example: "Research X" or "Analyze the root cause of Y" |
-| `jerry: command not found` | The Jerry CLI is not on your PATH, or the plugin is not installed | Verify the plugin is installed via `/plugin` > Installed tab in Claude Code; for CLI access, confirm the Jerry repository is on your PATH or use `uv run jerry` from the Jerry repository root |
+| `tom: command not found` | The Tom CLI is not on your PATH, or the plugin is not installed | Verify the plugin is installed via `/plugin` > Installed tab in Claude Code; for CLI access, confirm the Tom repository is on your PATH or use `uv run tom` from the Tom repository root |
 
 ---
 
 ## Next Steps
 
-After completing this runbook, you have the foundational Jerry workflow in place. Explore the skill playbooks to deepen your use of each skill:
+After completing this runbook, you have the foundational Tom workflow in place. Explore the skill playbooks to deepen your use of each skill:
 
 - [`../playbooks/problem-solving.md`](../playbooks/problem-solving.md) — All 9 problem-solving agents, trigger keywords, creator-critic cycle, and concrete invocation examples
 - [`../playbooks/orchestration.md`](../playbooks/orchestration.md) — Multi-phase workflow coordination using orch-planner, orch-tracker, and orch-synthesizer

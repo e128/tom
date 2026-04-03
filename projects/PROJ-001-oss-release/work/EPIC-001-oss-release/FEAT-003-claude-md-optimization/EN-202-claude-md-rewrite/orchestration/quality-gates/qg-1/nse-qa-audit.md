@@ -40,7 +40,7 @@ THRESHOLD: 0.92
 |----|-----------|--------|----------|
 | INT-001 | Line count 60-80 | **PASS** | Section 001: 8 + Section 002: 19 + Section 003: 15 + Section 004: 15 + Section 005: 15 = **72 lines** (within 60-80 target) |
 | INT-002 | Token count ~3,500 | **PASS** | Estimated ~3,200 tokens based on 72 lines * ~45 tokens/line average for markdown with tables. Within acceptable variance of 3,500 +/- 20%. |
-| INT-003 | Pointers resolve | **PASS** | All 10 navigation pointers verified: `.claude/rules/` (8 files), 6 skills in `skills/*/SKILL.md`, `.context/templates/` (14 templates), `docs/knowledge/`, `docs/governance/JERRY_CONSTITUTION.md` - all exist. |
+| INT-003 | Pointers resolve | **PASS** | All 10 navigation pointers verified: `.claude/rules/` (8 files), 6 skills in `skills/*/SKILL.md`, `.context/templates/` (14 templates), `docs/knowledge/`, `docs/governance/TOM_CONSTITUTION.md` - all exist. |
 | INT-004 | No duplication | **PASS** | Navigation section contains pointers only. No content from auto-loaded `.claude/rules/` duplicated. Each section addresses distinct concern. |
 | INT-005 | Bug fixes applied | **PASS** | BUG-003 (template path consistency) explicitly applied in Section 002 - using `.context/templates/` not `docs/templates/`. BUG-002 noted as N/A for Section 002. |
 | INT-006 | Consistent formatting | **PASS** | All sections use: (1) Level 2 headers for section titles, (2) Blockquotes for callouts, (3) Tables for structured data, (4) Code blocks with syntax highlighting. |
@@ -116,5 +116,5 @@ All 5 section drafts meet or exceed the 0.92 quality threshold as required by QG
 
 - Section Drafts: `EN-202-claude-md-rewrite/drafts/section-00*.md`
 - DISC-002 Protocol: `EN-202-claude-md-rewrite/DISC-002-adversarial-review.md`
-- Jerry Constitution: `docs/governance/JERRY_CONSTITUTION.md`
+- Jerry Constitution: `docs/governance/TOM_CONSTITUTION.md`
 - Quality Gate Requirements: `EN-202-claude-md-rewrite/orchestration/ORCHESTRATION_PLAN.md`

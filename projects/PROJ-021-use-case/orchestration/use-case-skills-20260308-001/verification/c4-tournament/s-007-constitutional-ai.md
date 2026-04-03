@@ -6,7 +6,7 @@
 - **Deliverables:** 6 agent pairs (uc-author, uc-slicer, tspec-generator, tspec-analyst, cd-generator, cd-validator) + 3 SKILL.md files + 2 JSON schemas
 - **Executed:** 2026-03-12T00:00:00Z
 - **Criticality:** C4 (tournament review)
-- **Constitutional Context:** JERRY_CONSTITUTION.md v1.1 (P-001 through P-043); quality-enforcement.md HARD rules H-01 through H-36; agent-development-standards.md H-34; markdown-navigation-standards.md H-23
+- **Constitutional Context:** TOM_CONSTITUTION.md v1.1 (P-001 through P-043); quality-enforcement.md HARD rules H-01 through H-36; agent-development-standards.md H-34; markdown-navigation-standards.md H-23
 
 ---
 
@@ -23,7 +23,7 @@
 ## Step 1 Execution: Constitutional Context Index
 
 **Sources loaded:**
-- `docs/governance/JERRY_CONSTITUTION.md` v1.1 (P-001 through P-043, 17 principles)
+- `docs/governance/TOM_CONSTITUTION.md` v1.1 (P-001 through P-043, 17 principles)
 - `quality-enforcement.md` HARD rules H-01 through H-36
 - `agent-development-standards.md` (H-34 agent schema, tool tier model, cognitive modes, guardrails template)
 - `markdown-navigation-standards.md` (H-23/H-24 navigation requirements)
@@ -522,7 +522,7 @@ constitution:
 **Recommendation:** Add `"P-004"` to the `principles_applied` array:
 ```yaml
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-001"
     - "P-002"

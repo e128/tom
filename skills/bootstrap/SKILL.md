@@ -1,6 +1,6 @@
 ---
 name: bootstrap
-description: This skill should be used when the user says "bootstrap", "set up Jerry", "configure guardrails", "initialize Jerry", or asks how to get started with Jerry. Sets up Jerry's context distribution by syncing behavioral rules and patterns.
+description: This skill should be used when the user says "bootstrap", "set up Tom", "configure guardrails", "initialize Tom", or asks how to get started with Tom. Sets up Tom's context distribution by syncing behavioral rules and patterns.
 version: 1.0.0
 allowed-tools:
   - Read
@@ -8,9 +8,9 @@ allowed-tools:
   - Bash
 activation-keywords:
   - "bootstrap"
-  - "set up Jerry"
+  - "set up Tom"
   - "configure guardrails"
-  - "initialize Jerry"
+  - "initialize Tom"
   - "context distribution"
   - "sync rules"
   - "get started"
@@ -19,10 +19,10 @@ activation-keywords:
 # Bootstrap Skill
 
 > **Version:** 1.0.0
-> **Framework:** Jerry Bootstrap
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom Bootstrap
+> **Constitutional Compliance:** Tom Constitution v1.0
 
-Let's get your bindings adjusted so you don't have any Jerry moments.
+Let's get your bindings adjusted so you don't have any Tom moments.
 
 ---
 
@@ -54,14 +54,14 @@ This SKILL.md serves multiple audiences:
 | Level | Audience | Sections to Focus On |
 |-------|----------|---------------------|
 | **L0 (ELI5)** | New users, contributors | [What This Does](#what-this-does), [Quick Start](#quick-start), [How It Works](#how-it-works) |
-| **L1 (Engineer)** | Developers setting up Jerry | [Quick Start](#quick-start), [Options](#options), [Troubleshooting](#troubleshooting) |
+| **L1 (Engineer)** | Developers setting up Tom | [Quick Start](#quick-start), [Options](#options), [Troubleshooting](#troubleshooting) |
 | **L2 (Architect)** | Framework maintainers | [How It Works](#how-it-works), [For Contributors](#for-contributors), [Constitutional Compliance](#constitutional-compliance) |
 
 ---
 
 ## Purpose
 
-The Bootstrap skill sets up Jerry's context distribution system by synchronizing behavioral rules and patterns from the canonical source (`.context/`) to Claude Code's read location (`.claude/`). This ensures that Claude Code always has access to the latest framework rules.
+The Bootstrap skill sets up Tom's context distribution system by synchronizing behavioral rules and patterns from the canonical source (`.context/`) to Claude Code's read location (`.claude/`). This ensures that Claude Code always has access to the latest framework rules.
 
 ### Key Capabilities
 
@@ -76,24 +76,24 @@ The Bootstrap skill sets up Jerry's context distribution system by synchronizing
 
 Activate when:
 
-- First time setting up the Jerry repository
+- First time setting up the Tom repository
 - After pulling updates that modify `.context/rules/` or `.context/patterns/`
 - Troubleshooting Claude Code not seeing the latest rules
-- Migrating Jerry to a new machine
+- Migrating Tom to a new machine
 - Verifying that context distribution is working correctly
 
 ---
 
 ## What This Does
 
-Jerry's behavioral rules and patterns live in `.context/` (the canonical source). Claude Code reads them from `.claude/rules/` and `.claude/patterns/`. This skill syncs the two using platform-aware linking:
+Tom's behavioral rules and patterns live in `.context/` (the canonical source). Claude Code reads them from `.claude/rules/` and `.claude/patterns/`. This skill syncs the two using platform-aware linking:
 
 - **macOS/Linux**: Symlinks (instant, auto-propagating)
 - **Windows with Developer Mode**: Symlinks
 - **Windows without Developer Mode**: Junction points (no admin required)
 - **Fallback**: File copy with drift detection
 
-**Note on Guides:** The `.context/guides/` directory is intentionally NOT synced. Jerry uses a three-tier architecture where rules and patterns are auto-loaded at session start, but guides remain on-demand content. This prevents context bloat while keeping detailed guidance available when explicitly needed.
+**Note on Guides:** The `.context/guides/` directory is intentionally NOT synced. Tom uses a three-tier architecture where rules and patterns are auto-loaded at session start, but guides remain on-demand content. This prevents context bloat while keeping detailed guidance available when explicitly needed.
 
 ---
 
@@ -147,7 +147,7 @@ The script (`scripts/bootstrap_context.py`) handles:
 
 ## Troubleshooting
 
-**"Source not found"** - You're not in the Jerry repo root, or `.context/` is missing. Make sure you cloned the full repo.
+**"Source not found"** - You're not in the Tom repo root, or `.context/` is missing. Make sure you cloned the full repo.
 
 **"Already linked"** - You're good! Run `--check` to verify, or `--force` to re-link.
 
@@ -182,7 +182,7 @@ This skill does not use agent-based workflows. It provides a single bootstrap sc
 
 ## Constitutional Compliance
 
-The Bootstrap skill adheres to the **Jerry Constitution v1.0**:
+The Bootstrap skill adheres to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Implementation |
 |-----------|-------------|----------------|
@@ -234,12 +234,12 @@ The bootstrap skill does not use templates. It operates directly on the `.contex
 - Bootstrap script: `scripts/bootstrap_context.py`
 - Source directory: `.context/rules/`, `.context/patterns/`
 - Target directory: `.claude/rules/`, `.claude/patterns/`
-- Jerry Constitution: `docs/governance/JERRY_CONSTITUTION.md`
+- Tom Constitution: `docs/governance/TOM_CONSTITUTION.md`
 - Platform-specific linking: Windows junction points, Unix/macOS symlinks
 
 ---
 
 *Skill Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Created: 2026-02-12*
 *Last Updated: 2026-02-16*

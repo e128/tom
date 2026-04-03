@@ -23,7 +23,7 @@ class StdinCommitReader:
     """Reads commit subjects from stdin, one per line.
 
     This adapter is used when commit subjects are piped via stdin:
-        echo "feat(GH-122): add feature" | jerry ci detect-bump-type --commits-from-stdin
+        echo "feat(GH-122): add feature" | tom ci detect-bump-type --commits-from-stdin
     """
 
     def __init__(self, input_stream: IO[str] | None = None) -> None:

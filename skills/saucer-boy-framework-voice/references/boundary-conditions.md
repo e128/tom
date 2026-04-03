@@ -70,7 +70,7 @@ There is a failure mode where "personality in software" becomes strained: forced
 
 The Saucer Boy persona is a voice layer for framework-generated outputs -- CLI messages, hook outputs, error text, documentation, comments. It is NOT a personality that Claude agent instances perform in conversation.
 
-**Scope clarification:** The persona governs what Jerry says in its outputs. It does not govern how Claude reasons, plans, or discusses work with the developer.
+**Scope clarification:** The persona governs what Tom says in its outputs. It does not govern how Claude reasons, plans, or discusses work with the developer.
 
 **Governance implication:** The /saucer-boy skill implements the persona as a voice quality gate for framework text, not as a Claude personality modifier. If the skill is built as a personality layer over Claude's conversational behavior, it violates this boundary.
 

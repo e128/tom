@@ -261,7 +261,7 @@ Legend:
 
 ## Constitutional Compliance
 
-### Jerry Constitution v1.0 Compliance
+### Tom Constitution v1.0 Compliance
 
 | Principle | Enforcement | Agent Behavior |
 |-----------|-------------|----------------|

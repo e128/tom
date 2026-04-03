@@ -29,7 +29,7 @@
 
 | Task | Correct | FORBIDDEN |
 |------|---------|-----------|
-| Run CLI | `uv run jerry <cmd>` | `python -m src...` |
+| Run CLI | `uv run tom <cmd>` | `python -m src...` |
 | Run tests | `uv run pytest tests/` | `pytest tests/` |
 | Run script | `uv run python script.py` | `python script.py` |
 | Add dep | `uv add <package>` | `pip install <package>` |

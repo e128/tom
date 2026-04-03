@@ -46,7 +46,7 @@ from yaml.parser import ParserError
 from yaml.scanner import ScannerError
 
 from src.domain.markdown_ast.input_bounds import InputBounds
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 
 # ---------------------------------------------------------------------------
 # Control character pattern (M-18)
@@ -196,10 +196,10 @@ class YamlFrontmatter:
 
     @staticmethod
     def extract(
-        doc: JerryDocument,
+        doc: TomDocument,
         bounds: InputBounds | None = None,
     ) -> YamlFrontmatterResult:
-        """Extract YAML frontmatter from a JerryDocument.
+        """Extract YAML frontmatter from a TomDocument.
 
         Args:
             doc: The parsed markdown document.

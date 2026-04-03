@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://jerry-framework.dev/schemas/domain-context-v1.0.0.json",
+  "$id": "https://tom-framework.dev/schemas/domain-context-v1.0.0.json",
   "title": "Professional Domain Context Specification Schema",
   "description": "JSON Schema for validating professional domain-specific context injection specifications for transcript analysis. Promoted from EN-006 Context Injection Design.",
   "version": "1.0.0",

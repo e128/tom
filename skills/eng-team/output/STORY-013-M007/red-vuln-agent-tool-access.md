@@ -3,7 +3,7 @@
 > **Agent:** red-vuln (Vulnerability Analyst, /red-team)
 > **Engagement:** STORY-013-M007 Agent Tool Access Assessment
 > **Date:** 2026-03-29
-> **Scope:** UX skill agent definitions in the Jerry Framework; sweep of all 89 agent files
+> **Scope:** UX skill agent definitions in the Tom Framework; sweep of all 89 agent files
 > **Authorization:** Internal framework security assessment, authorized by project owner
 > **Methodology:** PTES Vulnerability Analysis; OWASP A04 (Insecure Design); trust boundary and attack path analysis
 > **Authorization level:** Analysis scope; read-only; no exploitation

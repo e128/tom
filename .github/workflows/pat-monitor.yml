@@ -84,7 +84,7 @@ jobs:
               '### Resolution',
               '1. Go to **Settings > Developer settings > Fine-grained personal access tokens**',
               '2. Create a new token with:',
-              '   - Repository access: `geekatron/jerry` only',
+              '   - Repository access: `geekatron/tom` only',
               '   - Permissions: `Contents: Read and write`',
               '   - Expiration: 90 days',
               '3. Update the `VERSION_BUMP_PAT` repository secret',

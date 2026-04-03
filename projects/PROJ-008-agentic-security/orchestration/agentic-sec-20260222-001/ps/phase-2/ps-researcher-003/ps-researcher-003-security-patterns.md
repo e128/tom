@@ -357,7 +357,7 @@ This research identifies **47 concrete security patterns** across 7 research are
 | **Mechanism** | Session start -> hash all .context/rules/ files, agent definitions, SKILL.md files -> store hash manifest -> periodically (or before critical operations): recompute hashes -> compare against manifest -> mismatch = alert + block + audit. |
 | **Applicability to Jerry** | **HIGH** -- Addresses V-006 (filesystem as attack target) and AML.T0081 (modify agent config). Jerry's entire governance lives in files; their integrity is security-critical. |
 | **Implementation Complexity** | LOW -- Hash computation is trivial; the challenge is determining verification frequency without excessive overhead. |
-| **Jerry Adaptation Notes** | Implement as L3 pre-tool gate: (1) At session start: compute SHA-256 of every file in .context/rules/, all agent definitions in skills/*/agents/*.md, CLAUDE.md, JERRY_CONSTITUTION.md. Store manifest in session state. (2) Before any C3+ operation: re-verify manifest. (3) Before any Write/Edit to governance files: require explicit user approval (H-02 extension). (4) Any hash mismatch: AE-002 auto-escalation to C3+ minimum. |
+| **Jerry Adaptation Notes** | Implement as L3 pre-tool gate: (1) At session start: compute SHA-256 of every file in .context/rules/, all agent definitions in skills/*/agents/*.md, CLAUDE.md, TOM_CONSTITUTION.md. Store manifest in session state. (2) Before any C3+ operation: re-verify manifest. (3) Before any Write/Edit to governance files: require explicit user approval (H-02 extension). (4) Any hash mismatch: AE-002 auto-escalation to C3+ minimum. |
 
 ---
 

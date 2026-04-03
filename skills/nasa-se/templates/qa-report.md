@@ -285,7 +285,7 @@ qa_output:
 - NPR 7123.1D - NASA SE Processes and Requirements
 - NASA-HDBK-1009A - SE Work Products Handbook
 - NPR 8000.4C - Risk Management
-- Jerry Constitution v1.0 (P-040, P-041, P-042, P-043)
+- Tom Constitution v1.0 (P-040, P-041, P-042, P-043)
 
 ---
 

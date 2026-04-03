@@ -4,7 +4,7 @@
 > **Version:** 1.0
 > **Created:** 2026-01-13
 > **Last Updated:** 2026-01-13
-> **Owner:** Jerry Framework Team
+> **Owner:** Tom Framework Team
 
 ---
 
@@ -29,10 +29,10 @@ This document is organized into **four levels** that build on each other:
 
 ## What is This?
 
-When you start Claude Code with Jerry installed, you should see a startup message like:
+When you start Claude Code with Tom installed, you should see a startup message like:
 
 ```
-Jerry Framework initialized. See CLAUDE.md for context.
+Tom Framework initialized. See CLAUDE.md for context.
 ```
 
 **If you don't see this message, something is broken.**
@@ -51,8 +51,8 @@ Jerry Framework initialized. See CLAUDE.md for context.
 Try this first:
 
 ```bash
-# Go to the Jerry project folder
-cd /path/to/jerry
+# Go to the Tom project folder
+cd /path/to/tom
 
 # Run the hook manually to see what's wrong
 PYTHONPATH="." uv run src/interface/cli/session_start.py
@@ -73,7 +73,7 @@ PYTHONPATH="." uv run src/interface/cli/session_start.py
 Before troubleshooting, verify you have:
 
 - [ ] Terminal access
-- [ ] Access to the Jerry project folder
+- [ ] Access to the Tom project folder
 - [ ] 5-10 minutes available
 
 ## L1 Diagnostic Script
@@ -96,7 +96,7 @@ ls -la hooks/hooks.json
 ```
 
 **Expected:** File exists
-**Problem:** "No such file" → Navigate to Jerry project root
+**Problem:** "No such file" → Navigate to Tom project root
 
 ### Step 3: Check if the hook script exists
 
@@ -146,7 +146,7 @@ When escalating, provide:
 - OS: [macOS/Linux/Windows]
 - Python version: [output of `python --version`]
 - uv version: [output of `uv --version`]
-- Jerry branch: [output of `git branch --show-current`]
+- Tom branch: [output of `git branch --show-current`]
 
 ## Steps Taken
 1. Ran `uv --version` → [result]
@@ -309,7 +309,7 @@ When escalating to L3, provide:
 
 - [ ] L2 investigation report
 - [ ] Write access to repository
-- [ ] Understanding of Jerry architecture
+- [ ] Understanding of Tom architecture
 - [ ] Understanding of PEP 723 and uv
 
 ## L3 Resolution Patterns
@@ -427,9 +427,9 @@ After resolving an incident:
 
 ## What Happened
 
-1. User installed Jerry plugin via Claude Code marketplace
+1. User installed Tom plugin via Claude Code marketplace
 2. Started a new session
-3. **Expected:** Jerry startup message appears
+3. **Expected:** Tom startup message appears
 4. **Actual:** No message, no error, silent failure
 
 ## Why It Happened
@@ -438,7 +438,7 @@ The `scripts/session_start.py` was a "legacy wrapper" that tried to run:
 
 ```python
 # All three paths required pip install -e .
-subprocess.run(['.venv/bin/jerry-session-start', ...])  # Entry point needs pip
+subprocess.run(['.venv/bin/tom-session-start', ...])  # Entry point needs pip
 subprocess.run(['.venv/bin/python', '-m', 'src.interface.cli.session_start'])  # Needs venv
 subprocess.run([sys.executable, '-m', 'src.interface.cli.session_start'])  # Needs pip
 ```
@@ -552,7 +552,7 @@ When a plugin regression is reported:
 # Troubleshooting Flowchart
 
 ```
-START: "Jerry startup message not appearing"
+START: "Tom startup message not appearing"
     │
     ▼
 ┌─────────────────────────────────────────┐
@@ -588,7 +588,7 @@ START: "Jerry startup message not appearing"
 │ Issue is in   │  │ What kind of error?  │
 │ Claude Code   │  │                      │
 │ integration,  │  └──────────┬───────────┘
-│ not Jerry     │             │
+│ not Tom     │             │
 │               │    ┌────────┼────────┐
 │ Check:        │    │        │        │
 │ - Plugin      │ Import   Command   Other

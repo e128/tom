@@ -311,11 +311,11 @@ The `leniency-calibration` ContentBlock from barrier-2 is ~25 tokens, but the ac
 **Task:** TASK-003 (Invocation Protocol)
 **Strategy:** S-002 Devil's Advocate
 
-**Finding:** TASK-003 defines auto-escalation rules AE-001 through AE-006 that automatically raise criticality (e.g., "Modifies JERRY_CONSTITUTION.md -> C3 minimum"). These rules override the user's explicit criticality specification upward. However, P-020 (User Authority) states "User decides. Never override." If a user explicitly sets `--criticality C1` for a constitution modification, do auto-escalation rules override the user? The invocation protocol says yes (AE rules take precedence), but P-020 says the user decides.
+**Finding:** TASK-003 defines auto-escalation rules AE-001 through AE-006 that automatically raise criticality (e.g., "Modifies TOM_CONSTITUTION.md -> C3 minimum"). These rules override the user's explicit criticality specification upward. However, P-020 (User Authority) states "User decides. Never override." If a user explicitly sets `--criticality C1` for a constitution modification, do auto-escalation rules override the user? The invocation protocol says yes (AE rules take precedence), but P-020 says the user decides.
 
 TASK-003 does note a precedence order (PREC-003: AE overrides user specification), but this directly conflicts with P-020 unless there is a constitutional exception for safety-related escalation.
 
-**Recommendation:** Resolve the P-020 vs. auto-escalation tension explicitly. Options: (1) Auto-escalation WARNS the user but does not override. (2) Auto-escalation overrides with an explicit constitutional exception documented in JERRY_CONSTITUTION.md. (3) Auto-escalation sets a MINIMUM that the user can exceed but not reduce.
+**Recommendation:** Resolve the P-020 vs. auto-escalation tension explicitly. Options: (1) Auto-escalation WARNS the user but does not override. (2) Auto-escalation overrides with an explicit constitutional exception documented in TOM_CONSTITUTION.md. (3) Auto-escalation sets a MINIMUM that the user can exceed but not reduce.
 
 ---
 

@@ -134,6 +134,6 @@ All guidance is framed within established professional methodology. This agent p
 ---
 
 *Agent Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: ADR-PROJ010-001, ADR-PROJ010-006*
 *Created: 2026-02-22*

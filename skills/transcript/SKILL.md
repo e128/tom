@@ -102,7 +102,7 @@ activation-keywords:
 
 # MANDATORY: CLI Invocation for Parsing (Phase 1)
 
-> **CRITICAL:** For VTT files, you MUST invoke the Python parser via the `jerry` CLI.
+> **CRITICAL:** For VTT files, you MUST invoke the Python parser via the `tom` CLI.
 > DO NOT use Task agents for parsing. The CLI provides 1,250x cost reduction and deterministic output.
 
 ## Phase 1: Parse Transcript (REQUIRED CLI INVOCATION)
@@ -115,7 +115,7 @@ activation-keywords:
 **For VTT files, Claude MUST execute this bash command:**
 
 ```bash
-uv run jerry transcript parse "<FILE_PATH>" --output-dir "<OUTPUT_DIR>"
+uv run tom transcript parse "<FILE_PATH>" --output-dir "<OUTPUT_DIR>"
 ```
 
 Where:
@@ -129,7 +129,7 @@ Where:
 
 **Claude executes:**
 ```bash
-uv run jerry transcript parse "/Users/me/meeting.vtt" --output-dir "/Users/me/output/"
+uv run tom transcript parse "/Users/me/meeting.vtt" --output-dir "/Users/me/output/"
 ```
 
 **CRITICAL:** Always quote file paths to handle spaces and special characters.
@@ -145,12 +145,12 @@ uv run jerry transcript parse "/Users/me/meeting.vtt" --output-dir "/Users/me/ou
 
 ```bash
 # Basic invocation
-uv run jerry transcript parse "/Users/me/meeting.vtt" --output-dir "/Users/me/output/"
+uv run tom transcript parse "/Users/me/meeting.vtt" --output-dir "/Users/me/output/"
 ```
 
 **What this does:**
 1. Uses `uv run` to execute in managed Python environment
-2. Invokes `jerry transcript parse` subcommand
+2. Invokes `tom transcript parse` subcommand
 3. Quotes paths to handle spaces/special characters
 4. Specifies output directory (creates if doesn't exist)
 
@@ -158,17 +158,17 @@ uv run jerry transcript parse "/Users/me/meeting.vtt" --output-dir "/Users/me/ou
 
 ```bash
 # With domain context
-uv run jerry transcript parse "meeting.vtt" \
+uv run tom transcript parse "meeting.vtt" \
     --output-dir "./output/" \
     --domain software-engineering
 
 # Skip mindmaps for faster processing
-uv run jerry transcript parse "meeting.vtt" \
+uv run tom transcript parse "meeting.vtt" \
     --output-dir "./output/" \
     --no-mindmap
 
 # Specify mindmap format
-uv run jerry transcript parse "meeting.vtt" \
+uv run tom transcript parse "meeting.vtt" \
     --output-dir "./output/" \
     --mindmap-format mermaid
 ```
@@ -177,7 +177,7 @@ uv run jerry transcript parse "meeting.vtt" \
 
 ```bash
 # Check exit code
-uv run jerry transcript parse "meeting.vtt" --output-dir "./output/"
+uv run tom transcript parse "meeting.vtt" --output-dir "./output/"
 if [ $? -ne 0 ]; then
     echo "Parsing failed - check error output above"
     exit 1
@@ -186,7 +186,7 @@ fi
 
 **Verified Output (2026-01-30):**
 ```
-$ uv run jerry transcript parse "test.vtt" --output-dir "./out/"
+$ uv run tom transcript parse "test.vtt" --output-dir "./out/"
 ✅ Detected format: VTT
 ✅ Parsed 3071 segments
 ✅ Created ./out/index.json (7 chunks)
@@ -209,8 +209,8 @@ After Phase 1 CLI parsing completes, continue with LLM agents:
 # Transcript Skill
 
 > **Version:** 2.4.1
-> **Framework:** Jerry Transcript Processing
-> **Constitutional Compliance:** Jerry Constitution v1.0 (P-001, P-002, P-003, P-004, P-010, P-020, P-022)
+> **Framework:** Tom Transcript Processing
+> **Constitutional Compliance:** Tom Constitution v1.0 (P-001, P-002, P-003, P-004, P-010, P-020, P-022)
 > **Architecture:** Hybrid Python+LLM (Strategy Pattern) + Mindmap Generation + Token-Based Chunking
 
 ---
@@ -637,11 +637,11 @@ MINDMAPS: ADR-006 - Mindmaps ON by default, opt-out via --no-mindmap flag.
 |--------|-------------------|-----------|
 | Google Docs | N/A (no blocking) | Freemium model, can't block users |
 | Otter.ai | ~0.85 (estimated) | Lower threshold, prioritize speed |
-| **Jerry Transcript** | **0.90** | Balance quality and usability |
+| **Tom Transcript** | **0.90** | Balance quality and usability |
 | Medical transcription | 0.98+ | High-stakes domain |
 
 **Why higher than Otter.ai?**
-- Jerry targets business/technical meetings (higher stakes)
+- Tom targets business/technical meetings (higher stakes)
 - Citation accuracy critical for accountability
 - Users can regenerate (not real-time constraint)
 
@@ -745,7 +745,7 @@ transcript-orchestrator
 - **Debugging nightmare** - 5-level stack traces
 - **Unpredictable behavior** - Subagents spawning subagents dynamically
 
-### Jerry Constitution P-003 (HARD CONSTRAINT)
+### Tom Constitution P-003 (HARD CONSTRAINT)
 
 > "Agents SHALL NOT spawn subagents that spawn additional subagents. Maximum nesting depth is ONE level (orchestrator → worker)."
 
@@ -920,7 +920,7 @@ SEQUENTIAL (cannot parallelize due to dependencies):
 
 ## Invoking the Skill
 
-> **CRITICAL:** The transcript skill execution follows a multi-phase workflow. Phase 1 MUST be executed via the jerry CLI. Subsequent phases use LLM agents.
+> **CRITICAL:** The transcript skill execution follows a multi-phase workflow. Phase 1 MUST be executed via the tom CLI. Subsequent phases use LLM agents.
 
 ### Natural Language Trigger Patterns
 
@@ -1014,7 +1014,7 @@ The transcript skill responds to these natural language patterns:
 2. Extract file path from message (if present)
 3. Identify implied options (e.g., "without mindmaps" → `--no-mindmap`)
 4. Map natural language to equivalent CLI command
-5. Execute Phase 1 via jerry CLI with detected parameters
+5. Execute Phase 1 via tom CLI with detected parameters
 
 ---
 
@@ -1050,7 +1050,7 @@ Example: /Users/me/transcripts/meeting.vtt
 
 **What NOT to Do:**
 ```bash
-uv run jerry transcript parse /Users/me/my meetings/meeting.vtt
+uv run tom transcript parse /Users/me/my meetings/meeting.vtt
 # Error: Treats "my" and "meetings/meeting.vtt" as separate arguments
 ```
 
@@ -1063,7 +1063,7 @@ Solution: Quote file paths containing spaces
 
 **Correct Invocation:**
 ```bash
-uv run jerry transcript parse "/Users/me/my meetings/meeting.vtt"
+uv run tom transcript parse "/Users/me/my meetings/meeting.vtt"
 ```
 
 ---
@@ -1204,7 +1204,7 @@ Based on Anthropic Claude pricing (as of 2026-01-30) for 10,000 input tokens:
 
 ```bash
 # Use haiku for all agents except extractor
-uv run jerry transcript parse meeting.vtt \
+uv run tom transcript parse meeting.vtt \
     --model-parser haiku \
     --model-extractor haiku \
     --model-formatter haiku \
@@ -1219,7 +1219,7 @@ uv run jerry transcript parse meeting.vtt \
 
 ```bash
 # Use opus for critical extraction and review
-uv run jerry transcript parse meeting.vtt \
+uv run tom transcript parse meeting.vtt \
     --model-extractor opus \
     --model-critic opus
 
@@ -1231,7 +1231,7 @@ uv run jerry transcript parse meeting.vtt \
 
 ```bash
 # Use defaults (mixed haiku/sonnet)
-uv run jerry transcript parse meeting.vtt
+uv run tom transcript parse meeting.vtt
 
 # Cost: ~$0.12 per 10K tokens
 # Trade-off: Optimal cost/quality balance (~85-90% accuracy)
@@ -1242,7 +1242,7 @@ uv run jerry transcript parse meeting.vtt
 ```bash
 # Use haiku for formatting (template-based, low semantic complexity)
 # Keep sonnet for extraction and review (semantic understanding required)
-uv run jerry transcript parse meeting.vtt \
+uv run tom transcript parse meeting.vtt \
     --model-formatter haiku \
     --model-mindmap haiku
 
@@ -1295,13 +1295,13 @@ Model profiles provide quick-select configurations optimized for common use case
 
 ```bash
 # Use economy profile (all haiku)
-uv run jerry transcript parse meeting.vtt --profile economy
+uv run tom transcript parse meeting.vtt --profile economy
 
 # Use quality profile (opus for extractor and critic)
-uv run jerry transcript parse meeting.vtt --profile quality
+uv run tom transcript parse meeting.vtt --profile quality
 
 # Use speed profile (same as economy, but emphasizes latency)
-uv run jerry transcript parse meeting.vtt --profile speed
+uv run tom transcript parse meeting.vtt --profile speed
 ```
 
 #### Override Individual Models
@@ -1310,7 +1310,7 @@ Individual `--model-*` flags take precedence over `--profile`:
 
 ```bash
 # Use economy profile, but upgrade extractor to opus
-uv run jerry transcript parse meeting.vtt \
+uv run tom transcript parse meeting.vtt \
     --profile economy \
     --model-extractor opus
 
@@ -1319,7 +1319,7 @@ uv run jerry transcript parse meeting.vtt \
 
 ```bash
 # Use quality profile, but downgrade formatter to haiku
-uv run jerry transcript parse meeting.vtt \
+uv run tom transcript parse meeting.vtt \
     --profile quality \
     --model-formatter haiku
 
@@ -1344,13 +1344,13 @@ Model selection follows this precedence (highest to lowest):
 
 ```bash
 # What model does ts-extractor use?
-uv run jerry transcript parse meeting.vtt
+uv run tom transcript parse meeting.vtt
 # → sonnet (from default "balanced" profile)
 
-uv run jerry transcript parse meeting.vtt --profile economy
+uv run tom transcript parse meeting.vtt --profile economy
 # → haiku (from "economy" profile)
 
-uv run jerry transcript parse meeting.vtt --profile economy --model-extractor opus
+uv run tom transcript parse meeting.vtt --profile economy --model-extractor opus
 # → opus (explicit flag overrides profile)
 ```
 
@@ -1914,7 +1914,7 @@ ts_extractor_output:
 
   # Recovery info
   recovery_possible: true
-  recovery_command: "uv run jerry transcript parse <file> --chunk-target-tokens 15000"
+  recovery_command: "uv run tom transcript parse <file> --chunk-target-tokens 15000"
   recovery_instructions: >
     Re-run parsing with smaller chunk size to prevent context overflow.
     Use --chunk-target-tokens 15000 (down from default 18000) to reduce chunk size.
@@ -2003,7 +2003,7 @@ ts_mindmap_output:
 
   # Recovery info
   recovery_possible: true
-  regeneration_command: "uv run jerry transcript mindmap --format mermaid --packet-path /output/"
+  regeneration_command: "uv run tom transcript mindmap --format mermaid --packet-path /output/"
   recovery_instructions: >
     Mermaid syntax error likely caused by markdown links in node text.
     The ts-mindmap-mermaid agent uses plain text ONLY in nodes per ADR-003 Section 5.3.
@@ -2171,11 +2171,11 @@ Fallback: LLM parsing succeeded (increased cost)
 **Recovery:**
 ```bash
 # Option 1: Force LLM parsing from the start (skip Python parser)
-uv run jerry transcript parse meeting.vtt --force-llm
+uv run tom transcript parse meeting.vtt --force-llm
 
 # Option 2: Convert file to UTF-8 first (preferred)
 iconv -f windows-1252 -t utf-8 meeting.vtt > meeting-utf8.vtt
-uv run jerry transcript parse meeting-utf8.vtt
+uv run tom transcript parse meeting-utf8.vtt
 ```
 
 **Prevention:** Ensure VTT files are UTF-8 encoded before processing.
@@ -2195,7 +2195,7 @@ Status: ts-extractor failed
 **Recovery:**
 ```bash
 # Re-parse with smaller chunk size (reduce from default 18K to 12K)
-uv run jerry transcript parse meeting.vtt --chunk-target-tokens 12000 --output-dir ./output-v2/
+uv run tom transcript parse meeting.vtt --chunk-target-tokens 12000 --output-dir ./output-v2/
 
 # Then continue from extraction phase
 # (ts-parser will automatically trigger ts-extractor with new chunks)
@@ -2223,11 +2223,11 @@ Files failed: 03-07
 chmod 755 /output/transcript-meeting-001/
 
 # Resume formatting phase (will skip existing files 00-02)
-uv run jerry transcript resume --from formatting --packet-path /output/transcript-meeting-001/
+uv run tom transcript resume --from formatting --packet-path /output/transcript-meeting-001/
 
 # OR start fresh with correct permissions
 chmod 755 /output/
-uv run jerry transcript parse meeting.vtt --output-dir /output/meeting-002/
+uv run tom transcript parse meeting.vtt --output-dir /output/meeting-002/
 ```
 
 **Prevention:** Ensure write permissions on output directory before invoking skill.
@@ -2259,18 +2259,18 @@ cat /output/transcript-meeting-001/quality-review.md
 **For T-004 (citation coverage):**
 ```bash
 # Re-run extraction with stricter citation enforcement
-uv run jerry transcript resume --from extraction --enforce-citations
+uv run tom transcript resume --from extraction --enforce-citations
 ```
 
 **For T-006 (token limits):**
 ```bash
 # Re-run formatting with stricter splitting
-uv run jerry transcript resume --from formatting --split-at-soft-limit
+uv run tom transcript resume --from formatting --split-at-soft-limit
 ```
 
 **Step 3: Re-run quality review:**
 ```bash
-uv run jerry transcript resume --from quality-review
+uv run tom transcript resume --from quality-review
 ```
 
 **Prevention:** Use `--model-extractor opus` for better extraction quality.
@@ -2291,12 +2291,12 @@ Progress: Processed 8/15 chunks before timeout
 **Recovery:**
 ```bash
 # Increase timeout for extraction phase
-uv run jerry transcript parse meeting.vtt --extractor-timeout 600
+uv run tom transcript parse meeting.vtt --extractor-timeout 600
 
 # OR split transcript into smaller files
 uv run python scripts/split_vtt.py meeting.vtt --max-duration 60  # 60 min chunks
-uv run jerry transcript parse meeting-part-001.vtt
-uv run jerry transcript parse meeting-part-002.vtt
+uv run tom transcript parse meeting-part-001.vtt
+uv run tom transcript parse meeting-part-002.vtt
 # ... process each part separately
 ```
 
@@ -2317,10 +2317,10 @@ Status: ts-extractor succeeded (with warnings)
 **Recovery:**
 ```bash
 # Option 1: Use Opus model for better semantic understanding
-uv run jerry transcript parse meeting.vtt --model-extractor opus
+uv run tom transcript parse meeting.vtt --model-extractor opus
 
 # Option 2: Lower confidence threshold to include more entities
-uv run jerry transcript parse meeting.vtt --confidence-threshold 0.5
+uv run tom transcript parse meeting.vtt --confidence-threshold 0.5
 
 # Option 3: Review uncertain entities manually
 cat /output/extraction-report.json | jq '.action_items[] | select(.confidence < 0.70)'
@@ -2344,7 +2344,7 @@ Status: ts_mindmap_output.ascii.status = "complete"
 **Recovery:**
 ```bash
 # Regenerate Mermaid mindmap with plain text enforcement
-uv run jerry transcript mindmap --format mermaid --packet-path /output/ --plain-text-only
+uv run tom transcript mindmap --format mermaid --packet-path /output/ --plain-text-only
 
 # OR use ASCII mindmap (already succeeded)
 cat /output/08-mindmap/mindmap.ascii.txt
@@ -2368,13 +2368,13 @@ Conflict: 00-index.md, 01-summary.md (8 files total)
 ```bash
 # Option 1: Delete existing output (CAUTION: data loss)
 rm -rf /output/transcript-meeting-001/
-uv run jerry transcript parse meeting.vtt --output-dir /output/transcript-meeting-001/
+uv run tom transcript parse meeting.vtt --output-dir /output/transcript-meeting-001/
 
 # Option 2: Use timestamped directory (recommended)
-uv run jerry transcript parse meeting.vtt --output-dir /output/transcript-meeting-001-$(date +%Y%m%d-%H%M%S)/
+uv run tom transcript parse meeting.vtt --output-dir /output/transcript-meeting-001-$(date +%Y%m%d-%H%M%S)/
 
 # Option 3: Merge mode (preserve existing files, update only changed)
-uv run jerry transcript parse meeting.vtt --output-dir /output/transcript-meeting-001/ --merge
+uv run tom transcript parse meeting.vtt --output-dir /output/transcript-meeting-001/ --merge
 ```
 
 **Prevention:** Use `--output-dir` with unique names or timestamps.
@@ -2400,7 +2400,7 @@ uv sync
 uv pip list | grep tiktoken
 
 # Re-run parsing
-uv run jerry transcript parse meeting.vtt
+uv run tom transcript parse meeting.vtt
 ```
 
 **Prevention:** Run `uv sync` after pulling changes or switching branches.
@@ -2422,13 +2422,13 @@ Status: ts-formatter refused to proceed
 ```bash
 # Option 1: Regenerate extraction report from chunks
 rm /output/extraction-report.json
-uv run jerry transcript resume --from extraction --packet-path /output/
+uv run tom transcript resume --from extraction --packet-path /output/
 
 # Option 2: Skip validation (CAUTION: may propagate errors)
-uv run jerry transcript resume --from formatting --skip-validation
+uv run tom transcript resume --from formatting --skip-validation
 
 # Option 3: Report bug with state dump
-uv run jerry transcript debug --dump-state /output/ > state-dump.json
+uv run tom transcript debug --dump-state /output/ > state-dump.json
 # Attach state-dump.json to bug report
 ```
 
@@ -2558,7 +2558,7 @@ ps-critic:
 
 ## Agent Self-Critique Protocol
 
-> **PURPOSE:** Pre-finalization quality checks per Jerry Constitution P-001 (Truth and Accuracy)
+> **PURPOSE:** Pre-finalization quality checks per Tom Constitution P-001 (Truth and Accuracy)
 > Each agent MUST perform self-critique before reporting completion.
 
 ### Universal Self-Critique Checklist (All Agents)
@@ -2912,19 +2912,19 @@ cat /output/.skill-state.json | jq '.ts_parser_output.errors'
 **If state key missing:**
 ```bash
 # Orchestration bug - restart from parsing
-uv run jerry transcript parse <file> --output-dir /output/
+uv run tom transcript parse <file> --output-dir /output/
 ```
 
 **If files missing despite validation_passed = true:**
 ```bash
 # File persistence violation (P-002) - report as bug
-uv run jerry transcript debug --validate-persistence /output/
+uv run tom transcript debug --validate-persistence /output/
 ```
 
 **If errors[] is non-empty despite status = "success":**
 ```bash
 # State inconsistency - force re-run extraction
-uv run jerry transcript resume --from extraction --force
+uv run tom transcript resume --from extraction --force
 ```
 
 ---
@@ -2962,12 +2962,12 @@ ls -lh /output/extraction-report.json
 
 **Increase timeout:**
 ```bash
-uv run jerry transcript parse <file> --extractor-timeout 600  # 10 minutes
+uv run tom transcript parse <file> --extractor-timeout 600  # 10 minutes
 ```
 
 **OR reduce chunk size (re-parse):**
 ```bash
-uv run jerry transcript parse <file> --chunk-target-tokens 12000  # Smaller chunks
+uv run tom transcript parse <file> --chunk-target-tokens 12000  # Smaller chunks
 ```
 
 ---
@@ -3004,13 +3004,13 @@ cat /output/.skill-state.json | jq '.ts_formatter_output.errors'
 **If files incomplete:**
 ```bash
 # Re-run formatting phase
-uv run jerry transcript resume --from formatting --packet-path /output/transcript-*/
+uv run tom transcript resume --from formatting --packet-path /output/transcript-*/
 ```
 
 **If permission errors:**
 ```bash
 chmod -R 755 /output/transcript-*/
-uv run jerry transcript resume --from formatting
+uv run tom transcript resume --from formatting
 ```
 
 ---
@@ -3041,17 +3041,17 @@ stat /output/transcript-meeting-001/00-index.md
 **Option 1: Archive existing output:**
 ```bash
 mv /output/transcript-meeting-001/ /output/archive/transcript-meeting-001-$(date +%Y%m%d-%H%M%S)/
-uv run jerry transcript parse <file> --output-dir /output/transcript-meeting-001/
+uv run tom transcript parse <file> --output-dir /output/transcript-meeting-001/
 ```
 
 **Option 2: Use timestamped directory:**
 ```bash
-uv run jerry transcript parse <file> --output-dir /output/transcript-meeting-001-$(date +%Y%m%d-%H%M%S)/
+uv run tom transcript parse <file> --output-dir /output/transcript-meeting-001-$(date +%Y%m%d-%H%M%S)/
 ```
 
 **Option 3: Merge mode (update only changed files):**
 ```bash
-uv run jerry transcript parse <file> --output-dir /output/transcript-meeting-001/ --merge
+uv run tom transcript parse <file> --output-dir /output/transcript-meeting-001/ --merge
 ```
 
 ---
@@ -3088,7 +3088,7 @@ head -20 /output/08-mindmap/mindmap.mmd  # Inspect syntax
 **If syntax error (markdown links in nodes):**
 ```bash
 # Regenerate with plain text enforcement
-uv run jerry transcript mindmap --format mermaid --packet-path /output/ --plain-text-only
+uv run tom transcript mindmap --format mermaid --packet-path /output/ --plain-text-only
 ```
 
 **If acceptable to use ASCII only:**
@@ -3100,9 +3100,9 @@ cat /output/08-mindmap/mindmap.ascii.txt
 **If both formats required:**
 ```bash
 # Debug Mermaid generation
-uv run jerry transcript mindmap --format mermaid --packet-path /output/ --debug
+uv run tom transcript mindmap --format mermaid --packet-path /output/ --debug
 # Fix issues manually, then validate
-uv run jerry transcript validate-mindmap /output/08-mindmap/mindmap.mmd
+uv run tom transcript validate-mindmap /output/08-mindmap/mindmap.mmd
 ```
 
 ---
@@ -3141,12 +3141,12 @@ cat /output/.skill-state.json | jq '.ts_extractor_output.action_count'
 **Option 1: Regenerate extraction report (preferred):**
 ```bash
 rm /output/extraction-report.json
-uv run jerry transcript resume --from extraction --packet-path /output/
+uv run tom transcript resume --from extraction --packet-path /output/
 ```
 
 **Option 2: Report bug with diagnostic info:**
 ```bash
-uv run jerry transcript debug --dump-state /output/ > state-dump.json
+uv run tom transcript debug --dump-state /output/ > state-dump.json
 # Attach state-dump.json to bug report
 # Include extraction-report.json and .skill-state.json
 ```
@@ -3154,7 +3154,7 @@ uv run jerry transcript debug --dump-state /output/ > state-dump.json
 **Option 3: Skip validation (CAUTION - may propagate errors):**
 ```bash
 # Only use if deadline-critical and you understand the risk
-uv run jerry transcript resume --from formatting --skip-validation
+uv run tom transcript resume --from formatting --skip-validation
 ```
 
 ---
@@ -3191,18 +3191,18 @@ cat /output/.skill-state.json | jq '.ts_parser_output.fallback_triggered'
 **Fix dependencies (preferred):**
 ```bash
 uv sync
-uv run jerry transcript parse <file> --output-dir /output/
+uv run tom transcript parse <file> --output-dir /output/
 ```
 
 **Force LLM parsing (bypass Python parser):**
 ```bash
-uv run jerry transcript parse <file> --force-llm --output-dir /output/
+uv run tom transcript parse <file> --force-llm --output-dir /output/
 ```
 
 **Manual fallback:**
 ```bash
 # If Python parser consistently fails, use SRT format override
-uv run jerry transcript parse <file> --format srt --output-dir /output/
+uv run tom transcript parse <file> --format srt --output-dir /output/
 # This forces LLM parsing even for VTT files
 ```
 
@@ -3448,7 +3448,7 @@ For detailed agent specifications, see:
 
 *Skill Version: 2.5.0*
 *Architecture: Hybrid Python+LLM (Strategy Pattern) + Mindmap Generation + Token-Based Chunking*
-*Constitutional Compliance: Jerry Constitution v1.0 (P-001, P-002, P-003, P-004, P-010, P-020, P-022)*
+*Constitutional Compliance: Tom Constitution v1.0 (P-001, P-002, P-003, P-004, P-010, P-020, P-022)*
 *ADR Compliance: ADR-002 (packet structure), ADR-003 (anchor registry), ADR-004 (file splitting), ADR-006 (mindmap), ADR-007 (output template)*
 *Created: 2026-01-26*
 *Last Updated: 2026-01-31 (ADR-007 Model-Agnostic Output)*

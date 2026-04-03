@@ -169,7 +169,7 @@ validation:
 
 # Constitutional Compliance
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied: [...]
 
 # Enforcement Tier

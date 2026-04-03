@@ -210,11 +210,11 @@ The iter1 traceability gaps are substantially addressed:
 
 1. **Self-review item 9 Rule ID misattribution.** Item 9 cites SI-006 for the Synthesis Judgments Summary requirement. SI-006 governs incorporation of upstream sub-skill findings into signal identification, not the Synthesis Judgments Summary as an output artifact. The correct traceability reference is the Quality Gate Integration section (line 469) or `skills/user-experience/rules/synthesis-validation.md`.
 
-2. **All-Five Override section lacks P-020 constitution path.** Line 118 references P-020 inline but does not include a repo-relative path to `docs/governance/JERRY_CONSTITUTION.md`. The iter1 recommendation explicitly identified this as an improvement; it was not implemented.
+2. **All-Five Override section lacks P-020 constitution path.** Line 118 references P-020 inline but does not include a repo-relative path to `docs/governance/TOM_CONSTITUTION.md`. The iter1 recommendation explicitly identified this as an improvement; it was not implemented.
 
 **Improvement Path:**
 
-Correct self-review item 9 Rule IDs to reference the Quality Gate Integration section anchor or synthesis-validation.md. Add "(P-020: `docs/governance/JERRY_CONSTITUTION.md`)" to the All-Five Override section after the P-020 inline reference.
+Correct self-review item 9 Rule IDs to reference the Quality Gate Integration section anchor or synthesis-validation.md. Add "(P-020: `docs/governance/TOM_CONSTITUTION.md`)" to the All-Five Override section after the P-020 inline reference.
 
 ---
 
@@ -224,7 +224,7 @@ Correct self-review item 9 Rule IDs to reference the Quality Gate Integration se
 |----------|-----------|---------|--------|----------------|
 | 1 | Evidence Quality | 0.88 | 0.93+ | Name specific publications for the Adoption and Retention benchmark citations. For Adoption: cite a specific source (e.g., Mixpanel Industry Benchmarks 2023) OR change to explicit Fallback Step 3 derivation from baseline (removing the unnamed benchmark claim). For Retention: similarly cite a specific SaaS benchmark publication (e.g., Mixpanel/Amplitude 2023 SaaS benchmarks) OR convert to an explicit Fallback Step 3 derivation. |
 | 2 | Internal Consistency | 0.92 | 0.94+ | Update the VERSION header (line 1) and footer block (line 598) from 1.1.0 to 1.2.0 to align with SKILL.md versioning. One-line edit to each location. |
-| 3 | Traceability | 0.92 | 0.95+ | (a) Correct self-review item 9 Rule IDs from "SI-006" to reference the Quality Gate Integration section or synthesis-validation.md. (b) Add P-020 constitution path to All-Five Override section: "(P-020: `docs/governance/JERRY_CONSTITUTION.md`)". |
+| 3 | Traceability | 0.92 | 0.95+ | (a) Correct self-review item 9 Rule IDs from "SI-006" to reference the Quality Gate Integration section or synthesis-validation.md. (b) Add P-020 constitution path to All-Five Override section: "(P-020: `docs/governance/TOM_CONSTITUTION.md`)". |
 | 4 | Methodological Rigor | 0.93 | 0.96+ | Add effort format specification to MP-009: "Estimated implementation effort MUST be expressed in relative terms (small/medium/large or day-range estimates)." |
 | 5 | Completeness | 0.94 | 0.96+ | Correct self-review item 9 Rule IDs (same as Traceability P3a above — dual benefit). |
 

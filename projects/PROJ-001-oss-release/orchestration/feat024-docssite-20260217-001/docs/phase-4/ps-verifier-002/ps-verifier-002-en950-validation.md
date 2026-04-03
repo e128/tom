@@ -309,7 +309,7 @@ playbooks/PLUGIN-DEVELOPMENT/ -> 200
 curl -o /dev/null -w "CLAUDE-MD-GUIDE/ -> %{http_code}\n" -sI "https://jerry.geekatron.org/CLAUDE-MD-GUIDE/"
 curl -o /dev/null -w "schemas/SCHEMA_VERSIONING/ -> %{http_code}\n" -sI "https://jerry.geekatron.org/schemas/SCHEMA_VERSIONING/"
 curl -o /dev/null -w "schemas/SESSION_CONTEXT_GUIDE/ -> %{http_code}\n" -sI "https://jerry.geekatron.org/schemas/SESSION_CONTEXT_GUIDE/"
-curl -o /dev/null -w "governance/JERRY_CONSTITUTION/ -> %{http_code}\n" -sI "https://jerry.geekatron.org/governance/JERRY_CONSTITUTION/"
+curl -o /dev/null -w "governance/TOM_CONSTITUTION/ -> %{http_code}\n" -sI "https://jerry.geekatron.org/governance/TOM_CONSTITUTION/"
 ```
 
 **Output:**
@@ -317,7 +317,7 @@ curl -o /dev/null -w "governance/JERRY_CONSTITUTION/ -> %{http_code}\n" -sI "htt
 CLAUDE-MD-GUIDE/ -> 200
 schemas/SCHEMA_VERSIONING/ -> 200
 schemas/SESSION_CONTEXT_GUIDE/ -> 200
-governance/JERRY_CONSTITUTION/ -> 200
+governance/TOM_CONSTITUTION/ -> 200
 ```
 
 ### Results Table
@@ -335,7 +335,7 @@ governance/JERRY_CONSTITUTION/ -> 200
 | 9 | CLAUDE.md Guide | CLAUDE-MD-GUIDE.md | `/CLAUDE-MD-GUIDE/` | 200 | PASS |
 | 10 | Schema Versioning | schemas/SCHEMA_VERSIONING.md | `/schemas/SCHEMA_VERSIONING/` | 200 | PASS |
 | 11 | Session Context Schema | schemas/SESSION_CONTEXT_GUIDE.md | `/schemas/SESSION_CONTEXT_GUIDE/` | 200 | PASS |
-| 12 | Jerry Constitution | governance/JERRY_CONSTITUTION.md | `/governance/JERRY_CONSTITUTION/` | 200 | PASS |
+| 12 | Jerry Constitution | governance/TOM_CONSTITUTION.md | `/governance/TOM_CONSTITUTION/` | 200 | PASS |
 
 **Result: PASS** — All 12 navigation pages return HTTP 200. Zero 404s.
 

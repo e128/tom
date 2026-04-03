@@ -34,7 +34,7 @@
 
 ## Agent Philosophy
 
-Jerry uses a **skill-based agent pattern** where specialized agents are scoped
+Tom uses a **skill-based agent pattern** where specialized agents are scoped
 to specific skills. This provides:
 
 1. **Context Isolation** - Each agent has focused context
@@ -219,7 +219,7 @@ These agents manage work item verification, visualization, and auditing.
 
 **WTI Rules Enforced**: WTI-002 (No Closure Without Verification), WTI-003 (Truthful State), WTI-006 (Evidence-Based Closure)
 
-**AST Enforcement (H-33):** All wt-* agents have Bash tool access and MUST use `jerry ast` CLI commands (`uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast frontmatter`, `jerry ast validate`, etc.) for frontmatter extraction and entity validation. Regex-based frontmatter parsing (`> **Status:**` grep) is prohibited.
+**AST Enforcement (H-33):** All wt-* agents have Bash tool access and MUST use `tom ast` CLI commands (`uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast frontmatter`, `tom ast validate`, etc.) for frontmatter extraction and entity validation. Regex-based frontmatter parsing (`> **Status:**` grep) is prohibited.
 
 ---
 

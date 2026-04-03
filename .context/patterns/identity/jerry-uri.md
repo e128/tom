@@ -1,4 +1,4 @@
-# PAT-ID-003: JerryUri Pattern
+# PAT-ID-003: TomUri Pattern
 
 > **Status**: RECOMMENDED
 > **Category**: Identity
@@ -8,7 +8,7 @@
 
 ## Intent
 
-Define a standardized URI scheme for cross-system entity references in Jerry.
+Define a standardized URI scheme for cross-system entity references in Tom.
 
 ---
 
@@ -24,17 +24,17 @@ Without standardized URIs:
 
 ## Solution
 
-Define a URI scheme specifically for Jerry entities.
+Define a URI scheme specifically for Tom entities.
 
 ### URI Format
 
 ```
-jerry://entity_type/id[/sub_entity/sub_id]
+tom://entity_type/id[/sub_entity/sub_id]
 
 Examples:
-jerry://task/a1b2c3d4
-jerry://plan/xyz98765/phase/001
-jerry://knowledge/pattern/p-001
+tom://task/a1b2c3d4
+tom://plan/xyz98765/phase/001
+tom://knowledge/pattern/p-001
 ```
 
 ### Implementation
@@ -45,7 +45,7 @@ from typing import Optional
 import re
 
 @dataclass(frozen=True)
-class JerryUri:
+class TomUri:
     """URI-based entity reference for cross-system identification."""
     entity_type: str
     entity_id: str
@@ -53,29 +53,29 @@ class JerryUri:
     sub_entity_id: Optional[str] = None
 
     def __str__(self) -> str:
-        base = f"jerry://{self.entity_type}/{self.entity_id}"
+        base = f"tom://{self.entity_type}/{self.entity_id}"
         if self.sub_entity_type:
             base += f"/{self.sub_entity_type}/{self.sub_entity_id}"
         return base
 
     @classmethod
-    def parse(cls, uri: str) -> 'JerryUri':
-        """Parse a jerry:// URI string.
+    def parse(cls, uri: str) -> 'TomUri':
+        """Parse a tom:// URI string.
 
         Args:
-            uri: URI string in format jerry://type/id[/subtype/subid]
+            uri: URI string in format tom://type/id[/subtype/subid]
 
         Returns:
-            Parsed JerryUri instance
+            Parsed TomUri instance
 
         Raises:
             ValueError: If URI format is invalid
         """
-        pattern = r'^jerry://([^/]+)/([^/]+)(?:/([^/]+)/([^/]+))?$'
+        pattern = r'^tom://([^/]+)/([^/]+)(?:/([^/]+)/([^/]+))?$'
         match = re.match(pattern, uri)
 
         if not match:
-            raise ValueError(f"Invalid JerryUri format: {uri}")
+            raise ValueError(f"Invalid TomUri format: {uri}")
 
         return cls(
             entity_type=match.group(1),
@@ -98,17 +98,17 @@ class JerryUri:
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### File Location
 
-`src/shared_kernel/identity/jerry_uri.py`
+`src/shared_kernel/identity/tom_uri.py`
 
 ### URI Components
 
 | Component | Description | Required |
 |-----------|-------------|----------|
-| Scheme | Always `jerry://` | Yes |
+| Scheme | Always `tom://` | Yes |
 | entity_type | Type of entity (task, plan, phase, knowledge) | Yes |
 | entity_id | Primary entity identifier | Yes |
 | sub_entity_type | Type of sub-entity | No |
@@ -122,29 +122,29 @@ class JerryUri:
 
 ```python
 # Reference task in external documentation
-uri = JerryUri(entity_type="task", entity_id="a1b2c3d4")
-# jerry://task/a1b2c3d4
+uri = TomUri(entity_type="task", entity_id="a1b2c3d4")
+# tom://task/a1b2c3d4
 ```
 
 ### 2. Deep Links
 
 ```python
 # Reference phase within a plan
-uri = JerryUri(
+uri = TomUri(
     entity_type="plan",
     entity_id="xyz98765",
     sub_entity_type="phase",
     sub_entity_id="001"
 )
-# jerry://plan/xyz98765/phase/001
+# tom://plan/xyz98765/phase/001
 ```
 
 ### 3. Knowledge References
 
 ```python
 # Reference a pattern
-uri = JerryUri(entity_type="knowledge", entity_id="pattern/p-001")
-# jerry://knowledge/pattern/p-001
+uri = TomUri(entity_type="knowledge", entity_id="pattern/p-001")
+# tom://knowledge/pattern/p-001
 ```
 
 ---
@@ -170,7 +170,7 @@ uri = JerryUri(entity_type="knowledge", entity_id="pattern/p-001")
 
 ## Design Canon Reference
 
-Lines 170-217 in Jerry Design Canon v1.0
+Lines 170-217 in Tom Design Canon v1.0
 
 ---
 

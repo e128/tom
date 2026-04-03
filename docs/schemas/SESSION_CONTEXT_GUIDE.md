@@ -9,7 +9,7 @@
 
 ## Overview
 
-The Session Context Schema defines the canonical format for agent-to-agent handoffs in the Jerry Framework. It enables reliable agent chaining across the `ps-*` (Problem-Solving) and `nse-*` (NASA SE) agent families.
+The Session Context Schema defines the canonical format for agent-to-agent handoffs in the Tom Framework. It enables reliable agent chaining across the `ps-*` (Problem-Solving) and `nse-*` (NASA SE) agent families.
 
 **Schema Location:** `docs/schemas/session_context.json`
 
@@ -320,7 +320,7 @@ pipelines:
 
 - **JSON Schema Draft-07:** https://json-schema.org/draft-07/schema
 - **ISO-8601 Timestamps:** https://en.wikipedia.org/wiki/ISO_8601
-- **Jerry Constitution:** `docs/governance/JERRY_CONSTITUTION.md`
+- **Tom Constitution:** `docs/governance/TOM_CONSTITUTION.md`
 - **Orchestration State Schema:** `skills/orchestration/docs/STATE_SCHEMA.md`
 
 ---

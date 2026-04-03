@@ -22,7 +22,7 @@ Enum Value Objects represent a fixed set of domain-specific values. They combine
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Status Enum
 
@@ -392,13 +392,13 @@ status = WorkType.from_string(user_input)
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Enum value objects use string values for human-readable serialization.
+> **Tom Decision**: Enum value objects use string values for human-readable serialization.
 
-> **Jerry Decision**: State machine logic (transitions) is embedded in the enum class itself.
+> **Tom Decision**: State machine logic (transitions) is embedded in the enum class itself.
 
-> **Jerry Decision**: Each enum provides `from_string` class method for safe deserialization with error messages.
+> **Tom Decision**: Each enum provides `from_string` class method for safe deserialization with error messages.
 
 ---
 

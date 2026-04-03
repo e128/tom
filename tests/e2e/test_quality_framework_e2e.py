@@ -79,7 +79,7 @@ def run_pretool_hook(
     input_data = json.dumps({"tool_name": tool_name, "tool_input": tool_input})
 
     result = subprocess.run(
-        ["uv", "run", "--directory", str(PROJECT_ROOT), "jerry", "--json", "hooks", "pre-tool-use"],
+        ["uv", "run", "--directory", str(PROJECT_ROOT), "tom", "--json", "hooks", "pre-tool-use"],
         input=input_data,
         capture_output=True,
         text=True,
@@ -113,7 +113,7 @@ def run_session_hook(
         env.update(env_overrides)
 
     return subprocess.run(
-        ["uv", "run", "jerry", "--json", "hooks", "session-start"],
+        ["uv", "run", "tom", "--json", "hooks", "session-start"],
         input="{}",
         capture_output=True,
         text=True,
@@ -138,7 +138,7 @@ def run_userprompt_hook(
         input_data = json.dumps({"prompt": "test prompt"})
 
     result = subprocess.run(
-        ["uv", "run", "jerry", "--json", "hooks", "prompt-submit"],
+        ["uv", "run", "tom", "--json", "hooks", "prompt-submit"],
         input=input_data,
         capture_output=True,
         text=True,
@@ -212,7 +212,7 @@ class TestCrossLayerInteractions:
     def test_l1_session_hook_cli_when_checked_then_available(self) -> None:
         """L1 SessionStart hook is available via CLI."""
         result = subprocess.run(
-            ["uv", "run", "jerry", "--json", "hooks", "session-start"],
+            ["uv", "run", "tom", "--json", "hooks", "session-start"],
             input="{}",
             capture_output=True,
             text=True,

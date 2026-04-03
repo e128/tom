@@ -526,8 +526,8 @@ class ContextProvider:
         self._root = project_root or self._find_root()
 
     def get_constitution_path(self) -> Path:
-        """Return path to JERRY_CONSTITUTION.md."""
-        return self._root / "docs" / "governance" / "JERRY_CONSTITUTION.md"
+        """Return path to TOM_CONSTITUTION.md."""
+        return self._root / "docs" / "governance" / "TOM_CONSTITUTION.md"
 
     def get_rules_dir(self) -> Path:
         """Return path to .claude/rules/ directory."""
@@ -536,7 +536,7 @@ class ContextProvider:
     def is_governance_file(self, file_path: str) -> bool:
         """Check if a file path targets governance/constitution files."""
         governance_prefixes = [
-            "docs/governance/JERRY_CONSTITUTION.md",
+            "docs/governance/TOM_CONSTITUTION.md",
             ".claude/rules/",
             ".context/rules/",
             "docs/governance/",

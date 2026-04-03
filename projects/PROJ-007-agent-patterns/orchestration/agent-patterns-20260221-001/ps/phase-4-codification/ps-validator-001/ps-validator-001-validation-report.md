@@ -421,7 +421,7 @@ The 6 non-blocking observations are recommendations for consideration during imp
 | Source | Content | Location |
 |--------|---------|----------|
 | quality-enforcement.md | HARD Rule Index H-01 through H-31, tier vocabulary, criticality levels | `.context/rules/quality-enforcement.md` |
-| JERRY_CONSTITUTION.md | Constitutional principles P-003, P-020, P-022 | `docs/governance/JERRY_CONSTITUTION.md` |
+| TOM_CONSTITUTION.md | Constitutional principles P-003, P-020, P-022 | `docs/governance/TOM_CONSTITUTION.md` |
 | NSE-to-PS Handoff (Barrier 3) | Validation criteria, per-agent guidance | `projects/PROJ-007-agent-patterns/orchestration/agent-patterns-20260221-001/cross-pollination/barrier-3/nse-to-ps/handoff.md` |
 | nse-requirements-001 | 52 requirements across 6 domains | `projects/PROJ-007-agent-patterns/orchestration/agent-patterns-20260221-001/nse/phase-2-analysis/nse-requirements-001/nse-requirements-001-requirements.md` |
 | markdown-navigation-standards.md | Format reference for rule files | `.context/rules/markdown-navigation-standards.md` |

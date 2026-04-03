@@ -180,7 +180,7 @@ The derivation's core argument is strong: the current HARD rule ceiling of 35 la
 
 ### Constitutional Context Loaded
 
-- `JERRY_CONSTITUTION.md` (P-001 through P-043)
+- `TOM_CONSTITUTION.md` (P-001 through P-043)
 - `quality-enforcement.md` (H-01 through H-31)
 - `markdown-navigation-standards.md` (H-23, H-24)
 

@@ -375,13 +375,13 @@ def test_cli_adapter_drives_via_dispatcher():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Ports are Python Protocols, not abstract base classes. This enables structural typing.
+> **Tom Decision**: Ports are Python Protocols, not abstract base classes. This enables structural typing.
 
-> **Jerry Decision**: One port per file. File name is lowercase interface name (e.g., `iquerydispatcher.py`).
+> **Tom Decision**: One port per file. File name is lowercase interface name (e.g., `iquerydispatcher.py`).
 
-> **Jerry Decision**: Secondary adapters in `infrastructure/adapters/`, primary adapters in `interface/`.
+> **Tom Decision**: Secondary adapters in `infrastructure/adapters/`, primary adapters in `interface/`.
 
 ---
 

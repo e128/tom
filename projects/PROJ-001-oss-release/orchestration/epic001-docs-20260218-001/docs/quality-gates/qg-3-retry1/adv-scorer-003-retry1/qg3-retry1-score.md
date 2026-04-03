@@ -108,24 +108,24 @@ accurately characterizes the runbook content.
 
 ### R4 — P-002 Source Links with Anchors
 
-**Claim:** P-002 citations now link to `../governance/JERRY_CONSTITUTION.md#p-002-file-persistence`
+**Claim:** P-002 citations now link to `../governance/TOM_CONSTITUTION.md#p-002-file-persistence`
 in 4 locations across getting-started.md, problem-solving.md, and orchestration.md.
 
 **Evidence — getting-started.md (line 166):**
-> "as guaranteed by [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence)
+> "as guaranteed by [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence)
 > (file persistence requirement)"
 
 **Evidence — problem-solving.md (line 217 — Troubleshooting table, appears twice):**
-> "[P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence) persistence constraint
+> "[P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence) persistence constraint
 > violated" ... "All agents MUST write output files per
-> [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence)."
+> [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence)."
 
 **Evidence — orchestration.md (line 152 — Core Artifacts section):**
-> "violates [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence) (file persistence
+> "violates [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence) (file persistence
 > requirement)"
 
 **Evidence — orchestration.md (line 248 — Troubleshooting table):**
-> "In-memory-only state violates [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence)
+> "In-memory-only state violates [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence)
 > and is lost at session end."
 
 **Verification:** CONFIRMED. The fix claims 4 locations; the files contain at minimum 5 anchor-linked
@@ -205,7 +205,7 @@ Minor gap preventing 0.95:
 **Improvement from R4 anchor links:**
 - P-002 citations now resolve to a specific constitutional anchor, not just the document root.
   This is material: users can navigate directly to the constraint definition.
-- JERRY_CONSTITUTION.md#p-002-file-persistence is consistent across all 5 anchor-linked occurrences.
+- TOM_CONSTITUTION.md#p-002-file-persistence is consistent across all 5 anchor-linked occurrences.
 
 **Held from 0.95:**
 - problem-solving.md cites quality thresholds and score bands but does not cite ADR-EPIC002-001

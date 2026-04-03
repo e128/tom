@@ -78,7 +78,7 @@
 
 1. All 6 AE rules are listed and actively checked (AE-001 through AE-006, lines 147-152).
 2. Each rule describes HOW to check:
-   - AE-001: "Does the deliverable path contain `docs/governance/JERRY_CONSTITUTION.md`?" with path matching. Correct.
+   - AE-001: "Does the deliverable path contain `docs/governance/TOM_CONSTITUTION.md`?" with path matching. Correct.
    - AE-002: "Does the deliverable path match `.context/rules/` or `.claude/rules/`?" with path matching. Correct.
    - AE-003: "Is the deliverable type 'ADR' or does the path contain `decisions/`?" with type check + path check. Correct.
    - AE-004: "Is the deliverable a modification to a baselined ADR? (check for existing ADR at same path)" with existence check. Correct.

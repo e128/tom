@@ -1,5 +1,5 @@
 # FEAT-001: Saucer Boy Persona Distillation
-## The Jerry Framework Brand Bible
+## The Tom Framework Brand Bible
 
 <!--
 AGENT: ps-creator-001 / ps-critic-001 (R1, R2, R3 revisions) / ps-creator-001 (supplemental citation pass) / ps-critic-001 (R4, R5, R6 supplemental review)
@@ -44,9 +44,9 @@ FEEDS INTO: FEAT-002 (/saucer-boy skill), FEAT-003 (visual identity), FEAT-004 (
 
 This is the load-bearing sentence. Everything in this document is a footnote.
 
-Jerry's quality gates are non-negotiable: 0.92 threshold, 3-cycle minimum, constitutional compliance required. None of that changes. What changes is how we talk about it. The banana suit didn't make McConkey slower. Fear of looking silly would have. The same is true for quality enforcement: the rules stay exactly as rigorous. The voice stays exactly as human.
+Tom's quality gates are non-negotiable: 0.92 threshold, 3-cycle minimum, constitutional compliance required. None of that changes. What changes is how we talk about it. The banana suit didn't make McConkey slower. Fear of looking silly would have. The same is true for quality enforcement: the rules stay exactly as rigorous. The voice stays exactly as human.
 
-The Saucer Boy persona is not a coating applied over Jerry's real character. It is Jerry's real character, now legible.
+The Saucer Boy persona is not a coating applied over Tom's real character. It is Tom's real character, now legible.
 
 **On "joy" in contexts without humor:** Joy in the Saucer Boy sense is not synonymous with humor content. In a precise, actionable error message with no jokes, the joy is in the directness — in treating the developer as a capable adult who needs information, not coddling. Warmth and directness are themselves expressions of the joy-excellence multiplication. A humorless message can still be joyful. A funny message that obscures the diagnosis is neither.
 
@@ -66,7 +66,7 @@ Before any of it, he had written it all down. In an 8th grade essay, McConkey de
 
 He was inducted posthumously into the U.S. Ski and Snowboard Hall of Fame on April 2, 2011 [3, 34].
 
-The EPIC-001 document named him Jerry's spirit animal. This document explains why that choice was correct and what it means in practice.
+The EPIC-001 document named him Tom's spirit animal. This document explains why that choice was correct and what it means in practice.
 
 ### Why This Ethos
 
@@ -74,18 +74,18 @@ Two properties of McConkey's life are instructive:
 
 **First:** He demonstrated empirically that seriousness of purpose does not require seriousness of manner. Outside Online called him someone who "changed skiing more than anyone in memory" [4]. He was simultaneously the most accomplished and the most joyful. Not in spite of each other. Because of each other. The joy was not a distraction from the work — it was how he did the work. As he said of freeskiing: "Whether it was steep, extreme descent or new freestyle, what we were doing was freeskiing, free to ski our own style on our own terms." [23]
 
-**Second:** His innovations democratized their field. Fat skis made powder accessible to intermediate skiers who couldn't manage traditional technique [3, 24]. His performances made ski films more fun to watch. Both actions lowered barriers. Jerry's adoption depends on the same dynamic: a quality framework that is enjoyable to work with gets used. One that feels like a compliance officer gets worked around.
+**Second:** His innovations democratized their field. Fat skis made powder accessible to intermediate skiers who couldn't manage traditional technique [3, 24]. His performances made ski films more fun to watch. Both actions lowered barriers. Tom's adoption depends on the same dynamic: a quality framework that is enjoyable to work with gets used. One that feels like a compliance officer gets worked around.
 
 McConkey's documented approach to ski innovation reflected his attitude toward received wisdom: when the Spatula was dismissed by the industry, he kept developing it [8]. On the resistance, he told the Denver Post in 2006: "They still don't get it. They'll get there eventually, but they will always be two steps behind us." [10] His design philosophy was direct: "You want to float, like a boat." [10] And on the Spatula's core provocation: "Take most everything you have ever learned about skiing and stick it where the sun don't shine... Carving is NOT necessary in the powder." [9]
 
 ### What the Framework Inherits
 
-| McConkey Trait | Jerry Application |
+| McConkey Trait | Tom Application |
 |----------------|-------------------|
 | Excellence built on technical rigor | Quality gates are the foundation; voice is the surface |
 | Joy as force multiplier, not decoration | Celebrating the work is part of the work |
 | Innovation that looks wrong before it looks right | The rules feel rigid until you see what they prevent |
-| Community over career | OSS Jerry is culture, not just code |
+| Community over career | OSS Tom is culture, not just code |
 | Authenticity: the persona was the person | The voice must be genuine, not applied as a coating |
 
 ### What the Framework Does NOT Inherit
@@ -128,11 +128,11 @@ The voice never goes flat. Even at the "Hard Stop" end, it is direct and specifi
 
 McConkey used two modes of comedy simultaneously: physical absurdity and deadpan verbal wit. In a text-based medium, "physical absurdity" becomes structural comedy — unexpected juxtaposition, deliberate incongruity between the gravity of a subject and the lightness of its expression.
 
-The two modes for Jerry:
+The two modes for Tom:
 
 **Structural comedy:** Putting something absurd next to something serious and letting the juxtaposition do the work.
 
-> "The JERRY_CONSTITUTION.md is non-negotiable. Saucer Boy himself was constitutionally compliant. In neon 90s ski gear, but compliant."
+> "The TOM_CONSTITUTION.md is non-negotiable. Saucer Boy himself was constitutionally compliant. In neon 90s ski gear, but compliant."
 
 **Deadpan delivery:** Stating the serious thing in a light voice, or the absurd thing in a serious voice.
 
@@ -165,9 +165,9 @@ Energy should scale with the moment. A quality gate pass deserves more energy th
 
 ## Voice Guide
 
-These are before/after pairs showing the same message in current Jerry voice versus Saucer Boy voice. The "Current Voice" column is an honest representation — not strawmanned. Both columns contain the same information.
+These are before/after pairs showing the same message in current Tom voice versus Saucer Boy voice. The "Current Voice" column is an honest representation — not strawmanned. Both columns contain the same information.
 
-> **Note on calibration:** The pairs below reflect current Jerry output format. They should be updated if the CLI output format changes materially. The persona is stable; the calibration pairs track the implementation.
+> **Note on calibration:** The pairs below reflect current Tom output format. They should be updated if the CLI output format changes materially. The persona is stable; the calibration pairs track the implementation.
 >
 > **Note on information:** In each pair, every piece of technical information in the current voice is preserved in the Saucer Boy voice. The persona is not an excuse for imprecision.
 
@@ -266,7 +266,7 @@ JERRY_PROJECT not set.
 
 Set your project and drop back in:
 
-  jerry projects list          # see what's available
+  tom projects list          # see what's available
   export JERRY_PROJECT=PROJ-003-je-ne-sais-quoi
 
 H-04: active project required before proceeding.
@@ -298,7 +298,7 @@ Let's build something worth scoring.
 **Current Voice:**
 ```
 Constitutional compliance check: FAILED
-Trigger: AE-001 — modification to docs/governance/JERRY_CONSTITUTION.md
+Trigger: AE-001 — modification to docs/governance/TOM_CONSTITUTION.md
 Criticality: Auto-C4
 Status: Hard stop. Human escalation required.
 ```
@@ -307,7 +307,7 @@ Status: Hard stop. Human escalation required.
 ```
 Constitutional compliance check: FAILED
 
-Trigger: AE-001 — docs/governance/JERRY_CONSTITUTION.md was modified.
+Trigger: AE-001 — docs/governance/TOM_CONSTITUTION.md was modified.
 Auto-escalation: C4. This is not a drill.
 
 Hard stop. Human review required before proceeding.
@@ -431,7 +431,7 @@ There is a failure mode where "personality in software" becomes strained: forced
 
 The Saucer Boy persona is a voice layer for framework-generated outputs — CLI messages, hook outputs, error text, documentation, comments. It is NOT a personality that Claude agent instances perform in conversation. That distinction matters for FEAT-002 implementation.
 
-**Scope clarification:** The persona governs what Jerry says in its outputs. It does not govern how Claude reasons, plans, or discusses work with the developer. Those behaviors are governed by the constitutional constraints (H-01 through H-24) and are not modified by this epic.
+**Scope clarification:** The persona governs what Tom says in its outputs. It does not govern how Claude reasons, plans, or discusses work with the developer. Those behaviors are governed by the constitutional constraints (H-01 through H-24) and are not modified by this epic.
 
 **Governance implication:** FEAT-002 (`/saucer-boy` skill) must implement the persona as a voice quality gate for framework text, not as a Claude personality modifier. If the skill is built as a personality layer over Claude's conversational behavior, it violates this boundary and the constitutional constraints it is designed to respect. See FEAT-002 implementation notes below.
 
@@ -666,7 +666,7 @@ This is where the Voice Guide examples become the implementation spec. FEAT-004 
 
 **Biographical anchor for FEAT-004 implementers:** The voice range in the Voice Guide maps to biographical range. Pair 1 (PASS celebration) is banana-suit energy. Pair 3 (REJECTED) is the meticulous preparation energy -- the same discipline that built the Spatula. Pair 6 (constitutional failure) is the moment where jokes stop, the same register as the "What the Framework Does NOT Inherit" section. Understanding these mappings helps calibrate rewrites.
 
-### FEAT-005: The Jerry Soundtrack
+### FEAT-005: The Tom Soundtrack
 
 The soundtrack curated in EPIC-001 is already canonical. FEAT-005's job is to formalize it as a cultural artifact — a `SOUNDTRACK.md` file that lives in the framework and can be referenced, extended, and enjoyed.
 
@@ -690,7 +690,7 @@ Easter eggs are the highest-risk feature in this epic from a persona perspective
 **High-value easter egg territories:**
 - Docstring comments in the quality enforcement code (S-014 rubric calculation)
 - CLI help text for the /adversary skill
-- The JERRY_CONSTITUTION.md preamble (currently reads as regulation; could read as philosophy)
+- The TOM_CONSTITUTION.md preamble (currently reads as regulation; could read as philosophy)
 - Hidden `--saucer-boy` flag somewhere that enables maximum personality mode
 - The Vail lifetime ban [29] as a reference when the framework rejects a deliverable with extreme prejudice: the persona connection is direct (banned for a nude backflip, not for lack of skill)
 - The 8th-grade essay [23] as a reference in onboarding text: "He wrote down what he'd do before he was a teenager. Then he did it."
@@ -812,7 +812,7 @@ If a piece of text fails any of these tests, either fix it or strip the personal
 | `projects/PROJ-003-je-ne-sais-quoi/orchestration/jnsq-20260219-001/jnsq/phase-1-persona-distillation/ps-researcher-001/ps-researcher-001-research.md` | Initial research artifact; primary source for biographical analysis, trait taxonomy, voice design dimensions |
 | `projects/PROJ-003-je-ne-sais-quoi/orchestration/jnsq-20260219-001/jnsq/phase-1-persona-distillation/ps-researcher-001/ps-researcher-001-supplemental-research.md` | Supplemental research artifact; 35 web sources, 18 searches; source of corrections and inline citations in v0.5.0 |
 | `.context/rules/quality-enforcement.md` | Quality enforcement SSOT; thresholds, strategies, and rule IDs referenced throughout |
-| `docs/governance/JERRY_CONSTITUTION.md` | Constitutional constraints; boundary conditions section references H-01 through H-24 |
+| `docs/governance/TOM_CONSTITUTION.md` | Constitutional constraints; boundary conditions section references H-01 through H-24 |
 
 ---
 

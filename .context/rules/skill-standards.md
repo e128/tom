@@ -6,8 +6,8 @@ paths:
 
 # Skill Development Standards
 
-> Rules for building, structuring, and registering Jerry framework skills.
-> Based on Anthropic's "Complete Guide to Building Skills for Claude" (January 2026) and Jerry's established conventions across 8 production skills.
+> Rules for building, structuring, and registering Tom framework skills.
+> Based on Anthropic's "Complete Guide to Building Skills for Claude" (January 2026) and Tom's established conventions across 8 production skills.
 
 <!-- L2-REINJECT: rank=7, content="Skills: SKILL.md exact case, kebab-case folder, no README.md (H-25). Description WHAT+WHEN+triggers, repo-relative paths, register in CLAUDE.md+AGENTS.md (H-26). Navigation table REQUIRED (H-23)." -->
 
@@ -66,12 +66,12 @@ Required fields:
 | `name` | kebab-case, matches folder name |
 | `description` | WHAT + WHEN + trigger phrases, under 1024 chars |
 
-Jerry-required fields:
+Tom-required fields:
 
 | Field | Requirement |
 |-------|-------------|
 | `version` | Semantic versioning (`"X.Y.Z"`) |
-| `allowed-tools` | Comma-separated tool list (Jerry format: `Read, Write, Edit, Glob, Grep`) |
+| `allowed-tools` | Comma-separated tool list (Tom format: `Read, Write, Edit, Glob, Grep`) |
 | `activation-keywords` | YAML array of trigger phrases for skill routing |
 
 Optional fields:
@@ -82,7 +82,7 @@ Optional fields:
 | `compatibility` | Environment requirements (1-500 chars) |
 | `metadata` | Custom key-value pairs (author, mcp-server, category, tags) |
 
-### SKILL.md Body Structure (Jerry)
+### SKILL.md Body Structure (Tom)
 
 SKILL.md SHOULD follow this section order:
 
@@ -182,9 +182,9 @@ Rules H-25 and H-26 apply to all new skills immediately. Existing production ski
 
 ---
 
-<!-- VERSION: 1.2.0 | DATE: 2026-02-21 | SOURCE: Anthropic Skill Guide (Jan 2026), Jerry Framework v0.2.3, EN-002 consolidation -->
+<!-- VERSION: 1.2.0 | DATE: 2026-02-21 | SOURCE: Anthropic Skill Guide (Jan 2026), Tom Framework v0.2.3, EN-002 consolidation -->
 
 *Standards Version: 1.2.0*
 *SSOT: `.context/rules/quality-enforcement.md` (H-25, H-26 registered — consolidated from H-25..H-30 per EN-002)*
-*Source: Anthropic Skill Guide (Jan 2026) + Jerry Framework v0.2.3*
+*Source: Anthropic Skill Guide (Jan 2026) + Tom Framework v0.2.3*
 *Created: 2026-02-19*

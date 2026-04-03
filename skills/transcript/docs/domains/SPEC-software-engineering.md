@@ -173,7 +173,7 @@ See [contexts/software-engineering.yaml](../../contexts/software-engineering.yam
 
 1. **Context File**: `contexts/software-engineering.yaml`
 2. **Test Transcripts**: Standup recordings, sprint planning notes
-3. **Integration**: Jerry transcript skill activation
+3. **Integration**: Tom transcript skill activation
 
 ---
 

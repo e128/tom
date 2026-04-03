@@ -259,7 +259,7 @@ A requirement now cannot be marked "covered" by code that does not exist.
 
 | Path | Escalation | Rationale |
 |------|-----------|-----------|
-| `docs/governance/JERRY_CONSTITUTION.md` | Auto-C4 | Constitution changes are irreversible |
+| `docs/governance/TOM_CONSTITUTION.md` | Auto-C4 | Constitution changes are irreversible |
 | `docs/governance/` | Auto-C3 minimum | Governance directory |
 | `.context/rules/` | Auto-C3 minimum | Canonical rule source |
 | `.claude/rules/` | Auto-C3 minimum | Symlink to `.context/rules/`; checked for completeness |
@@ -370,7 +370,7 @@ The following cross-enabler alignment checks were performed:
 |-------|-------------|-------------|----------|
 | V-024 content sourcing strategy | L2-REINJECT tag extraction (primary) + hardcoded ContentBlocks (fallback) | L2-REINJECT tags in `.context/rules/` are authoritative | YES (B-004) |
 | Token budget for V-024 | 600 tokens per prompt submission | 600 tokens per prompt submission (REQ-404-052) | YES (B-001) |
-| Governance escalation paths | `docs/governance/JERRY_CONSTITUTION.md` (C4), `docs/governance/` (C3), `.context/rules/` (C3), `.claude/rules/` (C3) | `docs/governance/JERRY_CONSTITUTION.md` (C4), `.context/rules/` (C3), `.claude/rules/` (C3), `CLAUDE.md` (C3) | YES (M-007) |
+| Governance escalation paths | `docs/governance/TOM_CONSTITUTION.md` (C4), `docs/governance/` (C3), `.context/rules/` (C3), `.claude/rules/` (C3) | `docs/governance/TOM_CONSTITUTION.md` (C4), `.context/rules/` (C3), `.claude/rules/` (C3), `CLAUDE.md` (C3) | YES (M-007) |
 | Decision criticality levels (C1-C4) | Defined in TASK-004 SessionStart quality context XML; references quality-enforcement.md | Defined in TASK-003 Decision Criticality Integration; quality-enforcement.md designated as SSOT | YES (M-006) |
 | Quality gate threshold | >= 0.92 for C2+ | >= 0.92 for C2+ | YES |
 | Adversarial strategies | 6 strategies in L2 content blocks | 6 strategies in Adversarial Strategy Encoding Map | YES |

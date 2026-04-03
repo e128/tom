@@ -124,7 +124,7 @@ The original CLAUDE.md file contains **915 lines** organized into **12 major sec
 | `skills/orchestration/SKILL.md` | Skills Available | Orchestration skill |
 | `skills/transcript/SKILL.md` | Skills Available | Transcript skill |
 | `skills/orchestration/PLAYBOOK.md` | Orchestration Details | Step-by-step guidance |
-| `docs/governance/JERRY_CONSTITUTION.md` | Agent Governance | Full constitution |
+| `docs/governance/TOM_CONSTITUTION.md` | Agent Governance | Full constitution |
 | `docs/governance/BEHAVIOR_TESTS.md` | Behavioral Validation | Test scenarios |
 | `docs/design/ADR-002-project-enforcement.md` | Project Enforcement | ADR reference |
 | `AGENTS.md` | Agents Available | Agent registry |
@@ -203,7 +203,7 @@ The `<worktracker>` XML section consumes 372 lines (40% of the file) and contain
 ### 3. External References Already Exist
 Many sections reference external files that contain the full details:
 - Coding standards → `.claude/rules/coding-standards.md`
-- Constitution → `docs/governance/JERRY_CONSTITUTION.md`
+- Constitution → `docs/governance/TOM_CONSTITUTION.md`
 - Skills → individual SKILL.md files
 
 ### 4. Project Enforcement Over-Documentation

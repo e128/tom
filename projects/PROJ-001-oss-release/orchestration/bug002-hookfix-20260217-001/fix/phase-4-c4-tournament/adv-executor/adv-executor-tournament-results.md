@@ -233,7 +233,7 @@ Two schemas exist for hook types that have no corresponding hook scripts in the 
 
 ### Execution
 
-Constitutional AI Critique evaluates the deliverable against each HARD rule (H-01 through H-24) in `quality-enforcement.md` and the principles in `JERRY_CONSTITUTION.md`.
+Constitutional AI Critique evaluates the deliverable against each HARD rule (H-01 through H-24) in `quality-enforcement.md` and the principles in `TOM_CONSTITUTION.md`.
 
 ### Principle-by-Principle Review
 

@@ -1,8 +1,8 @@
-# Transcript Skill Gap Analysis Against Jerry Patterns
+# Transcript Skill Gap Analysis Against Tom Patterns
 
 > **PS ID:** work-026
 > **Entry ID:** e-002
-> **Topic:** Transcript Skill Gap Analysis Against Jerry Patterns
+> **Topic:** Transcript Skill Gap Analysis Against Tom Patterns
 > **Date:** 2026-01-30
 > **Analyst:** ps-analyst v2.0.0
 
@@ -10,7 +10,7 @@
 
 ## L0: Executive Summary (ELI5)
 
-Think of the Jerry skill patterns as a **blueprint for building a professional team**. The problem-solving, nasa-se, and orchestration skills follow this blueprint perfectly—they have clear job descriptions (identity), work instructions (persona), safety rules (guardrails), and quality checks (validation).
+Think of the Tom skill patterns as a **blueprint for building a professional team**. The problem-solving, nasa-se, and orchestration skills follow this blueprint perfectly—they have clear job descriptions (identity), work instructions (persona), safety rules (guardrails), and quality checks (validation).
 
 The transcript skill is like a **partially-built team**: it has the right people (agents) doing the right work (parsing, extraction, formatting), but some of the blueprints are incomplete or inconsistent with the standard format.
 
@@ -21,7 +21,7 @@ The transcript skill is like a **partially-built team**: it has the right people
 3. **Documentation is strong but non-standard** - PLAYBOOK and RUNBOOK exist but don't follow the orchestration gold standard
 4. **Orchestration pattern is undocumented** - Uses sequential chain but never declares it
 
-**The Good News:** The transcript skill works well and has excellent operational docs. The gaps are mostly about conforming to Jerry's universal patterns for consistency and maintainability.
+**The Good News:** The transcript skill works well and has excellent operational docs. The gaps are mostly about conforming to Tom's universal patterns for consistency and maintainability.
 
 **Recommendation:** Prioritize closing **17 HIGH severity gaps** first (YAML frontmatter, state schema, constitutional compliance tables).
 
@@ -41,7 +41,7 @@ I applied the following frameworks to analyze 5 dimensions:
 
 | Document | Version | Lines | Purpose |
 |----------|---------|-------|---------|
-| work-026-e-001 (Pattern Reference) | - | 1,376 | Universal Jerry skill blueprint |
+| work-026-e-001 (Pattern Reference) | - | 1,376 | Universal Tom skill blueprint |
 | transcript SKILL.md | 2.3.0 | 805 | Transcript skill interface |
 | transcript PLAYBOOK.md | 1.1.0 | 402 | Execution guide |
 | transcript RUNBOOK.md | 1.2.0 | 361 | Troubleshooting guide |
@@ -98,7 +98,7 @@ Universal SKILL.md sections (from work-026-e-001, lines 54-69):
 | **State Passing Between Agents** | State key registry | ✅ All 3 |
 | **Tool Invocation Examples** | Concrete tool usage | ✅ All 3 |
 | **Mandatory Persistence (P-002)** | File output requirement | ✅ All 3 |
-| **Constitutional Compliance** | Jerry Constitution mapping | ✅ All 3 |
+| **Constitutional Compliance** | Tom Constitution mapping | ✅ All 3 |
 | **Quick Reference** | Common workflows table | ✅ All 3 |
 | **Agent Details** | Links to agent specs | ✅ All 3 |
 ```
@@ -271,7 +271,7 @@ validation:
 
 # Constitutional Compliance
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied: [...]
 
 # Enforcement Tier
@@ -358,7 +358,7 @@ guardrails:
 
 ```yaml
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-001: Truth and Accuracy (Soft)"
     - "P-002: File Persistence (Medium)"
@@ -1140,9 +1140,9 @@ Current agent invocations may break if:
 5. [ts-extractor.md](../../skills/transcript/agents/ts-extractor.md) - v1.3.0
 6. [ts-formatter.md](../../skills/transcript/agents/ts-formatter.md) - v1.1.0
 
-### Jerry Pattern Reference (Authoritative)
+### Tom Pattern Reference (Authoritative)
 
-1. [work-026-e-001 Jerry Skill Patterns Research](./work-026-e-001-jerry-skill-patterns.md)
+1. [work-026-e-001 Tom Skill Patterns Research](./work-026-e-001-tom-skill-patterns.md)
 2. [problem-solving SKILL.md](../../skills/problem-solving/SKILL.md) - v2.1.0
 3. [nasa-se SKILL.md](../../skills/nasa-se/SKILL.md) - v1.1.0
 4. [orchestration SKILL.md](../../skills/orchestration/SKILL.md) - v2.1.0

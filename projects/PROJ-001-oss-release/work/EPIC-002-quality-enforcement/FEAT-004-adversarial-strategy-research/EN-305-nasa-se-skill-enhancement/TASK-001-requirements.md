@@ -130,7 +130,7 @@ The requirements target three NSE agents: nse-verification (V&V specialist), nse
 | FR-305-031 | NSE adversarial findings SHALL be structured to integrate with the EnforcementDecision dataclass (action, reason, violations, criticality_escalation). | MEDIUM | Inspection | Barrier-2 handoff: EnforcementDecision API contract |
 | FR-305-032 | NSE adversarial modes SHALL validate compliance against the 24 HARD rules (H-01 through H-24) when S-007 (Constitutional AI) is active. | HARD | Test | Barrier-2 handoff: HARD rule inventory |
 | FR-305-033 | NSE adversarial modes SHALL use the 6 effective HARD language patterns (Constitutional Constraint, Forbidden/Required Binary, Layer Boundary Declaration, Quality Gate Declaration, Mandatory Skill Invocation, Escalation Trigger) in their finding reports. | MEDIUM | Inspection | Barrier-2 handoff: 6 effective patterns |
-| FR-305-034 | NSE adversarial modes SHALL apply governance file escalation (C3/C4 criticality) when reviewing artifacts that modify `.claude/rules/`, `JERRY_CONSTITUTION.md`, or `CLAUDE.md`. | HARD | Test | Barrier-2 handoff: PreToolEnforcementEngine governance escalation |
+| FR-305-034 | NSE adversarial modes SHALL apply governance file escalation (C3/C4 criticality) when reviewing artifacts that modify `.claude/rules/`, `TOM_CONSTITUTION.md`, or `CLAUDE.md`. | HARD | Test | Barrier-2 handoff: PreToolEnforcementEngine governance escalation |
 | FR-305-035 | NSE adversarial mode output SHALL be consumable by the quality-enforcement.md SSOT file for shared enforcement constants (0.92 threshold, C1-C4 definitions, strategy encodings). | MEDIUM | Inspection | Barrier-2 handoff: quality-enforcement.md SSOT |
 
 ---

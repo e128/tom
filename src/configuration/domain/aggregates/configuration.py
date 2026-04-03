@@ -16,8 +16,8 @@ Lifecycle:
 
 References:
     - WI-010: Configuration Aggregate
-    - ADR-PROJ004-001: JerryFramework Aggregate (FrameworkConfig pattern)
-    - ADR-PROJ004-004: JerrySession Context (ConfigResolver pattern)
+    - ADR-PROJ004-001: TomFramework Aggregate (FrameworkConfig pattern)
+    - ADR-PROJ004-004: TomSession Context (ConfigResolver pattern)
     - PAT-AGG-001: Aggregate Root pattern
 
 Exports:

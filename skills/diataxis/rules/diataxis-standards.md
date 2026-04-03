@@ -18,7 +18,7 @@
 | -- [Explanation Anti-Patterns](#explanation-anti-patterns) | EAP-01 through EAP-05 |
 | [Section 3: Detection Heuristics](#section-3-detection-heuristics-for-quadrant-mixing) | Signal-based quadrant mixing detection |
 | [Section 4: Classification Decision Guide](#section-4-classification-decision-guide) | How to classify documentation requests |
-| [Section 5: Jerry Voice Guidelines](#section-5-jerry-voice-guidelines) | Per-quadrant prose style for Jerry output |
+| [Section 5: Tom Voice Guidelines](#section-5-tom-voice-guidelines) | Per-quadrant prose style for Tom output |
 
 ---
 
@@ -209,11 +209,11 @@ When `quadrant == "multi"`:
 
 ---
 
-## Section 5: Jerry Voice Guidelines
+## Section 5: Tom Voice Guidelines
 
-**Scope:** These guidelines govern Diataxis documentation output (tutorials, how-to guides, reference documents, explanation documents). For Jerry internal documents (rule files, ADRs, SKILL.md, CLAUDE.md), the existing Jerry rule file prose style takes precedence. Apply Section 5 guidelines only when the deliverable's quadrant classification has been confirmed.
+**Scope:** These guidelines govern Diataxis documentation output (tutorials, how-to guides, reference documents, explanation documents). For Tom internal documents (rule files, ADRs, SKILL.md, CLAUDE.md), the existing Tom rule file prose style takes precedence. Apply Section 5 guidelines only when the deliverable's quadrant classification has been confirmed.
 
-### Universal Jerry Voice Markers
+### Universal Tom Voice Markers
 
 These apply across ALL quadrants:
 - Active voice preferred ("Run the command", not "The command should be run")
@@ -229,7 +229,7 @@ These apply across ALL quadrants:
 **Tone:** Encouraging, concrete, collaborative
 **Register:** Supportive instructor guiding a hands-on exercise
 
-| Before (Non-Jerry) | After (Jerry Voice) |
+| Before (Non-Tom) | After (Tom Voice) |
 |---------------------|---------------------|
 | "The user should navigate to the settings page." | "Navigate to the settings page." |
 | "It is recommended that one creates a new project first." | "Create a new project first." |
@@ -241,7 +241,7 @@ These apply across ALL quadrants:
 **Tone:** Direct, action-oriented, efficient
 **Register:** Experienced colleague giving clear directions
 
-| Before (Non-Jerry) | After (Jerry Voice) |
+| Before (Non-Tom) | After (Tom Voice) |
 |---------------------|---------------------|
 | "It is possible to configure X by modifying Y." | "Configure X by modifying Y." |
 | "One should ensure that the service has been restarted." | "Restart the service." |
@@ -253,7 +253,7 @@ These apply across ALL quadrants:
 **Tone:** Neutral, precise, austere
 **Register:** Technical specification -- accurate, uniform, no personality
 
-| Before (Non-Jerry) | After (Jerry Voice) |
+| Before (Non-Tom) | After (Tom Voice) |
 |---------------------|---------------------|
 | "This command can be used to list items." | "Lists items. Syntax: `command [options]`" |
 | "The powerful `deploy` command helps you easily push your code." | "`deploy` -- Pushes code to the target environment." |
@@ -265,7 +265,7 @@ These apply across ALL quadrants:
 **Tone:** Thoughtful, discursive, contextual
 **Register:** Knowledgeable colleague sharing understanding over coffee
 
-| Before (Non-Jerry) | After (Jerry Voice) |
+| Before (Non-Tom) | After (Tom Voice) |
 |---------------------|---------------------|
 | "The system was designed in this manner for various reasons." | "The system uses event sourcing because the audit trail requirements demanded complete state history." |
 | "One must consider the trade-offs involved." | "The trade-off here is latency versus consistency." |
@@ -275,7 +275,7 @@ These apply across ALL quadrants:
 
 ### Voice Quality Gate
 
-Writer agents apply Jerry voice guidelines during H-15 self-review. This gate is a MEDIUM-tier standard (override with documented justification):
+Writer agents apply Tom voice guidelines during H-15 self-review. This gate is a MEDIUM-tier standard (override with documented justification):
 1. Check output against universal voice markers
 2. Check output against quadrant-specific voice guidelines
 3. Flag violations with `[VOICE: {description}]` tags

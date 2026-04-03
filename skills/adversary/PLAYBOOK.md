@@ -3,7 +3,7 @@ name: adversary-playbook
 description: Step-by-step execution procedures for adversarial quality reviews, including strategy selection by criticality, scoring workflows, canonical strategy pairings, and full C4 tournament reviews.
 version: "1.0.0"
 skill: adversary
-constitutional_compliance: Jerry Constitution v1.0
+constitutional_compliance: Tom Constitution v1.0
 agents_covered:
   - adv-selector
   - adv-executor
@@ -67,7 +67,7 @@ START: What is the criticality level?
                  Optional: None
 
 AUTO-ESCALATION CHECKS:
-  - Touches JERRY_CONSTITUTION.md? → Auto-C4 (AE-001)
+  - Touches TOM_CONSTITUTION.md? → Auto-C4 (AE-001)
   - Touches .context/rules/? → Auto-C3 minimum (AE-002)
   - New or modified ADR? → Auto-C3 minimum (AE-003)
   - Modifies baselined ADR? → Auto-C4 (AE-004)
@@ -104,7 +104,7 @@ Use this table to quickly determine the correct criticality level and strategy s
 | Reversible within 1 day? Files ≤10? No API changes? | YES | **C2** | S-007, S-002, S-014 | S-003 (H-16), S-010 |
 | >1 day to reverse? Files >10? API changes? | YES | **C3** | C2 + S-004, S-012, S-013 | S-001, S-003, S-010, S-011 |
 | Touches `.context/rules/`? | YES | **Auto-C3** (AE-002) | C3 strategy set | — |
-| Touches `JERRY_CONSTITUTION.md`? | YES | **Auto-C4** (AE-001) | All 10 strategies | None |
+| Touches `TOM_CONSTITUTION.md`? | YES | **Auto-C4** (AE-001) | All 10 strategies | None |
 | Modifies baselined ADR? | YES | **Auto-C4** (AE-004) | All 10 strategies | None |
 | New or modified ADR? | YES | **Auto-C3** (AE-003) | C3 strategy set | — |
 | Security-relevant code? | YES | **Auto-C3** (AE-005) | C3 strategy set | — |
@@ -435,7 +435,7 @@ Phase 5: Persist Tournament Summary
 ### Example
 
 ```
-User: "Run full C4 tournament on docs/governance/JERRY_CONSTITUTION.md changes"
+User: "Run full C4 tournament on docs/governance/TOM_CONSTITUTION.md changes"
 
 Phase 1: adv-selector → all 10 strategies, C4 confirmed (AE-001)
 
@@ -532,7 +532,7 @@ To extract a specific section:
 **Example (C4 Tournament):**
 
 ```
-User: "Run full C4 tournament on docs/governance/JERRY_CONSTITUTION.md"
+User: "Run full C4 tournament on docs/governance/TOM_CONSTITUTION.md"
 
 Phase 1: adv-selector → identifies all 10 strategies
 Phase 2: adv-executor runs 9 strategies (S-001 through S-013)
@@ -638,6 +638,6 @@ The MAIN CONTEXT (Claude session) orchestrates ALL agent sequences. Agents retur
 
 *Playbook Version: 1.0.0*
 *Skill: adversary*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `.context/rules/quality-enforcement.md`*
 *Created: 2026-02-15*

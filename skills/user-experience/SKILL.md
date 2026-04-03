@@ -46,8 +46,8 @@ activation-keywords:
 # User-Experience Skill
 
 > **Version:** 1.0.0
-> **Framework:** Jerry User-Experience
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom User-Experience
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **SSOT References:** GitHub Issue #138 (Architecture Spec), PROJ-022 PLAN.md, ADR-PROJ007-001 (Agent Definition Format)
 > **Project:** PROJ-022 User Experience Skill | GitHub Issue [#138](https://github.com/geekatron/jerry/issues/138)
 
@@ -421,7 +421,7 @@ Figma is the highest-risk MCP dependency: 4 sub-skills require it, 2 are enhance
 | **Minimal** | ~$46 | + Heuristic Eval, Design Sprint, Lean UX, Inclusive Design, AI-First Design |
 | **Full Enhancement** | ~$145-245 | All 10 with full enhancement MCPs |
 
-### Current Jerry MCP Integration
+### Current Tom MCP Integration
 
 | MCP Tool | Usage | Agents |
 |----------|-------|--------|
@@ -440,7 +440,7 @@ MCP coordination registry documented in `skills/user-experience/rules/mcp-coordi
 
 ### Integration Matrix
 
-| Jerry Skill | Integration Type | Direction | Details |
+| Tom Skill | Integration Type | Direction | Details |
 |-------------|-----------------|-----------|---------|
 | `/problem-solving` | Research support | Upstream | `ps-researcher` provides market research for JTBD competitive job analysis; `ps-analyst` supports Kano survey data interpretation |
 | `/adversary` | Quality enforcement | Applied to outputs | S-014 quality scoring on UX deliverables at wave transitions; full adversarial critique for C2+ artifacts per H-13/H-14 |
@@ -463,7 +463,7 @@ MCP coordination registry documented in `skills/user-experience/rules/mcp-coordi
 
 ### Cross-Sub-Skill Handoff Data
 
-Handoffs use the Jerry handoff protocol (schema specified in `agent-development-standards.md` [Handoff Protocol]; canonical path `docs/schemas/handoff-v2.schema.json`, pending file creation) with UX-specific artifact types:
+Handoffs use the Tom handoff protocol (schema specified in `agent-development-standards.md` [Handoff Protocol]; canonical path `docs/schemas/handoff-v2.schema.json`, pending file creation) with UX-specific artifact types:
 
 | From | To | Handoff Artifact |
 |------|-----|-----------------|
@@ -480,7 +480,7 @@ Handoff schema documented in `skills/user-experience/rules/ux-routing-rules.md` 
 
 ## Constitutional Compliance
 
-All agents adhere to the **Jerry Constitution v1.0**:
+All agents adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -644,7 +644,7 @@ All agents adhere to the **Jerry Constitution v1.0**:
 ---
 
 *Skill Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `.context/rules/quality-enforcement.md` (thresholds), GitHub Issue #138 (spec)*
 *PROJ-022: User Experience Skill*
 *Last Updated: 2026-03-03*

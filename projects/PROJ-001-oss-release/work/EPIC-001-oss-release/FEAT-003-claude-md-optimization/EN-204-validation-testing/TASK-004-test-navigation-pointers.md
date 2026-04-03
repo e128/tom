@@ -73,7 +73,7 @@ Systematically verify that every pointer in the new CLAUDE.md resolves to an act
 | `.claude/rules/` | Directory | `ls -la .claude/rules/` | [ ] |
 | `.context/templates/` | Directory | `ls -la .context/templates/` | [ ] |
 | `docs/knowledge/` | Directory | `ls -la docs/knowledge/` | [ ] |
-| `docs/governance/JERRY_CONSTITUTION.md` | File | `ls docs/governance/` | [ ] |
+| `docs/governance/TOM_CONSTITUTION.md` | File | `ls docs/governance/` | [ ] |
 
 #### Skill References
 

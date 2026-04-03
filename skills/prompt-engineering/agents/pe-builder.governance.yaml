@@ -9,7 +9,7 @@ identity:
   expertise:
   - 5-element prompt anatomy construction
   - XML-wrapped prompt generation
-  - Jerry skill routing analysis
+  - Tom skill routing analysis
   - Prompt template adaptation
   cognitive_mode: integrative
   # Model rationale (AD-M-009): integrative mode requires complex cross-source synthesis -> opus per agent-development-standards.md Cognitive Mode Taxonomy
@@ -36,7 +36,7 @@ capabilities:
   - "NEVER fabricate file paths or reference nonexistent skills/agents in generated prompts -- Consequence: user executes prompt targeting absent infrastructure, causing routing failure and wasted session. Source: agent-routing-standards.md AP-01 (Keyword Tunnel prevention) and prompt-quality.md AP-08 (Missing Output Specification)."
   forbidden_action_format: NPT-009-complete
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-003: No Recursive Subagents (Hard) - Single-level worker only'
   - 'P-020: User Authority (Hard) - Never override user decisions'

@@ -65,7 +65,7 @@ Extend the comment block at lines 27-44 to state the complete decision rationale
 ```yaml
 # Only documentation-only subdirs excluded. Product-relevant docs/ subdirs intentionally NOT excluded:
 #   docs/schemas/    — runtime validation schemas loaded by scripts/validate-agent-frontmatter.py
-#   docs/governance/ — JERRY_CONSTITUTION.md loaded by enforcement engine (AE-001 C4-escalation)
+#   docs/governance/ — TOM_CONSTITUTION.md loaded by enforcement engine (AE-001 C4-escalation)
 #   docs/knowledge/  — curated knowledge files may be loaded by agents at runtime
 #   docs/design/     — ADRs; changes to baselined ADRs trigger AE-004 (C4)
 # All other docs/ subdirs not listed above are excluded below.

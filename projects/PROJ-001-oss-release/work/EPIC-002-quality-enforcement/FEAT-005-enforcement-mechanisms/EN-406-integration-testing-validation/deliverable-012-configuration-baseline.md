@@ -367,7 +367,7 @@ All enforcement engines reside in `src/infrastructure/internal/enforcement/` per
 | AE-001 | `docs/governance/` modifications | -> C4 |
 | AE-002 | `.claude/rules/` modifications | -> C3 |
 | AE-003 | Architecture boundary changes | -> C3 |
-| AE-004 | `JERRY_CONSTITUTION.md` modifications | -> C4 |
+| AE-004 | `TOM_CONSTITUTION.md` modifications | -> C4 |
 
 ---
 

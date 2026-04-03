@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
 
-"""AST CLI command implementations for the jerry ast namespace.
+"""AST CLI command implementations for the tom ast namespace.
 
-Provides the core functions that implement `jerry ast` subcommands:
+Provides the core functions that implement `tom ast` subcommands:
     - ast_parse: Parse a markdown file and output the AST as JSON.
     - ast_render: Roundtrip parse-render a markdown file through mdformat.
     - ast_validate: Validate a markdown file against an optional entity schema.
@@ -22,9 +22,9 @@ Exit codes:
     2 -- Parse error (file not found, unreadable, unknown schema type, etc.)
 
 References:
-    - ST-004: Add jerry ast CLI Commands
+    - ST-004: Add tom ast CLI Commands
     - ST-006: Schema Validation Engine
-    - ST-001: JerryDocument Facade
+    - ST-001: TomDocument Facade
     - BUG-002: Route /ast Skill Through CLI
 """
 
@@ -40,7 +40,7 @@ from markdown_it.token import Token
 from markdown_it.tree import SyntaxTreeNode
 
 from src.domain.markdown_ast import (
-    JerryDocument,
+    TomDocument,
     extract_frontmatter,
     extract_nav_table,
     extract_reinject_directives,
@@ -262,7 +262,7 @@ def _read_file(file_path: str) -> tuple[str | None, int]:
 def ast_parse(file_path: str, json_output: bool = True) -> int:
     """Parse a markdown file and output the AST as JSON.
 
-    Reads the file, parses it with JerryDocument, and prints a JSON object
+    Reads the file, parses it with TomDocument, and prints a JSON object
     containing the file path, the flat token list, and the full AST tree.
 
     Args:
@@ -276,7 +276,7 @@ def ast_parse(file_path: str, json_output: bool = True) -> int:
     if source is None:
         return exit_code
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
 
     output = {
         "file": file_path,
@@ -290,7 +290,7 @@ def ast_parse(file_path: str, json_output: bool = True) -> int:
 def ast_render(file_path: str) -> int:
     """Roundtrip parse-render a markdown file through mdformat.
 
-    Reads the file, parses it with JerryDocument, renders it via mdformat
+    Reads the file, parses it with TomDocument, renders it via mdformat
     normalization, and writes the result to stdout.
 
     Args:
@@ -303,7 +303,7 @@ def ast_render(file_path: str) -> int:
     if source is None:
         return exit_code
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     rendered = doc.render()
     print(rendered, end="")
     return 0
@@ -343,7 +343,7 @@ def ast_validate(file_path: str, schema: str | None = None, nav: bool = False) -
     if source is None:
         return exit_code
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     nav_result = validate_nav_table(doc)
 
     if schema is None:
@@ -421,7 +421,7 @@ def ast_validate(file_path: str, schema: str | None = None, nav: bool = False) -
 def ast_query(file_path: str, selector: str, json_output: bool = True) -> int:
     """Query AST nodes by type and output structured JSON.
 
-    Reads the file, parses it with JerryDocument, queries all nodes matching
+    Reads the file, parses it with TomDocument, queries all nodes matching
     the given selector (node type), and prints a JSON object with the
     selector name, match count, and serialized node list.
 
@@ -438,7 +438,7 @@ def ast_query(file_path: str, selector: str, json_output: bool = True) -> int:
     if source is None:
         return exit_code
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     nodes = doc.query(selector)
 
     output = {
@@ -453,7 +453,7 @@ def ast_query(file_path: str, selector: str, json_output: bool = True) -> int:
 def ast_frontmatter(file_path: str) -> int:
     """Extract blockquote frontmatter fields from a markdown file as JSON.
 
-    Reads the file, parses it with JerryDocument, and prints a JSON object
+    Reads the file, parses it with TomDocument, and prints a JSON object
     mapping frontmatter key strings to value strings.  Prints ``{}`` if no
     frontmatter is found.
 
@@ -467,7 +467,7 @@ def ast_frontmatter(file_path: str) -> int:
     if source is None:
         return exit_code
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     fm = extract_frontmatter(doc)
     print(json.dumps(dict(fm.items()), indent=2))
     return 0
@@ -494,7 +494,7 @@ def ast_modify(file_path: str, key: str, value: str) -> int:
     if source is None:
         return exit_code
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     fm = extract_frontmatter(doc)
 
     try:
@@ -561,7 +561,7 @@ def ast_modify(file_path: str, key: str, value: str) -> int:
 def ast_reinject(file_path: str) -> int:
     """Extract all L2-REINJECT directives from a markdown file as JSON.
 
-    Reads the file, parses it with JerryDocument, and prints a JSON list
+    Reads the file, parses it with TomDocument, and prints a JSON list
     of directive objects.  Each object contains rank, tokens, content, and
     line_number fields.  Prints ``[]`` if no directives are found.
 
@@ -575,7 +575,7 @@ def ast_reinject(file_path: str) -> int:
     if source is None:
         return exit_code
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     directives = extract_reinject_directives(doc)
     output = [
         {
@@ -653,7 +653,7 @@ def ast_sections(file_path: str) -> int:
     if source is None:
         return exit_code
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     result = XmlSectionParser.extract(doc, InputBounds.DEFAULT)
 
     sections_output = [
@@ -695,7 +695,7 @@ def ast_metadata(file_path: str) -> int:
     if source is None:
         return exit_code
 
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     result = HtmlCommentMetadata.extract(doc, InputBounds.DEFAULT)
 
     blocks_output = [

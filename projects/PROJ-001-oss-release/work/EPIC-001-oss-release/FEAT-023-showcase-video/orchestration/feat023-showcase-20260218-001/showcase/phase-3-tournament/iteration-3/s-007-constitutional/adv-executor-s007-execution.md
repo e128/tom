@@ -5,7 +5,7 @@
 **Criticality:** C4
 **Date:** 2026-02-18
 **Reviewer:** adv-executor (S-007)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1 (P-001 through P-043), quality-enforcement.md v1.3.0 (H-01 through H-24), markdown-navigation-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1 (P-001 through P-043), quality-enforcement.md v1.3.0 (H-01 through H-24), markdown-navigation-standards.md
 **Execution ID:** 20260218T-S007-I3
 
 ---
@@ -36,19 +36,19 @@ PARTIAL compliance: 0 Critical findings, 3 Major findings (CF-004 residual scope
 
 | Source | Version | Scope |
 |--------|---------|-------|
-| `docs/governance/JERRY_CONSTITUTION.md` | v1.1 | P-001 through P-043 |
+| `docs/governance/TOM_CONSTITUTION.md` | v1.1 | P-001 through P-043 |
 | `.context/rules/quality-enforcement.md` | v1.3.0 | H-01 through H-24, AE-001 through AE-006, Tier Vocabulary |
 | `.context/rules/markdown-navigation-standards.md` | current | H-23, H-24, NAV-001 through NAV-006 |
 
 ### Deliverable Type Classification
 
-The v3 script is a **document deliverable** (markdown script artifact with production direction). It is NOT code. Applicable rule sets: `markdown-navigation-standards.md`, `quality-enforcement.md`, and `JERRY_CONSTITUTION.md` principles applicable to agent-produced creative/specification documents.
+The v3 script is a **document deliverable** (markdown script artifact with production direction). It is NOT code. Applicable rule sets: `markdown-navigation-standards.md`, `quality-enforcement.md`, and `TOM_CONSTITUTION.md` principles applicable to agent-produced creative/specification documents.
 
 Architecture rules (H-07, H-08, H-09, H-10), coding rules (H-11, H-12), and testing rules (H-20, H-21) do NOT apply to this deliverable type. UV rules (H-05, H-06) do not apply. NASA SE rules (P-040 through P-043) do not apply (not an NSE agent output).
 
 ### Auto-Escalation Check
 
-- AE-001: Does not touch `JERRY_CONSTITUTION.md` -- not triggered.
+- AE-001: Does not touch `TOM_CONSTITUTION.md` -- not triggered.
 - AE-002: Does not touch `.context/rules/` -- not triggered.
 - AE-003/AE-004: Not an ADR -- not triggered.
 - AE-005: Not security-relevant code -- not triggered.
@@ -373,5 +373,5 @@ S-007 execution complete. The following dimensional signals are passed to adv-sc
 
 *Strategy: S-007 Constitutional AI Critique | Execution ID: 20260218T-S007-I3*
 *Deliverable: ps-architect-001-hype-reel-script-v3.md | Criticality: C4 | Iteration: 3*
-*SSOT: `.context/rules/quality-enforcement.md` v1.3.0 | Constitution: `docs/governance/JERRY_CONSTITUTION.md` v1.1*
+*SSOT: `.context/rules/quality-enforcement.md` v1.3.0 | Constitution: `docs/governance/TOM_CONSTITUTION.md` v1.1*
 *Date: 2026-02-18*

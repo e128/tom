@@ -179,7 +179,7 @@ wti_rules_enforced:
   - "WTI-006: Evidence-Based Closure"
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-002: File Persistence (Medium)"
     - "P-003: No Recursive Subagents (Hard)"
@@ -340,7 +340,7 @@ diagram_types:
           EN-002 -->|enables| FEAT-001
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-002: File Persistence (Medium)"
     - "P-003: No Recursive Subagents (Hard)"
@@ -484,7 +484,7 @@ wti_rules_enforced:
   - "WTI-005: Atomic State Updates"
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-002: File Persistence (Medium)"
     - "P-003: No Recursive Subagents (Hard)"

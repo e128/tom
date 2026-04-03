@@ -99,7 +99,7 @@ All iter2 internal consistency gaps are resolved:
 
 4. **Adoption and Retention benchmark conversion.** Lines 530 and 537 now cite Fallback Step 3 with honest disclosure. This is consistent with the Threshold Fallback Methodology section (lines 187-220), which explicitly defines Step 3 as "Set initial target as baseline + 10-15% improvement OR team-consensus estimate when no benchmark is available." The worked examples now correctly apply the methodology they reference.
 
-5. **P-020 constitution path addition.** Line 118 now reads: "When the user explicitly requests all five dimensions (P-020: `docs/governance/JERRY_CONSTITUTION.md`), the analyst MUST comply..." The P-020 reference is consistent with DS-003 (include a dimension when the user explicitly requests it, user authority) and does not conflict with DS-006 (capacity constraint -- the All-Five Override section's note about capacity implications is appropriate).
+5. **P-020 constitution path addition.** Line 118 now reads: "When the user explicitly requests all five dimensions (P-020: `docs/governance/TOM_CONSTITUTION.md`), the analyst MUST comply..." The P-020 reference is consistent with DS-003 (include a dimension when the user explicitly requests it, user authority) and does not conflict with DS-006 (capacity constraint -- the All-Five Override section's note about capacity implications is appropriate).
 
 **Gaps:**
 
@@ -199,7 +199,7 @@ Both iter2 traceability gaps are fully resolved:
 
 1. **Self-review item 9 Rule ID misattribution corrected.** Line 563: "| 9 | Synthesis Judgments Summary lists each AI judgment call | Quality Gate Integration; `skills/user-experience/rules/synthesis-validation.md` | Missing or empty Synthesis Judgments Summary |". The previous SI-006 misattribution is replaced with dual references: (a) "Quality Gate Integration" anchors to the section in this file (lines 463-469) that specifies what the Synthesis Judgments Summary must enumerate (item 4: "The Synthesis Judgments Summary enumerates all significant AI inferences"), and (b) `skills/user-experience/rules/synthesis-validation.md` governs the output format and completeness criteria for this artifact. Both references are accurate and traceable. A reader can now follow the chain: checklist item 9 → Quality Gate Integration (this file) + synthesis-validation.md → specific format and completeness requirements.
 
-2. **P-020 constitution path added.** Line 118: "(P-020: `docs/governance/JERRY_CONSTITUTION.md`)". The All-Five Override section now traces the P-020 user authority principle to its constitutional source. The path is repo-relative and correct. This closes the iter1 and iter2 recommendation to add this citation.
+2. **P-020 constitution path added.** Line 118: "(P-020: `docs/governance/TOM_CONSTITUTION.md`)". The All-Five Override section now traces the P-020 user authority principle to its constitutional source. The path is repo-relative and correct. This closes the iter1 and iter2 recommendation to add this citation.
 
 3. **All prior traceability strengths remain intact:**
    - Systematic rule IDs: DS(6), GD(6), SI(6), MS(8), CR(4), SE(10), DF(4), DL(4), WF(4), MP(12) = 64 rules with prefix-based namespacing.

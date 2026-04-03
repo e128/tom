@@ -50,7 +50,7 @@ class ContextEstimateService:
 
     Orchestrates domain computation, state persistence, and
     compaction detection. Designed as the single entry point
-    for both the ``jerry context estimate`` CLI command and hooks.
+    for both the ``tom context estimate`` CLI command and hooks.
 
     Attributes:
         _computer: Pure domain service for computation.

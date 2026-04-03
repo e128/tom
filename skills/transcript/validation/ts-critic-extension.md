@@ -473,5 +473,5 @@ mindmap_validation:
 ---
 
 *Document Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0 (P-001, P-002, P-022)*
+*Constitutional Compliance: Tom Constitution v1.0 (P-001, P-002, P-022)*
 *Quality Threshold: ps-critic ≥ 0.90*

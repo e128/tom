@@ -5,7 +5,7 @@
 HooksSubagentStopHandler - CLI handler for the SubagentStop hook.
 
 Records sub-agent completion to a lifecycle tracking file so the
-``jerry context estimate`` command can include sub-agent data in its
+``tom context estimate`` command can include sub-agent data in its
 response without parsing all transcript files on every invocation.
 
 Design Principles:
@@ -35,7 +35,7 @@ class HooksSubagentStopHandler:
     """CLI handler for the Claude Code SubagentStop hook.
 
     Records sub-agent completion data to a lifecycle JSON file for
-    consumption by ``jerry context estimate``. Always approves the
+    consumption by ``tom context estimate``. Always approves the
     sub-agent stop (never blocks).
 
     Attributes:
@@ -43,7 +43,7 @@ class HooksSubagentStopHandler:
 
     Example:
         >>> handler = HooksSubagentStopHandler(
-        ...     lifecycle_dir=Path(".jerry/local"),
+        ...     lifecycle_dir=Path(".tom/local"),
         ... )
         >>> exit_code = handler.handle(stdin_json)
     """

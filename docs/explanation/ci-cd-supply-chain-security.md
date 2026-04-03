@@ -1,8 +1,8 @@
-# About the Jerry Framework CI/CD Supply Chain Security Model
+# About the Tom Framework CI/CD Supply Chain Security Model
 
 > Understanding why the CI/CD pipeline is hardened the way it is -- the threat model, the trade-offs, and the defense-in-depth reasoning behind SHA pinning, lockfile freezing, and workflow loop prevention.
 
-> **Scope:** This document explains the security rationale behind the Jerry Framework's CI/CD supply chain controls. It does not cover how to update a pinned action SHA, how to configure Dependabot, or the exact syntax of each workflow file. For those details, see the companion reference at `docs/reference/ci-cd-pipeline-security.md`.
+> **Scope:** This document explains the security rationale behind the Tom Framework's CI/CD supply chain controls. It does not cover how to update a pinned action SHA, how to configure Dependabot, or the exact syntax of each workflow file. For those details, see the companion reference at `docs/reference/ci-cd-pipeline-security.md`.
 
 ## Document Sections
 
@@ -15,7 +15,7 @@
 | [The Infinite Loop Problem](#the-infinite-loop-problem) | Why the skip-bump guard exists and why identity matters |
 | [Defense in Depth](#defense-in-depth) | How the controls layer together |
 | [The BUG-003 Story](#the-bug-003-story) | How debugging one failure exposed systemic infrastructure debt |
-| [Connections](#connections) | How this topic relates to other parts of the Jerry Framework |
+| [Connections](#connections) | How this topic relates to other parts of the Tom Framework |
 | [Alternative Perspectives](#alternative-perspectives) | Trade-offs and other valid approaches |
 | [Related](#related) | Companion documentation in other Diataxis quadrants |
 
@@ -25,7 +25,7 @@
 
 A CI/CD pipeline is trusted infrastructure. It runs with elevated permissions -- pushing to protected branches, creating releases, uploading artifacts, accessing secrets. When developers think about security, they tend to focus on the code they write: input validation, authentication, authorization. The pipeline that builds and deploys that code receives far less scrutiny, despite the fact that a compromise at the build layer can inject malicious code into every artifact the pipeline produces.
 
-The Jerry Framework's CI/CD security posture was not designed proactively from day one. It emerged from a specific incident -- BUG-003, a version-bump workflow failure caused by a dirty lockfile -- that, once investigated, revealed a series of supply chain gaps spanning five workflow files. The controls documented here are the product of that investigation: a DevSecOps security review, a red-team attack surface analysis, and the subsequent EN-001 hardening enabler. Understanding this origin matters because it explains why these controls exist as a coherent system rather than as isolated configuration choices.
+The Tom Framework's CI/CD security posture was not designed proactively from day one. It emerged from a specific incident -- BUG-003, a version-bump workflow failure caused by a dirty lockfile -- that, once investigated, revealed a series of supply chain gaps spanning five workflow files. The controls documented here are the product of that investigation: a DevSecOps security review, a red-team attack surface analysis, and the subsequent EN-001 hardening enabler. Understanding this origin matters because it explains why these controls exist as a coherent system rather than as isolated configuration choices.
 
 ---
 
@@ -39,7 +39,7 @@ The second boundary is **tool binaries** -- the executables the pipeline downloa
 
 The third boundary is **dependency resolution** -- the transitive closure of Python packages that `uv sync` or `pip install` resolves. Dependency confusion attacks, typosquatting, and re-upload attacks all target this boundary. A package name that looks correct (`reuqests` instead of `requests`) or a legitimate-looking version that has been re-uploaded with malicious content can silently enter the dependency graph during resolution.
 
-These three boundaries are independent. Hardening one does not protect the others. A SHA-pinned GitHub Action still downloads an unpinned `uv` binary if the action's `version` input is set to `"latest"`. A locked dependency graph still executes inside an action whose code has been silently replaced via a tag force-push. This independence is why defense in depth -- layering controls across all three boundaries -- is the governing design principle for the Jerry pipeline.
+These three boundaries are independent. Hardening one does not protect the others. A SHA-pinned GitHub Action still downloads an unpinned `uv` binary if the action's `version` input is set to `"latest"`. A locked dependency graph still executes inside an action whose code has been silently replaced via a tag force-push. This independence is why defense in depth -- layering controls across all three boundaries -- is the governing design principle for the Tom pipeline.
 
 ---
 
@@ -51,9 +51,9 @@ This is not a theoretical risk. The `codecov/codecov-action` incident of 2021 de
 
 SHA references eliminate this class of attack entirely. A commit SHA is a content-addressed hash -- it resolves to exactly one commit, and that resolution is cryptographically immutable. Writing `uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8` means the pipeline will always fetch that exact commit. If the commit is deleted from the upstream repository, the workflow fails rather than silently executing different code. The failure mode is loud and debuggable; the tag-based failure mode is silent and undetectable.
 
-The trade-off is readability and maintenance burden. A 40-character hex string conveys no version information to a human reader. The Jerry convention addresses this with inline comments -- `# v5.0.0` -- that preserve human readability without affecting the runtime reference. The maintenance burden -- tracking when new versions of pinned actions become available -- is handled by Dependabot, which monitors the `github-actions` ecosystem weekly and opens pull requests that update both the SHA and the version comment. This division of labor is deliberate: the pipeline gets cryptographic immutability; Dependabot absorbs the manual tracking cost.
+The trade-off is readability and maintenance burden. A 40-character hex string conveys no version information to a human reader. The Tom convention addresses this with inline comments -- `# v5.0.0` -- that preserve human readability without affecting the runtime reference. The maintenance burden -- tracking when new versions of pinned actions become available -- is handled by Dependabot, which monitors the `github-actions` ecosystem weekly and opens pull requests that update both the SHA and the version comment. This division of labor is deliberate: the pipeline gets cryptographic immutability; Dependabot absorbs the manual tracking cost.
 
-There is a subtlety here that is easy to miss. SHA-pinning the `astral-sh/setup-uv` action protects the action's code, but the action itself downloads a `uv` binary whose version is specified by a separate `version` input. When that input was `"latest"`, the action was immutable but the binary it installed was not. The Jerry pipeline pins `uv` to `"0.10.9"` precisely because this second-order trust boundary exists. The EN-001 security review identified this gap as HIGH severity because the `uv` binary runs in the version-bump job alongside the `VERSION_BUMP_PAT` secret -- a malicious binary at that execution point could exfiltrate the most privileged credential in the repository.
+There is a subtlety here that is easy to miss. SHA-pinning the `astral-sh/setup-uv` action protects the action's code, but the action itself downloads a `uv` binary whose version is specified by a separate `version` input. When that input was `"latest"`, the action was immutable but the binary it installed was not. The Tom pipeline pins `uv` to `"0.10.9"` precisely because this second-order trust boundary exists. The EN-001 security review identified this gap as HIGH severity because the `uv` binary runs in the version-bump job alongside the `VERSION_BUMP_PAT` secret -- a malicious binary at that execution point could exfiltrate the most privileged credential in the repository.
 
 ---
 
@@ -91,7 +91,7 @@ There is also an input validation concern. The `workflow_dispatch` trigger accep
 
 ## Defense in Depth
 
-No single control protects against all supply chain attack vectors. The Jerry pipeline's security posture is the product of four controls that address different boundaries, and the value of the model lies in how they complement each other.
+No single control protects against all supply chain attack vectors. The Tom pipeline's security posture is the product of four controls that address different boundaries, and the value of the model lies in how they complement each other.
 
 **SHA pinning** protects the action code boundary. It ensures that the GitHub Actions executed by the pipeline are the exact code that was reviewed when the SHA was committed. It does not protect against compromised tool binaries or dependencies -- those are separate trust boundaries.
 
@@ -130,7 +130,7 @@ The EN-001 enabler that resulted from this investigation addressed all five find
 
 ## Connections
 
-This topic connects to several other areas of the Jerry Framework:
+This topic connects to several other areas of the Tom Framework:
 
 - **H-05 (UV-only Python environment):** The CI pipeline's use of `uv sync --frozen` is the CI-side enforcement of the same principle that H-05 mandates for local development. H-05 prohibits direct `python` and `pip` invocations; the pipeline enforces this by using `uv run` for all project Python execution. The three CI jobs that still use `pip install` (lint, type-check, security) operate in the runner's system Python environment, outside the project's managed environment. This is an accepted architectural trade-off: these tools are standalone linters and scanners that do not interact with the project's `uv.lock` or virtual environment. The EN-001 security review noted this pattern and accepted it as the current design, with version pinning as the compensating control.
 
@@ -144,13 +144,13 @@ This topic connects to several other areas of the Jerry Framework:
 
 The approach described here is not the only valid one, and it carries real trade-offs.
 
-SHA pinning adds visual noise to workflow files. A line like `uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8` is harder to read than `uses: actions/checkout@v5`. For projects with fewer security concerns -- small personal projects, internal tools with no external exposure -- tag-based references may be entirely appropriate. The Jerry Framework chose SHA pinning because its pipeline holds a PAT with branch-protection bypass privileges, which raises the stakes of a compromise. Not every project has this risk profile.
+SHA pinning adds visual noise to workflow files. A line like `uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8` is harder to read than `uses: actions/checkout@v5`. For projects with fewer security concerns -- small personal projects, internal tools with no external exposure -- tag-based references may be entirely appropriate. The Tom Framework chose SHA pinning because its pipeline holds a PAT with branch-protection bypass privileges, which raises the stakes of a compromise. Not every project has this risk profile.
 
-An alternative to `uv sync --frozen` is to generate the lockfile in CI and validate it against the committed version. This approach detects drift without preventing resolution, which can be useful when the development team works across multiple Python versions and wants CI to surface lockfile inconsistencies. The Jerry team chose `--frozen` because the priority was preventing mutable resolution in CI, not detecting it -- but the alternative is reasonable for teams with different priorities.
+An alternative to `uv sync --frozen` is to generate the lockfile in CI and validate it against the committed version. This approach detects drift without preventing resolution, which can be useful when the development team works across multiple Python versions and wants CI to surface lockfile inconsistencies. The Tom team chose `--frozen` because the priority was preventing mutable resolution in CI, not detecting it -- but the alternative is reasonable for teams with different priorities.
 
 The `bump-my-version` installation via `uv tool install` with a version pin but without hash verification is an acknowledged gap. The EN-001 security review flagged it as MEDIUM severity. The trade-off is isolation: `uv tool install` keeps `bump-my-version` out of the project's virtual environment, which avoids dependency conflicts. Adding it to `pyproject.toml` and `uv.lock` would provide hash verification but would mix a CI-only tool into the project's dependency graph. The current approach accepts the residual risk of PyPI index integrity for the benefit of environment isolation.
 
-There is also a broader question about how much security investment is appropriate for a given project. The Jerry Framework is an open-source Claude Code plugin with a small team. Its threat model is not equivalent to a financial services platform or a package registry. However, the pipeline holds secrets (`VERSION_BUMP_PAT`) and publishes artifacts (release archives) that other teams consume. The security posture is calibrated to that specific risk profile -- not maximal, but proportionate to the trust boundaries the pipeline crosses.
+There is also a broader question about how much security investment is appropriate for a given project. The Tom Framework is an open-source Claude Code plugin with a small team. Its threat model is not equivalent to a financial services platform or a package registry. However, the pipeline holds secrets (`VERSION_BUMP_PAT`) and publishes artifacts (release archives) that other teams consume. The security posture is calibrated to that specific risk profile -- not maximal, but proportionate to the trust boundaries the pipeline crosses.
 
 ---
 

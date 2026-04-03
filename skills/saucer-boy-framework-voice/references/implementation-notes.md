@@ -59,7 +59,7 @@ Highest-risk feature from a persona perspective -- most potential to cross from 
 
 - Docstring comments in quality enforcement code (S-014 rubric calculation)
 - CLI help text for the /adversary skill
-- The JERRY_CONSTITUTION.md preamble
+- The TOM_CONSTITUTION.md preamble
 - Hidden `--saucer-boy` flag that enables maximum personality mode
 - The Vail lifetime ban as a reference when the framework rejects with extreme prejudice
 - The 8th-grade essay as a reference in onboarding text

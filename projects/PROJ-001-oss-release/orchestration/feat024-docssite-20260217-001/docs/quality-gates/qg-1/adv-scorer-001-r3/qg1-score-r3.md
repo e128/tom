@@ -108,7 +108,7 @@
 - Line 830: `[Apache License 2.0](../LICENSE)` -> `[Apache License 2.0](https://github.com/geekatron/jerry/blob/main/LICENSE)` -- CONFIRMED
 
 **docs/schemas/SCHEMA_VERSIONING.md (1 link fixed):**
-- Line 278: `[Jerry Constitution P-002](../../docs/governance/JERRY_CONSTITUTION.md)` -> `[Jerry Constitution P-002](../governance/JERRY_CONSTITUTION.md)` -- CONFIRMED (docs-site-relative, verified by build)
+- Line 278: `[Jerry Constitution P-002](../../docs/governance/TOM_CONSTITUTION.md)` -> `[Jerry Constitution P-002](../governance/TOM_CONSTITUTION.md)` -- CONFIRMED (docs-site-relative, verified by build)
 
 **2. exclude_docs added to mkdocs.yml (lines 41-53):**
 
@@ -134,7 +134,7 @@ This exclusion is critical: the INTERNAL directories still contain `../../` rela
 
 **4. P-002 links in playbooks/orchestration.md and playbooks/problem-solving.md:**
 
-The `../governance/JERRY_CONSTITUTION.md#p-002-file-persistence` links in problem-solving.md:217 and orchestration.md:152,248 are docs-site-relative links that resolve correctly within the MkDocs build (from `playbooks/` up to root then into `governance/`). Since `governance/JERRY_CONSTITUTION.md` is included in the nav, these are valid internal links. The build passing strict mode confirms resolution.
+The `../governance/TOM_CONSTITUTION.md#p-002-file-persistence` links in problem-solving.md:217 and orchestration.md:152,248 are docs-site-relative links that resolve correctly within the MkDocs build (from `playbooks/` up to root then into `governance/`). Since `governance/TOM_CONSTITUTION.md` is included in the nav, these are valid internal links. The build passing strict mode confirms resolution.
 
 **5. All other deliverables: UNCHANGED from iteration 3.**
 
@@ -199,8 +199,8 @@ The `../governance/JERRY_CONSTITUTION.md#p-002-file-persistence` links in proble
 **Strengths (evidence for higher score):**
 
 - **Link consistency across nav files:** All 5 fixed files now use a consistent pattern for external references: `https://github.com/geekatron/jerry/blob/main/{path}`. This is uniform across problem-solving.md, orchestration.md, transcript.md, getting-started.md, and INSTALLATION.md. No file uses a different convention.
-- **Internal docs-site-relative links are consistent:** The `../governance/JERRY_CONSTITUTION.md#p-002-file-persistence` links in problem-solving.md and orchestration.md use the correct docs-site-relative pattern for files that ARE in the nav. The SCHEMA_VERSIONING.md P-002 link uses `../governance/JERRY_CONSTITUTION.md` which also resolves correctly. Build passing strict mode confirms all internal cross-references resolve.
-- **exclude_docs is consistent with the content audit classification:** Every directory/file listed in `exclude_docs` (mkdocs.yml lines 41-53) corresponds to a directory/file classified as INTERNAL or DEFERRED in the content audit. No PUBLIC file is excluded. No INTERNAL file is left un-excluded (except governance/JERRY_CONSTITUTION.md which is PUBLIC, and schemas/SCHEMA_VERSIONING.md and SESSION_CONTEXT_GUIDE.md which are PUBLIC).
+- **Internal docs-site-relative links are consistent:** The `../governance/TOM_CONSTITUTION.md#p-002-file-persistence` links in problem-solving.md and orchestration.md use the correct docs-site-relative pattern for files that ARE in the nav. The SCHEMA_VERSIONING.md P-002 link uses `../governance/TOM_CONSTITUTION.md` which also resolves correctly. Build passing strict mode confirms all internal cross-references resolve.
+- **exclude_docs is consistent with the content audit classification:** Every directory/file listed in `exclude_docs` (mkdocs.yml lines 41-53) corresponds to a directory/file classified as INTERNAL or DEFERRED in the content audit. No PUBLIC file is excluded. No INTERNAL file is left un-excluded (except governance/TOM_CONSTITUTION.md which is PUBLIC, and schemas/SCHEMA_VERSIONING.md and SESSION_CONTEXT_GUIDE.md which are PUBLIC).
 - All iteration 2 consistency fixes remain intact: checkout@v5, mkdocs-material==9.6.7 pinned, concurrency group, ADR count at 7, site_author/copyright.
 - mkdocs.yml nav continues to match content audit PUBLIC classification exactly (13 files, 4 sections).
 - CNAME matches site_url. Phase 2B validation table accurately describes docs.yml.

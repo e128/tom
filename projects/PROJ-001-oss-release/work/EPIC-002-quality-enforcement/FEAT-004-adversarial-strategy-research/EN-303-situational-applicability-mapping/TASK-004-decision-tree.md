@@ -95,7 +95,7 @@ These rules fire BEFORE tree traversal and may override the initial criticality 
 
 | Rule | Condition | Effect | Source |
 |------|-----------|--------|--------|
-| **AE-001** | Artifact modifies `docs/governance/JERRY_CONSTITUTION.md` | Escalate to C3 minimum (if initially C1 or C2) | FR-011 |
+| **AE-001** | Artifact modifies `docs/governance/TOM_CONSTITUTION.md` | Escalate to C3 minimum (if initially C1 or C2) | FR-011 |
 | **AE-002** | Artifact modifies any file in `.claude/rules/` | Escalate to C3 minimum (if initially C1 or C2) | FR-011 |
 | **AE-003** | Artifact is a new or modified ADR | Escalate to C3 minimum | TASK-001 Criticality Determination Guidelines |
 | **AE-004** | Artifact modifies existing baselined ADR | Escalate to C4 | TASK-001 Criticality Determination Guidelines |
@@ -104,7 +104,7 @@ These rules fire BEFORE tree traversal and may override the initial criticality 
 
 **Processing order:** Apply AE-001 through AE-005 first (criticality overrides), then AE-006 (human escalation).
 
-**Precedence Rule (PR-001): Auto-escalation overrides phase downgrade.** If criticality was elevated by AE-001 through AE-005, phase modifiers SHALL NOT reduce the criticality below the auto-escalated level. For example: if AE-002 escalates a C1 artifact to C3 (because it modifies `.claude/rules/`), and the phase is PH-EXPLORE, the PH-EXPLORE downgrade rule ("downgrade to C2") does NOT apply. The artifact remains at C3 minimum. This ensures that governance protection provided by auto-escalation is never undermined by phase-based convenience downgrades. The rationale is that auto-escalation rules encode hard governance constraints (FR-011, JERRY_CONSTITUTION), while phase modifiers encode soft workflow optimization preferences.
+**Precedence Rule (PR-001): Auto-escalation overrides phase downgrade.** If criticality was elevated by AE-001 through AE-005, phase modifiers SHALL NOT reduce the criticality below the auto-escalated level. For example: if AE-002 escalates a C1 artifact to C3 (because it modifies `.claude/rules/`), and the phase is PH-EXPLORE, the PH-EXPLORE downgrade rule ("downgrade to C2") does NOT apply. The artifact remains at C3 minimum. This ensures that governance protection provided by auto-escalation is never undermined by phase-based convenience downgrades. The rationale is that auto-escalation rules encode hard governance constraints (FR-011, TOM_CONSTITUTION), while phase modifiers encode soft workflow optimization preferences.
 
 ### ENF-MIN Override Rules
 
@@ -650,7 +650,7 @@ No dead-end paths exist. Every terminal node produces a strategy recommendation 
 | 2 | EN-303 TASK-001 -- FEAT-004:EN-303:TASK-001 | Context taxonomy: 8 dimensions with codes and values |
 | 3 | EN-303 TASK-003 -- FEAT-004:EN-303:TASK-003 | Per-strategy applicability profiles: when to use, when to avoid, enforcement mapping, criticality mapping |
 | 4 | Barrier-1 ENF-to-ADV Handoff -- EPIC002-CROSSPOLL-B1-ENF-TO-ADV | 5-Layer enforcement architecture, platform constraints, defense-in-depth compensation chain, 4 RED systemic risks |
-| 5 | Jerry Constitution -- docs/governance/JERRY_CONSTITUTION.md | P-003 (No Recursive Subagents), P-020 (User Authority), P-022 (No Deception) |
+| 5 | Jerry Constitution -- docs/governance/TOM_CONSTITUTION.md | P-003 (No Recursive Subagents), P-020 (User Authority), P-022 (No Deception) |
 
 ---
 

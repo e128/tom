@@ -378,7 +378,7 @@ def create_query_dispatcher() -> QueryDispatcher:
     environment = OsEnvironmentAdapter()
     session_repository = get_session_repository()
 
-    # EN-001: Create local context reader for .jerry/local/context.toml
+    # EN-001: Create local context reader for .tom/local/context.toml
     # The adapter reads from CLAUDE_PROJECT_DIR (or cwd) for local context
     projects_dir = get_projects_directory()
     base_path = Path(projects_dir).parent  # Parent of projects/ is the workspace root
@@ -524,7 +524,7 @@ def create_hooks_handlers() -> dict[str, Any]:
         Dictionary mapping hook command names to handler instances.
 
     References:
-        - EN-006: jerry hooks CLI Command Namespace
+        - EN-006: tom hooks CLI Command Namespace
         - PROJ-004: Context Resilience
     """
     from pathlib import Path
@@ -603,7 +603,7 @@ def create_hooks_handlers() -> dict[str, Any]:
     transcript_reader = JsonlTranscriptReader()
     config_adapter = LayeredConfigAdapter(
         env_prefix="JERRY_",
-        root_config_path=project_root / ".jerry" / "config.toml",
+        root_config_path=project_root / ".tom" / "config.toml",
         defaults={
             # NOTE: context_window_tokens is intentionally NOT in defaults.
             # The adapter must distinguish "user explicitly configured" from
@@ -623,7 +623,7 @@ def create_hooks_handlers() -> dict[str, Any]:
     )
 
     # Checkpoint services
-    checkpoint_dir = project_root / ".jerry" / "checkpoints"
+    checkpoint_dir = project_root / ".tom" / "checkpoints"
     checkpoint_repository = FilesystemCheckpointRepository(
         checkpoint_dir=checkpoint_dir,
         file_adapter=file_adapter,
@@ -709,7 +709,7 @@ def create_context_estimate_handler() -> Any:
         ContextEstimateHandler ready to process stdin JSON.
 
     References:
-        - EN-012: jerry context estimate CLI Command
+        - EN-012: tom context estimate CLI Command
         - EN-013: Bootstrap Wiring + Config Integration
     """
     from src.context_monitoring.application.services.context_estimate_service import (

@@ -18,10 +18,10 @@ from pathlib import Path
 def test_bootstrap_excludes_guides_directory(tmp_path: Path) -> None:
     """Verify .context/guides/ is NOT synced to .claude/guides/ after bootstrap.
 
-    This test creates a minimal Jerry-like structure, runs the bootstrap script,
+    This test creates a minimal Tom-like structure, runs the bootstrap script,
     and verifies that guides are excluded from the sync while rules are included.
     """
-    # Arrange: Create minimal Jerry project structure
+    # Arrange: Create minimal Tom project structure
     context_dir = tmp_path / ".context"
     context_dir.mkdir()
 
@@ -80,7 +80,7 @@ def test_bootstrap_check_reports_no_guides_drift(tmp_path: Path) -> None:
     Since guides are intentionally excluded, --check should not flag their
     absence as a problem.
     """
-    # Arrange: Create minimal Jerry structure (after bootstrap)
+    # Arrange: Create minimal Tom structure (after bootstrap)
     context_dir = tmp_path / ".context"
     context_dir.mkdir()
 

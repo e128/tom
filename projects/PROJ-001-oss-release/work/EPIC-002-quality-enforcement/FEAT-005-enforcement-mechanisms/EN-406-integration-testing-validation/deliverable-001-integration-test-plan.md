@@ -185,7 +185,7 @@ L3 (Active Enforcement)
 | TC-HOOK-006 | PreToolUse | Valid write to allowed path | Write to `src/domain/` | Action: approve | Test |
 | TC-HOOK-007 | PreToolUse | Import boundary violation | Write with `from src.infrastructure` in domain file | Action: block, V-038 violation | Test |
 | TC-HOOK-008 | PreToolUse | One-class-per-file violation | Write with 2 public classes | Action: block, V-041 violation | Test |
-| TC-HOOK-009 | PreToolUse | Governance escalation | Write to JERRY_CONSTITUTION.md | Criticality escalated to C4 | Test |
+| TC-HOOK-009 | PreToolUse | Governance escalation | Write to TOM_CONSTITUTION.md | Criticality escalated to C4 | Test |
 | TC-HOOK-010 | PreToolUse | Phase execution order | Any tool use | Phases 1-5 execute sequentially | Inspection |
 | TC-HOOK-011 | PreToolUse | Performance budget | Any tool use | Total < 87ms | Test |
 | TC-HOOK-012 | PreToolUse | Error resilience | Invalid tool input | Fail-open, approve with warning (REQ-403-070) | Test |

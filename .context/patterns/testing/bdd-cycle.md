@@ -318,13 +318,13 @@ def test_work_item_cannot_be_completed_when_already_done(): ...
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Follow strict RED → GREEN → REFACTOR order. Never skip steps.
+> **Tom Decision**: Follow strict RED → GREEN → REFACTOR order. Never skip steps.
 
-> **Jerry Decision**: Test names use `test_{scenario}_when_{condition}_then_{expected}` format.
+> **Tom Decision**: Test names use `test_{scenario}_when_{condition}_then_{expected}` format.
 
-> **Jerry Decision**: Each test has an explanatory docstring.
+> **Tom Decision**: Each test has an explanatory docstring.
 
 ---
 

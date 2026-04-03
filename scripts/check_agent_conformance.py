@@ -4,7 +4,7 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Jerry Framework - Agent Template Conformance Checker
+Tom Framework - Agent Template Conformance Checker
 
 This script validates that agent files conform to their respective templates.
 It checks for required YAML frontmatter sections and reports deviations.

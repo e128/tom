@@ -1,6 +1,6 @@
 # Strategy Selection & Enforcement (ADRs)
 
-> Two architecture decision records documenting the selection of Jerry's 10 adversarial strategies and the design of its 5-layer enforcement architecture — both with full evidence trails, sensitivity analysis, and user ratification.
+> Two architecture decision records documenting the selection of Tom's 10 adversarial strategies and the design of its 5-layer enforcement architecture — both with full evidence trails, sensitivity analysis, and user ratification.
 
 ---
 
@@ -16,7 +16,7 @@
 
 ## ADR-EPIC002-001: Selection of 10 Adversarial Strategies
 
-The formal architecture decision record for selecting Jerry's adversarial strategy portfolio. Ratified by the user on 2026-02-13 per P-020 (User Authority), with a directive to revisit cross-model LLM involvement in a future epic.
+The formal architecture decision record for selecting Tom's adversarial strategy portfolio. Ratified by the user on 2026-02-13 per P-020 (User Authority), with a directive to revisit cross-model LLM involvement in a future epic.
 
 ??? note "Methodology"
     The selection followed a 4-task evidence pipeline:
@@ -55,7 +55,7 @@ The formal architecture decision record for selecting Jerry's adversarial strate
 
 ## ADR-EPIC002-002: Enforcement Vector Prioritization
 
-The companion ADR designing Jerry's 5-layer enforcement architecture to address the fundamental problem: rules loaded at session start degrade as context fills, with effectiveness dropping to 40-60% at 50K+ tokens.
+The companion ADR designing Tom's 5-layer enforcement architecture to address the fundamental problem: rules loaded at session start degrade as context fills, with effectiveness dropping to 40-60% at 50K+ tokens.
 
 ??? note "Methodology"
     The decision was informed by a comprehensive evaluation of **62 enforcement vectors** across 7 families, cataloged in EN-401. Five user-confirmed priorities governed the selection:

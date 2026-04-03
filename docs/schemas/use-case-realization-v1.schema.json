@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry-framework.dev/schemas/use-case-realization/v1.0.0",
-  "title": "Jerry Use Case Realization Schema",
+  "$id": "https://tom-framework.dev/schemas/use-case-realization/v1.0.0",
+  "title": "Tom Use Case Realization Schema",
   "description": "Validates use case artifact YAML frontmatter produced by uc-author and uc-slicer agents. Implements Cockburn's 12-step use case structure with Jacobson UC 2.0 slice extensions. Source: skills/use-case/rules/use-case-writing-rules.md, skills/use-case/SKILL.md.",
   "type": "object",
   "required": [

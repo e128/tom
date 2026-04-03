@@ -22,7 +22,7 @@ The Event Collection pattern manages how aggregates accumulate and publish domai
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Core Mechanism
 
@@ -237,13 +237,13 @@ def test_events_accumulate_across_operations():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Events are collected, not immediately published. This allows the handler to control the publish timing and handle failures gracefully.
+> **Tom Decision**: Events are collected, not immediately published. This allows the handler to control the publish timing and handle failures gracefully.
 
-> **Jerry Decision**: `collect_events()` is called once per save operation. The handler is responsible for event publication.
+> **Tom Decision**: `collect_events()` is called once per save operation. The handler is responsible for event publication.
 
-> **Jerry Decision**: For critical flows, use the outbox pattern to ensure events are eventually published even if the publisher fails.
+> **Tom Decision**: For critical flows, use the outbox pattern to ensure events are eventually published even if the publisher fails.
 
 ---
 

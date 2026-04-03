@@ -27,7 +27,7 @@
 |-----------|--------|-------|----------|-----------------|
 | Completeness | 0.20 | 0.98 | 0.196 | All required sections present; comprehensive decomposition covering all PORT-001 findings |
 | Internal Consistency | 0.20 | 1.00 | 0.200 | Perfect alignment across all three files; no contradictions in entity counts, statuses, or relationships |
-| Methodological Rigor | 0.20 | 0.98 | 0.196 | Follows Jerry worktracker standards exactly; proper hierarchy, naming, frontmatter |
+| Methodological Rigor | 0.20 | 0.98 | 0.196 | Follows Tom worktracker standards exactly; proper hierarchy, naming, frontmatter |
 | Evidence Quality | 0.15 | 0.98 | 0.147 | All bugs traced to PORT-001 source findings; GitHub issues linked; source artifacts documented |
 | Actionability | 0.15 | 0.95 | 0.143 | Clear acceptance criteria and bug inventory; minor gap: no explicit completion tracking mechanism |
 | Traceability | 0.10 | 0.98 | 0.098 | Full bidirectional links: GitHub issues, PORT-001 findings, parent-child relationships |
@@ -48,7 +48,7 @@
 
 **Gaps:**
 - Navigation table in FEAT-017-001.md uses "Children Stories/Enablers" but should be "Children Stories/Bugs" (the feature contains bugs, not enablers)
-- Minor: No explicit "Risks" or "Assumptions" section in EPIC-017-001 (common SAFe practice, but not strictly required by Jerry worktracker standards)
+- Minor: No explicit "Risks" or "Assumptions" section in EPIC-017-001 (common SAFe practice, but not strictly required by Tom worktracker standards)
 
 **Improvement Path:**
 - Correct navigation table entry in FEAT-017-001.md from "Children Stories/Enablers" to "Children Stories/Bugs"
@@ -76,7 +76,7 @@ No action required.
 ### Methodological Rigor (0.98/1.00)
 
 **Evidence:**
-- Follows Jerry worktracker directory structure exactly: `projects/PROJ-017-portability/work/EPIC-017-001-platform-portability/FEAT-017-001-shell-command-portability/`
+- Follows Tom worktracker directory structure exactly: `projects/PROJ-017-portability/work/EPIC-017-001-platform-portability/FEAT-017-001-shell-command-portability/`
 - Frontmatter format correct: blockquote style with key-value pairs
 - Naming convention correct: `{EntityId}-{slug}` pattern applied to all directories
 - Navigation tables present in all three files per H-23
@@ -175,4 +175,4 @@ No action required.
 
 **Calibration Note:** The 0.97 composite score reflects genuinely exceptional quality: complete coverage of all PORT-001 findings, perfect internal consistency, full GitHub Issue parity per H-32, proper worktracker methodology per `/worktracker` skill standards, and comprehensive traceability. The four improvement recommendations are polish-level enhancements, not gap closures. This deliverable sets a high bar for worktracker decomposition quality.
 
-**Verdict Rationale:** Score (0.97) exceeds C3 threshold (0.95) with exceptional evidence across all dimensions. The weakest dimension (Actionability at 0.95) still meets the threshold independently. No Critical findings present. The deliverable demonstrates complete compliance with Jerry worktracker standards (H-23, H-32) and PORT-001 source analysis integration. PASS verdict is justified.
+**Verdict Rationale:** Score (0.97) exceeds C3 threshold (0.95) with exceptional evidence across all dimensions. The weakest dimension (Actionability at 0.95) still meets the threshold independently. No Critical findings present. The deliverable demonstrates complete compliance with Tom worktracker standards (H-23, H-32) and PORT-001 source analysis integration. PASS verdict is justified.

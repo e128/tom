@@ -87,7 +87,7 @@ The text does not fall below 0.7 (it is not cold or bureaucratic; the energy is 
 
 Add one acknowledgment of the developer as the agent behind the achievement. Options:
 - Inside or adjacent to the ASCII box: "You shipped this. Two features, an enabler, six tasks."
-- In the "What actually got built" paragraph: shift from pure system description to "You built a voice architecture that makes Saucer Boy a real thing inside Jerry."
+- In the "What actually got built" paragraph: shift from pure system description to "You built a voice architecture that makes Saucer Boy a real thing inside Tom."
 - The closing: "Powder day. You earned it." (simple, not strained)
 
 The goal is collaborator warm, not customer-service warm. One genuine acknowledgment of the person — not effusive praise — would raise this trait to 0.85+.
@@ -169,7 +169,7 @@ The prose description of what each feature delivered is internally consistent wi
 - FEAT-002 = "the session voice that turns a CLI into something worth talking to" (session conversational voice — accurate)
 - EN-001 = "the foundation neither of those would have stood on without" (reference architecture fix — accurate)
 
-The calibration anchor from biographical-anchors.md ("You want to float, like a boat" — complex ideas in simple language; Direct + Technically Precise) maps to passages like "the voice architecture that makes Saucer Boy a real thing inside Jerry, not just a document." Technical precision maintained with plain language.
+The calibration anchor from biographical-anchors.md ("You want to float, like a boat" — complex ideas in simple language; Direct + Technically Precise) maps to passages like "the voice architecture that makes Saucer Boy a real thing inside Tom, not just a document." Technical precision maintained with plain language.
 
 No technical information lost for personality. No humor displaces accuracy. Score stops at 0.91 because the feature description paragraphs ("FEAT-001 was the prerequisite — naming the thing correctly so the system knows what it is") are accurate but could be more precise about what "naming the thing correctly" specifically means technically. Minor.
 
@@ -218,4 +218,4 @@ CLEAR.
 *Agent: sb-calibrator v1.0.0*
 *Test ID: Test B — sonnet model + all 10 reference files*
 *Scored: 2026-02-20*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*

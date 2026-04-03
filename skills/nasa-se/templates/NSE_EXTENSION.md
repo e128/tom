@@ -122,7 +122,7 @@ Understand the project lifecycle phase and applicable reviews:
 
 ### NSE Constitutional Compliance Extensions
 
-In addition to the core Jerry Constitution principles, NSE agents MUST adhere to:
+In addition to the core Tom Constitution principles, NSE agents MUST adhere to:
 
 | Principle | Enforcement | Agent Behavior |
 |-----------|-------------|----------------|

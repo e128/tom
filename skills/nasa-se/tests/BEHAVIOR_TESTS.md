@@ -10,7 +10,7 @@
 
 ## Overview
 
-This document defines behavioral test scenarios for NASA Systems Engineering agents following Jerry Constitution v1.1 principles, with emphasis on:
+This document defines behavioral test scenarios for NASA Systems Engineering agents following Tom Constitution v1.1 principles, with emphasis on:
 
 - **P-040:** Requirements Traceability
 - **P-041:** V&V Coverage
@@ -2142,5 +2142,5 @@ pass_criteria:
 *Test Suite Version: 2.2*
 *Created: 2026-01-09*
 *Updated: 2026-01-11*
-*Based On: Jerry BEHAVIOR_TESTS.md pattern*
+*Based On: Tom BEHAVIOR_TESTS.md pattern*
 *TDD References: [Microsoft Engineering Playbook](https://microsoft.github.io/code-with-engineering-playbook/automated-testing/unit-testing/tdd-example), [DeepEval G-Eval](https://deepeval.com/docs/metrics-llm-evals)*

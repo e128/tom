@@ -33,7 +33,7 @@ guardrails:
   - all_claims_must_have_citations
   fallback_behavior: warn_and_request_strategy_id
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-001: Truth and Accuracy (Soft) - Findings based on deliverable evidence'
   - 'P-002: File Persistence (Medium) - Execution report MUST be persisted'

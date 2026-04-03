@@ -1,5 +1,5 @@
 """
-Value Object Pattern - Canonical implementation for Jerry Framework.
+Value Object Pattern - Canonical implementation for Tom Framework.
 
 Value objects are immutable objects defined by their values, not identity.
 Use frozen dataclasses with validation in __post_init__.
@@ -9,7 +9,7 @@ References:
     - DDD Value Object pattern (Evans, 2004)
 
 Exports:
-    Example value objects following Jerry conventions
+    Example value objects following Tom conventions
 """
 
 from __future__ import annotations
@@ -126,7 +126,7 @@ class WorkItemId:
     Example hybrid identity value object.
 
     Demonstrates factory methods for different construction scenarios.
-    Based on actual Jerry codebase value object.
+    Based on actual Tom codebase value object.
 
     Attributes:
         internal_id: Technical ID for persistence

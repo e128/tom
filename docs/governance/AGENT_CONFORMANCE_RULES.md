@@ -9,7 +9,7 @@
 
 ## Purpose
 
-This document defines the conformance rules for agent files in the Jerry Framework.
+This document defines the conformance rules for agent files in the Tom Framework.
 All agents must conform to their respective templates to ensure:
 
 - Consistent agent behavior
@@ -237,7 +237,7 @@ Conformance is enforced at multiple levels:
 
 - [NSE Agent Template](../../skills/nasa-se/agents/NSE_AGENT_TEMPLATE.md)
 - [PS Agent Template](../../skills/problem-solving/agents/PS_AGENT_TEMPLATE.md)
-- [Jerry Constitution](./JERRY_CONSTITUTION.md)
+- [Tom Constitution](./TOM_CONSTITUTION.md)
 - Work Item: WI-SAO-024
 
 ---

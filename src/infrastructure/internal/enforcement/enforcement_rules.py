@@ -19,7 +19,7 @@ from __future__ import annotations
 # Governance files requiring criticality escalation
 # Key: file path pattern (prefix match), Value: criticality level
 GOVERNANCE_FILES: dict[str, str] = {
-    "docs/governance/JERRY_CONSTITUTION.md": "C4",
+    "docs/governance/TOM_CONSTITUTION.md": "C4",
     "docs/governance/": "C3",
     ".claude/rules/": "C3",
     ".context/rules/": "C3",

@@ -5,7 +5,7 @@
 ILocalContextReader - Local Context Configuration Port.
 
 Defines the contract for reading local context configuration from
-.jerry/local/context.toml files.
+.tom/local/context.toml files.
 
 This is a secondary port (driven) used by handlers to access
 machine-local configuration that is not committed to git.
@@ -27,11 +27,11 @@ class ILocalContextReader(Protocol):
     Local context provides machine-specific configuration that
     overrides environment variables and is not committed to git.
 
-    The context file is located at: .jerry/local/context.toml
+    The context file is located at: .tom/local/context.toml
 
     Example TOML structure:
         [context]
-        active_project = "PROJ-007-jerry-bugs"
+        active_project = "PROJ-007-tom-bugs"
 
         [preferences]
         auto_save = true

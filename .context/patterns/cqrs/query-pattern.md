@@ -22,7 +22,7 @@ Queries represent requests for information. They are immutable DTOs that specify
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Query Structure
 
@@ -381,13 +381,13 @@ FindCompletedTasksQuery(since=datetime(2026, 1, 1))
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Query handlers return dictionaries or DTOs, never domain entities. This prevents domain objects from leaking to the interface layer.
+> **Tom Decision**: Query handlers return dictionaries or DTOs, never domain entities. This prevents domain objects from leaking to the interface layer.
 
-> **Jerry Decision**: Query file naming is `{verb}_{noun}_query.py`. Handler is `{verb}_{noun}_query_handler.py`.
+> **Tom Decision**: Query file naming is `{verb}_{noun}_query.py`. Handler is `{verb}_{noun}_query_handler.py`.
 
-> **Jerry Decision**: Use `Retrieve` for single items with context, `Get` for simple lookup by ID, `List` for collections, `Scan` for discovery.
+> **Tom Decision**: Use `Retrieve` for single items with context, `Get` for simple lookup by ID, `List` for collections, `Scan` for discovery.
 
 ---
 

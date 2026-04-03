@@ -27,7 +27,7 @@ This provides a consistent foundation for all domain entities while avoiding inh
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ```python
 # File: src/shared_kernel/entity_base.py
@@ -206,7 +206,7 @@ class Task(VersionedAuditableEntity):
     pass
 ```
 
-> **Jerry Decision**: Use flat composition in EntityBase rather than inheritance chains. This keeps the hierarchy shallow and each concern clearly separated.
+> **Tom Decision**: Use flat composition in EntityBase rather than inheritance chains. This keeps the hierarchy shallow and each concern clearly separated.
 
 ---
 

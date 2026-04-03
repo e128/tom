@@ -270,7 +270,7 @@ ORCHESTRATION.yaml is updated and committed alongside each artifact. This provid
 - **H-16 enforced:** S-003 (Steelman) MUST precede S-002 (Devil's Advocate) in every review
 
 **Auto-escalation triggers active:**
-- AE-001: Does not apply (not touching JERRY_CONSTITUTION.md)
+- AE-001: Does not apply (not touching TOM_CONSTITUTION.md)
 - AE-002: APPLIES to Pipeline 8 `.context/rules/mandatory-skill-usage.md` — auto-C3 minimum (already C4 per workflow)
 - AE-003: Does not apply (no ADRs in scope)
 

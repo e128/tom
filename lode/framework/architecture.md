@@ -1,19 +1,19 @@
 # Architecture
-*Updated: 2026-04-03T00:00:00Z*
+*Updated: 2026-04-03T14:08:35Z*
 
-Jerry uses hexagonal (ports and adapters) architecture with strict layer isolation enforced by H-07.
+Tom uses hexagonal (ports and adapters) architecture with strict layer isolation enforced by H-07.
 
 ## Layer Structure
 
 ```mermaid
 graph TD
-    I[Interface Layer<br/>src/jerry/interface/] --> A
-    A[Application Layer<br/>src/jerry/application/] --> D
-    D[Domain Layer<br/>src/jerry/domain/] --> SK
-    SK[Shared Kernel<br/>src/jerry/shared_kernel/]
-    INFRA[Infrastructure Layer<br/>src/jerry/infrastructure/] --> D
+    I[Interface Layer<br/>src/interface/] --> A
+    A[Application Layer<br/>src/application/] --> D
+    D[Domain Layer<br/>src/domain/] --> SK
+    SK[Shared Kernel<br/>src/shared_kernel/]
+    INFRA[Infrastructure Layer<br/>src/infrastructure/] --> D
     INFRA --> A
-    CR[Composition Root<br/>src/jerry/bootstrap.py] --> INFRA
+    CR[Composition Root<br/>src/bootstrap.py] --> INFRA
     CR --> I
 ```
 
@@ -29,13 +29,18 @@ graph TD
 
 ## Key Directories
 
-- `src/jerry/domain/` — entities, value objects, domain services, repository interfaces (ports)
-- `src/jerry/application/` — use cases, command/query handlers
-- `src/jerry/infrastructure/` — file-based adapters, external integrations
-- `src/jerry/interface/` — CLI commands (Click/Typer)
-- `src/jerry/session_management/` — session lifecycle
-- `src/jerry/work_tracking/` — worktracker entity management
-- `src/jerry/shared_kernel/` — shared primitives, exceptions, base types
+- `src/domain/` — entities, value objects, domain services, repository interfaces (ports)
+- `src/application/` — use cases, command/query handlers
+- `src/infrastructure/` — file-based adapters, external integrations
+- `src/interface/` — CLI commands (Click/Typer)
+- `src/agents/` — agent entity management (canonical agents, generated artifacts)
+- `src/configuration/` — configuration aggregates and domain events
+- `src/context_monitoring/` — context-fill monitoring and events
+- `src/session_management/` — session lifecycle
+- `src/transcript/` — transcript ingestion and parsing
+- `src/version/` — version domain and query handlers
+- `src/work_tracking/` — worktracker entity management
+- `src/shared_kernel/` — shared primitives, exceptions, base types
 
 ## One Class Per File (H-10)
 

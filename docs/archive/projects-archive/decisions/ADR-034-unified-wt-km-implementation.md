@@ -873,7 +873,7 @@ Work Tracker entities naturally materialize into KM entities:
 | Document | Location |
 |----------|----------|
 | Framework Root Context | `CLAUDE.md` |
-| Jerry Constitution | `docs/governance/JERRY_CONSTITUTION.md` |
+| Jerry Constitution | `docs/governance/TOM_CONSTITUTION.md` |
 | Coding Standards | `.claude/rules/coding-standards.md` |
 | Work Tracker Plan | `docs/plans/WORK_TRACKER_PLAN.md` |
 

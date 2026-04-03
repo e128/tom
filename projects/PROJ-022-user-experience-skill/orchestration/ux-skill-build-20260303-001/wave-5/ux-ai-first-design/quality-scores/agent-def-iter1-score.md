@@ -204,7 +204,7 @@ Traceability is well-implemented:
 - **`(H-34b, AR-012)` annotation**: Forbidden actions section annotated with standard references.
 - **`(SR-002)` and `(SR-009)` annotations**: Input validation and fallback behavior sections annotated.
 - **Agent footer metadata**: Version (1.0.0), Constitutional Compliance reference, SSOT, Parent Skill, Wave, Project, Created date.
-- **`constitution.reference`**: Points to `docs/governance/JERRY_CONSTITUTION.md`.
+- **`constitution.reference`**: Points to `docs/governance/TOM_CONSTITUTION.md`.
 - **`enforcement.quality_gate: S-014`**: Traces to strategy catalog.
 
 **Gaps:**

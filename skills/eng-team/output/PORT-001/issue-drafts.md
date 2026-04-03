@@ -36,7 +36,7 @@ The `.claude/settings.json` status line configuration uses `python3` as the comm
 }
 ```
 
-When Jerry is used on Windows, the status line fails to execute because `python3` is not recognized as a command.
+When Tom is used on Windows, the status line fails to execute because `python3` is not recognized as a command.
 
 ## Expected Behavior
 
@@ -44,9 +44,9 @@ The status line should work on Windows without requiring users to manually creat
 
 ## Reproduction Steps
 
-1. Install Jerry on Windows 10/11
+1. Install Tom on Windows 10/11
 2. Ensure Python is installed via official installer (which registers `python` not `python3`)
-3. Run Claude Code with Jerry
+3. Run Claude Code with Tom
 4. Observe status line failure
 
 ## Proposed Solution
@@ -163,7 +163,7 @@ On Windows, creating or cloning repositories with symlinks requires either:
 - Developer Mode enabled
 - Git configured with `core.symlinks=true`
 
-Without these, symlinks may be cloned as text files containing the target path, breaking the Jerry configuration.
+Without these, symlinks may be cloned as text files containing the target path, breaking the Tom configuration.
 
 ## Expected Behavior
 
@@ -191,7 +191,7 @@ git config core.symlinks
 ## Impact
 
 - **Severity:** Major
-- **User Impact:** Windows users may have non-functional Jerry configuration
+- **User Impact:** Windows users may have non-functional Tom configuration
 - **Workaround:** Enable Developer Mode or run `git config core.symlinks true` before clone
 
 ## Acceptance Criteria

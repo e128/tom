@@ -1,4 +1,4 @@
-# Jerry Framework
+# Tom Framework
 
 > Behavioral guardrails and workflow orchestration for Claude Code. Accrues knowledge, wisdom, experience.
 
@@ -6,8 +6,8 @@
 
 | Section | Purpose |
 |---------|---------|
-| [What is Jerry?](#what-is-jerry) | Framework overview and core capabilities |
-| [Why Jerry?](#why-jerry) | Key reasons to adopt Jerry |
+| [What is Tom?](#what-is-tom) | Framework overview and core capabilities |
+| [Why Tom?](#why-tom) | Key reasons to adopt Tom |
 | [Platform Support](#platform-support) | Supported platforms and status |
 | [Quick Start](#quick-start) | Get up and running in minutes |
 | [Known Limitations](#known-limitations) | Current constraints and caveats |
@@ -18,9 +18,9 @@
 
 ---
 
-## What is Jerry?
+## What is Tom?
 
-Jerry is a Claude Code plugin that provides **behavioral guardrails**, **workflow orchestration**, and **persistent knowledge management** for AI-assisted development sessions. It solves the core problem of **Context Rot** -- the degradation of LLM performance as context windows fill with 50K-100K+ tokens, causing skipped rules, forgotten instructions, and inconsistent output -- by using the filesystem as infinite memory.
+Tom is a Claude Code plugin that provides **behavioral guardrails**, **workflow orchestration**, and **persistent knowledge management** for AI-assisted development sessions. It solves the core problem of **Context Rot** -- the degradation of LLM performance as context windows fill with 50K-100K+ tokens, causing skipped rules, forgotten instructions, and inconsistent output -- by using the filesystem as infinite memory.
 
 ### Core Capabilities
 
@@ -36,21 +36,21 @@ Jerry is a Claude Code plugin that provides **behavioral guardrails**, **workflo
 
 ---
 
-## Why Jerry?
+## Why Tom?
 
-**Your context window is not infinite.** Once sessions exceed 50K-100K tokens, LLMs begin losing track of earlier instructions — rules get skipped, conventions drift, and output quality degrades silently. Jerry externalizes rules and state to the filesystem and re-injects critical constraints every prompt, so they are enforced reliably regardless of context depth.
+**Your context window is not infinite.** Once sessions exceed 50K-100K tokens, LLMs begin losing track of earlier instructions — rules get skipped, conventions drift, and output quality degrades silently. Tom externalizes rules and state to the filesystem and re-injects critical constraints every prompt, so they are enforced reliably regardless of context depth.
 
-**Quality should be measurable, not subjective.** Jerry scores every deliverable against a six-dimension rubric and enforces a minimum threshold. Below the threshold, work is revised -- not shipped.
+**Quality should be measurable, not subjective.** Tom scores every deliverable against a six-dimension rubric and enforces a minimum threshold. Below the threshold, work is revised -- not shipped.
 
 **Knowledge should accumulate, not evaporate.** Every research finding, architecture decision, and analysis result is written to a file. When you return to a project next week or next month, the knowledge is still there.
 
-**Complex work needs structure.** Multi-phase workflows with parallel agents, quality gates, and cross-session state tracking are first-class citizens in Jerry, not afterthoughts bolted onto a chat interface.
+**Complex work needs structure.** Multi-phase workflows with parallel agents, quality gates, and cross-session state tracking are first-class citizens in Tom, not afterthoughts bolted onto a chat interface.
 
 ---
 
 ## Platform Support
 
-Jerry is **primarily developed and tested on macOS**. Cross-platform portability is actively being improved.
+Tom is **primarily developed and tested on macOS**. Cross-platform portability is actively being improved.
 
 | Platform | Status |
 |----------|--------|
@@ -58,7 +58,7 @@ Jerry is **primarily developed and tested on macOS**. Cross-platform portability
 | **Linux** | Expected to work — CI runs on Ubuntu, not primary dev platform |
 | **Windows** | In progress — core functionality works, edge cases may exist |
 
-Jerry's CI pipeline tests on macOS, Ubuntu, and Windows. Encountering a platform-specific issue? File a report using the template for your platform:
+Tom's CI pipeline tests on macOS, Ubuntu, and Windows. Encountering a platform-specific issue? File a report using the template for your platform:
 
 - [macOS issue](https://github.com/geekatron/jerry/issues/new?template=macos-compatibility.yml)
 - [Linux issue](https://github.com/geekatron/jerry/issues/new?template=linux-compatibility.yml)
@@ -72,20 +72,20 @@ Jerry's CI pipeline tests on macOS, Ubuntu, and Windows. Encountering a platform
 
 ## Quick Start
 
-### 1. Install Jerry
+### 1. Install Tom
 
 In Claude Code, run two commands:
 
 ```
 /plugin marketplace add https://github.com/geekatron/jerry
-/plugin install jerry@geekatron-jerry
+/plugin install tom@geekatron-tom
 ```
 
-Verify: `/plugin` > **Installed** tab > `jerry` appears. See the full [Installation Guide](INSTALLATION.md) for scope options, local clone fallback, and troubleshooting.
+Verify: `/plugin` > **Installed** tab > `tom` appears. See the full [Installation Guide](INSTALLATION.md) for scope options, local clone fallback, and troubleshooting.
 
 ### 2. Enable Hooks (Recommended)
 
-Install [uv](https://docs.astral.sh/uv/) to enable Jerry's hooks for session context auto-loading and per-prompt quality enforcement:
+Install [uv](https://docs.astral.sh/uv/) to enable Tom's hooks for session context auto-loading and per-prompt quality enforcement:
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh   # macOS/Linux
@@ -99,7 +99,7 @@ Set up your first project and invoke a skill:
 
 ```bash
 export JERRY_PROJECT=PROJ-001-my-first-project
-mkdir -p projects/PROJ-001-my-first-project/.jerry/data/items
+mkdir -p projects/PROJ-001-my-first-project/.tom/data/items
 ```
 
 Then follow the [Getting Started Runbook](runbooks/getting-started.md) for a guided walkthrough from project setup to your first persisted skill output.
@@ -129,8 +129,8 @@ Then follow the [Getting Started Runbook](runbooks/getting-started.md) for a gui
 
 | Document | Description |
 |----------|-------------|
-| [CLAUDE.md Guide](CLAUDE-MD-GUIDE.md) | How Jerry's tiered context loading works and how to modify it |
-| [Jerry Constitution](governance/JERRY_CONSTITUTION.md) | Behavioral principles governing all Jerry agents |
+| [CLAUDE.md Guide](CLAUDE-MD-GUIDE.md) | How Tom's tiered context loading works and how to modify it |
+| [Tom Constitution](governance/TOM_CONSTITUTION.md) | Behavioral principles governing all Tom agents |
 | [Installation Guide](INSTALLATION.md) | Full installation and setup instructions |
 | [Bootstrap Guide](BOOTSTRAP.md) | Context distribution setup (developers only) |
 
@@ -152,4 +152,4 @@ Then follow the [Getting Started Runbook](runbooks/getting-started.md) for a gui
 
 ## License
 
-Jerry Framework is open source under the [Apache License 2.0](https://github.com/geekatron/jerry/blob/main/LICENSE).
+Tom Framework is open source under the [Apache License 2.0](https://github.com/geekatron/jerry/blob/main/LICENSE).

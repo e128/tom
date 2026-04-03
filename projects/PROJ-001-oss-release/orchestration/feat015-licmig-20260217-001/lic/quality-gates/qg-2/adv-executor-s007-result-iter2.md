@@ -6,7 +6,7 @@
 **Date:** 2026-02-17
 **Reviewer:** adv-executor (S-007)
 **Iteration:** 2
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.0, quality-enforcement.md v1.3.0, markdown-navigation-standards.md, python-environment.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.0, quality-enforcement.md v1.3.0, markdown-navigation-standards.md, python-environment.md
 
 ---
 
@@ -49,7 +49,7 @@ PASS. 0 Critical findings, 0 Major findings, 2 Minor findings (carried from iter
 
 | Source | Principles Loaded |
 |--------|------------------|
-| `docs/governance/JERRY_CONSTITUTION.md` | P-001 through P-043 (selectively applicable) |
+| `docs/governance/TOM_CONSTITUTION.md` | P-001 through P-043 (selectively applicable) |
 | `.context/rules/quality-enforcement.md` | H-01 through H-24 (HARD rule index) |
 | `.context/rules/markdown-navigation-standards.md` | H-23, H-24, NAV-001 through NAV-006 |
 | `.context/rules/python-environment.md` | H-05, H-06 |
@@ -58,7 +58,7 @@ PASS. 0 Critical findings, 0 Major findings, 2 Minor findings (carried from iter
 
 | Rule | Condition | Status |
 |------|-----------|--------|
-| AE-001 | Touches `docs/governance/JERRY_CONSTITUTION.md` | NOT triggered |
+| AE-001 | Touches `docs/governance/TOM_CONSTITUTION.md` | NOT triggered |
 | AE-002 | Touches `.context/rules/` or `.claude/rules/` | NOT triggered — deliverables touch `LICENSE`, `NOTICE`, `pyproject.toml`, `ORCHESTRATION.yaml` only |
 | AE-003 | New or modified ADR | NOT triggered |
 | AE-004 | Modifies baselined ADR | NOT triggered |

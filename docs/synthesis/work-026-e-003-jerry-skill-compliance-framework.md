@@ -1,8 +1,8 @@
-# Jerry Skill Pattern Synthesis & Compliance Framework
+# Tom Skill Pattern Synthesis & Compliance Framework
 
 > **PS ID:** work-026
 > **Entry ID:** e-003
-> **Topic:** Jerry Skill Pattern Synthesis & Compliance Framework
+> **Topic:** Tom Skill Pattern Synthesis & Compliance Framework
 > **Date:** 2026-01-30
 > **Synthesizer:** ps-synthesizer v2.0.0
 
@@ -10,13 +10,13 @@
 
 ## L0: Executive Summary (ELI5)
 
-Think of Jerry skills like **professional sports teams**. The best teams (problem-solving, nasa-se, orchestration) follow the same playbook: clear roles (identity), standard equipment (allowed tools), safety rules (guardrails), and game plans (orchestration patterns). They know exactly how to work together and when to pass the ball (state handoffs).
+Think of Tom skills like **professional sports teams**. The best teams (problem-solving, nasa-se, orchestration) follow the same playbook: clear roles (identity), standard equipment (allowed tools), safety rules (guardrails), and game plans (orchestration patterns). They know exactly how to work together and when to pass the ball (state handoffs).
 
 The transcript skill is like a **talented expansion team**—great players, good results, but they haven't fully adopted the league's standard playbook yet. They're 52% compliant with the universal patterns.
 
 **This document provides:**
 
-1. **Pattern Catalog** - The official blueprints all Jerry skills should follow (8 orchestration patterns, 5 agent sections, 12 SKILL.md sections)
+1. **Pattern Catalog** - The official blueprints all Tom skills should follow (8 orchestration patterns, 5 agent sections, 12 SKILL.md sections)
 2. **Compliance Checklists** - Copy-paste checklists for any skill to self-assess (117 total checkpoints)
 3. **Best Practices** - Wisdom extracted from the top 3 skills
 4. **Remediation Roadmap** - Prioritized 4-phase plan to bring transcript skill to 95%+ compliance
@@ -29,7 +29,7 @@ The transcript skill is like a **talented expansion team**—great players, good
 
 ## L1: Technical Specification (Software Engineer)
 
-### 1. Pattern Catalog: Canonical Jerry Skill Patterns
+### 1. Pattern Catalog: Canonical Tom Skill Patterns
 
 #### 1.1 SKILL.md Blueprint Pattern
 
@@ -40,7 +40,7 @@ The transcript skill is like a **talented expansion team**—great players, good
 
 **Description:**
 
-The SKILL.md file is the **single source of truth** for a Jerry skill's interface. It combines YAML frontmatter (machine-readable metadata) with Markdown content (human-readable documentation) following a 12-section blueprint.
+The SKILL.md file is the **single source of truth** for a Tom skill's interface. It combines YAML frontmatter (machine-readable metadata) with Markdown content (human-readable documentation) following a 12-section blueprint.
 
 **Required Elements Checklist:**
 
@@ -105,7 +105,7 @@ The SKILL.md file is the **single source of truth** for a Jerry skill's interfac
 - [ ] Transient-only output forbidden
 
 ### Section 11: Constitutional Compliance
-- [ ] Jerry Constitution reference (docs/governance/JERRY_CONSTITUTION.md)
+- [ ] Tom Constitution reference (docs/governance/TOM_CONSTITUTION.md)
 - [ ] Compliance table (Principle, Enforcement, Skill Behavior)
 - [ ] Minimum principles: P-001, P-002, P-003, P-004, P-011, P-020, P-022
 - [ ] Self-critique checklist (5+ checkpoints)
@@ -221,7 +221,7 @@ Agent definitions use a **hybrid XML + Markdown format** with YAML frontmatter. 
   - [ ] verify_citations_present (for research/analysis agents)
 
 ### Constitutional Compliance Section
-- [ ] `constitution.reference`: "docs/governance/JERRY_CONSTITUTION.md"
+- [ ] `constitution.reference`: "docs/governance/TOM_CONSTITUTION.md"
 - [ ] `constitution.principles_applied`: Array (minimum 5)
   - [ ] P-001 (Truth/Accuracy)
   - [ ] P-002 (File Persistence)
@@ -326,7 +326,7 @@ validation:
     - verify_citations_present
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-001: Truth and Accuracy (Soft)"
     - "P-002: File Persistence (Medium)"
@@ -379,7 +379,7 @@ Every agent MUST forbid P-003 (recursion), P-020 (override), P-002 (transient-on
 
 **Description:**
 
-Jerry skills compose agents using 8 proven orchestration patterns. Each pattern has specific use cases, cognitive mode requirements, and state management strategies.
+Tom skills compose agents using 8 proven orchestration patterns. Each pattern has specific use cases, cognitive mode requirements, and state management strategies.
 
 **Pattern Catalog:**
 
@@ -563,7 +563,7 @@ The PLAYBOOK.md is a comprehensive implementation guide using the triple-lens co
 - [ ] `version`: Semantic versioning
 - [ ] `skill`: Skill name reference
 - [ ] `template`: PLAYBOOK_TEMPLATE.md v1.0.0
-- [ ] `constitutional_compliance`: Jerry Constitution v1.0
+- [ ] `constitutional_compliance`: Tom Constitution v1.0
 - [ ] `patterns_covered`: Array of pattern IDs
 - [ ] `agents_covered`: Array of agent IDs
 
@@ -810,7 +810,7 @@ Skills provide templates for their artifact types to ensure consistent, high-qua
 - [ ] S-037: Example output paths provided
 
 ## Section 10: Constitutional Compliance (7 checkpoints)
-- [ ] S-038: Jerry Constitution reference (docs/governance/JERRY_CONSTITUTION.md)
+- [ ] S-038: Tom Constitution reference (docs/governance/TOM_CONSTITUTION.md)
 - [ ] S-039: Compliance table present (Principle, Enforcement, Skill Behavior)
 - [ ] S-040: P-001 (Truth/Accuracy) included
 - [ ] S-041: P-002 (File Persistence) included with **Medium** enforcement
@@ -896,7 +896,7 @@ Skills provide templates for their artifact types to ensure consistent, high-qua
 - [ ] A-028: Validation includes: verify_file_created, verify_l0_l1_l2_present
 
 ## YAML Section: Constitutional Compliance (7 checkpoints)
-- [ ] A-029: `constitution.reference` is "docs/governance/JERRY_CONSTITUTION.md"
+- [ ] A-029: `constitution.reference` is "docs/governance/TOM_CONSTITUTION.md"
 - [ ] A-030: `constitution.principles_applied` is array with minimum 5 principles
 - [ ] A-031: Principle applied: P-001 (Truth/Accuracy)
 - [ ] A-032: Principle applied: P-002 (File Persistence)
@@ -964,7 +964,7 @@ Skills provide templates for their artifact types to ensure consistent, high-qua
 - [ ] P-003: `version` follows semantic versioning
 - [ ] P-004: `skill` references skill name
 - [ ] P-005: `template` is "PLAYBOOK_TEMPLATE.md v1.0.0"
-- [ ] P-006: `constitutional_compliance` is "Jerry Constitution v1.0"
+- [ ] P-006: `constitutional_compliance` is "Tom Constitution v1.0"
 - [ ] P-007: `patterns_covered` lists pattern IDs
 - [ ] P-008: `agents_covered` lists agent IDs
 
@@ -1406,7 +1406,7 @@ guardrails:
 
 ```yaml
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-001: Truth and Accuracy (Soft)"
     - "P-002: File Persistence (Medium)"
@@ -1532,7 +1532,7 @@ session_context:
   output_validation: true
 ```
 
-This enables seamless handoffs to other Jerry skills (problem-solving, nasa-se, orchestration).
+This enables seamless handoffs to other Tom skills (problem-solving, nasa-se, orchestration).
 ```
 
 2. **PLAYBOOK.md v1.2.0 with Anti-Pattern Catalog:**
@@ -1664,7 +1664,7 @@ ts-parser → index.json (8KB) + chunks/ (130KB each)
 
 > **Metaphor:** Transcript processing is like a **publishing house** that takes raw meeting recordings and turns them into polished, searchable publications.
 
-The transcript skill is Jerry's specialized team for handling video transcripts (VTT files). It:
+The transcript skill is Tom's specialized team for handling video transcripts (VTT files). It:
 1. **Parses** - Like a typesetter cleaning up raw text
 2. **Extracts** - Like an indexer finding key topics and people
 3. **Formats** - Like a designer creating professional layouts
@@ -1714,25 +1714,25 @@ Activate transcript skill when you have:
 **Step 1: Parse VTT file**
 
 ```bash
-uv run jerry transcript parse meeting.vtt --output-dir output/
+uv run tom transcript parse meeting.vtt --output-dir output/
 ```
 
 **Step 2: Extract entities**
 
 ```bash
-uv run jerry transcript extract output/index.json --output-dir output/
+uv run tom transcript extract output/index.json --output-dir output/
 ```
 
 **Step 3: Format packet**
 
 ```bash
-uv run jerry transcript format output/index.json output/extraction-report.json --output-dir output/
+uv run tom transcript format output/index.json output/extraction-report.json --output-dir output/
 ```
 
 **Step 4: Generate mindmap (optional)**
 
 ```bash
-uv run jerry transcript mindmap output/extraction-report.json --output-dir output/
+uv run tom transcript mindmap output/extraction-report.json --output-dir output/
 ```
 
 ## Phase-by-Phase Execution
@@ -1767,7 +1767,7 @@ uv run jerry transcript mindmap output/extraction-report.json --output-dir outpu
 |------------|-----------|-------------|
 | **Maximum file size: 1MB for agent input** | Context window limit | ts-parser chunks files >1MB |
 | **session_context schema v1.0.0** | Cross-skill compatibility | Handoff validation |
-| **P-003: No recursive subagents** | Prevents context explosion | Jerry Constitution (Hard) |
+| **P-003: No recursive subagents** | Prevents context explosion | Tom Constitution (Hard) |
 | **Every entity MUST have citation** | Anti-hallucination | ts-extractor output validation |
 
 ### Soft Constraints (Recommended)
@@ -1945,7 +1945,7 @@ Edit(
 
 ```bash
 # Run quality validation
-uv run jerry transcript validate output/ --strict
+uv run tom transcript validate output/ --strict
 ```
 
 ### Task Example (Agent Delegation)
@@ -2122,7 +2122,7 @@ threshold criteria
 
 **Current State:**
 
-The transcript skill has **Technical Debt** (non-compliance), not **Functional Debt** (broken features). It works well but doesn't conform to Jerry's universal patterns.
+The transcript skill has **Technical Debt** (non-compliance), not **Functional Debt** (broken features). It works well but doesn't conform to Tom's universal patterns.
 
 **Debt Categories:**
 
@@ -2283,7 +2283,7 @@ Pipeline A (Extraction):        Pipeline B (Formatting):
 
 ```bash
 # Extract templates from validated outputs
-uv run jerry transcript extract-templates \
+uv run tom transcript extract-templates \
     --source-dir test_data/validation/live-output-meeting-006/ \
     --output-dir templates/
 ```
@@ -2341,7 +2341,7 @@ context_injection:
 
 **Rationale:**
 - Context injection is a **differentiator** for transcript skill (keep it)
-- Universal YAML is **table stakes** for Jerry skills (add it)
+- Universal YAML is **table stakes** for Tom skills (add it)
 - File size increase (100 lines) is acceptable trade-off for interoperability
 
 **Cost:** 100 extra lines per agent × 5 agents = 500 lines total
@@ -2442,7 +2442,7 @@ persona:  # New canonical location
 
 ```bash
 # Migrate agent YAML to new format
-uv run jerry skills migrate-agents \
+uv run tom skills migrate-agents \
     --skill transcript \
     --from-version 1.x \
     --to-version 2.x
@@ -2524,7 +2524,7 @@ agents/
 3. **Validation Script:**
    ```bash
    # Run regression tests
-   uv run jerry transcript test-regression \
+   uv run tom transcript test-regression \
        --test-dir test_data/validation/ \
        --baseline-dir test_data/validation/baseline-v2.3.0/
    ```
@@ -2583,7 +2583,7 @@ agents/
 
 **Phase 5: Advanced Templates (2-3 weeks)**
 - Create 7 additional templates for packet sections
-- Auto-generation tooling (`jerry transcript extract-templates`)
+- Auto-generation tooling (`tom transcript extract-templates`)
 - Contract testing framework
 
 **Phase 6: Pattern 5 Integration (3-4 weeks)**
@@ -2604,7 +2604,7 @@ agents/
 
 ### Primary Sources (Pattern Research)
 
-1. [work-026-e-001: Jerry Skill Pattern Research](./work-026-e-001-jerry-skill-patterns.md) - Authoritative pattern catalog
+1. [work-026-e-001: Tom Skill Pattern Research](./work-026-e-001-tom-skill-patterns.md) - Authoritative pattern catalog
 2. [problem-solving SKILL.md](../../skills/problem-solving/SKILL.md) - v2.1.0
 3. [nasa-se SKILL.md](../../skills/nasa-se/SKILL.md) - v1.1.0
 4. [orchestration SKILL.md](../../skills/orchestration/SKILL.md) - v2.1.0
@@ -2631,9 +2631,9 @@ agents/
 16. Madaan, A. et al. (2023). *Self-Refine: Iterative Refinement with Self-Feedback*. arXiv:2303.17651
 17. Microsoft. (2025). *AI Agent Orchestration Patterns*. https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns
 
-### Jerry Framework
+### Tom Framework
 
-18. [Jerry Constitution](../../docs/governance/JERRY_CONSTITUTION.md) - v1.0
+18. [Tom Constitution](../../docs/governance/TOM_CONSTITUTION.md) - v1.0
 19. [session_context schema](../../docs/schemas/session_context.json) - v1.0.0
 
 ---

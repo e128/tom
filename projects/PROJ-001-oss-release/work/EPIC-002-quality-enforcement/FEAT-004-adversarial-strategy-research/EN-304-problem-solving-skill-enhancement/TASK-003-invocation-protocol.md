@@ -137,7 +137,7 @@ FUNCTION select_modes(context_vector):
     # This ensures transparency (P-022) while maintaining safety floors.
     criticality = context_vector.criticality
     user_specified_criticality = context_vector.criticality
-    IF artifact modifies JERRY_CONSTITUTION.md:
+    IF artifact modifies TOM_CONSTITUTION.md:
         criticality = max(criticality, C3)     # AE-001
     IF artifact modifies .claude/rules/*:
         criticality = max(criticality, C3)     # AE-002

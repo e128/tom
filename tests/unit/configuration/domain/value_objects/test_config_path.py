@@ -170,9 +170,9 @@ class TestConfigPathNavigation:
     def test_child_chaining(self) -> None:
         """Multiple child calls build nested path."""
         path = ConfigPath(Path("/home"))
-        nested = path.child("user").child(".jerry").child("config.toml")
+        nested = path.child("user").child(".tom").child("config.toml")
         assert "user" in str(nested.path)
-        assert ".jerry" in str(nested.path)
+        assert ".tom" in str(nested.path)
         assert nested.name == "config.toml"
 
     def test_truediv_operator(self) -> None:
@@ -184,16 +184,16 @@ class TestConfigPathNavigation:
     def test_relative_to_base(self) -> None:
         """relative_to returns relative path."""
         base = ConfigPath(Path("/home/user"))
-        full = ConfigPath(Path("/home/user/.jerry/config.toml"))
+        full = ConfigPath(Path("/home/user/.tom/config.toml"))
         relative = full.relative_to(base)
-        assert relative == Path(".jerry") / "config.toml"
+        assert relative == Path(".tom") / "config.toml"
 
     def test_relative_to_with_path(self, tmp_path: Path) -> None:
         """relative_to accepts Path object."""
         base = tmp_path
-        full = ConfigPath(tmp_path / ".jerry" / "config.toml")
+        full = ConfigPath(tmp_path / ".tom" / "config.toml")
         relative = full.relative_to(base)
-        assert relative == Path(".jerry") / "config.toml"
+        assert relative == Path(".tom") / "config.toml"
 
 
 class TestConfigPathFilesystemOperations:

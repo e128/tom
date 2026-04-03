@@ -149,7 +149,7 @@ These requirements derive from Barrier-1 ADV-to-ENF Section "Decision Criticalit
 | REQ-404-032 | C1 (Routine) criteria SHALL be: reversible within 1 session, fewer than 3 files changed, no external dependencies. Default review: L1 (Self-Check). | Barrier-1 ADV-to-ENF | HARD | Inspection: C1 definition matches |
 | REQ-404-033 | C2 (Standard) criteria SHALL be: reversible within 1 day, 3-10 files changed, no API changes. Default review: L2 (Standard Critic). | Barrier-1 ADV-to-ENF | HARD | Inspection: C2 definition matches |
 | REQ-404-034 | C3 (Significant) criteria SHALL be: more than 1 day to reverse, more than 10 files, API/interface changes. Default review: L3 (Deep Review). | Barrier-1 ADV-to-ENF | HARD | Inspection: C3 definition matches |
-| REQ-404-035 | Any artifact touching `docs/governance/JERRY_CONSTITUTION.md` or `.context/rules/` SHALL be automatically classified as C3 or higher. This rule CANNOT be overridden. | Barrier-1 ADV-to-ENF; FR-011 | HARD | Inspection: mandatory escalation rule present |
+| REQ-404-035 | Any artifact touching `docs/governance/TOM_CONSTITUTION.md` or `.context/rules/` SHALL be automatically classified as C3 or higher. This rule CANNOT be overridden. | Barrier-1 ADV-to-ENF; FR-011 | HARD | Inspection: mandatory escalation rule present |
 
 ---
 

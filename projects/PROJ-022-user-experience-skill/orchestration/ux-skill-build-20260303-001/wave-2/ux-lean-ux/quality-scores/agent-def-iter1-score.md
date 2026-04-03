@@ -38,7 +38,7 @@
 | Methodological Rigor | 0.20 | 0.86 | 0.172 | 5-step workflow well-specified with tables and diagrams; ICE scoring formula referenced but scale/rating criteria not defined; assumption map quadrant diagram included; experiment type selection criteria clear |
 | Evidence Quality | 0.15 | 0.78 | 0.117 | Gothelf & Seiden (2021, 3rd ed.) cited correctly; reasoning_effort justification asserts "C4 applies to overall deliverable quality gate, not per-agent reasoning" without citation; ICE scoring attribution ("ICE scoring") lacks source; AI-supplement heuristic citations absent (contrast: ux-heuristic-evaluator cites Amershi et al. 2019 and Google PAIR) |
 | Actionability | 0.15 | 0.93 | 0.140 | Input format fully specified with field names, formats, and optional fields; output location template clear with examples; on-send YAML payload fully enumerated; degraded mode disclosure protocol defined; fallback behaviors for each failure mode documented |
-| Traceability | 0.10 | 0.89 | 0.089 | Footer traceability comment covers 13 standard IDs (H-34, AD-M-001 through ET-M-001, SR-002/003/009, AR-012); links to SKILL.md, Jerry Constitution, and parent skill all resolvable; Wave 2 reference points to wave-progression.md (not verified to exist but follows established pattern); governance.yaml references `docs/governance/JERRY_CONSTITUTION.md` correctly |
+| Traceability | 0.10 | 0.89 | 0.089 | Footer traceability comment covers 13 standard IDs (H-34, AD-M-001 through ET-M-001, SR-002/003/009, AR-012); links to SKILL.md, Jerry Constitution, and parent skill all resolvable; Wave 2 reference points to wave-progression.md (not verified to exist but follows established pattern); governance.yaml references `docs/governance/TOM_CONSTITUTION.md` correctly |
 | **TOTAL** | **1.00** | | **0.884** | |
 
 ---
@@ -176,7 +176,7 @@ Add a one-paragraph "Partial Scope Behavior" note in `<input>` or `<methodology>
 - **Footer traceability comment:** 13 standard IDs listed: H-34, H-34b, AD-M-001, AD-M-004, AD-M-005, AD-M-006, AD-M-007, AD-M-008, ET-M-001, SR-002, SR-003, SR-009, AR-012. Each maps to a verifiable standard in agent-development-standards.md.
 - **SSOT declaration:** Footer states `SSOT: skills/ux-lean-ux/SKILL.md`. Verified: SKILL.md exists at that path, lists `ux-lean-ux-facilitator` in its agents array.
 - **Parent skill reference:** `Parent Skill: /user-experience v1.0.0` -- references the parent user-experience skill. Traceable.
-- **Governance constitution reference:** `docs/governance/JERRY_CONSTITUTION.md` -- standard path verified against quality-enforcement.md.
+- **Governance constitution reference:** `docs/governance/TOM_CONSTITUTION.md` -- standard path verified against quality-enforcement.md.
 - **Wave progression reference:** `skills/user-experience/rules/wave-progression.md` -- referenced in `<purpose>`. File was not verified to exist during this scoring, but follows the established reference pattern.
 - **Inline standard references in guardrails:** `(H-34b, AR-012)` after forbidden actions, `(SR-002)` after input validation, `(SR-009)` after fallback -- all present and traceable.
 - **Identity section references:** `(AD-M-005, ET-M-001)` inline in the Cognitive Mode paragraph. Traceable to agent-development-standards.md.

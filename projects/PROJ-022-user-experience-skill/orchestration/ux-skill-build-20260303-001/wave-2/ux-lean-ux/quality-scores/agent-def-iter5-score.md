@@ -218,7 +218,7 @@ The iter5 fix does not add traceability markers. The BML terminal condition sent
 *Retained from iter4:*
 - Footer traceability comment (line 490): 13 standard IDs listed (H-34, H-34b, AD-M-001, AD-M-004, AD-M-005, AD-M-006, AD-M-007, AD-M-008, ET-M-001, SR-002, SR-003, SR-009, AR-012). PASS.
 - SSOT declaration: `skills/ux-lean-ux/SKILL.md`. PASS.
-- Governance `constitution.reference`: `docs/governance/JERRY_CONSTITUTION.md`. PASS.
+- Governance `constitution.reference`: `docs/governance/TOM_CONSTITUTION.md`. PASS.
 - Wave progression: `skills/user-experience/rules/wave-progression.md` cited in `<purpose>`. PASS.
 - synthesis-validation.md at Step 5 checklist item 5 (traceable from enforcement point). PASS.
 - ET-M-001 traceable from `<capabilities>` body. PASS.

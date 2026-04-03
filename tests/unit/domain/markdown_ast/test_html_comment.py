@@ -32,7 +32,7 @@ from src.domain.markdown_ast.html_comment import (
     HtmlCommentResult,
 )
 from src.domain.markdown_ast.input_bounds import InputBounds
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 
 # =============================================================================
 # Happy Path Tests
@@ -46,7 +46,7 @@ class TestHtmlCommentExtraction:
     def test_extract_single_comment_block(self) -> None:
         """Extracts a single pipe-separated metadata comment."""
         source = "<!-- PS-ID: ADR-001 | ENTRY: 2026-02-23 | AGENT: test -->\n# Doc\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert result.parse_error is None
@@ -57,7 +57,7 @@ class TestHtmlCommentExtraction:
     def test_extract_field_keys(self) -> None:
         """Keys are correctly extracted from pipe-separated comment."""
         source = "<!-- PS-ID: ADR-001 | ENTRY: 2026-02-23 -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         keys = [f.key for f in result.blocks[0].fields]
@@ -68,7 +68,7 @@ class TestHtmlCommentExtraction:
     def test_extract_field_values(self) -> None:
         """Values are correctly extracted from pipe-separated comment."""
         source = "<!-- PS-ID: ADR-001 | ENTRY: 2026-02-23 -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         values = {f.key: f.value for f in result.blocks[0].fields}
@@ -83,7 +83,7 @@ class TestHtmlCommentExtraction:
             "# Doc\n"
             "<!-- PS-ID: test-001 | AGENT: foo -->\n"
         )
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert result.parse_error is None
@@ -93,7 +93,7 @@ class TestHtmlCommentExtraction:
     def test_raw_comment_preserved(self) -> None:
         """raw_comment contains the original comment text."""
         source = "<!-- PS-ID: test -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert "<!-- PS-ID: test -->" in result.blocks[0].raw_comment
@@ -111,7 +111,7 @@ class TestReinjectExclusion:
     def test_reinject_comment_excluded(self) -> None:
         """L2-REINJECT comments are excluded from extraction."""
         source = '<!-- L2-REINJECT: rank=1, content="test" -->\n# Doc\n'
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert len(result.blocks) == 0
@@ -120,7 +120,7 @@ class TestReinjectExclusion:
     def test_reinject_case_insensitive_exclusion(self) -> None:
         """L2-REINJECT exclusion is case-insensitive (T-HC-04, T-HC-07)."""
         source = '<!-- l2-reinject: rank=1, content="test" -->\n# Doc\n'
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert len(result.blocks) == 0
@@ -129,7 +129,7 @@ class TestReinjectExclusion:
     def test_reinject_mixed_case_exclusion(self) -> None:
         """Mixed case L2-Reinject is also excluded."""
         source = '<!-- L2-Reinject: rank=1, content="test" -->\n# Doc\n'
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert len(result.blocks) == 0
@@ -140,7 +140,7 @@ class TestReinjectExclusion:
         source = (
             '<!-- L2-REINJECT: rank=1, content="test" -->\n<!-- PS-ID: ADR-001 | AGENT: test -->\n'
         )
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert len(result.blocks) == 1
@@ -159,7 +159,7 @@ class TestNonMetadataComments:
     def test_plain_comment_ignored(self) -> None:
         """Plain comments without key: value pairs are ignored."""
         source = "<!-- This is just a regular comment -->\n# Doc\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert len(result.blocks) == 0
@@ -168,7 +168,7 @@ class TestNonMetadataComments:
     def test_comment_without_colon_ignored(self) -> None:
         """Comments without colon separator are ignored."""
         source = "<!-- TODO fix this later -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert len(result.blocks) == 0
@@ -187,7 +187,7 @@ class TestBoundsEnforcement:
         """Comment count exceeding max produces parse error (M-16)."""
         bounds = InputBounds(max_comment_count=1)
         source = "<!-- A: 1 | B: 2 -->\n<!-- C: 3 | D: 4 -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc, bounds)
 
         assert result.parse_error is not None
@@ -198,7 +198,7 @@ class TestBoundsEnforcement:
         """Value exceeding max_value_length is truncated with warning (M-17)."""
         bounds = InputBounds(max_value_length=5)
         source = "<!-- KEY: this-is-a-very-long-value -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc, bounds)
 
         assert len(result.parse_warnings) > 0
@@ -221,7 +221,7 @@ class TestControlCharacterStripping:
     def test_null_bytes_stripped_from_values(self) -> None:
         """Null bytes are stripped from comment values."""
         source = "<!-- KEY: value\x00with\x01null -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         if len(result.blocks) > 0:
@@ -233,7 +233,7 @@ class TestControlCharacterStripping:
     def test_control_chars_stripped_from_keys(self) -> None:
         """Control characters are stripped from comment keys."""
         source = "<!-- KE\x01Y: value -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         if len(result.blocks) > 0:
@@ -252,7 +252,7 @@ class TestEdgeCases:
     @pytest.mark.edge_case
     def test_empty_document(self) -> None:
         """Empty document returns empty result."""
-        doc = JerryDocument.parse("")
+        doc = TomDocument.parse("")
         result = HtmlCommentMetadata.extract(doc)
 
         assert result.parse_error is None
@@ -261,7 +261,7 @@ class TestEdgeCases:
     @pytest.mark.edge_case
     def test_document_with_no_comments(self) -> None:
         """Document without comments returns empty result."""
-        doc = JerryDocument.parse("# Heading\n\nParagraph.\n")
+        doc = TomDocument.parse("# Heading\n\nParagraph.\n")
         result = HtmlCommentMetadata.extract(doc)
 
         assert result.parse_error is None
@@ -271,7 +271,7 @@ class TestEdgeCases:
     def test_line_number_accuracy(self) -> None:
         """Line numbers are correctly computed for comment blocks."""
         source = "# Title\n\n<!-- KEY: value -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert len(result.blocks) == 1
@@ -282,7 +282,7 @@ class TestEdgeCases:
     def test_single_field_comment(self) -> None:
         """Comment with a single key-value pair is extracted."""
         source = "<!-- VERSION: 1.0 -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert len(result.blocks) == 1
@@ -324,7 +324,7 @@ class TestImmutability:
     def test_blocks_is_tuple(self) -> None:
         """Blocks container is a tuple for immutability."""
         source = "<!-- KEY: value -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert isinstance(result.blocks, tuple)
@@ -333,7 +333,7 @@ class TestImmutability:
     def test_fields_in_block_is_tuple(self) -> None:
         """Fields within a block are a tuple for immutability."""
         source = "<!-- KEY: value -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert isinstance(result.blocks[0].fields, tuple)
@@ -342,7 +342,7 @@ class TestImmutability:
     def test_parse_warnings_is_tuple(self) -> None:
         """parse_warnings is a tuple for immutability."""
         source = "<!-- KEY: value -->\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = HtmlCommentMetadata.extract(doc)
 
         assert isinstance(result.parse_warnings, tuple)

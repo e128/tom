@@ -167,7 +167,7 @@ For C2+ deliverables (reversible in up to 1 day, touching 3–10 files), the pro
 **Circuit breaker:** After the minimum 3 iterations, if no improvement occurs over 2 consecutive cycles, the agent will either accept the deliverable with caveats documented or escalate to the user.
 
 **Criticality auto-escalation rules** apply to problem-solving artifacts:
-- Artifacts touching `docs/governance/JERRY_CONSTITUTION.md` = auto-C4 (all 10 adversarial strategies required)
+- Artifacts touching `docs/governance/TOM_CONSTITUTION.md` = auto-C4 (all 10 adversarial strategies required)
 - Artifacts touching `.context/rules/` or `.claude/rules/` = auto-C3 minimum
 - New or modified ADRs = auto-C3 minimum
 

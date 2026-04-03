@@ -38,7 +38,7 @@ output:
       warnings: array
       generated_at: string
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-002: File Persistence (Medium) - Diagrams MUST be persisted'
   - 'P-003: No Recursive Subagents (Hard) - No spawning agents'

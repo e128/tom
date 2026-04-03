@@ -8,7 +8,7 @@ Implements H-18 via principle-by-principle constitutional review. C2+ REQUIRED. 
 > **Version:** 1.0.0
 > **Date:** 2026-02-15
 > **Format Compliance:** TEMPLATE-FORMAT.md v1.1.0
-> **Source:** quality-enforcement.md, JERRY_CONSTITUTION.md
+> **Source:** quality-enforcement.md, TOM_CONSTITUTION.md
 
 ---
 
@@ -51,7 +51,7 @@ Implements H-18 via principle-by-principle constitutional review. C2+ REQUIRED. 
 
 **Foundation:** Bai et al. 2022 Constitutional AI (Anthropic) — AI self-correction via explicit principles.
 
-**Jerry Implementation:** Evaluates against Jerry Constitution, behavioral rules, quality framework. Implements H-18.
+**Tom Implementation:** Evaluates against Tom Constitution, behavioral rules, quality framework. Implements H-18.
 
 ---
 
@@ -91,14 +91,14 @@ Systematic constitutional compliance report: enumerates applicable principles, c
 
 - [ ] Deliverable artifact (document, code, design, decision record)
 - [ ] Criticality level classification (C2, C3, or C4)
-- [ ] Jerry Constitution (`docs/governance/JERRY_CONSTITUTION.md`)
+- [ ] Tom Constitution (`docs/governance/TOM_CONSTITUTION.md`)
 - [ ] Applicable behavioral rules from `.context/rules/`
 - [ ] Quality framework SSOT (`quality-enforcement.md`)
 - [ ] Auto-escalation rules (AE-001 through AE-006) for criticality-based principle selection
 
 ### Context Requirements
 
-Load: `JERRY_CONSTITUTION.md` (P-001–P-043), `.context/rules/*.md` (H-01–H-33), `quality-enforcement.md` (SSOT).
+Load: `TOM_CONSTITUTION.md` (P-001–P-043), `.context/rules/*.md` (H-01–H-33), `quality-enforcement.md` (SSOT).
 
 **Tier Mapping:** HARD (MUST, SHALL, NEVER, FORBIDDEN, REQUIRED, CRITICAL→Critical), MEDIUM (SHOULD, RECOMMENDED, PREFERRED, EXPECTED→Major), SOFT (MAY, CONSIDER, OPTIONAL, SUGGESTED→Minor).
 
@@ -117,7 +117,7 @@ Load: `JERRY_CONSTITUTION.md` (P-001–P-043), `.context/rules/*.md` (H-01–H-3
 
 **Procedure:**
 
-1. Read `docs/governance/JERRY_CONSTITUTION.md` in full
+1. Read `docs/governance/TOM_CONSTITUTION.md` in full
 2. Identify deliverable type (code, document, design, template, rule)
 3. Based on type, load applicable rules from `.context/rules/`:
    - Code deliverables: `architecture-standards.md`, `coding-standards.md`, `python-environment.md`, `testing-standards.md`
@@ -248,7 +248,7 @@ Every S-007 execution MUST produce a document with these sections:
 **Criticality:** {{C1/C2/C3/C4}}
 **Date:** {{ISO 8601 date}}
 **Reviewer:** {{Agent ID or human name}}
-**Constitutional Context:** {{Version of JERRY_CONSTITUTION.md, list of loaded rules}}
+**Constitutional Context:** {{Version of TOM_CONSTITUTION.md, list of loaded rules}}
 ```
 
 #### 2. Summary
@@ -393,7 +393,7 @@ class CreateProjectCommandHandler(ICommandHandler):
 
 **Strategy Execution:**
 
-**Step 1:** Loaded `JERRY_CONSTITUTION.md`, `architecture-standards.md`, `coding-standards.md`, `quality-enforcement.md`.
+**Step 1:** Loaded `TOM_CONSTITUTION.md`, `architecture-standards.md`, `coding-standards.md`, `quality-enforcement.md`.
 
 **Step 2:** Identified applicable principles:
 - H-07: Application layer MUST NOT import from infrastructure (HARD)
@@ -474,7 +474,7 @@ Check in Step 1: AE-001 (constitution→C4), AE-002 (rules/templates→C3), AE-0
 
 ### Cross-References
 
-**Sources:** `quality-enforcement.md` (SSOT H-01–H-33), `JERRY_CONSTITUTION.md` (P-001–P-043), `architecture-standards.md` (H-07, H-10), `coding-standards.md` (H-11), `testing-standards.md` (H-20), `markdown-navigation-standards.md` (H-23)
+**Sources:** `quality-enforcement.md` (SSOT H-01–H-33), `TOM_CONSTITUTION.md` (P-001–P-043), `architecture-standards.md` (H-07, H-10), `coding-standards.md` (H-11), `testing-standards.md` (H-20), `markdown-navigation-standards.md` (H-23)
 
 **Templates:** s-003-steelman (before), s-002-devils-advocate (after), s-014-llm-as-judge (scoring), s-010-self-refine (H-15)
 

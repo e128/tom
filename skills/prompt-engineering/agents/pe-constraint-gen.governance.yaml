@@ -37,7 +37,7 @@ capabilities:
   - "NEVER use vague consequence language in generated constraints -- Consequence: LLM instruction-following degrades when consequences are generic; specific consequences produce measurably higher compliance per PROJ-014 findings (projects/PROJ-014-negative-prompting-research/orchestration/neg-prompting-20260227-001/phase-6/final-synthesis.md)."
   forbidden_action_format: NPT-009-complete
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-003: No Recursive Subagents (Hard) - Single-level worker only'
   - 'P-020: User Authority (Hard) - Never override user decisions'

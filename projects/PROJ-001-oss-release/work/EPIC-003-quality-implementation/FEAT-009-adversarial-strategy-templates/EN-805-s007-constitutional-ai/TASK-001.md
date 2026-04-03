@@ -31,7 +31,7 @@ SOURCE: ONTOLOGY-v1.md Section 3.4.6
 
 ## Summary
 
-Extract the Constitutional AI Critique methodology from research-15-adversarial-strategies.md and map it to the Jerry framework's principle system. Survey all `.context/rules/` files to build a comprehensive inventory of HARD rules H-01 through H-24. Cross-reference with `docs/governance/JERRY_CONSTITUTION.md` for constitutional governance principles. Document the review paradigm, violation classification approach, and integration patterns with the C2+ quality cycle.
+Extract the Constitutional AI Critique methodology from research-15-adversarial-strategies.md and map it to the Jerry framework's principle system. Survey all `.context/rules/` files to build a comprehensive inventory of HARD rules H-01 through H-24. Cross-reference with `docs/governance/TOM_CONSTITUTION.md` for constitutional governance principles. Document the review paradigm, violation classification approach, and integration patterns with the C2+ quality cycle.
 
 ### Acceptance Criteria
 
@@ -41,7 +41,7 @@ Extract the Constitutional AI Critique methodology from research-15-adversarial-
 - [ ] All `.context/rules/` files surveyed for HARD rule definitions
 - [ ] Complete inventory of H-01 through H-24 with source file for each rule
 - [ ] Auto-escalation rules AE-001 through AE-006 inventoried
-- [ ] `docs/governance/JERRY_CONSTITUTION.md` surveyed for constitutional principles
+- [ ] `docs/governance/TOM_CONSTITUTION.md` surveyed for constitutional principles
 - [ ] Mapping from research methodology to Jerry principle system documented
 - [ ] Methodology extraction document produced with source references
 - [ ] Quality gate: Deliverable reviewed via creator-critic-revision cycle (min 3 iterations)

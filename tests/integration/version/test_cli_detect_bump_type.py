@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
 
-"""Integration tests for `jerry ci detect-bump-type` CLI command.
+"""Integration tests for `tom ci detect-bump-type` CLI command.
 
 Tests the full CLI path via subprocess to verify argument parsing,
 output format, and exit codes.
@@ -37,7 +37,7 @@ class TestCliDetectBumpTypeHappy:
     def test_stdin_feat_returns_minor(self, project_root: Path) -> None:
         """feat commit via stdin returns 'minor'."""
         result = subprocess.run(
-            ["uv", "run", "jerry", "ci", "detect-bump-type", "--commits-from-stdin"],
+            ["uv", "run", "tom", "ci", "detect-bump-type", "--commits-from-stdin"],
             input="feat(GH-122): add version detection\n",
             capture_output=True,
             text=True,
@@ -50,7 +50,7 @@ class TestCliDetectBumpTypeHappy:
     def test_stdin_fix_returns_patch(self, project_root: Path) -> None:
         """fix commit via stdin returns 'patch'."""
         result = subprocess.run(
-            ["uv", "run", "jerry", "ci", "detect-bump-type", "--commits-from-stdin"],
+            ["uv", "run", "tom", "ci", "detect-bump-type", "--commits-from-stdin"],
             input="fix: correct edge case\n",
             capture_output=True,
             text=True,
@@ -63,7 +63,7 @@ class TestCliDetectBumpTypeHappy:
     def test_stdin_breaking_returns_major(self, project_root: Path) -> None:
         """Breaking change via stdin returns 'major'."""
         result = subprocess.run(
-            ["uv", "run", "jerry", "ci", "detect-bump-type", "--commits-from-stdin"],
+            ["uv", "run", "tom", "ci", "detect-bump-type", "--commits-from-stdin"],
             input="feat(GH-122)!: breaking change\n",
             capture_output=True,
             text=True,
@@ -76,7 +76,7 @@ class TestCliDetectBumpTypeHappy:
     def test_json_output_format(self, project_root: Path) -> None:
         """--json flag produces valid JSON output."""
         result = subprocess.run(
-            ["uv", "run", "jerry", "--json", "ci", "detect-bump-type", "--commits-from-stdin"],
+            ["uv", "run", "tom", "--json", "ci", "detect-bump-type", "--commits-from-stdin"],
             input="feat: add feature\n",
             capture_output=True,
             text=True,
@@ -94,7 +94,7 @@ class TestCliDetectBumpTypeNegative:
     def test_stdin_docs_returns_none(self, project_root: Path) -> None:
         """Non-bumping commit type returns 'none'."""
         result = subprocess.run(
-            ["uv", "run", "jerry", "ci", "detect-bump-type", "--commits-from-stdin"],
+            ["uv", "run", "tom", "ci", "detect-bump-type", "--commits-from-stdin"],
             input="docs: update README\n",
             capture_output=True,
             text=True,
@@ -107,7 +107,7 @@ class TestCliDetectBumpTypeNegative:
     def test_stdin_empty_returns_none(self, project_root: Path) -> None:
         """Empty stdin returns 'none'."""
         result = subprocess.run(
-            ["uv", "run", "jerry", "ci", "detect-bump-type", "--commits-from-stdin"],
+            ["uv", "run", "tom", "ci", "detect-bump-type", "--commits-from-stdin"],
             input="",
             capture_output=True,
             text=True,

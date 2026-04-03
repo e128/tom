@@ -39,7 +39,7 @@
 | `docs/adrs/` | PARTIAL | ADRs are architecture decisions -- relevant as reference, but contain internal work item references. Excluded from initial nav; can be added later as a curated subset. |
 | `docs/analysis/` | INTERNAL | Internal analysis artifacts (work items). Contains work-025-e-001, work-026-e-002. Not user-facing. |
 | `docs/design/` | INTERNAL | Internal architecture design docs (PYTHON-ARCHITECTURE-STANDARDS.md). Not user-facing. |
-| `docs/governance/` | PARTIAL | JERRY_CONSTITUTION.md is public (defines agent behavioral principles). AGENT_CONFORMANCE_RULES.md and BEHAVIOR_TESTS.md are internal governance tooling. |
+| `docs/governance/` | PARTIAL | TOM_CONSTITUTION.md is public (defines agent behavioral principles). AGENT_CONFORMANCE_RULES.md and BEHAVIOR_TESTS.md are internal governance tooling. |
 | `docs/knowledge/` | INTERNAL | Internal exemplars, research materials, framework reference docs. 20+ files. Not user-facing. |
 | `docs/playbooks/` | PUBLIC | All 4 playbooks are user-facing skill guides: problem-solving.md, orchestration.md, transcript.md, PLUGIN-DEVELOPMENT.md. |
 | `docs/research/` | INTERNAL | Internal research artifacts. Contains work-026-e-001. Not user-facing. |
@@ -63,7 +63,7 @@
 | `playbooks/orchestration.md` | PUBLIC | Yes (Guides) | Orchestration skill playbook, 262 lines |
 | `playbooks/transcript.md` | PUBLIC | Yes (Guides) | Transcript skill playbook, 280 lines |
 | `playbooks/PLUGIN-DEVELOPMENT.md` | PUBLIC | Yes (Guides) | Plugin development playbook, 432 lines |
-| `governance/JERRY_CONSTITUTION.md` | PUBLIC | Yes (Governance) | Constitutional principles, public-appropriate |
+| `governance/TOM_CONSTITUTION.md` | PUBLIC | Yes (Governance) | Constitutional principles, public-appropriate |
 | `schemas/SCHEMA_VERSIONING.md` | PUBLIC | Yes (Reference) | Schema versioning guide for contributors |
 | `schemas/SESSION_CONTEXT_GUIDE.md` | PUBLIC | Yes (Reference) | Session context schema guide for contributors |
 
@@ -109,7 +109,7 @@ nav:
     - Schema Versioning: schemas/SCHEMA_VERSIONING.md
     - Session Context Schema: schemas/SESSION_CONTEXT_GUIDE.md
   - Governance:
-    - Jerry Constitution: governance/JERRY_CONSTITUTION.md
+    - Jerry Constitution: governance/TOM_CONSTITUTION.md
 ```
 
 ### Nav Decisions
@@ -154,10 +154,10 @@ Issues discovered during TASK-005 review of public-facing docs. These are report
 ### Issue 2: Internal path references in getting-started.md
 
 **File:** `runbooks/getting-started.md`
-**Issue:** Links to `.context/rules/quality-enforcement.md` and `governance/JERRY_CONSTITUTION.md` using `../../` relative paths that may not resolve correctly on the docs site.
+**Issue:** Links to `.context/rules/quality-enforcement.md` and `governance/TOM_CONSTITUTION.md` using `../../` relative paths that may not resolve correctly on the docs site.
 **Examples:**
 - `[H-04](../../.context/rules/quality-enforcement.md#hard-rule-index)` (line 35)
-- `[P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence)` (lines 166, 152 in orchestration.md)
+- `[P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence)` (lines 166, 152 in orchestration.md)
 **Severity:** MEDIUM -- Broken links on docs site.
 **Recommendation:** Replace `.context/` references with docs-site-relative links or remove the link while keeping the rule ID text.
 
@@ -205,7 +205,7 @@ Issues discovered during TASK-005 review of public-facing docs. These are report
 
 ### Issue 8: Constitution references internal work items
 
-**File:** `governance/JERRY_CONSTITUTION.md`
+**File:** `governance/TOM_CONSTITUTION.md`
 **Issue:** Contains references to internal session IDs (e.g., "Session claude/create-code-plugin-skill-MG1nh") and work item IDs (e.g., "WORK-028"). These are fine for governance but expose internal process.
 **Severity:** LOW -- Minimal user impact, appears in attribution metadata.
 **Recommendation:** Consider stripping session IDs from Author field for public release.
@@ -249,7 +249,7 @@ Issues discovered during TASK-005 review of public-facing docs. These are report
 
 | Classification | Count | Details |
 |---------------|-------|---------|
-| PUBLIC | 13 | In nav: index.md, INSTALLATION.md, BOOTSTRAP.md, CLAUDE-MD-GUIDE.md, CNAME (infra), runbooks/getting-started.md, 4 playbooks, JERRY_CONSTITUTION.md, 2 schema guides |
+| PUBLIC | 13 | In nav: index.md, INSTALLATION.md, BOOTSTRAP.md, CLAUDE-MD-GUIDE.md, CNAME (infra), runbooks/getting-started.md, 4 playbooks, TOM_CONSTITUTION.md, 2 schema guides |
 | DEFERRED | 7 | docs/adrs/ — 7 ADR files pending internal work-item reference scrubbing |
 | INTERNAL | 37 | knowledge/ (25), governance/ (2), analysis/ (2), design/ (1), research/ (1), specifications/ (1), synthesis/ (1), templates/ (1), schemas/ (3 — JSON + type defs) |
 | **Total** | **57** | Verified via `find docs/ -type f \| wc -l` |

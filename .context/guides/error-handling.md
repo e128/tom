@@ -25,7 +25,7 @@
 ```
 Exception (Python built-in)
 │
-└── DomainError (Jerry base exception)
+└── DomainError (Tom base exception)
     │
     ├── ValidationError
     │   ├── Field validation failures
@@ -288,7 +288,7 @@ try:
     item = repository.get_or_raise(item_id)
 except WorkItemNotFoundError:
     # Handle work item specifically
-    click.echo(f"Work item {item_id} not found. Use 'jerry items create' to create it.")
+    click.echo(f"Work item {item_id} not found. Use 'tom items create' to create it.")
 ```
 
 ---
@@ -515,7 +515,7 @@ class CompleteWorkItemCommandHandler:
 
 **Example**:
 ```
-"WorkItem 'WORK-123' is in PENDING state. Can only complete items that are IN_PROGRESS. Start the item first with 'jerry items start WORK-123'."
+"WorkItem 'WORK-123' is in PENDING state. Can only complete items that are IN_PROGRESS. Start the item first with 'tom items start WORK-123'."
 
 Part 1: What went wrong
 "WorkItem 'WORK-123' is in PENDING state."
@@ -524,7 +524,7 @@ Part 2: Context (why it's a problem)
 "Can only complete items that are IN_PROGRESS."
 
 Part 3: Suggested action (how to fix)
-"Start the item first with 'jerry items start WORK-123'."
+"Start the item first with 'tom items start WORK-123'."
 ```
 
 ---
@@ -896,13 +896,13 @@ def complete_item(item_id: str, dispatcher: ICommandDispatcher) -> None:
     except NotFoundError as e:
         # ✅ Present domain exception to user
         click.echo(f"✗ {e}", err=True)
-        click.echo("Use 'jerry items list' to see available items.")
+        click.echo("Use 'tom items list' to see available items.")
         sys.exit(1)
 
     except InvalidStateError as e:
         # ✅ Present domain exception to user
         click.echo(f"✗ {e}", err=True)
-        click.echo("Use 'jerry items start' to start the item first.")
+        click.echo("Use 'tom items start' to start the item first.")
         sys.exit(1)
 
     except ValidationError as e:
@@ -915,7 +915,7 @@ def complete_item(item_id: str, dispatcher: ICommandDispatcher) -> None:
 
 ## Evidence
 
-> Verified references to actual Jerry codebase files demonstrating the exception patterns in this guide.
+> Verified references to actual Tom codebase files demonstrating the exception patterns in this guide.
 
 ### Exception Hierarchy -- Real Implementation
 

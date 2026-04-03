@@ -5,7 +5,7 @@
 **Criticality:** C4
 **Date:** 2026-02-18
 **Reviewer:** adv-executor-003
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, CLAUDE.md, markdown-navigation-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, CLAUDE.md, markdown-navigation-standards.md
 
 ---
 
@@ -33,13 +33,13 @@ PARTIAL compliance: 0 Critical, 5 Major, 4 Minor findings. Constitutional compli
 
 | Principle ID | Name | Tier | Source | Applicable? |
 |---|---|---|---|---|
-| P-001 | Truth and Accuracy | Soft/Advisory | JERRY_CONSTITUTION.md Art. I | YES |
-| P-003 | No Recursive Subagents | Hard | JERRY_CONSTITUTION.md Art. I | NO — process constraint, not document content |
-| P-004 | Explicit Provenance | Soft | JERRY_CONSTITUTION.md Art. I | YES — script claims require sourcing |
-| P-011 | Evidence-Based Decisions | Soft/Medium | JERRY_CONSTITUTION.md Art. II | YES — stats must be evidence-backed |
-| P-020 | User Authority | Hard | JERRY_CONSTITUTION.md Art. III | YES — framing of "cannot be overridden" |
-| P-021 | Transparency of Limitations | Medium | JERRY_CONSTITUTION.md Art. III | YES — capability claims in script |
-| P-022 | No Deception | Hard | JERRY_CONSTITUTION.md Art. III | YES — attribution and accuracy |
+| P-001 | Truth and Accuracy | Soft/Advisory | TOM_CONSTITUTION.md Art. I | YES |
+| P-003 | No Recursive Subagents | Hard | TOM_CONSTITUTION.md Art. I | NO — process constraint, not document content |
+| P-004 | Explicit Provenance | Soft | TOM_CONSTITUTION.md Art. I | YES — script claims require sourcing |
+| P-011 | Evidence-Based Decisions | Soft/Medium | TOM_CONSTITUTION.md Art. II | YES — stats must be evidence-backed |
+| P-020 | User Authority | Hard | TOM_CONSTITUTION.md Art. III | YES — framing of "cannot be overridden" |
+| P-021 | Transparency of Limitations | Medium | TOM_CONSTITUTION.md Art. III | YES — capability claims in script |
+| P-022 | No Deception | Hard | TOM_CONSTITUTION.md Art. III | YES — attribution and accuracy |
 | H-13 | Quality threshold >= 0.92 | HARD | quality-enforcement.md | YES — gate cited in script |
 | H-23 | Navigation table REQUIRED | HARD | markdown-navigation-standards.md | YES — document format |
 | H-24 | Anchor links REQUIRED | HARD | markdown-navigation-standards.md | YES — document format |

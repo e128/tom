@@ -278,7 +278,7 @@ pipelines:
             artifact: "projects/PROJ-007-agent-patterns/orchestration/agent-patterns-20260221-001/ps/phase-4-codification/ps-validator-001/ps-validator-001-validation-report.md"
             inputs:
               - "orchestration/agent-patterns-20260221-001/ps/phase-4-codification/ps-architect-003/"
-              - "docs/governance/JERRY_CONSTITUTION.md"
+              - "docs/governance/TOM_CONSTITUTION.md"
               - ".context/rules/quality-enforcement.md"
             started_at: "2026-02-21T03:05:00Z"
             completed_at: "2026-02-21T03:25:00Z"

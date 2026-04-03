@@ -6,7 +6,7 @@
 **Date:** 2026-02-26
 **Reviewer:** adv-executor (S-004)
 **H-16 Compliance:** S-003 Steelman not applicable (iteration 5 of existing work; prior iterations included S-002, S-014)
-**Failure Scenario:** It is August 2026 (6 months from now). The macOS symlink resolution fix has failed spectacularly. Jerry users on vanilla macOS (without Homebrew coreutils) report intermittent bootstrap failures. The production worktree creation script fails silently on 30% of macOS installations. The team has reverted the changes and is investigating why the portable solution did not work as expected.
+**Failure Scenario:** It is August 2026 (6 months from now). The macOS symlink resolution fix has failed spectacularly. Tom users on vanilla macOS (without Homebrew coreutils) report intermittent bootstrap failures. The production worktree creation script fails silently on 30% of macOS installations. The team has reverted the changes and is investigating why the portable solution did not work as expected.
 
 ---
 
@@ -47,7 +47,7 @@
 
 ### PM-001-20260226T1500: `uv` Assumed Available But Not Installed [CRITICAL]
 
-**Failure Cause:** The `realpath_portable()` function assumes that if `uv` is in PATH, it will successfully execute. However, on a fresh macOS installation where a user clones the Jerry repository but has not yet run `bootstrap`, `uv` will not be installed. The script's Priority 2 fallback (`uv run python`) will fail with "command not found," and the error message instructs the user to "ensure uv is available" without explaining how to install it.
+**Failure Cause:** The `realpath_portable()` function assumes that if `uv` is in PATH, it will successfully execute. However, on a fresh macOS installation where a user clones the Tom repository but has not yet run `bootstrap`, `uv` will not be installed. The script's Priority 2 fallback (`uv run python`) will fail with "command not found," and the error message instructs the user to "ensure uv is available" without explaining how to install it.
 
 **Category:** Assumption
 
@@ -63,7 +63,7 @@
 **Dimension:** Methodological Rigor -- The fix assumes a runtime precondition (uv availability) that is not guaranteed or validated.
 
 **Mitigation:**
-1. **Pre-check in bootstrap script:** Before invoking `realpath_portable()`, verify `uv` is available. If not, emit clear guidance: "Jerry requires uv for Python environment management. Install via: curl -LsSf https://astral.sh/uv/install.sh | sh"
+1. **Pre-check in bootstrap script:** Before invoking `realpath_portable()`, verify `uv` is available. If not, emit clear guidance: "Tom requires uv for Python environment management. Install via: curl -LsSf https://astral.sh/uv/install.sh | sh"
 2. **Fallback ordering revision:** Consider moving `uv run python` fallback AFTER basic `readlink` (Priority 3 becomes Priority 2). This degrades gracefully on vanilla macOS without blocking bootstrap.
 3. **Error message enhancement:** Replace generic "ensure uv is available" with "Install uv via: curl -LsSf https://astral.sh/uv/install.sh | sh, then retry."
 
@@ -80,7 +80,7 @@
 
 **Category:** Process
 
-**Likelihood:** Medium -- Nested symlinks in Jerry repository are rare, but context distribution hooks create symlink chains that could exceed basic `readlink` capability.
+**Likelihood:** Medium -- Nested symlinks in Tom repository are rare, but context distribution hooks create symlink chains that could exceed basic `readlink` capability.
 
 **Severity:** Major -- Subtle corruption of symlink verification; does not fail loudly, but introduces silent data integrity risk.
 
@@ -168,7 +168,7 @@
    fi
    ```
 2. **Error message triage:** Emit different error messages for: (a) `uv` not installed anywhere, (b) `uv` installed but not in PATH
-3. **Bootstrap PATH fix:** Jerry bootstrap script should ensure `~/.local/bin` is in PATH before invoking symlink operations
+3. **Bootstrap PATH fix:** Tom bootstrap script should ensure `~/.local/bin` is in PATH before invoking symlink operations
 
 **Acceptance Criteria:**
 - [ ] Script detects `uv` at `~/.local/bin/uv` even if not in PATH
@@ -179,7 +179,7 @@
 
 ### PM-005-20260226T1500: Linux Code Path Unchanged [MAJOR]
 
-**Failure Cause:** The `realpath_portable()` function is only invoked for macOS (lines 179-181, 232-233, 262-263). The Linux code path continues to use `readlink -f` directly (lines 183-184, 235-236, 264-265). This creates an inconsistency: if `uv` is unavailable on Linux, there is no fallback, but the same scenario on macOS has three fallback options. Six months later, a user reports Jerry bootstrap failure on a minimal Linux container that lacks GNU coreutils, and the team realizes the fix did not make the script truly portable -- it only addressed macOS.
+**Failure Cause:** The `realpath_portable()` function is only invoked for macOS (lines 179-181, 232-233, 262-263). The Linux code path continues to use `readlink -f` directly (lines 183-184, 235-236, 264-265). This creates an inconsistency: if `uv` is unavailable on Linux, there is no fallback, but the same scenario on macOS has three fallback options. Six months later, a user reports Tom bootstrap failure on a minimal Linux container that lacks GNU coreutils, and the team realizes the fix did not make the script truly portable -- it only addressed macOS.
 
 **Category:** Technical
 
@@ -220,7 +220,7 @@
 
 ### PM-006-20260226T1500: No Documentation Update [MINOR]
 
-**Failure Cause:** The fix does not update Jerry's setup documentation to explain that `greadlink` (via Homebrew coreutils) is the preferred method on macOS, or that `uv` is required for the fallback. Six months later, a new contributor on macOS experiences slow bootstrap performance (using basic `readlink` fallback) and opens a GitHub Issue asking why Jerry is so slow. The team realizes users are not aware they should install `greadlink` for optimal performance.
+**Failure Cause:** The fix does not update Tom's setup documentation to explain that `greadlink` (via Homebrew coreutils) is the preferred method on macOS, or that `uv` is required for the fallback. Six months later, a new contributor on macOS experiences slow bootstrap performance (using basic `readlink` fallback) and opens a GitHub Issue asking why Tom is so slow. The team realizes users are not aware they should install `greadlink` for optimal performance.
 
 **Category:** Process
 

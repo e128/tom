@@ -680,7 +680,7 @@ The TASK-001 weighting scheme was stress-tested through four sensitivity tests d
 | 7 | `tests/architecture/test_composition_root.py` | Existing AST validation infrastructure (TRL evidence for V-038) |
 | 8 | `scripts/pre_tool_use.py` | Existing PreToolUse hook infrastructure (TRL evidence for V-001) |
 | 9 | `scripts/session_start_hook.py` | Existing SessionStart hook (TRL evidence for V-003) |
-| 10 | `docs/governance/JERRY_CONSTITUTION.md` | Constitutional principles P-002, P-003, P-020, P-022 |
+| 10 | `docs/governance/TOM_CONSTITUTION.md` | Constitutional principles P-002, P-003, P-020, P-022 |
 
 ### Methodology Sources
 

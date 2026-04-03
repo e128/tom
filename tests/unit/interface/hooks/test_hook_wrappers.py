@@ -8,7 +8,7 @@ BDD scenarios:
     - Each wrapper script exists in hooks/ directory
     - Each wrapper is thin (<= 15 lines)
     - No wrapper imports from src/
-    - Each wrapper calls the correct jerry CLI command
+    - Each wrapper calls the correct tom CLI command
     - Wrappers always exit 0 (fail-open design)
     - Wrappers handle subprocess timeouts gracefully
 
@@ -85,11 +85,11 @@ class TestWrapperScriptsNoSrcImports:
 
 
 class TestWrapperScriptsCorrectCliCommand:
-    """BDD: Each wrapper calls the correct jerry hooks CLI command."""
+    """BDD: Each wrapper calls the correct tom hooks CLI command."""
 
     @pytest.mark.parametrize("name,spec", WRAPPER_SPECS.items())
     def test_calls_correct_command(self, name: str, spec: dict) -> None:
-        """GIVEN hooks/{name}.py WHEN reading content THEN contains jerry hooks {command}."""
+        """GIVEN hooks/{name}.py WHEN reading content THEN contains tom hooks {command}."""
         content = spec["path"].read_text()
         expected_cmd = f'"hooks", "{spec["cli_command"]}"'
         assert expected_cmd in content, (

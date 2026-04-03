@@ -162,7 +162,7 @@ Patterns for guardrails, governance, bounded autonomy, and compliance. Incorpora
 
 | ID | Pattern | Jerry Status | Problem | Solution Summary | Related Requirements | Related Risks |
 |----|---------|-------------|---------|------------------|---------------------|---------------|
-| SF-01 | Constitutional AI Constraints | **Implemented** | All agents need predefined behavioral boundaries | JERRY_CONSTITUTION.md; H-01 through H-31; P-001 through P-043 | SR-001 (P-003/P-020/P-022) | R-S04 (unauthorized actions) |
+| SF-01 | Constitutional AI Constraints | **Implemented** | All agents need predefined behavioral boundaries | TOM_CONSTITUTION.md; H-01 through H-31; P-001 through P-043 | SR-001 (P-003/P-020/P-022) | R-S04 (unauthorized actions) |
 | SF-02 | Multi-Layer Guardrails | **Implemented** | Defense in depth requires validation at multiple points | L1-L5 enforcement architecture; PreToolUse/PostToolUse hooks | SR-002 (input validation), SR-003 (output filtering) | R-S01 (prompt injection) |
 | SF-03 | Least Privilege (Tool Restriction) | **Implemented** | Agents must not exceed authorized capabilities | Per-agent `allowed_tools`; TOOL_REGISTRY.yaml SSOT. NSE Pattern 5 adds T1-T5 security tiers with selection rule: "always select lowest tier that satisfies requirements" | AR-006 (tool restriction), SR-008 (MCP governance) | R-S02 (tool misuse) |
 | SF-04 | Bounded Autonomy | **Implemented** | Agents need defined authority boundaries | H-02 user authority; H-31 clarify when ambiguous; AE-006 escalation | SR-004 (user authority), SR-010 (ambiguity clarification) | R-S04 (unauthorized actions) |

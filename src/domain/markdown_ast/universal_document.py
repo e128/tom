@@ -2,9 +2,9 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-UniversalDocument - Unified facade for parsing any Jerry markdown file type.
+UniversalDocument - Unified facade for parsing any Tom markdown file type.
 
-Wraps ``JerryDocument`` and adds type-specific parsed results as attributes
+Wraps ``TomDocument`` and adds type-specific parsed results as attributes
 of a ``UniversalParseResult`` frozen dataclass. Delegates to type-specific
 parsers based on the ``DocumentType`` and the parser invocation matrix from
 ADR-PROJ005-003 DD-3.
@@ -36,7 +36,7 @@ from src.domain.markdown_ast.html_comment import (
     HtmlCommentMetadata,
 )
 from src.domain.markdown_ast.input_bounds import InputBounds
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.nav_table import NavEntry, extract_nav_table
 from src.domain.markdown_ast.reinject import (
     ReinjectDirective,
@@ -59,7 +59,7 @@ class UniversalParseResult:
 
     Attributes:
         document_type: Detected or explicitly provided document type.
-        jerry_document: The base JerryDocument (always present).
+        tom_document: The base TomDocument (always present).
         yaml_frontmatter: YAML frontmatter result, or ``None`` if not invoked.
         blockquote_frontmatter: Blockquote frontmatter, or ``None`` if not
             invoked.
@@ -78,7 +78,7 @@ class UniversalParseResult:
     """
 
     document_type: DocumentType
-    jerry_document: JerryDocument
+    tom_document: TomDocument
     yaml_frontmatter: YamlFrontmatterResult | None
     blockquote_frontmatter: BlockquoteFrontmatter | None
     xml_sections: tuple[XmlSection, ...] | None
@@ -111,10 +111,10 @@ _PARSER_MATRIX: dict[DocumentType, set[str]] = {
 
 
 class UniversalDocument:
-    """Unified facade for parsing any Jerry markdown file type.
+    """Unified facade for parsing any Tom markdown file type.
 
     Delegates to type-specific parsers based on the parser invocation matrix.
-    Always creates a base ``JerryDocument``; additional parsers are invoked
+    Always creates a base ``TomDocument``; additional parsers are invoked
     conditionally based on ``DocumentType``.
     """
 
@@ -145,7 +145,7 @@ class UniversalDocument:
             bounds = InputBounds.DEFAULT
 
         # --- Base parse ---
-        doc = JerryDocument.parse(content)
+        doc = TomDocument.parse(content)
 
         # --- Type detection ---
         detection_warning: str | None = None
@@ -202,7 +202,7 @@ class UniversalDocument:
 
         return UniversalParseResult(
             document_type=detected_type,
-            jerry_document=doc,
+            tom_document=doc,
             yaml_frontmatter=yaml_result,
             blockquote_frontmatter=blockquote_result,
             xml_sections=xml_result,

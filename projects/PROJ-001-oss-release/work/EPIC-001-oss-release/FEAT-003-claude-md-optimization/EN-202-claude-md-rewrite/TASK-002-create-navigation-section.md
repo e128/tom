@@ -80,7 +80,7 @@ Create the Navigation section for the new lean CLAUDE.md. This section tells Cla
 | Architecture | `/architecture` skill |
 | Templates | `.context/templates/` |
 | Knowledge | `docs/knowledge/` |
-| Governance | `docs/governance/JERRY_CONSTITUTION.md` |
+| Governance | `docs/governance/TOM_CONSTITUTION.md` |
 ```
 
 ### Required Pointers
@@ -93,7 +93,7 @@ Create the Navigation section for the new lean CLAUDE.md. This section tells Cla
 6. **Orchestration** -> `/orchestration` skill
 7. **Templates** -> `.context/templates/`
 8. **Knowledge** -> `docs/knowledge/`
-9. **Governance** -> `docs/governance/JERRY_CONSTITUTION.md`
+9. **Governance** -> `docs/governance/TOM_CONSTITUTION.md`
 
 ### Acceptance Criteria
 

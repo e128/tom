@@ -1,4 +1,4 @@
-# NASA SE Process Mapping to Jerry Framework
+# NASA SE Process Mapping to Tom Framework
 
 > **Document ID:** NASA-SE-MAPPING
 > **Version:** 1.0.0
@@ -9,13 +9,13 @@
 
 ## Overview
 
-This document maps NASA's 17 Common Technical Processes (NPR 7123.1D) to the Jerry Framework's NASA SE skill agents, tools, and artifacts.
+This document maps NASA's 17 Common Technical Processes (NPR 7123.1D) to the Tom Framework's NASA SE skill agents, tools, and artifacts.
 
 ---
 
 ## Process-to-Agent Mapping Matrix
 
-| # | NASA Process | NPR Section | NSE Agent | Jerry Integration |
+| # | NASA Process | NPR Section | NSE Agent | Tom Integration |
 |---|--------------|-------------|-----------|-------------------|
 | 1 | Stakeholder Expectations Definition | 3.2.1 | `nse-requirements` | Work Tracker items |
 | 2 | Technical Requirements Definition | 3.2.2 | `nse-requirements` | `requirements/` artifacts |
@@ -43,7 +43,7 @@ This document maps NASA's 17 Common Technical Processes (NPR 7123.1D) to the Jer
 
 #### Process 1: Stakeholder Expectations Definition
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Identify stakeholders, elicit expectations, transform into requirements | `nse-requirements` agent |
 | **Inputs** | Mission objectives, constraints, interfaces | Work Tracker items, project PLAN.md |
@@ -51,7 +51,7 @@ This document maps NASA's 17 Common Technical Processes (NPR 7123.1D) to the Jer
 | **Activities** | Identify stakeholders, elicit needs, prioritize | Agent prompts for stakeholder analysis |
 | **Work Products** | Stakeholder register, needs statements | Markdown artifacts with traceability |
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Identify stakeholder needs for the authentication module"
 Agent: nse-requirements
@@ -63,7 +63,7 @@ Format: Stakeholder → Need → Priority → Trace-to-Requirement
 
 #### Process 2: Technical Requirements Definition
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Transform stakeholder expectations into technical requirements | `nse-requirements` agent |
 | **Inputs** | Stakeholder needs, constraints, standards | Previous stakeholder analysis |
@@ -78,7 +78,7 @@ Format: Stakeholder → Need → Priority → Trace-to-Requirement
 | REQ-001 | The system shall authenticate users within 2 seconds | Performance constraint | STK-003 | Test | Draft |
 ```
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Create requirements for user authentication"
 Agent: nse-requirements
@@ -90,7 +90,7 @@ Format: ID, Shall-statement, Rationale, Parent-trace, V-method
 
 #### Process 3: Logical Decomposition
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Decompose system into logical components | `nse-architecture` agent |
 | **Inputs** | Technical requirements, constraints | Requirements baseline |
@@ -98,7 +98,7 @@ Format: ID, Shall-statement, Rationale, Parent-trace, V-method
 | **Activities** | Identify functions, allocate to components | Functional analysis |
 | **Work Products** | Functional hierarchy, N² diagram | Architecture artifacts |
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Decompose the API service into logical components"
 Agent: nse-architecture
@@ -110,7 +110,7 @@ Format: Function hierarchy, component allocation, interface identification
 
 #### Process 4: Design Solution Definition
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Define physical design solution | `nse-architecture` agent |
 | **Inputs** | Logical architecture, design constraints | Decomposition artifacts |
@@ -134,7 +134,7 @@ Format: Function hierarchy, component allocation, interface identification
 {Selected option with rationale}
 ```
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Trade study: SQL vs NoSQL for audit logs"
 Agent: nse-architecture
@@ -148,14 +148,14 @@ Format: ADR with trade study matrix
 
 #### Process 5: Product Implementation
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Build or code the product | External (code artifacts) |
 | **Inputs** | Design specifications | Architecture artifacts |
 | **Outputs** | Implemented product | Source code |
 | **Note** | This process is external to NSE agents | Developer responsibility |
 
-**Jerry Integration:**
+**Tom Integration:**
 - NSE agents provide requirements and design inputs
 - Code implementation is external to NASA SE skill
 - `nse-verification` validates implementation against requirements
@@ -164,7 +164,7 @@ Format: ADR with trade study matrix
 
 #### Process 6: Product Integration
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Integrate components into assemblies | `nse-integration` agent |
 | **Inputs** | Implemented products, ICDs | Code + interface docs |
@@ -188,7 +188,7 @@ Format: ADR with trade study matrix
 |-----------|------|-----------|--------|-------------|
 ```
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Create ICD for frontend-backend API interface"
 Agent: nse-integration
@@ -200,7 +200,7 @@ Format: Interface ID, endpoints, data formats, constraints
 
 #### Process 7: Product Verification
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Verify product meets requirements | `nse-verification` agent |
 | **Inputs** | Requirements, product, test plans | Requirements baseline + code |
@@ -221,7 +221,7 @@ Format: Interface ID, endpoints, data formats, constraints
 - **Inspection (I):** Visual examination
 - **Test (T):** Execution against criteria
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Generate VCRM for authentication requirements"
 Agent: nse-verification
@@ -233,7 +233,7 @@ Format: Req-to-test trace, verification method, status, evidence
 
 #### Process 8: Product Validation
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Validate product meets intended use | `nse-verification` agent |
 | **Inputs** | Stakeholder needs, integrated product | Needs baseline + system |
@@ -241,7 +241,7 @@ Format: Req-to-test trace, verification method, status, evidence
 | **Activities** | Plan validation, execute, collect evidence | Validation activities |
 | **Work Products** | Validation plan, validation reports | Validation artifacts |
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Create validation plan for user acceptance"
 Agent: nse-verification
@@ -253,7 +253,7 @@ Format: Need-to-validation trace, acceptance criteria, evidence
 
 #### Process 9: Product Transition
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Transition product to operations | `nse-reporter` agent |
 | **Inputs** | Validated product, transition plan | V&V evidence + plan |
@@ -261,7 +261,7 @@ Format: Need-to-validation trace, acceptance criteria, evidence
 | **Activities** | Prepare operations, train users, deploy | Transition planning |
 | **Work Products** | Transition plan, training materials | Transition artifacts |
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Prepare transition report for production deployment"
 Agent: nse-reporter
@@ -275,7 +275,7 @@ Format: Readiness assessment, transition checklist, issues
 
 #### Process 10: Technical Planning
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Establish and maintain SE plan | `nse-reporter` agent |
 | **Inputs** | Project requirements, constraints | Project PLAN.md |
@@ -283,7 +283,7 @@ Format: Readiness assessment, transition checklist, issues
 | **Activities** | Define SE approach, resources, schedule | Planning activities |
 | **Work Products** | SEMP, WBS, resource plans | Planning artifacts |
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Generate SE management plan for Phase 2"
 Agent: nse-reporter
@@ -295,7 +295,7 @@ Format: SE approach, processes, resources, schedule
 
 #### Process 11: Requirements Management
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Manage requirements throughout lifecycle | `nse-requirements` agent |
 | **Inputs** | Requirements baseline, changes | Existing requirements |
@@ -310,7 +310,7 @@ Format: SE approach, processes, resources, schedule
 | STK-001 | REQ-001 | DES-001 | Test | Verified |
 ```
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Create bidirectional traceability matrix for Phase 1"
 Agent: nse-requirements
@@ -322,7 +322,7 @@ Format: Parent→Requirement→Design→Test traceability
 
 #### Process 12: Interface Management
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Manage system interfaces | `nse-integration` agent |
 | **Inputs** | Interface requirements, ICDs | Interface definitions |
@@ -339,7 +339,7 @@ Format: Parent→Requirement→Design→Test traceability
 | Comp C    | -      | IF-005 | -      |
 ```
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Create N² interface diagram for system components"
 Agent: nse-integration
@@ -351,7 +351,7 @@ Format: N² matrix with interface IDs
 
 #### Process 13: Technical Risk Management
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Identify, assess, mitigate technical risks | `nse-risk` agent |
 | **Inputs** | Technical plans, assessments | Project artifacts |
@@ -379,7 +379,7 @@ L   4 | 4  | 8  | 12 | 16 | 20 |
 GREEN: 1-7 | YELLOW: 8-15 | RED: 16-25
 ```
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Create risk register for deployment phase"
 Agent: nse-risk
@@ -391,7 +391,7 @@ Format: If-then risks, 5x5 scoring, mitigations
 
 #### Process 14: Configuration Management
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Establish and maintain configuration baselines | `nse-configuration` agent |
 | **Inputs** | Configuration items, baselines | Project artifacts |
@@ -399,7 +399,7 @@ Format: If-then risks, 5x5 scoring, mitigations
 | **Activities** | Identify CIs, establish baselines, control changes | Config control |
 | **Work Products** | CI list, baselines, change log | Configuration artifacts |
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Document baseline for release 1.0"
 Agent: nse-configuration
@@ -411,7 +411,7 @@ Format: CI list, baseline contents, change log
 
 #### Process 15: Technical Data Management
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Manage technical data throughout lifecycle | `nse-configuration` agent |
 | **Inputs** | Technical data, data requirements | Project artifacts |
@@ -419,7 +419,7 @@ Format: CI list, baseline contents, change log
 | **Activities** | Identify data, store, distribute | Data management |
 | **Work Products** | Data dictionary, data packages | Data artifacts |
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Create technical data package for CDR"
 Agent: nse-configuration
@@ -431,7 +431,7 @@ Format: Data inventory, locations, access
 
 #### Process 16: Technical Assessment
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Assess technical progress and health | `nse-reporter` agent |
 | **Inputs** | Plans, metrics, status data | Project state |
@@ -439,7 +439,7 @@ Format: Data inventory, locations, access
 | **Activities** | Collect metrics, assess progress, report | Status reporting |
 | **Work Products** | TPM reports, health assessments | Report artifacts |
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Generate technical assessment for Phase 2"
 Agent: nse-reporter
@@ -451,7 +451,7 @@ Format: Metrics, health indicators, issues, recommendations
 
 #### Process 17: Decision Analysis
 
-| Attribute | NASA Definition | Jerry Implementation |
+| Attribute | NASA Definition | Tom Implementation |
 |-----------|-----------------|---------------------|
 | **Purpose** | Apply systematic decision-making | `nse-architecture` agent |
 | **Inputs** | Decision problem, alternatives, criteria | Decision context |
@@ -483,7 +483,7 @@ Format: Metrics, health indicators, issues, recommendations
 {NPR 7123.1D Process 17 alignment, risk implications}
 ```
 
-**Jerry Mapping:**
+**Tom Mapping:**
 ```
 User: "Document decision: Redis vs Memcached for caching"
 Agent: nse-architecture

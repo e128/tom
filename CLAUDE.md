@@ -1,4 +1,4 @@
-# CLAUDE.md - Jerry Framework Root Context
+# CLAUDE.md - Tom Framework Root Context
 
 > Procedural memory for Claude Code. Loaded once at session start.
 
@@ -17,7 +17,7 @@
 
 ## Identity
 
-**Jerry** -- Framework for behavior/workflow guardrails. Accrues knowledge, wisdom, experience.
+**Tom** -- Framework for behavior/workflow guardrails. Accrues knowledge, wisdom, experience.
 
 **Core Problem**: Context Rot -- LLM performance degrades as context fills.
 **Core Solution**: Filesystem as infinite memory. Persist state to files; load selectively.
@@ -38,7 +38,7 @@
 | H-31 | **Clarify when ambiguous.** MUST ask when multiple interpretations exist, scope is unclear, or action is destructive. MUST NOT ask when clear. | Wrong-direction work. |
 
 See `quality-enforcement.md` for quality gate, criticality levels, and adversarial strategies.
-See `docs/governance/JERRY_CONSTITUTION.md` for full governance.
+See `docs/governance/TOM_CONSTITUTION.md` for full governance.
 
 ---
 
@@ -59,14 +59,14 @@ See `docs/governance/JERRY_CONSTITUTION.md` for full governance.
 | Skills | `skills/{name}/SKILL.md` |
 | Templates | `.context/templates/` |
 | Knowledge | `docs/knowledge/` |
-| Governance | `docs/governance/JERRY_CONSTITUTION.md` |
+| Governance | `docs/governance/TOM_CONSTITUTION.md` |
 | Projects | `projects/README.md` |
 
 ---
 
 ## Quick Reference
 
-**CLI** (v0.30.0): `jerry session start|end|status|abandon` | `jerry items list|show` | `jerry projects list|context|validate`
+**CLI** (v0.30.0): `tom session start|end|status|abandon` | `tom items list|show` | `tom projects list|context|validate`
 
 **Skills** (invoke proactively per H-22):
 

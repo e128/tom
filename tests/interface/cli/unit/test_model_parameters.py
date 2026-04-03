@@ -3,7 +3,7 @@
 
 """Unit tests for CLI model parameter handling.
 
-Tests that the jerry transcript parse command correctly accepts
+Tests that the tom transcript parse command correctly accepts
 and processes model selection parameters.
 
 Note: TASK-423 changed defaults from argparse to profile resolution.

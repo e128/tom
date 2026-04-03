@@ -29,7 +29,7 @@ uv run jerry <command>   # CORRECT
 python script.py         # FORBIDDEN
 ```
 
-**Reference**: `docs/governance/JERRY_CONSTITUTION.md`
+**Reference**: `docs/governance/TOM_CONSTITUTION.md`
 ```
 
 ---

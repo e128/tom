@@ -159,6 +159,6 @@ CLEAR with one flag:
 ---
 
 *Scored by: sb-calibrator v1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Calibration Reference: voice-guide.md Pair 5 (Session Start)*
 *Scored: 2026-02-20*

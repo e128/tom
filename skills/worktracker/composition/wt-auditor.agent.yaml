@@ -39,7 +39,7 @@ guardrails:
   - all_issues_documented_with_remediation
   fallback_behavior: warn_and_retry
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-002: File Persistence (Medium) - Audit reports MUST be persisted'
   - 'P-003: No Recursive Subagents (Hard) - No spawning other agents'

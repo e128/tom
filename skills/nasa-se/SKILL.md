@@ -44,9 +44,9 @@ activation-keywords:
 # NASA Systems Engineering Skill
 
 > **Version:** 1.2.0
-> **Framework:** Jerry NASA SE (NSE)
+> **Framework:** Tom NASA SE (NSE)
 > **Standards:** NASA/SP-2016-6105 Rev2, NPR 7123.1D, NPR 8000.4C
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Constitutional Compliance:** Tom Constitution v1.0
 
 ---
 
@@ -443,7 +443,7 @@ NPR 7123.1D review gates map to adversarial review levels:
 | TRR | Appendix G.4 | C2 | S-011, S-013, S-014 | Test coverage, verification gaps |
 | FRR | Appendix G.5 | C3 | S-001, S-004, S-012, S-014 | Readiness, residual risk |
 
-**Auto-Escalation:** Artifacts touching `docs/governance/JERRY_CONSTITUTION.md` auto-escalate to C4. Artifacts touching `.context/rules/` auto-escalate to C3 minimum (ref: AE-001, AE-002).
+**Auto-Escalation:** Artifacts touching `docs/governance/TOM_CONSTITUTION.md` auto-escalate to C4. Artifacts touching `.context/rules/` auto-escalate to C3 minimum (ref: AE-001, AE-002).
 
 ### Strategy Catalog Reference for NSE Contexts
 
@@ -460,7 +460,7 @@ NPR 7123.1D review gates map to adversarial review levels:
 
 ## Constitutional Compliance
 
-All agents adhere to the **Jerry Constitution v1.0** plus NASA SE extensions:
+All agents adhere to the **Tom Constitution v1.0** plus NASA SE extensions:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -555,6 +555,6 @@ For detailed agent specifications, see:
 ---
 
 *Skill Version: 1.2.0*
-*Constitutional Compliance: Jerry Constitution v1.0 + P-040, P-041, P-042, P-043*
+*Constitutional Compliance: Tom Constitution v1.0 + P-040, P-041, P-042, P-043*
 *Enhancement: EN-708 adversarial quality mode integration (EPIC-002 design)*
 *Last Updated: 2026-02-14*

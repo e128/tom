@@ -8,7 +8,7 @@
 **Criticality:** C4
 **Date:** 2026-02-17
 **Reviewer:** adv-executor v1.0.0
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md
 **Prior Iteration:** `projects/PROJ-001-oss-release/orchestration/feat015-licmig-20260217-001/lic/quality-gates/qg-3/adv-executor-s007-result.md` (2026-02-17T1200)
 
 ---
@@ -195,7 +195,7 @@ P2 action (improvement opportunity): The applicator "Scope Clarification" or "Ve
 - **Minor:** 2 (CC-004, CC-006)
 - **Resolved from P1:** 3 (CC-001, CC-002, CC-003)
 - **Protocol Steps Completed:** 5 of 5
-  - Step 1: Constitutional context loaded (JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md)
+  - Step 1: Constitutional context loaded (TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md)
   - Step 2: Applicable principles enumerated (P-001, P-004, P-011, P-021, P-022, P-030, H-23, H-24 — all re-evaluated against revised deliverables)
   - Step 3: Principle-by-principle evaluation completed (8 principles evaluated; 3 resolved; 2 Minor carried; 1 explicitly COMPLIANT: H-23/H-24)
   - Step 4: Remediation guidance generated for all active Minor findings (P2 priority only)
@@ -209,5 +209,5 @@ P2 action (improvement opportunity): The applicator "Scope Clarification" or "Ve
 *Execution ID: 20260217T1400*
 *Iteration: 2 (QG-3 revision cycle)*
 *Prior Iteration Report: `adv-executor-s007-result.md` (20260217T1200)*
-*Constitutional Compliance: JERRY_CONSTITUTION.md v1.1*
+*Constitutional Compliance: TOM_CONSTITUTION.md v1.1*
 *SSOT: `.context/rules/quality-enforcement.md` v1.3.0*

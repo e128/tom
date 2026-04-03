@@ -23,7 +23,7 @@
 **Requested Level:** C4 (explicitly assigned)
 
 **Auto-Escalation Applied:** No additional escalation rules triggered
-- Deliverable does NOT touch `docs/governance/JERRY_CONSTITUTION.md` (AE-001 not triggered)
+- Deliverable does NOT touch `docs/governance/TOM_CONSTITUTION.md` (AE-001 not triggered)
 - Deliverable does NOT touch `.context/rules/` or `.claude/rules/` (AE-002 not triggered)
 - Deliverable is NOT an ADR (AE-003 not triggered)
 - Deliverable is NOT a baselined ADR modification (AE-004 not triggered)
@@ -252,7 +252,7 @@ Apply the 6-dimension quality rubric (Completeness, Internal Consistency, Method
 
 | Auto-Escalation Rule | Condition | Status |
 |---------------------|-----------|--------|
-| AE-001 | Touches JERRY_CONSTITUTION.md | Not triggered |
+| AE-001 | Touches TOM_CONSTITUTION.md | Not triggered |
 | AE-002 | Touches .context/rules/ | Not triggered |
 | AE-003 | New/modified ADR | Not triggered |
 | AE-004 | Modifies baselined ADR | Not triggered |

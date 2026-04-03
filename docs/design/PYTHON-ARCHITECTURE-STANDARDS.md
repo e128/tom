@@ -1,4 +1,4 @@
-# Python Architecture Standards for Jerry Framework
+# Python Architecture Standards for Tom Framework
 
 > **Version**: 1.0.0
 > **Date**: 2026-01-12
@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-This document establishes Python-specific coding standards for Domain-Driven Design (DDD), Hexagonal Architecture, and CQRS patterns within the Jerry Framework. These standards ensure consistency, maintainability, and architectural integrity across all bounded contexts.
+This document establishes Python-specific coding standards for Domain-Driven Design (DDD), Hexagonal Architecture, and CQRS patterns within the Tom Framework. These standards ensure consistency, maintainability, and architectural integrity across all bounded contexts.
 
 ---
 
@@ -91,7 +91,7 @@ src/{bounded_context}/
 
 ### Dispatcher Pattern (REQUIRED)
 
-Jerry uses the **Dispatcher Pattern** with proper handler separation. Direct `.execute()` calls from adapters are **NOT PERMITTED**.
+Tom uses the **Dispatcher Pattern** with proper handler separation. Direct `.execute()` calls from adapters are **NOT PERMITTED**.
 
 ```
 REQUIRED Architecture:
@@ -394,9 +394,9 @@ def create_application() -> CLIAdapter:
 Each bounded context gets its own CLI subcommand namespace:
 
 ```bash
-jerry session <command>          # Session Management bounded context
-jerry worktracker <command>      # Work Tracker bounded context
-jerry projects <command>         # Project Management bounded context
+tom session <command>          # Session Management bounded context
+tom worktracker <command>      # Work Tracker bounded context
+tom projects <command>         # Project Management bounded context
 ```
 
 **This mirrors:**
@@ -409,9 +409,9 @@ jerry projects <command>         # Project Management bounded context
 ```
 CLI Command → Use Case (Application Service) → Domain
      │
-     ├── jerry session → ISessionManagementPort
-     ├── jerry worktracker → IWorkTrackerPort
-     └── jerry projects → IProjectManagementPort
+     ├── tom session → ISessionManagementPort
+     ├── tom worktracker → IWorkTrackerPort
+     └── tom projects → IProjectManagementPort
 ```
 
 ### CLI Adapter Rules (HARD ENFORCEMENT)
@@ -456,13 +456,13 @@ P:PROJ-002-api-redesign|S:draft|V:true
 ### CLI Argument Structure
 
 ```bash
-jerry [--format toon|json|human] <command> [subcommand] [args]
+tom [--format toon|json|human] <command> [subcommand] [args]
 
 # Examples:
-jerry --toon projects list          # TOON output (default)
-jerry --json projects list          # JSON output
-jerry projects list                 # Human-readable output
-jerry projects validate PROJ-001
+tom --toon projects list          # TOON output (default)
+tom --json projects list          # JSON output
+tom projects list                 # Human-readable output
+tom projects validate PROJ-001
 ```
 
 ### Input Format Support

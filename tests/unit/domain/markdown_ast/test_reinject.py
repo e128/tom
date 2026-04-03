@@ -5,7 +5,7 @@
 Unit tests for the L2-REINJECT comment parser.
 
 Tests cover:
-    - AC-ST003-1: Extract all L2-REINJECT comments from a Jerry rule file
+    - AC-ST003-1: Extract all L2-REINJECT comments from a Tom rule file
     - AC-ST003-2: Parse structured fields: rank (int), tokens (int), content (str)
     - AC-ST003-3: Write-back: modify rank value, verify roundtrip
     - AC-ST003-4: Write-back: modify content string, verify roundtrip
@@ -24,7 +24,7 @@ from __future__ import annotations
 
 import pytest
 
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.reinject import (
     ReinjectDirective,
     extract_reinject_directives,
@@ -147,59 +147,59 @@ class TestExtractReinjectDirectives:
 
     def test_extract_returns_list(self) -> None:
         """extract_reinject_directives() returns a list."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         result = extract_reinject_directives(doc)
         assert isinstance(result, list)
 
     def test_extract_single_directive(self) -> None:
         """Extracts one directive from a document with a single L2-REINJECT comment."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         assert len(directives) == 1
 
     def test_extract_multiple_directives(self) -> None:
         """Extracts all directives from a document with multiple L2-REINJECT comments."""
-        doc = JerryDocument.parse(MULTI_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(MULTI_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         assert len(directives) == 3
 
     def test_extract_six_directives_quality_enforcement(self) -> None:
         """Extracts 6 directives from quality-enforcement-style source (AC-ST003-5)."""
-        doc = JerryDocument.parse(SIX_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SIX_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         assert len(directives) == 6
 
     def test_extract_parses_rank_as_int(self) -> None:
         """Parsed rank field is an integer (AC-ST003-2)."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         assert isinstance(directives[0].rank, int)
         assert directives[0].rank == 1
 
     def test_extract_parses_tokens_as_int(self) -> None:
         """Parsed tokens field is an integer (AC-ST003-2)."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         assert isinstance(directives[0].tokens, int)
         assert directives[0].tokens == 50
 
     def test_extract_parses_content_as_str(self) -> None:
         """Parsed content field is a string (AC-ST003-2)."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         assert isinstance(directives[0].content, str)
         assert "P-003" in directives[0].content
 
     def test_extract_content_without_surrounding_quotes(self) -> None:
         """Extracted content does not include surrounding double-quote delimiters."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         assert not directives[0].content.startswith('"')
         assert not directives[0].content.endswith('"')
 
     def test_extract_preserves_order(self) -> None:
         """Directives are returned in document order."""
-        doc = JerryDocument.parse(MULTI_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(MULTI_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         ranks = [d.rank for d in directives]
         assert ranks == [1, 2, 3]
@@ -207,19 +207,19 @@ class TestExtractReinjectDirectives:
     def test_extract_returns_empty_list_for_no_directives(self) -> None:
         """Returns empty list when document has no L2-REINJECT comments."""
         source = "# No Directives\n\nJust some text.\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         directives = extract_reinject_directives(doc)
         assert directives == []
 
     def test_extract_returns_empty_list_for_empty_document(self) -> None:
         """Returns empty list for empty document."""
-        doc = JerryDocument.parse("")
+        doc = TomDocument.parse("")
         directives = extract_reinject_directives(doc)
         assert directives == []
 
     def test_extract_non_reinject_comment_not_included(self) -> None:
         """Non-L2-REINJECT HTML comments are NOT included in extraction (AC-ST003-6)."""
-        doc = JerryDocument.parse(NON_REINJECT_COMMENT_SOURCE)
+        doc = TomDocument.parse(NON_REINJECT_COMMENT_SOURCE)
         directives = extract_reinject_directives(doc)
         # Only 1 L2-REINJECT comment; the VERSION comment is not included
         assert len(directives) == 1
@@ -227,7 +227,7 @@ class TestExtractReinjectDirectives:
 
     def test_extract_stores_raw_text(self) -> None:
         """Each directive stores the full raw comment text."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         assert "L2-REINJECT" in directives[0].raw_text
         assert "<!--" in directives[0].raw_text
@@ -235,7 +235,7 @@ class TestExtractReinjectDirectives:
 
     def test_extract_stores_line_number(self) -> None:
         """Each directive stores a valid line_number (zero-based or one-based, consistent)."""
-        doc = JerryDocument.parse(MULTI_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(MULTI_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         # Line numbers should be distinct and increasing
         line_numbers = [d.line_number for d in directives]
@@ -244,21 +244,21 @@ class TestExtractReinjectDirectives:
 
     def test_extract_six_directives_ranks(self) -> None:
         """Six-directive document has correct rank values extracted."""
-        doc = JerryDocument.parse(SIX_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SIX_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         ranks = [d.rank for d in directives]
         assert ranks == [1, 2, 3, 4, 5, 8]
 
     def test_extract_six_directives_tokens(self) -> None:
         """Six-directive document has correct token counts extracted."""
-        doc = JerryDocument.parse(SIX_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SIX_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         tokens = [d.tokens for d in directives]
         assert tokens == [50, 90, 25, 30, 30, 40]
 
     def test_extract_content_with_special_chars(self) -> None:
         """Content with em dashes, slashes, parentheses, and greater-than chars is parsed correctly."""
-        doc = JerryDocument.parse(MULTI_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(MULTI_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         # Directive 2 contains >= and (H-13) etc.
         assert ">=" in directives[1].content
@@ -266,13 +266,13 @@ class TestExtractReinjectDirectives:
 
     def test_extract_directive_is_reinject_directive_type(self) -> None:
         """Each extracted item is a ReinjectDirective instance."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         directives = extract_reinject_directives(doc)
         assert isinstance(directives[0], ReinjectDirective)
 
     def test_extract_content_with_escaped_quotes(self) -> None:
         """Content field with escaped double-quotes is decoded correctly."""
-        doc = JerryDocument.parse(ESCAPED_QUOTE_SOURCE)
+        doc = TomDocument.parse(ESCAPED_QUOTE_SOURCE)
         directives = extract_reinject_directives(doc)
         assert len(directives) == 1
         # Escaped quotes in the source become actual quotes in parsed content
@@ -287,37 +287,37 @@ class TestExtractReinjectDirectives:
 class TestModifyReinjectDirective:
     """Tests for modify_reinject_directive()."""
 
-    def test_modify_returns_new_jerry_document(self) -> None:
-        """modify_reinject_directive() returns a new JerryDocument instance."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+    def test_modify_returns_new_tom_document(self) -> None:
+        """modify_reinject_directive() returns a new TomDocument instance."""
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 0, rank=99)
-        assert isinstance(new_doc, JerryDocument)
+        assert isinstance(new_doc, TomDocument)
         assert new_doc is not doc
 
     def test_modify_rank_changes_rank(self) -> None:
         """Modifying rank updates the rank field in the new document (AC-ST003-3)."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 0, rank=42)
         directives = extract_reinject_directives(new_doc)
         assert directives[0].rank == 42
 
     def test_modify_tokens_changes_tokens(self) -> None:
         """Modifying tokens updates the tokens field in the new document."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 0, tokens=999)
         directives = extract_reinject_directives(new_doc)
         assert directives[0].tokens == 999
 
     def test_modify_content_changes_content(self) -> None:
         """Modifying content updates the content field in the new document (AC-ST003-4)."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 0, content="New content here.")
         directives = extract_reinject_directives(new_doc)
         assert directives[0].content == "New content here."
 
     def test_modify_rank_roundtrip(self) -> None:
         """Rank write-back roundtrip: modify rank, re-extract, value matches (AC-ST003-3)."""
-        doc = JerryDocument.parse(MULTI_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(MULTI_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 1, rank=99)
         directives = extract_reinject_directives(new_doc)
         assert directives[1].rank == 99
@@ -325,21 +325,21 @@ class TestModifyReinjectDirective:
     def test_modify_content_roundtrip(self) -> None:
         """Content write-back roundtrip: modify content, re-extract, value matches (AC-ST003-4)."""
         new_content = "Updated directive content with special chars >= 0.92."
-        doc = JerryDocument.parse(MULTI_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(MULTI_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 0, content=new_content)
         directives = extract_reinject_directives(new_doc)
         assert directives[0].content == new_content
 
     def test_modify_original_document_unchanged(self) -> None:
         """modify_reinject_directive() does not mutate the original document."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         original_source = doc.source
         modify_reinject_directive(doc, 0, rank=99)
         assert doc.source == original_source
 
     def test_modify_other_directives_unchanged(self) -> None:
         """Modifying one directive leaves other directives unchanged."""
-        doc = JerryDocument.parse(MULTI_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(MULTI_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 0, rank=99)
         directives = extract_reinject_directives(new_doc)
         # Directives at index 1 and 2 should be unchanged
@@ -348,14 +348,14 @@ class TestModifyReinjectDirective:
 
     def test_modify_non_reinject_comments_preserved(self) -> None:
         """Non-L2-REINJECT HTML comments are preserved after modification (AC-ST003-6)."""
-        doc = JerryDocument.parse(NON_REINJECT_COMMENT_SOURCE)
+        doc = TomDocument.parse(NON_REINJECT_COMMENT_SOURCE)
         new_doc = modify_reinject_directive(doc, 0, rank=99)
         # The VERSION comment should still be in the source
         assert "VERSION: 1.0" in new_doc.source
 
     def test_modify_no_fields_returns_equivalent_document(self) -> None:
         """modify_reinject_directive() with no fields changed returns document with same directive values."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 0)
         original_directives = extract_reinject_directives(doc)
         new_directives = extract_reinject_directives(new_doc)
@@ -365,7 +365,7 @@ class TestModifyReinjectDirective:
 
     def test_modify_multiple_fields_simultaneously(self) -> None:
         """Multiple fields can be modified in one call."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 0, rank=7, tokens=100, content="All new content.")
         directives = extract_reinject_directives(new_doc)
         assert directives[0].rank == 7
@@ -374,19 +374,19 @@ class TestModifyReinjectDirective:
 
     def test_modify_raises_index_error_for_out_of_range(self) -> None:
         """modify_reinject_directive() raises IndexError for out-of-range index."""
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         with pytest.raises(IndexError):
             modify_reinject_directive(doc, 5, rank=1)
 
     def test_modify_raises_index_error_for_negative_index_on_empty(self) -> None:
         """modify_reinject_directive() raises IndexError when no directives exist."""
-        doc = JerryDocument.parse("# No directives\n")
+        doc = TomDocument.parse("# No directives\n")
         with pytest.raises(IndexError):
             modify_reinject_directive(doc, 0, rank=1)
 
     def test_modify_second_directive_in_multi(self) -> None:
         """Can target the second directive (index=1) independently."""
-        doc = JerryDocument.parse(MULTI_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(MULTI_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 1, tokens=777)
         directives = extract_reinject_directives(new_doc)
         assert directives[1].tokens == 777
@@ -397,7 +397,7 @@ class TestModifyReinjectDirective:
     def test_modify_content_with_special_characters(self) -> None:
         """Content with >= and slashes survives write-back roundtrip."""
         new_content = "Quality gate >= 0.92 for C2+ (H-13/H-14). NEVER skip."
-        doc = JerryDocument.parse(SINGLE_DIRECTIVE_SOURCE)
+        doc = TomDocument.parse(SINGLE_DIRECTIVE_SOURCE)
         new_doc = modify_reinject_directive(doc, 0, content=new_content)
         directives = extract_reinject_directives(new_doc)
         assert directives[0].content == new_content

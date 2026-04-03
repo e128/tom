@@ -170,7 +170,7 @@ The baseline covers: 6 agent specs (3 skills), 3 SKILL.md files, 3 PLAYBOOK.md f
 
 | ID | Trigger | Effect |
 |----|---------|--------|
-| AE-001 | Artifact modifies JERRY_CONSTITUTION.md | min(criticality, C3) |
+| AE-001 | Artifact modifies TOM_CONSTITUTION.md | min(criticality, C3) |
 | AE-002 | Artifact modifies .claude/rules/* | min(criticality, C3) |
 | AE-003 | Artifact is new/modified ADR | min(criticality, C3) |
 | AE-004 | Artifact modifies baselined ADR | criticality = C4 |

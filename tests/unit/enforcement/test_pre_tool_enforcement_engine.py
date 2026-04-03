@@ -660,8 +660,8 @@ class TestGovernanceEscalation:
     def test_evaluate_write_when_constitution_file_then_warns_c4(
         self, engine: PreToolEnforcementEngine, project_root: Path
     ) -> None:
-        """Modifying JERRY_CONSTITUTION.md should warn with C4 escalation."""
-        file_path = str(project_root / "docs" / "governance" / "JERRY_CONSTITUTION.md")
+        """Modifying TOM_CONSTITUTION.md should warn with C4 escalation."""
+        file_path = str(project_root / "docs" / "governance" / "TOM_CONSTITUTION.md")
         content = "# Updated Constitution"
         decision = engine.evaluate_write(file_path, content)
 

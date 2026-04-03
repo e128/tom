@@ -85,7 +85,7 @@ Additionally, the Barrier-1 ADV-to-ENF handoff requires that rules encode six ad
 | Vector | Name | WCS | Tier | Description |
 |--------|------|-----|------|-------------|
 | V-008 | CLAUDE.md navigation | 3.82 | Tier 2 | Top-level behavioral anchoring document |
-| V-009 | Constitution reference | 3.82 | Tier 2 | JERRY_CONSTITUTION.md governance reference |
+| V-009 | Constitution reference | 3.82 | Tier 2 | TOM_CONSTITUTION.md governance reference |
 | V-010 | Critical constraints block | 3.82 | Tier 2 | HARD rules: P-003, P-020, P-022 |
 | V-015 | Coding standards rules | 3.56 | Tier 2 | Type hints, docstrings, naming conventions |
 | V-016 | Architecture standards rules | 3.56 | Tier 2 | Hexagonal architecture, layer boundaries |

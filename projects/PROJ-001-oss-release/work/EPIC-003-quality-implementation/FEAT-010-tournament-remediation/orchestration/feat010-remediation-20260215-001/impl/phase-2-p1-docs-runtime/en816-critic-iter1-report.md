@@ -57,7 +57,7 @@
 | Decision tree present | PRESENT | Table at lines 102-111 with 7 rows |
 | C2 strategy set correct | CORRECT | "S-007, S-002, S-014" matches SSOT (quality-enforcement.md line 95) |
 | C3 strategy set correct | CORRECT | "C2 + S-004, S-012, S-013" matches SSOT (quality-enforcement.md line 96) |
-| AE-001 included | YES | Line 107: "Touches JERRY_CONSTITUTION.md? -> Auto-C4" |
+| AE-001 included | YES | Line 107: "Touches TOM_CONSTITUTION.md? -> Auto-C4" |
 | AE-002 included | YES | Line 106: "Touches .context/rules/? -> Auto-C3" |
 | AE-003 included | YES | Line 109: "New or modified ADR? -> Auto-C3" |
 | AE-004 included | YES | Line 108: "Modifies baselined ADR? -> Auto-C4" |

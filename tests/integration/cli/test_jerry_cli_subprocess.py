@@ -2,18 +2,18 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Integration tests for Jerry CLI via subprocess execution.
+Integration tests for Tom CLI via subprocess execution.
 
-These tests execute the actual `jerry` command via `uv run` to validate:
+These tests execute the actual `tom` command via `uv run` to validate:
 - Plugin mode execution (no `pip install -e .` required)
 - CLI argument parsing
 - JSON output format
 - Exit codes
 
 Test Categories:
-- TestProjectsCommands: jerry projects context/list/validate
-- TestSessionCommands: jerry session start/end/status/abandon
-- TestItemsCommands: jerry items list/show/create/start/complete
+- TestProjectsCommands: tom projects context/list/validate
+- TestSessionCommands: tom session start/end/status/abandon
+- TestItemsCommands: tom items list/show/create/start/complete
 - TestExitCodes: Exit code validation across all namespaces
 - TestJsonOutput: JSON output format validation
 
@@ -83,13 +83,13 @@ def env_with_pythonpath(project_root: Path) -> dict[str, str]:
     return env
 
 
-def run_jerry(
+def run_tom(
     args: list[str],
     project_root: Path,
     env: dict[str, str],
     input_text: str | None = None,
 ) -> subprocess.CompletedProcess[str]:
-    """Execute jerry CLI via uv run.
+    """Execute tom CLI via uv run.
 
     Args:
         args: Command arguments (e.g., ["projects", "context"])
@@ -101,7 +101,7 @@ def run_jerry(
         CompletedProcess with stdout, stderr, and returncode
     """
     return subprocess.run(
-        ["uv", "run", "jerry", *args],
+        ["uv", "run", "tom", *args],
         capture_output=True,
         text=True,
         env=env,
@@ -116,15 +116,15 @@ def run_jerry(
 
 
 class TestProjectsCommands:
-    """Integration tests for jerry projects commands."""
+    """Integration tests for tom projects commands."""
 
     def test_projects_context_returns_zero_exit_code(
         self,
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry projects context returns exit code 0."""
-        result = run_jerry(
+        """tom projects context returns exit code 0."""
+        result = run_tom(
             ["projects", "context"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -137,8 +137,8 @@ class TestProjectsCommands:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry projects context --json returns valid JSON."""
-        result = run_jerry(
+        """tom projects context --json returns valid JSON."""
+        result = run_tom(
             ["--json", "projects", "context"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -156,8 +156,8 @@ class TestProjectsCommands:
         env_with_pythonpath: dict[str, str],
         ensure_projects_dir: Path,
     ) -> None:
-        """jerry projects list returns exit code 0."""
-        result = run_jerry(
+        """tom projects list returns exit code 0."""
+        result = run_tom(
             ["projects", "list"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -171,8 +171,8 @@ class TestProjectsCommands:
         env_with_pythonpath: dict[str, str],
         ensure_projects_dir: Path,
     ) -> None:
-        """jerry projects list --json returns object with 'projects' key."""
-        result = run_jerry(
+        """tom projects list --json returns object with 'projects' key."""
+        result = run_tom(
             ["--json", "projects", "list"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -190,9 +190,9 @@ class TestProjectsCommands:
         env_with_pythonpath: dict[str, str],
         ensure_projects_dir: Path,
     ) -> None:
-        """jerry projects validate with existing project returns 0."""
+        """tom projects validate with existing project returns 0."""
         # First get list of projects to find a valid one
-        list_result = run_jerry(
+        list_result = run_tom(
             ["--json", "projects", "list"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -202,7 +202,7 @@ class TestProjectsCommands:
             data = json.loads(list_result.stdout)
             if data.get("projects"):
                 project_id = data["projects"][0]["id"]
-                result = run_jerry(
+                result = run_tom(
                     ["projects", "validate", project_id],
                     project_root=project_root,
                     env=env_with_pythonpath,
@@ -214,8 +214,8 @@ class TestProjectsCommands:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry projects validate with non-existent project returns 1."""
-        result = run_jerry(
+        """tom projects validate with non-existent project returns 1."""
+        result = run_tom(
             ["projects", "validate", "PROJ-999-nonexistent"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -230,15 +230,15 @@ class TestProjectsCommands:
 
 
 class TestSessionCommands:
-    """Integration tests for jerry session commands."""
+    """Integration tests for tom session commands."""
 
     def test_session_status_returns_valid_exit_code(
         self,
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry session status returns exit code 0 or 1."""
-        result = run_jerry(
+        """tom session status returns exit code 0 or 1."""
+        result = run_tom(
             ["session", "status"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -252,8 +252,8 @@ class TestSessionCommands:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry session status --json returns valid JSON."""
-        result = run_jerry(
+        """tom session status --json returns valid JSON."""
+        result = run_tom(
             ["--json", "session", "status"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -269,12 +269,12 @@ class TestSessionCommands:
         env_with_pythonpath: dict[str, str],
         tmp_path: Path,
     ) -> None:
-        """jerry session start creates a new session."""
+        """tom session start creates a new session."""
         # Use tmp_path to avoid polluting actual project
         env = env_with_pythonpath.copy()
-        env["JERRY_DATA_DIR"] = str(tmp_path / ".jerry" / "data")
+        env["JERRY_DATA_DIR"] = str(tmp_path / ".tom" / "data")
 
-        result = run_jerry(
+        result = run_tom(
             ["--json", "session", "start", "--name", "TestSession"],
             project_root=project_root,
             env=env,
@@ -292,13 +292,13 @@ class TestSessionCommands:
         env_with_pythonpath: dict[str, str],
         tmp_path: Path,
     ) -> None:
-        """jerry session end without active session returns error."""
+        """tom session end without active session returns error."""
         # Unset JERRY_PROJECT so bootstrap falls back to InMemoryEventStore
         # (which starts empty in a new subprocess → no active session)
         env = env_with_pythonpath.copy()
         env.pop("JERRY_PROJECT", None)
 
-        result = run_jerry(
+        result = run_tom(
             ["--json", "session", "end"],
             project_root=project_root,
             env=env,
@@ -313,12 +313,12 @@ class TestSessionCommands:
         env_with_pythonpath: dict[str, str],
         tmp_path: Path,
     ) -> None:
-        """jerry session abandon without active session returns error."""
+        """tom session abandon without active session returns error."""
         # Unset JERRY_PROJECT so bootstrap falls back to InMemoryEventStore
         env = env_with_pythonpath.copy()
         env.pop("JERRY_PROJECT", None)
 
-        result = run_jerry(
+        result = run_tom(
             ["--json", "session", "abandon"],
             project_root=project_root,
             env=env,
@@ -334,15 +334,15 @@ class TestSessionCommands:
 
 
 class TestItemsCommands:
-    """Integration tests for jerry items commands."""
+    """Integration tests for tom items commands."""
 
     def test_items_list_returns_valid_exit_code(
         self,
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry items list returns exit code 0."""
-        result = run_jerry(
+        """tom items list returns exit code 0."""
+        result = run_tom(
             ["items", "list"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -355,8 +355,8 @@ class TestItemsCommands:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry items list --json returns valid JSON."""
-        result = run_jerry(
+        """tom items list --json returns valid JSON."""
+        result = run_tom(
             ["--json", "items", "list"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -373,8 +373,8 @@ class TestItemsCommands:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry items show with non-existent ID returns error."""
-        result = run_jerry(
+        """tom items show with non-existent ID returns error."""
+        result = run_tom(
             ["items", "show", "WORK-99999-1"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -388,7 +388,7 @@ class TestItemsCommands:
         env_with_pythonpath: dict[str, str],
         tmp_path: Path,
     ) -> None:
-        """jerry items create returns proper response (success or 'not configured' error).
+        """tom items create returns proper response (success or 'not configured' error).
 
         Note: Items write commands may not be wired in CLI main.py yet.
         This test validates the error handling is correct if not configured.
@@ -398,10 +398,10 @@ class TestItemsCommands:
         """
         # Use tmp_path to isolate test data
         env = env_with_pythonpath.copy()
-        env["JERRY_DATA_DIR"] = str(tmp_path / ".jerry" / "data")
+        env["JERRY_DATA_DIR"] = str(tmp_path / ".tom" / "data")
 
         # Create work item
-        create_result = run_jerry(
+        create_result = run_tom(
             ["--json", "items", "create", "Integration Test Item", "--type", "task"],
             project_root=project_root,
             env=env,
@@ -431,8 +431,8 @@ class TestItemsCommands:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry items list --status pending returns filtered items."""
-        result = run_jerry(
+        """tom items list --status pending returns filtered items."""
+        result = run_tom(
             ["--json", "items", "list", "--status", "pending"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -458,8 +458,8 @@ class TestExitCodes:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry --help returns exit code 0."""
-        result = run_jerry(
+        """tom --help returns exit code 0."""
+        result = run_tom(
             ["--help"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -472,8 +472,8 @@ class TestExitCodes:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry --version returns exit code 0."""
-        result = run_jerry(
+        """tom --version returns exit code 0."""
+        result = run_tom(
             ["--version"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -486,8 +486,8 @@ class TestExitCodes:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry with no arguments returns 0 (shows help)."""
-        result = run_jerry(
+        """tom with no arguments returns 0 (shows help)."""
+        result = run_tom(
             [],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -500,8 +500,8 @@ class TestExitCodes:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry nonexistent returns error."""
-        result = run_jerry(
+        """tom nonexistent returns error."""
+        result = run_tom(
             ["nonexistent"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -514,8 +514,8 @@ class TestExitCodes:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry session without subcommand returns error."""
-        result = run_jerry(
+        """tom session without subcommand returns error."""
+        result = run_tom(
             ["session"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -537,8 +537,8 @@ class TestJsonOutput:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry --json projects context works."""
-        result = run_jerry(
+        """tom --json projects context works."""
+        result = run_tom(
             ["--json", "projects", "context"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -563,7 +563,7 @@ class TestJsonOutput:
         ]
 
         for args in commands:
-            result = run_jerry(
+            result = run_tom(
                 args,
                 project_root=project_root,
                 env=env_with_pythonpath,
@@ -581,7 +581,7 @@ class TestJsonOutput:
         env_with_pythonpath: dict[str, str],
     ) -> None:
         """Error responses in JSON mode contain 'error' key."""
-        result = run_jerry(
+        result = run_tom(
             ["--json", "items", "show", "WORK-99999-1"],
             project_root=project_root,
             env=env_with_pythonpath,
@@ -606,14 +606,14 @@ class TestPluginModeExecution:
         env_with_pythonpath: dict[str, str],
     ) -> None:
         """CLI executes via uv run without pip install."""
-        result = run_jerry(
+        result = run_tom(
             ["--version"],
             project_root=project_root,
             env=env_with_pythonpath,
         )
 
         assert result.returncode == 0
-        assert "jerry" in result.stdout.lower() or "0." in result.stdout
+        assert "tom" in result.stdout.lower() or "0." in result.stdout
 
     def test_all_namespaces_accessible_in_plugin_mode(
         self,
@@ -624,7 +624,7 @@ class TestPluginModeExecution:
         namespaces = ["projects", "session", "items", "config"]
 
         for namespace in namespaces:
-            result = run_jerry(
+            result = run_tom(
                 [namespace, "--help"],
                 project_root=project_root,
                 env=env_with_pythonpath,
@@ -640,7 +640,7 @@ class TestPluginModeExecution:
         env_with_pythonpath: dict[str, str],
     ) -> None:
         """All imports resolve correctly with PYTHONPATH."""
-        result = run_jerry(
+        result = run_tom(
             ["projects", "context"],
             project_root=project_root,
             env=env_with_pythonpath,

@@ -1,5 +1,9 @@
 authors:
   geekatron:
     name: Geekatron
-    description: Creator of the Jerry Framework
+    description: Creator of the Tom Framework
     avatar: https://github.com/geekatron.png
+  e128:
+    name: e128
+    description: Contributor
+    avatar: https://github.com/e128.png

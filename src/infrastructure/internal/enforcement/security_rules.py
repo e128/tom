@@ -98,7 +98,7 @@ class SecurityRules:
     )
 
     # Note: Windows-specific path enforcement (normcase, %SystemRoot%) from the
-    # original pre_tool_use.py script is not ported. Jerry Framework targets
+    # original pre_tool_use.py script is not ported. Tom Framework targets
     # macOS/Linux CI runners. If Windows support is needed, add platform-aware
     # checks in a future PR rather than carrying dead config fields.
 

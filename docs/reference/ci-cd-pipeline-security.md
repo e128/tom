@@ -1,6 +1,6 @@
 # CI/CD Pipeline Security Controls Reference
 
-> Security controls applied across the Jerry Framework CI/CD pipeline workflows.
+> Security controls applied across the Tom Framework CI/CD pipeline workflows.
 
 ## Document Sections
 
@@ -20,7 +20,7 @@
 
 ## Overview
 
-The Jerry Framework CI/CD pipeline spans five GitHub Actions workflow files and one Dependabot configuration. The security controls documented here apply to supply chain integrity, reproducible builds, and workflow loop prevention.
+The Tom Framework CI/CD pipeline spans five GitHub Actions workflow files and one Dependabot configuration. The security controls documented here apply to supply chain integrity, reproducible builds, and workflow loop prevention.
 
 **Workflow files covered:**
 
@@ -39,7 +39,7 @@ The Jerry Framework CI/CD pipeline spans five GitHub Actions workflow files and 
 
 GitHub Actions can be referenced by floating version tag (e.g., `@v5`) or by immutable commit SHA. Tag references are mutable: a maintainer or attacker can force-push a tag to point to a different commit, causing the CI pipeline to execute arbitrary code. SHA references resolve to exactly one commit and cannot be redirected.
 
-All GitHub Actions across the Jerry CI/CD pipeline are pinned to commit SHAs. A human-readable version comment accompanies each SHA.
+All GitHub Actions across the Tom CI/CD pipeline are pinned to commit SHAs. A human-readable version comment accompanies each SHA.
 
 **SHA-to-version mapping (as of v0.25.0):**
 
@@ -297,7 +297,7 @@ A daily scheduled workflow scans the locked dependency tree for known CVEs, inde
 
 ## H-05 Compliance
 
-H-05 requires that all Python execution in the Jerry project uses `uv run` and that dependencies are managed with `uv add`. Direct invocation of `python`, `pip`, or `pip3` is prohibited.
+H-05 requires that all Python execution in the Tom project uses `uv run` and that dependencies are managed with `uv add`. Direct invocation of `python`, `pip`, or `pip3` is prohibited.
 
 **Application in CI:**
 
@@ -339,12 +339,12 @@ The PAT monitor workflow performs only `curl` API calls and JavaScript execution
 
 **`version-bump.yml` PAT usage:**
 
-The version-bump workflow checks out with a personal access token (`VERSION_BUMP_PAT`) rather than the default `GITHUB_TOKEN` to allow the bump commit to push through branch protection rules. The PAT is a fine-grained token scoped to the `geekatron/jerry` repository with `Contents: Read and write` permission and a 90-day expiration. The PAT Monitor workflow (`pat-monitor.yml`) runs weekly to detect expiration before it causes a version-bump failure.
+The version-bump workflow checks out with a personal access token (`VERSION_BUMP_PAT`) rather than the default `GITHUB_TOKEN` to allow the bump commit to push through branch protection rules. The PAT is a fine-grained token scoped to the `geekatron/tom` repository with `Contents: Read and write` permission and a 90-day expiration. The PAT Monitor workflow (`pat-monitor.yml`) runs weekly to detect expiration before it causes a version-bump failure.
 
 ---
 
 ## Related
 
 - **How-To Guide:** Update a SHA-pinned GitHub Action when Dependabot opens a PR
-- **Explanation:** About the Jerry Framework supply chain security model (EN-001)
+- **Explanation:** About the Tom Framework supply chain security model (EN-001)
 - **Reference:** `pyproject.toml` — Python dependency declarations and tool configuration

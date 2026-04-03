@@ -6,7 +6,7 @@
 Tests verify 3-tier resolution precedence:
     - Tier 1: JERRY_LIFECYCLE_DIR env var (highest priority)
     - Tier 2: Config-provided value
-    - Tier 3: Platform default (~/.jerry/local/ or %APPDATA%/jerry/local/)
+    - Tier 3: Platform default (~/.tom/local/ or %APPDATA%/tom/local/)
 
 References:
     - PROJ-004: Context Resilience — lifecycle file location mismatch fix
@@ -37,9 +37,9 @@ class TestResolveLifecycleDirEnvVar:
 
     def test_env_var_with_tilde_expanded(self) -> None:
         """Env var with ~ gets expanded."""
-        with patch.dict(os.environ, {"JERRY_LIFECYCLE_DIR": "~/my-jerry"}):
+        with patch.dict(os.environ, {"JERRY_LIFECYCLE_DIR": "~/my-tom"}):
             result = resolve_lifecycle_dir()
-        assert result == Path.home() / "my-jerry"
+        assert result == Path.home() / "my-tom"
 
     def test_config_value_ignored_when_env_set(self, tmp_path: Path) -> None:
         """Config value is ignored when env var is set."""
@@ -64,8 +64,8 @@ class TestResolveLifecycleDirConfig:
         """Config value with ~ gets expanded."""
         with patch.dict(os.environ, {}, clear=False):
             os.environ.pop("JERRY_LIFECYCLE_DIR", None)
-            result = resolve_lifecycle_dir(config_value="~/jerry-config")
-        assert result == Path.home() / "jerry-config"
+            result = resolve_lifecycle_dir(config_value="~/tom-config")
+        assert result == Path.home() / "tom-config"
 
 
 class TestResolveLifecycleDirPlatformDefault:
@@ -87,7 +87,7 @@ class TestResolveLifecycleDirPlatformDefault:
         assert result.is_absolute()
 
     def test_windows_platform_default(self) -> None:
-        """On Windows with APPDATA, uses %APPDATA%/jerry/local/."""
+        """On Windows with APPDATA, uses %APPDATA%/tom/local/."""
         with (
             patch(
                 "src.infrastructure.adapters.configuration.lifecycle_dir_resolver.sys"
@@ -96,7 +96,7 @@ class TestResolveLifecycleDirPlatformDefault:
         ):
             mock_sys.platform = "win32"
             result = _platform_default_lifecycle_dir()
-        assert result == Path("C:\\Users\\test\\AppData\\Roaming") / "jerry" / "local"
+        assert result == Path("C:\\Users\\test\\AppData\\Roaming") / "tom" / "local"
 
     def test_missing_appdata_on_windows(self) -> None:
         """On Windows with no APPDATA, falls back to Path.home()."""
@@ -109,4 +109,4 @@ class TestResolveLifecycleDirPlatformDefault:
             os.environ.pop("APPDATA", None)
             mock_sys.platform = "win32"
             result = _platform_default_lifecycle_dir()
-        assert result == Path.home() / ".jerry" / "local"
+        assert result == Path.home() / ".tom" / "local"

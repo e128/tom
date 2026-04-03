@@ -42,7 +42,7 @@ from scripts.bootstrap_context import (
 
 @pytest.fixture()
 def jerry_project(tmp_path: Path) -> Path:
-    """Create a minimal Jerry project structure for testing."""
+    """Create a minimal Tom project structure for testing."""
     # Create canonical source
     context_dir = tmp_path / ".context"
     rules_dir = context_dir / "rules"
@@ -61,7 +61,7 @@ def jerry_project(tmp_path: Path) -> Path:
     (claude_dir / "settings.json").write_text("{}")
 
     # Create CLAUDE.md marker
-    (tmp_path / "CLAUDE.md").write_text("# Jerry\n")
+    (tmp_path / "CLAUDE.md").write_text("# Tom\n")
 
     return tmp_path
 
@@ -270,14 +270,14 @@ class TestFindProjectRoot:
     """Tests for project root discovery."""
 
     def test_finds_root_from_project_directory(self) -> None:
-        """find_project_root finds Jerry project root from cwd."""
-        # This test runs in the actual Jerry repo, so it should find the root
+        """find_project_root finds Tom project root from cwd."""
+        # This test runs in the actual Tom repo, so it should find the root
         root = find_project_root()
         assert (root / "CLAUDE.md").exists()
         assert (root / ".context").exists()
 
     def test_root_has_expected_structure(self) -> None:
-        """Found root has expected Jerry project structure."""
+        """Found root has expected Tom project structure."""
         root = find_project_root()
         assert (root / ".context" / "rules").exists()
         assert (root / ".context" / "patterns").exists()

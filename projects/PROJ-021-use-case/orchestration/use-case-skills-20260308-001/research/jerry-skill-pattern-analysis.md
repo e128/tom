@@ -197,7 +197,7 @@ output:
   location: {path pattern}
   levels: [L0, L1, L2]   # or [L1] for internal agents
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:        # min 3, MUST include P-003, P-020, P-022
     - "P-003: No Recursive Subagents (Hard)"
     - "P-020: User Authority (Hard)"

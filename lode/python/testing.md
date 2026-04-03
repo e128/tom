@@ -1,7 +1,7 @@
 # Testing
-*Updated: 2026-04-03T00:00:00Z*
+*Updated: 2026-04-03T14:09:30Z*
 
-BDD test-first development at 90% line coverage (H-20). Tests live in `tests/`.
+BDD test-first development at 90% line coverage (H-20). Tests live in `tests/` and `scripts/tests/` (both paths are active per `pyproject.toml` `testpaths`).
 
 ## Test-First Workflow (H-20)
 
@@ -13,7 +13,7 @@ BDD test-first development at 90% line coverage (H-20). Tests live in `tests/`.
 
 ```bash
 uv run pytest tests/                    # all tests
-uv run pytest tests/ --cov=src/jerry    # with coverage
+uv run pytest --cov=src --cov-report=term-missing  # with coverage
 uv run pytest tests/ -k "test_session"  # filter by name
 ```
 
@@ -23,23 +23,43 @@ uv run pytest tests/ -k "test_session"  # filter by name
 
 ## Test Organization
 
-Tests mirror the `src/jerry/` structure:
 ```
 tests/
-    domain/
-    application/
+    unit/               # fast unit tests by domain
+    features/           # Gherkin .feature files (pytest-bdd)
+    integration/        # tests with external dependencies
+    contract/           # API contract tests
+    e2e/                # full end-to-end tests (slow)
+    architecture/       # architectural constraint tests
+    security/           # security/adversarial scenarios
+    regression/         # regression test suites
+    session_management/
+    work_tracking/
+    shared_kernel/
     infrastructure/
     interface/
-    shared_kernel/
+scripts/tests/          # scripts-layer tests (also in testpaths)
 ```
 
 ## Markers
 
-Custom pytest markers are configured in `pyproject.toml`. Use them to tag slow tests, integration tests, etc.
+Markers are configured in `pyproject.toml`:
+
+| Marker | Purpose |
+|--------|---------|
+| `happy-path` | Happy path scenarios |
+| `negative` | Negative/error scenarios |
+| `edge-case` | Edge case scenarios |
+| `boundary` | Boundary value scenarios |
+| `e2e` | End-to-end tests (slow, full stack) |
+| `integration` | Integration tests (external dependencies) |
+| `subprocess` | Tests that invoke external processes |
+| `security` | Security/adversarial scenarios |
+| `regression` | Regression scenarios |
 
 ## BDD Style
 
-Tests use descriptive names that describe behavior, not implementation. Use `given/when/then` naming where it improves clarity:
+Gherkin `.feature` files live in `tests/features/` and are executed with `pytest-bdd`. Tests also use descriptive names that describe behavior, not implementation. Use `given/when/then` naming where it improves clarity:
 
 ```python
 def test_session_start_requires_active_project():

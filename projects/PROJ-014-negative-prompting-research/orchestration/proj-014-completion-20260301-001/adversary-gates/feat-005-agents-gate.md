@@ -156,7 +156,7 @@ Strengths:
 
 Strengths:
 - pe-builder references 3 specific codebase files with accurate paths: `.context/rules/prompt-templates.md`, `.context/rules/prompt-quality.md`, `.context/rules/mandatory-skill-usage.md`. All verified as real files in the repository.
-- pe-constraint-gen references `skills/prompt-engineering/rules/npt-pattern-reference.md` and `docs/governance/JERRY_CONSTITUTION.md` — the latter is a confirmed real file. (npt-pattern-reference.md is a new file created as part of this project deliverable — confirmed path convention is correct.)
+- pe-constraint-gen references `skills/prompt-engineering/rules/npt-pattern-reference.md` and `docs/governance/TOM_CONSTITUTION.md` — the latter is a confirmed real file. (npt-pattern-reference.md is a new file created as part of this project deliverable — confirmed path convention is correct.)
 - pe-scorer's `<scoring_rubric>` section explicitly cites `.context/rules/prompt-quality.md` (The Quality Rubric section) as its SSOT, and the rubric content (7 criteria, weights, score levels) matches exactly what is in the loaded system context from that file.
 - All governance YAMLs: `# Validated by: docs/schemas/agent-governance-v1.schema.json` header comment — schema file confirmed to exist at that path.
 - pe-constraint-gen forbidden action: "...per PROJ-014 findings" — references the research project that produced NPT-013 pattern evidence.
@@ -209,7 +209,7 @@ Strengths:
 Strengths:
 - All 3 governance YAMLs: `# Validated by: docs/schemas/agent-governance-v1.schema.json` — full schema path cited, schema confirmed to exist.
 - All 3 governance YAMLs: `# Runtime config: {agent}.md` — bidirectional cross-reference between companion files.
-- All 3 governance YAMLs: `constitution.reference: docs/governance/JERRY_CONSTITUTION.md` — complete path.
+- All 3 governance YAMLs: `constitution.reference: docs/governance/TOM_CONSTITUTION.md` — complete path.
 - All 3 agent `.md` footers: `*Constitutional Compliance: Jerry Constitution v1.0*` and `*SSOT: ...*` with specific file paths.
 - SSOT paths are distinct per agent: pe-builder cites prompt-quality.md + prompt-templates.md (correct — it uses both); pe-constraint-gen cites npt-pattern-reference.md (correct — constraint generation SSOT); pe-scorer cites prompt-quality.md (correct — scoring rubric SSOT).
 - Forbidden action principle labels (P-003, P-020, P-022) are traceable to specific constitutional principles.

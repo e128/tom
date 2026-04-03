@@ -19,7 +19,7 @@ Design Principles:
     - **Valid JSON always**: The response is always valid JSON.
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - EN-703: PreToolUse Enforcement Engine
     - EN-005: PreToolUse Staleness Detection
     - PROJ-004: Context Resilience

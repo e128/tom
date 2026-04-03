@@ -1,8 +1,8 @@
-# Jerry Framework Release Pipeline
+# Tom Framework Release Pipeline
 # ADR: projects/PROJ-001-plugin-cleanup/decisions/ADR-RELEASE-001-github-releases.md
 #
 # Triggers: v* tags (e.g., v0.0.1, v1.0.0)
-# Artifacts: jerry-plugin-{version}.tar.gz, jerry-plugin-{version}.zip
+# Artifacts: tom-plugin-{version}.tar.gz, tom-plugin-{version}.zip
 # Creates: GitHub Release with auto-generated notes
 
 name: Release
@@ -120,14 +120,14 @@ jobs:
       - name: Create plugin archive directory
         run: |
           VERSION=${{ needs.validate.outputs.version }}
-          ARCHIVE_NAME="jerry-plugin-$VERSION"
+          ARCHIVE_NAME="tom-plugin-$VERSION"
           mkdir -p dist/$ARCHIVE_NAME
           echo "Creating archive: $ARCHIVE_NAME"
 
       - name: Copy plugin files
         run: |
           VERSION=${{ needs.validate.outputs.version }}
-          ARCHIVE_NAME="jerry-plugin-$VERSION"
+          ARCHIVE_NAME="tom-plugin-$VERSION"
 
           # Core plugin structure (Claude Code Plugin)
           cp -r .claude dist/$ARCHIVE_NAME/
@@ -159,7 +159,7 @@ jobs:
       - name: Create .tar.gz archive
         run: |
           VERSION=${{ needs.validate.outputs.version }}
-          ARCHIVE_NAME="jerry-plugin-$VERSION"
+          ARCHIVE_NAME="tom-plugin-$VERSION"
           cd dist
           tar -czvf $ARCHIVE_NAME.tar.gz $ARCHIVE_NAME
           echo "Created: $ARCHIVE_NAME.tar.gz"
@@ -168,7 +168,7 @@ jobs:
       - name: Create .zip archive
         run: |
           VERSION=${{ needs.validate.outputs.version }}
-          ARCHIVE_NAME="jerry-plugin-$VERSION"
+          ARCHIVE_NAME="tom-plugin-$VERSION"
           cd dist
           zip -r $ARCHIVE_NAME.zip $ARCHIVE_NAME
           echo "Created: $ARCHIVE_NAME.zip"
@@ -177,7 +177,7 @@ jobs:
       - name: Generate checksums
         run: |
           VERSION=${{ needs.validate.outputs.version }}
-          ARCHIVE_NAME="jerry-plugin-$VERSION"
+          ARCHIVE_NAME="tom-plugin-$VERSION"
           cd dist
           sha256sum $ARCHIVE_NAME.tar.gz $ARCHIVE_NAME.zip > checksums.sha256
           cat checksums.sha256
@@ -227,7 +227,7 @@ jobs:
 
           # Write to file for multiline support
           cat > release-notes.md << 'NOTES_EOF'
-          ## Jerry Framework v${{ needs.validate.outputs.version }}
+          ## Tom Framework v${{ needs.validate.outputs.version }}
 
           A Claude Code Plugin for behavior and workflow guardrails.
 
@@ -261,7 +261,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
         with:
-          name: Jerry Framework v${{ needs.validate.outputs.version }}
+          name: Tom Framework v${{ needs.validate.outputs.version }}
           body_path: release-notes.md
           draft: false
           prerelease: ${{ contains(needs.validate.outputs.version, '-') }}

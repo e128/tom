@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry.framework/schemas/guardrail-patterns.json",
+  "$id": "https://tom.framework/schemas/guardrail-patterns.json",
   "title": "Guardrail Pattern Library Schema",
   "description": "Schema for guardrail validation patterns (WI-SAO-015)",
   "type": "object",

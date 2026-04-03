@@ -55,7 +55,7 @@ FORMAT: Conforms to TEMPLATE-FORMAT.md v1.1.0
 | C3 | Significant | Optional | Part of comprehensive strategy set |
 | C4 | Critical | **REQUIRED** | All 10 strategies required; tournament mode |
 
-**Key insight:** S-010 has the LOWEST barrier to entry. It is the ONLY strategy required for C1 Routine work, making it the foundational quality mechanism for Jerry. H-15 mandates self-review before presenting any deliverable.
+**Key insight:** S-010 has the LOWEST barrier to entry. It is the ONLY strategy required for C1 Routine work, making it the foundational quality mechanism for Tom. H-15 mandates self-review before presenting any deliverable.
 
 ---
 
@@ -606,4 +606,4 @@ Values sourced from quality-enforcement.md SSOT:
 
 ---
 
-<!-- TEMPLATE NOTES: This template instantiates TEMPLATE-FORMAT.md v1.1.0 for S-010 Self-Refine strategy. Academic foundation: Madaan et al. 2023 demonstrates LLM self-improvement through structured feedback loops. Jerry implementation: H-15 mandates self-review before presenting deliverables. VERSION: 1.0.0 | CREATED: 2026-02-15 | ENABLER: EN-804 -->
+<!-- TEMPLATE NOTES: This template instantiates TEMPLATE-FORMAT.md v1.1.0 for S-010 Self-Refine strategy. Academic foundation: Madaan et al. 2023 demonstrates LLM self-improvement through structured feedback loops. Tom implementation: H-15 mandates self-review before presenting deliverables. VERSION: 1.0.0 | CREATED: 2026-02-15 | ENABLER: EN-804 -->

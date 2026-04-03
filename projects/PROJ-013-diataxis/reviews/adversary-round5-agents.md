@@ -122,7 +122,7 @@ Consistent items confirmed unchanged from R4:
 - Cognitive modes: MD body and YAML `identity.cognitive_mode` match for all 6 agents
 - Tool tier vs. tool list consistency: T1 agents use {Read, Glob, Grep}; T2 agents use {Read, Write, Edit, Glob, Grep, Bash} (or T2 subset for explanation)
 - Verdict vocabulary: PASS|NEEDS REVISION|MAJOR REWORK consistent across auditor MD Step 6 and auditor YAML `on_send.verdict`
-- Constitutional references: all 6 YAML files reference `docs/governance/JERRY_CONSTITUTION.md` consistently
+- Constitutional references: all 6 YAML files reference `docs/governance/TOM_CONSTITUTION.md` consistently
 
 **Gaps:**
 
@@ -244,7 +244,7 @@ The P1 fix directly improves traceability. The classifier→auditor field rename
 - A reader tracing the data flow can now follow the field name through the pipeline without resolving a rename
 
 All other traceability evidence confirmed unchanged:
-- Constitutional references: `docs/governance/JERRY_CONSTITUTION.md` cited in all 6 YAML files
+- Constitutional references: `docs/governance/TOM_CONSTITUTION.md` cited in all 6 YAML files
 - All principles cited with specific behavioral implications
 - Tool tiers traceable to `agent-development-standards.md` T1-T5 taxonomy
 - Model selection traceable to AD-M-009 standard

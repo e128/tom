@@ -72,7 +72,7 @@ but "what would adversary X do?" -- tests the entire defense chain under realist
 
 **Foundation:** Red teaming originated in U.S. military Cold War wargaming (1960s-1970s) as a method to test strategic plans by having a dedicated team emulate the adversary. Zenko (2015) demonstrates that organizations consistently underestimate threats until exposed to realistic adversarial simulation. The MITRE ATT&CK framework provides a systematic taxonomy of adversary Tactics, Techniques, and Procedures (TTPs) for structured threat enumeration.
 
-**Jerry Implementation:** Adopts the perspective of a specific threat actor (not generic criticism) to systematically attack the deliverable. For document review: "If I were trying to find the most damaging flaw, what would I attack?" For architecture: "If I were exploiting this system, what would I target?" For governance: "If I wanted to circumvent these rules, how would I do it?" Adapts MITRE ATT&CK thinking to enumerate threat vectors systematically. Implements H-16 ordering (S-003 Steelman MUST run before S-001).
+**Tom Implementation:** Adopts the perspective of a specific threat actor (not generic criticism) to systematically attack the deliverable. For document review: "If I were trying to find the most damaging flaw, what would I attack?" For architecture: "If I were exploiting this system, what would I target?" For governance: "If I wanted to circumvent these rules, how would I do it?" Adapts MITRE ATT&CK thinking to enumerate threat vectors systematically. Implements H-16 ordering (S-003 Steelman MUST run before S-001).
 
 ---
 

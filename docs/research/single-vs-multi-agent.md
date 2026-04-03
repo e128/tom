@@ -37,7 +37,7 @@ This 320-line research artifact synthesizes findings from three independent rese
     | Effective Window | Open-source LLMs use <50% of their claimed context length effectively | Ding et al., ICLR 2025 |
 
 ??? abstract "Key Data: Multi-Agent Performance Benchmarks"
-    **Software Development (Pipeline Paradigm — directly applicable to Jerry):**
+    **Software Development (Pipeline Paradigm — directly applicable to Tom):**
 
     | Study | Single Agent | Multi-Agent | Improvement |
     |-------|-------------|-------------|-------------|

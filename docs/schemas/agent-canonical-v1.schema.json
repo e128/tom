@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry-framework.dev/schemas/agent-canonical/v1.0.0",
-  "title": "Jerry Canonical Agent Definition Schema",
-  "description": "Validates .agent.yaml canonical source files for Jerry Framework agents. Canonical format is the SSOT from which vendor-specific agent files are generated via jerry agents build.",
+  "$id": "https://tom-framework.dev/schemas/agent-canonical/v1.0.0",
+  "title": "Tom Canonical Agent Definition Schema",
+  "description": "Validates .agent.yaml canonical source files for Tom Framework agents. Canonical format is the SSOT from which vendor-specific agent files are generated via tom agents build.",
   "type": "object",
   "required": ["name", "version", "description", "skill", "identity", "tools", "tool_tier", "guardrails", "constitution"],
   "properties": {

@@ -61,7 +61,7 @@ guardrails:
   - verify_index_json_valid
   fallback_behavior: warn_and_fallback
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-001: Truth and Accuracy (Soft - accurate transcript representation)'
   - 'P-002: File Persistence (Medium - all outputs written to files)'

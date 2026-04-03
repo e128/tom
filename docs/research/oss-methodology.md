@@ -1,6 +1,6 @@
 # OSS Methodology
 
-> FMEA risk analysis, 5 Whys root cause analysis, gap analysis, and best practices research from Google, Microsoft, and Apache Foundation sources — the evidence-based preparation for Jerry's open-source release.
+> FMEA risk analysis, 5 Whys root cause analysis, gap analysis, and best practices research from Google, Microsoft, and Apache Foundation sources — the evidence-based preparation for Tom's open-source release.
 
 ---
 
@@ -18,13 +18,13 @@
 Comprehensive research into open-source release practices from major foundations and companies, covering licensing, documentation, community building, and security.
 
 ??? note "Methodology"
-    Synthesized best practices from Google Open Source, Microsoft OSS, and Apache Software Foundation. Mapped OpenSSF Scorecard criteria to Jerry's current state. L0/L1/L2 structured analysis with actionable recommendations.
+    Synthesized best practices from Google Open Source, Microsoft OSS, and Apache Software Foundation. Mapped OpenSSF Scorecard criteria to Tom's current state. L0/L1/L2 structured analysis with actionable recommendations.
 
 ??? abstract "Key Data"
     - 945 lines with L0/L1/L2 structure
     - Sources: Google Open Source, Microsoft OSS, Apache Software Foundation
     - License comparison (MIT, Apache 2.0, GPL family)
-    - OpenSSF Scorecard criteria mapped to Jerry
+    - OpenSSF Scorecard criteria mapped to Tom
     - Semantic versioning strategy and changelog best practices
 
 [:octicons-link-external-16: Best Practices Research (945 lines)](https://github.com/geekatron/jerry/blob/main/projects/PROJ-001-oss-release/work/EPIC-001-oss-release/FEAT-002-research-and-preparation/orchestration/oss-release-20260131-001/ps/phase-0/ps-researcher/best-practices-research.md)
@@ -55,7 +55,7 @@ Failure Mode and Effects Analysis applied to the open-source release, scoring 21
 
 ## Root Cause Analysis: 5 Whys
 
-Root cause analysis applying 5 Whys, Ishikawa, and 8D frameworks to identify systemic patterns behind Jerry's preparation gaps.
+Root cause analysis applying 5 Whys, Ishikawa, and 8D frameworks to identify systemic patterns behind Tom's preparation gaps.
 
 ??? note "Methodology"
     Applied three complementary root cause analysis frameworks: 5 Whys for causal chain depth, Ishikawa (fishbone) diagrams for cause categorization, and 8D methodology for corrective/preventive action planning. Each symptom cluster was traced to systemic patterns.
@@ -72,7 +72,7 @@ Root cause analysis applying 5 Whys, Ishikawa, and 8D frameworks to identify sys
 
 ## Gap Analysis: 5W2H Framework
 
-Systematic gap analysis identifying what Jerry needed before release readiness.
+Systematic gap analysis identifying what Tom needed before release readiness.
 
 ??? note "Methodology"
     Applied 5W2H (Who, What, When, Where, Why, How, How Much) framework combined with Ishikawa categorization and Pareto prioritization. Each gap was classified by impact and urgency to produce a ranked mitigation plan.
@@ -88,7 +88,7 @@ Systematic gap analysis identifying what Jerry needed before release readiness.
 
 ## Divergent Exploration: OSS Release Alternatives
 
-NASA SE divergent exploration covering the full solution space for Jerry's open-source release.
+NASA SE divergent exploration covering the full solution space for Tom's open-source release.
 
 ??? abstract "Key Data"
     - 1,192 lines of divergent exploration

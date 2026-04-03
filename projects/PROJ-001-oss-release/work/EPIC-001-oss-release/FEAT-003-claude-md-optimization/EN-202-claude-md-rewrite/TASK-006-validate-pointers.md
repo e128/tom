@@ -83,7 +83,7 @@ This task depends on completion of:
 | `.claude/rules/` | Directory | [x] **Evidence:** Verified 2026-02-02 |
 | `.context/templates/` | Directory | [x] **Evidence:** Verified 2026-02-02 |
 | `docs/knowledge/` | Directory | [x] **Evidence:** Verified 2026-02-02 |
-| `docs/governance/JERRY_CONSTITUTION.md` | File | [x] **Evidence:** 14,301 bytes |
+| `docs/governance/TOM_CONSTITUTION.md` | File | [x] **Evidence:** 14,301 bytes |
 | `scripts/session_start_hook.py` | File | [x] **Evidence:** 12,258 bytes |
 
 #### Skill References

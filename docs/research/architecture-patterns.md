@@ -15,10 +15,10 @@
 
 ## Python Architecture Standards
 
-The authoritative architecture reference for the Jerry Framework, defining layer boundaries, dependency directions, and anti-patterns.
+The authoritative architecture reference for the Tom Framework, defining layer boundaries, dependency directions, and anti-patterns.
 
 ??? note "Methodology"
-    Synthesized from Hexagonal Architecture (Cockburn, 2005), Domain-Driven Design (Evans, 2003), and CQRS (Young, 2010) into a unified Python-specific standard. Layer boundaries validated through dependency analysis and anti-pattern detection across the Jerry codebase.
+    Synthesized from Hexagonal Architecture (Cockburn, 2005), Domain-Driven Design (Evans, 2003), and CQRS (Young, 2010) into a unified Python-specific standard. Layer boundaries validated through dependency analysis and anti-pattern detection across the Tom codebase.
 
 ??? abstract "Key Data"
     - **DDD + Hexagonal + CQRS** combined pattern
@@ -34,7 +34,7 @@ The authoritative architecture reference for the Jerry Framework, defining layer
 
 ## Work Tracker Architecture: Teaching Edition
 
-A teaching-edition walkthrough of the Hexagonal DDD CQRS architecture applied to a real bounded context in the Jerry Framework.
+A teaching-edition walkthrough of the Hexagonal DDD CQRS architecture applied to a real bounded context in the Tom Framework.
 
 ??? note "Methodology"
     Applied the Python Architecture Standards to the Work Tracker bounded context. Each layer is built incrementally (domain → application → infrastructure → interface) with concrete code examples and explanations of architectural decisions at each step.
@@ -55,7 +55,7 @@ A teaching-edition walkthrough of the Hexagonal DDD CQRS architecture applied to
 Reference playbooks for applying architecture patterns to specific bounded contexts.
 
 ??? note "Methodology"
-    Extracted recurring patterns from bounded context implementations across the Jerry Framework. Each playbook provides domain-specific guidance for applying Hexagonal DDD CQRS to a particular problem space.
+    Extracted recurring patterns from bounded context implementations across the Tom Framework. Each playbook provides domain-specific guidance for applying Hexagonal DDD CQRS to a particular problem space.
 
 ??? abstract "Key Data"
     - 315 lines of domain-specific reference material

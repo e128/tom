@@ -25,8 +25,8 @@ activation-keywords:
 # Behavior Design Sub-Skill
 
 > **Version:** 1.5.0
-> **Framework:** Jerry User-Experience -- Behavior Design
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom User-Experience -- Behavior Design
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **Parent Skill:** `/user-experience` (`skills/user-experience/SKILL.md`)
 > **Wave:** 4 (Advanced Analytics)
 > **Project:** PROJ-022 User Experience Skill | GitHub Issue [#138](https://github.com/geekatron/jerry/issues/138)
@@ -179,7 +179,7 @@ The `ux-orchestrator` invokes the agent via the Agent tool:
 ```python
 Agent(
     description="ux-behavior-diagnostician: B=MAP bottleneck diagnosis for checkout abandonment",
-    subagent_type="jerry:ux-behavior-diagnostician",
+    subagent_type="tom:ux-behavior-diagnostician",
     prompt="""
 ## UX CONTEXT (REQUIRED)
 - **Engagement ID:** UX-0001
@@ -505,7 +505,7 @@ This sub-skill receives context from other sub-skills when invoked as part of a 
 
 ### Downstream Handoffs
 
-This sub-skill produces artifacts that feed into other sub-skills via the Jerry handoff protocol (`docs/schemas/handoff-v2.schema.json`).
+This sub-skill produces artifacts that feed into other sub-skills via the Tom handoff protocol (`docs/schemas/handoff-v2.schema.json`).
 
 | To Sub-Skill | Handoff Artifact | Key Fields | Trigger |
 |-------------|-----------------|-----------|---------|
@@ -565,7 +565,7 @@ Behavior Design outputs include synthesis hypotheses that carry confidence class
 
 ## Quality Gate Integration
 
-Behavior Design outputs are subject to the Jerry quality gate per H-13 and H-14:
+Behavior Design outputs are subject to the Tom quality gate per H-13 and H-14:
 
 | Quality Check | Threshold | Application |
 |---------------|-----------|-------------|
@@ -648,7 +648,7 @@ This sub-skill is part of Wave 4 (Advanced Analytics), alongside `/ux-kano-model
 
 ## Constitutional Compliance
 
-All agents in this sub-skill adhere to the **Jerry Constitution v1.0**:
+All agents in this sub-skill adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -765,7 +765,7 @@ This sub-skill follows a parent-routed registration model per H-26. Sub-skills a
 
 *Sub-Skill Version: 1.5.0*
 *Parent Skill: `/user-experience` v1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Wave: 4 (Advanced Analytics)*
 *SSOT: `skills/user-experience/SKILL.md`*
 *Project: PROJ-022 User Experience Skill*

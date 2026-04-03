@@ -64,7 +64,7 @@ This research identifies **six enforcement vectors** for ensuring Claude Code fo
 
 This research used a multi-source triangulation approach:
 
-1. **Codebase analysis**: Examined Jerry's existing hook implementations (`hooks/hooks.json`, `scripts/session_start_hook.py`, `scripts/pre_tool_use.py`, `scripts/subagent_stop.py`), settings (`/.claude/settings.json`), governance documents (`JERRY_CONSTITUTION.md`, `GOVERNANCE.md`), and pattern library (`scripts/patterns/`).
+1. **Codebase analysis**: Examined Jerry's existing hook implementations (`hooks/hooks.json`, `scripts/session_start_hook.py`, `scripts/pre_tool_use.py`, `scripts/subagent_stop.py`), settings (`/.claude/settings.json`), governance documents (`TOM_CONSTITUTION.md`, `GOVERNANCE.md`), and pattern library (`scripts/patterns/`).
 
 2. **Official documentation**: Referenced Claude Code documentation on hooks, settings, and agent behavior (as available through training data up to May 2025 and codebase references).
 
@@ -1412,7 +1412,7 @@ Based on the comparative analysis, the recommended implementation order is:
 
 | # | Source | Path | Used For |
 |---|--------|------|----------|
-| 21 | Jerry Constitution | `docs/governance/JERRY_CONSTITUTION.md` | Enforcement tiers, self-critique protocol |
+| 21 | Jerry Constitution | `docs/governance/TOM_CONSTITUTION.md` | Enforcement tiers, self-critique protocol |
 | 22 | Governance Protocols | `GOVERNANCE.md` | Quality gates, handoff protocol |
 | 23 | Session Start Hook | `scripts/session_start_hook.py` | Current hook implementation analysis |
 | 24 | PreToolUse Hook | `scripts/pre_tool_use.py` | Current hook implementation analysis |

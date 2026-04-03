@@ -746,7 +746,7 @@ Assesses whether the governance metadata enables concrete enforcement action.
 Assesses whether declarations are traceable to standards and sources.
 
 - forbidden_action_format: NPT-009-complete traced to ADR-002 — TRACED
-- constitution.reference: docs/governance/JERRY_CONSTITUTION.md — TRACED
+- constitution.reference: docs/governance/TOM_CONSTITUTION.md — TRACED
 - session_context references handoff-v2.schema.json — TRACED
 - enforcement.escalation_path: "/user-experience skill maintainer" — TRACED
 - reasoning_effort: max — traces to ET-M-001 (implied, not cited) — PARTIAL

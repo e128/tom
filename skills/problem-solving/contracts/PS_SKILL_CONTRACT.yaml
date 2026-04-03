@@ -14,8 +14,8 @@ info:
     schemas for all ps-* agents. This contract enables reliable agent
     orchestration and cross-skill handoffs.
   contact:
-    name: Jerry Framework
-    url: https://github.com/jerry-framework
+    name: Tom Framework
+    url: https://github.com/tom-framework
 
 # =============================================================================
 # AGENTS

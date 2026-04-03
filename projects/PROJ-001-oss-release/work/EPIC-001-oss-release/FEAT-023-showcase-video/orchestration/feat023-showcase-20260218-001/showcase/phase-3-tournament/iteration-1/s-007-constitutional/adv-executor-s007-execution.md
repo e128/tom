@@ -6,7 +6,7 @@
 **Date:** 2026-02-18
 **Reviewer:** adv-executor (S-007 agent, feat023-showcase-20260218-001)
 **Execution ID:** 20260218T1200
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1 (P-001 through P-043); quality-enforcement.md H-01 through H-24; markdown-navigation-standards.md (H-23, H-24)
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1 (P-001 through P-043); quality-enforcement.md H-01 through H-24; markdown-navigation-standards.md (H-23, H-24)
 
 ---
 
@@ -37,7 +37,7 @@ PARTIAL compliance: 0 Critical, 3 Major (P-001 accuracy, P-004 provenance, P-021
 
 | Source | Version | Loaded |
 |--------|---------|--------|
-| JERRY_CONSTITUTION.md | v1.1 | Yes |
+| TOM_CONSTITUTION.md | v1.1 | Yes |
 | quality-enforcement.md | v1.3.0 | Yes |
 | markdown-navigation-standards.md | Current | Yes |
 
@@ -56,7 +56,7 @@ The deliverable is a **public-facing promotional document** (video script). It:
 
 | Rule | Condition | Status |
 |------|-----------|--------|
-| AE-001 | Touches constitution | NOT triggered — script does not modify JERRY_CONSTITUTION.md |
+| AE-001 | Touches constitution | NOT triggered — script does not modify TOM_CONSTITUTION.md |
 | AE-002 | Touches .context/rules/ | NOT triggered — script does not modify rules |
 | AE-003 | New or modified ADR | NOT triggered |
 | AE-004 | Modifies baselined ADR | NOT triggered |
@@ -177,7 +177,7 @@ This claim appears in Scene 1 ("Claude Code didn't just use a framework. It buil
 **Evidence review:**
 - Git history check was not performed as part of the script's self-review
 - The project's WORKTRACKER.md and PLAN.md have not been checked in this constitutional review to confirm authorship claim
-- The JERRY_CONSTITUTION.md author field states "Claude (Session claude/create-code-plugin-skill-MG1nh)" — supporting the claim at least for the constitution
+- The TOM_CONSTITUTION.md author field states "Claude (Session claude/create-code-plugin-skill-MG1nh)" — supporting the claim at least for the constitution
 - No human-authored code commits were verified or ruled out
 
 **Result: AMBIGUOUS** — The claim is plausible but unverified. This is the highest-priority finding in this review. A public presentation to Anthropic leadership making a false authorship claim would be a P-022 Hard violation with significant reputational consequences. The claim MUST be verified against git history before the video is produced.

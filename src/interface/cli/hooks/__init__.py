@@ -2,9 +2,9 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Jerry CLI Hooks Package.
+Tom CLI Hooks Package.
 
-Handlers for Claude Code hook events dispatched via the ``jerry hooks``
+Handlers for Claude Code hook events dispatched via the ``tom hooks``
 CLI subcommand group.
 
 Hook handlers:
@@ -14,6 +14,6 @@ Hook handlers:
     - HooksPreToolUseHandler: Handles PreToolUse events
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - PROJ-004: Context Resilience
 """

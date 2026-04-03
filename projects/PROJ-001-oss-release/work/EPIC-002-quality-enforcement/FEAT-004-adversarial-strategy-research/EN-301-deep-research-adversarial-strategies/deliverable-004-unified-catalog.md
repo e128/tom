@@ -561,7 +561,7 @@ No two strategies share the same combination of mechanism, agent pattern, and ou
 **Jerry Applicability:**
 - **Agents:** ps-critic (constitutional mode), nse-qa
 - **Workflow Phases:** Every review phase (this is the default adversarial strategy)
-- **Implementation:** Jerry already has constitutions: `.claude/rules/coding-standards.md`, `architecture-standards.md`, `testing-standards.md`, `error-handling-standards.md`, and `docs/governance/JERRY_CONSTITUTION.md`. The ps-critic agent receives the relevant rules file(s) as its constitution and evaluates creator output principle-by-principle. The multi-pass structure (structural -> semantic -> holistic) is encoded in the prompt.
+- **Implementation:** Jerry already has constitutions: `.claude/rules/coding-standards.md`, `architecture-standards.md`, `testing-standards.md`, `error-handling-standards.md`, and `docs/governance/TOM_CONSTITUTION.md`. The ps-critic agent receives the relevant rules file(s) as its constitution and evaluates creator output principle-by-principle. The multi-pass structure (structural -> semantic -> holistic) is encoded in the prompt.
 - **Natural Fit:** This is the single most naturally integrated strategy for Jerry. It closes the gap between "standards exist" and "standards are enforced."
 - **CRITIC Enhancement:** Per TASK-002's CRITIC Framework insight, the critic can invoke external tools (linters, test runners, validators) to verify principle compliance, not just reason about it.
 - **Cost:** Medium (2-4 agent passes depending on number of critique rounds)
@@ -1057,7 +1057,7 @@ Jerry's existing standards documents serve as constitutions for S-007:
 | `.claude/rules/architecture-standards.md` | Architectural boundary principles |
 | `.claude/rules/testing-standards.md` | Test quality principles |
 | `.claude/rules/error-handling-standards.md` | Error handling principles |
-| `docs/governance/JERRY_CONSTITUTION.md` | Behavioral principles |
+| `docs/governance/TOM_CONSTITUTION.md` | Behavioral principles |
 
 #### Calibration and Meta-Review
 

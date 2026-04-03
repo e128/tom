@@ -242,7 +242,7 @@ Target Jerry:  300 lines ≈ ~3,000 tokens ≈ 25-30% utilization at session sta
 # CLAUDE.md
 @.claude/rules/architecture-standards.md
 @.claude/rules/coding-standards.md
-@docs/governance/JERRY_CONSTITUTION.md
+@docs/governance/TOM_CONSTITUTION.md
 ```
 
 **Constraints:**
@@ -301,7 +301,7 @@ jerry/
 │ └── architecture/SKILL.md     ← Design guidance                    │
 │                                                                     │
 │ TIER 4: EXPLICIT REFERENCE (read only when needed)                 │
-│ ├── docs/governance/JERRY_CONSTITUTION.md                          │
+│ ├── docs/governance/TOM_CONSTITUTION.md                          │
 │ ├── docs/design/ADR-*.md                                           │
 │ └── .context/templates/worktracker/                                │
 │                                                                     │
@@ -371,7 +371,7 @@ YOU MUST: Update WORKTRACKER.md after completing work items
 
 - Templates: `.context/templates/worktracker/`
 - Architecture: `.claude/rules/architecture-standards.md`
-- Constitution: `docs/governance/JERRY_CONSTITUTION.md`
+- Constitution: `docs/governance/TOM_CONSTITUTION.md`
 - Patterns: `.claude/patterns/PATTERN-CATALOG.md`
 
 ---

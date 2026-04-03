@@ -2,7 +2,7 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-ContextEstimateHandler - CLI handler for ``jerry context estimate``.
+ContextEstimateHandler - CLI handler for ``tom context estimate``.
 
 Reads Claude Code status line JSON from stdin, extracts
 ``context_window.current_usage`` data, runs the domain estimation
@@ -13,7 +13,7 @@ produces degraded JSON output with safe defaults rather than
 crashing. Always exits 0.
 
 Output JSON structure:
-    - ``context``: Domain-computed fill estimate (Jerry adds value)
+    - ``context``: Domain-computed fill estimate (Tom adds value)
     - ``compaction``: Compaction detection result
     - ``thresholds``: 5-tier threshold configuration
     - ``action``: Recommended rotation action
@@ -21,7 +21,7 @@ Output JSON structure:
 
 References:
     - FEAT-002: Status Line / Context Monitoring Unification
-    - EN-012: ``jerry context estimate`` CLI Command
+    - EN-012: ``tom context estimate`` CLI Command
     - DEC-004 D-007: Fail-open design
     - DEC-004 D-013: Full passthrough of Claude Code JSON
     - PROJ-004: Context Resilience
@@ -47,7 +47,7 @@ logger = logging.getLogger(__name__)
 
 
 class ContextEstimateHandler:
-    """CLI handler for the ``jerry context estimate`` command.
+    """CLI handler for the ``tom context estimate`` command.
 
     Reads Claude Code's status line JSON from stdin, runs the
     domain estimation pipeline, and outputs structured JSON.

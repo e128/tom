@@ -269,5 +269,5 @@ improvement_recommendations:
 *Strategy: S-014 (LLM-as-Judge)*
 *Agent: adv-scorer v1.0.0*
 *SSOT: `.context/rules/quality-enforcement.md` v1.3.0*
-*Constitutional Compliance: JERRY_CONSTITUTION.md v1.1*
+*Constitutional Compliance: TOM_CONSTITUTION.md v1.1*
 *Prior Report: `adv-scorer-s014-result.md` (iteration 1, score 0.873)*

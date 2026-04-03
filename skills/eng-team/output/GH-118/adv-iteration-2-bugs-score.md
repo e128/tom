@@ -91,8 +91,8 @@ Add reproduction validation section with actual error output. Document how accep
 ### Evidence Quality (0.80/1.00)
 
 **Evidence:**
-- BUG-017-001: Environment table specifies Windows 10/11, Python 3.11+, Jerry v0.21.0
-- BUG-017-006: Environment table specifies macOS 14+ (Sonoma), BSD userland, Jerry v0.21.0
+- BUG-017-001: Environment table specifies Windows 10/11, Python 3.11+, Tom v0.21.0
+- BUG-017-006: Environment table specifies macOS 14+ (Sonoma), BSD userland, Tom v0.21.0
 - BUG-017-003: Environment table specifies Windows 10/11 (standard user), Python 3.11+
 - BUG-017-004: Environment table specifies Windows 10/11, Git 2.x with core.autocrlf=true
 - All bugs cite PORT findings as source (PORT-001, PORT-013, PORT-004, PORT-005)

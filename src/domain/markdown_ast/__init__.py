@@ -2,17 +2,17 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-markdown_ast - Domain package for Jerry markdown AST operations.
+markdown_ast - Domain package for Tom markdown AST operations.
 
-Provides the JerryDocument facade for all markdown parsing, querying,
-transforming, and rendering in the Jerry Framework. Also provides the
+Provides the TomDocument facade for all markdown parsing, querying,
+transforming, and rendering in the Tom Framework. Also provides the
 L2-REINJECT comment parser, navigation table helpers, BlockquoteFrontmatter,
 schema validation engine, and the universal markdown parser components:
 YamlFrontmatter, XmlSectionParser, HtmlCommentMetadata, DocumentTypeDetector,
 UniversalDocument, InputBounds, and SchemaRegistry.
 
 References:
-    - ST-001: JerryDocument Facade
+    - ST-001: TomDocument Facade
     - ST-002: BlockquoteFrontmatter Extension
     - ST-003: L2-REINJECT Parser
     - ST-006: Schema Validation Engine
@@ -21,9 +21,9 @@ References:
     - H-07: Domain layer constraint (no external infra/interface imports)
 
 Exports:
-    JerryDocument: Unified facade for markdown AST operations
+    TomDocument: Unified facade for markdown AST operations
     FrontmatterField: Dataclass for a single frontmatter key-value field
-    BlockquoteFrontmatter: Collection class for Jerry blockquote frontmatter
+    BlockquoteFrontmatter: Collection class for Tom blockquote frontmatter
     extract_frontmatter: Convenience function to extract frontmatter
     ReinjectDirective: Frozen dataclass for a parsed L2-REINJECT comment
     extract_reinject_directives: Extract all L2-REINJECT directives
@@ -38,7 +38,7 @@ Exports:
     EntitySchema: Schema definition for an entity type
     ValidationViolation: A single schema violation
     ValidationReport: Complete validation report
-    validate_document: Validate a JerryDocument against an EntitySchema
+    validate_document: Validate a TomDocument against an EntitySchema
     get_entity_schema: Look up a built-in schema by entity type name
     EPIC_SCHEMA through BUG_SCHEMA: Built-in worktracker schemas
     InputBounds: Configurable resource limits for parser input validation
@@ -52,7 +52,7 @@ Exports:
     HtmlCommentBlock: Single HTML comment metadata block
     HtmlCommentResult: HTML comment metadata extraction result
     HtmlCommentMetadata: HTML comment metadata extractor
-    DocumentType: Jerry markdown file type enum
+    DocumentType: Tom markdown file type enum
     DocumentTypeDetector: File type detector
     UniversalParseResult: Complete universal parse result
     UniversalDocument: Unified parsing facade
@@ -72,7 +72,7 @@ from src.domain.markdown_ast.html_comment import (
     HtmlCommentResult,
 )
 from src.domain.markdown_ast.input_bounds import InputBounds
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.nav_table import (
     NavEntry,
     NavValidationResult,
@@ -117,8 +117,8 @@ from src.domain.markdown_ast.yaml_frontmatter import (
 )
 
 __all__ = [
-    # ST-001: JerryDocument
-    "JerryDocument",
+    # ST-001: TomDocument
+    "TomDocument",
     # ST-002: BlockquoteFrontmatter
     "BlockquoteFrontmatter",
     "FrontmatterField",

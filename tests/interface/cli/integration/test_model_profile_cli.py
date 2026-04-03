@@ -35,14 +35,14 @@ class TestProfileCLIIntegration:
     @pytest.fixture(autouse=True)
     def mock_args(self) -> None:
         """Mock sys.argv to avoid test runner args interference."""
-        with patch("sys.argv", ["jerry"]):
+        with patch("sys.argv", ["tom"]):
             yield
 
     def test_no_profile_uses_balanced_default(self, mock_adapter: MagicMock) -> None:
         """No --profile flag should use balanced profile."""
         with patch(
             "sys.argv",
-            ["jerry", "transcript", "parse", "test.vtt"],
+            ["tom", "transcript", "parse", "test.vtt"],
         ):
             main()
 
@@ -58,7 +58,7 @@ class TestProfileCLIIntegration:
         """Economy profile should use haiku for all agents."""
         with patch(
             "sys.argv",
-            ["jerry", "transcript", "parse", "test.vtt", "--profile", "economy"],
+            ["tom", "transcript", "parse", "test.vtt", "--profile", "economy"],
         ):
             main()
 
@@ -73,7 +73,7 @@ class TestProfileCLIIntegration:
         """Quality profile should use opus for critical agents."""
         with patch(
             "sys.argv",
-            ["jerry", "transcript", "parse", "test.vtt", "--profile", "quality"],
+            ["tom", "transcript", "parse", "test.vtt", "--profile", "quality"],
         ):
             main()
 
@@ -88,7 +88,7 @@ class TestProfileCLIIntegration:
         """Speed profile should use haiku for all agents."""
         with patch(
             "sys.argv",
-            ["jerry", "transcript", "parse", "test.vtt", "--profile", "speed"],
+            ["tom", "transcript", "parse", "test.vtt", "--profile", "speed"],
         ):
             main()
 
@@ -104,7 +104,7 @@ class TestProfileCLIIntegration:
         with patch(
             "sys.argv",
             [
-                "jerry",
+                "tom",
                 "transcript",
                 "parse",
                 "test.vtt",
@@ -128,7 +128,7 @@ class TestProfileCLIIntegration:
         with patch(
             "sys.argv",
             [
-                "jerry",
+                "tom",
                 "transcript",
                 "parse",
                 "test.vtt",
@@ -156,7 +156,7 @@ class TestProfileCLIIntegration:
         with patch(
             "sys.argv",
             [
-                "jerry",
+                "tom",
                 "transcript",
                 "parse",
                 "test.vtt",

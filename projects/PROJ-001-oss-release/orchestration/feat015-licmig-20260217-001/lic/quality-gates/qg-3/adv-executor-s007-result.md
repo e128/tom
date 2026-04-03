@@ -8,7 +8,7 @@
 **Criticality:** C4
 **Date:** 2026-02-17
 **Reviewer:** adv-executor v1.0.0
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md
 
 ---
 
@@ -271,7 +271,7 @@ Wait — re-evaluating: CC-001 implicates P-022 (HARD) in the sense that the del
 - **Major:** 3 (CC-001, CC-002, CC-003)
 - **Minor:** 2 (CC-004, CC-006)
 - **Protocol Steps Completed:** 5 of 5
-  - Step 1: Constitutional context loaded (JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md)
+  - Step 1: Constitutional context loaded (TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md)
   - Step 2: Applicable principles enumerated (P-001, P-002, P-004, P-011, P-021, P-022, P-030, H-23, H-24 — all evaluated)
   - Step 3: Principle-by-principle evaluation completed (9 principles evaluated, 5 findings raised, 1 explicitly cleared COMPLIANT)
   - Step 4: Remediation guidance generated for all Major and Minor findings
@@ -283,5 +283,5 @@ Wait — re-evaluating: CC-001 implicates P-022 (HARD) in the sense that the del
 *Template: `.context/templates/adversarial/s-007-constitutional-ai.md` v1.0.0*
 *Agent: adv-executor v1.0.0*
 *Execution ID: 20260217T1200*
-*Constitutional Compliance: JERRY_CONSTITUTION.md v1.1*
+*Constitutional Compliance: TOM_CONSTITUTION.md v1.1*
 *SSOT: `.context/rules/quality-enforcement.md` v1.3.0*

@@ -6,7 +6,7 @@
 
 ## Key Findings
 
-- **8 canonical orchestration patterns** identified across Jerry's top 3 skills (problem-solving, nasa-se, orchestration) with 0.98 confidence
+- **8 canonical orchestration patterns** identified across Tom's top 3 skills (problem-solving, nasa-se, orchestration) with 0.98 confidence
 - **117 compliance checkpoints** organized into 12 SKILL.md sections, 5 agent specification sections, and 8 orchestration patterns
 - **Pareto principle applies**: fixing 17 HIGH/CRITICAL gaps (20% of work) resolves 80% of compliance issues
 - **Transcript skill scored 52% compliance** against the universal pattern catalog — used as the validation case study
@@ -14,9 +14,9 @@
 
 ---
 
-## Jerry Skill Pattern Synthesis & Compliance Framework
+## Tom Skill Pattern Synthesis & Compliance Framework
 
-The most comprehensive artifact in the skill architecture domain. This synthesis analyzes the pattern DNA of Jerry's three most mature skills to extract universal blueprints that any Claude Code skill can follow.
+The most comprehensive artifact in the skill architecture domain. This synthesis analyzes the pattern DNA of Tom's three most mature skills to extract universal blueprints that any Claude Code skill can follow.
 
 ??? note "Methodology"
     The synthesis used a **three-phase approach**:
@@ -71,9 +71,9 @@ The most comprehensive artifact in the skill architecture domain. This synthesis
 
 ## Supporting Research
 
-### Jerry Skill Pattern Research
+### Tom Skill Pattern Research
 
-The foundational research feeding into the compliance framework — a detailed analysis of patterns across Jerry's three most mature skills.
+The foundational research feeding into the compliance framework — a detailed analysis of patterns across Tom's three most mature skills.
 
 ??? abstract "Key Data"
     - 1,375 lines of pattern analysis

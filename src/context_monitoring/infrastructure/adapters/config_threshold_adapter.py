@@ -89,7 +89,7 @@ class ConfigThresholdAdapter:
 
     This class satisfies the ``IThresholdConfiguration`` protocol without
     explicitly inheriting from it, following the structural subtyping
-    pattern used throughout the Jerry codebase.
+    pattern used throughout the Tom codebase.
 
     Attributes:
         config: The underlying LayeredConfigAdapter for configuration access.

@@ -115,7 +115,7 @@ src/
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Layer Locations
 
@@ -205,9 +205,9 @@ def test_application_has_no_interface_imports():
 
 ---
 
-## Jerry Design Canon Reference
+## Tom Design Canon Reference
 
-Lines 1630-1750 in `projects/PROJ-001-plugin-cleanup/synthesis/PROJ-001-e-011-v1-jerry-design-canon.md`
+Lines 1630-1750 in `projects/PROJ-001-plugin-cleanup/synthesis/PROJ-001-e-011-v1-tom-design-canon.md`
 
 ---
 

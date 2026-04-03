@@ -1,6 +1,6 @@
-Jerry Resource Name (JRN)
+Tom Resource Name (JRN)
 ============================
-The Jerry Resource Name (JRN) is a standardized naming convention for uniquely identifying resources, actions, event types, and JSON schemas within the Jerry framework. It provides a clear and consistent way to reference various components across different domains and tenants.
+The Tom Resource Name (JRN) is a standardized naming convention for uniquely identifying resources, actions, event types, and JSON schemas within the Tom framework. It provides a clear and consistent way to reference various components across different domains and tenants.
 
 Default Partition: `jer`.
 
@@ -19,19 +19,19 @@ Used to represent commands/actions:
 jer[+scheme_version]:<partition>:[tenant_id]:{domain}:actions/{ActionName}
 
 e.g.
-jer:jer:work-tracker:CreateTask <-- Commands/Actions Owned by Jerry
+jer:jer:work-tracker:CreateTask <-- Commands/Actions Owned by Tom
 jer:jer:victor-lau:work-tracker:CreateAlarm <-- Commands/Actions Owned by the Tenant (user) - allows for user expansion/modularity
 
 Used to represent event types:
 jer[+scheme_version]:<partition>:[tenant_id]:{domain}:facts/[path/]{ActionName}
 
 e.g.
-jer:jer:work-tracker:facts/TaskCreated <-- Event Type owned by Jerry
+jer:jer:work-tracker:facts/TaskCreated <-- Event Type owned by Tom
 jer:jer:victor-lau:golf-tracker/facts/SwingLogged
 
 Used to represent JSON Schemas:
 jer[+scheme_version]:<partition>:[tenant_id]:{domain}:facts/[path/]{ActionName}[+resource_version]
 
 e.g.
-jer:jer:work-tracker:task:CreateTaskRequest+1.0.0 <-- Schema owned by Jerry
-jer:jer:victor-lau:gold-tracker:task:LogSwingRequest+1.0.0 <-- Schema owned by Jerry
+jer:jer:work-tracker:task:CreateTaskRequest+1.0.0 <-- Schema owned by Tom
+jer:jer:victor-lau:gold-tracker:task:LogSwingRequest+1.0.0 <-- Schema owned by Tom

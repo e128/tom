@@ -274,7 +274,7 @@ Enforcement mechanisms must implement criticality-based escalation:
 | C3 | Significant | > 1 day to reverse; > 10 files; API/interface changes | Layer 3 (Deep Review) | Hooks + Rules (EN-403, EN-404) |
 | C4 | Critical | Irreversible; architecture changes; governance changes; public release | Layer 4 (Tournament) | Hooks + Rules + CI (EN-403, EN-404, EN-406) |
 
-**Mandatory escalation:** Any artifact touching `docs/governance/JERRY_CONSTITUTION.md` or `.claude/rules/` is automatically C3 or higher.
+**Mandatory escalation:** Any artifact touching `docs/governance/TOM_CONSTITUTION.md` or `.claude/rules/` is automatically C3 or higher.
 
 ---
 

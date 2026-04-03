@@ -959,7 +959,7 @@ Create `docs/design/KNOWLEDGE_ARCHITECTURE_ROADMAP.md`:
 - Grounding verification aligns with P-001 (Truth and Accuracy)
 
 **Implementation:**
-Add to `docs/governance/JERRY_CONSTITUTION.md`:
+Add to `docs/governance/TOM_CONSTITUTION.md`:
 
 ```markdown
 ## P-030: Schema Evolution Governance (Hard Principle)

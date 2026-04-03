@@ -148,7 +148,7 @@
 
 | File Path | Title | Type | Lines | Quality Indicators |
 |-----------|-------|------|-------|--------------------|
-| `docs/governance/JERRY_CONSTITUTION.md` | Jerry Constitution v1.0 | Governance | 426 | Constitutional AI pattern; Anthropic/OpenAI/DeepMind prior art cited; 13+ principles; progressive enforcement (advisory -> soft -> medium -> hard) |
+| `docs/governance/TOM_CONSTITUTION.md` | Jerry Constitution v1.0 | Governance | 426 | Constitutional AI pattern; Anthropic/OpenAI/DeepMind prior art cited; 13+ principles; progressive enforcement (advisory -> soft -> medium -> hard) |
 | `docs/governance/BEHAVIOR_TESTS.md` | Behavior Tests | Governance | 463 | Behavioral verification specifications for constitutional compliance |
 | `docs/governance/AGENT_CONFORMANCE_RULES.md` | Agent Conformance Rules | Governance | 246 | Agent-level conformance requirements |
 

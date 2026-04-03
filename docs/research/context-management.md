@@ -33,10 +33,10 @@ Research into optimizing the primary context file for Claude Code, with quantifi
 
 ## Decomposition with Imports: Best Practices
 
-Research on decomposing monolithic context files into modular, selectively-loaded components — the pattern Jerry uses to combat context rot.
+Research on decomposing monolithic context files into modular, selectively-loaded components — the pattern Tom uses to combat context rot.
 
 ??? note "Methodology"
-    Analyzed monolithic vs. modular context loading patterns. Drew on Anthropic AWS re:Invent 2025 insights on context-as-bottleneck. Tested index/manifest loading strategies against Jerry's rule files.
+    Analyzed monolithic vs. modular context loading patterns. Drew on Anthropic AWS re:Invent 2025 insights on context-as-bottleneck. Tested index/manifest loading strategies against Tom's rule files.
 
 ??? abstract "Key Data"
     - Anthropic AWS re:Invent 2025 quote on context-as-bottleneck

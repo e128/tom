@@ -10,7 +10,7 @@
 
 ## Overview
 
-This document defines behavioral test scenarios for Problem-Solving agents following Jerry Constitution v1.0 principles, with emphasis on:
+This document defines behavioral test scenarios for Problem-Solving agents following Tom Constitution v1.0 principles, with emphasis on:
 
 - **P-002:** File Persistence
 - **P-003:** No Recursive Subagents
@@ -28,7 +28,7 @@ Test cases follow industry best practices:
 
 | Category | Purpose | Industry Precedent |
 |----------|---------|-------------------|
-| **Compliance** | Verify constitutional principle adherence | Jerry Constitution v1.0 |
+| **Compliance** | Verify constitutional principle adherence | Tom Constitution v1.0 |
 | **Output Quality** | Verify artifact format compliance | PS_AGENT_TEMPLATE v2.0 |
 | **Pattern** | Verify orchestration pattern behavior | Google ADK, CrewAI |
 | **Edge Case** | Test boundary conditions | Datadog Golden Dataset |
@@ -392,7 +392,7 @@ evaluation:
 
 ## References
 
-- [Jerry Constitution v1.0](docs/governance/JERRY_CONSTITUTION.md)
+- [Tom Constitution v1.0](docs/governance/TOM_CONSTITUTION.md)
 - [PS_AGENT_TEMPLATE v2.0](skills/problem-solving/agents/PS_AGENT_TEMPLATE.md)
 - [Orchestration PATTERNS.md](skills/orchestration/docs/PATTERNS.md)
 - [DeepEval G-Eval](https://deepeval.com/docs/metrics-llm-evals)

@@ -70,7 +70,7 @@ optimism bias and plan anchoring, enabling more complete failure enumeration.
 
 **Foundation:** Klein (1998) discovered that prospective hindsight -- imagining a future event has already occurred -- generates 30% more reasons for outcomes than standard prediction (Mitchell et al. 1989). Kahneman (2011) endorses Pre-Mortem as the single best debiasing technique for plan overconfidence.
 
-**Jerry Implementation:** Declares the deliverable has "failed spectacularly" and works backward to enumerate failure causes. The temporal perspective shift overcomes optimism bias and plan anchoring inherent in forward-looking review. Implements H-16 ordering (S-003 Steelman MUST run before S-004).
+**Tom Implementation:** Declares the deliverable has "failed spectacularly" and works backward to enumerate failure causes. The temporal perspective shift overcomes optimism bias and plan anchoring inherent in forward-looking review. Implements H-16 ordering (S-003 Steelman MUST run before S-004).
 
 ---
 

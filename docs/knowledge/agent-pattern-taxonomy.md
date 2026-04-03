@@ -3,7 +3,7 @@
 <!-- PS-ID: PROJ-007 | ENTRY: e-004 | AGENT: ps-synthesizer-001 | DATE: 2026-02-21 -->
 <!-- CRITICALITY: C4 -- Definitive pattern catalog; irreversible architecture baseline -->
 
-> Definitive pattern catalog for Claude Code agent development within the Jerry framework. Synthesizes Phase 1 research (3 PS researchers + 1 NSE explorer), Phase 2 analysis (3 PS analysts + 3 NSE analysts), and Barrier 2 cross-pollination handoffs from both pipelines.
+> Definitive pattern catalog for Claude Code agent development within the Tom framework. Synthesizes Phase 1 research (3 PS researchers + 1 NSE explorer), Phase 2 analysis (3 PS analysts + 3 NSE analysts), and Barrier 2 cross-pollination handoffs from both pipelines.
 
 ## Document Sections
 
@@ -31,13 +31,13 @@
 
 ## L0: Executive Summary
 
-This document is the definitive pattern catalog for Claude Code agent development within the Jerry framework, synthesizing the complete output of two parallel research pipelines across three phases.
+This document is the definitive pattern catalog for Claude Code agent development within the Tom framework, synthesizing the complete output of two parallel research pipelines across three phases.
 
 **What was analyzed:** 57 distinct agent patterns (PS pipeline, 8 families) and 10 architecture design patterns (NSE pipeline) were reconciled into a single coherent taxonomy. These patterns were validated against 52 formal requirements (6 domains), 30 identified risks (3 RED-zone), 5 trade studies (27 alternatives evaluated), and 67+ industry sources from Anthropic, Google, Microsoft, OpenAI, and academic research.
 
 **Key findings:**
 
-1. **Jerry's architecture is validated and industry-leading in governance.** The framework implements 46 of 57 identified patterns at partial or better maturity (81% coverage). Governance (4.5/5) and Safety (4.3/5) maturity exceed all published industry frameworks. No patterns are over-engineered -- governance scales proportionally with criticality.
+1. **Tom's architecture is validated and industry-leading in governance.** The framework implements 46 of 57 identified patterns at partial or better maturity (81% coverage). Governance (4.5/5) and Safety (4.3/5) maturity exceed all published industry frameworks. No patterns are over-engineered -- governance scales proportionally with criticality.
 
 2. **Three enhancements dominate all analyses.** Schema validation (+0.45 trade study delta), structured handoff protocol (#1 failure source mitigation), and context budget monitoring (highest RPN risk at 392) emerge as the top three priorities across both pipelines, all risk categories, and all consensus findings.
 
@@ -47,7 +47,7 @@ This document is the definitive pattern catalog for Claude Code agent developmen
 
 5. **The 10 NSE architecture patterns map cleanly onto the 8 PS families.** Zero structural conflicts were found between the two taxonomies. The NSE patterns provide formal architecture grounding (hexagonal mapping, JSON schemas, tool tiers) for patterns that the PS analysis identified through industry research.
 
-**Bottom line:** Jerry is at Level 3.3 (Defined) maturity with clear, evidence-backed paths to Level 4.0 (Managed). The recommended implementation sequence is: (1) schema validation and structured handoffs (P1, closes the highest-value gaps), (2) rule consolidation (P1, addresses the most urgent process risk), (3) context budget monitoring (P1, mitigates the highest-score risk), (4) testing infrastructure (P2, closes the largest maturity gap).
+**Bottom line:** Tom is at Level 3.3 (Defined) maturity with clear, evidence-backed paths to Level 4.0 (Managed). The recommended implementation sequence is: (1) schema validation and structured handoffs (P1, closes the highest-value gaps), (2) rule consolidation (P1, addresses the most urgent process risk), (3) context budget monitoring (P1, mitigates the highest-score risk), (4) testing infrastructure (P2, closes the largest maturity gap).
 
 ---
 
@@ -78,17 +78,17 @@ The PS pipeline identified 57 patterns across 8 families through industry resear
 
 Patterns governing the flow of work through agent systems.
 
-| ID | Pattern | Jerry Status | Problem | Solution Summary | Related Requirements | Related Risks |
+| ID | Pattern | Tom Status | Problem | Solution Summary | Related Requirements | Related Risks |
 |----|---------|-------------|---------|------------------|---------------------|---------------|
 | WF-01 | Prompt Chaining | **Implemented** | Fixed subtasks require sequential processing with quality gates between stages | Chain LLM calls sequentially; each processes prior output with programmatic validation | PR-004 (progressive disclosure) | R-T01 (context rot accumulates across chain) |
 | WF-02 | Routing / Classification | **Implemented** | Inputs require classification and routing to specialized processes | Keyword-based trigger map with proactive invocation (H-22). NSE Pattern 10 adds 3-layer architecture: keyword -> decision tree -> LLM fallback | RR-001 (keyword primary), RR-003 (LLM fallback), RR-004 (determinism) | R-T06 (stochastic variance if LLM routing used) |
 | WF-03 | Parallelization (Sectioning) | **Implemented** | Independent subtasks can run simultaneously | Fan-out to parallel workers, aggregate results at convergence point | AR-005 (context isolation) | R-O01 (token cost multiplied by parallel count) |
 | WF-04 | Parallelization (Voting) | **Not Implemented** | Higher confidence needed for subjective outputs | Execute same task multiple times; aggregate via majority vote or weighted average | -- | R-O01 (3-10x token cost per Anthropic) |
 | WF-05 | Sequential Pipeline | **Implemented** | Data processing requires fixed-order transformations | Linear agent pipeline via shared state with clear stage dependencies and checkpoints | HR-004 (state preservation) | R-T02 (error amplification across stages) |
-| WF-06 | Cross-Pollinated Pipeline | **Implemented** | Multi-disciplinary analysis requires cross-fertilization | Parallel pipelines with synchronization barriers for bidirectional exchange. Jerry original pattern; operational in PROJ-007 | HR-001 (structured handoff), HR-006 (quality gate at handoff) | R-A03 (state fragility at barriers) |
+| WF-06 | Cross-Pollinated Pipeline | **Implemented** | Multi-disciplinary analysis requires cross-fertilization | Parallel pipelines with synchronization barriers for bidirectional exchange. Tom original pattern; operational in PROJ-007 | HR-001 (structured handoff), HR-006 (quality gate at handoff) | R-A03 (state fragility at barriers) |
 | WF-07 | Fan-Out/Fan-In (Gather) | **Implemented** | Research breadth requires parallel investigation with synthesis | Concurrent execution with result aggregation at convergence; orch-synthesizer handles fan-in | AR-005 (context isolation), HR-002 (required handoff fields) | R-T01 (synthesizer context fills with multiple inputs) |
 
-**Summary:** 6/7 implemented. WF-04 (Voting) is the only gap; its value is limited for Jerry's deterministic workflow needs (LOW priority). WF-06 (Cross-Pollinated Pipeline) is a Jerry original with no direct industry equivalent.
+**Summary:** 6/7 implemented. WF-04 (Voting) is the only gap; its value is limited for Tom's deterministic workflow needs (LOW priority). WF-06 (Cross-Pollinated Pipeline) is a Tom original with no direct industry equivalent.
 
 ---
 
@@ -96,17 +96,17 @@ Patterns governing the flow of work through agent systems.
 
 Patterns for how work is assigned, decomposed, and coordinated across agents. Incorporates NSE Patterns 1 (Specialist Agent), 2 (Orchestrator-Worker), and 9 (Cognitive Mode).
 
-| ID | Pattern | Jerry Status | Problem | Solution Summary | Related Requirements | Related Risks |
+| ID | Pattern | Tom Status | Problem | Solution Summary | Related Requirements | Related Risks |
 |----|---------|-------------|---------|------------------|---------------------|---------------|
 | DL-01 | Orchestrator-Workers | **Implemented** | Complex tasks require coordination across specialists | Central orchestrator decomposes tasks, delegates via Task tool, synthesizes outputs. Max one level (P-003/H-01). NSE Pattern 2 provides formal topology diagram reducing 17x amplification to ~1.3x | AR-004 (single-level), AR-005 (context isolation), SR-001 (P-003) | R-T02 (error amplification), R-A02 (agent proliferation) |
-| DL-02 | Hierarchical Decomposition | **Partial** | Deep problem decomposition requires recursive breakdown | Parent agents break goals into sub-tasks. Jerry: single-level only per H-01; conceptual decomposition via orchestration phases | AR-004 (single-level constraint) | R-T01 (context rot in deep decomposition) |
-| DL-03 | Manager Pattern | **Implemented** | Team coordination requires single authority | Central manager coordinates via tool calls, synthesizes results. Jerry: main context as manager; orch-planner designs delegation | AR-011 (agent registration) | R-P01 (governance overhead) |
+| DL-02 | Hierarchical Decomposition | **Partial** | Deep problem decomposition requires recursive breakdown | Parent agents break goals into sub-tasks. Tom: single-level only per H-01; conceptual decomposition via orchestration phases | AR-004 (single-level constraint) | R-T01 (context rot in deep decomposition) |
+| DL-03 | Manager Pattern | **Implemented** | Team coordination requires single authority | Central manager coordinates via tool calls, synthesizes results. Tom: main context as manager; orch-planner designs delegation | AR-011 (agent registration) | R-P01 (governance overhead) |
 | DL-04 | Coordinator/Dispatcher | **Implemented** | Intent-based routing requires analysis and specialist selection | Trigger map + H-22 proactive invocation; Claude session as dispatcher | RR-001 (keyword primary), RR-007 (multi-skill) | R-T06 (stochastic variance) |
-| DL-05 | Dynamic Handoff | **Not Implemented** | Emergent routing requires agent-determined handoff | Agents assess and transfer tasks at runtime. Intentionally excluded per H-01 -- Jerry uses orchestrator-mediated handoffs | AR-004 (conflicts with single-level) | R-T02 (uncontrolled error amplification) |
+| DL-05 | Dynamic Handoff | **Not Implemented** | Emergent routing requires agent-determined handoff | Agents assess and transfer tasks at runtime. Intentionally excluded per H-01 -- Tom uses orchestrator-mediated handoffs | AR-004 (conflicts with single-level) | R-T02 (uncontrolled error amplification) |
 | DL-06 | Description-Driven Delegation | **Implemented** | Large agent pools require automatic delegation decisions | Agent descriptions drive selection. H-28 description standards; YAML `description` field. NSE Pattern 9 adds cognitive mode as selection dimension | AR-009 (description quality), PR-002 (cognitive mode) | R-D01 (complexity barrier for authors) |
-| DL-07 | Context-Centric Decomposition | **Not Implemented** | Feature-scoped decomposition prevents telephone-game context loss | Divide by context boundaries rather than work type. Jerry mitigates via filesystem-as-memory | -- | R-A03 (state fragility) |
+| DL-07 | Context-Centric Decomposition | **Not Implemented** | Feature-scoped decomposition prevents telephone-game context loss | Divide by context boundaries rather than work type. Tom mitigates via filesystem-as-memory | -- | R-A03 (state fragility) |
 | DL-08 | Contract-First Delegation | **Not Implemented** | High-stakes delegation requires verifiable outcomes | Tasks decomposed until sub-tasks match automated verification. Emerging pattern from Google DeepMind (2026) | HR-006 (quality gate at handoff) | R-T02 (error amplification) |
-| DL-09 | Effort Scaling | **Not Implemented** | Variable-complexity workflows require dynamic agent spawning | Dynamic agent counts based on task complexity. Fixed agent assignments in Jerry | -- | R-O01 (cost escalation) |
+| DL-09 | Effort Scaling | **Not Implemented** | Variable-complexity workflows require dynamic agent spawning | Dynamic agent counts based on task complexity. Fixed agent assignments in Tom | -- | R-O01 (cost escalation) |
 
 **Summary:** 5/9 implemented. DL-05 is intentionally excluded per H-01. DL-07, DL-08, DL-09 are evolutionary gaps; DL-07 is mitigated by filesystem-as-memory (LOW priority).
 
@@ -116,7 +116,7 @@ Patterns for how work is assigned, decomposed, and coordinated across agents. In
 
 Patterns for ensuring and improving agent output quality. Incorporates NSE Patterns 3 (Creator-Critic-Revision) and 8 (Quality Gate).
 
-| ID | Pattern | Jerry Status | Problem | Solution Summary | Related Requirements | Related Risks |
+| ID | Pattern | Tom Status | Problem | Solution Summary | Related Requirements | Related Risks |
 |----|---------|-------------|---------|------------------|---------------------|---------------|
 | QA-01 | Evaluator-Optimizer | **Implemented** | Iterative refinement requires separate generation and evaluation | Creator generates, critic evaluates with S-014 rubric, revision iterates. H-14 minimum 3 iterations. NSE Pattern 3 provides score progression model (0.78 -> 0.88 -> 0.93) | QR-004 (3 iterations), QR-005 (0.92 threshold) | R-Q01 (false positives), R-Q03 (creator-critic collusion) |
 | QA-02 | Generator-Critic Loop | **Implemented** | Quality improvement requires measurable quality dimensions | Generate, validate with conditional looping until threshold. H-13 >= 0.92 | QR-005 (threshold), QR-009 (leniency counteraction) | R-Q01 (leniency bias) |
@@ -137,22 +137,22 @@ Patterns for ensuring and improving agent output quality. Incorporates NSE Patte
 
 Patterns for managing information flow, context windows, and knowledge persistence. Incorporates NSE Patterns 4 (Progressive Disclosure) and 7 (Context Budget).
 
-| ID | Pattern | Jerry Status | Problem | Solution Summary | Related Requirements | Related Risks |
+| ID | Pattern | Tom Status | Problem | Solution Summary | Related Requirements | Related Risks |
 |----|---------|-------------|---------|------------------|---------------------|---------------|
-| CX-01 | Filesystem-as-Memory | **Implemented** | Context rot degrades LLM performance as context fills | Persist state to files; load selectively. Jerry core philosophy (P-002) | HR-004 (state preservation) | R-T01 (partial mitigation only) |
+| CX-01 | Filesystem-as-Memory | **Implemented** | Context rot degrades LLM performance as context fills | Persist state to files; load selectively. Tom core philosophy (P-002) | HR-004 (state preservation) | R-T01 (partial mitigation only) |
 | CX-02 | Progressive Disclosure (Skills) | **Implemented** | Large skill libraries exhaust context at startup | Three-tier loading: metadata (~500 tok), core (~5K), supplementary (variable). NSE Pattern 4 with token budget per tier | PR-004 (progressive disclosure), PR-008 (L0/L1/L2) | R-T01, R-T05 (token ceiling) |
-| CX-03 | Compaction / Summarization | **Partial** | Long sessions fill context with verbose history | Compress conversation history preserving key decisions. Auto-compaction at 95% exists; no Jerry-specific strategy | -- | R-T01 (lossy compaction may discard relevant info) |
+| CX-03 | Compaction / Summarization | **Partial** | Long sessions fill context with verbose history | Compress conversation history preserving key decisions. Auto-compaction at 95% exists; no Tom-specific strategy | -- | R-T01 (lossy compaction may discard relevant info) |
 | CX-04 | Structured Note-Taking | **Implemented** | Multi-session coherence requires persistent state tracking | WORKTRACKER.md, PLAN.md, ORCHESTRATION.yaml as persistent notes | HR-004, SR-006 (audit trails) | R-P04 (documentation decay) |
 | CX-05 | Sub-Agent Context Isolation | **Implemented** | Verbose operations overflow parent context | Each subagent runs in own context window via Task tool. Claude Code native | AR-005 (context isolation) | R-A03 (information loss at boundary) |
 | CX-06 | Just-in-Time Retrieval | **Implemented** | Variable information needs require on-demand loading | Maintain lightweight identifiers; dynamically load via Read tool | PR-004 | R-T05 (if retrieval is too aggressive) |
 | CX-07 | Observation Masking | **Not Implemented** | Tool outputs dominate context, drowning reasoning history | Preserve reasoning/action history; selectively compress tool observations only | -- | R-O04 (context fragmentation) |
 | CX-08 | Handle Pattern | **Implemented** | Large objects waste context when fully embedded | Reference by name/ID; load on-demand. Artifact paths in handoffs | HR-003 (artifact path validation), CB-03 | R-T05 (reduced if handles used consistently) |
-| CX-09 | L2 Re-Injection | **Implemented** | Critical rules fade from context as it fills | Re-inject highest-priority rules at every prompt via HTML comments. Jerry original; immune to context rot | PR-006 (instruction hierarchy) | R-T01 (partial mitigation: only L2-injected rules survive) |
+| CX-09 | L2 Re-Injection | **Implemented** | Critical rules fade from context as it fills | Re-inject highest-priority rules at every prompt via HTML comments. Tom original; immune to context rot | PR-006 (instruction hierarchy) | R-T01 (partial mitigation: only L2-injected rules survive) |
 | CX-10 | Git Worktree Isolation | **Not Implemented** | Experimental changes risk polluting main workspace | Run subagent in temporary git worktree for file-level isolation | -- | R-S03 (data leakage) |
 | CX-11 | Agent Memory (Cross-Session) | **Partial** | Cross-session learning requires accumulated expertise | MCP-002 Memory-Keeper at phase boundaries; no per-agent MEMORY.md | SR-008 (MCP governance) | R-T04 (MCP server instability) |
 | CX-12 | Tool Result Clearing | **Not Implemented** | Intermediate tool outputs consume context after processing | Explicitly clear tool results after extraction to free context budget | -- | R-O04 (context fragmentation) |
 
-**Summary:** 8/12 fully or partially implemented. CX-09 (L2 Re-Injection) is a Jerry original with no industry equivalent. NSE Pattern 7 adds quantified context budget allocation (CB-01 through CB-05) and the memory hierarchy model (context window -> filesystem -> MCP).
+**Summary:** 8/12 fully or partially implemented. CX-09 (L2 Re-Injection) is a Tom original with no industry equivalent. NSE Pattern 7 adds quantified context budget allocation (CB-01 through CB-05) and the memory hierarchy model (context window -> filesystem -> MCP).
 
 ---
 
@@ -160,19 +160,19 @@ Patterns for managing information flow, context windows, and knowledge persisten
 
 Patterns for guardrails, governance, bounded autonomy, and compliance. Incorporates NSE Pattern 5 (Tool Restriction).
 
-| ID | Pattern | Jerry Status | Problem | Solution Summary | Related Requirements | Related Risks |
+| ID | Pattern | Tom Status | Problem | Solution Summary | Related Requirements | Related Risks |
 |----|---------|-------------|---------|------------------|---------------------|---------------|
-| SF-01 | Constitutional AI Constraints | **Implemented** | All agents need predefined behavioral boundaries | JERRY_CONSTITUTION.md; H-01 through H-31; P-001 through P-043 | SR-001 (P-003/P-020/P-022) | R-S04 (unauthorized actions) |
+| SF-01 | Constitutional AI Constraints | **Implemented** | All agents need predefined behavioral boundaries | TOM_CONSTITUTION.md; H-01 through H-31; P-001 through P-043 | SR-001 (P-003/P-020/P-022) | R-S04 (unauthorized actions) |
 | SF-02 | Multi-Layer Guardrails | **Implemented** | Defense in depth requires validation at multiple points | L1-L5 enforcement architecture; PreToolUse/PostToolUse hooks | SR-002 (input validation), SR-003 (output filtering) | R-S01 (prompt injection) |
 | SF-03 | Least Privilege (Tool Restriction) | **Implemented** | Agents must not exceed authorized capabilities | Per-agent `allowed_tools`; TOOL_REGISTRY.yaml SSOT. NSE Pattern 5 adds T1-T5 security tiers with selection rule: "always select lowest tier that satisfies requirements" | AR-006 (tool restriction), SR-008 (MCP governance) | R-S02 (tool misuse) |
 | SF-04 | Bounded Autonomy | **Implemented** | Agents need defined authority boundaries | H-02 user authority; H-31 clarify when ambiguous; AE-006 escalation | SR-004 (user authority), SR-010 (ambiguity clarification) | R-S04 (unauthorized actions) |
 | SF-05 | Human-in-the-Loop (HITL) Gates | **Implemented** | Irreversible decisions require human approval | AE-001 through AE-006 auto-escalation; H-02 user authority | SR-007 (auto-escalation), QR-001 (proportional enforcement) | R-P01 (governance overhead) |
 | SF-06 | Red Teaming / Purple Teaming | **Implemented** | Security-critical systems need adversarial testing | S-001 Red Team strategy; adversary skill tournament mode; C4 requires all 10 strategies | QR-008 (tournament for C4) | R-Q03 (correlated blind spots) |
 | SF-07 | Audit Trails | **Implemented** | Accountability requires complete operational records | WORKTRACKER.md; ORCHESTRATION.yaml; worktracker integrity rules WTI-001 through WTI-009 | SR-006 (audit trail requirements) | R-P04 (documentation decay) |
-| SF-08 | Auto-Escalation | **Implemented** | High-impact changes must receive proportionate review | AE-001 through AE-006. Jerry original -- more formal than any industry equivalent | SR-007 (governance auto-escalation) | R-P02 (rule proliferation feeds escalation complexity) |
+| SF-08 | Auto-Escalation | **Implemented** | High-impact changes must receive proportionate review | AE-001 through AE-006. Tom original -- more formal than any industry equivalent | SR-007 (governance auto-escalation) | R-P02 (rule proliferation feeds escalation complexity) |
 | SF-09 | Circuit Breaker | **Partial** | Runaway iteration loops consume resources without progress | H-14 sets minimum 3 iterations. Orchestration SKILL.md mentions max 3 at barriers. No global maximum as HARD rule | RR-006 (max 3 routing hops) | R-O02 (latency degradation from unbounded loops) |
 
-**Summary:** 8/9 implemented at high maturity. SF-09 (Circuit Breaker) has a floor (H-14 minimum) but no ceiling as a global HARD rule -- this is the single remaining anti-pattern vulnerability. Jerry's governance framework is ahead of all industry norms based on Phase 1 research evidence.
+**Summary:** 8/9 implemented at high maturity. SF-09 (Circuit Breaker) has a floor (H-14 minimum) but no ceiling as a global HARD rule -- this is the single remaining anti-pattern vulnerability. Tom's governance framework is ahead of all industry norms based on Phase 1 research evidence.
 
 ---
 
@@ -180,7 +180,7 @@ Patterns for guardrails, governance, bounded autonomy, and compliance. Incorpora
 
 Patterns for verifying agent behavior, output quality, and system correctness.
 
-| ID | Pattern | Jerry Status | Problem | Solution Summary | Related Requirements | Related Risks |
+| ID | Pattern | Tom Status | Problem | Solution Summary | Related Requirements | Related Risks |
 |----|---------|-------------|---------|------------------|---------------------|---------------|
 | TS-01 | LLM-as-Judge Evaluation | **Implemented** | Non-deterministic outputs require structured assessment | S-014 with 6 dimensions, weighted composite. adv-scorer agent. H-13 threshold | QR-005 (0.92 threshold), QR-009 (leniency counteraction) | R-Q01 (leniency bias), R-Q04 (scoring drift) |
 | TS-02 | Behavioral End-to-End Testing | **Not Implemented** | Multi-agent workflows need full integration validation | Full workflow simulation with real tool calls; browser automation for verification | -- | R-A04 (integration complexity), R-T03 (model regression) |
@@ -190,7 +190,7 @@ Patterns for verifying agent behavior, output quality, and system correctness.
 | TS-06 | Regression and Drift Detection | **Not Implemented** | Evolving systems need behavioral stability monitoring | Continuous monitoring for behavioral drift; baseline comparison across model versions | -- | R-T03 (model regression), R-Q04 (scoring drift) |
 | TS-07 | Agent Unit Testing | **Not Implemented** | Agent definitions need isolated validation with controlled inputs | Test individual agents in isolation with known inputs and expected outputs | -- | R-P03 (maintenance burden without tests) |
 
-**Summary:** 3/7 implemented. This is Jerry's **weakest pattern family** (maturity 2.1/5). The implemented patterns (TS-01, TS-05) are strong, but infrastructure patterns (TS-02, TS-04, TS-06, TS-07) are entirely absent. This represents the largest maturity gap and the clearest path to framework improvement.
+**Summary:** 3/7 implemented. This is Tom's **weakest pattern family** (maturity 2.1/5). The implemented patterns (TS-01, TS-05) are strong, but infrastructure patterns (TS-02, TS-04, TS-06, TS-07) are entirely absent. This represents the largest maturity gap and the clearest path to framework improvement.
 
 ---
 
@@ -198,14 +198,14 @@ Patterns for verifying agent behavior, output quality, and system correctness.
 
 Patterns for connecting agents with external tools, protocols, and services. Incorporates NSE Pattern 6 (Structured Handoff) and NSE Pattern 10 (Layered Routing).
 
-| ID | Pattern | Jerry Status | Problem | Solution Summary | Related Requirements | Related Risks |
+| ID | Pattern | Tom Status | Problem | Solution Summary | Related Requirements | Related Risks |
 |----|---------|-------------|---------|------------------|---------------------|---------------|
 | IN-01 | Model Context Protocol (MCP) | **Implemented** | External tools need standardized connection interfaces | Context7 and Memory-Keeper via MCP; mcp-tool-standards.md governance | SR-008 (MCP governance) | R-T04 (MCP server instability) |
 | IN-02 | Static Tool Assignment | **Implemented** | Security requires predictable, auditable tool access | YAML frontmatter `allowed_tools`; per-agent allowlists. TS-5 winner (4.15) | AR-006 (tool restriction) | R-S02 (tool misuse -- controlled) |
 | IN-03 | Dynamic Tool Discovery | **Not Implemented** | Large tool pools need runtime capability matching | Agents discover available tools at runtime. Reserved for future; static assignment optimal at current scale | -- | R-S02 (security concern with dynamic discovery) |
-| IN-04 | Contextual Function Selection | **Not Implemented** | Tool overload requires embedding-based selection | Top-N most relevant tools per request. Premature at Jerry's current scale (< 20 tools per agent) | -- | R-A04 (integration complexity) |
+| IN-04 | Contextual Function Selection | **Not Implemented** | Tool overload requires embedding-based selection | Top-N most relevant tools per request. Premature at Tom's current scale (< 20 tools per agent) | -- | R-A04 (integration complexity) |
 | IN-05 | Hook-Based Enforcement | **Partial** | Constraint enforcement requires deterministic tool-boundary validation | L3 enforcement layer; PreToolUse/PostToolUse hooks. Conceptually designed but not fully implemented for all constraints | SR-002 (input validation), SR-003 (output filtering) | R-S01 (prompt injection) |
-| IN-06 | MCP Tool Search | **Not Implemented** | Many MCP servers exceed context budget for tool descriptions | Dynamic MCP tool loading on-demand. Jerry has 2 MCP servers; threshold not reached | -- | R-O04 (context fragmentation) |
+| IN-06 | MCP Tool Search | **Not Implemented** | Many MCP servers exceed context budget for tool descriptions | Dynamic MCP tool loading on-demand. Tom has 2 MCP servers; threshold not reached | -- | R-O04 (context fragmentation) |
 | IN-07 | Structured Handoff Schemas | **Partial** | Free-text handoffs cause information loss at agent boundaries | JSON Schema-constrained data contracts. NSE Pattern 6 provides full schema definition with `from_agent`, `to_agent`, `context`, `request`, `criticality` fields. AGENTS.md defines structure but not validated/enforced | HR-001 (structured format), HR-002 (required fields), HR-003 (artifact validation), HR-006 (quality gate at handoff) | R-T02 (error amplification), R-A03 (state fragility) |
 
 **Summary:** 3/7 fully implemented, 2 partial. IN-07 (Structured Handoffs) and IN-05 (Hook-Based Enforcement) are the high-value partial implementations. NSE Pattern 6 provides the JSON Schema that closes IN-07; NSE Pattern 10 provides the layered routing architecture that extends WF-02.
@@ -216,7 +216,7 @@ Patterns for connecting agents with external tools, protocols, and services. Inc
 
 Patterns for organizational control, compliance, decision-making, and framework evolution.
 
-| ID | Pattern | Jerry Status | Problem | Solution Summary | Related Requirements | Related Risks |
+| ID | Pattern | Tom Status | Problem | Solution Summary | Related Requirements | Related Risks |
 |----|---------|-------------|---------|------------------|---------------------|---------------|
 | GV-01 | Criticality Classification | **Implemented** | Variable-risk decisions need proportional review rigor | C1-C4 levels with auto-escalation (AE-001 through AE-006); strategy sets per criticality. NSE Pattern 8 adds the 4-layer quality gate architecture that operationalizes criticality | QR-001 (proportional enforcement), SR-007 (auto-escalation) | R-P01 (governance overhead) |
 | GV-02 | SSOT (Single Source of Truth) | **Implemented** | Configuration drift across distributed rules creates inconsistency | quality-enforcement.md as SSOT; worktracker integrity rules reference SSOT | -- | R-P04 (documentation decay) |
@@ -224,7 +224,7 @@ Patterns for organizational control, compliance, decision-making, and framework 
 | GV-04 | ADR (Architecture Decision Records) | **Implemented** | Design trade-offs need structured documentation and traceability | ADR template; ps-architect agent; AE-003/AE-004 auto-escalation for ADRs. NSE architecture produced 3 recommended ADRs (ADR-001, ADR-002, ADR-003) | -- | R-P04 (ADR decay) |
 | GV-05 | Proactive Skill Invocation | **Implemented** | Quality tools must be used consistently without waiting for explicit user request | H-22 HARD rule; trigger map with keywords; behavior rules for early invocation | RR-001 (keyword primary), RR-002 (trigger completeness) | R-D02 (developer resistance to proactive invocation) |
 
-**Summary:** 5/5 implemented at the highest maturity of any family (4.5/5). This is Jerry's **most distinctive contribution** -- no other framework in the Phase 1 research exhibits this level of formalized governance. The combination of constitutional constraints, criticality classification, auto-escalation, tier vocabulary, and SSOT governance is unique.
+**Summary:** 5/5 implemented at the highest maturity of any family (4.5/5). This is Tom's **most distinctive contribution** -- no other framework in the Phase 1 research exhibits this level of formalized governance. The combination of constitutional constraints, criticality classification, auto-escalation, tier vocabulary, and SSOT governance is unique.
 
 ---
 
@@ -292,10 +292,10 @@ The following open items (OI-01 through OI-07) were identified by nse-requiremen
 |----|------|------------|--------|---------------|
 | **OI-01** | JSON Schema format for agent definition validation | **Resolved: JSON Schema Draft 2020-12** | Closed | Widest tooling support (ajv, jsonschema, VS Code IntelliSense). Compatible with YAML frontmatter parsing via js-yaml or PyYAML. Pydantic is a Python-specific alternative that could generate JSON Schema but adds a Python dependency to what is currently a language-agnostic definition format. Draft 2020-12 is the recommended standard. |
 | **OI-02** | Confidence threshold for LLM routing fallback | **Deferred to empirical measurement** | Open | No theoretical basis for selecting a threshold a priori. Recommended approach: implement keyword routing logging first (RR-008, routing observability); collect 100+ routing decisions; empirically determine the false-negative rate; set threshold at the point where keyword accuracy drops below 80%. Deferred until skill count approaches 15 and LLM fallback becomes necessary. |
-| **OI-03** | Open Agent Specification adoption | **Resolved: Evaluate for compatible elements, do not adopt wholesale** | Closed | The Open Agent Specification (2025) uses YAML/JSON with schema validation -- directionally aligned with ADR-001 (B5). However, wholesale adoption would require restructuring 37 existing agent definitions and potentially losing Jerry-specific extensions (cognitive mode, guardrails structure, L0/L1/L2 output levels). Recommended: monitor the specification for compatible elements (naming conventions, version format); adopt schema validation patterns; do not adopt the full specification format. |
+| **OI-03** | Open Agent Specification adoption | **Resolved: Evaluate for compatible elements, do not adopt wholesale** | Closed | The Open Agent Specification (2025) uses YAML/JSON with schema validation -- directionally aligned with ADR-001 (B5). However, wholesale adoption would require restructuring 37 existing agent definitions and potentially losing Tom-specific extensions (cognitive mode, guardrails structure, L0/L1/L2 output levels). Recommended: monitor the specification for compatible elements (naming conventions, version format); adopt schema validation patterns; do not adopt the full specification format. |
 | **OI-04** | Output schema variability across L0/L1/L2 levels | **Resolved: Base schema with optional level-specific sections** | Closed | Define a base output schema with required sections (navigation table H-23, anchor links H-24, source cross-reference). Add optional L0/L1/L2 sections: stakeholder-facing agents MUST include all three levels (PR-008); internal agents MAY omit L0 if output is consumed only by other agents. Schema validates presence of required sections and, for stakeholder-facing agents, all three levels. |
 | **OI-05** | Maximum agent count before team-based grouping | **Resolved: Monitor at 50-agent threshold** | Closed | TS-1 suggests ~50 agents as the practical limit for single-framework cognitive load. Current count is 37 (74% of threshold). Monitor the count as new skills are added. When approaching 45, evaluate: (a) team-based grouping (skill clusters with meta-orchestrators), (b) agent consolidation (merge agents with overlapping roles). R-A02 (agent proliferation) is YELLOW-zone at score 6 -- acceptable with monitoring. |
-| **OI-06** | Audit trail storage mechanism | **Resolved: Filesystem first, Memory-Keeper migration path** | Closed | Consistent with Jerry's filesystem-as-memory core philosophy (CX-01). Start with structured audit entries in WORKTRACKER.md and ORCHESTRATION.yaml (already partially implemented via SF-07). If cross-session query needs arise (e.g., "find all routing decisions that used LLM fallback in the last 30 days"), migrate to Memory-Keeper with key pattern `jerry/{project}/audit/{entity-id}`. This follows the MCP-M-001 MEDIUM standard for multi-session reusable findings. |
+| **OI-06** | Audit trail storage mechanism | **Resolved: Filesystem first, Memory-Keeper migration path** | Closed | Consistent with Tom's filesystem-as-memory core philosophy (CX-01). Start with structured audit entries in WORKTRACKER.md and ORCHESTRATION.yaml (already partially implemented via SF-07). If cross-session query needs arise (e.g., "find all routing decisions that used LLM fallback in the last 30 days"), migrate to Memory-Keeper with key pattern `jerry/{project}/audit/{entity-id}`. This follows the MCP-M-001 MEDIUM standard for multi-session reusable findings. |
 | **OI-07** | Negative keyword data structure | **Resolved: Extend existing trigger map with "Negative Keywords" column** | Closed | Minimal disruption to existing mandatory-skill-usage.md format. Add a "Negative Keywords" column to the Trigger Map table. Example: `/nasa-se` has trigger keywords `requirements, specification, V&V, technical review, risk` and negative keywords `code risk, risky approach, at risk` to prevent casual mentions from triggering the skill. Implementation effort is LOW; can be applied immediately per GAP-05 Phase A. |
 
 ---
@@ -367,7 +367,7 @@ This section updates the maturity scores from ps-analyst-001 incorporating NSE a
 
 ## 6. Rule Consolidation Recommendation
 
-The rule proliferation risk (R-P02, RED-zone, score 15, net priority 9.00) is the #1 mitigation priority identified by nse-risk-001. At 31/35 HARD rule slots (89%), Jerry is past the 20-25 "sweet spot" identified by the risk assessment's diminishing-returns curve.
+The rule proliferation risk (R-P02, RED-zone, score 15, net priority 9.00) is the #1 mitigation priority identified by nse-risk-001. At 31/35 HARD rule slots (89%), Tom is past the 20-25 "sweet spot" identified by the risk assessment's diminishing-returns curve.
 
 ### Current State: H-25 through H-30 (Skill Standards Rules)
 
@@ -419,7 +419,7 @@ Every skill and agent MUST be registered in the framework:
 
 ### New Rule Capacity After Consolidation
 
-With 8 freed slots, Jerry can add the following recommended HARD rules:
+With 8 freed slots, Tom can add the following recommended HARD rules:
 
 | Proposed Rule | Purpose | Source |
 |---------------|---------|--------|
@@ -434,7 +434,7 @@ With 8 freed slots, Jerry can add the following recommended HARD rules:
 
 | Required Section | Status | Assessment |
 |------------------|--------|------------|
-| Unified Pattern Taxonomy (all 8 families) | COMPLETE | 66 entries across 8 tables; each with ID, name, Jerry status, problem, solution, requirements, risks |
+| Unified Pattern Taxonomy (all 8 families) | COMPLETE | 66 entries across 8 tables; each with ID, name, Tom status, problem, solution, requirements, risks |
 | NSE pattern reconciliation | COMPLETE | 10 NSE patterns mapped to PS families; zero conflicts |
 | Gap Closure Roadmap (GAP-01 through GAP-12) | COMPLETE | All 12 gaps with pattern mapping, requirements, risks, priority, and implementation approach |
 | Cross-Pipeline Consensus Matrix | COMPLETE | 10 consensus findings with both-pipeline evidence and tension resolution |
@@ -478,7 +478,7 @@ With 8 freed slots, Jerry can add the following recommended HARD rules:
 
 3. **Implementation effort granularity.** The roadmap uses qualitative effort levels (Low/Medium/High). Detailed story-point or time estimates should be developed during the ADR and implementation planning phases.
 
-4. **Testing maturity scoring floor.** Testing (2.1) may be understated because Jerry does have implicit testing through operational use and quality gates. However, the absence of formal testing infrastructure (unit tests, E2E tests, regression baselines) justifies the low score per the maturity model criteria.
+4. **Testing maturity scoring floor.** Testing (2.1) may be understated because Tom does have implicit testing through operational use and quality gates. However, the absence of formal testing infrastructure (unit tests, E2E tests, regression baselines) justifies the low score per the maturity model criteria.
 
 5. **Pattern overlap.** 9 patterns appear in multiple families (e.g., criticality-proportional enforcement appears in both Quality and Governance). The taxonomy accepts this overlap as reflecting the genuinely cross-cutting nature of these patterns rather than attempting to force single-family classification.
 

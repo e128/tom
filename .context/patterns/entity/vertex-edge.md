@@ -28,7 +28,7 @@ This pattern supports:
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Vertex Base
 
@@ -377,13 +377,13 @@ edge = Edge.create(
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Edge labels are domain-specific enums, not arbitrary strings. This ensures consistent semantics across the system.
+> **Tom Decision**: Edge labels are domain-specific enums, not arbitrary strings. This ensures consistent semantics across the system.
 
-> **Jerry Decision**: Edges are immutable with copy-on-modify pattern (`with_property()`). This aligns with event sourcing principles.
+> **Tom Decision**: Edges are immutable with copy-on-modify pattern (`with_property()`). This aligns with event sourcing principles.
 
-> **Jerry Decision**: Graph traversal is limited to 3 levels by default to prevent runaway queries.
+> **Tom Decision**: Graph traversal is limited to 3 levels by default to prevent runaway queries.
 
 ---
 
@@ -392,7 +392,7 @@ edge = Edge.create(
 The graph model is designed for future Gremlin compatibility:
 
 ```python
-# Jerry graph model maps to Gremlin concepts
+# Tom graph model maps to Gremlin concepts
 # Vertex -> g.V()
 # Edge -> g.E()
 # EdgeLabel -> edge labels

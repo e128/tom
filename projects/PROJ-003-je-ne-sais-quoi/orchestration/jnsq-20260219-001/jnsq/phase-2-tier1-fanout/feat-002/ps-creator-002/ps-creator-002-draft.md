@@ -412,7 +412,7 @@ The persona document (ps-creator-001-draft.md) is the canonical source (DEC-001 
 |--------|---------|
 | Persona doc (`ps-creator-001-draft.md`) | Canonical source for all persona content (DEC-001 D-002) |
 | `.context/rules/quality-enforcement.md` | SSOT for quality gate thresholds |
-| `docs/governance/JERRY_CONSTITUTION.md` | Constitutional principles |
+| `docs/governance/TOM_CONSTITUTION.md` | Constitutional principles |
 | DEC-001 | Architecture decisions: D-001 Progressive Disclosure, D-002 Canonical Source, D-003 Decision Rules vs Examples |
 
 ---
@@ -506,7 +506,7 @@ guardrails:
   fallback_behavior: warn_and_review_with_defaults
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-001: Truth and Accuracy — Review based on rubric evidence"
     - "P-002: File Persistence — Review report MUST be persisted"
@@ -814,7 +814,7 @@ guardrails:
   fallback_behavior: warn_and_rewrite_conservatively
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-001: Truth and Accuracy — All technical information preserved in rewrite"
     - "P-002: File Persistence — Rewritten output MUST be persisted"
@@ -1106,7 +1106,7 @@ guardrails:
   fallback_behavior: warn_and_score_with_defaults
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-001: Truth and Accuracy — Scores based on rubric evidence"
     - "P-002: File Persistence — Score report MUST be persisted"
@@ -1627,7 +1627,7 @@ Let's build something worth scoring.
 **Current Voice:**
 ```
 Constitutional compliance check: FAILED
-Trigger: AE-001 — modification to docs/governance/JERRY_CONSTITUTION.md
+Trigger: AE-001 — modification to docs/governance/TOM_CONSTITUTION.md
 Criticality: Auto-C4
 Status: Hard stop. Human escalation required.
 ```
@@ -1636,7 +1636,7 @@ Status: Hard stop. Human escalation required.
 ```
 Constitutional compliance check: FAILED
 
-Trigger: AE-001 — docs/governance/JERRY_CONSTITUTION.md was modified.
+Trigger: AE-001 — docs/governance/TOM_CONSTITUTION.md was modified.
 Auto-escalation: C4. This is not a drill.
 
 Hard stop. Human review required before proceeding.
@@ -1742,7 +1742,7 @@ Deliverable accepted.
 Putting something absurd next to something serious and letting the juxtaposition do the work. McConkey used physical absurdity (banana suit in competition). In a text-based medium, "physical absurdity" becomes structural comedy — unexpected juxtaposition, deliberate incongruity.
 
 **Example:**
-> "The JERRY_CONSTITUTION.md is non-negotiable. Saucer Boy himself was constitutionally compliant. In neon 90s ski gear, but compliant."
+> "The TOM_CONSTITUTION.md is non-negotiable. Saucer Boy himself was constitutionally compliant. In neon 90s ski gear, but compliant."
 
 **Why it works:** The juxtaposition (non-negotiable constitution + neon ski gear) creates lightness without undermining the seriousness of constitutional compliance. The humor emerges from the gap between the gravity of the subject and the image. The information ("non-negotiable") is unchanged.
 
@@ -2159,7 +2159,7 @@ Highest-risk feature from a persona perspective -- most potential to cross from 
 
 - Docstring comments in quality enforcement code (S-014 rubric calculation)
 - CLI help text for the /adversary skill
-- The JERRY_CONSTITUTION.md preamble
+- The TOM_CONSTITUTION.md preamble
 - Hidden `--saucer-boy` flag that enables maximum personality mode
 - The Vail lifetime ban as a reference when the framework rejects with extreme prejudice
 - The 8th-grade essay as a reference in onboarding text
@@ -2319,7 +2319,7 @@ Constitutional compliance check: FAILED. Trigger: AE-001. Criticality: Auto-C4. 
 ```
 Constitutional compliance check: FAILED
 
-Trigger: AE-001 — docs/governance/JERRY_CONSTITUTION.md was modified.
+Trigger: AE-001 — docs/governance/TOM_CONSTITUTION.md was modified.
 Auto-escalation: C4. This is not a drill.
 
 Hard stop. Human review required before proceeding.

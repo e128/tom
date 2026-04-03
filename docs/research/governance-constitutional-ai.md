@@ -1,6 +1,6 @@
 # Governance & Constitutional AI
 
-> The Jerry Constitution implements Constitutional AI for LLM agent governance, drawing on Anthropic, OpenAI, and DeepMind prior art. Progressive enforcement from advisory to hard constraints, with behavior tests for verification.
+> The Tom Constitution implements Constitutional AI for LLM agent governance, drawing on Anthropic, OpenAI, and DeepMind prior art. Progressive enforcement from advisory to hard constraints, with behavior tests for verification.
 
 ---
 
@@ -14,9 +14,9 @@
 
 ---
 
-## Jerry Constitution v1.0
+## Tom Constitution v1.0
 
-The foundational governance document establishing behavioral principles for all agents operating within the Jerry Framework. Rather than encoding rules procedurally, the Constitution follows the Constitutional AI pattern where agents self-critique against explicit written principles.
+The foundational governance document establishing behavioral principles for all agents operating within the Tom Framework. Rather than encoding rules procedurally, the Constitution follows the Constitutional AI pattern where agents self-critique against explicit written principles.
 
 ??? note "Methodology"
     The Constitution follows four design principles:
@@ -54,7 +54,7 @@ The foundational governance document establishing behavioral principles for all 
     | **Medium** | Block action; allow user override | User explicit approval | File persistence mandate |
     | **Hard** | Block action; no override possible | Cannot be overridden | No recursive subagents |
 
-[:octicons-link-external-16: Jerry Constitution v1.0 (426 lines)](https://github.com/geekatron/jerry/blob/main/docs/governance/JERRY_CONSTITUTION.md)
+[:octicons-link-external-16: Tom Constitution v1.0 (426 lines)](https://github.com/geekatron/jerry/blob/main/docs/governance/TOM_CONSTITUTION.md)
 
 ---
 

@@ -29,7 +29,7 @@ activation-keywords:
   - "essential outline"
 ---
 
-> **Version:** 1.0.0 | **Framework:** Jerry Framework | **Constitutional compliance:** P-003 (no recursive subagents), P-020 (user authority), P-022 (no deception)
+> **Version:** 1.0.0 | **Framework:** Tom Framework | **Constitutional compliance:** P-003 (no recursive subagents), P-020 (user authority), P-022 (no deception)
 > **Status:** PROPOSED | **Author:** eng-backend | **Date:** 2026-03-09
 
 ---
@@ -288,7 +288,7 @@ Full rules are in `skills/use-case/rules/use-case-writing-rules.md`. Steps are l
 |-------------|-----------|-----------|---------------|
 | `/use-case` to `/test-spec` | tspec-generator reads UC artifact produced by uc-author | Shared artifact file validated against schema | `$.detail_level >= ESSENTIAL_OUTLINE`, `$.extensions` non-empty, `$.basic_flow[*].type` present |
 | `/use-case` to `/contract-design` | cd-generator reads UC artifact after uc-slicer Activity 5 | Shared artifact file validated against schema | `$.realization_level = INTERACTION_DEFINED`, `$.interactions` non-empty |
-| `/use-case` to `/worktracker` | uc-slicer creates Story entities for PREPARED slices | `uv run jerry items create` via Bash (H-05 compliant; P-003 no Task delegation) | Slices at `slice_state >= PREPARED` |
+| `/use-case` to `/worktracker` | uc-slicer creates Story entities for PREPARED slices | `uv run tom items create` via Bash (H-05 compliant; P-003 no Task delegation) | Slices at `slice_state >= PREPARED` |
 | All three skills share the same UC artifact | Shared schema: `docs/schemas/use-case-realization-v1.schema.json` | Schema validates input at every consumer boundary | Valid YAML frontmatter with `$.work_type = USE_CASE` |
 
 ---
@@ -409,6 +409,6 @@ This 2D matrix shows which `(detail_level, realization_level)` combinations are 
 
 ---
 
-> *Skill Version: 1.0.0 | Framework: Jerry Framework | Constitutional compliance: P-003, P-020, P-022*
+> *Skill Version: 1.0.0 | Framework: Tom Framework | Constitutional compliance: P-003, P-020, P-022*
 > *Author: eng-backend | Date: 2026-03-09 | Status: ACTIVE*
 > *SSOT: `projects/PROJ-021-use-case/orchestration/use-case-skills-20260308-001/implementation/step-9-use-case-architecture.md`*

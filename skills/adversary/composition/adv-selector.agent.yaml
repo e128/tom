@@ -40,7 +40,7 @@ guardrails:
   - template_paths_must_exist
   fallback_behavior: warn_and_request_criticality
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-002: File Persistence (Medium) - Selection plan MUST be persisted'
   - 'P-003: No Recursive Subagents (Hard) - Single-level worker only'

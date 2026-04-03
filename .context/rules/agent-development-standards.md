@@ -2,7 +2,7 @@
 
 <!-- VERSION: 1.3.0 | DATE: 2026-03-28 | SOURCE: ADR-PROJ007-001, ADR-STORY015-001, STORY-017 | REVISION: STORY-017 tier model renumbering (T3=Persistent, T4=External, T5=Orchestration) -->
 
-> Canonical standards for agent definition format, structural patterns, behavioral constraints, and handoff protocols within the Jerry Framework. All agent definitions MUST reference this file.
+> Canonical standards for agent definition format, structural patterns, behavioral constraints, and handoff protocols within the Tom Framework. All agent definitions MUST reference this file.
 
 <!-- L2-REINJECT: rank=5, content="Agent definitions: YAML frontmatter MUST validate against JSON Schema (H-34). Required YAML fields: name, version, description, model, identity, capabilities, guardrails, output, constitution. Tool tiers T1-T5 (risk-ordered): T1=Read-Only, T2=Read-Write, T3=Persistent (+MK), T4=External (+Web, includes MK), T5=Orchestration (+Agent). Always select lowest tier satisfying requirements. Cognitive modes: divergent, convergent, integrative, systematic, forensic. Constitutional triplet (P-003, P-020, P-022) REQUIRED in every agent (H-34b)." -->
 
@@ -173,7 +173,7 @@ Each agent addresses a single, well-defined concern. No agent combines research 
 
 ### Pattern 2: Orchestrator-Worker (P-003 Compliant)
 
-Jerry enforces a strict single-level nesting constraint (H-01/P-003). The orchestrator-worker topology operates as:
+Tom enforces a strict single-level nesting constraint (H-01/P-003). The orchestrator-worker topology operates as:
 
 ```
 MAIN CONTEXT (orchestrator)
@@ -210,7 +210,7 @@ For C3+ deliverables, review agents SHOULD be invoked via the Agent tool to ensu
 |----|----------|----------|--------|
 | FC-M-001 | For C3+ deliverables, review agents SHOULD be invoked via Agent tool to obtain fresh context isolation. For C4 deliverables, a second independent reviewer SHOULD be invoked with a separate Agent call, receiving only the artifact and evaluation criteria. | The Agent tool inherently provides context isolation: each subagent starts with a clean context window, free from the creator's reasoning artifacts and confirmation bias. When Pattern 3 (Creator-Critic-Revision) uses the Agent tool for critic invocation (H-14), the critic already benefits from this isolation. FC-M-001 formalizes this architectural property as an explicit quality pattern. | Anthropic best practices (writer/reviewer fresh context), H-14 (creator-critic-revision), P-003 (single-level nesting) |
 
-**Why this works in Jerry:** The orchestrator-worker topology (Pattern 2, P-003 compliant) naturally creates fresh context boundaries. Each Agent tool invocation gives the worker agent only what the orchestrator explicitly passes -- no accumulated reasoning, no sunk-cost bias, no anchoring to prior iterations. This is architecturally equivalent to Anthropic's recommendation to use separate context windows for writers and reviewers.
+**Why this works in Tom:** The orchestrator-worker topology (Pattern 2, P-003 compliant) naturally creates fresh context boundaries. Each Agent tool invocation gives the worker agent only what the orchestrator explicitly passes -- no accumulated reasoning, no sunk-cost bias, no anchoring to prior iterations. This is architecturally equivalent to Anthropic's recommendation to use separate context windows for writers and reviewers.
 
 **C4 independent review:** At C4 criticality, the tournament review (Pattern 3, Layer 4) already executes all 10 adversarial strategies. FC-M-001 adds an explicit second reviewer invocation that receives only: (a) the artifact file path, (b) the quality gate rubric, and (c) the success criteria -- deliberately excluding prior critic scores and revision history to prevent anchoring.
 

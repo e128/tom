@@ -8,7 +8,7 @@
 
 ## Overview
 
-CloudEvents is a CNCF specification for describing event data in a common way. Jerry uses CloudEvents format for integration events that cross bounded context or system boundaries, while internal domain events remain lightweight.
+CloudEvents is a CNCF specification for describing event data in a common way. Tom uses CloudEvents format for integration events that cross bounded context or system boundaries, while internal domain events remain lightweight.
 
 ---
 
@@ -22,7 +22,7 @@ CloudEvents is a CNCF specification for describing event data in a common way. J
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### CloudEvent Structure
 
@@ -52,8 +52,8 @@ class CloudEvent:
 
     # Required attributes (CloudEvents v1.0)
     specversion: str = "1.0"
-    type: str = ""  # e.g., "jerry.work_tracking.task.completed"
-    source: str = ""  # e.g., "/jerry/work-tracking"
+    type: str = ""  # e.g., "tom.work_tracking.task.completed"
+    source: str = ""  # e.g., "/tom/work-tracking"
     id: UUID = field(default_factory=uuid4)
 
     # Optional attributes
@@ -101,29 +101,29 @@ class CloudEvent:
 ### Convention
 
 ```
-jerry.{bounded_context}.{aggregate}.{event_verb}
+tom.{bounded_context}.{aggregate}.{event_verb}
 ```
 
 ### Examples
 
 | Event | Type String |
 |-------|-------------|
-| Task created | `jerry.work_tracking.task.created` |
-| Task completed | `jerry.work_tracking.task.completed` |
-| Project activated | `jerry.session_management.project.activated` |
-| Phase started | `jerry.work_tracking.phase.started` |
+| Task created | `tom.work_tracking.task.created` |
+| Task completed | `tom.work_tracking.task.completed` |
+| Project activated | `tom.session_management.project.activated` |
+| Phase started | `tom.work_tracking.phase.started` |
 
 ### Source Naming
 
 ```
-/jerry/{bounded-context}
+/tom/{bounded-context}
 ```
 
 | Context | Source |
 |---------|--------|
-| Work Tracking | `/jerry/work-tracking` |
-| Session Management | `/jerry/session-management` |
-| Problem Solving | `/jerry/problem-solving` |
+| Work Tracking | `/tom/work-tracking` |
+| Session Management | `/tom/session-management` |
+| Problem Solving | `/tom/problem-solving` |
 
 ---
 
@@ -157,7 +157,7 @@ class DomainToCloudEventConverter:
     def _build_type(self, event: DomainEvent) -> str:
         """Build CloudEvent type from domain event class name.
 
-        TaskCompleted -> jerry.work_tracking.task.completed
+        TaskCompleted -> tom.work_tracking.task.completed
         """
         class_name = type(event).__name__
 
@@ -169,14 +169,14 @@ class DomainToCloudEventConverter:
         if len(parts) >= 2:
             aggregate = parts[0].lower()
             verb = parts[-1].lower()
-            return f"jerry.{self._context}.{aggregate}.{verb}"
+            return f"tom.{self._context}.{aggregate}.{verb}"
 
-        return f"jerry.{self._context}.{class_name.lower()}"
+        return f"tom.{self._context}.{class_name.lower()}"
 
 
 # Usage
 converter = DomainToCloudEventConverter(
-    source="/jerry/work-tracking",
+    source="/tom/work-tracking",
     context="work_tracking",
 )
 cloud_event = converter.convert(TaskCompleted(task_id="WORK-001"))
@@ -216,7 +216,7 @@ class IIntegrationEventPublisher(Protocol):
 | Aspect | Domain Events | CloudEvents |
 |--------|---------------|-------------|
 | Scope | Within bounded context | Across contexts/systems |
-| Format | Lightweight, Jerry-specific | CloudEvents v1.0 spec |
+| Format | Lightweight, Tom-specific | CloudEvents v1.0 spec |
 | Consumers | Same context handlers | External systems, other BCs |
 | Persistence | Event Store | Integration bus/queue |
 | Serialization | to_dict/from_dict | CloudEvents JSON format |
@@ -247,22 +247,22 @@ class IIntegrationEventPublisher(Protocol):
 def test_cloud_event_has_required_attributes():
     """CloudEvent has all required fields per spec."""
     event = CloudEvent(
-        type="jerry.work_tracking.task.created",
-        source="/jerry/work-tracking",
+        type="tom.work_tracking.task.created",
+        source="/tom/work-tracking",
         data={"task_id": "WORK-001"},
     )
 
     assert event.specversion == "1.0"
-    assert event.type == "jerry.work_tracking.task.created"
-    assert event.source == "/jerry/work-tracking"
+    assert event.type == "tom.work_tracking.task.created"
+    assert event.source == "/tom/work-tracking"
     assert event.id is not None
 
 
 def test_cloud_event_serialization_roundtrip():
     """CloudEvent serializes and deserializes correctly."""
     original = CloudEvent(
-        type="jerry.work_tracking.task.completed",
-        source="/jerry/work-tracking",
+        type="tom.work_tracking.task.completed",
+        source="/tom/work-tracking",
         subject="WORK-001",
         data={"completed_at": "2026-01-11T10:00:00Z"},
     )
@@ -284,25 +284,25 @@ def test_domain_to_cloud_event_conversion():
     )
 
     converter = DomainToCloudEventConverter(
-        source="/jerry/work-tracking",
+        source="/tom/work-tracking",
         context="work_tracking",
     )
     cloud_event = converter.convert(domain_event)
 
-    assert cloud_event.type == "jerry.work_tracking.task.completed"
-    assert cloud_event.source == "/jerry/work-tracking"
+    assert cloud_event.type == "tom.work_tracking.task.completed"
+    assert cloud_event.source == "/tom/work-tracking"
     assert cloud_event.subject == "WORK-001"
 ```
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Domain events remain lightweight. CloudEvents are used ONLY for cross-boundary integration.
+> **Tom Decision**: Domain events remain lightweight. CloudEvents are used ONLY for cross-boundary integration.
 
-> **Jerry Decision**: Event type follows `jerry.{context}.{aggregate}.{verb}` pattern for consistent routing.
+> **Tom Decision**: Event type follows `tom.{context}.{aggregate}.{verb}` pattern for consistent routing.
 
-> **Jerry Decision**: DomainToCloudEventConverter handles the translation layer, keeping domain events pure.
+> **Tom Decision**: DomainToCloudEventConverter handles the translation layer, keeping domain events pure.
 
 ---
 
@@ -328,10 +328,10 @@ class TaskRepository:
 
 ```python
 # WRONG: Business logic in type
-type = "jerry.work_tracking.task.completed_with_high_quality"
+type = "tom.work_tracking.task.completed_with_high_quality"
 
 # CORRECT: Business data in payload
-type = "jerry.work_tracking.task.completed"
+type = "tom.work_tracking.task.completed"
 data = {"quality_score": "high"}
 ```
 

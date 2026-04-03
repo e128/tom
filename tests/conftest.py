@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
 
-"""Pytest configuration for Jerry Framework tests.
+"""Pytest configuration for Tom Framework tests.
 
 Note: Path manipulation removed - the editable install (`pip install -e .` or
 `uv pip install -e .`) makes the `src` package available. No additional sys.path
@@ -19,7 +19,7 @@ import pytest
 
 
 def pytest_configure(config):  # noqa: ARG001
-    """Configure pytest for Jerry Framework tests.
+    """Configure pytest for Tom Framework tests.
 
     Note: Previously manipulated sys.path here, but this conflicted with
     --import-mode=importlib. The editable install handles package resolution.

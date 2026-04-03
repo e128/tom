@@ -1,6 +1,6 @@
-# Jerry Pattern Catalog
+# Tom Pattern Catalog
 
-> Comprehensive index of architecture and design patterns used in Jerry.
+> Comprehensive index of architecture and design patterns used in Tom.
 > Each pattern links to a detailed pattern file for in-depth documentation.
 
 **Last Updated**: 2026-01-12
@@ -23,7 +23,7 @@
 | [Architecture](#architecture-patterns) | 5 | Hexagonal, Ports, BCs, One-Class, Composition |
 | [Adapter](#adapter-patterns) | 2 | CLI Adapter, Persistence Adapter |
 | [Testing](#testing-patterns) | 3 | Test Pyramid, BDD Cycle, Architecture Tests |
-| [Skill Development](#skill-development-patterns) | 6 | Jerry Skill Structure, Workflow Patterns |
+| [Skill Development](#skill-development-patterns) | 6 | Tom Skill Structure, Workflow Patterns |
 | [Graph](#graph-patterns) | 3 | IGraphStore, Edge Labels |
 
 ---
@@ -34,7 +34,7 @@
 |----|---------|--------|-------------|
 | PAT-ID-001 | **VertexId** | MANDATORY | [identity/vertex-id.md](identity/vertex-id.md) |
 | PAT-ID-002 | **Domain-Specific IDs** | MANDATORY | [identity/domain-specific-ids.md](identity/domain-specific-ids.md) |
-| PAT-ID-003 | **JerryUri** | RECOMMENDED | [identity/jerry-uri.md](identity/jerry-uri.md) |
+| PAT-ID-003 | **TomUri** | RECOMMENDED | [identity/tom-uri.md](identity/tom-uri.md) |
 | PAT-ID-004 | **EdgeId** | RECOMMENDED | [identity/edge-id.md](identity/edge-id.md) |
 
 **Location**: `src/shared_kernel/identity/`
@@ -151,14 +151,14 @@ IRepository<TAggregate, TId>          # Domain port (abstract)
 
 | ID | Pattern | Status | Detail File |
 |----|---------|--------|-------------|
-| PAT-SKILL-001 | **Jerry Skill Structure** | MANDATORY | [skill-development/skill-structure.md](skill-development/skill-structure.md) |
+| PAT-SKILL-001 | **Tom Skill Structure** | MANDATORY | [skill-development/skill-structure.md](skill-development/skill-structure.md) |
 | PAT-SKILL-WF-001 | Sequential Orchestration | RECOMMENDED | [skill-development/skill-structure.md](skill-development/skill-structure.md#workflow-patterns) |
 | PAT-SKILL-WF-002 | Multi-Source Coordination | RECOMMENDED | [skill-development/skill-structure.md](skill-development/skill-structure.md#workflow-patterns) |
 | PAT-SKILL-WF-003 | Iterative Refinement | RECOMMENDED | [skill-development/skill-structure.md](skill-development/skill-structure.md#workflow-patterns) |
 | PAT-SKILL-WF-004 | Context-Aware Selection | RECOMMENDED | [skill-development/skill-structure.md](skill-development/skill-structure.md#workflow-patterns) |
 | PAT-SKILL-WF-005 | Domain-Specific Intelligence | RECOMMENDED | [skill-development/skill-structure.md](skill-development/skill-structure.md#workflow-patterns) |
 
-**Source:** Anthropic's "Complete Guide to Building Skills for Claude" (January 2026) + Jerry Framework conventions.
+**Source:** Anthropic's "Complete Guide to Building Skills for Claude" (January 2026) + Tom Framework conventions.
 
 ---
 
@@ -249,7 +249,7 @@ IRepository<TAggregate, TId>          # Domain port (abstract)
 ├── identity/                       # Identity patterns
 │   ├── vertex-id.md               # PAT-ID-001
 │   ├── domain-specific-ids.md     # PAT-ID-002
-│   ├── jerry-uri.md               # PAT-ID-003
+│   ├── tom-uri.md               # PAT-ID-003
 │   └── edge-id.md                 # PAT-ID-004
 │
 ├── repository/                     # Repository patterns

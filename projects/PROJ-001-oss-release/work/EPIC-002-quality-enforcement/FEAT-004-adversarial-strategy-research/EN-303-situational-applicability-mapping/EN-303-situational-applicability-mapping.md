@@ -184,7 +184,7 @@ The mapping must produce strategy recommendations that are feasible within these
 | FR-008 | Mapping SHALL identify enforcement gaps where adversarial strategies are the sole defense (semantic quality, novel violations, context rot) | Barrier-1 ENF-to-ADV (Implementation Capabilities) | HARD |
 | FR-009 | Decision tree SHALL handle the creator-critic-revision cycle (minimum 3 iterations) with strategy assignments per iteration | ADR-EPIC002-001 (Quality Gate Integration) | HARD |
 | FR-010 | Each strategy profile SHALL include a portable delivery mechanism that does not depend on Claude Code hooks | Barrier-1 ENF-to-ADV (R-SYS-003) | HARD |
-| FR-011 | Decision tree SHALL support mandatory escalation for artifacts touching `docs/governance/JERRY_CONSTITUTION.md` or `.claude/rules/` (auto-C3+) | ADR-EPIC002-001 (Enforcement Touchpoints) | MEDIUM |
+| FR-011 | Decision tree SHALL support mandatory escalation for artifacts touching `docs/governance/TOM_CONSTITUTION.md` or `.claude/rules/` (auto-C3+) | ADR-EPIC002-001 (Enforcement Touchpoints) | MEDIUM |
 
 ## Non-Functional Requirements
 

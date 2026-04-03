@@ -1,11 +1,11 @@
 ---
 name: ast
-description: Markdown AST operations for Jerry documents. Provides structured parse, query, modify, validate, and render operations on Jerry markdown files via the jerry ast CLI.
+description: Markdown AST operations for Tom documents. Provides structured parse, query, modify, validate, and render operations on Tom markdown files via the tom ast CLI.
 version: "1.1.0"
 allowed-tools: Read, Write, Edit, Bash
 activation-keywords:
   - "/ast"
-  - "/jerry:ast"
+  - "/tom:ast"
   - "parse markdown"
   - "query frontmatter"
   - "modify frontmatter"
@@ -19,7 +19,7 @@ activation-keywords:
 # AST Skill
 
 > **Version:** 1.1.0
-> **Framework:** Jerry Framework v0.9.0
+> **Framework:** Tom Framework v0.9.0
 > **Layer:** CLI adapter (single entry point to domain layer)
 
 ---
@@ -41,7 +41,7 @@ activation-keywords:
 ## Overview
 
 The AST skill provides structured markdown operations for Claude agents working
-within the Jerry Framework. All operations are exposed via the `jerry ast` CLI
+within the Tom Framework. All operations are exposed via the `tom ast` CLI
 namespace, which is the single adapter between agents and the
 `src.domain.markdown_ast` domain layer.
 
@@ -61,7 +61,7 @@ namespace, which is the single adapter between agents and the
 
 Invoke `/ast` when you need to:
 
-- Read frontmatter fields from a Jerry entity file (story, task, enabler, bug).
+- Read frontmatter fields from a Tom entity file (story, task, enabler, bug).
 - Modify a single frontmatter field without disturbing the rest of the file.
 - Validate that a markdown file complies with H-23 (nav table required) and H-24 (anchor links).
 - Extract L2-REINJECT directives to inspect or audit the re-injection payload.
@@ -77,17 +77,17 @@ See [Routing Disambiguation](#routing-disambiguation) for full exclusion conditi
 
 ## Operations Reference
 
-All operations are invoked via `jerry ast <command>`. In agent context, use the
+All operations are invoked via `tom ast <command>`. In agent context, use the
 `--directory` prefix:
 
 ```bash
-uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast <command> [args]
+uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast <command> [args]
 ```
 
-### jerry ast parse
+### tom ast parse
 
 ```bash
-jerry ast parse <file>
+tom ast parse <file>
 ```
 
 Parse a markdown file and output the full AST as JSON (tokens + tree).
@@ -96,10 +96,10 @@ Parse a markdown file and output the full AST as JSON (tokens + tree).
 
 ---
 
-### jerry ast frontmatter
+### tom ast frontmatter
 
 ```bash
-jerry ast frontmatter <file>
+tom ast frontmatter <file>
 ```
 
 Extract all blockquote frontmatter fields as a JSON object.
@@ -110,10 +110,10 @@ Extract all blockquote frontmatter fields as a JSON object.
 
 ---
 
-### jerry ast modify
+### tom ast modify
 
 ```bash
-jerry ast modify <file> --key <KEY> --value <VALUE>
+tom ast modify <file> --key <KEY> --value <VALUE>
 ```
 
 Modify one frontmatter field and write the updated content back to disk.
@@ -124,10 +124,10 @@ Modify one frontmatter field and write the updated content back to disk.
 
 ---
 
-### jerry ast validate
+### tom ast validate
 
 ```bash
-jerry ast validate <file> [--schema <type>] [--nav]
+tom ast validate <file> [--schema <type>] [--nav]
 ```
 
 Validate file structure against H-23/H-24 nav table rules and optionally
@@ -157,10 +157,10 @@ story, enabler, task, bug). Returns JSON with both nav table and schema results.
 
 ---
 
-### jerry ast render
+### tom ast render
 
 ```bash
-jerry ast render <file>
+tom ast render <file>
 ```
 
 Parse a file and output normalized (mdformat) markdown to stdout.
@@ -169,10 +169,10 @@ Parse a file and output normalized (mdformat) markdown to stdout.
 
 ---
 
-### jerry ast reinject
+### tom ast reinject
 
 ```bash
-jerry ast reinject <file>
+tom ast reinject <file>
 ```
 
 Extract all L2-REINJECT directives from a markdown file as a JSON list.
@@ -183,10 +183,10 @@ Extract all L2-REINJECT directives from a markdown file as a JSON list.
 
 ---
 
-### jerry ast query
+### tom ast query
 
 ```bash
-jerry ast query <file> <selector>
+tom ast query <file> <selector>
 ```
 
 Query AST nodes by type (e.g., heading, blockquote, paragraph).
@@ -202,37 +202,37 @@ Query AST nodes by type (e.g., heading, blockquote, paragraph).
 ### Read frontmatter from a story file
 
 ```bash
-uv run jerry ast frontmatter projects/PROJ-005-markdown-ast/work/EPIC-001-markdown-ast/FEAT-001-ast-strategy/ST-005-ast-skill/ST-005-ast-skill.md
+uv run tom ast frontmatter projects/PROJ-005-markdown-ast/work/EPIC-001-markdown-ast/FEAT-001-ast-strategy/ST-005-ast-skill/ST-005-ast-skill.md
 ```
 
 ### Update story status
 
 ```bash
-uv run jerry ast modify projects/PROJ-005-markdown-ast/work/EPIC-001-markdown-ast/FEAT-001-ast-strategy/ST-005-ast-skill/ST-005-ast-skill.md --key Status --value in-progress
+uv run tom ast modify projects/PROJ-005-markdown-ast/work/EPIC-001-markdown-ast/FEAT-001-ast-strategy/ST-005-ast-skill/ST-005-ast-skill.md --key Status --value in-progress
 ```
 
 ### Validate a rule file for H-23/H-24 compliance
 
 ```bash
-uv run jerry ast validate --nav .context/rules/quality-enforcement.md
+uv run tom ast validate --nav .context/rules/quality-enforcement.md
 ```
 
 ### Extract L2-REINJECT directives from a rule file
 
 ```bash
-uv run jerry ast reinject .context/rules/quality-enforcement.md
+uv run tom ast reinject .context/rules/quality-enforcement.md
 ```
 
 ### Parse a file and inspect its structure
 
 ```bash
-uv run jerry ast parse .context/rules/quality-enforcement.md
+uv run tom ast parse .context/rules/quality-enforcement.md
 ```
 
 ### Validate an entity file against a schema
 
 ```bash
-uv run jerry ast validate --schema story projects/PROJ-005-markdown-ast/work/EPIC-001-markdown-ast/FEAT-001-ast-strategy/ST-005-ast-skill/ST-005-ast-skill.md
+uv run tom ast validate --schema story projects/PROJ-005-markdown-ast/work/EPIC-001-markdown-ast/FEAT-001-ast-strategy/ST-005-ast-skill/ST-005-ast-skill.md
 ```
 
 ---
@@ -253,7 +253,7 @@ uv run jerry ast validate --schema story projects/PROJ-005-markdown-ast/work/EPI
 
 ## Constitutional Compliance
 
-All operations adhere to the **Jerry Constitution v1.0**:
+All operations adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -267,12 +267,12 @@ All operations adhere to the **Jerry Constitution v1.0**:
 
 ### Single CLI Adapter
 
-The `jerry ast` CLI namespace (`src/interface/cli/ast_commands.py`) is the
+The `tom ast` CLI namespace (`src/interface/cli/ast_commands.py`) is the
 single adapter between agents and the domain layer. There is no separate
 skill script — the CLI is the adapter:
 
 ```
-jerry ast <command>                 <- CLI (interface layer)
+tom ast <command>                 <- CLI (interface layer)
     -> src.domain.markdown_ast     <- domain layer
 ```
 

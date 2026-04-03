@@ -58,7 +58,7 @@ class VertexId:
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### File Location
 
@@ -107,7 +107,7 @@ class VertexId:
 
 ## Design Canon Reference
 
-Lines 70-114 in Jerry Design Canon v1.0
+Lines 70-114 in Tom Design Canon v1.0
 
 ---
 

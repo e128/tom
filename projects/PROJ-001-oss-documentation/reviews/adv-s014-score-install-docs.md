@@ -187,7 +187,7 @@ Adding one line to Step 4 — "If keyword activation does not trigger the skill,
 
 Traceability is the strongest dimension. Rule citations are accurate and properly linked:
 - `getting-started.md` cites H-04 with a link to `.context/rules/quality-enforcement.md#hard-rule-index`
-- `getting-started.md` cites P-002 with a link to `../governance/JERRY_CONSTITUTION.md#p-002-file-persistence`
+- `getting-started.md` cites P-002 with a link to `../governance/TOM_CONSTITUTION.md#p-002-file-persistence`
 - `getting-started.md` cites P-003 by name in the context of subagent enforcement
 - `index.md` cites the 0.92 quality threshold, six scoring dimensions (by count), and 10 adversarial strategies (by count)
 - Cross-document links are consistent: `index.md` Quick Start links to `INSTALLATION.md` sections and `runbooks/getting-started.md`; `INSTALLATION.md` links to `runbooks/getting-started.md`; `BOOTSTRAP.md` is correctly linked from `INSTALLATION.md` Developer Setup

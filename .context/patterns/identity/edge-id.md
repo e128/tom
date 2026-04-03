@@ -108,7 +108,7 @@ class EdgeId:
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### File Location
 
@@ -170,7 +170,7 @@ graph_store.add_edge(edge_id, properties={"created_at": now})
 
 ## Design Canon Reference
 
-Lines 220-258 in Jerry Design Canon v1.0
+Lines 220-258 in Tom Design Canon v1.0
 
 ---
 

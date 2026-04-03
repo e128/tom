@@ -4,11 +4,11 @@
 """
 Integration tests for UserPromptSubmit hook with L2 reinforcement.
 
-Tests the full hook pipeline by running jerry --json hooks prompt-submit
+Tests the full hook pipeline by running tom --json hooks prompt-submit
 as a subprocess, simulating the Claude Code hook protocol.
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - EN-007: Hook Wrapper Scripts
     - EN-705: L2 Per-Prompt Reinforcement Hook
     - ADR-EPIC002-002: 5-layer enforcement architecture
@@ -43,7 +43,7 @@ def run_hook(input_data: str | None = None) -> tuple[int, dict | None, str]:
         input_data = json.dumps({"prompt": "test prompt"})
 
     result = subprocess.run(
-        ["uv", "run", "jerry", "--json", "hooks", "prompt-submit"],
+        ["uv", "run", "tom", "--json", "hooks", "prompt-submit"],
         input=input_data,
         capture_output=True,
         text=True,
@@ -99,7 +99,7 @@ class TestUserPromptSubmitHookIntegration:
         env.pop("JERRY_PROJECT", None)
 
         result = subprocess.run(
-            ["uv", "run", "jerry", "--json", "hooks", "prompt-submit"],
+            ["uv", "run", "tom", "--json", "hooks", "prompt-submit"],
             input=json.dumps({"prompt": "test"}),
             capture_output=True,
             text=True,
@@ -118,7 +118,7 @@ class TestUserPromptSubmitHookIntegration:
         """Hook should always exit with code 0 (fail-open)."""
         # Even with completely invalid input
         result = subprocess.run(
-            ["uv", "run", "jerry", "--json", "hooks", "prompt-submit"],
+            ["uv", "run", "tom", "--json", "hooks", "prompt-submit"],
             input="not json at all",
             capture_output=True,
             text=True,

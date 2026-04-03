@@ -1,6 +1,6 @@
 # skills/shared - Shared Skill Infrastructure
 
-> **Purpose:** Common templates, patterns, and contracts used across multiple Jerry skills.
+> **Purpose:** Common templates, patterns, and contracts used across multiple Tom skills.
 > **Version:** 1.0.0
 > **Last Updated:** 2026-02-16
 
@@ -22,7 +22,7 @@
 
 ## Overview
 
-The `skills/shared/` directory contains reusable infrastructure that multiple Jerry skills depend on:
+The `skills/shared/` directory contains reusable infrastructure that multiple Tom skills depend on:
 
 - **Agent Templates** - Federated core template for agent definitions
 - **Orchestration Patterns** - 8 canonical multi-agent workflow patterns
@@ -37,12 +37,12 @@ The `skills/shared/` directory contains reusable infrastructure that multiple Je
 
 ### AGENT_TEMPLATE_CORE.md
 
-**Purpose:** Federated core template containing ~73% shared content for all Jerry agents.
+**Purpose:** Federated core template containing ~73% shared content for all Tom agents.
 
 **Based On:**
 - PS_AGENT_TEMPLATE v2.0 (problem-solving agents)
 - NSE_AGENT_TEMPLATE v1.0 (nasa-se agents)
-- Jerry Constitution v1.0
+- Tom Constitution v1.0
 
 **Extension Points:** 9 placeholders that domain extensions (PS_EXTENSION.md, NSE_EXTENSION.md) populate:
 - `DOMAIN_NAME_PREFIX` - Agent name prefix (ps, nse)
@@ -73,7 +73,7 @@ python3 scripts/compose_agent_template.py --domain {ps|nse} --output {output-pat
 
 ### ORCHESTRATION_PATTERNS.md
 
-**Purpose:** Canonical reference for 8 multi-agent orchestration patterns in Jerry.
+**Purpose:** Canonical reference for 8 multi-agent orchestration patterns in Tom.
 
 **Version:** 1.1.0
 
@@ -265,7 +265,7 @@ If you need to extend shared resources:
 
 ## Constitutional Compliance
 
-Shared resources adhere to the **Jerry Constitution v1.0**:
+Shared resources adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Implementation |
 |-----------|-------------|----------------|
@@ -291,11 +291,11 @@ Shared resources adhere to the **Jerry Constitution v1.0**:
 - Agent Template ADR: `docs/decisions/wi-sao-009-adr-unified-template-architecture.md`
 - Orchestration Patterns Source: SAO-INIT-007 Deep Research (DISCOVERY-008)
 - Session Context Schema: `docs/schemas/session_context.json`
-- Jerry Constitution: `docs/governance/JERRY_CONSTITUTION.md`
+- Tom Constitution: `docs/governance/TOM_CONSTITUTION.md`
 - Quality Enforcement SSOT: `.context/rules/quality-enforcement.md`
 
 ---
 
 *Directory Version: 1.0.0*
 *Last Updated: 2026-02-16*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*

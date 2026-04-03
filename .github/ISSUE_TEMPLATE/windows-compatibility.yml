@@ -1,11 +1,11 @@
 name: Windows Compatibility Issue
-description: Report a problem specific to running Jerry on Windows
+description: Report a problem specific to running Tom on Windows
 labels: ["windows", "bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping improve Jerry's Windows support! Please fill in as much detail as you can.
+        Thanks for helping improve Tom's Windows support! Please fill in as much detail as you can.
 
   - type: input
     id: os-version

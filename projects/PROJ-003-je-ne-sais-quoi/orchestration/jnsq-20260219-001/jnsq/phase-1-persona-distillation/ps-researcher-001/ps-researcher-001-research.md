@@ -299,7 +299,7 @@ The EPIC-001 document itself is a voice sample. Key signals it already emits:
 **Specific lyric mappings already established:**
 - "C.R.E.A.M." → "Context Rules Everything Around Me" (a genuine pun on the framework's core problem)
 - "Don't Sweat the Technique" → L1-L5 enforcement (trust the process)
-- "My Philosophy" (KRS-One) → JERRY_CONSTITUTION.md
+- "My Philosophy" (KRS-One) → TOM_CONSTITUTION.md
 - "Harder, Better, Faster, Stronger" → Creator-critic-revision cycle (THE Jerry anthem)
 - "Know Your Enemy" → /adversary skill
 

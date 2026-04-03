@@ -16,7 +16,7 @@ Academic Foundation:
 
 Strengthens deliverables by reconstructing arguments in their strongest possible form
 before subjecting them to adversarial critique. Ensures fairness and robustness in review.
-Second-highest-ranked strategy (composite score 4.30) in the Jerry quality framework.
+Second-highest-ranked strategy (composite score 4.30) in the Tom quality framework.
 
 UNIQUE PROPERTY: S-003 is the ONLY constructive (non-attacking) adversarial strategy.
 It strengthens rather than critiques. H-16 mandates S-003 execution BEFORE all critique
@@ -381,7 +381,7 @@ Context strengthened with [SM-001] specific coupling pain points (3 contexts nam
 
 **Step 4: Best Case Scenario**
 
-The event-driven approach is strongest when bounded contexts have clear autonomy, events represent naturally occurring domain state changes (not forced communication), and eventual consistency is acceptable for the majority of cross-context interactions. Key assumptions: (1) contexts are genuinely independent bounded contexts, not a single context artificially split; (2) event volume is manageable with in-process bus; (3) team understands eventual consistency trade-offs. Confidence: HIGH given established DDD patterns and Jerry's existing architecture alignment.
+The event-driven approach is strongest when bounded contexts have clear autonomy, events represent naturally occurring domain state changes (not forced communication), and eventual consistency is acceptable for the majority of cross-context interactions. Key assumptions: (1) contexts are genuinely independent bounded contexts, not a single context artificially split; (2) event volume is manageable with in-process bus; (3) team understands eventual consistency trade-offs. Confidence: HIGH given established DDD patterns and Tom's existing architecture alignment.
 
 **Step 5: Improvement Findings**
 

@@ -252,14 +252,14 @@ class TestCLIToAdapterIntegration:
     @pytest.fixture(autouse=True)
     def mock_args(self) -> None:
         """Mock sys.argv to avoid test runner args interference."""
-        with patch("sys.argv", ["jerry"]):
+        with patch("sys.argv", ["tom"]):
             yield
 
     def test_economy_profile_flows_to_adapter(self, mock_adapter: MagicMock) -> None:
         """Economy profile models should flow through to adapter call."""
         with patch(
             "sys.argv",
-            ["jerry", "transcript", "parse", "test.vtt", "--profile", "economy"],
+            ["tom", "transcript", "parse", "test.vtt", "--profile", "economy"],
         ):
             main()
 
@@ -275,7 +275,7 @@ class TestCLIToAdapterIntegration:
         """Quality profile models should flow through to adapter call."""
         with patch(
             "sys.argv",
-            ["jerry", "transcript", "parse", "test.vtt", "--profile", "quality"],
+            ["tom", "transcript", "parse", "test.vtt", "--profile", "quality"],
         ):
             main()
 
@@ -292,7 +292,7 @@ class TestCLIToAdapterIntegration:
         with patch(
             "sys.argv",
             [
-                "jerry",
+                "tom",
                 "transcript",
                 "parse",
                 "test.vtt",
@@ -319,7 +319,7 @@ class TestCLIToAdapterIntegration:
         with patch(
             "sys.argv",
             [
-                "jerry",
+                "tom",
                 "transcript",
                 "parse",
                 "test.vtt",

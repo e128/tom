@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
 
-"""Unit tests for Jerry CLI v0.1.0 main module routing.
+"""Unit tests for Tom CLI v0.1.0 main module routing.
 
 Test Categories:
     - Namespace Routing: Correct handler called for each namespace
@@ -119,7 +119,7 @@ class TestMainFunction:
     def test_projects_list_routes_correctly(
         self, mock_create_parser: Mock, mock_create_adapter: Mock
     ) -> None:
-        """jerry projects list routes to correct handler."""
+        """tom projects list routes to correct handler."""
         mock_parser = MagicMock()
         mock_args = MagicMock()
         mock_args.namespace = "projects"
@@ -363,7 +363,7 @@ class TestMainTranscriptRouting:
     def test_transcript_parse_routes_correctly(
         self, mock_create_parser: Mock, mock_create_adapter: Mock
     ) -> None:
-        """jerry transcript parse routes to correct handler."""
+        """tom transcript parse routes to correct handler."""
         mock_parser = MagicMock()
         mock_args = MagicMock()
         mock_args.namespace = "transcript"

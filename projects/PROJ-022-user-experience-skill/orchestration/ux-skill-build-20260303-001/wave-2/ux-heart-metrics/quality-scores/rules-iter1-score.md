@@ -188,7 +188,7 @@ Actionability is the strongest dimension. The minor tool-name references without
 
 **Improvement Path:**
 
-Add rule ID cross-references to Self-Review Checklist items (e.g., "item 3 (MS-002)" and "item 4 (CR-001)") and a "(P-020: `docs/governance/JERRY_CONSTITUTION.md`)" citation in the All-Five Override section.
+Add rule ID cross-references to Self-Review Checklist items (e.g., "item 3 (MS-002)" and "item 4 (CR-001)") and a "(P-020: `docs/governance/TOM_CONSTITUTION.md`)" citation in the All-Five Override section.
 
 ---
 

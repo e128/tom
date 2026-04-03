@@ -748,7 +748,7 @@ Output
 **Integration Points:**
 - `/orchestration` skill: multi-phase workflow patterns with sync barriers
 - `/problem-solving` skill: ps-synthesizer agent for Dialectical Inquiry synthesis
-- `docs/governance/JERRY_CONSTITUTION.md`: serves as the "constitution" for Constitutional AI Critique
+- `docs/governance/TOM_CONSTITUTION.md`: serves as the "constitution" for Constitutional AI Critique
 - `.claude/rules/`: serve as domain-specific constitutions (coding-standards.md, architecture-standards.md, etc.)
 
 ### Strategy Selection Recommendations for Jerry
@@ -767,7 +767,7 @@ Output
 ### Constitutional Alignment
 
 Jerry already has a natural "constitution" composed of:
-- `docs/governance/JERRY_CONSTITUTION.md` -- behavioral principles
+- `docs/governance/TOM_CONSTITUTION.md` -- behavioral principles
 - `.claude/rules/coding-standards.md` -- code quality principles
 - `.claude/rules/architecture-standards.md` -- architectural principles
 - `.claude/rules/testing-standards.md` -- testing principles

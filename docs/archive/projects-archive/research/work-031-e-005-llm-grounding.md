@@ -948,7 +948,7 @@ See Section L1.4.1 above.
 
 - `docs/research/GRAPH_DATA_MODEL_ANALYSIS.md` - Jerry's property graph foundation
 - `docs/specifications/JERRY_URI_SPECIFICATION.md` - URI scheme for citations
-- `docs/governance/JERRY_CONSTITUTION.md` - P-001 (Truth and Accuracy), P-002 (File Persistence)
+- `docs/governance/TOM_CONSTITUTION.md` - P-001 (Truth and Accuracy), P-002 (File Persistence)
 - `.claude/agents/ps-researcher.md` - Research agent specification
 
 ---

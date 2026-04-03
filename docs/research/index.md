@@ -1,8 +1,8 @@
 # Research
 
-> Jerry's development is driven by evidence-based research. Every architectural decision, quality framework component, and workflow pattern is backed by structured research artifacts with citations, formal methodologies, and multi-perspective analysis.
+> Tom's development is driven by evidence-based research. Every architectural decision, quality framework component, and workflow pattern is backed by structured research artifacts with citations, formal methodologies, and multi-perspective analysis.
 
-This section curates the key research produced during Jerry's development. Each page presents key findings inline with expandable methodology details and links to the full research artifacts on GitHub.
+This section curates the key research produced during Tom's development. Each page presents key findings inline with expandable methodology details and links to the full research artifacts on GitHub.
 
 ---
 
@@ -115,7 +115,7 @@ The adversarial quality framework was built through a rigorous research pipeline
 
     ---
 
-    The Jerry Constitution implements Constitutional AI for LLM agent governance, drawing on Anthropic, OpenAI, and DeepMind prior art. Progressive enforcement from advisory to hard constraints.
+    The Tom Constitution implements Constitutional AI for LLM agent governance, drawing on Anthropic, OpenAI, and DeepMind prior art. Progressive enforcement from advisory to hard constraints.
 
     [:octicons-arrow-right-24: Governance](governance-constitutional-ai.md)
 
@@ -173,7 +173,7 @@ The adversarial quality framework was built through a rigorous research pipeline
 
 ## LLM Reliability
 
-The first empirical research study in Jerry: a controlled A/B test of LLM deception patterns across 5 knowledge domains. The "Two-Leg Thesis" — that LLMs are approximately 85% accurate but approximately 100% confident — has direct implications for any system built on LLM outputs.
+The first empirical research study in Tom: a controlled A/B test of LLM deception patterns across 5 knowledge domains. The "Two-Leg Thesis" — that LLMs are approximately 85% accurate but approximately 100% confident — has direct implications for any system built on LLM outputs.
 
 <div class="grid cards" markdown>
 
@@ -191,7 +191,7 @@ The first empirical research study in Jerry: a controlled A/B test of LLM decept
 
 ## Negative Prompting
 
-The second empirical study in Jerry: a controlled A/B test of constraint framing across 270 matched trials on three Claude models. NPT-013 structured negation (NEVER + consequence + alternative) achieved 100% compliance versus 92.2% for positive-only framing (McNemar exact p=0.016). The research produced a 14-pattern taxonomy and the `/prompt-engineering` skill.
+The second empirical study in Tom: a controlled A/B test of constraint framing across 270 matched trials on three Claude models. NPT-013 structured negation (NEVER + consequence + alternative) achieved 100% compliance versus 92.2% for positive-only framing (McNemar exact p=0.016). The research produced a 14-pattern taxonomy and the `/prompt-engineering` skill.
 
 <div class="grid cards" markdown>
 
@@ -209,7 +209,7 @@ The second empirical study in Jerry: a controlled A/B test of constraint framing
 
 ## How Research is Conducted
 
-Jerry uses a structured research pipeline with specialized agents:
+Tom uses a structured research pipeline with specialized agents:
 
 1. **ps-researcher** gathers information with source citations (L0/L1/L2 structure)
 2. **ps-analyst** applies formal methodologies (5 Whys, FMEA, gap analysis, trade studies)

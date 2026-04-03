@@ -4,7 +4,7 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Jerry Framework - Agent Template Composition Script
+Tom Framework - Agent Template Composition Script
 
 This script composes complete agent templates by merging the shared core template
 with domain-specific extensions. It implements the Federated Template Architecture

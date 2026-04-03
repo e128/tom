@@ -1,5 +1,5 @@
 # Python Patterns
-*Updated: 2026-04-03T00:00:00Z*
+*Updated: 2026-04-03T14:08:52Z*
 
 Python idioms and patterns used in this codebase.
 
@@ -22,7 +22,19 @@ def create_session(project_id: str, context: SessionContext) -> Session:
 
 ## Exception Hierarchy
 
-Domain errors inherit from `DomainError` in `src/jerry/shared_kernel/exceptions.py`. Infrastructure errors inherit from their respective base classes. Never catch bare `Exception` — catch specific types.
+Domain errors inherit from `DomainError` in `src/shared_kernel/exceptions.py`. Infrastructure errors inherit from their respective base classes. Never catch bare `Exception` — catch specific types.
+
+The full hierarchy (all defined in `src/shared_kernel/exceptions.py`):
+
+| Exception | Signature | Use Case |
+|-----------|-----------|----------|
+| `DomainError` | `(message)` | Base class |
+| `NotFoundError` | `(entity_type, entity_id)` | Entity not found |
+| `InvalidStateError` | `(current_state, attempted_action)` | Operation invalid for current state |
+| `InvalidStateTransitionError` | `(from_state, to_state)` | State transition not allowed |
+| `InvariantViolationError` | `(invariant, details)` | Domain invariant violated |
+| `ConcurrencyError` | `(expected_version, actual_version)` | Optimistic concurrency conflict |
+| `ValidationError` | `(field, message)` | Input validation failed |
 
 ```python
 # Correct
@@ -42,7 +54,7 @@ Prefer `@dataclass(frozen=True)` for value objects. Use `@dataclass` for mutable
 
 ## Async
 
-Jerry uses sync code by default. When async is needed (e.g., external calls), use `asyncio.run()` at the boundary rather than propagating `async` throughout.
+Tom uses sync code by default. When async is needed (e.g., external calls), use `asyncio.run()` at the boundary rather than propagating `async` throughout.
 
 ## Related Lode Files
 

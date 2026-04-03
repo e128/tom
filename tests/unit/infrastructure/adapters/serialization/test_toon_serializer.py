@@ -49,7 +49,7 @@ def tabular_data() -> list[dict]:
 def nested_data() -> dict:
     """Sample nested object data."""
     return {
-        "project": "jerry",
+        "project": "tom",
         "version": "0.1.0",
         "config": {
             "debug": True,
@@ -178,7 +178,7 @@ class TestToonSerialization:
         """Objects produce key: value format."""
         result = serializer.serialize(nested_data, OutputFormat.TOON)
 
-        assert "project: jerry" in result
+        assert "project: tom" in result
         assert "version: 0.1.0" in result
         assert "config:" in result
         assert "debug: true" in result

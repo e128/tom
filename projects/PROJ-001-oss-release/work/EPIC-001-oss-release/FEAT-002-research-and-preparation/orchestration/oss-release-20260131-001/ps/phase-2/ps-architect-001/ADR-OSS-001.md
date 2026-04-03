@@ -234,7 +234,7 @@ TIER 3: skills/ (on-demand)
 └── ...
 
 TIER 4: Explicit Reference (read when needed)
-├── docs/governance/JERRY_CONSTITUTION.md
+├── docs/governance/TOM_CONSTITUTION.md
 ├── .context/templates/worktracker/
 └── docs/design/ADR-*.md
 ```
@@ -385,7 +385,7 @@ Constraints: Max 5 import hops (recursive)
 │                              ▼                                      │
 │ TIER 4: EXPLICIT REFERENCE (read only when needed)                 │
 │ ┌─────────────────────────────────────────────────────────────────┐│
-│ │ • docs/governance/JERRY_CONSTITUTION.md                         ││
+│ │ • docs/governance/TOM_CONSTITUTION.md                         ││
 │ │ • .context/templates/worktracker/*.md                           ││
 │ │ • docs/design/ADR-*.md                                          ││
 │ │ • AGENTS.md                                                     ││
@@ -512,7 +512,7 @@ See `.claude/rules/architecture-standards.md` for detailed architecture patterns
 
 ## References
 
-- **Constitution:** `docs/governance/JERRY_CONSTITUTION.md`
+- **Constitution:** `docs/governance/TOM_CONSTITUTION.md`
 - **Templates:** `.context/templates/worktracker/`
 - **Patterns:** `.claude/patterns/PATTERN-CATALOG.md`
 - **CLI Reference:** See `/worktracker` skill

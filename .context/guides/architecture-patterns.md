@@ -539,7 +539,7 @@ for event in events_since:
     work_item._apply(event)
 ```
 
-**Jerry decision**: Snapshot every **10 events**.
+**Tom decision**: Snapshot every **10 events**.
 
 ---
 
@@ -614,7 +614,7 @@ for event in events_since:
 
 **Composition Root**: The **one place** where all dependency wiring happens.
 
-**In Jerry**: `src/bootstrap.py`
+**In Tom**: `src/bootstrap.py`
 
 ---
 
@@ -647,7 +647,7 @@ class CLI:
 # ✅ GOOD: All wiring in bootstrap.py
 def create_command_dispatcher() -> CommandDispatcher:
     # Infrastructure adapters
-    repository = FilesystemWorkItemAdapter(base_path=Path(".jerry"))
+    repository = FilesystemWorkItemAdapter(base_path=Path(".tom"))
     event_store = InMemoryEventStore()
 
     # Handlers with injected dependencies
@@ -711,7 +711,7 @@ repository = FilesystemAdapter()  # Violates H-09
 
 ---
 
-### Jerry's Bounded Contexts
+### Tom's Bounded Contexts
 
 ```
 src/
@@ -848,7 +848,7 @@ class InMemoryWorkItemRepository(IRepository[WorkItem, WorkItemId]):
 
 ## Evidence
 
-> Verified references to actual Jerry codebase files demonstrating the patterns in this guide.
+> Verified references to actual Tom codebase files demonstrating the patterns in this guide.
 
 ### Ports and Adapters -- Real Files
 

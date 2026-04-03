@@ -227,7 +227,7 @@ Two open questions the research surfaced but did not resolve. Both matter for in
 
 ---
 
-## Implementation in Jerry
+## Implementation in Tom
 
 The research produced four architecture decision records and five features:
 
@@ -259,7 +259,7 @@ PROJ-014 ran as a six-phase research pipeline followed by a controlled A/B test,
 | Phase 1 | Literature survey | 75 unique sources across academic, industry, and vendor documentation | 3 agent gates (0.950, 0.933, 0.935) + barrier synthesis (0.953) |
 | Phase 2 | Claim validation and comparative effectiveness | Research question bifurcation; null finding on 60% hallucination claim | 2 agent gates (0.959, 0.933) + barrier synthesis (0.950) |
 | Phase 3 | Taxonomy development | 14-pattern NPT taxonomy (NPT-001 through NPT-014) | Agent gate (0.957) + barrier synthesis (0.957) |
-| Phase 4 | Jerry Framework application analysis | 130 specific upgrade recommendations across 5 domains | 5 agent gates (0.950-0.955) + barrier synthesis (0.950) |
+| Phase 4 | Tom Framework application analysis | 130 specific upgrade recommendations across 5 domains | 5 agent gates (0.950-0.955) + barrier synthesis (0.950) |
 | Phase 5 | Architecture decisions | 4 ADRs governing framework evolution | 4 ADR gates (0.951-0.957) + barrier synthesis (0.956) |
 | Phase 6 | Final synthesis | Implementation roadmap and consolidated findings | Agent gate (0.954) + C4 tournament (0.954) |
 | TASK-025 | A/B testing | 270 trials, CONDITIONAL GO via PG-003 | Go-no-go gate (0.954) |

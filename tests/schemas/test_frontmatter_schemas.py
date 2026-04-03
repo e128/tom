@@ -154,7 +154,7 @@ _AGENT_POSITIVE_FIXTURES = [
 # ---------------------------------------------------------------------------
 
 # skills/problem-solving/SKILL.md
-# Has: version (Jerry extension), activation-keywords (Jerry extension), allowed-tools
+# Has: version (Tom extension), activation-keywords (Tom extension), allowed-tools
 _PS_SKILL_FRONTMATTER: dict = {
     "name": "problem-solving",
     "description": (
@@ -192,7 +192,7 @@ _PS_SKILL_FRONTMATTER: dict = {
 }
 
 # skills/adversary/SKILL.md
-# Has: version (Jerry extension), activation-keywords (Jerry extension), allowed-tools
+# Has: version (Tom extension), activation-keywords (Tom extension), allowed-tools
 _ADV_SKILL_FRONTMATTER: dict = {
     "name": "adversary",
     "description": (
@@ -593,12 +593,12 @@ class TestSchemaFileIntegrity:
 
 
 # ---------------------------------------------------------------------------
-# Tests — CLI integration (jerry agents validate-frontmatter)
+# Tests — CLI integration (tom agents validate-frontmatter)
 # ---------------------------------------------------------------------------
 
 
 class TestCLIValidateFrontmatter:
-    """Integration tests for the `jerry agents validate-frontmatter` CLI command."""
+    """Integration tests for the `tom agents validate-frontmatter` CLI command."""
 
     def test_cli_validate_all_exits_zero(self) -> None:
         """Full corpus validation via CLI handler returns zero failures."""
@@ -648,7 +648,7 @@ class TestCLIValidateFrontmatter:
             [
                 "uv",
                 "run",
-                "jerry",
+                "tom",
                 "--json",
                 "agents",
                 "validate-frontmatter",

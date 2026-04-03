@@ -3,7 +3,7 @@
 
 name: sb-rewriter
 version: 1.0.0
-description: Voice Transformation agent — rewrites framework output text from current Jerry voice to Saucer
+description: Voice Transformation agent — rewrites framework output text from current Tom voice to Saucer
   Boy voice while preserving all technical information, then self-applies the 5 Authenticity Tests before
   presenting the result
 skill: saucer-boy-framework-voice
@@ -42,7 +42,7 @@ guardrails:
   - boundary_conditions_respected
   fallback_behavior: warn_and_rewrite_conservatively
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-001: Truth and Accuracy — All technical information preserved in rewrite'
   - 'P-002: File Persistence — Rewritten output MUST be persisted'

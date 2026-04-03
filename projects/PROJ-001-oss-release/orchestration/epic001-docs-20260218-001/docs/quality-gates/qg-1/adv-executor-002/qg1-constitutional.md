@@ -10,7 +10,7 @@
 - **Workflow:** epic001-docs-20260218-001 (FEAT-017 Installation Instructions Modernization)
 - **Quality Gate:** QG-1
 - **Criticality:** C2 (Standard)
-- **Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md
+- **Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md
 
 ---
 
@@ -25,13 +25,13 @@ Current strategy is S-007 (not S-002). H-16 pre-check does not apply. Proceeding
 **Deliverable type:** Document (user-facing installation guide)
 
 **Applicable rule sources loaded:**
-- `docs/governance/JERRY_CONSTITUTION.md` — P-001 through P-043
+- `docs/governance/TOM_CONSTITUTION.md` — P-001 through P-043
 - `.context/rules/markdown-navigation-standards.md` — H-23, H-24, NAV-002 through NAV-005
 - `.context/rules/quality-enforcement.md` — H-01 through H-24 index, tier vocabulary
 - `.context/rules/python-environment.md` — H-05, H-06 (applies to developer commands in doc)
 
 **Auto-escalation check:**
-- AE-001: Does not touch `docs/governance/JERRY_CONSTITUTION.md` — NOT triggered
+- AE-001: Does not touch `docs/governance/TOM_CONSTITUTION.md` — NOT triggered
 - AE-002: Does not touch `.context/rules/` or `.claude/rules/` — NOT triggered
 - AE-003/AE-004: Not an ADR — NOT triggered
 - AE-005: No security-relevant code — NOT triggered
@@ -43,18 +43,18 @@ Current strategy is S-007 (not S-002). H-16 pre-check does not apply. Proceeding
 
 | Principle | Tier | Source | Applicable | Rationale |
 |-----------|------|--------|------------|-----------|
-| P-001: Truth and Accuracy | Soft | JERRY_CONSTITUTION.md | YES | Technical commands and skill listings must be accurate |
-| P-002: File Persistence | Medium | JERRY_CONSTITUTION.md | NO | Applies to agent output behavior, not end-user docs |
-| P-003: No Recursive Subagents | Hard | JERRY_CONSTITUTION.md | NO | Applies to agent runtime behavior, not docs |
-| P-004: Explicit Provenance | Soft | JERRY_CONSTITUTION.md | NO | Applies to agent decision-making, not user docs |
-| P-005: Graceful Degradation | Soft | JERRY_CONSTITUTION.md | NO | Applies to agent error handling, not user docs |
-| P-010: Task Tracking Integrity | Medium | JERRY_CONSTITUTION.md | NO | Applies to WORKTRACKER maintenance, not user docs |
-| P-011: Evidence-Based Decisions | Soft | JERRY_CONSTITUTION.md | NO | Applies to agent decision process, not user docs |
-| P-012: Scope Discipline | Soft | JERRY_CONSTITUTION.md | YES | Doc should not add unrequested content beyond AC-1 through AC-4 |
-| P-020: User Authority | Hard | JERRY_CONSTITUTION.md | YES | Installation doc must not force methods; must respect user's platform and approach choices |
-| P-021: Transparency of Limitations | Soft | JERRY_CONSTITUTION.md | YES | Doc should be transparent about current limitations (private-only distribution) |
-| P-022: No Deception | Hard | JERRY_CONSTITUTION.md | YES | No misleading information about available features, skills, or current state |
-| P-040 through P-043 | Various | JERRY_CONSTITUTION.md | NO | NASA SE principles; not applicable to installation documentation |
+| P-001: Truth and Accuracy | Soft | TOM_CONSTITUTION.md | YES | Technical commands and skill listings must be accurate |
+| P-002: File Persistence | Medium | TOM_CONSTITUTION.md | NO | Applies to agent output behavior, not end-user docs |
+| P-003: No Recursive Subagents | Hard | TOM_CONSTITUTION.md | NO | Applies to agent runtime behavior, not docs |
+| P-004: Explicit Provenance | Soft | TOM_CONSTITUTION.md | NO | Applies to agent decision-making, not user docs |
+| P-005: Graceful Degradation | Soft | TOM_CONSTITUTION.md | NO | Applies to agent error handling, not user docs |
+| P-010: Task Tracking Integrity | Medium | TOM_CONSTITUTION.md | NO | Applies to WORKTRACKER maintenance, not user docs |
+| P-011: Evidence-Based Decisions | Soft | TOM_CONSTITUTION.md | NO | Applies to agent decision process, not user docs |
+| P-012: Scope Discipline | Soft | TOM_CONSTITUTION.md | YES | Doc should not add unrequested content beyond AC-1 through AC-4 |
+| P-020: User Authority | Hard | TOM_CONSTITUTION.md | YES | Installation doc must not force methods; must respect user's platform and approach choices |
+| P-021: Transparency of Limitations | Soft | TOM_CONSTITUTION.md | YES | Doc should be transparent about current limitations (private-only distribution) |
+| P-022: No Deception | Hard | TOM_CONSTITUTION.md | YES | No misleading information about available features, skills, or current state |
+| P-040 through P-043 | Various | TOM_CONSTITUTION.md | NO | NASA SE principles; not applicable to installation documentation |
 | H-05: UV only for Python | Hard | python-environment.md | YES | Developer section includes Python/uv execution commands |
 | H-06: UV for deps | Hard | python-environment.md | YES | Developer section includes dependency management commands |
 | H-23: Navigation table required | Hard | markdown-navigation-standards.md | YES | Doc is 767 lines; far exceeds 30-line threshold |

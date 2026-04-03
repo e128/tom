@@ -230,7 +230,7 @@ Actionability is at the effective ceiling. The BML terminal condition addition (
 *Retained stable from iter3:*
 - Footer traceability comment (line 490): 13 standard IDs listed (H-34, H-34b, AD-M-001 through ET-M-001, SR-002, SR-003, SR-009, AR-012). PASS.
 - SSOT declaration: `skills/ux-lean-ux/SKILL.md`. PASS.
-- Governance `constitution.reference`: `docs/governance/JERRY_CONSTITUTION.md`. PASS.
+- Governance `constitution.reference`: `docs/governance/TOM_CONSTITUTION.md`. PASS.
 - Wave progression: `skills/user-experience/rules/wave-progression.md` cited in `<purpose>`. PASS.
 - Inline standard references in guardrails: `(H-34b, AR-012)`, `(SR-002)`, `(SR-009)`. PASS.
 - ICE attribution: Sean Ellis/GrowthHackers in identity and methodology body. PASS.

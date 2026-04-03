@@ -190,7 +190,7 @@ Each of the five iter1 improvement recommendations has been verified against the
 - SKILL.md SSOT reference unchanged: `*SSOT: skills/ux-inclusive-design/SKILL.md*`
 - Constitutional compliance table traces P-003, P-020, P-022, P-001, P-002 to specific agent behaviors (unchanged)
 - Trailing traceability comment maps all standards to implementation (H-34, AD-M-001 through ET-M-001, SR-002/003/009, AR-012) (unchanged)
-- `constitution.reference` in governance points to `docs/governance/JERRY_CONSTITUTION.md` (unchanged)
+- `constitution.reference` in governance points to `docs/governance/TOM_CONSTITUTION.md` (unchanged)
 
 **New traceability value added in iter2:**
 - Each References entry can now be cross-verified from its inline citation key: `W3C, 2023 (WCAG)` at line 43 traces to line 347; `Microsoft, 2016` at line 44 traces to line 348; `W3C, 2023 (APG)` at line 127 traces to line 349; `Nielsen, 1994b` at line 205 traces to line 350.

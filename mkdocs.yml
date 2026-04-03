@@ -1,10 +1,10 @@
-site_name: Jerry Framework
+site_name: Tom Framework
 site_url: https://jerry.geekatron.org
 site_description: Framework for behavior/workflow guardrails. Accrues knowledge, wisdom, experience.
 site_author: Geekatron
 copyright: Copyright &copy; 2026 Geekatron — Apache License 2.0
 repo_url: https://github.com/geekatron/jerry
-repo_name: geekatron/jerry
+repo_name: geekatron/tom
 
 theme:
   name: material
@@ -141,4 +141,4 @@ nav:
         - Methodology & Results: research/llm-deception/methodology.md
         - Architecture & Recommendations: research/llm-deception/architecture.md
   - Governance:
-    - Jerry Constitution: governance/JERRY_CONSTITUTION.md
+    - Tom Constitution: governance/TOM_CONSTITUTION.md

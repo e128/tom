@@ -322,6 +322,6 @@ The implementation is technically sound, constitutionally compliant, and verifie
 
 *Quality Score Report v2.0 (Re-Score)*
 *Scorer: adv-scorer agent*
-*Framework: Jerry adversarial quality skill*
+*Framework: Tom adversarial quality skill*
 *Rubric: S-014 LLM-as-Judge (6-dimension weighted composite)*
 *Leniency Bias Counteraction: Applied per quality-enforcement.md*

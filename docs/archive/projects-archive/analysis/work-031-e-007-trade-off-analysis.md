@@ -724,7 +724,7 @@ Enforcement: Medium (Work Tracker gates, user approval)
 Rationale: Prevent premature optimization (RISK-3 mitigation)
 ```
 
-**Implementation:** Add to `docs/governance/JERRY_CONSTITUTION.md` in Phase 2 Week 1.
+**Implementation:** Add to `docs/governance/TOM_CONSTITUTION.md` in Phase 2 Week 1.
 
 ---
 

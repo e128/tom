@@ -104,7 +104,7 @@ Create the Critical Constraints section for the new lean CLAUDE.md. This section
 ### Related Items
 
 - Parent: [EN-202: CLAUDE.md Rewrite](./EN-202-claude-md-rewrite.md)
-- Reference: docs/governance/JERRY_CONSTITUTION.md
+- Reference: docs/governance/TOM_CONSTITUTION.md
 - Reference: .claude/rules/python-environment.md
 
 ---

@@ -2,10 +2,10 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Domain exceptions for Jerry Framework.
+Domain exceptions for Tom Framework.
 
 "Context rules everything around me"
-— Wu-Tang Clan, "C.R.E.A.M." (the Jerry remix)
+— Wu-Tang Clan, "C.R.E.A.M." (the Tom remix)
 
 The original: cash rules everything. The framework version:
 without context, every LLM degrades. With it, the work holds.

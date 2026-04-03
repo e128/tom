@@ -40,7 +40,7 @@ class ConfigPath:
         - Path is always resolved to absolute form
 
     Examples:
-        >>> config_path = ConfigPath(Path("/home/user/.jerry/config.toml"))
+        >>> config_path = ConfigPath(Path("/home/user/.tom/config.toml"))
         >>> config_path.exists()
         False
         >>> config_path.extension

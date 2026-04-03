@@ -55,7 +55,7 @@ EXPECTED_UNKNOWN: frozenset[str] = frozenset(
     {
         # Music playlist file -- intentionally outside the document ontology.
         "SOUNDTRACK.md",
-        # Changelog -- standard repo file, not a Jerry document type.
+        # Changelog -- standard repo file, not a Tom document type.
         "CHANGELOG.md",
     }
 )

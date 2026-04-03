@@ -1,8 +1,8 @@
 # Bootstrap Guide
 
-> How to set up Jerry's context distribution after cloning.
+> How to set up Tom's context distribution after cloning.
 
-> **Who needs this?** Bootstrap is for developers contributing to Jerry's behavioral rules. If you installed Jerry as a plugin via `/plugin marketplace add`, you do not need to run bootstrap — skills and hooks work without it. Bootstrap is only needed when you're editing `.context/rules/` and want changes to auto-propagate to `.claude/rules/`.
+> **Who needs this?** Bootstrap is for developers contributing to Tom's behavioral rules. If you installed Tom as a plugin via `/plugin marketplace add`, you do not need to run bootstrap — skills and hooks work without it. Bootstrap is only needed when you're editing `.context/rules/` and want changes to auto-propagate to `.claude/rules/`.
 
 ## Document Sections
 
@@ -20,7 +20,7 @@
 
 ## Overview
 
-Jerry stores its behavioral rules and pattern catalog in `.context/` (the canonical source). Claude Code reads them from `.claude/rules/` and `.claude/patterns/`. The bootstrap process syncs the two using platform-aware linking.
+Tom stores its behavioral rules and pattern catalog in `.context/` (the canonical source). Claude Code reads them from `.claude/rules/` and `.claude/patterns/`. The bootstrap process syncs the two using platform-aware linking.
 
 **Why two directories?**
 
@@ -48,10 +48,10 @@ uv run python scripts/bootstrap_context.py --check
 You should see:
 
 ```
-Checking Jerry context sync status...
+Checking Tom context sync status...
 
-  rules: linked -> /path/to/jerry/.context/rules
-  patterns: linked -> /path/to/jerry/.context/patterns
+  rules: linked -> /path/to/tom/.context/rules
+  patterns: linked -> /path/to/tom/.context/patterns
 
 Status: OK
 ```
@@ -111,9 +111,9 @@ uv run python scripts/bootstrap_context.py
 
 ## Troubleshooting
 
-**"Could not find Jerry project root"**
+**"Could not find Tom project root"**
 
-You're not in the Jerry repository directory, or `CLAUDE.md` / `.context/` is missing. Make sure you cloned the full repo and are running from the project root.
+You're not in the Tom repository directory, or `CLAUDE.md` / `.context/` is missing. Make sure you cloned the full repo and are running from the project root.
 
 **"already linked"**
 

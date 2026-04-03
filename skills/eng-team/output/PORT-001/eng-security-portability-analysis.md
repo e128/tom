@@ -4,7 +4,7 @@
 **Agent:** eng-security
 **Date:** 2026-02-26
 **Target Platforms:** Windows 10/11, macOS (Intel/ARM), Linux (Ubuntu, Fedora, Debian, Arch)
-**Codebase:** Jerry Framework v0.21.0
+**Codebase:** Tom Framework v0.21.0
 
 ---
 
@@ -31,7 +31,7 @@
 
 ### Overall Assessment
 
-The Jerry Framework demonstrates **generally good cross-platform awareness** with several key design decisions that support portability:
+The Tom Framework demonstrates **generally good cross-platform awareness** with several key design decisions that support portability:
 
 1. **Positive:** Uses `pathlib.Path` extensively for path handling
 2. **Positive:** Uses `filelock` library for cross-platform file locking
@@ -354,21 +354,21 @@ for pattern, criticality in sorted(...):
 | **File** | `src/infrastructure/adapters/configuration/lifecycle_dir_resolver.py` |
 | **Lines** | 52-62 |
 
-**Description:** Correctly uses platform-specific paths (`%APPDATA%` on Windows, `~/.jerry` on Unix).
+**Description:** Correctly uses platform-specific paths (`%APPDATA%` on Windows, `~/.tom` on Unix).
 
 **Evidence:**
 ```python
 def _platform_default_lifecycle_dir() -> Path:
-    """Return platform-appropriate Jerry lifecycle directory.
+    """Return platform-appropriate Tom lifecycle directory.
 
     Returns:
-        ~/.jerry/local/ on macOS/Linux, %APPDATA%/jerry/local/ on Windows.
+        ~/.tom/local/ on macOS/Linux, %APPDATA%/tom/local/ on Windows.
     """
     if sys.platform == "win32":
         appdata = os.environ.get("APPDATA", "")
         if appdata:
-            return Path(appdata) / "jerry" / "local"
-    return Path.home() / ".jerry" / "local"
+            return Path(appdata) / "tom" / "local"
+    return Path.home() / ".tom" / "local"
 ```
 
 **Status:** Good practice - no action required.
@@ -645,7 +645,7 @@ The portability issues identified do not represent direct security vulnerabiliti
 | `src/session_management/infrastructure/adapters/filesystem_project_adapter.py` | Full review |
 | `src/session_management/infrastructure/adapters/os_environment_adapter.py` | Full review |
 | `src/work_tracking/infrastructure/persistence/filesystem_event_store.py` | Partial review |
-| `src/shared_kernel/jerry_uri.py` | Full review |
+| `src/shared_kernel/tom_uri.py` | Full review |
 | `src/interface/cli/ast_commands.py` | Partial review |
 | `pyproject.toml` | Full review |
 

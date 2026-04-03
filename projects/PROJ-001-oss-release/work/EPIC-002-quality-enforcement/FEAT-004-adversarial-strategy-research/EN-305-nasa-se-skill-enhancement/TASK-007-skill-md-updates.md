@@ -417,7 +417,7 @@ When S-007 (Constitutional AI) is active, NSE agents validate against all 24 HAR
 
 ### Governance File Escalation
 
-When NSE agents review artifacts that modify governance files (`.claude/rules/`, `JERRY_CONSTITUTION.md`, `CLAUDE.md`), criticality automatically escalates to C3+ per FR-305-034.
+When NSE agents review artifacts that modify governance files (`.claude/rules/`, `TOM_CONSTITUTION.md`, `CLAUDE.md`), criticality automatically escalates to C3+ per FR-305-034.
 
 ### Portable Enforcement
 

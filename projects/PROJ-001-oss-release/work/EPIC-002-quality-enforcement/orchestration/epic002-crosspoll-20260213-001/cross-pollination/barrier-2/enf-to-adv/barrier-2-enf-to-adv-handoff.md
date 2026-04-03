@@ -171,7 +171,7 @@ The `evaluate_edit` method (v1.1.0 redesign) performs in-memory file reconstruct
 |-------|--------|-------------|
 | **AST Import Boundary Validation** | V-038 | 4 layer boundary rules: domain cannot import application/infrastructure/interface; application cannot import infrastructure/interface; infrastructure cannot import interface; shared_kernel cannot import infrastructure/interface |
 | **One-Class-Per-File** | V-041 | Counts top-level class definitions in AST; blocks if > 1 public class |
-| **Governance File Escalation** | -- | Writes to `.claude/rules/`, `JERRY_CONSTITUTION.md`, `CLAUDE.md` trigger C3/C4 escalation |
+| **Governance File Escalation** | -- | Writes to `.claude/rules/`, `TOM_CONSTITUTION.md`, `CLAUDE.md` trigger C3/C4 escalation |
 | **Dynamic Import Detection** | -- | Detects `importlib.import_module()` and `__import__()` calls that could bypass static analysis |
 
 #### Exemptions

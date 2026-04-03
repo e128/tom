@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry-framework.dev/schemas/domain-context-1.0.0.json",
+  "$id": "https://tom-framework.dev/schemas/domain-context-1.0.0.json",
   "title": "Domain Context Schema",
   "description": "JSON Schema for validating transcript skill domain context YAML files. Implements REQ-CI-F-009 (Schema Validation).",
   "type": "object",

@@ -40,8 +40,8 @@ activation-keywords:
 # Eng-Team Skill
 
 > **Version:** 1.0.0
-> **Framework:** Jerry Eng-Team
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom Eng-Team
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **SSOT References:** ADR-PROJ010-001 (Agent Team Architecture), ADR-PROJ010-002 (Skill Routing & Invocation), ADR-PROJ010-003 (LLM Portability)
 > **Project:** PROJ-010 Cyber Ops | EPIC-003 (/eng-team Skill Build) | FEAT-020 through FEAT-025
 
@@ -333,7 +333,7 @@ Per H-16 (HARD rule), agents MUST apply S-003 (Steelman Technique) before critiq
 
 ## Constitutional Compliance
 
-All agents adhere to the **Jerry Constitution v1.0**:
+All agents adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -472,6 +472,6 @@ For detailed agent specifications, see:
 ---
 
 *Skill Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *PROJ-010: Cyber Ops -- Secure Engineering Team*
 *Last Updated: 2026-02-22*

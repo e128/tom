@@ -7,7 +7,7 @@
 - **Deliverable:** `.github/dependabot.yml`
 - **Criticality:** C2 (Standard)
 - **Executed:** 2026-03-12T00:00:00Z
-- **Constitutional Context:** `docs/governance/JERRY_CONSTITUTION.md` v1.1, `quality-enforcement.md` HARD Rule Index (H-01 through H-36)
+- **Constitutional Context:** `docs/governance/TOM_CONSTITUTION.md` v1.1, `quality-enforcement.md` HARD Rule Index (H-01 through H-36)
 
 ---
 
@@ -274,7 +274,7 @@ Add a one-line note to D4:
 
 | Rule | Condition | Applies? |
 |------|-----------|---------|
-| AE-001 | Touches `docs/governance/JERRY_CONSTITUTION.md` | No |
+| AE-001 | Touches `docs/governance/TOM_CONSTITUTION.md` | No |
 | AE-002 | Touches `.context/rules/` or `.claude/rules/` | No |
 | AE-003 | New or modified ADR | No |
 | AE-004 | Modifies baselined ADR | No |
@@ -298,13 +298,13 @@ Add a one-line note to D4:
 
 | Principle | Tier | Source | Applicable |
 |-----------|------|--------|------------|
-| P-001 (Truth and Accuracy) | SOFT | JERRY_CONSTITUTION.md Article I | Yes — config makes factual claims about Dependabot behavior |
-| P-002 (File Persistence) | MEDIUM | JERRY_CONSTITUTION.md Article I | Not applicable — this is a config file, not an agent output |
-| P-003 (No Recursive Subagents) | HARD | JERRY_CONSTITUTION.md Article I | Not applicable — not an agent definition |
-| P-004 (Explicit Provenance) | MEDIUM | JERRY_CONSTITUTION.md Article I | Yes — config cites FMEA, red-recon, and research artifacts as design rationale |
-| P-011 (Evidence-Based Decisions) | MEDIUM | JERRY_CONSTITUTION.md Article II | Yes — design decisions claim FMEA evidence backing |
-| P-020 (User Authority) | HARD | JERRY_CONSTITUTION.md Article III | Yes (P-020 check scope: does config restrict maintainer override ability?) |
-| P-022 (No Deception) | HARD | JERRY_CONSTITUTION.md Article III | Yes — inline comments make claims about how mechanisms work |
+| P-001 (Truth and Accuracy) | SOFT | TOM_CONSTITUTION.md Article I | Yes — config makes factual claims about Dependabot behavior |
+| P-002 (File Persistence) | MEDIUM | TOM_CONSTITUTION.md Article I | Not applicable — this is a config file, not an agent output |
+| P-003 (No Recursive Subagents) | HARD | TOM_CONSTITUTION.md Article I | Not applicable — not an agent definition |
+| P-004 (Explicit Provenance) | MEDIUM | TOM_CONSTITUTION.md Article I | Yes — config cites FMEA, red-recon, and research artifacts as design rationale |
+| P-011 (Evidence-Based Decisions) | MEDIUM | TOM_CONSTITUTION.md Article II | Yes — design decisions claim FMEA evidence backing |
+| P-020 (User Authority) | HARD | TOM_CONSTITUTION.md Article III | Yes (P-020 check scope: does config restrict maintainer override ability?) |
+| P-022 (No Deception) | HARD | TOM_CONSTITUTION.md Article III | Yes — inline comments make claims about how mechanisms work |
 | H-23 (Markdown Navigation) | HARD | quality-enforcement.md | Not applicable — YAML config file |
 
 ### P-020 Assessment (User Authority — Maintainer Ability to Override Grouping)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
-"""UserPromptSubmit hook wrapper. Delegates to jerry hooks prompt-submit.
+"""UserPromptSubmit hook wrapper. Delegates to tom hooks prompt-submit.
 
 Timeout budget: wrapper subprocess=4s < hooks.json=5s (1s buffer for wrapper overhead).
 """
@@ -14,7 +14,7 @@ from pathlib import Path
 root = os.environ.get("CLAUDE_PLUGIN_ROOT", str(Path(__file__).resolve().parent.parent))
 try:
     result = subprocess.run(
-        ["uv", "run", "--directory", root, "jerry", "--json", "hooks", "prompt-submit"],
+        ["uv", "run", "--directory", root, "tom", "--json", "hooks", "prompt-submit"],
         input=sys.stdin.buffer.read(),
         capture_output=True,
         timeout=4,

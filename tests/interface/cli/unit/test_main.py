@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
 
-"""Unit tests for Jerry CLI adapter and bootstrap helpers.
+"""Unit tests for Tom CLI adapter and bootstrap helpers.
 
 Tests cover:
 - CLIAdapter command methods (adapter.py)

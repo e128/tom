@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry-framework.dev/schemas/agent-governance/v1.1.0",
-  "title": "Jerry Agent Governance Schema",
-  "description": "Validates .governance.yaml companion files for Jerry Framework agents. Separated from agent-definition-v1 per Claude Code official frontmatter restructure.",
+  "$id": "https://tom-framework.dev/schemas/agent-governance/v1.1.0",
+  "title": "Tom Agent Governance Schema",
+  "description": "Validates .governance.yaml companion files for Tom Framework agents. Separated from agent-definition-v1 per Claude Code official frontmatter restructure.",
   "type": "object",
   "required": ["version", "tool_tier", "identity"],
   "properties": {

@@ -10,7 +10,7 @@
 ## Overview
 
 This document defines the versioning strategy, migration procedures, and backward
-compatibility rules for all machine-readable schemas in the Jerry framework.
+compatibility rules for all machine-readable schemas in the Tom framework.
 
 **Governed Schemas:**
 
@@ -177,7 +177,7 @@ schema_version: "1.0.0"
 **JSON schemas:**
 ```json
 {
-  "$id": "https://jerry.dev/schemas/session_context/v1.0.0",
+  "$id": "https://tom.dev/schemas/session_context/v1.0.0",
   "version": "1.0.0"
 }
 ```
@@ -275,7 +275,7 @@ Schemas should reference this document:
 - [Semantic Versioning 2.0.0](https://semver.org/)
 - [JSON Schema Versioning](https://json-schema.org/understanding-json-schema/reference/schema.html)
 - [OpenAPI Versioning](https://spec.openapis.org/oas/v3.0.3#versions)
-- [Jerry Constitution P-002](../governance/JERRY_CONSTITUTION.md) - File Persistence
+- [Tom Constitution P-002](../governance/TOM_CONSTITUTION.md) - File Persistence
 
 ---
 

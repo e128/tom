@@ -22,7 +22,7 @@ Value Objects are immutable domain primitives that represent concepts with no id
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Basic Value Object
 
@@ -359,13 +359,13 @@ def test_value_object_serialization():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: All value objects use `@dataclass(frozen=True, slots=True)` for immutability and memory efficiency.
+> **Tom Decision**: All value objects use `@dataclass(frozen=True, slots=True)` for immutability and memory efficiency.
 
-> **Jerry Decision**: Value objects provide `from_string` class methods for deserialization from external input.
+> **Tom Decision**: Value objects provide `from_string` class methods for deserialization from external input.
 
-> **Jerry Decision**: Value objects have a `.value` property for serialization to primitive types.
+> **Tom Decision**: Value objects have a `.value` property for serialization to primitive types.
 
 ---
 

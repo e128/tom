@@ -23,7 +23,7 @@ from __future__ import annotations
 import pytest
 
 from src.domain.markdown_ast.input_bounds import InputBounds
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.xml_section import (
     XmlSectionParser,
 )
@@ -40,7 +40,7 @@ class TestXmlSectionExtraction:
     def test_extract_identity_section(self) -> None:
         """Extracts <identity> section from agent definition."""
         source = "# Agent\n\n<identity>\nIdentity content.\n</identity>\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = XmlSectionParser.extract(doc)
 
         assert result.parse_error is None
@@ -56,7 +56,7 @@ class TestXmlSectionExtraction:
             "<identity>\nWho I am.\n</identity>\n\n"
             "<methodology>\nHow I work.\n</methodology>\n"
         )
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = XmlSectionParser.extract(doc)
 
         assert result.parse_error is None
@@ -80,7 +80,7 @@ class TestXmlSectionExtraction:
         for tag in allowed:
             parts.append(f"<{tag}>\nContent for {tag}.\n</{tag}>\n\n")
         source = "# Test\n\n" + "".join(parts)
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = XmlSectionParser.extract(doc)
 
         assert result.parse_error is None
@@ -90,7 +90,7 @@ class TestXmlSectionExtraction:
     def test_sections_are_frozen(self) -> None:
         """XmlSection instances are frozen."""
         source = "# Agent\n\n<identity>\nTest.\n</identity>\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = XmlSectionParser.extract(doc)
         section = result.sections[0]
         with pytest.raises(AttributeError):
@@ -109,7 +109,7 @@ class TestTagWhitelist:
     def test_unknown_tag_silently_skipped(self) -> None:
         """Tags not in ALLOWED_TAGS are silently skipped (regex only matches allowed)."""
         source = "# Agent\n\n<unknown_tag>\nContent.\n</unknown_tag>\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = XmlSectionParser.extract(doc)
 
         assert len(result.sections) == 0
@@ -137,7 +137,7 @@ class TestNestedTagRejection:
             "</identity>\n"
             "</identity>\n"
         )
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = XmlSectionParser.extract(doc)
 
         # The section should be skipped due to nesting
@@ -160,7 +160,7 @@ class TestBoundsEnforcement:
         source = (
             "# Agent\n\n<identity>\nFirst.\n</identity>\n\n<methodology>\nSecond.\n</methodology>\n"
         )
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = XmlSectionParser.extract(doc, bounds)
 
         assert result.parse_error is not None
@@ -171,7 +171,7 @@ class TestBoundsEnforcement:
         """Content exceeding max_value_length is truncated with warning (M-17)."""
         bounds = InputBounds(max_value_length=10)
         source = "# Agent\n\n<identity>\nThis is long content that exceeds.\n</identity>\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = XmlSectionParser.extract(doc, bounds)
 
         assert len(result.parse_warnings) > 0
@@ -190,7 +190,7 @@ class TestEdgeCases:
     @pytest.mark.edge_case
     def test_empty_document(self) -> None:
         """Empty document returns empty result."""
-        doc = JerryDocument.parse("")
+        doc = TomDocument.parse("")
         result = XmlSectionParser.extract(doc)
 
         assert result.parse_error is None
@@ -199,7 +199,7 @@ class TestEdgeCases:
     @pytest.mark.edge_case
     def test_document_with_no_xml_sections(self) -> None:
         """Document without XML sections returns empty result."""
-        doc = JerryDocument.parse("# Heading\n\nParagraph.\n")
+        doc = TomDocument.parse("# Heading\n\nParagraph.\n")
         result = XmlSectionParser.extract(doc)
 
         assert result.parse_error is None
@@ -209,7 +209,7 @@ class TestEdgeCases:
     def test_control_characters_stripped(self) -> None:
         """Control characters are stripped from section content (M-18)."""
         source = "# Agent\n\n<identity>\nContent\x00with\x01null.\n</identity>\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = XmlSectionParser.extract(doc)
 
         if len(result.sections) > 0:
@@ -219,7 +219,7 @@ class TestEdgeCases:
     @pytest.mark.happy_path
     def test_result_is_frozen(self) -> None:
         """XmlSectionResult is frozen."""
-        doc = JerryDocument.parse("# Test\n")
+        doc = TomDocument.parse("# Test\n")
         result = XmlSectionParser.extract(doc)
         with pytest.raises(AttributeError):
             result.parse_error = "hacked"  # type: ignore[misc]

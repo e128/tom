@@ -161,7 +161,7 @@ def test_cmd_init_dispatches_query():
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### File Locations
 

@@ -20,7 +20,7 @@
 **Criticality:** C4
 **Date:** 2026-03-03
 **Reviewer:** adv-executor (S-007)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.0 (P-001 through P-043); quality-enforcement.md HARD Rule Index (H-01 through H-36); markdown-navigation-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.0 (P-001 through P-043); quality-enforcement.md HARD Rule Index (H-01 through H-36); markdown-navigation-standards.md
 
 ---
 
@@ -30,7 +30,7 @@
 
 | Source | Content | Applicability |
 |--------|---------|--------------|
-| `JERRY_CONSTITUTION.md` | P-001 through P-043 | Core behavioral principles |
+| `TOM_CONSTITUTION.md` | P-001 through P-043 | Core behavioral principles |
 | `quality-enforcement.md` | H-01 through H-36, quality gate, criticality levels | Enforcement framework, quality thresholds |
 | `markdown-navigation-standards.md` | H-23, NAV-001 through NAV-006 | Navigation requirements |
 
@@ -39,7 +39,7 @@
 This is a **document deliverable** (analysis report, not code). Applicable rule sets:
 - `markdown-navigation-standards.md` (navigation tables, anchor links)
 - `quality-enforcement.md` (H-13, H-14, H-15, H-17, H-31)
-- `JERRY_CONSTITUTION.md` Articles I-IV (P-001, P-002, P-004, P-011, P-021, P-022)
+- `TOM_CONSTITUTION.md` Articles I-IV (P-001, P-002, P-004, P-011, P-021, P-022)
 
 **Auto-Escalation Check:** AE-002 does NOT apply (not a `.context/rules/` file). AE-003/AE-004 do NOT apply (not an ADR). AE-005 does NOT apply (not security-relevant code). Criticality is already C4 by user specification.
 
@@ -49,12 +49,12 @@ This is a **document deliverable** (analysis report, not code). Applicable rule 
 
 | Principle | Tier | Source | Applicability Rationale |
 |-----------|------|--------|-------------------------|
-| P-001: Truth and Accuracy | SOFT | JERRY_CONSTITUTION.md Art. I | Analysis makes factual claims about frameworks, scores, citations; accuracy is directly testable |
-| P-002: File Persistence | MEDIUM | JERRY_CONSTITUTION.md Art. I | Analysis IS a persisted file artifact -- compliance evaluated at document level |
-| P-004: Explicit Provenance | MEDIUM | JERRY_CONSTITUTION.md Art. I | Analysis cites evidence sources (E-001 through E-029); all scoring decisions must be traceable |
-| P-011: Evidence-Based Decisions | MEDIUM | JERRY_CONSTITUTION.md Art. II | Selection decisions must be grounded in cited research, not assumption |
-| P-021: Transparency of Limitations | MEDIUM | JERRY_CONSTITUTION.md Art. III | Analysis must disclose uncertainty, error rates, scope limitations |
-| P-022: No Deception | HARD | JERRY_CONSTITUTION.md Art. III | Claims about capabilities, confidence levels, and action states must not deceive readers |
+| P-001: Truth and Accuracy | SOFT | TOM_CONSTITUTION.md Art. I | Analysis makes factual claims about frameworks, scores, citations; accuracy is directly testable |
+| P-002: File Persistence | MEDIUM | TOM_CONSTITUTION.md Art. I | Analysis IS a persisted file artifact -- compliance evaluated at document level |
+| P-004: Explicit Provenance | MEDIUM | TOM_CONSTITUTION.md Art. I | Analysis cites evidence sources (E-001 through E-029); all scoring decisions must be traceable |
+| P-011: Evidence-Based Decisions | MEDIUM | TOM_CONSTITUTION.md Art. II | Selection decisions must be grounded in cited research, not assumption |
+| P-021: Transparency of Limitations | MEDIUM | TOM_CONSTITUTION.md Art. III | Analysis must disclose uncertainty, error rates, scope limitations |
+| P-022: No Deception | HARD | TOM_CONSTITUTION.md Art. III | Claims about capabilities, confidence levels, and action states must not deceive readers |
 | H-23: Markdown Navigation | HARD | markdown-navigation-standards.md | Document exceeds 30 lines; navigation table with anchor links required |
 | H-31: Clarify When Ambiguous | HARD | quality-enforcement.md | Strategic choices with multiple valid interpretations must be surfaced for user confirmation |
 | H-13: Quality Threshold | HARD | quality-enforcement.md | C4 deliverable; score tracking and compliance documented |

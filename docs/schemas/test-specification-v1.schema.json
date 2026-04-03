@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry-framework.dev/schemas/test-specification/v1.0.0",
-  "title": "Jerry Test Specification Schema",
+  "$id": "https://tom-framework.dev/schemas/test-specification/v1.0.0",
+  "title": "Tom Test Specification Schema",
   "description": "Validates BDD test specification (Feature file) YAML frontmatter produced by the tspec-generator agent. Implements Clark transformation output structure. Source: skills/test-spec/rules/clark-transformation-rules.md, skills/test-spec/SKILL.md.",
   "type": "object",
   "required": [

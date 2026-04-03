@@ -1,4 +1,4 @@
-# Pre-commit configuration for Jerry Framework
+# Pre-commit configuration for Tom Framework
 # See: https://pre-commit.com
 # ADR: projects/PROJ-001-plugin-cleanup/decisions/ADR-CI-001-cicd-pipeline.md
 #
@@ -204,7 +204,7 @@ repos:
         pass_filenames: false
         # Only run on push to avoid slowdown on every commit
         stages: [pre-push]
-        # --skip-editable: Skip local packages not on PyPI (like jerry itself)
+        # --skip-editable: Skip local packages not on PyPI (like tom itself)
         # Note: Removed --strict as it conflicts with --skip-editable
         # (pip-audit treats skipped packages as failures in strict mode)
         # Bug reported: https://github.com/pypa/pip-audit/issues/XXX

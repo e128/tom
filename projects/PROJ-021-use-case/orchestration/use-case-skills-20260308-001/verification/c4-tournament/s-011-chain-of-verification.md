@@ -616,7 +616,7 @@ The rationale for C3 classification may still be valid for other reasons (the ag
 **Evidence from deliverable (`cd-validator.governance.yaml`, lines 70-76):**
 ```yaml
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-001"
     - "P-002"
@@ -630,7 +630,7 @@ Wait — this actually DOES include P-001 and P-002. Let me verify against the d
 **Re-verification (actual governance YAML content):**
 ```yaml
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-001"
     - "P-002"

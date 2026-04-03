@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry-framework.dev/schemas/agent-definition/v1.0.0",
-  "title": "Jerry Agent Definition Schema [DEPRECATED]",
+  "$id": "https://tom-framework.dev/schemas/agent-definition/v1.0.0",
+  "title": "Tom Agent Definition Schema [DEPRECATED]",
   "description": "DEPRECATED: Agent definitions now use official Claude Code frontmatter (12 fields only). Governance metadata validated by agent-governance-v1.schema.json. This schema retained for reference only.",
   "deprecated": true,
   "type": "object",

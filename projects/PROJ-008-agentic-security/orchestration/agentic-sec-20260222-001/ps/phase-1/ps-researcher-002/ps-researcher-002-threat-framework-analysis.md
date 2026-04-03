@@ -635,7 +635,7 @@ The NIST AI Risk Management Framework (AI RMF 1.0, NIST AI 100-1) defines four f
 
 | Function | Purpose | Agentic Application |
 |----------|---------|---------------------|
-| GOVERN | Establish and maintain AI risk governance | Jerry constitutional governance (JERRY_CONSTITUTION.md), HARD rules, quality enforcement, criticality levels |
+| GOVERN | Establish and maintain AI risk governance | Jerry constitutional governance (TOM_CONSTITUTION.md), HARD rules, quality enforcement, criticality levels |
 | MAP | Contextualize AI risks within organizational context | Threat framework mapping (this document), attack surface identification, risk classification |
 | MEASURE | Quantify and track AI risks | Quality scoring (S-014), FMEA monitoring thresholds (RT-M-011 through RT-M-015), routing observability |
 | MANAGE | Prioritize and act on AI risks | Mitigation implementation, security controls, enforcement architecture (L1-L5) |
@@ -663,7 +663,7 @@ The GOVERN function in AI RMF maps directly to Jerry's governance architecture:
 
 | AI RMF GOVERN Element | Jerry Implementation |
 |----------------------|----------------------|
-| Policies and procedures | JERRY_CONSTITUTION.md, HARD rules (H-01 through H-36) |
+| Policies and procedures | TOM_CONSTITUTION.md, HARD rules (H-01 through H-36) |
 | Roles and responsibilities | Agent definitions with identity, expertise, capabilities |
 | Risk tolerance | Criticality levels (C1-C4), quality thresholds |
 | Monitoring and oversight | AE-006 context monitoring, routing observability, audit trails |

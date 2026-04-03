@@ -2,7 +2,7 @@
 
 <!-- VERSION: 1.1.0 | DATE: 2026-02-21 | SOURCE: ADR-PROJ007-002, PROJ-007 Phase 3 Synthesis, V&V Plan | REVISION: Barrier 4 quality gate revisions (7 items) -- derivations for H-36, H-37, priority ordering, 2-level gap; migration path; failure propagation; FMEA measurability status -->
 
-> Canonical standards for agent routing, trigger map design, circuit breakers, multi-skill combination, anti-pattern prevention, and routing observability within the Jerry Framework. All routing decisions MUST reference this file.
+> Canonical standards for agent routing, trigger map design, circuit breakers, multi-skill combination, anti-pattern prevention, and routing observability within the Tom Framework. All routing decisions MUST reference this file.
 
 <!-- L2-REINJECT: rank=6, content="Routing: keyword-first (Layer 1, deterministic). Enhanced trigger map: 5 columns (keywords, negative keywords, priority, compound triggers, skill). Circuit breaker: max 3 hops per request (H-36). Keyword-first routing REQUIRED below 20 skills (H-37). Multi-skill combination: /orchestration first, research before design, content before quality. 8 anti-patterns documented (AP-01 through AP-08). H-31 terminal: ask user when all layers fail." -->
 

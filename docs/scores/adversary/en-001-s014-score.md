@@ -88,7 +88,7 @@ SKILL.md includes all required sections per H-25 through H-30: YAML frontmatter 
 
 **Gaps:**
 
-- No runtime proof that the `@skills/saucer-boy/references/ambient-persona.md` import actually resolves correctly. The TASK-005 investigation documents the mechanism as a "Jerry convention" but the deliverables do not include a verification test of the import itself.
+- No runtime proof that the `@skills/saucer-boy/references/ambient-persona.md` import actually resolves correctly. The TASK-005 investigation documents the mechanism as a "Tom convention" but the deliverables do not include a verification test of the import itself.
 - No explicit change log or version history section within SKILL.md (the EN-001 enabler tracks history, but the deliverable files themselves do not).
 
 **Improvement Path:**
@@ -127,15 +127,15 @@ Cross-file alignment verified across all 3 deliverables:
 
 **Evidence:**
 
-- The dual-mode architecture follows a principled approach: separate ambient (lightweight, main context) from explicit (full reference set, subagent) based on invocation pattern. This is architecturally sound and matches patterns used by other Jerry skills (e.g., worktracker uses @ import for rules).
-- All 3 deliverables follow Jerry skill standards (H-25 through H-30) rigorously: correct filename, kebab-case folder, no README.md, description under 1024 chars, repo-relative paths, registered in CLAUDE.md and AGENTS.md.
+- The dual-mode architecture follows a principled approach: separate ambient (lightweight, main context) from explicit (full reference set, subagent) based on invocation pattern. This is architecturally sound and matches patterns used by other Tom skills (e.g., worktracker uses @ import for rules).
+- All 3 deliverables follow Tom skill standards (H-25 through H-30) rigorously: correct filename, kebab-case folder, no README.md, description under 1024 chars, repo-relative paths, registered in CLAUDE.md and AGENTS.md.
 - Prior adversarial review cycle was systematic: S-010 (self-review) -> S-003 (steelman) -> S-007 (constitutional compliance) -> S-002 (devil's advocate). All findings were addressed with specific fixes documented.
 - The ambient-persona.md follows TASK-002's design principle: "what the main context needs to *be* the voice, not what a subagent needs to *follow rules about* the voice." This is a well-articulated design principle that shaped the output.
 
 **Gaps:**
 
 - No formal ADR documenting the dual-mode architecture decision. The EN-001 enabler's "Technical Approach" section provides rationale but is not a formal decision record. For a C2 enabler touching skill architecture, an ADR would strengthen the methodological foundation.
-- The `@` import mechanism is documented as a "Jerry convention" (TASK-005), but its failure modes are incompletely formalized: DA-001 added a fallback instruction, but the deliverables do not document what happens if the file is missing vs. renamed vs. moved, or how to detect a silent import failure.
+- The `@` import mechanism is documented as a "Tom convention" (TASK-005), but its failure modes are incompletely formalized: DA-001 added a fallback instruction, but the deliverables do not document what happens if the file is missing vs. renamed vs. moved, or how to detect a silent import failure.
 - The pair selection (pairs 1, 2, 5, 7 from 9 available) includes a brief rationale ("selected to cover the 4 primary tone-spectrum positions") but does not document why the other 5 pairs were not selected or what criteria were used beyond tone-spectrum coverage.
 
 **Improvement Path:**

@@ -26,8 +26,8 @@ activation-keywords:
 # Problem-Solving Skill
 
 > **Version:** 2.2.0
-> **Framework:** Jerry Problem-Solving (PS)
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom Problem-Solving (PS)
+> **Constitutional Compliance:** Tom Constitution v1.0
 
 ## Document Audience (Triple-Lens)
 
@@ -140,7 +140,7 @@ You are the ps-researcher agent (v2.0.0).
 Create file at: docs/research/work-024-e-101-graph-databases.md
 
 ## RESEARCH TASK
-Research graph database options for the Jerry framework.
+Research graph database options for the Tom framework.
 Focus on: Gremlin compatibility, Python support, embedded options.
 """
 )
@@ -328,7 +328,7 @@ Strategy activation follows the SSOT criticality levels (C1-C4). See `.context/r
 | **C4 (Critical)** | Governance, irreversible decisions | All 10 selected strategies | Constitution changes, governance decisions |
 
 **Auto-escalation rules** (AE-001 through AE-006 in the SSOT) apply to PS workflows. Key rules:
-- AE-001: PS artifacts touching `docs/governance/JERRY_CONSTITUTION.md` = auto-C4
+- AE-001: PS artifacts touching `docs/governance/TOM_CONSTITUTION.md` = auto-C4
 - AE-002: PS artifacts touching `.context/rules/` = auto-C3 minimum
 - AE-003: New or modified ADR = auto-C3 minimum
 
@@ -355,7 +355,7 @@ Per H-16 (HARD rule), agents MUST apply S-003 (Steelman Technique) before critiq
 
 ## Constitutional Compliance
 
-All agents adhere to the **Jerry Constitution v1.0**:
+All agents adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -453,6 +453,6 @@ For detailed agent specifications, see:
 ---
 
 *Skill Version: 2.2.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Enhancement: EN-707 Adversarial quality mode integration (EPIC-003)*
 *Last Updated: 2026-02-14*

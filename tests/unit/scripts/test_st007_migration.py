@@ -28,7 +28,7 @@ import tempfile
 import pytest
 
 from src.domain.markdown_ast import (
-    JerryDocument,
+    TomDocument,
     extract_frontmatter,
     get_entity_schema,
     validate_document,
@@ -44,7 +44,7 @@ def parse_file(file_path: str) -> dict:
     """Parse a file and return structure info (replaces ast_ops.parse_file)."""
     with open(file_path, encoding="utf-8") as f:
         source = f.read()
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     node_types = []
     seen: set[str] = set()
     for node in doc.tree.walk():
@@ -67,7 +67,7 @@ def query_frontmatter(file_path: str) -> dict[str, str]:
     """Extract frontmatter fields (replaces ast_ops.query_frontmatter)."""
     with open(file_path, encoding="utf-8") as f:
         source = f.read()
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     fm = extract_frontmatter(doc)
     return dict(fm.items())
 
@@ -76,7 +76,7 @@ def validate_file(file_path: str, schema: str | None = None) -> dict:
     """Validate file structure (replaces ast_ops.validate_file)."""
     with open(file_path, encoding="utf-8") as f:
         source = f.read()
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     nav_result = validate_nav_table(doc)
     schema_valid = True
     schema_violations: list[dict[str, str]] = []
@@ -150,7 +150,7 @@ EPIC_MD = """\
 
 ## Summary
 
-Prepare the Jerry framework for public open-source release.
+Prepare the Tom framework for public open-source release.
 
 ---
 
@@ -348,13 +348,13 @@ BUG_MD = """\
 
 ## Summary
 
-Jerry plugin cannot be uninstalled via Claude Code UI.
+Tom plugin cannot be uninstalled via Claude Code UI.
 
 ---
 
 ## Steps to Reproduce
 
-1. Install Jerry plugin
+1. Install Tom plugin
 2. Try to uninstall
 3. Error occurs
 
@@ -729,7 +729,7 @@ class TestDomainSchemaValidation:
     @pytest.mark.happy_path
     def test_validate_document_valid_epic(self) -> None:
         """validate_document returns is_valid=True for a conforming epic."""
-        doc = JerryDocument.parse(EPIC_MD)
+        doc = TomDocument.parse(EPIC_MD)
         schema = get_entity_schema("epic")
         report = validate_document(doc, schema)
         assert report.is_valid is True
@@ -738,7 +738,7 @@ class TestDomainSchemaValidation:
     @pytest.mark.happy_path
     def test_validate_document_valid_task(self) -> None:
         """validate_document returns is_valid=True for a conforming task."""
-        doc = JerryDocument.parse(TASK_MD)
+        doc = TomDocument.parse(TASK_MD)
         schema = get_entity_schema("task")
         report = validate_document(doc, schema)
         assert report.is_valid is True
@@ -747,7 +747,7 @@ class TestDomainSchemaValidation:
     @pytest.mark.negative
     def test_validate_document_missing_fields(self) -> None:
         """validate_document detects missing required frontmatter fields."""
-        doc = JerryDocument.parse(MALFORMED_ENABLER_MD)
+        doc = TomDocument.parse(MALFORMED_ENABLER_MD)
         schema = get_entity_schema("enabler")
         report = validate_document(doc, schema)
         assert report.is_valid is False
@@ -762,7 +762,7 @@ class TestDomainSchemaValidation:
     @pytest.mark.negative
     def test_validate_document_invalid_status(self) -> None:
         """validate_document detects invalid status value."""
-        doc = JerryDocument.parse(INVALID_STATUS_MD)
+        doc = TomDocument.parse(INVALID_STATUS_MD)
         schema = get_entity_schema("task")
         report = validate_document(doc, schema)
         assert report.is_valid is False
@@ -773,7 +773,7 @@ class TestDomainSchemaValidation:
     @pytest.mark.happy_path
     def test_validate_document_field_count(self) -> None:
         """validate_document reports correct field_count."""
-        doc = JerryDocument.parse(ENABLER_MD)
+        doc = TomDocument.parse(ENABLER_MD)
         schema = get_entity_schema("enabler")
         report = validate_document(doc, schema)
         # ENABLER_MD has: Type, Status, Priority, Impact, Enabler Type,
@@ -783,7 +783,7 @@ class TestDomainSchemaValidation:
     @pytest.mark.happy_path
     def test_validate_document_section_count(self) -> None:
         """validate_document reports section count from the document."""
-        doc = JerryDocument.parse(ENABLER_MD)
+        doc = TomDocument.parse(ENABLER_MD)
         schema = get_entity_schema("enabler")
         report = validate_document(doc, schema)
         # ENABLER_MD has: Document Sections, Summary, Acceptance Criteria,

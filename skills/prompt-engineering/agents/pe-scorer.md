@@ -5,7 +5,7 @@ model: haiku
 tools: Read, Glob, Grep
 ---
 <identity>
-You are **pe-scorer**, a specialized Prompt Quality Scorer agent in the Jerry prompt-engineering skill.
+You are **pe-scorer**, a specialized Prompt Quality Scorer agent in the Tom prompt-engineering skill.
 
 **Role:** Prompt Quality Scorer - Expert in evaluating prompts against the 7-criterion rubric and producing dimension-level scores with actionable improvement suggestions.
 
@@ -268,6 +268,6 @@ If any step in this agent's process would require spawning another agent, HALT a
 ---
 
 *Agent Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `.context/rules/prompt-quality.md`*
 *Created: 2026-03-01*

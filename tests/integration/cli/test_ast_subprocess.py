@@ -5,20 +5,20 @@
 Integration tests for AST CLI commands via subprocess execution.
 
 These tests validate the actual invocation patterns by shelling out to
-``uv run jerry ast <command>`` for all CLI commands. This ensures the full
+``uv run tom ast <command>`` for all CLI commands. This ensures the full
 import chain and execution path works end-to-end.
 
 Test Categories:
-- TestJerryAstCli: jerry ast parse/render/validate/query via subprocess
-- TestJerryAstFrontmatter: jerry ast frontmatter via subprocess
-- TestJerryAstModify: jerry ast modify via subprocess
-- TestJerryAstReinject: jerry ast reinject via subprocess
-- TestJerryAstValidateEnhanced: jerry ast validate (JSON output, --nav) via subprocess
+- TestTomAstCli: tom ast parse/render/validate/query via subprocess
+- TestTomAstFrontmatter: tom ast frontmatter via subprocess
+- TestTomAstModify: tom ast modify via subprocess
+- TestTomAstReinject: tom ast reinject via subprocess
+- TestTomAstValidateEnhanced: tom ast validate (JSON output, --nav) via subprocess
 - TestErrorCases: Error handling for missing files and bad schemas
 - TestImportChain: Domain layer import validation
 
 References:
-    - ST-004: Add jerry ast CLI Commands
+    - ST-004: Add tom ast CLI Commands
     - BUG-002: Route /ast Skill Through CLI
     - FEAT-001: AST-Based Markdown Operations
 """
@@ -75,8 +75,8 @@ def story_file(project_root: Path) -> Path:
         / "work"
         / "EPIC-001-markdown-ast"
         / "FEAT-001-ast-strategy"
-        / "ST-001-jerry-document"
-        / "ST-001-jerry-document.md"
+        / "ST-001-tom-document"
+        / "ST-001-tom-document.md"
     )
 
 
@@ -99,16 +99,16 @@ def scratch_story(story_file: Path, tmp_path: Path) -> Path:
 # =============================================================================
 
 
-def run_jerry_ast(
+def run_tom_ast(
     args: list[str],
     project_root: Path,
     env: dict[str, str],
     timeout: int = 30,
 ) -> subprocess.CompletedProcess[str]:
-    """Execute ``uv run jerry ast <args>``.
+    """Execute ``uv run tom ast <args>``.
 
     Args:
-        args: Arguments after ``jerry ast`` (e.g., ["parse", "file.md"]).
+        args: Arguments after ``tom ast`` (e.g., ["parse", "file.md"]).
         project_root: Project root path for cwd.
         env: Environment variables.
         timeout: Max seconds before killing the process.
@@ -117,7 +117,7 @@ def run_jerry_ast(
         CompletedProcess with stdout, stderr, and returncode.
     """
     return subprocess.run(
-        ["uv", "run", "jerry", "ast", *args],
+        ["uv", "run", "tom", "ast", *args],
         capture_output=True,
         text=True,
         env=env,
@@ -127,12 +127,12 @@ def run_jerry_ast(
 
 
 # =============================================================================
-# jerry ast CLI commands
+# tom ast CLI commands
 # =============================================================================
 
 
-class TestJerryAstCli:
-    """Integration tests for jerry ast CLI commands via subprocess."""
+class TestTomAstCli:
+    """Integration tests for tom ast CLI commands via subprocess."""
 
     def test_ast_parse_outputs_valid_json(
         self,
@@ -140,8 +140,8 @@ class TestJerryAstCli:
         env_with_pythonpath: dict[str, str],
         story_file: Path,
     ) -> None:
-        """jerry ast parse outputs valid JSON with tokens and tree."""
-        result = run_jerry_ast(["parse", str(story_file)], project_root, env_with_pythonpath)
+        """tom ast parse outputs valid JSON with tokens and tree."""
+        result = run_tom_ast(["parse", str(story_file)], project_root, env_with_pythonpath)
 
         assert result.returncode == 0, f"stderr: {result.stderr}"
         data = json.loads(result.stdout)
@@ -157,8 +157,8 @@ class TestJerryAstCli:
         env_with_pythonpath: dict[str, str],
         story_file: Path,
     ) -> None:
-        """jerry ast render outputs normalized markdown."""
-        result = run_jerry_ast(["render", str(story_file)], project_root, env_with_pythonpath)
+        """tom ast render outputs normalized markdown."""
+        result = run_tom_ast(["render", str(story_file)], project_root, env_with_pythonpath)
 
         assert result.returncode == 0, f"stderr: {result.stderr}"
         assert "# ST-001" in result.stdout
@@ -169,8 +169,8 @@ class TestJerryAstCli:
         env_with_pythonpath: dict[str, str],
         story_file: Path,
     ) -> None:
-        """jerry ast validate without --schema outputs JSON with nav table results."""
-        result = run_jerry_ast(["validate", str(story_file)], project_root, env_with_pythonpath)
+        """tom ast validate without --schema outputs JSON with nav table results."""
+        result = run_tom_ast(["validate", str(story_file)], project_root, env_with_pythonpath)
 
         assert result.returncode == 0, f"stderr: {result.stderr}"
         data = json.loads(result.stdout)
@@ -185,8 +185,8 @@ class TestJerryAstCli:
         env_with_pythonpath: dict[str, str],
         story_file: Path,
     ) -> None:
-        """jerry ast validate --schema story outputs JSON report."""
-        result = run_jerry_ast(
+        """tom ast validate --schema story outputs JSON report."""
+        result = run_tom_ast(
             ["validate", "--schema", "story", str(story_file)],
             project_root,
             env_with_pythonpath,
@@ -206,8 +206,8 @@ class TestJerryAstCli:
         env_with_pythonpath: dict[str, str],
         story_file: Path,
     ) -> None:
-        """jerry ast query heading returns matching nodes."""
-        result = run_jerry_ast(
+        """tom ast query heading returns matching nodes."""
+        result = run_tom_ast(
             ["query", str(story_file), "heading"],
             project_root,
             env_with_pythonpath,
@@ -225,8 +225,8 @@ class TestJerryAstCli:
         env_with_pythonpath: dict[str, str],
         story_file: Path,
     ) -> None:
-        """jerry ast query with non-matching type returns count=0."""
-        result = run_jerry_ast(
+        """tom ast query with non-matching type returns count=0."""
+        result = run_tom_ast(
             ["query", str(story_file), "nonexistent_type"],
             project_root,
             env_with_pythonpath,
@@ -251,8 +251,8 @@ class TestErrorCases:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry ast parse with missing file returns exit code 2."""
-        result = run_jerry_ast(["parse", "/nonexistent/file.md"], project_root, env_with_pythonpath)
+        """tom ast parse with missing file returns exit code 2."""
+        result = run_tom_ast(["parse", "/nonexistent/file.md"], project_root, env_with_pythonpath)
 
         assert result.returncode == 2
 
@@ -262,8 +262,8 @@ class TestErrorCases:
         env_with_pythonpath: dict[str, str],
         story_file: Path,
     ) -> None:
-        """jerry ast validate --schema unknown returns exit code 2."""
-        result = run_jerry_ast(
+        """tom ast validate --schema unknown returns exit code 2."""
+        result = run_tom_ast(
             ["validate", "--schema", "unknown_type", str(story_file)],
             project_root,
             env_with_pythonpath,
@@ -276,8 +276,8 @@ class TestErrorCases:
         project_root: Path,
         env_with_pythonpath: dict[str, str],
     ) -> None:
-        """jerry ast frontmatter with missing file returns exit code 2."""
-        result = run_jerry_ast(
+        """tom ast frontmatter with missing file returns exit code 2."""
+        result = run_tom_ast(
             ["frontmatter", "/nonexistent/file.md"], project_root, env_with_pythonpath
         )
 
@@ -289,8 +289,8 @@ class TestErrorCases:
         env_with_pythonpath: dict[str, str],
         scratch_story: Path,
     ) -> None:
-        """jerry ast modify with nonexistent key returns exit code 1."""
-        result = run_jerry_ast(
+        """tom ast modify with nonexistent key returns exit code 1."""
+        result = run_tom_ast(
             ["modify", str(scratch_story), "--key", "NonExistent", "--value", "v"],
             project_root,
             env_with_pythonpath,
@@ -300,12 +300,12 @@ class TestErrorCases:
 
 
 # =============================================================================
-# jerry ast frontmatter
+# tom ast frontmatter
 # =============================================================================
 
 
-class TestJerryAstFrontmatter:
-    """Integration tests for jerry ast frontmatter via subprocess."""
+class TestTomAstFrontmatter:
+    """Integration tests for tom ast frontmatter via subprocess."""
 
     def test_frontmatter_extracts_fields(
         self,
@@ -313,8 +313,8 @@ class TestJerryAstFrontmatter:
         env_with_pythonpath: dict[str, str],
         story_file: Path,
     ) -> None:
-        """jerry ast frontmatter extracts Type, Status, etc. from entity files."""
-        result = run_jerry_ast(["frontmatter", str(story_file)], project_root, env_with_pythonpath)
+        """tom ast frontmatter extracts Type, Status, etc. from entity files."""
+        result = run_tom_ast(["frontmatter", str(story_file)], project_root, env_with_pythonpath)
 
         assert result.returncode == 0, f"stderr: {result.stderr}"
         data = json.loads(result.stdout)
@@ -329,11 +329,11 @@ class TestJerryAstFrontmatter:
         env_with_pythonpath: dict[str, str],
         tmp_path: Path,
     ) -> None:
-        """jerry ast frontmatter returns {} for files without frontmatter."""
+        """tom ast frontmatter returns {} for files without frontmatter."""
         plain_file = tmp_path / "plain.md"
         plain_file.write_text("# Just a heading\n\nSome text.\n")
 
-        result = run_jerry_ast(["frontmatter", str(plain_file)], project_root, env_with_pythonpath)
+        result = run_tom_ast(["frontmatter", str(plain_file)], project_root, env_with_pythonpath)
 
         assert result.returncode == 0, f"stderr: {result.stderr}"
         data = json.loads(result.stdout)
@@ -341,12 +341,12 @@ class TestJerryAstFrontmatter:
 
 
 # =============================================================================
-# jerry ast modify
+# tom ast modify
 # =============================================================================
 
 
-class TestJerryAstModify:
-    """Integration tests for jerry ast modify via subprocess."""
+class TestTomAstModify:
+    """Integration tests for tom ast modify via subprocess."""
 
     def test_modify_updates_field(
         self,
@@ -354,8 +354,8 @@ class TestJerryAstModify:
         env_with_pythonpath: dict[str, str],
         scratch_story: Path,
     ) -> None:
-        """jerry ast modify writes new value and returns JSON status."""
-        result = run_jerry_ast(
+        """tom ast modify writes new value and returns JSON status."""
+        result = run_tom_ast(
             ["modify", str(scratch_story), "--key", "Status", "--value", "done"],
             project_root,
             env_with_pythonpath,
@@ -377,13 +377,13 @@ class TestJerryAstModify:
         env_with_pythonpath: dict[str, str],
         scratch_story: Path,
     ) -> None:
-        """jerry ast modify applied twice produces same result."""
-        run_jerry_ast(
+        """tom ast modify applied twice produces same result."""
+        run_tom_ast(
             ["modify", str(scratch_story), "--key", "Status", "--value", "done"],
             project_root,
             env_with_pythonpath,
         )
-        result = run_jerry_ast(
+        result = run_tom_ast(
             ["modify", str(scratch_story), "--key", "Status", "--value", "done"],
             project_root,
             env_with_pythonpath,
@@ -395,12 +395,12 @@ class TestJerryAstModify:
 
 
 # =============================================================================
-# jerry ast reinject
+# tom ast reinject
 # =============================================================================
 
 
-class TestJerryAstReinject:
-    """Integration tests for jerry ast reinject via subprocess."""
+class TestTomAstReinject:
+    """Integration tests for tom ast reinject via subprocess."""
 
     def test_reinject_from_rules_file(
         self,
@@ -408,8 +408,8 @@ class TestJerryAstReinject:
         env_with_pythonpath: dict[str, str],
         rules_file: Path,
     ) -> None:
-        """jerry ast reinject finds L2-REINJECT directives in rules files."""
-        result = run_jerry_ast(["reinject", str(rules_file)], project_root, env_with_pythonpath)
+        """tom ast reinject finds L2-REINJECT directives in rules files."""
+        result = run_tom_ast(["reinject", str(rules_file)], project_root, env_with_pythonpath)
 
         assert result.returncode == 0, f"stderr: {result.stderr}"
         data = json.loads(result.stdout)
@@ -427,11 +427,11 @@ class TestJerryAstReinject:
         env_with_pythonpath: dict[str, str],
         tmp_path: Path,
     ) -> None:
-        """jerry ast reinject returns [] for files without directives."""
+        """tom ast reinject returns [] for files without directives."""
         plain_file = tmp_path / "no-reinject.md"
         plain_file.write_text("# No directives\n\nJust text.\n")
 
-        result = run_jerry_ast(["reinject", str(plain_file)], project_root, env_with_pythonpath)
+        result = run_tom_ast(["reinject", str(plain_file)], project_root, env_with_pythonpath)
 
         assert result.returncode == 0, f"stderr: {result.stderr}"
         data = json.loads(result.stdout)
@@ -439,12 +439,12 @@ class TestJerryAstReinject:
 
 
 # =============================================================================
-# jerry ast validate (enhanced)
+# tom ast validate (enhanced)
 # =============================================================================
 
 
-class TestJerryAstValidateEnhanced:
-    """Integration tests for enhanced jerry ast validate via subprocess."""
+class TestTomAstValidateEnhanced:
+    """Integration tests for enhanced tom ast validate via subprocess."""
 
     def test_validate_no_schema_outputs_json(
         self,
@@ -452,8 +452,8 @@ class TestJerryAstValidateEnhanced:
         env_with_pythonpath: dict[str, str],
         story_file: Path,
     ) -> None:
-        """jerry ast validate without --schema outputs JSON with nav table results."""
-        result = run_jerry_ast(["validate", str(story_file)], project_root, env_with_pythonpath)
+        """tom ast validate without --schema outputs JSON with nav table results."""
+        result = run_tom_ast(["validate", str(story_file)], project_root, env_with_pythonpath)
 
         assert result.returncode == 0, f"stderr: {result.stderr}"
         data = json.loads(result.stdout)
@@ -469,8 +469,8 @@ class TestJerryAstValidateEnhanced:
         env_with_pythonpath: dict[str, str],
         rules_file: Path,
     ) -> None:
-        """jerry ast validate --nav includes detailed nav table entries."""
-        result = run_jerry_ast(
+        """tom ast validate --nav includes detailed nav table entries."""
+        result = run_tom_ast(
             ["validate", "--nav", str(rules_file)], project_root, env_with_pythonpath
         )
 

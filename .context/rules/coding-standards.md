@@ -9,7 +9,7 @@ paths:
 
 # Coding Standards
 
-> Python coding rules, naming conventions, and error handling for Jerry.
+> Python coding rules, naming conventions, and error handling for Tom.
 
 <!-- L2-REINJECT: rank=7, content="Public function signatures REQUIRED (H-11): (a) type hints on all public functions, (b) docstrings on all public functions/classes/modules. Google-style format." -->
 

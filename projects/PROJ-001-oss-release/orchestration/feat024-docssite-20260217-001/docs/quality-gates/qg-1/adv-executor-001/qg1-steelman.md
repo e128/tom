@@ -175,7 +175,7 @@ nav:
     - Schema Versioning: schemas/SCHEMA_VERSIONING.md
     - Session Context Schema: schemas/SESSION_CONTEXT_GUIDE.md
   - Governance:
-    - Jerry Constitution: governance/JERRY_CONSTITUTION.md
+    - Jerry Constitution: governance/TOM_CONSTITUTION.md
 ```
 
 Key: [SM-001-qg1] Nav comment added for self-documentation. [SM-002-qg1] `site_author` / `copyright` fields suggested (commented out — implementation decision for author).

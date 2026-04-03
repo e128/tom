@@ -38,7 +38,7 @@ This article covers what the research found, the taxonomy it produced, and how t
 
 LLM-based agent frameworks live on behavioral constraints -- rules like "never spawn recursive subagents" or "always persist output to files." These constraints are expressed as natural language instructions in system prompts, rule files, and agent definitions. The question is whether the *framing* of those constraints affects how reliably the LLM follows them.
 
-The conventional wisdom was split. Anthropic's published guidance generally recommends positive framing ("tell the model what to do, not what to avoid"). At the same time, Anthropic's own Claude Code rule files contain 33 instances of NEVER/MUST NOT/DO NOT across 10 files, all in the highest enforcement tier. The Jerry Framework itself had 36 negative constraint instances across 17 rule files at the start of this research, with 22 of those (61%) being bare "NEVER X" statements -- no consequence, no alternative.
+The conventional wisdom was split. Anthropic's published guidance generally recommends positive framing ("tell the model what to do, not what to avoid"). At the same time, Anthropic's own Claude Code rule files contain 33 instances of NEVER/MUST NOT/DO NOT across 10 files, all in the highest enforcement tier. The Tom Framework itself had 36 negative constraint instances across 17 rule files at the start of this research, with 22 of those (61%) being bare "NEVER X" statements -- no consequence, no alternative.
 
 ### The Hypothesis
 
@@ -56,7 +56,7 @@ These were split into independently testable questions and pursued through a six
 | Phase 1 | Literature survey | 75 unique sources across academic, industry, and vendor documentation |
 | Phase 2 | Claim validation and comparative effectiveness | Research question bifurcation; null finding on 60% claim |
 | Phase 3 | Taxonomy development | 14-pattern NPT taxonomy (NPT-001 through NPT-014) |
-| Phase 4 | Jerry Framework application analysis | 130 specific upgrade recommendations across 5 domains |
+| Phase 4 | Tom Framework application analysis | 130 specific upgrade recommendations across 5 domains |
 | Phase 5 | Architecture decisions | 4 ADRs governing framework evolution |
 | Phase 6 | Final synthesis | Implementation roadmap and consolidated findings |
 
@@ -78,7 +78,7 @@ This is the single most actionable finding. It does not depend on further experi
 - Wen's team at EMNLP 2024 found a +7.3-8% compliance improvement with structured versus blunt negative framing.
 - arXiv T3 evidence: 55% improvement for affirmative directive pairing versus standalone negation.
 
-At the start of this research, 61% of all negative constraints in the Jerry Framework (22 out of 36) used this blunt prohibition format. Every one was an upgrade candidate.
+At the start of this research, 61% of all negative constraints in the Tom Framework (22 out of 36) used this blunt prohibition format. Every one was an upgrade candidate.
 
 ### Structured Negation Achieves 100% Compliance
 
@@ -143,7 +143,7 @@ NPT-014 is not a technique to apply -- it is the diagnostic label for the proble
 
 ### The Two Patterns That Matter Most
 
-For day-to-day use in the Jerry Framework, two patterns emerged as the operational workhorses.
+For day-to-day use in the Tom Framework, two patterns emerged as the operational workhorses.
 
 **NPT-009 (Declarative Behavioral Negation)** -- Used for agent governance YAML `forbidden_actions` where a constitutional principle reference provides traceability:
 
@@ -234,11 +234,11 @@ Three criteria to check against the finished constraint: the action must be bina
 
 ---
 
-## Implementation in Jerry
+## Implementation in Tom
 
 ### Architecture Decision Records
 
-PROJ-014 produced four ADRs governing how the findings are applied to the Jerry Framework:
+PROJ-014 produced four ADRs governing how the findings are applied to the Tom Framework:
 
 | ADR | Decision | Status |
 |-----|----------|--------|

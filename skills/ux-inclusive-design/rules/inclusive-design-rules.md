@@ -431,7 +431,7 @@ Before persisting the evaluation report, verify all items below (S-010):
 
 P-022 (no deception about capabilities) requires explicit disclosure of evaluation limitations. These rules codify the minimum disclosure obligations for the evaluation report.
 
-> **Source:** `docs/governance/JERRY_CONSTITUTION.md` (P-022). `skills/ux-inclusive-design/templates/accessibility-report-template.md` [Limitations and Reliability].
+> **Source:** `docs/governance/TOM_CONSTITUTION.md` (P-022). `skills/ux-inclusive-design/templates/accessibility-report-template.md` [Limitations and Reliability].
 
 | Rule ID | Rule | Consequence of Violation |
 |---------|------|-------------------------|

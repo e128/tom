@@ -296,7 +296,7 @@ class TestFileSystemEventStoreUtilityMethods:
         """events_directory returns correct path."""
         store = FileSystemEventStore(temp_store_path)
 
-        expected = temp_store_path / ".jerry" / "data" / "events"
+        expected = temp_store_path / ".tom" / "data" / "events"
         assert store.events_directory == expected
 
 
@@ -591,7 +591,7 @@ class TestFileSystemEventStoreIsolation:
         store.append("WORK-001", [create_event("WORK-001", 1)], expected_version=-1)
         store.append("WORK-002", [create_event("WORK-002", 1)], expected_version=-1)
 
-        events_dir = temp_store_path / ".jerry" / "data" / "events"
+        events_dir = temp_store_path / ".tom" / "data" / "events"
         files = list(events_dir.glob("*.jsonl"))
 
         assert len(files) == 2

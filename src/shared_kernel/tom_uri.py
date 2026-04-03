@@ -2,16 +2,16 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-JerryUri - URI-based entity reference format.
+TomUri - URI-based entity reference format.
 
-Provides cross-system identification using jerry:// scheme.
-Format: jerry://{entity_type}/{id}[/{sub_entity}/{sub_id}]
+Provides cross-system identification using tom:// scheme.
+Format: tom://{entity_type}/{id}[/{sub_entity}/{sub_id}]
 
 References:
     - Canon PAT-003 (L167-220)
 
 Exports:
-    JerryUri (value object)
+    TomUri (value object)
 """
 
 from __future__ import annotations
@@ -21,20 +21,20 @@ from typing import ClassVar
 
 
 @dataclass(frozen=True)
-class JerryUri:
+class TomUri:
     """
     URI-based entity reference for cross-system identification.
 
     Invariants:
-        - Scheme is always "jerry"
+        - Scheme is always "tom"
         - Path segments alternate: entity_type/id/sub_type/sub_id
         - Valid entity types: task, phase, plan, knowledge, actor, event
 
     Examples:
-        jerry://task/TASK-a1b2c3d4
-        jerry://plan/PLAN-12345678
-        jerry://plan/PLAN-12345678/phase/PHASE-e5f6g7h8
-        jerry://knowledge/pattern/KNOW-xyz98765
+        tom://task/TASK-a1b2c3d4
+        tom://plan/PLAN-12345678
+        tom://plan/PLAN-12345678/phase/PHASE-e5f6g7h8
+        tom://knowledge/pattern/KNOW-xyz98765
     """
 
     path_segments: tuple[str, ...]
@@ -42,13 +42,13 @@ class JerryUri:
     VALID_ENTITY_TYPES: ClassVar[frozenset[str]] = frozenset(
         {"task", "phase", "plan", "knowledge", "actor", "event", "subtask"}
     )
-    SCHEME: ClassVar[str] = "jerry"
+    SCHEME: ClassVar[str] = "tom"
 
     def __post_init__(self) -> None:
         if len(self.path_segments) < 2:
-            raise ValueError("JerryUri requires at least entity_type and id")
+            raise ValueError("TomUri requires at least entity_type and id")
         if len(self.path_segments) % 2 != 0:
-            raise ValueError("JerryUri path segments must be pairs of type/id")
+            raise ValueError("TomUri path segments must be pairs of type/id")
         # Validate entity types
         for i in range(0, len(self.path_segments), 2):
             entity_type = self.path_segments[i]
@@ -56,27 +56,27 @@ class JerryUri:
                 raise ValueError(f"Invalid entity type: {entity_type}")
 
     @classmethod
-    def parse(cls, uri: str) -> JerryUri:
-        """Parse jerry:// URI string."""
+    def parse(cls, uri: str) -> TomUri:
+        """Parse tom:// URI string."""
         prefix = f"{cls.SCHEME}://"
         if not uri.startswith(prefix):
-            raise ValueError(f"Invalid JerryUri scheme: {uri}")
+            raise ValueError(f"Invalid TomUri scheme: {uri}")
         path = uri[len(prefix) :]
         if not path:
-            raise ValueError("JerryUri path cannot be empty")
+            raise ValueError("TomUri path cannot be empty")
         segments = tuple(path.split("/"))
         return cls(segments)
 
     @classmethod
-    def for_entity(cls, entity_type: str, entity_id: str) -> JerryUri:
-        """Create JerryUri for a single entity."""
+    def for_entity(cls, entity_type: str, entity_id: str) -> TomUri:
+        """Create TomUri for a single entity."""
         return cls((entity_type, entity_id))
 
     @classmethod
     def for_nested(
         cls, parent_type: str, parent_id: str, child_type: str, child_id: str
-    ) -> JerryUri:
-        """Create JerryUri for a nested entity."""
+    ) -> TomUri:
+        """Create TomUri for a nested entity."""
         return cls((parent_type, parent_id, child_type, child_id))
 
     def __str__(self) -> str:

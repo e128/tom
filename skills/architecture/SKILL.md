@@ -25,8 +25,8 @@ activation-keywords:
 # Architecture Skill
 
 > **Version:** 1.0.0
-> **Framework:** Jerry Architecture (ARCH)
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom Architecture (ARCH)
+> **Constitutional Compliance:** Tom Constitution v1.0
 
 ---
 
@@ -394,7 +394,7 @@ Architecture artifacts should use standardized templates to ensure consistency.
 
 ## Constitutional Compliance
 
-All architecture work adheres to the **Jerry Constitution v1.0**:
+All architecture work adheres to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -411,7 +411,7 @@ All architecture work adheres to the **Jerry Constitution v1.0**:
 
 ## Integration with Other Skills
 
-The architecture skill integrates with other Jerry skills:
+The architecture skill integrates with other Tom skills:
 
 | Skill | Integration Point | Example |
 |-------|------------------|---------|
@@ -470,11 +470,11 @@ The architecture skill integrates with other Jerry skills:
 - Evans, E. (2003). "Domain-Driven Design: Tackling Complexity in the Heart of Software"
 - Vernon, V. (2013). "Implementing Domain-Driven Design"
 - Martin, R. (2017). "Clean Architecture"
-- Jerry Architecture Standards: `.context/rules/architecture-standards.md`
-- Jerry Constitution: `docs/governance/JERRY_CONSTITUTION.md`
+- Tom Architecture Standards: `.context/rules/architecture-standards.md`
+- Tom Constitution: `docs/governance/TOM_CONSTITUTION.md`
 
 ---
 
 *Skill Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Last Updated: 2026-02-16*

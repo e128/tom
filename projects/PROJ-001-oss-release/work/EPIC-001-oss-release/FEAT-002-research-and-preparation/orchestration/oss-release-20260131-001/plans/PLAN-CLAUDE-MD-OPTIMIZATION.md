@@ -204,7 +204,7 @@ Existing rules already in place:
 
 ### Tier 4: Reference Documentation
 
-- `docs/governance/JERRY_CONSTITUTION.md` - Full constitution
+- `docs/governance/TOM_CONSTITUTION.md` - Full constitution
 - `docs/design/ADR-*.md` - Architecture decisions
 - `docs/knowledge/` - Pattern catalog, exemplars
 - `.context/templates/worktracker/` - Work item templates
@@ -470,7 +470,7 @@ See [Chroma Research](https://research.trychroma.com/context-rot) for the scienc
 | Architecture | `/architecture` skill |
 | Templates | `.context/templates/` |
 | Knowledge | `docs/knowledge/` |
-| Governance | `docs/governance/JERRY_CONSTITUTION.md` |
+| Governance | `docs/governance/TOM_CONSTITUTION.md` |
 
 ---
 

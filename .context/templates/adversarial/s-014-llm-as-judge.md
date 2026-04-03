@@ -14,7 +14,7 @@ Academic Foundation:
 - Anthropic Constitutional AI evaluation methodology
 
 Validates deliverable quality using structured rubric-based scoring with six weighted dimensions.
-Highest-ranked strategy (composite score 4.40) in the Jerry quality framework.
+Highest-ranked strategy (composite score 4.40) in the Tom quality framework.
 -->
 
 > **Type:** adversarial-strategy-template

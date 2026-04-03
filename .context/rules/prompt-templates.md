@@ -1,6 +1,6 @@
-# Prompt Templates for Jerry
+# Prompt Templates for Tom
 
-> Copy-paste prompt templates for the most common Jerry tasks. Replace `{{PLACEHOLDERS}}` with your values before submitting.
+> Copy-paste prompt templates for the most common Tom tasks. Replace `{{PLACEHOLDERS}}` with your values before submitting.
 
 ## Document Sections
 
@@ -21,7 +21,7 @@
 
 | Placeholder | What to Replace With |
 |-------------|---------------------|
-| `{{PROJECT_ID}}` | Your Jerry project ID, e.g., `PROJ-006` |
+| `{{PROJECT_ID}}` | Your Tom project ID, e.g., `PROJ-006` |
 | `{{WORK_ITEM_TITLE}}` | Descriptive title for the work item |
 | `{{DOMAIN}}` | The subject area, e.g., `authentication service in src/Delinea.Inventory.Logic/` |
 | `{{DATA_SOURCE}}` | The named tool or location, e.g., `Salesforce MCP`, `web search`, `codebase at src/` |
@@ -103,7 +103,7 @@ Quality threshold: >= 0.85.
 
 ## Template 2: Implementation Task
 
-**Use when:** You need one deliverable from one Jerry skill — a code review, implementation, or analysis. No multi-phase pipeline needed.
+**Use when:** You need one deliverable from one Tom skill — a code review, implementation, or analysis. No multi-phase pipeline needed.
 
 ### Template
 
@@ -140,7 +140,7 @@ with CRITICAL/HIGH/MEDIUM/LOW severity classification per finding.
 
 ## Template 3: Multi-Skill Orchestration
 
-**Use when:** The task has 3+ phases, quality at phase boundaries matters, and you need reproducible results across sessions. This is the highest-quality Jerry prompt pattern.
+**Use when:** The task has 3+ phases, quality at phase boundaries matters, and you need reproducible results across sessions. This is the highest-quality Tom prompt pattern.
 
 ### Template
 
@@ -223,7 +223,7 @@ Output: projects/{{PROJECT_ID}}/decisions/{{ADR_FILENAME}} in Nygard ADR format.
 ### Example
 
 ```
-Use /problem-solving with ps-architect to evaluate three options for Jerry work item persistence.
+Use /problem-solving with ps-architect to evaluate three options for Tom work item persistence.
 
 Options:
 A. YAML files (one file per work item, filesystem-native)
@@ -232,7 +232,7 @@ C. Event store with JSON snapshots (append-only log, full history, snapshot ever
 
 Evaluation dimensions: read latency, write simplicity, corruption recovery, cross-session portability.
 
-Context: Jerry is a CLI tool with no server process; storage must work without infrastructure setup.
+Context: Tom is a CLI tool with no server process; storage must work without infrastructure setup.
 
 Output: projects/PROJ-007/decisions/ADR-001-persistence-strategy.md in Nygard ADR format.
 ```
@@ -314,7 +314,7 @@ Create a file at `projects/{{PROJECT_ID}}/research/{{BATCH_SLUG}}-prompt-designs
 
 ## Session Entry Prompt
 
-**Copy this into each fresh Jerry session:**
+**Copy this into each fresh Tom session:**
 
     Process the next unprocessed item from:
     {{BATCH_FILE_PATH}}
@@ -396,10 +396,10 @@ Create a file at `projects/{{PROJECT_ID}}/research/{{BATCH_SLUG}}-prompt-designs
 
 ## Session Entry Prompt
 
-Copy this into each fresh Jerry session:
+Copy this into each fresh Tom session:
 
     Process the next unprocessed OI triage prompt from:
-    c:\AI\jerry\projects\PROJ-007-identity-graph-research\research\oi-triage-prompt-designs.md
+    c:\AI\tom\projects\PROJ-007-identity-graph-research\research\oi-triage-prompt-designs.md
 
     Instructions:
     1. Read the file and find the Triage Status Tracker table.
@@ -438,9 +438,9 @@ Copy this into each fresh Jerry session:
 
 ## Related Resources
 
-- [Getting Started](getting-started.md) — First-time Jerry setup and invocation
+- [Getting Started](getting-started.md) — First-time Tom setup and invocation
 - [Prompt Quality Guide](prompt-quality.md) — The 5-element anatomy, quality rubric, and anti-patterns
 - [Problem-Solving Playbook](../playbooks/problem-solving.md) — Agent reference and keyword routing
-- [PROJ-006 Research](../../projects/PROJ-006-jerry-prompt/) — Full research backing these templates
+- [PROJ-006 Research](../../projects/PROJ-006-tom-prompt/) — Full research backing these templates
 
-*Templates 1-5 derived from PROJ-006-jerry-prompt research (2026-02-18). Template 6 derived from PROJ-007-identity-graph-research (2026-02-19). All templates validated against 7-criterion quality rubric.*
+*Templates 1-5 derived from PROJ-006-tom-prompt research (2026-02-18). Template 6 derived from PROJ-007-identity-graph-research (2026-02-19). All templates validated against 7-criterion quality rubric.*

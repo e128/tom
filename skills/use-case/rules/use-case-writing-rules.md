@@ -268,7 +268,7 @@ SCOPED --> PREPARED --> ANALYZED --> IMPLEMENTED --> VERIFIED
 
 **SL-03:** NEVER advance `slice_state` without explicitly setting the new state value. The state field is not auto-derived.
 
-**SL-04:** When creating a worktracker Story entity for a slice, use `uv run jerry items create` (H-05 compliant). NEVER invoke `/worktracker` via Task tool (P-003 violation for T2 worker).
+**SL-04:** When creating a worktracker Story entity for a slice, use `uv run tom items create` (H-05 compliant). NEVER invoke `/worktracker` via Task tool (P-003 violation for T2 worker).
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: worktracker
-description: Work item tracking and task management using the Jerry Framework hierarchy (Initiative, Epic, Feature, Story, Task, Enabler, Bug, Impediment). Manages WORKTRACKER.md manifests, tracks progress, and enforces template usage for consistent work decomposition.
+description: Work item tracking and task management using the Tom Framework hierarchy (Initiative, Epic, Feature, Story, Task, Enabler, Bug, Impediment). Manages WORKTRACKER.md manifests, tracks progress, and enforces template usage for consistent work decomposition.
 version: "1.1.0"
 allowed-tools: Read, Write, Glob, Agent, Edit
 activation-keywords:
@@ -11,15 +11,15 @@ activation-keywords:
   - "update the work-tracker"
   - "update the worktracker"
   - "/worktracker"
-  - "/jerry:worktracker"
+  - "/tom:worktracker"
 
 ---
 
 # Worktracker Skill
 
 > **Version:** 1.1.0
-> **Framework:** Jerry Worktracking Framework v1.0
-> **Constitutional Compliance:** Jerry Constitution v1.0 (P-002, P-003, P-020)
+> **Framework:** Tom Worktracking Framework v1.0
+> **Constitutional Compliance:** Tom Constitution v1.0 (P-002, P-003, P-020)
 
 ---
 
@@ -40,7 +40,7 @@ activation-keywords:
 
 ## Overview
 
-The Worktracker skill provides comprehensive work item tracking and task management capabilities within the Jerry Framework. It implements a hierarchical work decomposition structure compatible with ADO Scrum, SAFe, and JIRA methodologies.
+The Worktracker skill provides comprehensive work item tracking and task management capabilities within the Tom Framework. It implements a hierarchical work decomposition structure compatible with ADO Scrum, SAFe, and JIRA methodologies.
 
 ### Core Capabilities
 
@@ -58,7 +58,7 @@ Invoke `/worktracker` when you need to:
 - Understand the entity hierarchy and relationships
 - Follow proper template usage for work items
 - Navigate the project directory structure
-- Map between Jerry entities and external systems (ADO, SAFe, JIRA)
+- Map between Tom entities and external systems (ADO, SAFe, JIRA)
 
 ---
 
@@ -194,7 +194,7 @@ Agent outputs use standardized templates:
 
 | Condition | Use Instead | Consequence of Misrouting |
 |-----------|-------------|--------------------------|
-| Query answerable by `jerry items list` or `jerry projects list` CLI | Jerry CLI directly | Worktracker agents invoked for simple queries waste agent invocation overhead; CLI provides instant results without context consumption |
+| Query answerable by `tom items list` or `tom projects list` CLI | Tom CLI directly | Worktracker agents invoked for simple queries waste agent invocation overhead; CLI provides instant results without context consumption |
 | Non-entity file operations (general markdown, code files) | Read/Write/Edit tools directly | AST parsing applied to non-entity files produces validation errors; entity schema enforcement fails on non-worktracker content |
 | Research, analysis, or root cause investigation | `/problem-solving` | Worktracker agents have no research methodology; wt-verifier and wt-auditor are scoped to entity integrity, not analytical tasks |
 | Requirements engineering or V&V activities | `/nasa-se` | Worktracker tracks work items, not requirements; no traceability matrix or verification capability |
@@ -205,7 +205,7 @@ Agent outputs use standardized templates:
 
 ## Constitutional Compliance
 
-All agents adhere to the **Jerry Constitution v1.0**:
+All agents adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|

@@ -334,7 +334,7 @@ Each track includes: artist, title, album, year, framework mapping, a lyric frag
 
 **Track 29:** Boogie Down Productions — "My Philosophy"
 - **Album/Year:** *By All Means Necessary*, 1988
-- **Framework Mapping:** Constitutional principles. JERRY_CONSTITUTION.md. KRS-One's delivery is pedagogical — teaching, not preaching. The framework's rules are the same: they exist to be understood, not just obeyed. The title is literally the constitution's opening statement.
+- **Framework Mapping:** Constitutional principles. TOM_CONSTITUTION.md. KRS-One's delivery is pedagogical — teaching, not preaching. The framework's rules are the same: they exist to be understood, not just obeyed. The title is literally the constitution's opening statement.
 - **Lyric Fragment:** "It's not about a salary, it's all about reality" — on why governance exists
 - **Mood/Energy:** Medium | Authoritative | No humor
 
@@ -444,7 +444,7 @@ QUALITY_THRESHOLD: float = 0.92
 |----------|-----|
 | **Error messages** | Error messages serve diagnosis. A lyric fragment delays the developer's path to resolution. |
 | **Quality gate scoring output** | Scores are data. The S-014 rubric dimensions and weights must be presented without decoration. |
-| **Constitutional text** | JERRY_CONSTITUTION.md is governance. It must read as governance. |
+| **Constitutional text** | TOM_CONSTITUTION.md is governance. It must read as governance. |
 | **Governance escalation messages** | AE-001 through AE-006 triggers require clarity, not flavor. |
 | **Security-relevant output** | AE-005 contexts are not occasions for cultural references. |
 | **Rule definition files** | `.context/rules/*.md` are enforcement documents. Personality belongs in the voice layer, not the rule layer. |
@@ -552,7 +552,7 @@ This document becomes `SOUNDTRACK.md` at the repository root (or at `docs/cultur
 | 26 | Legacy | Tom Petty | "Free Fallin'" | *Full Moon Fever* | 1989 | Ski BASE; beauty and danger | Medium / Bittersweet-Beautiful |
 | 27 | Legacy | The Who | "Won't Get Fooled Again" | *Who's Next* | 1971 | P-022 No Deception; L1-L5 | Medium-High / Defiant |
 | 28 | Legacy | Metallica | "The Memory Remains" | *Reload* | 1997 | Context rot; filesystem as memory | Medium / Haunting |
-| 29 | Legacy | Boogie Down Productions | "My Philosophy" | *By All Means Necessary* | 1988 | JERRY_CONSTITUTION.md; principles | Medium / Authoritative |
+| 29 | Legacy | Boogie Down Productions | "My Philosophy" | *By All Means Necessary* | 1988 | TOM_CONSTITUTION.md; principles | Medium / Authoritative |
 | 30 | Legacy | Wu-Tang Clan | "C.R.E.A.M." | *Enter the Wu-Tang (36 Chambers)* | 1993 | "Context Rules Everything Around Me" | Medium / Foundational |
 | 31 | The Craft | J Dilla | "Time: The Donut of the Heart" | *Donuts* | 2006 | Persist state; build from fragments | Low-Medium / Tender |
 | 32 | The Craft | Kendrick Lamar | "DNA." | *DAMN.* | 2017 | Constitutional identity; it's in the DNA | High / Intense |

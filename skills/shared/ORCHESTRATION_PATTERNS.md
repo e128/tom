@@ -1,6 +1,6 @@
 ---
 name: orchestration-patterns
-description: Canonical reference for 8 multi-agent orchestration patterns in Jerry, including topology diagrams, invocation examples, and anti-patterns for each pattern.
+description: Canonical reference for 8 multi-agent orchestration patterns in Tom, including topology diagrams, invocation examples, and anti-patterns for each pattern.
 version: "1.1.0"
 template: PATTERN_REFERENCE v1.0.0
 source: SAO-INIT-007 Deep Research (DISCOVERY-008)
@@ -30,7 +30,7 @@ session_context_version: "1.0.0"
 > **Source:** SAO-INIT-007 Deep Research (DISCOVERY-008)
 > **Last Updated:** 2026-01-12
 
-This document defines the 8 canonical orchestration patterns for multi-agent workflows in Jerry.
+This document defines the 8 canonical orchestration patterns for multi-agent workflows in Tom.
 
 ---
 
@@ -770,7 +770,7 @@ session_context:
 
 ## Constitutional Compliance
 
-All orchestration patterns MUST comply with the Jerry Constitution.
+All orchestration patterns MUST comply with the Tom Constitution.
 
 | Principle | Enforcement | Pattern Implications |
 |-----------|-------------|---------------------|
@@ -808,7 +808,7 @@ Before finalizing any pattern execution:
 - **Source:** SAO-INIT-007 plan.md (extracted 2026-01-12)
 - **Discovery:** DISCOVERY-008 (8 patterns identified)
 - **Discovery:** DISCOVERY-009 (session context schema formalized)
-- **Constitution:** Jerry Constitution v1.0 (P-002, P-003, P-010, P-022)
+- **Constitution:** Tom Constitution v1.0 (P-002, P-003, P-010, P-022)
 - **Research:** `projects/PROJ-002-nasa-systems-engineering/research/` (23+ documents)
 
 ---

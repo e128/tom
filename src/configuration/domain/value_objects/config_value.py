@@ -10,7 +10,7 @@ type-safe accessors for common types.
 References:
     - WI-009: Configuration Value Objects
     - AC-009.4: ConfigValue supports type coercion (str → bool/int/list)
-    - ADR-PROJ004-004: JerrySession Context (ConfigValue pattern)
+    - ADR-PROJ004-004: TomSession Context (ConfigValue pattern)
     - PAT-VO-001: Immutable Value Object pattern
 
 Exports:

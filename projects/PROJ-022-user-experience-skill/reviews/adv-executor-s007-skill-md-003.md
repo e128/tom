@@ -6,7 +6,7 @@
 **Date:** 2026-03-03
 **Reviewer:** adv-executor (S-007 execution)
 **Execution ID:** 20260303T003
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.0; rules loaded: quality-enforcement.md, skill-standards.md, agent-development-standards.md, mandatory-skill-usage.md, markdown-navigation-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.0; rules loaded: quality-enforcement.md, skill-standards.md, agent-development-standards.md, mandatory-skill-usage.md, markdown-navigation-standards.md
 
 ---
 
@@ -129,9 +129,9 @@ Both P2 items are cosmetic documentation improvements only. Neither blocks accep
 
 | Principle | Source | Tier | Verdict | Notes |
 |-----------|--------|------|---------|-------|
-| P-003: No recursive subagents | JERRY_CONSTITUTION.md | HARD | COMPLIANT | Task restricted to ux-orchestrator; sub-skill agents declare `disallowedTools: [Task]` |
-| P-020: User authority | JERRY_CONSTITUTION.md | HARD | COMPLIANT | Lifecycle routing defers to user at capacity check; CRISIS mode requires user confirmation before entry |
-| P-022: No deception | JERRY_CONSTITUTION.md | HARD | COMPLIANT | All planned files annotated; synthesis confidence gates make AI limitations explicit |
+| P-003: No recursive subagents | TOM_CONSTITUTION.md | HARD | COMPLIANT | Task restricted to ux-orchestrator; sub-skill agents declare `disallowedTools: [Task]` |
+| P-020: User authority | TOM_CONSTITUTION.md | HARD | COMPLIANT | Lifecycle routing defers to user at capacity check; CRISIS mode requires user confirmation before entry |
+| P-022: No deception | TOM_CONSTITUTION.md | HARD | COMPLIANT | All planned files annotated; synthesis confidence gates make AI limitations explicit |
 | H-13: Quality thresholds | quality-enforcement.md | HARD | COMPLIANT | 0.85 wave threshold deviation is documented with justification blockquote and ADR reference |
 | H-22: Proactive skill invocation | mandatory-skill-usage.md | HARD | COMPLIANT | `/user-experience` in H-22 rule text, trigger map row, and CLAUDE.md; AGENTS.md entry present |
 | H-23: Navigation table | markdown-navigation-standards.md | HARD | COMPLIANT | 14-section navigation table present with anchor links (lines 59-76) |
@@ -139,9 +139,9 @@ Both P2 items are cosmetic documentation improvements only. Neither blocks accep
 | H-26: Description, paths, registration | skill-standards.md | HARD | COMPLIANT | Description contains WHAT+WHEN+triggers; repo-relative paths used; registered in CLAUDE.md, AGENTS.md, mandatory-skill-usage.md |
 | H-34: Dual-file architecture | agent-development-standards.md | HARD | COMPLIANT | ux-orchestrator.md (frontmatter + markdown body) + ux-orchestrator.governance.yaml (version, tool_tier, identity, capabilities, guardrails, constitution) |
 | H-34b/H-35: Constitutional triplet in governance | agent-development-standards.md | HARD | COMPLIANT | governance.yaml: P-003, P-020, P-022 in `constitution.principles_applied`; 5 `forbidden_actions` in NPT-009-complete format |
-| P-001: Evidence required | JERRY_CONSTITUTION.md | MEDIUM | COMPLIANT | Framework references cited with sources and URLs; research provenance table |
-| P-002: File persistence | JERRY_CONSTITUTION.md | MEDIUM | COMPLIANT | Output locations specified per agent; P-002 referenced in constitutional compliance table |
-| P-004: Reasoning provenance | JERRY_CONSTITUTION.md | MEDIUM | MEDIUM | Cross-framework synthesis includes methodology chain; documented in governance |
+| P-001: Evidence required | TOM_CONSTITUTION.md | MEDIUM | COMPLIANT | Framework references cited with sources and URLs; research provenance table |
+| P-002: File persistence | TOM_CONSTITUTION.md | MEDIUM | COMPLIANT | Output locations specified per agent; P-002 referenced in constitutional compliance table |
+| P-004: Reasoning provenance | TOM_CONSTITUTION.md | MEDIUM | MEDIUM | Cross-framework synthesis includes methodology chain; documented in governance |
 | H-34 identity.expertise min 2 | agent-development-standards.md | MEDIUM | COMPLIANT | governance.yaml lists 4 expertise entries |
 | H-34 cognitive_mode declared | agent-development-standards.md | MEDIUM | COMPLIANT | `cognitive_mode: integrative` declared |
 

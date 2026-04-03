@@ -1,4 +1,4 @@
-# Jerry URI Specification
+# Tom URI Specification
 
 > **Specification ID:** SPEC-001
 > **Status:** DRAFT
@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-This specification defines the **Jerry URI Scheme** - a unified naming convention for all resources, events, commands, and schemas in the Jerry framework. The scheme provides:
+This specification defines the **Tom URI Scheme** - a unified naming convention for all resources, events, commands, and schemas in the Tom framework. The scheme provides:
 
 1. **Unified Identity** - Single pattern for entities, events, schemas, commands
 2. **Multi-tenancy Native** - Tenant isolation built into the identifier
@@ -20,7 +20,7 @@ This specification defines the **Jerry URI Scheme** - a unified naming conventio
 
 ---
 
-## I. Understanding Jerry URIs (Multi-Level Explanation)
+## I. Understanding Tom URIs (Multi-Level Explanation)
 
 ### Level 0: ELI5 (Explain Like I'm 5)
 
@@ -30,13 +30,13 @@ Imagine every toy in your room has a special name tag. The name tag tells you:
 - Which exact toy (the red car, not the blue car)
 - What version (the new one or the old one)
 
-Jerry URIs are like super-detailed name tags for everything in our system. Instead of just "Task #42", we say exactly whose task it is, what project it belongs to, and which version we're talking about.
+Tom URIs are like super-detailed name tags for everything in our system. Instead of just "Task #42", we say exactly whose task it is, what project it belongs to, and which version we're talking about.
 
 **Why It Matters:** When you have millions of things, you need perfect name tags so nothing gets mixed up!
 
 ### Level 1: Software Engineer Explanation
 
-Jerry URI is a hierarchical identifier scheme inspired by AWS ARN and URN (RFC 8141). It provides consistent naming across:
+Tom URI is a hierarchical identifier scheme inspired by AWS ARN and URN (RFC 8141). It provides consistent naming across:
 - Domain entities (Task, Phase, Plan)
 - Domain events (TaskCreated, PhaseCompleted)
 - Commands/Actions (CreateTask, UpdatePhase)
@@ -52,7 +52,7 @@ jer[+scheme_version]:<partition>:[tenant_id]:<domain>:[resource_type<:|/><resour
 |-----------|----------|-------------|---------|
 | `jer` | Yes | Scheme prefix | `jer` |
 | `+scheme_version` | No | Scheme version | `+1` |
-| `partition` | Yes | Namespace owner | `jer` (Jerry), `ext` (external) |
+| `partition` | Yes | Namespace owner | `jer` (Tom), `ext` (external) |
 | `tenant_id` | No | Tenant identifier | `victor-lau`, `339c4423-...` |
 | `domain` | Yes | Bounded context | `work-tracker`, `golf-tracker` |
 | `resource_type` | Varies | Entity/action type | `task`, `actions`, `facts` |
@@ -74,21 +74,21 @@ JERRY_URI_PATTERN = re.compile(
 
 ### Level 2: Principal Architect Explanation
 
-The Jerry URI scheme is a **Uniform Resource Identifier** designed for distributed, multi-tenant systems with event sourcing architecture. Key architectural considerations:
+The Tom URI scheme is a **Uniform Resource Identifier** designed for distributed, multi-tenant systems with event sourcing architecture. Key architectural considerations:
 
 **1. Comparison with Industry Standards:**
 
-| Standard | Pattern | Jerry Alignment |
+| Standard | Pattern | Tom Alignment |
 |----------|---------|-----------------|
 | [RFC 8141 URN](https://www.rfc-editor.org/rfc/rfc8141.html) | `urn:NID:NSS` | Uses `jer:` instead of `urn:` for brevity |
 | [AWS ARN](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) | `arn:partition:service:region:account:resource` | Direct inspiration; similar hierarchy |
-| CloudEvents | `com.example.type` | Jerry URI as `type` field value |
+| CloudEvents | `com.example.type` | Tom URI as `type` field value |
 
 **2. Design Decisions:**
 
 | Decision | Rationale |
 |----------|-----------|
-| `jer:` prefix vs `urn:jerry:` | Brevity; ARN uses `arn:` without IANA registration |
+| `jer:` prefix vs `urn:tom:` | Brevity; ARN uses `arn:` without IANA registration |
 | `:` as primary delimiter | Consistent with URN/ARN; easy to split |
 | `/` for paths within resources | Standard URL path convention |
 | `+` for versions | Separates version from name; parseable |
@@ -122,12 +122,12 @@ jer[+scheme_version]:<partition>:[tenant_id]:<domain>:<entity_type>:<entity_id>[
 | Constraint | `jer:jer::work-tracker:constraint:c-001` |
 | User's custom entity | `jer:jer:victor-lau:golf-tracker:swing:sw-042` |
 
-**JerryId Integration:**
+**TomId Integration:**
 ```python
 @dataclass
-class JerryId:
+class TomId:
     """
-    Strongly-typed identity that generates Jerry URIs.
+    Strongly-typed identity that generates Tom URIs.
     """
     prefix: str
     sequence: int
@@ -140,7 +140,7 @@ class JerryId:
     version_hash: str = ""
 
     def to_uri(self, scheme_version: int = 1) -> str:
-        """Generate full Jerry URI."""
+        """Generate full Tom URI."""
         parts = [f"jer+{scheme_version}"]
         parts.append(self.partition)
         parts.append(self.tenant_id if self.tenant_id else "")
@@ -154,11 +154,11 @@ class JerryId:
         return uri
 
     @classmethod
-    def from_uri(cls, uri: str) -> "JerryId":
-        """Parse Jerry URI into JerryId."""
+    def from_uri(cls, uri: str) -> "TomId":
+        """Parse Tom URI into TomId."""
         match = JERRY_URI_PATTERN.match(uri)
         if not match:
-            raise ValueError(f"Invalid Jerry URI: {uri}")
+            raise ValueError(f"Invalid Tom URI: {uri}")
         # ... parsing logic
 ```
 
@@ -178,8 +178,8 @@ jer[+scheme_version]:<partition>:[tenant_id]:<domain>:actions/<ActionName>
 
 | Description | URI |
 |-------------|-----|
-| Jerry-owned CreateTask | `jer:jer::work-tracker:actions/CreateTask` |
-| Jerry-owned UpdatePhase | `jer:jer::work-tracker:actions/UpdatePhase` |
+| Tom-owned CreateTask | `jer:jer::work-tracker:actions/CreateTask` |
+| Tom-owned UpdatePhase | `jer:jer::work-tracker:actions/UpdatePhase` |
 | Tenant-owned custom action | `jer:jer:victor-lau:golf-tracker:actions/LogSwing` |
 | With scheme version | `jer+1:jer::work-tracker:actions/DeletePlan` |
 
@@ -255,9 +255,9 @@ jer[+scheme_version]:<partition>:[tenant_id]:<domain>:<entity_type>:<SchemaName>
 ## III. Formal Grammar (ABNF)
 
 ```abnf
-; Jerry URI Grammar (RFC 5234 ABNF)
+; Tom URI Grammar (RFC 5234 ABNF)
 
-jerry-uri       = scheme partition tenant-id domain resource
+tom-uri       = scheme partition tenant-id domain resource
 scheme          = "jer" [ "+" scheme-version ] ":"
 scheme-version  = 1*DIGIT
 partition       = 1*ALPHA ":"
@@ -292,11 +292,11 @@ semver          = 1*DIGIT "." 1*DIGIT "." 1*DIGIT
 
 | Partition | Owner | Description |
 |-----------|-------|-------------|
-| `jer` | Jerry Framework | Core framework resources |
+| `jer` | Tom Framework | Core framework resources |
 | `ext` | Extensions | Third-party extensions |
 | `exp` | Experimental | Experimental/unstable resources |
 
-### B. Domains (Jerry-Owned)
+### B. Domains (Tom-Owned)
 
 | Domain | Description |
 |--------|-------------|
@@ -325,7 +325,7 @@ semver          = 1*DIGIT "." 1*DIGIT "." 1*DIGIT
 
 ## V. Implementation
 
-### A. JerryUri Value Object
+### A. TomUri Value Object
 
 ```python
 from dataclasses import dataclass
@@ -333,9 +333,9 @@ from typing import Optional
 import re
 
 @dataclass(frozen=True)
-class JerryUri:
+class TomUri:
     """
-    Immutable value object representing a Jerry URI.
+    Immutable value object representing a Tom URI.
 
     Prior Art:
     - RFC 8141: Uniform Resource Names (URNs)
@@ -382,11 +382,11 @@ class JerryUri:
         return uri
 
     @classmethod
-    def parse(cls, uri: str) -> "JerryUri":
-        """Parse a Jerry URI string into a JerryUri object."""
+    def parse(cls, uri: str) -> "TomUri":
+        """Parse a Tom URI string into a TomUri object."""
         match = cls.PATTERN.match(uri)
         if not match:
-            raise ValueError(f"Invalid Jerry URI: {uri}")
+            raise ValueError(f"Invalid Tom URI: {uri}")
 
         return cls(
             scheme_version=int(match.group('scheme_version') or 1),
@@ -405,7 +405,7 @@ class JerryUri:
         entity_id: str,
         version: Optional[str] = None,
         tenant_id: Optional[str] = None
-    ) -> "JerryUri":
+    ) -> "TomUri":
         """Factory for entity URIs."""
         return cls(
             domain=domain,
@@ -420,7 +420,7 @@ class JerryUri:
         domain: str,
         action_name: str,
         tenant_id: Optional[str] = None
-    ) -> "JerryUri":
+    ) -> "TomUri":
         """Factory for action/command URIs."""
         return cls(
             domain=domain,
@@ -435,7 +435,7 @@ class JerryUri:
         event_name: str,
         path: Optional[str] = None,
         tenant_id: Optional[str] = None
-    ) -> "JerryUri":
+    ) -> "TomUri":
         """Factory for event/fact URIs."""
         resource_path = f"facts/{path}/{event_name}" if path else f"facts/{event_name}"
         return cls(
@@ -452,7 +452,7 @@ class JerryUri:
         schema_name: str,
         version: str,
         tenant_id: Optional[str] = None
-    ) -> "JerryUri":
+    ) -> "TomUri":
         """Factory for JSON Schema URIs."""
         return cls(
             domain=domain,
@@ -463,7 +463,7 @@ class JerryUri:
 
     # Comparison
     def __eq__(self, other) -> bool:
-        if isinstance(other, JerryUri):
+        if isinstance(other, TomUri):
             return str(self) == str(other)
         if isinstance(other, str):
             return str(self) == other
@@ -478,14 +478,14 @@ class JerryUri:
 ```python
 @dataclass
 class EntityBase(IAuditable, IVersioned):
-    """Extended with Jerry URI support."""
+    """Extended with Tom URI support."""
 
-    id: JerryId
-    uri: JerryUri = field(init=False)  # Computed
+    id: TomId
+    uri: TomUri = field(init=False)  # Computed
 
     def __post_init__(self):
         """Compute URI from ID."""
-        self.uri = JerryUri.for_entity(
+        self.uri = TomUri.for_entity(
             domain=self.id.domain,
             entity_type=self.id.prefix,
             entity_id=self.id.full_form,
@@ -505,9 +505,9 @@ def create_domain_event(
     data: dict
 ) -> CloudEvent:
     """
-    Create a CloudEvent with Jerry URI type.
+    Create a CloudEvent with Tom URI type.
     """
-    event_type = JerryUri.for_event(
+    event_type = TomUri.for_event(
         domain=source_entity.id.domain,
         event_name=event_name,
         tenant_id=source_entity.id.tenant_id
@@ -525,15 +525,15 @@ def create_domain_event(
 
 ## VI. Discoveries
 
-### DISC-057: Jerry URI Scheme
+### DISC-057: Tom URI Scheme
 
 **ID:** DISC-057
-**Slug:** jerry-uri-scheme
-**Name:** Jerry URI Provides Unified Multi-Tenant Resource Naming
+**Slug:** tom-uri-scheme
+**Name:** Tom URI Provides Unified Multi-Tenant Resource Naming
 **Short Description:** Hierarchical URI scheme inspired by AWS ARN and RFC 8141 URN for consistent resource identification.
 
 **Long Description:**
-The Jerry URI scheme (`jer:partition:tenant:domain:resource`) provides unified naming for all system resources including entities, events, commands, and schemas. Key benefits: (1) multi-tenancy native with tenant_id component, (2) versioning support at both scheme and resource level, (3) CloudEvents integration as `type` field, (4) JSON Schema `$id` compatibility. The design follows AWS ARN's proven hierarchical pattern while incorporating URN principles from RFC 8141.
+The Tom URI scheme (`jer:partition:tenant:domain:resource`) provides unified naming for all system resources including entities, events, commands, and schemas. Key benefits: (1) multi-tenancy native with tenant_id component, (2) versioning support at both scheme and resource level, (3) CloudEvents integration as `type` field, (4) JSON Schema `$id` compatibility. The design follows AWS ARN's proven hierarchical pattern while incorporating URN principles from RFC 8141.
 
 **Evidence:**
 - [RFC 8141: Uniform Resource Names](https://www.rfc-editor.org/rfc/rfc8141.html)
@@ -541,7 +541,7 @@ The Jerry URI scheme (`jer:partition:tenant:domain:resource`) provides unified n
 
 **Level Impact:**
 - **L0:** Every thing gets a special name that includes who owns it and which project it belongs to
-- **L1:** Implement `JerryUri` value object; use as `type` in CloudEvents, `$id` in JSON Schema
+- **L1:** Implement `TomUri` value object; use as `type` in CloudEvents, `$id` in JSON Schema
 - **L2:** Single naming scheme enables consistent routing, access control, and event sourcing across multi-tenant deployments
 
 ---
@@ -562,14 +562,14 @@ The Jerry URI scheme (`jer:partition:tenant:domain:resource`) provides unified n
    - Key: `type` and `source` field usage
 
 ### Design Decisions
-4. **Why `jer:` instead of `urn:jerry:`**
+4. **Why `jer:` instead of `urn:tom:`**
    - Brevity: ARN uses `arn:` without IANA registration
-   - Consistency: All Jerry URIs start with `jer:`
+   - Consistency: All Tom URIs start with `jer:`
    - Future: Can register with IANA if needed
 
 5. **Why tenant_id is optional**
    - Supports single-tenant deployments
-   - Default to Jerry-owned (`jer:jer:...`)
+   - Default to Tom-owned (`jer:jer:...`)
    - Multi-tenancy opt-in
 
 ---

@@ -6,7 +6,7 @@
 > **Criticality:** C4 (tournament mode per orchestration plan)
 > **Date:** 2026-02-17
 > **Reviewer:** adv-executor (S-007)
-> **Constitutional Context:** JERRY_CONSTITUTION.md v1.0, quality-enforcement.md v1.3.0, H-01 through H-24
+> **Constitutional Context:** TOM_CONSTITUTION.md v1.0, quality-enforcement.md v1.3.0, H-01 through H-24
 > **Execution ID:** 20260217T1200
 
 ## Document Sections
@@ -37,7 +37,7 @@ PARTIAL compliance: 0 Critical findings, 1 Major (CC-001-20260217T1200: internal
 Deliverable type: **Document** (audit report, license analysis).
 
 Applicable rule sets loaded:
-- `JERRY_CONSTITUTION.md` (P-001 through P-043)
+- `TOM_CONSTITUTION.md` (P-001 through P-043)
 - `quality-enforcement.md` (H-01 through H-24, SSOT)
 - `markdown-navigation-standards.md` (H-23, H-24)
 - `python-environment.md` (H-05, H-06)

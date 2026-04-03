@@ -49,7 +49,7 @@
 ## Prerequisites
 
 - `JERRY_PROJECT` environment variable is set to an active project ([H-04](https://github.com/geekatron/jerry/blob/main/.context/rules/quality-enforcement.md#hard-rule-index) — session will not proceed without this)
-- A Jerry session is active (`jerry session start` has been run)
+- A Tom session is active (`tom session start` has been run)
 - You have a clear problem statement, question, or topic to investigate
 - For research or analysis tasks: relevant prior documents are accessible in the repository (optional but recommended — agents will scan for existing context)
 - For code review tasks: the code to be reviewed is committed or staged in the repository
@@ -169,7 +169,7 @@ For C2+ deliverables (reversible in up to 1 day, touching 3–10 files), the pro
 **Circuit breaker:** After the minimum 3 iterations, if no improvement occurs over 2 consecutive cycles, the agent will either accept the deliverable with caveats documented or escalate to the user.
 
 **Criticality auto-escalation rules** apply to problem-solving artifacts:
-- Artifacts touching `docs/governance/JERRY_CONSTITUTION.md` = auto-C4 (all 10 adversarial strategies required)
+- Artifacts touching `docs/governance/TOM_CONSTITUTION.md` = auto-C4 (all 10 adversarial strategies required)
 - Artifacts touching `.context/rules/` or `.claude/rules/` = auto-C3 minimum
 - New or modified ADRs = auto-C3 minimum
 
@@ -213,8 +213,8 @@ For C2+ deliverables (reversible in up to 1 day, touching 3–10 files), the pro
 
 | Symptom | Cause | Resolution |
 |---------|-------|------------|
-| "JERRY_PROJECT not set" or session fails to start | H-04 constraint: no active project is configured | Run `jerry session start` and ensure `JERRY_PROJECT` is set in the environment. See `docs/runbooks/getting-started.md` for setup procedure. |
-| Agent produces output but no file appears in `docs/` | [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence) persistence constraint violated — the agent did not write its output to disk | Re-invoke the agent with an explicit instruction: "Persist your findings to a file in `docs/research/`." All agents MUST write output files per [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence). |
+| "JERRY_PROJECT not set" or session fails to start | H-04 constraint: no active project is configured | Run `tom session start` and ensure `JERRY_PROJECT` is set in the environment. See `docs/runbooks/getting-started.md` for setup procedure. |
+| Agent produces output but no file appears in `docs/` | [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence) persistence constraint violated — the agent did not write its output to disk | Re-invoke the agent with an explicit instruction: "Persist your findings to a file in `docs/research/`." All agents MUST write output files per [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence). |
 | Creator-critic cycle runs more than 5 times without reaching 0.92 | Deliverable has a fundamental structural problem; the critic is finding the same gap each iteration | Review the latest critique artifact in `docs/critiques/`. Identify the dimension with the lowest sub-score. Re-state the request with explicit guidance addressing that dimension. |
 | Wrong agent was selected for my request | Keyword detection selected a different agent than intended | Use explicit agent naming: "Use ps-investigator to..." — this bypasses keyword selection and directly invokes the named agent. |
 | Agent references a prior document that does not contain the expected content | File naming mismatch or document was moved | Ask Claude to search for all markdown files under `docs/` (e.g., "find all .md files in docs/") to verify the actual paths of prior artifacts, then re-invoke the agent with the correct file path. |

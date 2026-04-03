@@ -100,7 +100,7 @@ User: /transcript file.vtt
     ↓
 SKILL.md (skills/transcript/SKILL.md)
     ↓
-Phase 1: CLI parsing (uv run jerry transcript parse ...)
+Phase 1: CLI parsing (uv run tom transcript parse ...)
     ↓
 Phase 2: Task(subagent_type="general-purpose", prompt="You are ts-extractor...")
     ↓
@@ -120,7 +120,7 @@ Runs ts-extractor using sonnet model
 1. **SKILL.md** - Add parameter parsing for model selection
 2. **Agent .md files** - Keep default models, make them overridable
 3. **Task tool invocations** - Pass model parameter (if supported)
-4. **CLI (jerry transcript)** - Accept model flags
+4. **CLI (tom transcript)** - Accept model flags
 5. **Validation logic** - Ensure valid model choices
 6. **Documentation** - Update PLAYBOOK.md, RUNBOOK.md
 
@@ -142,7 +142,7 @@ Runs ts-extractor using sonnet model
 | **End Users** | New capability | Learn new CLI flags |
 | **Skill Orchestrator (SKILL.md)** | Logic changes | Parse and pass models |
 | **Agent Definitions** | Documentation updates | Add override notes |
-| **Jerry CLI** | New parameters | Flag parsing |
+| **Tom CLI** | New parameters | Flag parsing |
 | **Claude Code Task Tool** | Unknown | May need Claude Code platform support |
 
 #### WHY is this challenging?
@@ -171,14 +171,14 @@ Runs ts-extractor using sonnet model
 
 ```bash
 # Use haiku for all agents
-uv run jerry transcript parse file.vtt --model haiku
+uv run tom transcript parse file.vtt --model haiku
 ```
 
 **Option B: Per-Agent Model Selection (Full)**
 
 ```bash
 # Mix and match
-uv run jerry transcript parse file.vtt \
+uv run tom transcript parse file.vtt \
     --model-parser haiku \
     --model-extractor opus \
     --model-formatter sonnet \
@@ -188,7 +188,7 @@ uv run jerry transcript parse file.vtt \
 **Implementation Flow:**
 
 ```
-1. User invokes: jerry transcript parse file.vtt --model-extractor opus
+1. User invokes: tom transcript parse file.vtt --model-extractor opus
    ↓
 2. CLI parses flags → model_overrides = {"extractor": "opus"}
    ↓
@@ -440,7 +440,7 @@ All decisions can be changed later without breaking backward compatibility.
 
 ```bash
 export TRANSCRIPT_MODEL_EXTRACTOR=opus
-uv run jerry transcript parse file.vtt
+uv run tom transcript parse file.vtt
 ```
 
 **Pros:**
@@ -457,7 +457,7 @@ uv run jerry transcript parse file.vtt
 #### Alternative 2: Config File
 
 ```yaml
-# ~/.jerry/transcript-config.yaml
+# ~/.tom/transcript-config.yaml
 models:
   parser: haiku
   extractor: opus
@@ -496,7 +496,7 @@ Dynamically rewrite agent .md files before invocation.
 #### Phase 1: MVP (Single Model Override)
 
 ```bash
-jerry transcript parse file.vtt --model haiku
+tom transcript parse file.vtt --model haiku
 ```
 
 **Scope:**
@@ -512,7 +512,7 @@ jerry transcript parse file.vtt --model haiku
 #### Phase 2: Full (Per-Agent Selection)
 
 ```bash
-jerry transcript parse file.vtt \
+tom transcript parse file.vtt \
     --model-extractor opus \
     --model-formatter sonnet
 ```
@@ -617,7 +617,7 @@ Start with MVP (single model override) to deliver quick value with low risk. Exp
 - `/skills/problem-solving/agents/ps-critic.md` - Critic agent (model: sonnet)
 
 **Related Work:**
-- Jerry Constitution v1.0 - Principle P-002 (File Persistence)
+- Tom Constitution v1.0 - Principle P-002 (File Persistence)
 - SKILL.md v2.3.0 - Current orchestration architecture
 - TDD-FEAT-004 - Hybrid Infrastructure (v2.0 basis)
 

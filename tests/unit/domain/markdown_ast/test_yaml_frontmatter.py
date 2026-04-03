@@ -30,7 +30,7 @@ from __future__ import annotations
 import pytest
 
 from src.domain.markdown_ast.input_bounds import InputBounds
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.yaml_frontmatter import (
     YamlFrontmatter,
     YamlFrontmatterField,
@@ -49,7 +49,7 @@ class TestYamlFrontmatterExtraction:
     def test_extract_simple_fields(self) -> None:
         """Extracts key-value pairs from --- delimited block."""
         source = "---\nname: test-agent\nversion: 1.0.0\n---\n# Agent\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.parse_error is None
@@ -63,7 +63,7 @@ class TestYamlFrontmatterExtraction:
     def test_extract_preserves_raw_yaml(self) -> None:
         """raw_yaml contains the text between --- delimiters."""
         source = "---\nname: test\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert "name: test" in result.raw_yaml
@@ -72,7 +72,7 @@ class TestYamlFrontmatterExtraction:
     def test_extract_line_positions(self) -> None:
         """start_line and end_line are set correctly."""
         source = "---\nname: test\nversion: 1.0\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.start_line == 0
@@ -81,7 +81,7 @@ class TestYamlFrontmatterExtraction:
     @pytest.mark.happy_path
     def test_no_yaml_returns_empty(self) -> None:
         """Document without --- block returns empty result."""
-        doc = JerryDocument.parse("# Just a heading\n\nContent.\n")
+        doc = TomDocument.parse("# Just a heading\n\nContent.\n")
         result = YamlFrontmatter.extract(doc)
 
         assert result.parse_error is None
@@ -91,7 +91,7 @@ class TestYamlFrontmatterExtraction:
     @pytest.mark.happy_path
     def test_empty_document(self) -> None:
         """Empty document returns empty result."""
-        doc = JerryDocument.parse("")
+        doc = TomDocument.parse("")
         result = YamlFrontmatter.extract(doc)
 
         assert result.parse_error is None
@@ -110,7 +110,7 @@ class TestTypeNormalization:
     def test_string_type(self) -> None:
         """String values get value_type='str'."""
         source = "---\nname: test-agent\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.fields[0].value_type == "str"
@@ -120,7 +120,7 @@ class TestTypeNormalization:
     def test_integer_type(self) -> None:
         """Integer values get value_type='int'."""
         source = "---\ncount: 42\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.fields[0].value_type == "int"
@@ -130,7 +130,7 @@ class TestTypeNormalization:
     def test_float_type(self) -> None:
         """Float values get value_type='float'."""
         source = "---\nscore: 3.14\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.fields[0].value_type == "float"
@@ -140,7 +140,7 @@ class TestTypeNormalization:
     def test_boolean_type(self) -> None:
         """Boolean values get value_type='bool'."""
         source = "---\nenabled: true\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.fields[0].value_type == "bool"
@@ -150,7 +150,7 @@ class TestTypeNormalization:
     def test_null_type(self) -> None:
         """Null values get value_type='null'."""
         source = "---\nempty: null\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.fields[0].value_type == "null"
@@ -160,7 +160,7 @@ class TestTypeNormalization:
     def test_list_type(self) -> None:
         """List values get value_type='list'."""
         source = "---\nitems:\n  - one\n  - two\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.fields[0].value_type == "list"
@@ -171,7 +171,7 @@ class TestTypeNormalization:
     def test_dict_type(self) -> None:
         """Dict values get value_type='dict'."""
         source = "---\nperson:\n  name: alice\n  age: 30\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.fields[0].value_type == "dict"
@@ -190,7 +190,7 @@ class TestFirstPairOnly:
     def test_second_yaml_block_ignored(self) -> None:
         """Only the first --- block is extracted; subsequent ones are ignored."""
         source = "---\nfirst: block\n---\n\n## Content\n\n---\nsecond: block\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.parse_error is None
@@ -211,7 +211,7 @@ class TestBoundsEnforcement:
         """YAML block exceeding max_yaml_block_bytes produces parse error (M-07)."""
         bounds = InputBounds(max_yaml_block_bytes=10)
         source = "---\nname: this-is-a-long-name-that-exceeds\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc, bounds)
 
         assert result.parse_error is not None
@@ -222,7 +222,7 @@ class TestBoundsEnforcement:
         """Key count exceeding max produces parse error (M-16)."""
         bounds = InputBounds(max_frontmatter_keys=2)
         source = "---\na: 1\nb: 2\nc: 3\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc, bounds)
 
         assert result.parse_error is not None
@@ -233,7 +233,7 @@ class TestBoundsEnforcement:
         """Nesting depth exceeding max produces parse error (M-06)."""
         bounds = InputBounds(max_nesting_depth=1)
         source = "---\nouter:\n  inner:\n    deep: value\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc, bounds)
 
         assert result.parse_error is not None
@@ -244,7 +244,7 @@ class TestBoundsEnforcement:
         """Alias count exceeding max produces parse error (M-20)."""
         bounds = InputBounds(max_alias_count=0)
         source = "---\nanchor: &ref value\naliased: *ref\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc, bounds)
 
         assert result.parse_error is not None
@@ -255,7 +255,7 @@ class TestBoundsEnforcement:
         """Value exceeding max_value_length produces warning (M-17)."""
         bounds = InputBounds(max_value_length=5)
         source = "---\nname: this-is-very-long\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc, bounds)
 
         assert result.parse_error is None
@@ -307,7 +307,7 @@ class TestDuplicateKeyDetection:
     def test_duplicate_keys_produce_warning(self) -> None:
         """Duplicate YAML keys produce a warning."""
         source = "---\nname: first\nname: second\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert len(result.parse_warnings) > 0
@@ -317,7 +317,7 @@ class TestDuplicateKeyDetection:
     def test_duplicate_key_last_value_used(self) -> None:
         """For duplicate keys, the last value is used (PyYAML behavior)."""
         source = "---\nname: first\nname: second\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         # PyYAML uses the last value for duplicate keys
@@ -337,7 +337,7 @@ class TestErrorHandling:
     def test_invalid_yaml_produces_parse_error(self) -> None:
         """Invalid YAML syntax produces a parse error."""
         source = "---\n: invalid yaml:\n  bad: [unclosed\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.parse_error is not None
@@ -347,7 +347,7 @@ class TestErrorHandling:
     def test_non_mapping_yaml_produces_error(self) -> None:
         """YAML that parses as non-dict produces error."""
         source = "---\n- item1\n- item2\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.parse_error is not None
@@ -357,7 +357,7 @@ class TestErrorHandling:
     def test_error_messages_do_not_leak_full_content(self) -> None:
         """Error messages are sanitized (M-19): no raw YAML in error."""
         source = "---\n: [broken yaml\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.parse_error is not None
@@ -397,7 +397,7 @@ class TestImmutability:
     def test_fields_is_tuple(self) -> None:
         """Fields container is a tuple for immutability."""
         source = "---\nname: test\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert isinstance(result.fields, tuple)
@@ -406,7 +406,7 @@ class TestImmutability:
     def test_parse_warnings_is_tuple(self) -> None:
         """parse_warnings is a tuple for immutability."""
         source = "---\nname: test\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert isinstance(result.parse_warnings, tuple)
@@ -424,7 +424,7 @@ class TestDefaultBounds:
     def test_none_bounds_uses_defaults(self) -> None:
         """Passing None for bounds uses InputBounds.DEFAULT."""
         source = "---\nname: test\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc, bounds=None)
 
         assert result.parse_error is None
@@ -444,7 +444,7 @@ class TestYamlErrorPaths:
         """ScannerError with problem_mark includes line info (lines 272-275)."""
         # Invalid YAML that triggers ScannerError with position info
         source = "---\nname: test\n  bad indent: value\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.parse_error is not None
@@ -456,7 +456,7 @@ class TestYamlErrorPaths:
         """ConstructorError produces parse error (lines 293-294)."""
         # YAML with a tag that triggers ConstructorError in safe_load
         source = "---\ndata: !!python/object:os.system 'ls'\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc)
 
         assert result.parse_error is not None
@@ -468,7 +468,7 @@ class TestYamlErrorPaths:
         # Create a YAML with enough content to exceed a very small result limit
         bounds = InputBounds(max_yaml_result_bytes=10)
         source = "---\nname: this-is-a-long-value-that-will-exceed-ten-bytes\n---\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         result = YamlFrontmatter.extract(doc, bounds=bounds)
 
         assert result.parse_error is not None

@@ -1,6 +1,6 @@
 # How to Add a New GitHub Actions Dependency
 
-> Add a SHA-pinned third-party GitHub Action to the Jerry CI pipeline and verify Dependabot will maintain it.
+> Add a SHA-pinned third-party GitHub Action to the Tom CI pipeline and verify Dependabot will maintain it.
 
 ## Document Sections
 
@@ -17,7 +17,7 @@
 ## Before You Begin
 
 You need:
-- Write access to the Jerry repository
+- Write access to the Tom repository
 - The name of the action you want to add (e.g., `owner/action-name`)
 - The desired version tag (e.g., `v2.1.0`)
 
@@ -143,4 +143,4 @@ Expected result: every match line contains the full SHA and `# vX.Y.Z`.
 ## Related
 
 - **Reference:** [CI/CD Pipeline Security Controls](../reference/ci-cd-pipeline-security.md) -- SHA-to-version mapping table, Dependabot configuration, and per-workflow action matrix
-- **Explanation:** [About the Jerry Framework CI/CD Supply Chain Security Model](../explanation/ci-cd-supply-chain-security.md) -- Threat model and rationale for SHA pinning
+- **Explanation:** [About the Tom Framework CI/CD Supply Chain Security Model](../explanation/ci-cd-supply-chain-security.md) -- Threat model and rationale for SHA pinning

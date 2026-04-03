@@ -219,7 +219,7 @@ The most dangerous remaining failure modes are: **runtime overrun** (FM-015, RPN
 ### FM-030v2 (RPN: 210) -- Constitutional Governance Accuracy (PERSISTENT)
 
 **Element:** EL-10, Scene 3 Narration
-**Failure Mode:** "Constitutional governance that cannot be overridden" is technically inaccurate. The JERRY_CONSTITUTION.md can be modified by a human; CLAUDE.md HARD rules can be changed by editing the file. The framework enforces rules within sessions but does not prevent a human from changing the rules. At a showcase with Anthropic engineers, AI researchers, and technical evaluators, this claim will be challenged.
+**Failure Mode:** "Constitutional governance that cannot be overridden" is technically inaccurate. The TOM_CONSTITUTION.md can be modified by a human; CLAUDE.md HARD rules can be changed by editing the file. The framework enforces rules within sessions but does not prevent a human from changing the rules. At a showcase with Anthropic engineers, AI researchers, and technical evaluators, this claim will be challenged.
 **Effect:** An Anthropic engineer or technical evaluator publicly corrects the claim in Q&A; the governance story is undermined at the moment of maximum credibility requirement.
 **S = 7:** Credibility damage with primary target audience at irreversible public event.
 **O = 5:** Technical audience is split -- some will catch this; some will not.

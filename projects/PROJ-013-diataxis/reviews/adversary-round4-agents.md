@@ -108,7 +108,7 @@ Strong internal consistency across most pairs:
 - Cognitive mode: MD body and YAML `identity.cognitive_mode` match for all 6 agents (systematic x4, convergent x1, divergent x1)
 - Tool lists vs. tool tiers: tutorial/howto/reference use T2 tools and T2 tier (consistent); classifier/auditor use T1 tools and T1 tier (consistent)
 - Verdict vocabulary: `PASS|NEEDS REVISION|MAJOR REWORK` consistent between auditor MD methodology Step 6 and auditor governance YAML `on_send.verdict`
-- Constitutional references: all 6 YAML files reference `docs/governance/JERRY_CONSTITUTION.md` consistently
+- Constitutional references: all 6 YAML files reference `docs/governance/TOM_CONSTITUTION.md` consistently
 
 **Gaps:**
 
@@ -230,7 +230,7 @@ on_send:
 
 **Evidence:**
 
-1. All 6 governance YAML files have `constitution.reference: "docs/governance/JERRY_CONSTITUTION.md"` — explicit constitutional anchor
+1. All 6 governance YAML files have `constitution.reference: "docs/governance/TOM_CONSTITUTION.md"` — explicit constitutional anchor
 2. All 6 `principles_applied` arrays cite P-003, P-020, P-022 with behavioral descriptions
 3. Tool tier choices trace to `agent-development-standards.md` T1-T5 taxonomy
 4. Model choices trace to AD-M-009 (model selection standard)

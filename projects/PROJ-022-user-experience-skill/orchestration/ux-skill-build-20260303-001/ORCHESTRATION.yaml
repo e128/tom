@@ -1292,7 +1292,7 @@ quality:
 
   auto_escalation_active:
     AE_002: "Applies to pipeline_registration — .context/rules/mandatory-skill-usage.md is auto-C3 minimum (already C4)"
-    AE_001: "Does not apply (not touching JERRY_CONSTITUTION.md)"
+    AE_001: "Does not apply (not touching TOM_CONSTITUTION.md)"
     AE_003: "Does not apply (no ADRs in scope)"
 
   schema_validation: "Every .governance.yaml validates against docs/schemas/agent-governance-v1.schema.json BEFORE LLM scoring (H-34)"

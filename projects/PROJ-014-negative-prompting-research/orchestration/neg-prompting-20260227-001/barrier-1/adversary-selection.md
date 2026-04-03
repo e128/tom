@@ -11,7 +11,7 @@
 **Auto-Escalation Applied:** No
 
 **Auto-Escalation Checks:**
-- AE-001 (touches JERRY_CONSTITUTION.md): No
+- AE-001 (touches TOM_CONSTITUTION.md): No
 - AE-002 (touches .context/rules/ or .claude/rules/): No
 - AE-003 (new or modified ADR): No
 - AE-004 (modifies baselined ADR): No

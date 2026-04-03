@@ -1,8 +1,8 @@
-# About Jerry's Permission and Security Model
+# About Tom's Permission and Security Model
 
-> Jerry enforces security through a three-layer model where Claude Code settings provide coarse access control, a hook-based SecurityEnforcementEngine provides deterministic command blocking, and a PreToolEnforcementEngine provides architecture boundary validation. The blanket `Bash` permission in `settings.json` is an intentional design decision, not an oversight.
+> Tom enforces security through a three-layer model where Claude Code settings provide coarse access control, a hook-based SecurityEnforcementEngine provides deterministic command blocking, and a PreToolEnforcementEngine provides architecture boundary validation. The blanket `Bash` permission in `settings.json` is an intentional design decision, not an oversight.
 
-> **Scope:** This document explains why Jerry grants blanket Bash permission and how the hook-based enforcement pipeline compensates. It does not cover the architecture validation rules themselves (H-07, H-10), the staleness detection system, or the prompt reinforcement engine -- those are related but separate enforcement concerns.
+> **Scope:** This document explains why Tom grants blanket Bash permission and how the hook-based enforcement pipeline compensates. It does not cover the architecture validation rules themselves (H-07, H-10), the staleness detection system, or the prompt reinforcement engine -- those are related but separate enforcement concerns.
 
 <!-- Quality criteria: skills/diataxis/rules/diataxis-standards.md Section 1 (E-01 through E-07) -->
 <!-- Anti-patterns to avoid: EAP-01 (instructional creep), EAP-05 (unbounded scope) -->
@@ -19,7 +19,7 @@
 | [Permission Inheritance and the Skill Gap](#permission-inheritance-and-the-skill-gap) | How permissions propagate to subagents and skills, and where they break down |
 | [The Skill Permission Namespace](#the-skill-permission-namespace) | How `Skill()` entries work and why the fully-qualified form matters |
 | [The Anti-Pattern: Per-Command Bash Patterns in Settings](#the-anti-pattern-per-command-bash-patterns-in-settings) | Why adding fine-grained Bash permissions to settings.json makes security worse |
-| [Connections](#connections) | How this topic relates to other Jerry systems |
+| [Connections](#connections) | How this topic relates to other Tom systems |
 | [Alternative Perspectives](#alternative-perspectives) | Acknowledging the case for settings-level restrictions |
 | [Related](#related) | Links to reference, investigation, and implementation files |
 
@@ -27,7 +27,7 @@
 
 ## Context
 
-A future developer -- or a future Claude Code session -- looking at Jerry's `.claude/settings.json` and seeing `"Bash"` in the allow list might reasonably conclude this is a security gap. The instinct to replace it with a curated list of `Bash(git *)`, `Bash(uv *)`, `Bash(cat *)` patterns feels like an obvious improvement. It is not. It would actively degrade both security coverage and operational reliability.
+A future developer -- or a future Claude Code session -- looking at Tom's `.claude/settings.json` and seeing `"Bash"` in the allow list might reasonably conclude this is a security gap. The instinct to replace it with a curated list of `Bash(git *)`, `Bash(uv *)`, `Bash(cat *)` patterns feels like an obvious improvement. It is not. It would actively degrade both security coverage and operational reliability.
 
 This explanation exists because the permission model's design rationale is non-obvious. The safety of blanket Bash permission depends on understanding what happens *after* Claude Code grants access -- specifically, the hook-based enforcement pipeline that evaluates every Bash invocation before it executes. Without that context, the settings file looks negligent. With it, the settings file looks like what it is: the coarsest layer in a defense-in-depth architecture where the real security work happens elsewhere.
 
@@ -37,9 +37,9 @@ The decision to use blanket Bash permission was not made at the start of the pro
 
 ## The Three Layers and Their Responsibilities
 
-Jerry's security enforcement operates across three distinct layers, each with a different scope, mechanism, and failure mode. Understanding why each layer exists -- and what it is *not* responsible for -- is essential to understanding why the overall model works.
+Tom's security enforcement operates across three distinct layers, each with a different scope, mechanism, and failure mode. Understanding why each layer exists -- and what it is *not* responsible for -- is essential to understanding why the overall model works.
 
-**Layer 1: Claude Code Settings** (`settings.json` and `settings.local.json`) provides coarse-grained tool access control. The `permissions.allow`, `permissions.deny`, and `permissions.ask` arrays determine whether Claude Code will permit, block, or prompt for approval before invoking a tool. This layer operates at the tool-name level: it knows that a Bash command is being requested, but it evaluates command content only through pattern matching against the permission string. The evaluation order is `deny > ask > allow`, and deny is absolute -- no allow entry at any scope overrides a denial. Jerry's committed `settings.json` allows `Bash` without qualification, meaning all shell commands pass this layer without prompting.
+**Layer 1: Claude Code Settings** (`settings.json` and `settings.local.json`) provides coarse-grained tool access control. The `permissions.allow`, `permissions.deny`, and `permissions.ask` arrays determine whether Claude Code will permit, block, or prompt for approval before invoking a tool. This layer operates at the tool-name level: it knows that a Bash command is being requested, but it evaluates command content only through pattern matching against the permission string. The evaluation order is `deny > ask > allow`, and deny is absolute -- no allow entry at any scope overrides a denial. Tom's committed `settings.json` allows `Bash` without qualification, meaning all shell commands pass this layer without prompting.
 
 **Layer 2: SecurityEnforcementEngine** (`src/infrastructure/internal/enforcement/security_enforcement_engine.py`) provides deterministic, pattern-based command blocking through the `PreToolUse` hook. Every time Claude Code attempts to invoke a Write, Edit, MultiEdit, NotebookEdit, or Bash tool, the hook fires and the security engine evaluates the request against a codified rule set. For Bash commands, this includes blocking destructive `rm` patterns (recursive force-delete targeting `/` or `~`), download-then-execute chains (`curl` piped to `bash`), `eval` invocations, disk formatting commands (`mkfs`, `dd`), force pushes to protected branches (`main`, `master`), null byte injection attempts, and `cd` commands that would corrupt the working directory. For file writes, it blocks writes to system paths (`/etc`, `/usr`, `~/.ssh`, `~/.aws`), credential files (`.env`, `.pem`, `.key`, `id_rsa`), and paths containing null bytes. The rule definitions live in `SecurityRules` as frozen dataclass tuples -- immutable at runtime, injectable for testing.
 
@@ -79,7 +79,7 @@ However, only *internal errors* trigger fail-open behavior. A command that *dete
 
 ## Permission Inheritance and the Skill Gap
 
-Claude Code's permission model has an inheritance asymmetry that directly shapes Jerry's security architecture. Subagents -- agents invoked via the Task tool -- inherit the parent conversation's permission context. A subagent in a session where `Bash` is allowed can execute Bash commands without additional prompting. This inheritance is documented by Anthropic and works as expected.
+Claude Code's permission model has an inheritance asymmetry that directly shapes Tom's security architecture. Subagents -- agents invoked via the Task tool -- inherit the parent conversation's permission context. A subagent in a session where `Bash` is allowed can execute Bash commands without additional prompting. This inheritance is documented by Anthropic and works as expected.
 
 Skills, however, have a separate permission mechanism that does not reliably inherit parent permissions. GitHub issue #18950 reports that Bash permissions granted in the parent session do not propagate into skill execution contexts. A Bash command that executes without prompting in the main session may prompt (or fail silently in background mode) when executed from within a skill.
 
@@ -91,13 +91,13 @@ The PreToolUse hooks defined in the plugin's `hooks.json` fire for all execution
 
 ## The Skill Permission Namespace
 
-Jerry's `.claude/settings.local.json` uses `Skill(jerry:*)` to pre-approve all skills registered under the `jerry` plugin namespace. This pattern deserves explanation because the namespace behavior is not immediately obvious from Claude Code's documentation.
+Tom's `.claude/settings.local.json` uses `Skill(tom:*)` to pre-approve all skills registered under the `tom` plugin namespace. This pattern deserves explanation because the namespace behavior is not immediately obvious from Claude Code's documentation.
 
-Plugin skills register under a `plugin-name:skill-name` namespace to prevent naming conflicts. A skill named `adversary` in the `jerry` plugin becomes `jerry:adversary` at the plugin level. The `Skill(jerry:*)` wildcard matches all skills whose name begins with `jerry:`, covering both current and future Jerry skills without requiring individual entries.
+Plugin skills register under a `plugin-name:skill-name` namespace to prevent naming conflicts. A skill named `adversary` in the `tom` plugin becomes `tom:adversary` at the plugin level. The `Skill(tom:*)` wildcard matches all skills whose name begins with `tom:`, covering both current and future Tom skills without requiring individual entries.
 
-Empirical testing (documented in the BUG-005 investigation) confirmed that both `Skill(adversary)` (short form) and `Skill(jerry:adversary)` (fully-qualified form) produce the same approval behavior. Claude Code's runtime writes the short form when auto-adding "don't ask again" entries during interactive use. The fully-qualified form, however, is the only collision-safe approach -- if another plugin also registered a skill named `adversary`, the short form would be ambiguous while the qualified form would unambiguously target the Jerry skill.
+Empirical testing (documented in the BUG-005 investigation) confirmed that both `Skill(adversary)` (short form) and `Skill(tom:adversary)` (fully-qualified form) produce the same approval behavior. Claude Code's runtime writes the short form when auto-adding "don't ask again" entries during interactive use. The fully-qualified form, however, is the only collision-safe approach -- if another plugin also registered a skill named `adversary`, the short form would be ambiguous while the qualified form would unambiguously target the Tom skill.
 
-Jerry uses the fully-qualified `Skill(jerry:*)` wildcard rather than individual `Skill(adversary)`, `Skill(problem-solving)` entries because the wildcard provides forward compatibility. Adding a new skill to the Jerry plugin does not require a corresponding settings.local.json update. The trade-off is that this grants blanket skill approval -- there is no mechanism to selectively deny a specific Jerry skill while allowing others through the wildcard. For Jerry's use case, where all skills are first-party and trusted, this trade-off is appropriate.
+Tom uses the fully-qualified `Skill(tom:*)` wildcard rather than individual `Skill(adversary)`, `Skill(problem-solving)` entries because the wildcard provides forward compatibility. Adding a new skill to the Tom plugin does not require a corresponding settings.local.json update. The trade-off is that this grants blanket skill approval -- there is no mechanism to selectively deny a specific Tom skill while allowing others through the wildcard. For Tom's use case, where all skills are first-party and trusted, this trade-off is appropriate.
 
 ---
 
@@ -117,7 +117,7 @@ The correct mental model is: settings.json controls *tool category access* (can 
 
 This topic connects to:
 
-- **The enforcement architecture (L1-L5):** The three-layer permission model maps to layers L1 and L3 in Jerry's five-layer enforcement architecture defined in `quality-enforcement.md`. L1 (session start) loads the rules that inform the enforcement engines. L3 (pre-tool) is where both the SecurityEnforcementEngine and PreToolEnforcementEngine operate -- deterministic gating that is immune to context rot because it executes as external hook processes, not as LLM context.
+- **The enforcement architecture (L1-L5):** The three-layer permission model maps to layers L1 and L3 in Tom's five-layer enforcement architecture defined in `quality-enforcement.md`. L1 (session start) loads the rules that inform the enforcement engines. L3 (pre-tool) is where both the SecurityEnforcementEngine and PreToolEnforcementEngine operate -- deterministic gating that is immune to context rot because it executes as external hook processes, not as LLM context.
 
 - **The auto-escalation rules (AE-001 through AE-005):** The PreToolEnforcementEngine's governance file detection directly implements AE-001 (constitution modifications trigger auto-C4) and AE-002 (rules file modifications trigger auto-C3). The criticality escalation field in `EnforcementDecision` carries this information from the hook back to the Claude Code session, where it affects quality gate thresholds and review requirements.
 
@@ -127,11 +127,11 @@ This topic connects to:
 
 ## Alternative Perspectives
 
-There is a legitimate argument for settings-level Bash restrictions in environments where the hook infrastructure is not available or not trusted. If Jerry's enforcement engines were removed or broken, the blanket Bash permission would leave no safety net between Claude Code's probabilistic judgment and the shell. In a deployment where the plugin hooks are not installed -- perhaps someone is using the Jerry repository without the plugin, or the hook registration is misconfigured -- the settings-level permission is the only control point.
+There is a legitimate argument for settings-level Bash restrictions in environments where the hook infrastructure is not available or not trusted. If Tom's enforcement engines were removed or broken, the blanket Bash permission would leave no safety net between Claude Code's probabilistic judgment and the shell. In a deployment where the plugin hooks are not installed -- perhaps someone is using the Tom repository without the plugin, or the hook registration is misconfigured -- the settings-level permission is the only control point.
 
 A defense-in-depth purist might argue that *both* layers should enforce restrictions: settings patterns as the outer perimeter, hooks as the inner checkpoint. This is a reasonable position in theory. In practice, the asymmetry between interactive and background execution modes means that settings-level restrictions carry an operational cost (background agent failures) that hook-level restrictions do not. The decision to rely on hooks rather than settings for command-level security is a trade-off that prioritizes operational reliability over defense-in-depth layering -- a trade-off that is justified by the hook layer's test coverage and deterministic execution model.
 
-It is also worth noting that Claude Code's permission system is evolving. The deprecated `:*` suffix syntax, the undocumented `allowed_tools`/`require_approval` field names discovered during the BUG-005 investigation, and the skill permission inheritance gap (GitHub #18950) all suggest that the settings-level permission system is not yet fully stable. Building security-critical logic on top of a changing API surface introduces maintenance risk. The hook-based enforcement engine, by contrast, is fully within Jerry's control and tested against known bypass vectors.
+It is also worth noting that Claude Code's permission system is evolving. The deprecated `:*` suffix syntax, the undocumented `allowed_tools`/`require_approval` field names discovered during the BUG-005 investigation, and the skill permission inheritance gap (GitHub #18950) all suggest that the settings-level permission system is not yet fully stable. Building security-critical logic on top of a changing API surface introduces maintenance risk. The hook-based enforcement engine, by contrast, is fully within Tom's control and tested against known bypass vectors.
 
 ---
 

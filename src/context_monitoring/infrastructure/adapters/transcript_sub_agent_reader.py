@@ -58,7 +58,7 @@ class TranscriptSubAgentReader:
 
     Example:
         >>> reader = TranscriptSubAgentReader(
-        ...     lifecycle_path=Path(".jerry/local/subagent-lifecycle.json"),
+        ...     lifecycle_path=Path(".tom/local/subagent-lifecycle.json"),
         ... )
         >>> agents = reader.read_sub_agents(context_window_size=200_000)
     """

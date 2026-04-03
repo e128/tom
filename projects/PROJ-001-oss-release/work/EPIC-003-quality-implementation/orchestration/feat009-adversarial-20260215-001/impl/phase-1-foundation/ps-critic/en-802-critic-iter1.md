@@ -479,7 +479,7 @@ Add a brief "Relationship to ps-critic" paragraph in SKILL.md or adv-scorer.md e
 - Every strategy ID traces to `.context/rules/quality-enforcement.md` (Strategy Catalog)
 - Every criticality level traces to `.context/rules/quality-enforcement.md` (Criticality Levels)
 - Every HARD rule traces to its source file (H-13 to quality-enforcement, H-16 to quality-enforcement, etc.)
-- Constitutional principles trace to `docs/governance/JERRY_CONSTITUTION.md`
+- Constitutional principles trace to `docs/governance/TOM_CONSTITUTION.md`
 - ADR references trace to ADR-EPIC002-001 and ADR-EPIC002-002
 - SKILL.md References section (lines 264-273) provides explicit traceability table
 - All agents include `SSOT: .context/rules/quality-enforcement.md` in their footer

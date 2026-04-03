@@ -1,6 +1,6 @@
 ---
 name: prompt-engineering
-description: Structured prompt construction and quality validation for Jerry Framework. Invoke when building structured prompts, generating NPT-009/NPT-013 constraints, or scoring prompt quality. Guides users through the 5-element prompt anatomy, generates formatted constraints with XML wrapping, and scores prompts against the 7-criterion rubric.
+description: Structured prompt construction and quality validation for Tom Framework. Invoke when building structured prompts, generating NPT-009/NPT-013 constraints, or scoring prompt quality. Guides users through the 5-element prompt anatomy, generates formatted constraints with XML wrapping, and scores prompts against the 7-criterion rubric.
 version: "1.0.0"
 allowed-tools: Read, Write, Edit, Glob, Grep
 activation-keywords:
@@ -18,8 +18,8 @@ activation-keywords:
 # Prompt Engineering Skill
 
 > **Version:** 1.0.0
-> **Framework:** Jerry Framework v0.9.0
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom Framework v0.9.0
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **SSOT Reference:** `.context/rules/prompt-quality.md`, `.context/rules/prompt-templates.md`
 
 ---
@@ -53,7 +53,7 @@ This SKILL.md serves multiple audiences:
 
 ## Overview
 
-The Prompt Engineering skill operationalizes PROJ-014 negative prompting research findings into a reusable tool for constructing high-quality structured prompts within the Jerry Framework. PROJ-014 validated that NPT-013 structured negation (NEVER + consequence + alternative) achieves 100% compliance vs 92.2% for positive-only framing (p=0.016, CONDITIONAL GO via PG-003).
+The Prompt Engineering skill operationalizes PROJ-014 negative prompting research findings into a reusable tool for constructing high-quality structured prompts within the Tom Framework. PROJ-014 validated that NPT-013 structured negation (NEVER + consequence + alternative) achieves 100% compliance vs 92.2% for positive-only framing (p=0.016, CONDITIONAL GO via PG-003).
 
 ### Core Capabilities
 
@@ -74,7 +74,7 @@ The Prompt Engineering skill operationalizes PROJ-014 negative prompting researc
 
 Invoke `/prompt-engineering` when you need to:
 
-- Build a structured Jerry prompt from scratch using the 5-element anatomy.
+- Build a structured Tom prompt from scratch using the 5-element anatomy.
 - Generate NPT-009 or NPT-013 formatted constraints for agent definitions, rule files, or skill documentation.
 - Score an existing prompt against the 7-criterion rubric to identify quality gaps.
 - Convert positive-only instructions to structured negation format per PROJ-014 findings.
@@ -274,7 +274,7 @@ Default target: >= 90 for standard prompts; adjust per `prompt-quality.md` thres
 
 ## Constitutional Compliance
 
-All agents adhere to the **Jerry Constitution v1.0**:
+All agents adhere to the **Tom Constitution v1.0**:
 
 > **P-002 scope note:** P-002 applies to pe-builder and pe-constraint-gen (`output.required: true`). pe-scorer supports optional file persistence (`output.required: false`); inline scoring output is permitted per its evaluation-only role.
 
@@ -309,12 +309,12 @@ This skill operationalizes three knowledge sources into reusable tooling:
 | `projects/PROJ-014-negative-prompting-research/orchestration/neg-prompting-20260227-001/ab-testing/ab-testing-synthesis.md` | A/B testing results (CONDITIONAL GO via PG-003) |
 | `.context/rules/agent-development-standards.md` | Agent definition schema, guardrails template, forbidden action format |
 | `.context/rules/quality-enforcement.md` | Quality gate SSOT, criticality levels, enforcement architecture |
-| `projects/PROJ-006-jerry-prompt/` | PROJ-006 research: 5-element anatomy derivation, quality rubric development, template validation |
+| `projects/PROJ-006-tom-prompt/` | PROJ-006 research: 5-element anatomy derivation, quality rubric development, template validation |
 
 ---
 
 *Skill Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `.context/rules/prompt-quality.md`, `.context/rules/prompt-templates.md`*
 *Source: PROJ-014 Negative Prompting Research*
 *Created: 2026-03-01*

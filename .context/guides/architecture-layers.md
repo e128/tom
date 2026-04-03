@@ -344,7 +344,7 @@ START: What is the code's primary concern?
 | **Validation logic** -- domain or application? | If it checks a business invariant (e.g., "percentages must sum to 100%"), it belongs in the **domain**. If it validates input format (e.g., "title must be non-empty string"), it can live in the **command/query dataclass** (application layer). |
 | **Logging** -- which layer? | Logging is a cross-cutting concern. Infrastructure adapters MAY log I/O operations. Application handlers MAY log use case entry/exit. Domain MUST NOT log (pure logic). |
 | **Configuration reading** -- domain or infrastructure? | Reading config files/env vars is **infrastructure**. The config values themselves may be domain value objects. Use a port to abstract config access. |
-| **ID generation** -- domain or infrastructure? | ID format/validation is **domain** (e.g., `ProjectId.parse()`). ID generation mechanics (UUID, Snowflake) are **shared_kernel** or **infrastructure**. Jerry uses `shared_kernel/snowflake_id.py`. |
+| **ID generation** -- domain or infrastructure? | ID format/validation is **domain** (e.g., `ProjectId.parse()`). ID generation mechanics (UUID, Snowflake) are **shared_kernel** or **infrastructure**. Tom uses `shared_kernel/snowflake_id.py`. |
 | **Serialization** -- application or infrastructure? | Serialization to/from external formats (JSON, TOML, TOON) is **infrastructure**. DTOs that define the shape of data are **application**. |
 | **Cross-context communication?** | Use **domain events** via shared_kernel, not direct imports. If you need to reference another context's entity, use its ID (a value object) from shared_kernel, not the entity itself. |
 
@@ -625,7 +625,7 @@ def test_domain_has_no_infrastructure_imports():
 
 ## Evidence
 
-> Verified references to actual Jerry codebase files demonstrating the layer architecture.
+> Verified references to actual Tom codebase files demonstrating the layer architecture.
 
 ### Layer Structure -- Real Directory Layout
 
@@ -704,7 +704,7 @@ def test_bootstrap_imports_infrastructure(self) -> None:
 
 ### Bounded Contexts -- Real Structure
 
-Jerry currently has these bounded contexts under `src/`:
+Tom currently has these bounded contexts under `src/`:
 
 | Context | Path | Domain Entities |
 |---------|------|-----------------|

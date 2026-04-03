@@ -5,7 +5,7 @@
 **Criticality:** C2 (Standard) — per ORCHESTRATION.yaml workflow.criticality (task-level override from C4 tournament mode per orchestration plan)
 **Date:** 2026-02-17
 **Reviewer:** adv-executor (S-007)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, H-01 through H-24
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, H-01 through H-24
 **Execution ID:** 20260217T1600
 **Iteration:** QG-1 Iteration 3 (FINAL)
 
@@ -65,7 +65,7 @@ The single open finding from QG-1 Iteration 2 (execution ID 20260217T1500) is as
 **Deliverable type:** Document (audit report, license analysis). Revision 3 addresses S-014 evidence gaps and S-002 devil's advocate findings.
 
 **Loaded rule sets:**
-- `JERRY_CONSTITUTION.md` v1.1 (P-001 through P-043)
+- `TOM_CONSTITUTION.md` v1.1 (P-001 through P-043)
 - `quality-enforcement.md` v1.3.0 (H-01 through H-24, SSOT)
 - `markdown-navigation-standards.md` (H-23, H-24)
 - `python-environment.md` (H-05, H-06)

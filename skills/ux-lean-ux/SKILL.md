@@ -22,8 +22,8 @@ activation-keywords:
 # Lean UX Sub-Skill
 
 > **Version:** 1.2.0
-> **Framework:** Jerry User-Experience -- Lean UX
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom User-Experience -- Lean UX
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **Parent Skill:** `/user-experience` (`skills/user-experience/SKILL.md`)
 > **Wave:** 2 (Data-Ready)
 > **Project:** PROJ-022 User Experience Skill | GitHub Issue [#138](https://github.com/geekatron/jerry/issues/138)
@@ -179,7 +179,7 @@ The `ux-orchestrator` invokes the agent via the Agent tool:
 ```python
 Agent(
     description="ux-lean-ux-facilitator: Lean UX hypothesis cycle for checkout redesign",
-    subagent_type="jerry:ux-lean-ux-facilitator",
+    subagent_type="tom:ux-lean-ux-facilitator",
     prompt="""
 ## UX CONTEXT (REQUIRED)
 - **Engagement ID:** UX-0001
@@ -508,7 +508,7 @@ This sub-skill receives context from other sub-skills when invoked as part of a 
 
 ### Downstream Handoffs
 
-This sub-skill produces artifacts that feed into other sub-skills via the Jerry handoff protocol (`docs/schemas/handoff-v2.schema.json`).
+This sub-skill produces artifacts that feed into other sub-skills via the Tom handoff protocol (`docs/schemas/handoff-v2.schema.json`).
 
 | To Sub-Skill | Handoff Artifact | Key Fields | Trigger |
 |-------------|-----------------|-----------|---------|
@@ -549,7 +549,7 @@ Lean UX outputs include synthesis hypotheses that carry confidence classificatio
 
 ## Constitutional Compliance
 
-All agents in this sub-skill adhere to the **Jerry Constitution v1.0**:
+All agents in this sub-skill adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -664,7 +664,7 @@ This sub-skill follows a parent-routed registration model. Sub-skills are not in
 
 *Sub-Skill Version: 1.2.0*
 *Parent Skill: `/user-experience` v1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Wave: 2 (Data-Ready)*
 *SSOT: `skills/user-experience/SKILL.md`*
 *Project: PROJ-022 User Experience Skill*

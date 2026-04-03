@@ -562,8 +562,8 @@ Feature: uc-slicer Agent
 
     When uc-slicer creates the worktracker Story entity for the slice
 
-    Then uc-slicer uses the Bash tool to execute "uv run jerry items create" (not the Task tool)
-    And the command is invoked with H-05: "uv run jerry items create" prefix (never bare "jerry items create")
+    Then uc-slicer uses the Bash tool to execute "uv run tom items create" (not the Task tool)
+    And the command is invoked with H-05: "uv run tom items create" prefix (never bare "tom items create")
     And uc-slicer does NOT invoke any /worktracker agent via the Task tool
     And if the Bash command fails, uc-slicer reports the error and persists slice definitions to the artifact file
     And uc-slicer notes in its L0 summary that Story entity creation failed and must be retried
@@ -628,7 +628,7 @@ Feature: Cross-Agent Pipeline
     When the operation requires accessing the worktracker or another agent
 
     Then uc-author does NOT invoke the Task tool
-    And uc-author uses "uv run jerry items create" via Bash for any worktracker operations
+    And uc-author uses "uv run tom items create" via Bash for any worktracker operations
     And uc-author is NOT classified as a T5 agent
 
   Scenario: uc-slicer does not delegate to uc-author or any other agent via Task

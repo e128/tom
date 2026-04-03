@@ -1,5 +1,5 @@
 """
-Exception Hierarchy Pattern - Canonical implementation for Jerry Framework.
+Exception Hierarchy Pattern - Canonical implementation for Tom Framework.
 
 All domain exceptions inherit from DomainError base class.
 Include entity type, ID, and suggested action in error messages.
@@ -10,7 +10,7 @@ References:
     - quality-enforcement.md (exception table)
 
 Exports:
-    DomainError hierarchy following Jerry conventions
+    DomainError hierarchy following Tom conventions
 """
 
 from __future__ import annotations

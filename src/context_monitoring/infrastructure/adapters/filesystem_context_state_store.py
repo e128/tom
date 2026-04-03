@@ -5,10 +5,10 @@
 FilesystemContextStateStore - Filesystem implementation of IContextStateStore.
 
 Persists cross-invocation context monitoring state as a JSON file in
-the ``.jerry/local/`` directory. Uses atomic writes (write-to-temp +
+the ``.tom/local/`` directory. Uses atomic writes (write-to-temp +
 rename) to prevent corruption from concurrent status line invocations.
 
-File location: ``$HOME/.jerry/local/context-state.json``
+File location: ``$HOME/.tom/local/context-state.json``
 
 References:
     - FEAT-002: Status Line / Context Monitoring Unification
@@ -42,7 +42,7 @@ class FilesystemContextStateStore:
         _state_path: Path to the state JSON file.
 
     Example:
-        >>> store = FilesystemContextStateStore(state_dir=Path.home() / ".jerry" / "local")
+        >>> store = FilesystemContextStateStore(state_dir=Path.home() / ".tom" / "local")
         >>> state = store.load()
         >>> store.save(ContextState(previous_tokens=150000, ...))
     """

@@ -5,7 +5,7 @@
 > **Criticality:** C4 (Tournament Mode)
 > **Date:** 2026-02-22
 > **Reviewer:** adv-executor (S-007)
-> **Constitution Reference:** CLAUDE.md, quality-enforcement.md, JERRY_CONSTITUTION.md
+> **Constitution Reference:** CLAUDE.md, quality-enforcement.md, TOM_CONSTITUTION.md
 
 ## Document Sections
 

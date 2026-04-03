@@ -40,7 +40,7 @@ import re
 from dataclasses import dataclass
 
 from src.domain.markdown_ast.input_bounds import InputBounds
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 
 # ---------------------------------------------------------------------------
 # HTML comment extraction pattern (DD-7)
@@ -135,10 +135,10 @@ class HtmlCommentMetadata:
 
     @staticmethod
     def extract(
-        doc: JerryDocument,
+        doc: TomDocument,
         bounds: InputBounds | None = None,
     ) -> HtmlCommentResult:
-        """Extract HTML comment metadata blocks from a JerryDocument.
+        """Extract HTML comment metadata blocks from a TomDocument.
 
         Args:
             doc: The parsed markdown document.

@@ -601,10 +601,10 @@ The inventory identified 36 NPT-013 instances that already meet the target patte
 ### E-04: Group 4 (Templates + Constitution)
 
 The inventory identified 6 NPT-014 instances in Group 4:
-- 1 in `JERRY_CONSTITUTION.md` (P-022 SHALL NOT list) -- triggers AE-001 (auto-C4)
+- 1 in `TOM_CONSTITUTION.md` (P-022 SHALL NOT list) -- triggers AE-001 (auto-C4)
 - 1 in `SPIKE.md` template
 
-Because `JERRY_CONSTITUTION.md` triggers AE-001 (auto-C4, the highest criticality level), it requires a separate implementation plan with C4 quality gates (>= 0.95 threshold) and full tournament review. Bundling a C4 change with C2/C3 changes would force the entire batch through C4 review, which is disproportionate.
+Because `TOM_CONSTITUTION.md` triggers AE-001 (auto-C4, the highest criticality level), it requires a separate implementation plan with C4 quality gates (>= 0.95 threshold) and full tournament review. Bundling a C4 change with C2/C3 changes would force the entire batch through C4 review, which is disproportionate.
 
 The `SPIKE.md` template NPT-014 instance is trivial and can be addressed in a separate low-effort change.
 

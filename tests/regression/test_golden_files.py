@@ -23,7 +23,7 @@ from src.domain.markdown_ast.document_type import DocumentType
 from src.domain.markdown_ast.frontmatter import (
     BlockquoteFrontmatter,
 )
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.reinject import extract_reinject_directives
 from src.domain.markdown_ast.universal_document import UniversalDocument
 
@@ -80,7 +80,7 @@ class TestWorktrackerEntityRegression:
         sample = entity_files[:10]
         for entity_file in sample:
             content = entity_file.read_text(encoding="utf-8")
-            doc = JerryDocument.parse(content)
+            doc = TomDocument.parse(content)
 
             # Legacy path: BlockquoteFrontmatter directly
             legacy_fm = BlockquoteFrontmatter.extract(doc)
@@ -122,7 +122,7 @@ class TestRuleFileRegression:
 
         for rule_file in rule_files:
             content = rule_file.read_text(encoding="utf-8")
-            doc = JerryDocument.parse(content)
+            doc = TomDocument.parse(content)
 
             # Legacy path: extract_reinject_directives directly
             rel_path = str(rule_file.relative_to(REPO_ROOT))

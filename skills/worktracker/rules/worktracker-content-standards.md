@@ -2,7 +2,7 @@
 
 > Reference file for content quality in work items.
 > Auto-loaded via SKILL.md `@` import. Referenced when creating or auditing work items.
-> Source: PROJ-005-jerry-process-improvements (synthesis of ADO skill patterns + industry research)
+> Source: PROJ-005-tom-process-improvements (synthesis of ADO skill patterns + industry research)
 > Created: 2026-02-17
 
 ---

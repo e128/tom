@@ -470,5 +470,5 @@ This test validates:
 
 *Document Version: 1.0.0*
 *Test Framework: Integration Test (Manual)*
-*Constitutional Reference: JERRY_CONSTITUTION.md*
+*Constitutional Reference: TOM_CONSTITUTION.md*
 *Last Updated: 2026-02-02*

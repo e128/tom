@@ -22,7 +22,7 @@ Event-Sourced Repositories persist aggregates by storing their domain events rat
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Repository Implementation
 
@@ -412,13 +412,13 @@ def test_repository_detects_concurrent_modification():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Stream ID format is `{AggregateType}-{AggregateId}` for clear identification.
+> **Tom Decision**: Stream ID format is `{AggregateType}-{AggregateId}` for clear identification.
 
-> **Jerry Decision**: Domain-specific queries (find_by_status, find_by_parent) should use projections, not full stream scans.
+> **Tom Decision**: Domain-specific queries (find_by_status, find_by_parent) should use projections, not full stream scans.
 
-> **Jerry Decision**: Delete is soft-delete via stream deletion. Event store may implement as tombstone for audit trail.
+> **Tom Decision**: Delete is soft-delete via stream deletion. Event store may implement as tombstone for audit trail.
 
 ---
 

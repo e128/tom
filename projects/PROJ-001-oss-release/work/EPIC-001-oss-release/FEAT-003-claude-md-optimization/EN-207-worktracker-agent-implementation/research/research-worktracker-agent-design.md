@@ -907,7 +907,7 @@ session_context:
 |----|--------|-----|-------------|
 | S-001 | Anthropic Claude Code | Context7 `/anthropics/claude-code` | Layered architecture pattern, orchestration agents |
 | S-002 | Mermaid.js Documentation | Context7 `/mermaid-js/mermaid` | Diagram syntax, state diagrams, Gantt charts |
-| S-003 | Jerry Constitution v1.0 | `docs/governance/JERRY_CONSTITUTION.md` | P-003, P-002, P-020 principles |
+| S-003 | Jerry Constitution v1.0 | `docs/governance/TOM_CONSTITUTION.md` | P-003, P-002, P-020 principles |
 | S-004 | PS Agent Templates | `skills/problem-solving/agents/` | State management, session_context schema |
 
 ### Secondary Sources (Community/Industry)

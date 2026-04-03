@@ -1,7 +1,7 @@
 # Rules and Quality Enforcement
-*Updated: 2026-04-03T00:00:00Z*
+*Updated: 2026-04-03T14:08:45Z*
 
-Jerry enforces 25 HARD rules (non-overridable) and a quality gate of 0.92 for C2+ deliverables. The authoritative SSOT is `.context/rules/quality-enforcement.md`.
+Tom enforces 25 HARD rules (non-overridable) and a quality gate of 0.92 for C2+ deliverables. The authoritative SSOT is `.context/rules/quality-enforcement.md`.
 
 ## Key HARD Rules
 
@@ -39,9 +39,10 @@ Full index: `.context/rules/quality-enforcement.md` HARD Rule Index table.
 
 | ID | Condition | Escalation |
 |----|-----------|------------|
-| AE-001 | Touches `docs/governance/JERRY_CONSTITUTION.md` | Auto-C4 |
+| AE-001 | Touches `docs/governance/TOM_CONSTITUTION.md` | Auto-C4 |
 | AE-002 | Touches `.context/rules/` or `.claude/rules/` | Auto-C3 minimum |
 | AE-003 | New or modified ADR | Auto-C3 minimum |
+| AE-004 | Modifies baselined ADR | Auto-C4 |
 | AE-005 | Security-relevant code | Auto-C3 minimum |
 
 ## Enforcement Layers

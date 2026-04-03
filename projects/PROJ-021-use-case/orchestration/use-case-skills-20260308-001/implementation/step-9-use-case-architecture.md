@@ -289,7 +289,7 @@ output:
     - "L1"
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-003"
     - "P-020"
@@ -422,7 +422,7 @@ output:
     - "L1"
 
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-003"
     - "P-020"

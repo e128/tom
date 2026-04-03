@@ -23,7 +23,7 @@ Commands represent intentions to change system state. They are immutable DTOs th
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Command Structure
 
@@ -296,13 +296,13 @@ CompleteTaskCommand(task_id="...")
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Commands return `list[DomainEvent]`, not aggregates. Events are collected before save and returned for publishing.
+> **Tom Decision**: Commands return `list[DomainEvent]`, not aggregates. Events are collected before save and returned for publishing.
 
-> **Jerry Decision**: Command file naming is `{verb}_{noun}_command.py` with snake_case. Handler is `{verb}_{noun}_command_handler.py`.
+> **Tom Decision**: Command file naming is `{verb}_{noun}_command.py` with snake_case. Handler is `{verb}_{noun}_command_handler.py`.
 
-> **Jerry Decision**: Validation happens in handler, not in command. Commands are pure data transfer objects.
+> **Tom Decision**: Validation happens in handler, not in command. Commands are pure data transfer objects.
 
 ---
 

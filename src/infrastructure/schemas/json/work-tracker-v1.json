@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://jerry-framework.example.com/schemas/work-tracker-v1.json",
+  "$id": "https://tom-framework.example.com/schemas/work-tracker-v1.json",
   "title": "Work Tracker Schema V1 (Legacy)",
   "description": "Legacy JSON Schema - detected by ABSENCE of schema_version field. This schema documents the pre-Hexagonal format for migration purposes.",
   "type": "object",

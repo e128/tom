@@ -28,16 +28,16 @@ pygments==2.20.0
     # via pytest
 pytest==9.0.2
     # via
-    #   jerry (pyproject.toml)
+    #   tom (pyproject.toml)
     #   pytest-archon
     #   pytest-bdd
     #   pytest-cov
 pytest-archon==0.0.7
-    # via jerry (pyproject.toml)
+    # via tom (pyproject.toml)
 pytest-bdd==8.1.0
-    # via jerry (pyproject.toml)
+    # via tom (pyproject.toml)
 pytest-cov==7.1.0
-    # via jerry (pyproject.toml)
+    # via tom (pyproject.toml)
 six==1.17.0
     # via parse-type
 typing-extensions==4.15.0

@@ -46,7 +46,7 @@
 ## Prerequisites
 
 - `JERRY_PROJECT` environment variable is set to the active project ID (required by H-04 before any work proceeds).
-- An active Jerry session is running (`jerry session start` completed).
+- An active Tom session is running (`tom session start` completed).
 - You have identified 3 or more agents that will participate in the workflow — orchestration is not warranted below this threshold.
 - You have a rough understanding of the workflow structure: whether work is sequential, parallel, or a combination.
 - The project directory `projects/{JERRY_PROJECT}/` exists with a `PLAN.md` describing the project scope (orch-planner reads this to understand workflow context).
@@ -149,7 +149,7 @@ Every orchestrated workflow creates exactly three artifacts. These artifacts are
 - `ORCHESTRATION_WORKTRACKER.md` captures the execution narrative — without it, a human resuming a paused workflow has no context about what decisions were made mid-execution.
 - `ORCHESTRATION.yaml` is the machine state — without it, cross-session resumption is impossible. It is the only artifact that orch-tracker can reliably update programmatically.
 
-Discarding any one of the three in favor of in-memory state violates [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence) (file persistence requirement).
+Discarding any one of the three in favor of in-memory state violates [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence) (file persistence requirement).
 
 ---
 
@@ -245,7 +245,7 @@ Each is a WORKER. None spawn other agents.
 |---------|-------|------------|
 | orch-planner writes artifacts to the wrong directory | `JERRY_PROJECT` environment variable not set or set to wrong value | Verify `JERRY_PROJECT` matches the intended project ID: `echo $JERRY_PROJECT`. Set it explicitly before invoking the skill. |
 | `ORCHESTRATION.yaml` not found when resuming a workflow | The YAML was never created (plan-only invocation), or the workflow ID changed between sessions | Check `projects/{JERRY_PROJECT}/orchestration/` for existing workflow directories. If the YAML is missing, re-run orch-planner to recreate the artifact using the same workflow ID. |
-| orch-tracker shows stale agent statuses after a phase completes | orch-tracker was not invoked after the agent completed — state was only updated in-memory | Always invoke orch-tracker explicitly after each agent completes. Provide the agent ID, status (COMPLETE/FAILED), and artifact path. In-memory-only state violates [P-002](../governance/JERRY_CONSTITUTION.md#p-002-file-persistence) and is lost at session end. |
+| orch-tracker shows stale agent statuses after a phase completes | orch-tracker was not invoked after the agent completed — state was only updated in-memory | Always invoke orch-tracker explicitly after each agent completes. Provide the agent ID, status (COMPLETE/FAILED), and artifact path. In-memory-only state violates [P-002](../governance/TOM_CONSTITUTION.md#p-002-file-persistence) and is lost at session end. |
 | Quality gate is never evaluated — workflow advances phases without scoring | The creator-critic-revision cycle was skipped between phases | Quality gates are not automatic — the orchestrator (main Claude context) must evaluate phase output against the S-014 rubric before invoking orch-tracker to advance the phase. If a phase is advanced without a gate check, the YAML's quality section will show no score for that phase. |
 | orch-planner spawns other agents instead of just creating the plan | User asked orch-planner to "coordinate the workflow" or "run all the agents" — violates P-003 | Correct the request: orch-planner creates the plan document only. The main Claude context drives execution. Rephrase as: "use orch-planner to create the orchestration plan, then we will execute the phases together." |
 | Two parallel agents write to the same artifact path, overwriting each other | Agent-level directory isolation was not used — agents shared a directory without unique filenames | Each agent must write to its own subdirectory: `orchestration/{workflow_id}/{pipeline_alias}/phase-{N}/{agent_id}/`. Verify the paths in `ORCHESTRATION.yaml` for each agent include the agent ID as a path component. |

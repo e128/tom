@@ -28,7 +28,7 @@
 
 ## Overview
 
-This file encodes the novel UC-to-contract transformation algorithm that `cd-generator` applies when transforming use case interaction artifacts into OpenAPI 3.1 specifications. The algorithm has no prior art; these rules represent the first formalization of the UC-to-OpenAPI transformation pattern within the Jerry Framework.
+This file encodes the novel UC-to-contract transformation algorithm that `cd-generator` applies when transforming use case interaction artifacts into OpenAPI 3.1 specifications. The algorithm has no prior art; these rules represent the first formalization of the UC-to-OpenAPI transformation pattern within the Tom Framework.
 
 ### Rule Format
 

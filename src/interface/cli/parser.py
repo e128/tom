@@ -3,7 +3,7 @@
 
 """CLI Parser with Namespace Structure.
 
-This module provides the argument parser for the Jerry CLI with
+This module provides the argument parser for the Tom CLI with
 bounded-context-aligned namespaces:
 - session: Session management (session_management BC)
 - items: Work item management (work_tracking BC)
@@ -21,16 +21,16 @@ import argparse
 try:
     from importlib.metadata import version
 
-    __version__ = version("jerry")
+    __version__ = version("tom")
 except Exception:
     __version__ = "dev"
 
 
 def create_parser() -> argparse.ArgumentParser:
-    """Create the argument parser for the Jerry CLI with namespaces.
+    """Create the argument parser for the Tom CLI with namespaces.
 
     Structure:
-        jerry [--json] [--version] <namespace> <command> [args]
+        tom [--json] [--version] <namespace> <command> [args]
 
         Namespaces:
         - session: start, end, status, abandon
@@ -41,23 +41,23 @@ def create_parser() -> argparse.ArgumentParser:
         Configured ArgumentParser instance with namespace subparsers.
     """
     parser = argparse.ArgumentParser(
-        prog="jerry",
-        description="Jerry Framework CLI - Behavior and workflow guardrails",
+        prog="tom",
+        description="Tom Framework CLI - Behavior and workflow guardrails",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-    jerry session start --name "Feature Work"
-    jerry items list --status pending
-    jerry items create "Implement feature X"
-    jerry projects list
-    jerry --json projects validate PROJ-001
+    tom session start --name "Feature Work"
+    tom items list --status pending
+    tom items create "Implement feature X"
+    tom projects list
+    tom --json projects validate PROJ-001
         """,
     )
 
     parser.add_argument(
         "--version",
         action="version",
-        version=f"jerry {__version__}",
+        version=f"tom {__version__}",
     )
 
     parser.add_argument(
@@ -96,10 +96,10 @@ Examples:
     # Transcript namespace (TASK-251: TDD-FEAT-004 Section 11)
     _add_transcript_namespace(subparsers)
 
-    # Context namespace (EN-012: jerry context estimate)
+    # Context namespace (EN-012: tom context estimate)
     _add_context_namespace(subparsers)
 
-    # AST namespace (ST-004: jerry ast commands)
+    # AST namespace (ST-004: tom ast commands)
     _add_ast_namespace(subparsers)
 
     # Agents namespace (ADR-PROJ010-003: Canonical agent build pipeline)
@@ -326,7 +326,7 @@ def _add_projects_namespace(
     projects_parser = subparsers.add_parser(
         "projects",
         help="Project management commands",
-        description="Manage Jerry projects.",
+        description="Manage Tom projects.",
     )
 
     projects_subparsers = projects_parser.add_subparsers(
@@ -378,7 +378,7 @@ def _add_config_namespace(
     config_parser = subparsers.add_parser(
         "config",
         help="Configuration management commands",
-        description="View and manage Jerry configuration.",
+        description="View and manage Tom configuration.",
     )
 
     config_subparsers = config_parser.add_subparsers(
@@ -448,7 +448,7 @@ def _add_transcript_namespace(
         - parse: Parse VTT/SRT transcript to canonical JSON
 
     References:
-        - TDD-FEAT-004 Section 11: Jerry CLI Integration
+        - TDD-FEAT-004 Section 11: Tom CLI Integration
         - TASK-251: Implement CLI Transcript Namespace
         - EN-020: Python Parser Implementation
     """
@@ -578,8 +578,8 @@ def _add_ast_namespace(
         - query: Query AST nodes by type and output structured JSON.
 
     References:
-        - ST-004: Add jerry ast CLI Commands
-        - ST-001: JerryDocument Facade
+        - ST-004: Add tom ast CLI Commands
+        - ST-001: TomDocument Facade
     """
     ast_parser = subparsers.add_parser(
         "ast",
@@ -699,7 +699,7 @@ def _add_ast_namespace(
     detect_parser = ast_subparsers.add_parser(
         "detect",
         help="Detect document type of a markdown file",
-        description="Detect the Jerry document type using path-first, structure-fallback detection.",
+        description="Detect the Tom document type using path-first, structure-fallback detection.",
     )
     detect_parser.add_argument(
         "file",
@@ -922,7 +922,7 @@ def _add_context_namespace(
         - estimate: Compute context fill estimate from Claude Code stdin JSON
 
     References:
-        - EN-012: jerry context estimate CLI Command
+        - EN-012: tom context estimate CLI Command
         - FEAT-002: Status Line / Context Monitoring Unification
     """
     context_parser = subparsers.add_parser(
@@ -956,7 +956,7 @@ def _add_hooks_namespace(
         - pre-tool-use: Handle PreToolUse hook event
 
     References:
-        - EN-006: jerry hooks CLI Command Namespace
+        - EN-006: tom hooks CLI Command Namespace
     """
     hooks_parser = subparsers.add_parser(
         "hooks",

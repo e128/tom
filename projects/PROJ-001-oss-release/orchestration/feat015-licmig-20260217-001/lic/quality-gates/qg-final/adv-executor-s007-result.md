@@ -8,7 +8,7 @@
 **Date:** 2026-02-17
 **Reviewer:** adv-executor
 **Execution ID:** qgfinal-20260217
-**Constitutional Context:** quality-enforcement.md H-01–H-24, markdown-navigation-standards.md, python-environment.md, coding-standards.md; JERRY_CONSTITUTION.md P-003/P-020/P-022
+**Constitutional Context:** quality-enforcement.md H-01–H-24, markdown-navigation-standards.md, python-environment.md, coding-standards.md; TOM_CONSTITUTION.md P-003/P-020/P-022
 **Workflow:** feat015-licmig-20260217-001
 
 ---
@@ -48,9 +48,9 @@ The following constitutional principles apply to this deliverable set. The deliv
 | H-12 | Docstrings REQUIRED on public Python functions | HARD | coding-standards.md | check_spdx_headers.py |
 | H-05 | MUST use `uv run` for all Python execution | HARD | python-environment.md | CI/pre-commit validation |
 | H-06 | MUST use `uv add` for dependency management | HARD | python-environment.md | Dependency audit scope |
-| P-003 | No recursive subagents (max 1 level) | HARD | JERRY_CONSTITUTION.md | Workflow design |
-| P-020 | User authority — NEVER override | HARD | JERRY_CONSTITUTION.md | Workflow design |
-| P-022 | No deception about actions/capabilities/confidence | HARD | JERRY_CONSTITUTION.md | All agent outputs |
+| P-003 | No recursive subagents (max 1 level) | HARD | TOM_CONSTITUTION.md | Workflow design |
+| P-020 | User authority — NEVER override | HARD | TOM_CONSTITUTION.md | Workflow design |
+| P-022 | No deception about actions/capabilities/confidence | HARD | TOM_CONSTITUTION.md | All agent outputs |
 | H-13 | Quality threshold >= 0.92 for C2+ deliverables | HARD | quality-enforcement.md | All quality gate scores |
 | H-14 | Creator-critic-revision cycle, minimum 3 iterations | HARD | quality-enforcement.md | QG-1 through QG-3 histories |
 | Cross-artifact consistency | Copyright holder, SPDX identifier, file counts agree | MEDIUM | quality-enforcement.md (Internal Consistency) | All 6 artifacts |

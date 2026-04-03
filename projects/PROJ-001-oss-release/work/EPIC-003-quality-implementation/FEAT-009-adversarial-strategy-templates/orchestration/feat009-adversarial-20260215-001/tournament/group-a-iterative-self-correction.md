@@ -365,7 +365,7 @@ Address recommendations 1-4 (Completeness, Methodological Rigor, Actionability) 
 **Step 1: Load Constitutional Context**
 
 Loaded:
-- `docs/governance/JERRY_CONSTITUTION.md` (P-001 through P-043)
+- `docs/governance/TOM_CONSTITUTION.md` (P-001 through P-043)
 - `.context/rules/quality-enforcement.md` (H-01 through H-24, HARD rule index)
 - `.context/rules/architecture-standards.md` (H-07, H-08, H-09, H-10)
 - `.context/rules/coding-standards.md` (H-11, H-12)

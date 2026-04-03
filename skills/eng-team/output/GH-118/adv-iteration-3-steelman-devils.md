@@ -8,8 +8,8 @@
 - **Iteration:** 3 of 5
 - **Strategies Applied:** S-003 (Steelman Technique), S-002 (Devil's Advocate)
 - **Deliverables Reviewed:**
-  - PORT-001 Portability Analysis: `/Users/evorun/workspace/jerry/.claude/worktrees/proj-017-portability/skills/eng-team/output/PORT-001/eng-security-portability-analysis.md`
-  - PROJ-017 PLAN.md: `/Users/evorun/workspace/jerry/.claude/worktrees/proj-017-portability/projects/PROJ-017-portability/PLAN.md`
+  - PORT-001 Portability Analysis: `/Users/evorun/workspace/tom/.claude/worktrees/proj-017-portability/skills/eng-team/output/PORT-001/eng-security-portability-analysis.md`
+  - PROJ-017 PLAN.md: `/Users/evorun/workspace/tom/.claude/worktrees/proj-017-portability/projects/PROJ-017-portability/PLAN.md`
 - **Executed:** 2026-02-26T15:00:00Z
 - **H-16 Compliance:** Steelman executed first, Devil's Advocate second
 
@@ -35,7 +35,7 @@ The Steelman Technique strengthens the deliverable by articulating the strongest
 
 ### Execution Protocol Applied
 
-1. **Identify Core Arguments:** The PORT-001 analysis argues that Jerry has "generally good cross-platform awareness" with specific strengths (pathlib, filelock, platform-specific handling) but gaps at shell integration boundaries.
+1. **Identify Core Arguments:** The PORT-001 analysis argues that Tom has "generally good cross-platform awareness" with specific strengths (pathlib, filelock, platform-specific handling) but gaps at shell integration boundaries.
 
 2. **Strengthen Implicit Strengths:** The analysis demonstrates excellent methodological rigor in several areas that deserve explicit recognition:
    - **Systematic categorization** by severity, category, and platform impact
@@ -130,7 +130,7 @@ The PORT-001 analysis identified 14 findings total:
 - 9 Minor findings (8 of which are "Good Practice" informational findings: PORT-007 through PORT-014)
 
 The executive summary states:
-> "The Jerry Framework demonstrates **generally good cross-platform awareness** with several key design decisions that support portability"
+> "The Tom Framework demonstrates **generally good cross-platform awareness** with several key design decisions that support portability"
 
 However, the positive findings that support this claim (PORT-007 through PORT-014) are not mentioned in the executive summary's "Top 3 Risk Areas" or "Recommended Immediate Actions" sections, creating an imbalance.
 
@@ -187,7 +187,7 @@ Add a "Platform Priority" subsection to the executive summary or analysis contex
 ### Platform Priority
 
 This analysis prioritizes Windows compatibility due to:
-1. **User Base:** [Insert justification if known, e.g., "Windows represents 60% of Jerry's user base per telemetry"]
+1. **User Base:** [Insert justification if known, e.g., "Windows represents 60% of Tom's user base per telemetry"]
 2. **CI Coverage Gap:** Windows has no current CI coverage; macOS and Linux are tested in CI
 3. **Ecosystem Assumptions:** Many Python tools default to Unix conventions; Windows requires explicit handling
 
@@ -264,7 +264,7 @@ This is a focused security review scoped to portability-related risks. A full AS
 **Evidence:**
 
 The executive summary states:
-> "The Jerry Framework demonstrates **generally good cross-platform awareness**"
+> "The Tom Framework demonstrates **generally good cross-platform awareness**"
 
 However, the 5 Major findings collectively block or severely degrade Windows usage:
 - PORT-001: Status line will fail (user experience break)
@@ -275,12 +275,12 @@ However, the 5 Major findings collectively block or severely degrade Windows usa
 
 **Analysis:**
 
-The phrase "generally good cross-platform awareness" creates an expectation that Jerry works on Windows with minor issues. However, a user attempting to use Jerry on a fresh Windows installation would encounter:
+The phrase "generally good cross-platform awareness" creates an expectation that Tom works on Windows with minor issues. However, a user attempting to use Tom on a fresh Windows installation would encounter:
 1. Broken status line (immediate visible failure)
 2. Inability to run migration/verification scripts (operational barrier)
 3. Potentially broken symlinks (depending on user privileges)
 
-This suggests the severity classification is optimistic. An alternative interpretation: "Jerry has good cross-platform *design patterns* in the codebase, but **untested Windows compatibility** with multiple blocking issues at the integration layer."
+This suggests the severity classification is optimistic. An alternative interpretation: "Tom has good cross-platform *design patterns* in the codebase, but **untested Windows compatibility** with multiple blocking issues at the integration layer."
 
 **Recommendation:**
 
@@ -289,7 +289,7 @@ Revise the executive summary overall assessment to:
 ```markdown
 ### Overall Assessment
 
-The Jerry Framework codebase demonstrates **strong cross-platform design patterns** at the code level (pathlib usage, platform-specific configuration, atomic file operations). However, **Windows compatibility is untested** and has **5 blocking or high-impact issues** at the shell integration layer that prevent out-of-box Windows usage:
+The Tom Framework codebase demonstrates **strong cross-platform design patterns** at the code level (pathlib usage, platform-specific configuration, atomic file operations). However, **Windows compatibility is untested** and has **5 blocking or high-impact issues** at the shell integration layer that prevent out-of-box Windows usage:
 
 1. **Blocking:** Status line command uses `python3` (Windows incompatible)
 2. **Blocking:** Migration scripts are bash-only (no Windows alternative)
@@ -374,7 +374,7 @@ The PORT-001 analysis focuses entirely on **runtime cross-platform compatibility
 2. **CI/CD compatibility:** Can the application be built, tested, and deployed on the target platform? (Not addressed)
 
 The PLAN.md includes EN-017-001 (Windows CI Testing Pipeline) as the first enabler, but the PORT-001 analysis doesn't evaluate:
-- Whether `uv` (the Python package manager used by Jerry per H-05) works on Windows
+- Whether `uv` (the Python package manager used by Tom per H-05) works on Windows
 - Whether the existing GitHub Actions workflows are portable to Windows runners
 - Whether the test suite has Windows-specific assumptions
 - Whether the build scripts (if any) are portable
@@ -451,7 +451,7 @@ Revise Phase 0 ordering or add a bootstrap phase:
 **Phase 0.1: Bootstrap (Windows VM setup)**
 - Manually fix PORT-001 (`python3` -> `python`) on a Windows test VM
 - Manually fix PORT-004 (use `git config core.symlinks true` or junctions)
-- Verify Jerry CLI basics work on Windows
+- Verify Tom CLI basics work on Windows
 
 **Phase 0.2: CI Implementation**
 - EN-017-001: Windows CI Testing Pipeline (now testable)

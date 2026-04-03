@@ -219,7 +219,7 @@ The preamble includes the consolidated auto-escalation rule. The full rule set f
 
 | Rule | Condition | Effect |
 |------|-----------|--------|
-| AE-001 | Artifact modifies `docs/governance/JERRY_CONSTITUTION.md` | Escalate to C3 minimum |
+| AE-001 | Artifact modifies `docs/governance/TOM_CONSTITUTION.md` | Escalate to C3 minimum |
 | AE-002 | Artifact modifies `.claude/rules/` | Escalate to C3 minimum |
 | AE-003 | Artifact is a new or modified ADR | Escalate to C3 minimum |
 | AE-004 | Artifact modifies existing baselined ADR | Escalate to C4 |

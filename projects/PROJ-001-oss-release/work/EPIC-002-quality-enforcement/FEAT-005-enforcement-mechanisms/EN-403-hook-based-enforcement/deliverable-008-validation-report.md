@@ -153,7 +153,7 @@ The B-002 blocking finding from iteration 1 (evaluate_edit bypass via old_string
 
 **Evidence:** TASK-003 design includes:
 
-- S-007 constitutional compliance: Governance file escalation triggers C3+ enforcement for JERRY_CONSTITUTION.md, .claude/rules/, and CLAUDE.md modifications
+- S-007 constitutional compliance: Governance file escalation triggers C3+ enforcement for TOM_CONSTITUTION.md, .claude/rules/, and CLAUDE.md modifications
 - S-013 anti-pattern verification: AST-based import boundary validation catches violations of hexagonal architecture layer rules (domain cannot import infrastructure, etc.)
 
 The PreToolUse hook is the primary L3 mechanism for both strategies, providing deterministic enforcement that does not degrade with context rot.
@@ -290,7 +290,7 @@ This chain is consistent with ADR-EPIC002-002's defense-in-depth architecture. T
 
 **Evidence:** All three hook designs support decision criticality escalation:
 
-- TASK-003: _check_governance_escalation() auto-escalates modifications to JERRY_CONSTITUTION.md, .claude/rules/, and CLAUDE.md to C3+ enforcement
+- TASK-003: _check_governance_escalation() auto-escalates modifications to TOM_CONSTITUTION.md, .claude/rules/, and CLAUDE.md to C3+ enforcement
 - TASK-004: SessionStart injects C1-C4 decision criticality definitions
 - TASK-002: V-024 reinforcement includes quality gate threshold and enforcement tier awareness
 
@@ -462,7 +462,7 @@ The B-004 finding from iteration 1 (V-024 SSOT unification) was resolved by desi
 
 **Evidence:** EN-404 TASK-003 and TASK-004 encode S-007 as HARD enforcement through:
 
-- JERRY_CONSTITUTION.md designated as the S-007 authoritative source
+- TOM_CONSTITUTION.md designated as the S-007 authoritative source
 - Constitutional principle references (P-003, P-020, P-022, P-043) in HARD enforcement tier
 - Governance file auto-escalation (PreToolUse) for constitution modifications
 - Template 4 specifically addresses constitutional compliance language
@@ -515,7 +515,7 @@ Cross-enabler traceability is maintained through the Shared Enforcement Data Mod
 
 - L1 (Rules): EN-404 TASK-003 encodes auto-escalation for governance artifacts as HARD rule
 - L3 (PreToolUse): EN-403 TASK-003 _check_governance_escalation() auto-escalates modifications to:
-  - JERRY_CONSTITUTION.md
+  - TOM_CONSTITUTION.md
   - .claude/rules/ (added in v1.1.0 per M-007)
   - CLAUDE.md
 - SessionStart: EN-403 TASK-004 injects escalation rules at session boundary
@@ -599,7 +599,7 @@ The largest gain is in Internal Consistency (+0.19), driven by resolution of B-0
 | Token budget (L2) | 600 tokens (TASK-002) | ~510 tokens (TASK-004) | YES (510 < 600) |
 | HARD rule count | N/A | 24 (within 25 max) | N/A |
 | V-024 content source | L2-REINJECT from quality-enforcement.md | L2-REINJECT defined in TASK-004 | YES (SSOT) |
-| Governance escalation paths | JERRY_CONSTITUTION, .claude/rules/, CLAUDE.md | Same | YES |
+| Governance escalation paths | TOM_CONSTITUTION, .claude/rules/, CLAUDE.md | Same | YES |
 | Architecture layer | INFRASTRUCTURE (corrected) | N/A | N/A |
 | Enforcement tiers | Referenced in reinforcement | Defined (C1-C4) | YES |
 

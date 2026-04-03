@@ -50,7 +50,7 @@ def _make_agent(
     omit it to receive the default test identity.
     """
     constitution: dict[str, Any] = {
-        "reference": "docs/governance/JERRY_CONSTITUTION.md",
+        "reference": "docs/governance/TOM_CONSTITUTION.md",
         "principles_applied": [
             "P-003: No Recursive Subagents (Hard)",
             "P-020: User Authority (Hard)",

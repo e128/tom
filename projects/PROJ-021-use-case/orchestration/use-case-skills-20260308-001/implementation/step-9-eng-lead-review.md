@@ -262,7 +262,7 @@ The critical path length is 5 waves. Wave 3 (templates) and Wave 4 (composition)
 | `docs/schemas/agent-canonical-v1.schema.json` | F-06, F-08 (composition YAML) | Schema reference | **EXISTS** -- confirmed by architecture iter-3 verification note: `$id = https://jerry-framework.dev/schemas/agent-canonical/v1.0.0` |
 | `skills/problem-solving/composition/ps-researcher.agent.yaml` | F-06, F-08 (reference implementation) | Pattern reference | **EXISTS** -- skill in production |
 | `skills/problem-solving/contracts/PS_SKILL_CONTRACT.yaml` | F-15 (adaptation template) | Pattern reference | **EXISTS** -- confirmed in codebase |
-| `docs/governance/JERRY_CONSTITUTION.md` | F-03, F-05 (`constitution.reference` field) | Reference | **EXISTS** -- standard path |
+| `docs/governance/TOM_CONSTITUTION.md` | F-03, F-05 (`constitution.reference` field) | Reference | **EXISTS** -- standard path |
 | `uv run jerry items create` (CLI command) | F-04 / F-09 (uc-slicer worktracker integration) | Runtime dependency | **EXISTS** -- Jerry v0.24.0, H-05 compliant |
 | Source schema for F-17 | F-17 (file copy) | Source artifact | **EXISTS** -- `projects/PROJ-021-use-case/orchestration/use-case-skills-20260308-001/architecture/shared-schema.json` |
 

@@ -71,7 +71,7 @@ factual errors, hallucinations, and cross-reference failures that direct review 
 
 **Foundation:** Dhuliawala et al. (2023) demonstrated that LLMs can significantly reduce hallucinations by generating verification questions about their own claims, answering those questions independently (without access to the original output), and flagging inconsistencies. Min et al. (2023) showed that decomposing statements into atomic facts enables fine-grained factual precision scoring. This decompose-verify-compare pattern detects errors that holistic review misses.
 
-**Jerry Implementation:** Extracts all testable claims from a deliverable (factual assertions, SSOT references, cross-references, numerical values, rule citations), generates verification questions for each, answers those questions independently using source documents, and flags discrepancies as CV-NNN findings. Particularly valuable for verifying SSOT alignment, cross-reference accuracy, and quoted values. H-16 compliance: S-003 SHOULD run before S-011 (strengthen before verifying, though CoVe is verification-oriented rather than critique-oriented, making H-16 indirect).
+**Tom Implementation:** Extracts all testable claims from a deliverable (factual assertions, SSOT references, cross-references, numerical values, rule citations), generates verification questions for each, answers those questions independently using source documents, and flags discrepancies as CV-NNN findings. Particularly valuable for verifying SSOT alignment, cross-reference accuracy, and quoted values. H-16 compliance: S-003 SHOULD run before S-011 (strengthen before verifying, though CoVe is verification-oriented rather than critique-oriented, making H-16 indirect).
 
 ---
 

@@ -1,4 +1,4 @@
-# Jerry Framework CI Pipeline
+# Tom Framework CI Pipeline
 # ADR: projects/PROJ-001-plugin-cleanup/decisions/ADR-CI-001-cicd-pipeline.md
 #
 # Triggers: All pushes + PRs to main/master/claude/* branches
@@ -89,7 +89,7 @@ jobs:
 
       - name: Install and audit dependencies
         run: |
-          # Install dev dependencies directly (not the jerry package itself)
+          # Install dev dependencies directly (not the tom package itself)
           # This allows auditing only real PyPI dependencies
           # EN-001: Pin versions to prevent supply chain drift
           pip install "filelock==3.20.3" "mypy==1.19.1" "ruff==0.14.11"
@@ -139,9 +139,9 @@ jobs:
 
       - name: Validate hook wrappers syntax
         run: |
-          # EN-007: Hook wrappers are thin scripts that delegate to jerry CLI.
+          # EN-007: Hook wrappers are thin scripts that delegate to tom CLI.
           # Validate they parse without errors (they will fail at runtime without
-          # uv/jerry installed, but syntax must be valid).
+          # uv/tom installed, but syntax must be valid).
           python3 -m py_compile hooks/session-start.py
           python3 -m py_compile hooks/pre-compact.py
           python3 -m py_compile hooks/pre-tool-use.py
@@ -188,7 +188,7 @@ jobs:
   # Frontmatter Schema Validation
   # ===========================================================================
   # Validates YAML frontmatter in all 89 agent .md files and 30 SKILL.md files
-  # against JSON schemas. Uses jerry agents validate-frontmatter CLI command.
+  # against JSON schemas. Uses tom agents validate-frontmatter CLI command.
   frontmatter-validation:
     name: Frontmatter Validation
     runs-on: ubuntu-latest
@@ -207,7 +207,7 @@ jobs:
         run: uv sync --frozen
 
       - name: Validate agent and skill frontmatter (includes P-003 check, STORY-025)
-        run: uv run jerry agents validate-frontmatter
+        run: uv run tom agents validate-frontmatter
 
   # ===========================================================================
   # License Header Check (EN-935, FEAT-015)
@@ -237,7 +237,7 @@ jobs:
   # CLI Integration Tests (EN-006)
   # ===========================================================================
   # Validates CLI commands via subprocess (plugin mode)
-  # Ensures `jerry` command works without pip install -e .
+  # Ensures `tom` command works without pip install -e .
   cli-integration:
     name: CLI Integration Tests
     runs-on: ubuntu-latest
@@ -260,7 +260,7 @@ jobs:
           # Run only subprocess-marked tests
           # These validate plugin mode (CLI via uv run)
           PYTHONPATH="." uv run pytest \
-            tests/integration/cli/test_jerry_cli_subprocess.py \
+            tests/integration/cli/test_tom_cli_subprocess.py \
             -v \
             --tb=short
 
@@ -273,11 +273,11 @@ jobs:
             -v \
             --tb=short
 
-      - name: Verify jerry --help works
-        run: PYTHONPATH="." uv run jerry --help
+      - name: Verify tom --help works
+        run: PYTHONPATH="." uv run tom --help
 
-      - name: Verify jerry --version works
-        run: PYTHONPATH="." uv run jerry --version
+      - name: Verify tom --version works
+        run: PYTHONPATH="." uv run tom --version
 
   # ===========================================================================
   # Test Suite - pip (Python Matrix)

@@ -279,7 +279,7 @@ This is audit trail evidence (proving work was done), not knowledge evidence (re
 |-----------|---------------------|---------------------|-----------|
 | INV-T01: Parent must be Story, Bug, or Enabler | Task placed under wrong parent type | /worktracker skill enforcement (WTI rules) | Worktracker audit detects containment violation |
 | WTI-008b: AC about verification, not implementation | AC contains implementation steps instead of outcomes | Quick Creation Guide in template body | Code review catches implementation-in-AC |
-| Status values: BACKLOG, IN_PROGRESS, BLOCKED, DONE, REMOVED | Invalid status transition | L3 AST validation (H-33) | `jerry ast validate` rejects invalid status |
+| Status values: BACKLOG, IN_PROGRESS, BLOCKED, DONE, REMOVED | Invalid status transition | L3 AST validation (H-33) | `tom ast validate` rejects invalid status |
 | INV-T02: remaining_work <= original_estimate | Time tracking inconsistency | Manual review | Time tracking audit |
 
 <!--

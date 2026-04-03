@@ -122,7 +122,7 @@ class EventId(VertexId):
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### File Location
 
@@ -186,7 +186,7 @@ elif id_string.startswith("PHASE-"):
 
 ## Design Canon Reference
 
-Lines 117-167 in Jerry Design Canon v1.0
+Lines 117-167 in Tom Design Canon v1.0
 
 ---
 

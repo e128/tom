@@ -195,7 +195,7 @@
 - DEV-003 traces progressive loading design to RISK-11 and eng-lead Wave 1 notes.
 - DEV-005 traces casual template additions to Cockburn Step 1, PAT-001, and rules file sections 1.3/1.4.
 - Both agents' `enforcement.escalation_path: "eng-reviewer"` ties to the review chain.
-- `constitution.reference: "docs/governance/JERRY_CONSTITUTION.md"` in both governance YAMLs provides constitutional traceability.
+- `constitution.reference: "docs/governance/TOM_CONSTITUTION.md"` in both governance YAMLs provides constitutional traceability.
 - rules file footer cites SSOT: "Schema SSOT: docs/schemas/use-case-realization-v1.schema.json".
 - implementation summary header traces to "step-9-use-case-architecture.md (v1.2.0)" and "step-9-eng-lead-review.md (v1.2.0)" as input documents.
 

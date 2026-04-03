@@ -2,7 +2,7 @@
 
 > Knowledge document for the Diataxis documentation methodology. Reference for `/diataxis` skill agents.
 
-> **Scope:** This document explains the Diataxis framework's four-quadrant model, per-quadrant characteristics, and classification methodology. It does not cover Jerry-specific quality criteria IDs (T-01 through E-07), detection heuristics, or anti-pattern severity levels -- those are specified in `skills/diataxis/rules/diataxis-standards.md`.
+> **Scope:** This document explains the Diataxis framework's four-quadrant model, per-quadrant characteristics, and classification methodology. It does not cover Tom-specific quality criteria IDs (T-01 through E-07), detection heuristics, or anti-pattern severity levels -- those are specified in `skills/diataxis/rules/diataxis-standards.md`.
 
 ## Document Sections
 
@@ -286,7 +286,7 @@ Others note that Diataxis was developed in the context of open-source software d
 
 ## Related
 
-- **Reference:** [Diataxis Quality Criteria](../../skills/diataxis/rules/diataxis-standards.md) -- Jerry-specific criteria IDs, anti-patterns, detection heuristics
+- **Reference:** [Diataxis Quality Criteria](../../skills/diataxis/rules/diataxis-standards.md) -- Tom-specific criteria IDs, anti-patterns, detection heuristics
 - **Templates:** [Tutorial](../../skills/diataxis/templates/tutorial-template.md), [How-To](../../skills/diataxis/templates/howto-template.md), [Reference](../../skills/diataxis/templates/reference-template.md), [Explanation](../../skills/diataxis/templates/explanation-template.md) -- Per-quadrant structural templates
 - **Skill:** [Diataxis SKILL.md](../../skills/diataxis/SKILL.md) -- Skill definition and agent roster
 

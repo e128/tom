@@ -1,5 +1,5 @@
 """
-Domain Event Pattern - Canonical implementation for Jerry Framework.
+Domain Event Pattern - Canonical implementation for Tom Framework.
 
 Domain events are immutable value objects representing significant state changes.
 Use past-tense naming and include EVENT_TYPE class variable.
@@ -14,7 +14,7 @@ References:
     - ADR-009: Event Storage Mechanism
 
 Exports:
-    Example domain events following Jerry conventions
+    Example domain events following Tom conventions
 """
 
 from __future__ import annotations

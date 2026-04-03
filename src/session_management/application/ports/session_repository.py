@@ -57,7 +57,7 @@ class ISessionRepository(Protocol):
         """Get the currently active session.
 
         Returns the most recent session that is in ACTIVE status.
-        In Jerry, there should only be one active session at a time.
+        In Tom, there should only be one active session at a time.
 
         Returns:
             The active Session if one exists, None otherwise

@@ -8,7 +8,7 @@
 
 ## Overview
 
-The Test Pyramid defines the distribution and focus of different test types. Jerry follows a balanced pyramid with strong unit tests at the base, integration tests in the middle, and fewer end-to-end tests at the top.
+The Test Pyramid defines the distribution and focus of different test types. Tom follows a balanced pyramid with strong unit tests at the base, integration tests in the middle, and fewer end-to-end tests at the top.
 
 ---
 
@@ -22,7 +22,7 @@ The Test Pyramid defines the distribution and focus of different test types. Jer
 
 ---
 
-## Jerry Test Pyramid
+## Tom Test Pyramid
 
 ```
                     ┌─────────────────┐
@@ -147,7 +147,7 @@ Verify external interface compliance.
 def test_cli_json_output_is_valid_json():
     """CLI --json flag produces valid JSON."""
     result = subprocess.run(
-        ["python", "-m", "jerry", "list-tasks", "--json"],
+        ["python", "-m", "tom", "list-tasks", "--json"],
         capture_output=True,
         text=True,
     )
@@ -300,7 +300,7 @@ def test_full_cli_workflow(tmp_path, monkeypatch):
 
     # Create project
     result = subprocess.run(
-        ["python", "-m", "jerry", "init", "PROJ-001-test"],
+        ["python", "-m", "tom", "init", "PROJ-001-test"],
         capture_output=True,
         text=True,
     )
@@ -308,7 +308,7 @@ def test_full_cli_workflow(tmp_path, monkeypatch):
 
     # Create task
     result = subprocess.run(
-        ["python", "-m", "jerry", "create-task", "Test Task"],
+        ["python", "-m", "tom", "create-task", "Test Task"],
         capture_output=True,
         text=True,
     )
@@ -317,7 +317,7 @@ def test_full_cli_workflow(tmp_path, monkeypatch):
 
     # List tasks
     result = subprocess.run(
-        ["python", "-m", "jerry", "list-tasks", "--json"],
+        ["python", "-m", "tom", "list-tasks", "--json"],
         capture_output=True,
         text=True,
     )
@@ -379,13 +379,13 @@ def test_example():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Unit tests use InMemoryRepository, not mocks for domain testing.
+> **Tom Decision**: Unit tests use InMemoryRepository, not mocks for domain testing.
 
-> **Jerry Decision**: Integration tests use temporary directories (tmp_path fixture).
+> **Tom Decision**: Integration tests use temporary directories (tmp_path fixture).
 
-> **Jerry Decision**: Architecture tests enforce layer boundaries automatically.
+> **Tom Decision**: Architecture tests enforce layer boundaries automatically.
 
 ---
 

@@ -13,7 +13,7 @@ BDD scenarios:
     - AE-006d: EMERGENCY tier triggers auto-checkpoint + user warning
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - ST-002: AE-006 graduated sub-rules
     - PROJ-004: Context Resilience
 """

@@ -638,13 +638,13 @@ Session complete. GNAR points: 47.
 
 **What it looks like:**
 ```markdown
-# JERRY_CONSTITUTION.md
+# TOM_CONSTITUTION.md
 
 > "The rules are the rules. How we talk about them is the variable."
 > — Saucer Boy, on constitutional compliance
 ```
 
-**Why it fails:** The constitution is governance. It must read as governance. Adding persona flavor to constitutional text blurs the line between the voice layer and the rule layer. The persona document is explicit: "JERRY_CONSTITUTION.md is governance. It must read as governance." (FEAT-005 Usage Rules, "Where Soundtrack References MUST NOT Appear")
+**Why it fails:** The constitution is governance. It must read as governance. Adding persona flavor to constitutional text blurs the line between the voice layer and the rule layer. The persona document is explicit: "TOM_CONSTITUTION.md is governance. It must read as governance." (FEAT-005 Usage Rules, "Where Soundtrack References MUST NOT Appear")
 
 ---
 
@@ -663,7 +663,7 @@ Session complete. GNAR points: 47.
 Constitutional compliance check: FAILED
 
 Saucer Boy would NOT be proud.
-Trigger: AE-001 — docs/governance/JERRY_CONSTITUTION.md was modified.
+Trigger: AE-001 — docs/governance/TOM_CONSTITUTION.md was modified.
 ```
 
 **Why it fails:** Constitutional failures are high-stakes. The persona document specifies humor is OFF for constitutional compliance failures, governance escalation triggers, and security-relevant failures. "Saucer Boy would NOT be proud" is performance in a context that demands precision.

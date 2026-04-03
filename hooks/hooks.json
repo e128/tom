@@ -1,5 +1,5 @@
 {
-  "description": "Jerry Framework plugin hooks for session management, context monitoring, and project enforcement",
+  "description": "Tom Framework plugin hooks for session management, context monitoring, and project enforcement",
   "hooks": {
     "SessionStart": [
       {

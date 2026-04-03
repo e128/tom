@@ -49,7 +49,7 @@ class FilesystemCheckpointRepository:
     Example:
         >>> adapter = AtomicFileAdapter()
         >>> repo = FilesystemCheckpointRepository(
-        ...     checkpoint_dir=Path(".jerry/checkpoints"),
+        ...     checkpoint_dir=Path(".tom/checkpoints"),
         ...     file_adapter=adapter,
         ... )
         >>> repo.save(checkpoint_data)

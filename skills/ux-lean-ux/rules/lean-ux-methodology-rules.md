@@ -229,7 +229,7 @@ ICE (Impact, Confidence, Ease) scoring prioritizes hypotheses in the backlog. Th
 
 Each dimension uses a 1-10 integer scale. The following anchors define the scale boundaries and midpoint.
 
-> **Attribution note:** No canonical primary source exists for the ICE scoring framework; it is attributed to Sean Ellis through practitioner channels (GrowthHackers.com community, circa 2015). No peer-reviewed citation is available. The specific percentage thresholds (Impact), evidence tier descriptions (Confidence), and effort-time boundaries (Ease) are author operationalizations adapted from the Sean Ellis / GrowthHackers ICE framework principles for tiny-team Lean UX contexts. The original ICE framework defines the three dimensions and 1-10 scale but does not prescribe specific anchor thresholds; these anchors are Jerry-specific calibrations for the /user-experience skill's target audience (1-3 person product teams).
+> **Attribution note:** No canonical primary source exists for the ICE scoring framework; it is attributed to Sean Ellis through practitioner channels (GrowthHackers.com community, circa 2015). No peer-reviewed citation is available. The specific percentage thresholds (Impact), evidence tier descriptions (Confidence), and effort-time boundaries (Ease) are author operationalizations adapted from the Sean Ellis / GrowthHackers ICE framework principles for tiny-team Lean UX contexts. The original ICE framework defines the three dimensions and 1-10 scale but does not prescribe specific anchor thresholds; these anchors are Tom-specific calibrations for the /user-experience skill's target audience (1-3 person product teams).
 
 #### Impact (How many users are affected and how significantly?)
 

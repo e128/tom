@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry.dev/schemas/marketplace.schema.json",
+  "$id": "https://tom.dev/schemas/marketplace.schema.json",
   "title": "Claude Code Plugin Marketplace Manifest",
   "description": "JSON Schema for .claude-plugin/marketplace.json manifest files. Based on Claude Code plugin specification via Context7.",
   "type": "object",

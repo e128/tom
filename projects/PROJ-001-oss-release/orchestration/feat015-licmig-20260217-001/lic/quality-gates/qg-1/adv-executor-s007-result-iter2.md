@@ -5,7 +5,7 @@
 **Criticality:** C4 (tournament mode per orchestration plan)
 **Date:** 2026-02-17
 **Reviewer:** adv-executor (S-007)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, H-01 through H-24
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, H-01 through H-24
 **Execution ID:** 20260217T1500
 **Iteration:** QG-1 Iteration 2
 
@@ -69,7 +69,7 @@ Each finding from QG-1 Iteration 1 (execution ID 20260217T1200) is assessed for 
 **Deliverable type:** Document (audit report, license analysis).
 
 **Loaded rule sets:**
-- `JERRY_CONSTITUTION.md` v1.1 (P-001 through P-043)
+- `TOM_CONSTITUTION.md` v1.1 (P-001 through P-043)
 - `quality-enforcement.md` v1.3.0 (H-01 through H-24, SSOT)
 - `markdown-navigation-standards.md` (H-23, H-24)
 - `python-environment.md` (H-05, H-06)

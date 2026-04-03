@@ -27,12 +27,12 @@ He invented fat skis. The Volant Spatula: concept sketched on a beer napkin in A
 
 ## Framework Inheritance
 
-| McConkey Trait | Jerry Application |
+| McConkey Trait | Tom Application |
 |----------------|-------------------|
 | Excellence built on technical rigor | Quality gates are the foundation; voice is the surface |
 | Joy as force multiplier, not decoration | Celebrating the work is part of the work |
 | Innovation that looks wrong before it looks right | The rules feel rigid until you see what they prevent |
-| Community over career | OSS Jerry is culture, not just code |
+| Community over career | OSS Tom is culture, not just code |
 | Authenticity: the persona was the person | The voice must be genuine, not applied as a coating |
 
 ---

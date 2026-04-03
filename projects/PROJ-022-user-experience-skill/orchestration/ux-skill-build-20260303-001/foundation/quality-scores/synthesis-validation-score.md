@@ -101,7 +101,7 @@ Source attribution is present on all major sections via HTML comment markers (li
 
 **Improvement Path:**
 - Add inline citations for at least the three main signal extraction thresholds: Nielsen severity scale (cite Nielsen, J. 1994 or NNG source), JTBD switch force scale (cite Ulwick or Moesta), Kano sample size guidance (cite Berger et al. 1993 or accepted practice).
-- Add a "Constitutional References" sub-section or a footer note: "P-022 (no deception about confidence): `docs/governance/JERRY_CONSTITUTION.md`" for standalone traceability.
+- Add a "Constitutional References" sub-section or a footer note: "P-022 (no deception about confidence): `docs/governance/TOM_CONSTITUTION.md`" for standalone traceability.
 - For the confidence rationale column, consider adding "(evidence basis: [source])" to the highest-stakes LOW assignments (particularly AI-First Design and Design Token Consistency) where the rationale has the most impact on practitioner behavior.
 
 ---

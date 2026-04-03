@@ -16,7 +16,7 @@ Evaluating against AE-001 through AE-006e:
 
 | Rule | Condition | Triggered | Escalation |
 |------|-----------|-----------|------------|
-| AE-001 | Touches `docs/governance/JERRY_CONSTITUTION.md` | No | — |
+| AE-001 | Touches `docs/governance/TOM_CONSTITUTION.md` | No | — |
 | AE-002 | Touches `.context/rules/` or `.claude/rules/` | No | — |
 | AE-003 | New or modified ADR | No | — |
 | AE-004 | Modifies baselined ADR | No | — |

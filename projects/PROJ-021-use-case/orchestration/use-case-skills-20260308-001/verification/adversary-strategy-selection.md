@@ -20,7 +20,7 @@ The adv-selector agent actively checked all AE rules per H-19:
 
 | Rule | Condition Check | Result | Impact |
 |------|-----------------|--------|--------|
-| AE-001 | Touches `docs/governance/JERRY_CONSTITUTION.md`? | No | — |
+| AE-001 | Touches `docs/governance/TOM_CONSTITUTION.md`? | No | — |
 | AE-002 | Touches `.context/rules/` or `.claude/rules/`? | No (rule files are in skills/*/rules/, not .context/rules/) | — |
 | AE-003 | New or modified ADR? | No (no ADR deliverables) | — |
 | AE-004 | Modifies baselined ADR? | No | — |

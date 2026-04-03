@@ -22,7 +22,7 @@ Composite Value Objects combine multiple related attributes into a single cohesi
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### DateRange Value Object
 
@@ -540,13 +540,13 @@ def test_quality_metrics_gate_check():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Composite value objects provide factory methods for common creation patterns.
+> **Tom Decision**: Composite value objects provide factory methods for common creation patterns.
 
-> **Jerry Decision**: Value objects that can be partially updated provide `with_*` methods that return new instances.
+> **Tom Decision**: Value objects that can be partially updated provide `with_*` methods that return new instances.
 
-> **Jerry Decision**: Quality metrics use 0.0-1.0 scale internally, percentage conversion via property.
+> **Tom Decision**: Quality metrics use 0.0-1.0 scale internally, percentage conversion via property.
 
 ---
 

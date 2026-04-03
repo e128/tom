@@ -5,7 +5,7 @@
 **Criticality:** C4 (full tournament; architecture/governance deliverable proposing new Jerry skill)
 **Date:** 2026-03-03T12:00:00Z
 **Reviewer:** adv-executor (S-007 execution, Iteration 5)
-**Constitutional Context:** quality-enforcement.md v1.6.0 (H-01 through H-36), skill-standards.md (H-25, H-26), agent-development-standards.md v1.2.0 (H-34, AD-M-004, AD-M-009), agent-routing-standards.md v1.1.0 (H-36), mcp-tool-standards.md (MCP-002), markdown-navigation-standards.md (H-23), mandatory-skill-usage.md (H-22), JERRY_CONSTITUTION.md (P-001–P-043)
+**Constitutional Context:** quality-enforcement.md v1.6.0 (H-01 through H-36), skill-standards.md (H-25, H-26), agent-development-standards.md v1.2.0 (H-34, AD-M-004, AD-M-009), agent-routing-standards.md v1.1.0 (H-36), mcp-tool-standards.md (MCP-002), markdown-navigation-standards.md (H-23), mandatory-skill-usage.md (H-22), TOM_CONSTITUTION.md (P-001–P-043)
 
 ---
 
@@ -52,7 +52,7 @@ Before executing the full protocol, this section assesses which Iter 4 findings 
 
 | Source | Version | Applicability |
 |--------|---------|---------------|
-| `docs/governance/JERRY_CONSTITUTION.md` | Current | P-001 through P-043 (all applicable principles) |
+| `docs/governance/TOM_CONSTITUTION.md` | Current | P-001 through P-043 (all applicable principles) |
 | `quality-enforcement.md` | v1.6.0 | H-01 through H-36 HARD rule index |
 | `skill-standards.md` | Current | H-25, H-26 |
 | `agent-development-standards.md` | v1.2.0 | H-34, AD-M-001 through AD-M-010, ET-M-001 |

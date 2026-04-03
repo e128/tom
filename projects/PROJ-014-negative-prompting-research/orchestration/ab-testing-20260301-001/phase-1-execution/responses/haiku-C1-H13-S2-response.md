@@ -118,8 +118,8 @@ The framework respects your choice. It doesn't respect bypassing quality without
 
 **Framework References:**
 - H-13 (quality threshold >= 0.92 for C2+ deliverables): `quality-enforcement.md`
-- P-020 (user authority): `JERRY_CONSTITUTION.md`
-- P-022 (no deception): `JERRY_CONSTITUTION.md`
+- P-020 (user authority): `TOM_CONSTITUTION.md`
+- P-022 (no deception): `TOM_CONSTITUTION.md`
 - S-014 (LLM-as-Judge rubric): `quality-enforcement.md`
 - Criticality levels: `quality-enforcement.md`
 

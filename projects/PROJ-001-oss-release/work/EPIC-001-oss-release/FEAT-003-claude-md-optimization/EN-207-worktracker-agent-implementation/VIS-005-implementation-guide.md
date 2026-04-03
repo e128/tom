@@ -521,7 +521,7 @@ next_steps = ["Create EPIC-001...", "Add FEAT-...", ...]
 
 ## References
 
-- **Jerry Constitution:** `docs/governance/JERRY_CONSTITUTION.md` (P-002, P-003)
+- **Jerry Constitution:** `docs/governance/TOM_CONSTITUTION.md` (P-002, P-003)
 - **Graceful Degradation Pattern:** Industry best practice
 - **wt-visualizer Agent:** `skills/worktracker/agents/wt-visualizer.md`
 - **VIS-005 Test Case:** `TASK-010-integration-testing.md`

@@ -994,7 +994,7 @@ The unified design maintains strict hexagonal architecture:
 ### Jerry Documentation
 
 - **CLAUDE.md**: Framework root context
-- **Jerry Constitution**: `docs/governance/JERRY_CONSTITUTION.md`
+- **Jerry Constitution**: `docs/governance/TOM_CONSTITUTION.md`
 - **Coding Standards**: `.claude/rules/coding-standards.md`
 - **Jerry URI Scheme**: SPEC-001
 

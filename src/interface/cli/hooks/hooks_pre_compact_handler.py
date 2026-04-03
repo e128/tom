@@ -20,7 +20,7 @@ Note:
     it persists state before context compaction occurs.
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - EN-003: Checkpoint Management
     - PROJ-004: Context Resilience
 """

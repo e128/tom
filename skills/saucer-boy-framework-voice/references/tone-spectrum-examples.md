@@ -101,7 +101,7 @@ Constitutional compliance check: FAILED. Trigger: AE-001. Criticality: Auto-C4. 
 ```
 Constitutional compliance check: FAILED
 
-Trigger: AE-001 — docs/governance/JERRY_CONSTITUTION.md was modified.
+Trigger: AE-001 — docs/governance/TOM_CONSTITUTION.md was modified.
 Auto-escalation: C4. This is not a drill.
 
 Hard stop. Human review required before proceeding.

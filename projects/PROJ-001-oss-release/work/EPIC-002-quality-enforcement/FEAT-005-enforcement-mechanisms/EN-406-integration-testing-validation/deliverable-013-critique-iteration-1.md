@@ -426,7 +426,7 @@ The creator's self-assessment of 0.937 was overestimated by 0.030 points. The pr
 
 ### Attack 3: Bypass L3 Enforcement via Non-Python Governance
 
-**Scenario:** An LLM agent modifies governance-critical content by editing a `.md` file (e.g., `JERRY_CONSTITUTION.md`). L3 (PreToolUse) only validates Python files in `src/`. Markdown files bypass AST validation entirely (TC-PTU-011/TC-PTU-012 confirm this). The governance escalation in TC-PTU-004 only triggers for specific file paths but the test does not verify all governance file paths are in the escalation list.
+**Scenario:** An LLM agent modifies governance-critical content by editing a `.md` file (e.g., `TOM_CONSTITUTION.md`). L3 (PreToolUse) only validates Python files in `src/`. Markdown files bypass AST validation entirely (TC-PTU-011/TC-PTU-012 confirm this). The governance escalation in TC-PTU-004 only triggers for specific file paths but the test does not verify all governance file paths are in the escalation list.
 
 **Impact:** HIGH -- Governance documents can be modified without L3 deterministic enforcement. Only L1 rules and L2 prompt reinforcement (both context-rot vulnerable) protect governance content.
 

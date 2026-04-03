@@ -296,9 +296,9 @@ Before finalizing significant outputs, agents SHOULD self-critique:
 5. P-022: Am I being transparent about limitations?
 ```
 
-**Impact:** Available in full JERRY_CONSTITUTION.md but not summarized for quick reference.
+**Impact:** Available in full TOM_CONSTITUTION.md but not summarized for quick reference.
 
-**Recommendation:** Already exists in `docs/governance/JERRY_CONSTITUTION.md` - just need reference.
+**Recommendation:** Already exists in `docs/governance/TOM_CONSTITUTION.md` - just need reference.
 
 ---
 

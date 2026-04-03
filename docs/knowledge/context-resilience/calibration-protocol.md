@@ -46,7 +46,7 @@ Once TASK-006 is implemented, configure your context window size using one of th
 export JERRY_CONTEXT_MONITOR__CONTEXT_WINDOW_TOKENS=500000
 ```
 
-**Method 2: Project config** (`.jerry/config.toml`)
+**Method 2: Project config** (`.tom/config.toml`)
 ```toml
 [context_monitor]
 context_window_tokens = 500000
@@ -103,7 +103,7 @@ These are the calibrated defaults implemented in `ConfigThresholdAdapter`:
 Override any threshold via layered config:
 
 ```toml
-# In project config TOML or root jerry.toml
+# In project config TOML or root tom.toml
 [context_monitor]
 nominal_threshold = 0.55
 warning_threshold = 0.70

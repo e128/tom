@@ -4,7 +4,7 @@
 """
 RotationAction - Graduated response action enumeration.
 
-Represents the action Jerry recommends based on the current
+Represents the action Tom recommends based on the current
 context fill tier and aggressiveness configuration.
 
 References:

@@ -50,7 +50,7 @@
 | Completeness | 0.20 | 0.95 | 0.190 | All 7 XML sections; all H-34 required and recommended fields; no regression from iter2; no iter3-specific completeness gains identified |
 | Internal Consistency | 0.20 | 0.97 | 0.194 | `Minor` removed from template severity; 4a/4b split consistent with agent body two-path Step 4; all tool lists, triplet, ux_ext key alignment hold |
 | Methodological Rigor | 0.20 | 0.96 | 0.192 | Template 4a/4b split correctly mirrors agent body Step 4 two-path logic; all prior MR improvements hold; one pre-existing minor Step 3 framing tension remains |
-| Evidence Quality | 0.15 | 0.94 | 0.141 | P-001 "Soft" classification with JERRY_CONSTITUTION.md Article I reference resolves primary iter2 gap; P-002 "Medium" citation partial (Article I, no section number); references section holds |
+| Evidence Quality | 0.15 | 0.94 | 0.141 | P-001 "Soft" classification with TOM_CONSTITUTION.md Article I reference resolves primary iter2 gap; P-002 "Medium" citation partial (Article I, no section number); references section holds |
 | Actionability | 0.15 | 0.95 | 0.1425 | `engagement-id` format annotation `UX-{NNNN}` added to output location specification; all iter2 actionability improvements hold; no remaining actionability gaps found |
 | Traceability | 0.10 | 0.94 | 0.094 | Routing table section anchor `#lifecycle-stage-routing` added to purpose section; `wave-progression.md v1.2.0` version added; footer comment lacks anchor (minor SHOULD-level residual) |
 | **TOTAL** | **1.00** | | **0.954** | |
@@ -75,7 +75,7 @@
 
 | Fix | Claim | Verified | Evidence |
 |-----|-------|----------|----------|
-| Fix 1: P-001 tier correction (Soft) | governance.yaml P-001 entry corrected to "Soft, per JERRY_CONSTITUTION.md Article I" | Yes | governance.yaml line 65: `"P-001: Truth and Accuracy (Soft, per JERRY_CONSTITUTION.md Article I)"` |
+| Fix 1: P-001 tier correction (Soft) | governance.yaml P-001 entry corrected to "Soft, per TOM_CONSTITUTION.md Article I" | Yes | governance.yaml line 65: `"P-001: Truth and Accuracy (Soft, per TOM_CONSTITUTION.md Article I)"` |
 | Fix 2: engagement-id format annotation | `UX-{NNNN}` format stated in output location spec | Yes | agent .md line 303: `Where {engagement-id} follows format UX-{NNNN} (e.g., UX-0001)` |
 | Fix 3a: Parent SKILL.md section anchor | `#lifecycle-stage-routing` anchor added to purpose section | Yes | agent .md line 56: `skills/user-experience/SKILL.md#lifecycle-stage-routing` |
 | Fix 3b: Parent SKILL.md section label in footer | `[Lifecycle-Stage Routing]` label added to footer | Yes | agent .md line 540: `skills/user-experience/SKILL.md [Lifecycle-Stage Routing]` |
@@ -161,13 +161,13 @@ Revise template Step 3 row criterion to match agent body precisely: "Motivation 
 
 The iter2 Evidence Quality gap -- the unverified "(Medium)" classification for P-001 -- is substantially resolved. Governance YAML line 65 now reads:
 
-`"P-001: Truth and Accuracy (Soft, per JERRY_CONSTITUTION.md Article I) - All factor ratings cite evidence or mark inferences explicitly; all bottleneck classifications show elimination algorithm trace"`
+`"P-001: Truth and Accuracy (Soft, per TOM_CONSTITUTION.md Article I) - All factor ratings cite evidence or mark inferences explicitly; all bottleneck classifications show elimination algorithm trace"`
 
-The "Soft" tier designation is now consistent with P-001 being a SHOULD-level principle, and the reference to `JERRY_CONSTITUTION.md Article I` provides a traceable constitution anchor. This is a genuine improvement over the unqualified "(Medium)" in iter2.
+The "Soft" tier designation is now consistent with P-001 being a SHOULD-level principle, and the reference to `TOM_CONSTITUTION.md Article I` provides a traceable constitution anchor. This is a genuine improvement over the unqualified "(Medium)" in iter2.
 
 Governance YAML line 66 now reads:
 
-`"P-002: File Persistence (Medium, per JERRY_CONSTITUTION.md Article I) - All outputs persisted to skill output directory"`
+`"P-002: File Persistence (Medium, per TOM_CONSTITUTION.md Article I) - All outputs persisted to skill output directory"`
 
 P-002 is similarly improved with the Article I reference.
 
@@ -177,13 +177,13 @@ Chapter-level citation specificity "Fogg, 2020, Chapters 14-15" is consistent th
 
 **Gaps:**
 
-1. **P-002 "Medium" partial citation:** The governance YAML states P-002 is "Medium, per JERRY_CONSTITUTION.md Article I" but does not identify which section of Article I establishes the Medium tier. For P-001, the "Soft" designation is now explicitly stated with the same Article I reference. For P-002, the "Medium" designation differs from P-001's "Soft" -- the two principles are given different tiers. Whether P-002 is genuinely a different tier from P-001 would require reading the constitution. The Article I reference is present, which is materially better than iter2's unverified classification, but "Article I" without a section identifier is below the C4 standard for complete traceability of a governance claim. The reference is correct in direction but incomplete in precision.
+1. **P-002 "Medium" partial citation:** The governance YAML states P-002 is "Medium, per TOM_CONSTITUTION.md Article I" but does not identify which section of Article I establishes the Medium tier. For P-001, the "Soft" designation is now explicitly stated with the same Article I reference. For P-002, the "Medium" designation differs from P-001's "Soft" -- the two principles are given different tiers. Whether P-002 is genuinely a different tier from P-001 would require reading the constitution. The Article I reference is present, which is materially better than iter2's unverified classification, but "Article I" without a section identifier is below the C4 standard for complete traceability of a governance claim. The reference is correct in direction but incomplete in precision.
 
 2. **SHOULD-level gap: References section chapter-to-content annotation absent.** The References section lists Fogg (2009) and Fogg (2020) with full bibliographic data but does not annotate which specific content is drawn from which source at the section level (e.g., noting "Chapters 14-15: behavior statement format" in the References entry). This was noted in iter2 as a SHOULD-level gap. It remains unaddressed. Not blocking at this score level.
 
 **Improvement Path:**
 
-1. Amend governance YAML P-002 entry to include the specific section within `JERRY_CONSTITUTION.md Article I` that establishes the Medium tier for P-002 (e.g., `Article I, §2.1`). This closes the partial citation gap. Score would reach 0.95.
+1. Amend governance YAML P-002 entry to include the specific section within `TOM_CONSTITUTION.md Article I` that establishes the Medium tier for P-002 (e.g., `Article I, §2.1`). This closes the partial citation gap. Score would reach 0.95.
 2. Optionally annotate References entries with chapter-to-content notes. Score would reach 0.95+.
 
 ---
@@ -242,7 +242,7 @@ Add the `#lifecycle-stage-routing` anchor to the footer traceability comment for
 
 | Priority | Dimension | Current | Target | Recommendation |
 |----------|-----------|---------|--------|----------------|
-| 1 | Evidence Quality | 0.94 | 0.95 | Add section identifier within JERRY_CONSTITUTION.md Article I to the P-002 "Medium" classification (e.g., `Article I, §X.Y`); closes the partial citation gap |
+| 1 | Evidence Quality | 0.94 | 0.95 | Add section identifier within TOM_CONSTITUTION.md Article I to the P-002 "Medium" classification (e.g., `Article I, §X.Y`); closes the partial citation gap |
 | 2 | Traceability | 0.94 | 0.95 | Add `#lifecycle-stage-routing` anchor to the footer traceability comment (line 546) for consistency with the purpose section's full section anchor citation |
 | 3 | Internal Consistency | 0.97 | 0.98 | Revise template Step 3 criterion from "at least one motivator pair active" to "majority of motivation dimensions score 3+" to match agent body precisely |
 | 4 | Methodological Rigor | 0.96 | 0.97 | Same as Priority 3 -- template Step 3 criterion precision gap affects both IC and MR |
@@ -313,7 +313,7 @@ second_weakest_score: 0.94
 critical_findings_count: 0
 iteration: 3
 improvement_recommendations:
-  - "Add section identifier within JERRY_CONSTITUTION.md Article I to P-002 classification in governance YAML (Evidence Quality: partial citation gap)"
+  - "Add section identifier within TOM_CONSTITUTION.md Article I to P-002 classification in governance YAML (Evidence Quality: partial citation gap)"
   - "Add #lifecycle-stage-routing anchor to footer traceability comment line 546 for consistency with purpose section (Traceability: SHOULD-level)"
   - "Revise template Step 3 row criterion to match agent body: majority of motivation dimensions score 3+, not 'at least one pair active' (Internal Consistency/Methodological Rigor: minor)"
 ```

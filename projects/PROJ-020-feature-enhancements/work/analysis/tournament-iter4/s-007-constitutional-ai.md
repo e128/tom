@@ -5,7 +5,7 @@
 **Criticality:** C4 (Tournament Iteration 4)
 **Date:** 2026-03-03
 **Reviewer:** adv-executor (S-007)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.0 (P-001 through P-043 reviewed); `.context/rules/quality-enforcement.md` HARD Rules H-01 through H-36; `markdown-navigation-standards.md` H-23/H-24; Revision 8 deliverable
+**Constitutional Context:** TOM_CONSTITUTION.md v1.0 (P-001 through P-043 reviewed); `.context/rules/quality-enforcement.md` HARD Rules H-01 through H-36; `markdown-navigation-standards.md` H-23/H-24; Revision 8 deliverable
 
 ---
 

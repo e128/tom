@@ -262,7 +262,7 @@ No comment referencing `quality-enforcement.md` C4 criticality as the source for
 - References table with 4 full citations
 - `(H-34b, AR-012)`, `(SR-002)`, `(SR-009)` inline annotations
 - Agent footer with version, constitutional compliance, SSOT, parent skill, wave, project, created date
-- `constitution.reference` pointing to `docs/governance/JERRY_CONSTITUTION.md`
+- `constitution.reference` pointing to `docs/governance/TOM_CONSTITUTION.md`
 - `enforcement.quality_gate: S-014` tracing to strategy catalog
 
 Score held at 0.91. All three gaps remain open; no improvement made.

@@ -254,7 +254,7 @@ bbf8543 docs(tracking): Mark WORK-032 complete, start WORK-033
 
 ### WORK-021: Create Jerry Constitution ✅
 - **Status**: COMPLETED
-- **Output**: `docs/governance/JERRY_CONSTITUTION.md`
+- **Output**: `docs/governance/TOM_CONSTITUTION.md`
 - **Key Deliverables**:
   - Jerry Constitution v1.0 with 13 principles across 5 articles
   - BEHAVIOR_TESTS.md with 14 test scenarios (golden dataset)
@@ -770,7 +770,7 @@ bbf8543 docs(tracking): Mark WORK-032 complete, start WORK-033
 | DISC-066 | **RDF* for Edge Properties** - W3C extension to RDF supporting property graph edge attributes | Standards | CAPTURED | GRAPH_DATA_MODEL_ANALYSIS.md |
 | DISC-067 | **Named-Graph-First Pattern** - Each named graph conforms to governing model in KG (Netflix) | Architecture | CAPTURED | GRAPH_DATA_MODEL_ANALYSIS.md |
 | DISC-068 | **Conceptual RDF, Flexible Physical** - Netflix uses RDF conceptually, not necessarily everywhere | Architecture | CAPTURED | GRAPH_DATA_MODEL_ANALYSIS.md |
-| DISC-069 | **Jerry Constitution v1.0** - Self-governing agent framework with 13 principles, 4-tier enforcement, behavioral tests | Governance | CAPTURED | JERRY_CONSTITUTION.md |
+| DISC-069 | **Jerry Constitution v1.0** - Self-governing agent framework with 13 principles, 4-tier enforcement, behavioral tests | Governance | CAPTURED | TOM_CONSTITUTION.md |
 | DISC-070 | **Skill Definition Cruft** - problem-solving/SKILL.md contains work-tracker content (1723 lines, wrong frontmatter name) | Bug | CAPTURED | WORK-030 |
 
 ---
@@ -875,7 +875,7 @@ bbf8543 docs(tracking): Mark WORK-032 complete, start WORK-033
 | 2026-01-08 | Claude | Added RDF/OWL alignment strategy and Netflix UDA insights |
 | 2026-01-08 | Claude | Added DISC-064 through DISC-068 (5 graph/KG discoveries) |
 | 2026-01-08 | Claude | **MAJOR: Completed Jerry Constitution v1.0 (WORK-021)** |
-| 2026-01-08 | Claude | Created docs/governance/JERRY_CONSTITUTION.md (13 principles, 5 articles) |
+| 2026-01-08 | Claude | Created docs/governance/TOM_CONSTITUTION.md (13 principles, 5 articles) |
 | 2026-01-08 | Claude | Created docs/governance/BEHAVIOR_TESTS.md (14 test scenarios) |
 | 2026-01-08 | Claude | Created .claude/agents/TEMPLATE.md (constitution-compliant agent template) |
 | 2026-01-08 | Claude | Updated CLAUDE.md with Agent Governance section |

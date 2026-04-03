@@ -33,7 +33,7 @@ from __future__ import annotations
 
 import pytest
 
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.schema import (
     BUG_SCHEMA,
     ENABLER_SCHEMA,
@@ -604,7 +604,7 @@ class TestValidateDocumentHappyPath:
 
     def test_valid_epic_document(self) -> None:
         """Valid Epic document passes validation without violations."""
-        doc = JerryDocument.parse(VALID_EPIC_SOURCE)
+        doc = TomDocument.parse(VALID_EPIC_SOURCE)
         report = validate_document(doc, EPIC_SCHEMA)
         assert report.is_valid is True
         assert report.violations == ()
@@ -612,49 +612,49 @@ class TestValidateDocumentHappyPath:
 
     def test_valid_epic_field_count(self) -> None:
         """Valid Epic report reports correct field count."""
-        doc = JerryDocument.parse(VALID_EPIC_SOURCE)
+        doc = TomDocument.parse(VALID_EPIC_SOURCE)
         report = validate_document(doc, EPIC_SCHEMA)
         # VALID_EPIC_SOURCE has 5 frontmatter fields
         assert report.field_count == 5
 
     def test_valid_epic_section_count(self) -> None:
         """Valid Epic report reports correct section count (## headings)."""
-        doc = JerryDocument.parse(VALID_EPIC_SOURCE)
+        doc = TomDocument.parse(VALID_EPIC_SOURCE)
         report = validate_document(doc, EPIC_SCHEMA)
         # VALID_EPIC_SOURCE has 4 ## headings: Document Sections + 3 content sections
         assert report.section_count >= 3
 
     def test_valid_story_document(self) -> None:
         """Valid Story document passes validation without violations."""
-        doc = JerryDocument.parse(VALID_STORY_SOURCE)
+        doc = TomDocument.parse(VALID_STORY_SOURCE)
         report = validate_document(doc, STORY_SCHEMA)
         assert report.is_valid is True
         assert report.violations == ()
 
     def test_valid_feature_document(self) -> None:
         """Valid Feature document passes validation without violations."""
-        doc = JerryDocument.parse(VALID_FEATURE_SOURCE)
+        doc = TomDocument.parse(VALID_FEATURE_SOURCE)
         report = validate_document(doc, FEATURE_SCHEMA)
         assert report.is_valid is True
         assert report.violations == ()
 
     def test_valid_enabler_document(self) -> None:
         """Valid Enabler document passes validation without violations."""
-        doc = JerryDocument.parse(VALID_ENABLER_SOURCE)
+        doc = TomDocument.parse(VALID_ENABLER_SOURCE)
         report = validate_document(doc, ENABLER_SCHEMA)
         assert report.is_valid is True
         assert report.violations == ()
 
     def test_valid_task_document(self) -> None:
         """Valid Task document passes validation (no nav table required)."""
-        doc = JerryDocument.parse(VALID_TASK_SOURCE)
+        doc = TomDocument.parse(VALID_TASK_SOURCE)
         report = validate_document(doc, TASK_SCHEMA)
         assert report.is_valid is True
         assert report.violations == ()
 
     def test_valid_bug_document(self) -> None:
         """Valid Bug document passes validation without violations."""
-        doc = JerryDocument.parse(VALID_BUG_SOURCE)
+        doc = TomDocument.parse(VALID_BUG_SOURCE)
         report = validate_document(doc, BUG_SCHEMA)
         assert report.is_valid is True
         assert report.violations == ()
@@ -670,7 +670,7 @@ class TestValidateDocumentMissingField:
 
     def test_missing_type_field_produces_violation(self) -> None:
         """Missing 'Type' field produces an error violation."""
-        doc = JerryDocument.parse(MISSING_TYPE_FIELD_EPIC_SOURCE)
+        doc = TomDocument.parse(MISSING_TYPE_FIELD_EPIC_SOURCE)
         report = validate_document(doc, EPIC_SCHEMA)
         assert report.is_valid is False
         paths = [v.field_path for v in report.violations]
@@ -678,7 +678,7 @@ class TestValidateDocumentMissingField:
 
     def test_missing_field_violation_severity_is_error(self) -> None:
         """Missing required field violation has severity='error'."""
-        doc = JerryDocument.parse(MISSING_TYPE_FIELD_EPIC_SOURCE)
+        doc = TomDocument.parse(MISSING_TYPE_FIELD_EPIC_SOURCE)
         report = validate_document(doc, EPIC_SCHEMA)
         type_violations = [v for v in report.violations if v.field_path == "frontmatter.Type"]
         assert len(type_violations) == 1
@@ -686,7 +686,7 @@ class TestValidateDocumentMissingField:
 
     def test_missing_field_violation_expected_is_descriptive(self) -> None:
         """Missing field violation has a descriptive 'expected' string."""
-        doc = JerryDocument.parse(MISSING_TYPE_FIELD_EPIC_SOURCE)
+        doc = TomDocument.parse(MISSING_TYPE_FIELD_EPIC_SOURCE)
         report = validate_document(doc, EPIC_SCHEMA)
         type_violations = [v for v in report.violations if v.field_path == "frontmatter.Type"]
         assert (
@@ -696,7 +696,7 @@ class TestValidateDocumentMissingField:
 
     def test_missing_field_violation_actual_indicates_missing(self) -> None:
         """Missing field violation has an 'actual' that indicates absence."""
-        doc = JerryDocument.parse(MISSING_TYPE_FIELD_EPIC_SOURCE)
+        doc = TomDocument.parse(MISSING_TYPE_FIELD_EPIC_SOURCE)
         report = validate_document(doc, EPIC_SCHEMA)
         type_violations = [v for v in report.violations if v.field_path == "frontmatter.Type"]
         assert (
@@ -716,7 +716,7 @@ class TestValidateDocumentInvalidValue:
 
     def test_invalid_status_value_produces_violation(self) -> None:
         """Invalid Status value produces an error violation for Story."""
-        doc = JerryDocument.parse(INVALID_STATUS_STORY_SOURCE)
+        doc = TomDocument.parse(INVALID_STATUS_STORY_SOURCE)
         report = validate_document(doc, STORY_SCHEMA)
         assert report.is_valid is False
         paths = [v.field_path for v in report.violations]
@@ -724,7 +724,7 @@ class TestValidateDocumentInvalidValue:
 
     def test_invalid_status_violation_severity_is_error(self) -> None:
         """Invalid value violation has severity='error'."""
-        doc = JerryDocument.parse(INVALID_STATUS_STORY_SOURCE)
+        doc = TomDocument.parse(INVALID_STATUS_STORY_SOURCE)
         report = validate_document(doc, STORY_SCHEMA)
         status_violations = [v for v in report.violations if v.field_path == "frontmatter.Status"]
         assert len(status_violations) == 1
@@ -732,14 +732,14 @@ class TestValidateDocumentInvalidValue:
 
     def test_invalid_status_violation_actual_is_the_bad_value(self) -> None:
         """Invalid value violation 'actual' field contains the invalid value."""
-        doc = JerryDocument.parse(INVALID_STATUS_STORY_SOURCE)
+        doc = TomDocument.parse(INVALID_STATUS_STORY_SOURCE)
         report = validate_document(doc, STORY_SCHEMA)
         status_violations = [v for v in report.violations if v.field_path == "frontmatter.Status"]
         assert "invalid_value" in status_violations[0].actual
 
     def test_invalid_status_violation_expected_lists_allowed_values(self) -> None:
         """Invalid value violation 'expected' lists allowed values."""
-        doc = JerryDocument.parse(INVALID_STATUS_STORY_SOURCE)
+        doc = TomDocument.parse(INVALID_STATUS_STORY_SOURCE)
         report = validate_document(doc, STORY_SCHEMA)
         status_violations = [v for v in report.violations if v.field_path == "frontmatter.Status"]
         expected = status_violations[0].expected
@@ -751,7 +751,7 @@ class TestValidateDocumentInvalidValue:
         source = VALID_EPIC_SOURCE.replace(
             "> **Priority:** medium", "> **Priority:** ultra_critical"
         )
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, EPIC_SCHEMA)
         assert report.is_valid is False
         paths = [v.field_path for v in report.violations]
@@ -759,7 +759,7 @@ class TestValidateDocumentInvalidValue:
 
     def test_invalid_value_violation_has_line_number(self) -> None:
         """Invalid value violation includes a 0-based line_number from frontmatter."""
-        doc = JerryDocument.parse(INVALID_STATUS_STORY_SOURCE)
+        doc = TomDocument.parse(INVALID_STATUS_STORY_SOURCE)
         report = validate_document(doc, STORY_SCHEMA)
         status_violations = [v for v in report.violations if v.field_path == "frontmatter.Status"]
         assert len(status_violations) == 1
@@ -768,7 +768,7 @@ class TestValidateDocumentInvalidValue:
 
     def test_missing_field_violation_has_no_line_number(self) -> None:
         """Missing field violation has line_number=None (field not in source)."""
-        doc = JerryDocument.parse(MISSING_TYPE_FIELD_EPIC_SOURCE)
+        doc = TomDocument.parse(MISSING_TYPE_FIELD_EPIC_SOURCE)
         report = validate_document(doc, EPIC_SCHEMA)
         type_violations = [v for v in report.violations if v.field_path == "frontmatter.Type"]
         assert len(type_violations) == 1
@@ -785,7 +785,7 @@ class TestValidateDocumentMissingSection:
 
     def test_missing_acceptance_criteria_section_produces_violation(self) -> None:
         """Missing 'Acceptance Criteria' section produces an error violation."""
-        doc = JerryDocument.parse(MISSING_SECTION_STORY_SOURCE)
+        doc = TomDocument.parse(MISSING_SECTION_STORY_SOURCE)
         report = validate_document(doc, STORY_SCHEMA)
         assert report.is_valid is False
         paths = [v.field_path for v in report.violations]
@@ -793,7 +793,7 @@ class TestValidateDocumentMissingSection:
 
     def test_missing_section_violation_severity_is_error(self) -> None:
         """Missing section violation has severity='error'."""
-        doc = JerryDocument.parse(MISSING_SECTION_STORY_SOURCE)
+        doc = TomDocument.parse(MISSING_SECTION_STORY_SOURCE)
         report = validate_document(doc, STORY_SCHEMA)
         section_violations = [
             v for v in report.violations if v.field_path == "sections.Acceptance Criteria"
@@ -803,7 +803,7 @@ class TestValidateDocumentMissingSection:
 
     def test_missing_section_violation_actual_indicates_absent(self) -> None:
         """Missing section violation 'actual' indicates section is absent."""
-        doc = JerryDocument.parse(MISSING_SECTION_STORY_SOURCE)
+        doc = TomDocument.parse(MISSING_SECTION_STORY_SOURCE)
         report = validate_document(doc, STORY_SCHEMA)
         section_violations = [
             v for v in report.violations if v.field_path == "sections.Acceptance Criteria"
@@ -825,28 +825,28 @@ class TestStoryValidation:
 
     def test_story_invalid_status_caught(self) -> None:
         """Story with invalid status value fails validation."""
-        doc = JerryDocument.parse(INVALID_STATUS_STORY_SOURCE)
+        doc = TomDocument.parse(INVALID_STATUS_STORY_SOURCE)
         report = validate_document(doc, STORY_SCHEMA)
         assert report.is_valid is False
 
     def test_story_valid_status_in_progress(self) -> None:
         """Story with 'in_progress' status passes validation."""
         source = VALID_STORY_SOURCE.replace("> **Status:** pending", "> **Status:** in_progress")
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, STORY_SCHEMA)
         assert report.is_valid is True
 
     def test_story_valid_status_completed(self) -> None:
         """Story with 'completed' status passes validation."""
         source = VALID_STORY_SOURCE.replace("> **Status:** pending", "> **Status:** completed")
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, STORY_SCHEMA)
         assert report.is_valid is True
 
     def test_story_missing_parent_produces_violation(self) -> None:
         """Story missing required 'Parent' field produces a violation."""
         source = VALID_STORY_SOURCE.replace("> **Parent:** FEAT-001\n", "")
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, STORY_SCHEMA)
         assert report.is_valid is False
         paths = [v.field_path for v in report.violations]
@@ -918,7 +918,7 @@ class TestNavTableValidationIntegration:
 
     def test_no_nav_table_epic_produces_violation(self) -> None:
         """Epic without nav table produces a nav_table violation."""
-        doc = JerryDocument.parse(NO_NAV_TABLE_EPIC_SOURCE)
+        doc = TomDocument.parse(NO_NAV_TABLE_EPIC_SOURCE)
         report = validate_document(doc, EPIC_SCHEMA)
         assert report.is_valid is False
         paths = [v.field_path for v in report.violations]
@@ -926,7 +926,7 @@ class TestNavTableValidationIntegration:
 
     def test_no_nav_table_violation_severity_is_error(self) -> None:
         """Missing nav table violation has severity='error'."""
-        doc = JerryDocument.parse(NO_NAV_TABLE_EPIC_SOURCE)
+        doc = TomDocument.parse(NO_NAV_TABLE_EPIC_SOURCE)
         report = validate_document(doc, EPIC_SCHEMA)
         nav_violations = [v for v in report.violations if v.field_path == "nav_table"]
         assert len(nav_violations) == 1
@@ -934,7 +934,7 @@ class TestNavTableValidationIntegration:
 
     def test_task_no_nav_table_required_no_violation(self) -> None:
         """Task with no nav table does NOT produce a nav_table violation."""
-        doc = JerryDocument.parse(VALID_TASK_SOURCE)
+        doc = TomDocument.parse(VALID_TASK_SOURCE)
         report = validate_document(doc, TASK_SCHEMA)
         paths = [v.field_path for v in report.violations]
         assert "nav_table" not in paths
@@ -942,7 +942,7 @@ class TestNavTableValidationIntegration:
     def test_story_nav_table_violations_included(self) -> None:
         """Story missing nav table produces nav_table violation."""
         source = MISSING_SECTION_STORY_SOURCE  # already has a nav table for Summary only
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, STORY_SCHEMA)
         # This source is missing Acceptance Criteria section but still has a nav table
         # Ensure nav_table is NOT a violation here (nav table exists)
@@ -1062,7 +1062,7 @@ class TestCustomSchema:
             require_nav_table=False,
         )
         source = "# My Doc\n\n> **OtherField:** value\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, custom_schema)
         assert report.is_valid is False
         paths = [v.field_path for v in report.violations]
@@ -1076,7 +1076,7 @@ class TestCustomSchema:
             section_rules=(),
             require_nav_table=False,
         )
-        doc = JerryDocument.parse("# Hello\n\nContent.\n")
+        doc = TomDocument.parse("# Hello\n\nContent.\n")
         report = validate_document(doc, custom_schema)
         assert report.is_valid is True
 
@@ -1095,7 +1095,7 @@ class TestCustomSchema:
             require_nav_table=False,
         )
         source = "# Doc\n\n> **Created:** 2026-01-15\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, custom_schema)
         assert report.is_valid is True
 
@@ -1114,7 +1114,7 @@ class TestCustomSchema:
             require_nav_table=False,
         )
         source = "# Doc\n\n> **Created:** not-a-date\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, custom_schema)
         assert report.is_valid is False
         paths = [v.field_path for v in report.violations]
@@ -1129,7 +1129,7 @@ class TestCustomSchema:
             require_nav_table=False,
         )
         source = "# Doc\n\n## MySection\n\nContent.\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, custom_schema)
         assert report.is_valid is True
 
@@ -1142,7 +1142,7 @@ class TestCustomSchema:
             require_nav_table=False,
         )
         source = "# Doc\n\n## OtherSection\n\nContent.\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, custom_schema)
         assert report.is_valid is False
         paths = [v.field_path for v in report.violations]
@@ -1157,7 +1157,7 @@ class TestCustomSchema:
             require_nav_table=False,
         )
         source = "# Doc\n\n> **OtherField:** value\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, custom_schema)
         assert report.is_valid is True
         paths = [v.field_path for v in report.violations]
@@ -1178,7 +1178,7 @@ class TestCustomSchema:
             require_nav_table=False,
         )
         source = "# Doc\n\n> **Mode:** ultra\n"
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, custom_schema)
         assert report.is_valid is False
         paths = [v.field_path for v in report.violations]
@@ -1231,7 +1231,7 @@ None.
 
 0%.
 """
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, EPIC_SCHEMA)
         # Nav table exists but is missing Children and Progress Summary entries
         assert report.is_valid is False
@@ -1283,7 +1283,7 @@ None.
 
 0%.
 """
-        doc = JerryDocument.parse(source)
+        doc = TomDocument.parse(source)
         report = validate_document(doc, EPIC_SCHEMA)
         assert report.is_valid is False
         nav_violations = [v for v in report.violations if v.field_path == "nav_table"]

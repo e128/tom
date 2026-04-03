@@ -565,7 +565,7 @@ This evaluation framework is itself subject to quality validation. The following
 | 1 | EN-301 TASK-004: Unified Catalog of 15 Adversarial Review Strategies (v1.0.0) | Full strategy catalog with mechanisms, strengths, weaknesses, and Jerry applicability |
 | 2 | EN-301 TASK-006: Revised Catalog (v1.1.0) | Revision addressing adversarial review findings; contraindications, systemic risk, differentiation clarifications |
 | 3 | EN-302: Strategy Selection & Decision Framework (enabler document) | Parent enabler defining the selection task, acceptance criteria, and task dependencies |
-| 4 | Jerry Constitution (docs/governance/JERRY_CONSTITUTION.md) | P-003 (No Recursive Subagents), P-020 (User Authority), P-022 (No Deception) |
+| 4 | Jerry Constitution (docs/governance/TOM_CONSTITUTION.md) | P-003 (No Recursive Subagents), P-020 (User Authority), P-022 (No Deception) |
 
 ### Methodological Sources
 

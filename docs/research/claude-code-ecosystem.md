@@ -1,6 +1,6 @@
 # Claude Code Ecosystem
 
-> Research on Claude Code CLI patterns, plugin architecture and distribution, skill structure and agent design patterns — the ecosystem knowledge underpinning Jerry's implementation.
+> Research on Claude Code CLI patterns, plugin architecture and distribution, skill structure and agent design patterns — the ecosystem knowledge underpinning Tom's implementation.
 
 ---
 

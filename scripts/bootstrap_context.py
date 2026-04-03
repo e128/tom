@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
 
-"""Bootstrap Jerry's context distribution.
+"""Bootstrap Tom's context distribution.
 
 Cross-platform sync of .context/rules/ and .context/patterns/ to .claude/.
 Uses symlinks on macOS/Linux, junction points on Windows (no admin required).
@@ -47,13 +47,13 @@ def detect_platform() -> str:
 
 
 def find_project_root() -> Path:
-    """Find the Jerry project root by looking for CLAUDE.md."""
+    """Find the Tom project root by looking for CLAUDE.md."""
     current = Path.cwd()
     for parent in [current, *current.parents]:
         if (parent / "CLAUDE.md").exists() and (parent / ".context").exists():
             return parent
     raise FileNotFoundError(
-        "Could not find Jerry project root. Run this script from within the Jerry repository."
+        "Could not find Tom project root. Run this script from within the Tom repository."
     )
 
 
@@ -258,7 +258,7 @@ def bootstrap(root: Path, force: bool = False, quiet: bool = False) -> bool:
     """Run the full bootstrap process.
 
     Args:
-        root: Jerry project root.
+        root: Tom project root.
         force: Overwrite existing synced directories.
         quiet: Suppress output.
 
@@ -332,7 +332,7 @@ def bootstrap(root: Path, force: bool = False, quiet: bool = False) -> bool:
 def main() -> int:
     """CLI entry point."""
     parser = argparse.ArgumentParser(
-        description="Bootstrap Jerry's context distribution",
+        description="Bootstrap Tom's context distribution",
     )
     parser.add_argument(
         "--check",
@@ -359,14 +359,14 @@ def main() -> int:
 
     if args.check:
         if not args.quiet:
-            print("Checking Jerry context sync status...\n")
+            print("Checking Tom context sync status...\n")
         ok = check_sync(root, args.quiet)
         if not args.quiet:
             print(f"\nStatus: {'OK' if ok else 'NEEDS SYNC'}")
         return 0 if ok else 1
 
     if not args.quiet:
-        print("Bootstrapping Jerry context distribution...")
+        print("Bootstrapping Tom context distribution...")
 
     ok = bootstrap(root, args.force, args.quiet)
 

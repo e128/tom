@@ -1,11 +1,11 @@
 name: macOS Compatibility Issue
-description: Report a problem specific to running Jerry on macOS
+description: Report a problem specific to running Tom on macOS
 labels: ["macos", "bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping improve Jerry on macOS! Please fill in as much detail as you can.
+        Thanks for helping improve Tom on macOS! Please fill in as much detail as you can.
 
   - type: input
     id: os-version

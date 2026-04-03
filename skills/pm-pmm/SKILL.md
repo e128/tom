@@ -72,8 +72,8 @@ activation-keywords:
 # PM/PMM Skill
 
 > **Version:** 1.0.0
-> **Framework:** Jerry PM/PMM Decision Framework
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom PM/PMM Decision Framework
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **SSOT Reference:** `.context/rules/quality-enforcement.md`
 > **Architecture Reference:** PROJ-018 Issue #123
 
@@ -89,7 +89,7 @@ activation-keywords:
 
 ## Purpose
 
-The PM/PMM skill provides a **decision-focused product management and product marketing capability** for the Jerry Framework. It helps PMs and PMMs make better product decisions by ensuring every decision is grounded in evidence, structured by proven frameworks, and documented as a living artifact.
+The PM/PMM skill provides a **decision-focused product management and product marketing capability** for the Tom Framework. It helps PMs and PMMs make better product decisions by ensuring every decision is grounded in evidence, structured by proven frameworks, and documented as a living artifact.
 
 ### What It Does
 
@@ -380,7 +380,7 @@ Every artifact has exactly one primary owner. Contributing agents provide inputs
 
 ## Cross-Agent Data Flow
 
-All agent interactions are mediated by the Jerry main context (orchestrator). No agent invokes another agent directly. Data flows through file artifacts.
+All agent interactions are mediated by the Tom main context (orchestrator). No agent invokes another agent directly. Data flows through file artifacts.
 
 | From | To | Data | Mechanism |
 |------|-----|------|-----------|
@@ -481,7 +481,7 @@ For registration in `mandatory-skill-usage.md`:
 
 ## Constitutional Compliance
 
-All agents adhere to the **Jerry Constitution v1.0**:
+All agents adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement |
 |-----------|-------------|
@@ -504,7 +504,7 @@ All agents adhere to the **Jerry Constitution v1.0**:
 | `.context/rules/quality-enforcement.md` | Quality gate SSOT |
 | `.context/rules/agent-development-standards.md` | H-34 dual-file architecture |
 | `docs/schemas/agent-governance-v1.schema.json` | Governance YAML schema |
-| `docs/governance/JERRY_CONSTITUTION.md` | Constitutional principles |
+| `docs/governance/TOM_CONSTITUTION.md` | Constitutional principles |
 
 ---
 
@@ -515,7 +515,7 @@ All agents adhere to the **Jerry Constitution v1.0**:
 ---
 
 *Skill Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `.context/rules/quality-enforcement.md`*
 *Architecture: PROJ-018 PM/PMM Skill, Issue #123*
 *Created: 2026-03-01*

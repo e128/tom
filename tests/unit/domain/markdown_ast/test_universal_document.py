@@ -410,19 +410,19 @@ class TestResultImmutability:
 
 
 # =============================================================================
-# JerryDocument Always Present
+# TomDocument Always Present
 # =============================================================================
 
 
-class TestJerryDocumentPresent:
-    """Verify JerryDocument is always present in results."""
+class TestTomDocumentPresent:
+    """Verify TomDocument is always present in results."""
 
     @pytest.mark.happy_path
-    def test_jerry_document_always_set(self) -> None:
-        """jerry_document is never None."""
+    def test_tom_document_always_set(self) -> None:
+        """tom_document is never None."""
         result = UniversalDocument.parse("# Simple\n", document_type=DocumentType.UNKNOWN)
-        assert result.jerry_document is not None
-        assert result.jerry_document.source == "# Simple\n"
+        assert result.tom_document is not None
+        assert result.tom_document.source == "# Simple\n"
 
 
 # =============================================================================
@@ -453,7 +453,7 @@ class TestUniversalParseResultDataclass:
         field_names = {f.name for f in dataclasses.fields(UniversalParseResult)}
         expected = {
             "document_type",
-            "jerry_document",
+            "tom_document",
             "yaml_frontmatter",
             "blockquote_frontmatter",
             "xml_sections",

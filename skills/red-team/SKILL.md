@@ -30,8 +30,8 @@ activation-keywords:
 # Red Team Skill
 
 > **Version:** 1.0.0
-> **Framework:** Jerry Red-Team
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom Red-Team
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **SSOT Reference:** ADR-PROJ010-001 (Agent Team Architecture), ADR-PROJ010-006 (Authorization & Scope Control)
 
 ## Document Audience (Triple-Lens)
@@ -554,7 +554,7 @@ The scope document itself is always C4 criticality (irreversible authorization d
 
 ## Constitutional Compliance
 
-All agents adhere to the **Jerry Constitution v1.0**:
+All agents adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -652,12 +652,12 @@ All agents adhere to the **Jerry Constitution v1.0**:
 | B-001 | MITRE ATT&CK framework research |
 | B-002 | PTES and OSSTMM methodology research |
 | S-001 | Cross-stream synthesis findings |
-| `docs/governance/JERRY_CONSTITUTION.md` | Constitutional principles |
+| `docs/governance/TOM_CONSTITUTION.md` | Constitutional principles |
 | `.context/rules/quality-enforcement.md` | Quality gate thresholds |
 
 ---
 
 *Skill Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: ADR-PROJ010-001, ADR-PROJ010-006*
 *Created: 2026-02-22*

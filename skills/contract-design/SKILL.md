@@ -23,7 +23,7 @@ activation-keywords:
   - "interaction to contract"
 ---
 
-> **Version:** 1.0.0 | **Framework:** Jerry Framework | **Constitutional compliance:** P-003 (no recursive subagents), P-020 (user authority), P-022 (no deception)
+> **Version:** 1.0.0 | **Framework:** Tom Framework | **Constitutional compliance:** P-003 (no recursive subagents), P-020 (user authority), P-022 (no deception)
 > **Status:** ACTIVE | **Author:** eng-backend | **Date:** 2026-03-09
 
 ---

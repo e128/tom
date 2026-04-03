@@ -384,7 +384,7 @@ The v1.0.0 catalog uses terms like "critical decisions" and "high-stakes" withou
 
 #### Escalation Override Rules
 
-1. **Mandatory escalation**: Any artifact touching `docs/governance/JERRY_CONSTITUTION.md` or `.claude/rules/` is automatically C3 or higher.
+1. **Mandatory escalation**: Any artifact touching `docs/governance/TOM_CONSTITUTION.md` or `.claude/rules/` is automatically C3 or higher.
 2. **De-escalation permitted**: If a C3/C4 artifact passes Level 2 review with score >= 0.95 and no HIGH-severity findings, the reviewer may recommend skipping Level 3, with documented justification.
 3. **Emergency bypass**: For time-critical security incidents, skip directly to the appropriate level with a documented "escalation bypass" notation.
 4. **Human override**: Per P-020 (User Authority), the user may override any escalation decision in either direction.

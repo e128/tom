@@ -181,7 +181,7 @@ class TestKnownGoodOutputs:
     ) -> None:
         """SessionStart with systemMessage + hookSpecificOutput validates."""
         instance: dict[str, Any] = {
-            "systemMessage": "Jerry Framework: PROJ-001 active. Quality gates set.",
+            "systemMessage": "Tom Framework: PROJ-001 active. Quality gates set.",
             "hookSpecificOutput": {
                 "hookEventName": "SessionStart",
                 "additionalContext": "<project-context>\nProjectActive: PROJ-001\n</project-context>",
@@ -412,7 +412,7 @@ class TestLiveHookOutputCompliance:
                 "run",
                 "--directory",
                 str(PROJECT_ROOT),
-                "jerry",
+                "tom",
                 "--json",
                 "hooks",
                 "pre-tool-use",
@@ -441,7 +441,7 @@ class TestLiveHookOutputCompliance:
                 "run",
                 "--directory",
                 str(PROJECT_ROOT),
-                "jerry",
+                "tom",
                 "--json",
                 "hooks",
                 "pre-tool-use",
@@ -480,7 +480,7 @@ class TestLiveHookOutputCompliance:
                 "run",
                 "--directory",
                 str(PROJECT_ROOT),
-                "jerry",
+                "tom",
                 "--json",
                 "hooks",
                 "subagent-stop",
@@ -514,7 +514,7 @@ class TestLiveHookOutputCompliance:
                 "run",
                 "--directory",
                 str(PROJECT_ROOT),
-                "jerry",
+                "tom",
                 "--json",
                 "hooks",
                 "subagent-stop",
@@ -544,12 +544,12 @@ class TestLiveHookOutputCompliance:
     ) -> None:
         """prompt-submit hook via CLI produces valid JSON with additionalContext.
 
-        EN-007: Hooks now run via jerry CLI. The CLI output format uses
+        EN-007: Hooks now run via tom CLI. The CLI output format uses
         top-level additionalContext rather than the nested hookSpecificOutput
         format defined in the original schemas.
         """
         result = subprocess.run(
-            ["uv", "run", "jerry", "--json", "hooks", "prompt-submit"],
+            ["uv", "run", "tom", "--json", "hooks", "prompt-submit"],
             input=json.dumps({"prompt": "Hello, how are you?"}),
             capture_output=True,
             text=True,
@@ -574,12 +574,12 @@ class TestLiveHookOutputCompliance:
     ) -> None:
         """session-start hook via CLI produces valid JSON with additionalContext.
 
-        EN-007: Hooks now run via jerry CLI. The CLI output format uses
+        EN-007: Hooks now run via tom CLI. The CLI output format uses
         top-level additionalContext rather than the nested hookSpecificOutput
         format defined in the original schemas.
         """
         result = subprocess.run(
-            ["uv", "run", "jerry", "--json", "hooks", "session-start"],
+            ["uv", "run", "tom", "--json", "hooks", "session-start"],
             input=json.dumps({}),
             capture_output=True,
             text=True,

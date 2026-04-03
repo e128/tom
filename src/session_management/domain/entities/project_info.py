@@ -2,7 +2,7 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-ProjectInfo - Entity representing a Jerry project.
+ProjectInfo - Entity representing a Tom project.
 
 This entity has identity (the ProjectId) and can have different states
 over its lifecycle. It aggregates information about a project's
@@ -34,7 +34,7 @@ def _utc_now() -> datetime:
 
 @dataclass(frozen=True, slots=True)
 class ProjectInfo:
-    """Entity representing a Jerry project.
+    """Entity representing a Tom project.
 
     This is an immutable snapshot of project information at a point in time.
     For mutability, create a new instance with updated values.

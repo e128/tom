@@ -42,7 +42,7 @@ from src.context_monitoring.infrastructure.adapters.filesystem_context_state_sto
 @pytest.fixture()
 def state_dir(tmp_path: Path) -> Path:
     """Temporary directory for state file storage."""
-    return tmp_path / "jerry-local"
+    return tmp_path / "tom-local"
 
 
 @pytest.fixture()

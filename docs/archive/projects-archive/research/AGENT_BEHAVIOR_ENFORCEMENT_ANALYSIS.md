@@ -891,7 +891,7 @@ class GuardrailPolicy:
 4. Learn from mistakes; update guardrails based on failures
 ```
 
-**Location**: `/docs/governance/JERRY_CONSTITUTION.md`
+**Location**: `/docs/governance/TOM_CONSTITUTION.md`
 
 ---
 
@@ -1099,7 +1099,7 @@ async def execute_with_guardrails(operation, guardrails):
 
 ### Phase 1: Foundation (Immediate)
 
-1. Create `/docs/governance/JERRY_CONSTITUTION.md`
+1. Create `/docs/governance/TOM_CONSTITUTION.md`
 2. Add constitutional guidance to existing skills
 3. Implement basic logging for policy violations
 4. Define enforcement tiers in documentation

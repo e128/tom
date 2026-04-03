@@ -8,7 +8,7 @@ Checks:
 1. JSON schema validation against claude-code-settings-v1.schema.json
 2. Skill entries match CLAUDE.md registered skills (drift detection)
 3. No deprecated :* Bash syntax
-4. No undocumented Skill(jerry:name) form
+4. No undocumented Skill(tom:name) form
 
 Usage:
     uv run python scripts/validate_settings_local.py
@@ -93,11 +93,11 @@ def main() -> int:
     if colon_entries:
         errors.append(f"Deprecated :* syntax in {len(colon_entries)} entries: {colon_entries}")
 
-    # --- Check 4: Undocumented Skill(jerry:name) form ---
-    jerry_entries = [e for e in allow if "jerry:" in e]
-    if jerry_entries:
+    # --- Check 4: Undocumented Skill(tom:name) form ---
+    tom_entries = [e for e in allow if "tom:" in e]
+    if tom_entries:
         errors.append(
-            f"Undocumented Skill(jerry:name) form in {len(jerry_entries)} entries: {jerry_entries}"
+            f"Undocumented Skill(tom:name) form in {len(tom_entries)} entries: {tom_entries}"
         )
 
     # --- Check 5: $schema field present ---

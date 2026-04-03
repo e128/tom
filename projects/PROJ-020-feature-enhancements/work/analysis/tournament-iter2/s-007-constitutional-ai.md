@@ -155,17 +155,17 @@ Principles evaluated against Revision 6 state:
 
 | Principle | Source | Tier | Applicable | Revision 6 Compliance | Notes |
 |-----------|--------|------|------------|----------------------|-------|
-| P-001: Truth/Accuracy | JERRY_CONSTITUTION.md | SOFT | Yes | COMPLIANT with minor gap | CC-006 (Minor): minimality qualification block format inconsistency; substantive accuracy is high |
-| P-002: File Persistence | JERRY_CONSTITUTION.md | MEDIUM | Yes (meta) | COMPLIANT | Document is a persisted analysis artifact |
-| P-003: No Recursive Subagents | JERRY_CONSTITUTION.md | HARD | No | N/A | Analysis document; not an agent definition |
-| P-004: Explicit Provenance | JERRY_CONSTITUTION.md | MEDIUM | Yes | PARTIAL (CC-003-I2) | Ceiling convention source still informal; all other major decisions have explicit provenance |
-| P-005: Graceful Degradation | JERRY_CONSTITUTION.md | SOFT | Yes | COMPLIANT | Degraded-mode behaviors documented for all 10 sub-skills |
-| P-010: Task Tracking Integrity | JERRY_CONSTITUTION.md | MEDIUM | Partial | COMPLIANT | AI-First Design Enabler entity specification added in Revision 6; worktracker integrity met |
-| P-011: Evidence-Based Decisions | JERRY_CONSTITUTION.md | MEDIUM | Yes | COMPLIANT | E-024, E-025, E-026 citations added in Revision 6; evidence chain now complete |
-| P-012: Scope Discipline | JERRY_CONSTITUTION.md | SOFT | Yes | ACCEPTED | V2 roadmap expansion in Revision 6 is labeled and transparent (SM-004); accepted per prior Minor finding retirement |
-| P-020: User Authority | JERRY_CONSTITUTION.md | HARD | Yes | COMPLIANT | DECISION REQUIRED and CEILING PROVENANCE notices surface user confirmation requirements; MINIMALITY CLAIM QUALIFICATION added in R6 |
-| P-021: Transparency of Limitations | JERRY_CONSTITUTION.md | MEDIUM | Yes | COMPLIANT with gap | CC-001-I2 (Major): section-level disclaimer present; sub-section body text still operational present-tense |
-| P-022: No Deception | JERRY_CONSTITUTION.md | HARD | Yes | COMPLIANT with gap | No deception intent found; CC-001-I2 (Major): latent risk from present-tense language in isolated sub-section consumption context |
+| P-001: Truth/Accuracy | TOM_CONSTITUTION.md | SOFT | Yes | COMPLIANT with minor gap | CC-006 (Minor): minimality qualification block format inconsistency; substantive accuracy is high |
+| P-002: File Persistence | TOM_CONSTITUTION.md | MEDIUM | Yes (meta) | COMPLIANT | Document is a persisted analysis artifact |
+| P-003: No Recursive Subagents | TOM_CONSTITUTION.md | HARD | No | N/A | Analysis document; not an agent definition |
+| P-004: Explicit Provenance | TOM_CONSTITUTION.md | MEDIUM | Yes | PARTIAL (CC-003-I2) | Ceiling convention source still informal; all other major decisions have explicit provenance |
+| P-005: Graceful Degradation | TOM_CONSTITUTION.md | SOFT | Yes | COMPLIANT | Degraded-mode behaviors documented for all 10 sub-skills |
+| P-010: Task Tracking Integrity | TOM_CONSTITUTION.md | MEDIUM | Partial | COMPLIANT | AI-First Design Enabler entity specification added in Revision 6; worktracker integrity met |
+| P-011: Evidence-Based Decisions | TOM_CONSTITUTION.md | MEDIUM | Yes | COMPLIANT | E-024, E-025, E-026 citations added in Revision 6; evidence chain now complete |
+| P-012: Scope Discipline | TOM_CONSTITUTION.md | SOFT | Yes | ACCEPTED | V2 roadmap expansion in Revision 6 is labeled and transparent (SM-004); accepted per prior Minor finding retirement |
+| P-020: User Authority | TOM_CONSTITUTION.md | HARD | Yes | COMPLIANT | DECISION REQUIRED and CEILING PROVENANCE notices surface user confirmation requirements; MINIMALITY CLAIM QUALIFICATION added in R6 |
+| P-021: Transparency of Limitations | TOM_CONSTITUTION.md | MEDIUM | Yes | COMPLIANT with gap | CC-001-I2 (Major): section-level disclaimer present; sub-section body text still operational present-tense |
+| P-022: No Deception | TOM_CONSTITUTION.md | HARD | Yes | COMPLIANT with gap | No deception intent found; CC-001-I2 (Major): latent risk from present-tense language in isolated sub-section consumption context |
 | H-23: Navigation Table Required | markdown-navigation-standards.md | HARD | Yes | COMPLIANT | CC-002 from Iteration 1 fully resolved; Revision History entry added to navigation table |
 | H-31: Clarify When Ambiguous | quality-enforcement.md | HARD | Yes | COMPLIANT | Preamble notice system (CC-001, CC-002, SCOPE BOUNDARY, HIGH RISK) surfaces all major ambiguities requiring user confirmation |
 

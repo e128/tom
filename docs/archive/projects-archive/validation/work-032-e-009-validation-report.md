@@ -492,7 +492,7 @@ This ADR represents exceptional quality in architectural decision documentation.
 **Related Documents:**
 - `docs/synthesis/work-032-e-006-km-synthesis.md` (37KB)
 - `docs/analysis/work-032-e-007-trade-off-analysis.md` (29KB)
-- `docs/governance/JERRY_CONSTITUTION.md` (Constitutional principles)
+- `docs/governance/TOM_CONSTITUTION.md` (Constitutional principles)
 
 ---
 

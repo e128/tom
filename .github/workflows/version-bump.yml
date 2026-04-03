@@ -1,4 +1,4 @@
-# Jerry Framework Version Bump Pipeline
+# Tom Framework Version Bump Pipeline
 # Triggers on push to main, determines bump type from Conventional Commits,
 # updates version across all files via bump-my-version, and creates a tag
 # that triggers release.yml.
@@ -31,7 +31,7 @@ on:
     # Source: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore
     paths-ignore:
       # Only exclude files that can NEVER affect the shipped plugin.
-      # Jerry is a Claude Code plugin — skills/, hooks/, .context/, .claude/,
+      # Tom is a Claude Code plugin — skills/, hooks/, .context/, .claude/,
       # scripts/, agents, rules, templates are ALL product surface.
       # When in doubt, do NOT exclude. A wasted CI run (BumpType.NONE)
       # is better than a missed version bump.
@@ -39,7 +39,7 @@ on:
       # --- Documentation site (published separately, not part of plugin) ---
       # Product-relevant docs/ subdirs intentionally NOT excluded:
       #   docs/schemas/    — runtime validation schemas (validate-agent-frontmatter.py)
-      #   docs/governance/ — JERRY_CONSTITUTION.md, C4-escalation (AE-001)
+      #   docs/governance/ — TOM_CONSTITUTION.md, C4-escalation (AE-001)
       #   docs/knowledge/  — knowledge files loaded by agents at runtime
       #   docs/design/     — ADRs; baselined ADR changes trigger AE-004 (C4)
       #   docs/experience/ — learnings captured by agents
@@ -121,7 +121,7 @@ jobs:
     # from modifying uv.lock AND fails if the lockfile is stale relative to
     # pyproject.toml. Stricter than UV_FROZEN (which silently uses stale
     # lockfiles). The original fix only added --frozen to uv sync, but
-    # uv run (jerry CLI, sync_versions.py) also re-resolves the lockfile
+    # uv run (tom CLI, sync_versions.py) also re-resolves the lockfile
     # when CI uv version differs from the one that generated it.
     # Source: https://docs.astral.sh/uv/reference/environment/
     env:
@@ -144,7 +144,7 @@ jobs:
     # which passes all startsWith checks. detect-bump-type reads the
     # individual commits inside the merge. With rebase merges, only the last
     # commit's subject is checked, which could skip a PR with mixed types.
-    # (red-exploit V6 — not applicable; Jerry uses standard merges)
+    # (red-exploit V6 — not applicable; Tom uses standard merges)
     # Verify: GitHub repo Settings > General > Pull Requests > merge method
     #
     # Research: projects/PROJ-030-bugs/research/workflow-filtering-research.md
@@ -165,7 +165,7 @@ jobs:
     # (eng-security FINDING-003: projects/PROJ-030-bugs/reviews/eng-security-187-dual-filter-review.md)
     #
     # Prefix rationale:
-    #   deps: — Jerry convention for dependency updates not using build(deps):
+    #   deps: — Tom convention for dependency updates not using build(deps):
     #   revert: — rolling back a feat/fix does not create a new forward bump
     #   [skip-bump] intentionally absent from workflow_dispatch (no commit)
     if: >-
@@ -252,9 +252,9 @@ jobs:
             exit 0
           fi
 
-          # Use jerry CLI for case-insensitive conventional commit detection
+          # Use tom CLI for case-insensitive conventional commit detection
           # BUG-002: Replaces inline bash regex that rejected uppercase scopes
-          BUMP_TYPE=$(uv run jerry ci detect-bump-type --since-tag)
+          BUMP_TYPE=$(uv run tom ci detect-bump-type --since-tag)
 
           echo "Determined bump type: $BUMP_TYPE"
           echo "type=$BUMP_TYPE" >> "$GITHUB_OUTPUT"
@@ -317,7 +317,7 @@ jobs:
           # Unset UV_LOCKED temporarily so uv lock can update the file.
           UV_LOCKED=0 uv lock
 
-          # Guard: verify uv lock only changed the jerry version field,
+          # Guard: verify uv lock only changed the tom version field,
           # not transitive dependencies. A broader change could indicate
           # a supply chain issue (red-exploit Finding 1).
           LOCK_DIFF=$(git diff --unified=0 uv.lock | grep "^[+-]" | grep -v "^[+-][+-][+-]" || true)

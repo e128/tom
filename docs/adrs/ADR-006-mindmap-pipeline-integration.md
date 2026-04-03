@@ -69,8 +69,8 @@ However, the SKILL.md orchestrator does not invoke these agents.
 
 | ID | Constraint | Source |
 |----|------------|--------|
-| C-001 | Maximum ONE level of agent nesting | P-003 Jerry Constitution |
-| C-002 | All outputs must persist to filesystem | P-002 Jerry Constitution |
+| C-001 | Maximum ONE level of agent nesting | P-003 Tom Constitution |
+| C-002 | All outputs must persist to filesystem | P-002 Tom Constitution |
 | C-003 | Processing time < 10 seconds for 1-hour transcript | NFR-001 |
 | C-004 | Mindmaps require extraction report AND packet path | ts-mindmap-* agents |
 | C-005 | Output directory is `08-mindmap/` | DISC-001 Resolution |
@@ -460,7 +460,7 @@ transcript-{id}/
 | 7 | ADR-002-artifact-structure.md | ADR | Packet structure standard |
 | 8 | ADR-003-bidirectional-linking.md | ADR | Anchor format specification |
 | 9 | EN-001 Market Analysis | Research | Competitive differentiation |
-| 10 | Jerry Constitution P-002, P-003 | Governance | Constitutional compliance |
+| 10 | Tom Constitution P-002, P-003 | Governance | Constitutional compliance |
 
 ---
 

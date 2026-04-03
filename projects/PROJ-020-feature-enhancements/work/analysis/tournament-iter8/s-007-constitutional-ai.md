@@ -18,13 +18,13 @@ The deliverable is a document (trade-off analysis / decision record). Applicable
 
 | Principle | Source | Tier | Applicability |
 |-----------|--------|------|---------------|
-| P-001 (Truth/Accuracy) | JERRY_CONSTITUTION.md | HARD | YES -- analysis makes factual claims about framework properties and scores |
-| P-004 (Provenance) | JERRY_CONSTITUTION.md | HARD | YES -- analysis cites tournament reports and research artifacts |
-| P-011 (Evidence-Based) | JERRY_CONSTITUTION.md | HARD | YES -- scoring claims must be supported by evidence |
-| P-022 (No Deception) | JERRY_CONSTITUTION.md | HARD | YES -- confidence levels and projected vs. verified scores must not mislead |
+| P-001 (Truth/Accuracy) | TOM_CONSTITUTION.md | HARD | YES -- analysis makes factual claims about framework properties and scores |
+| P-004 (Provenance) | TOM_CONSTITUTION.md | HARD | YES -- analysis cites tournament reports and research artifacts |
+| P-011 (Evidence-Based) | TOM_CONSTITUTION.md | HARD | YES -- scoring claims must be supported by evidence |
+| P-022 (No Deception) | TOM_CONSTITUTION.md | HARD | YES -- confidence levels and projected vs. verified scores must not mislead |
 | H-23 (Markdown Navigation) | markdown-navigation-standards.md | HARD | YES -- document is Claude-consumed and over 30 lines |
-| P-003 (No Recursive Subagents) | JERRY_CONSTITUTION.md | HARD | NOT APPLICABLE -- deliverable is a document, not an agent definition |
-| P-020 (User Authority) | JERRY_CONSTITUTION.md | HARD | NOT APPLICABLE -- deliverable does not contain agent behavior directives overriding user authority |
+| P-003 (No Recursive Subagents) | TOM_CONSTITUTION.md | HARD | NOT APPLICABLE -- deliverable is a document, not an agent definition |
+| P-020 (User Authority) | TOM_CONSTITUTION.md | HARD | NOT APPLICABLE -- deliverable does not contain agent behavior directives overriding user authority |
 
 ---
 

@@ -352,7 +352,7 @@ class ValidateFrontmatterCommandHandler:
                 (
                     "(root)",
                     "unrecognized_fields",
-                    f"Jerry-specific fields not recognized by Claude Code: {sorted(unknown)}",
+                    f"Tom-specific fields not recognized by Claude Code: {sorted(unknown)}",
                 )
             )
 
@@ -508,7 +508,7 @@ class ValidateFrontmatterCommandHandler:
                 (
                     "(root)",
                     "unrecognized_fields",
-                    f"Jerry-specific fields not recognized by Claude Code: {sorted(unknown)}",
+                    f"Tom-specific fields not recognized by Claude Code: {sorted(unknown)}",
                 )
             )
 

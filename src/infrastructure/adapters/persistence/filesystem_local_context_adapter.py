@@ -4,11 +4,11 @@
 """
 FilesystemLocalContextAdapter - Local Context File Reader.
 
-Implements ILocalContextReader for reading .jerry/local/context.toml
+Implements ILocalContextReader for reading .tom/local/context.toml
 files from the filesystem.
 
 This adapter:
-- Reads TOML files from .jerry/local/context.toml
+- Reads TOML files from .tom/local/context.toml
 - Returns empty dict on missing file or parse errors (fail-safe)
 - Never raises exceptions to callers
 
@@ -27,22 +27,22 @@ from typing import Any
 class FilesystemLocalContextAdapter:
     """Filesystem adapter for reading local context configuration.
 
-    Reads machine-local configuration from .jerry/local/context.toml.
+    Reads machine-local configuration from .tom/local/context.toml.
     This file is typically gitignored and contains user preferences
     and the active project selection.
 
     Attributes:
-        _base_path: Root directory where .jerry/local/ is located
+        _base_path: Root directory where .tom/local/ is located
         _context_path: Full path to context.toml file
     """
 
-    CONTEXT_FILE_PATH = ".jerry/local/context.toml"
+    CONTEXT_FILE_PATH = ".tom/local/context.toml"
 
     def __init__(self, base_path: Path | str) -> None:
         """Initialize the adapter with a base path.
 
         Args:
-            base_path: Root directory containing .jerry/local/
+            base_path: Root directory containing .tom/local/
         """
         self._base_path = Path(base_path)
         self._context_path = self._base_path / self.CONTEXT_FILE_PATH

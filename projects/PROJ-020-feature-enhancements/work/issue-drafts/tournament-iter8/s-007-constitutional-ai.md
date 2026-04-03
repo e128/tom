@@ -5,7 +5,7 @@
 **Criticality:** C4
 **Date:** 2026-03-03
 **Reviewer:** adv-executor (S-007 execution, Iteration 8)
-**Constitutional Context:** JERRY_CONSTITUTION.md (P-001–P-043), quality-enforcement.md (H-01–H-36), agent-development-standards.md, mandatory-skill-usage.md, mcp-tool-standards.md, markdown-navigation-standards.md, skill-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md (P-001–P-043), quality-enforcement.md (H-01–H-36), agent-development-standards.md, mandatory-skill-usage.md, mcp-tool-standards.md, markdown-navigation-standards.md, skill-standards.md
 
 ---
 
@@ -27,7 +27,7 @@ PARTIAL compliance with 0 Critical, 1 Major, and 5 Minor findings. The I7 CC-001
 
 | Source | Tier | Applicable Principles |
 |--------|------|-----------------------|
-| JERRY_CONSTITUTION.md | HARD | P-001 (Truth/Accuracy), P-002 (File Persistence), P-003 (No Recursive Subagents), P-004 (Explicit Provenance), P-005 (Graceful Degradation), P-011 (Evidence-Based Decisions), P-020 (User Authority), P-022 (No Deception) |
+| TOM_CONSTITUTION.md | HARD | P-001 (Truth/Accuracy), P-002 (File Persistence), P-003 (No Recursive Subagents), P-004 (Explicit Provenance), P-005 (Graceful Degradation), P-011 (Evidence-Based Decisions), P-020 (User Authority), P-022 (No Deception) |
 | quality-enforcement.md | HARD | H-01 (No recursive subagents), H-02 (User authority), H-03 (No deception), H-13 (Quality threshold), H-17 (Quality scoring), H-18 (Constitutional compliance), H-22 (Proactive skill invocation), H-23 (Markdown navigation), H-25 (Skill naming/structure), H-26 (Skill description/paths/registration), H-31 (Clarify when ambiguous), H-34 (Agent definition standards), H-36 (Agent routing standards) |
 | agent-development-standards.md | MEDIUM | AD-M-001 (Agent naming), AD-M-003 (Description quality), AD-M-004 (Output levels), AD-M-006 (Persona), AD-M-009 (Model selection), ET-M-001 (Reasoning effort) |
 | mcp-tool-standards.md | HARD/MEDIUM | MCP-001 (Context7 for external docs), MCP-002 (Memory-Keeper at phase boundaries) |

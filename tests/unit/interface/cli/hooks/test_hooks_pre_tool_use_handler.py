@@ -12,7 +12,7 @@ BDD scenarios:
     - Handler passes tool input to enforcement engine
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - EN-005: PreToolUse Staleness Detection
     - PROJ-004: Context Resilience
 """

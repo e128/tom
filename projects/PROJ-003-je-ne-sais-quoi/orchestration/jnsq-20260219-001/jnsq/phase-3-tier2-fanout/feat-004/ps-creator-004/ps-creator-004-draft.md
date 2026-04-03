@@ -233,7 +233,7 @@ The gap to 0.92 is real. The path is clear.
 **Before (current voice):**
 ```
 Constitutional compliance check: FAILED
-Trigger: AE-001 -- modification to docs/governance/JERRY_CONSTITUTION.md
+Trigger: AE-001 -- modification to docs/governance/TOM_CONSTITUTION.md
 Criticality: Auto-C4
 Status: Hard stop. Human escalation required.
 ```
@@ -242,7 +242,7 @@ Status: Hard stop. Human escalation required.
 ```
 Constitutional compliance check: FAILED
 
-Trigger: AE-001 -- docs/governance/JERRY_CONSTITUTION.md was modified.
+Trigger: AE-001 -- docs/governance/TOM_CONSTITUTION.md was modified.
 Auto-escalation: C4. This is not a drill.
 
 Hard stop. Human review required before proceeding.
@@ -847,7 +847,7 @@ This is exactly the scenario the auto-escalation rules exist for.
 
 **Variables:**
 - `{auto_escalation_id}`: E.g., AE-001
-- `{trigger_description}`: E.g., "docs/governance/JERRY_CONSTITUTION.md was modified"
+- `{trigger_description}`: E.g., "docs/governance/TOM_CONSTITUTION.md was modified"
 - `{criticality}`: E.g., C4
 
 **Visual integration (FEAT-003):**

@@ -1,6 +1,6 @@
 # Adversarial Quality Deep Dives
 
-> Trade studies, risk registers (FMEA), scoring methodology, and the strategy selection decision tree — the supporting research behind Jerry's adversarial quality framework.
+> Trade studies, risk registers (FMEA), scoring methodology, and the strategy selection decision tree — the supporting research behind Tom's adversarial quality framework.
 
 ---
 

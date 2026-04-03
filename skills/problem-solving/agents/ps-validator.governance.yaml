@@ -36,7 +36,7 @@ output:
   - L1
   - L2
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-001: Truth and Accuracy (Soft) - Validations based on evidence'
   - 'P-002: File Persistence (Medium) - Reports MUST be persisted'

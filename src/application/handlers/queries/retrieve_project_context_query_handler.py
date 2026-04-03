@@ -6,14 +6,14 @@ RetrieveProjectContextQueryHandler - Handler for RetrieveProjectContextQuery.
 
 This handler retrieves the full project context including:
 - Current JERRY_PROJECT environment variable
-- Local context from .jerry/local/context.toml
+- Local context from .tom/local/context.toml
 - Parsed and validated project ID
 - List of available projects
 - Next available project number
 
 Project resolution follows precedence order:
 1. JERRY_PROJECT environment variable (highest precedence)
-2. Local context active_project (.jerry/local/context.toml)
+2. Local context active_project (.tom/local/context.toml)
 3. Project discovery (available_projects for user selection)
 
 Dependencies are injected via constructor, query data via handle().
@@ -69,7 +69,7 @@ class RetrieveProjectContextQueryHandler:
         Args:
             repository: Repository for project operations
             environment: Provider for environment variables
-            local_context_reader: Optional reader for .jerry/local/context.toml
+            local_context_reader: Optional reader for .tom/local/context.toml
                                   (backward compatible - None means ignore local context)
         """
         self._repository = repository
@@ -81,7 +81,7 @@ class RetrieveProjectContextQueryHandler:
 
         Implements precedence order for project resolution:
         1. JERRY_PROJECT environment variable (highest precedence)
-        2. Local context active_project (.jerry/local/context.toml)
+        2. Local context active_project (.tom/local/context.toml)
         3. Project discovery (available_projects for user selection)
 
         Args:

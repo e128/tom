@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
 
-"""Validate and synchronize Jerry framework version across all locations.
+"""Validate and synchronize Tom framework version across all locations.
 
 This script reads the SSOT version from pyproject.toml and checks (or fixes)
 all other version locations for consistency.

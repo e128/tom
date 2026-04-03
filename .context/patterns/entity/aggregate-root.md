@@ -10,7 +10,7 @@
 
 The Aggregate Root pattern defines a cluster of domain objects that are treated as a single unit for data changes. The aggregate root is the only member of the aggregate that outside objects can reference.
 
-In Jerry, aggregates are event-sourced, meaning their state is derived from a sequence of domain events.
+In Tom, aggregates are event-sourced, meaning their state is derived from a sequence of domain events.
 
 ---
 
@@ -25,7 +25,7 @@ In Jerry, aggregates are event-sourced, meaning their state is derived from a se
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Base Class
 
@@ -244,7 +244,7 @@ class WorkItem:
 
 Design aggregates to be as small as possible while maintaining invariants.
 
-> **Jerry Decision**: WorkItem is the primary aggregate. Phase and Plan are separate aggregates referenced by ID, not nested within WorkItem.
+> **Tom Decision**: WorkItem is the primary aggregate. Phase and Plan are separate aggregates referenced by ID, not nested within WorkItem.
 
 ### 4. Invariant Enforcement
 
@@ -304,7 +304,7 @@ def save(self, aggregate: WorkItem) -> None:
         self._snapshot_store.save(aggregate)
 ```
 
-> **Jerry Decision**: Snapshot every 10 events. This balances storage cost with replay performance.
+> **Tom Decision**: Snapshot every 10 events. This balances storage cost with replay performance.
 
 ---
 

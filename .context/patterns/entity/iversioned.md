@@ -59,7 +59,7 @@ class IVersioned(Protocol):
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### File Location
 
@@ -175,7 +175,7 @@ except ConcurrencyError as e:
 
 ## Design Canon Reference
 
-Lines 290-316 in Jerry Design Canon v1.0
+Lines 290-316 in Tom Design Canon v1.0
 
 ---
 

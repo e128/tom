@@ -32,7 +32,7 @@
 | Methodological Rigor | 0.20 | 0.955 | 0.191 | All three agents follow step-by-step methodology with numbered steps; H-15 self-review embedded in each agent; pe-constraint-gen has 7-step consequence chain derivation methodology; model rationale comments (AD-M-009) present in all .governance.yaml files |
 | Evidence Quality | 0.15 | 0.940 | 0.141 | pe-builder and pe-constraint-gen domain-specific forbidden_actions now carry citations; pe-scorer citation is substantively accurate (leniency counteraction IS in quality-enforcement.md via L2-REINJECT rank=4) but the section label "Leniency Bias Counteraction" exists in adv-scorer.md not quality-enforcement.md — minor precision gap |
 | Actionability | 0.15 | 0.950 | 0.143 | post_completion_checks are specific and verifiable; session_context on_send/on_receive defined for all three agents; fallback_behavior specified (warn_and_retry); output locations concrete |
-| Traceability | 0.10 | 0.950 | 0.095 | SSOT footers present on all .md files; constitution.reference to docs/governance/JERRY_CONSTITUTION.md in all .governance.yaml files; P-004 source attribution declared in pe-builder, pe-constraint-gen, and pe-scorer governance files |
+| Traceability | 0.10 | 0.950 | 0.095 | SSOT footers present on all .md files; constitution.reference to docs/governance/TOM_CONSTITUTION.md in all .governance.yaml files; P-004 source attribution declared in pe-builder, pe-constraint-gen, and pe-scorer governance files |
 | **TOTAL** | **1.00** | | **0.954** | |
 
 > **Composite computation:** (0.960 × 0.20) + (0.960 × 0.20) + (0.955 × 0.20) + (0.940 × 0.15) + (0.950 × 0.15) + (0.950 × 0.10)
@@ -160,7 +160,7 @@ The entry cites `projects/PROJ-014-negative-prompting-research/orchestration/neg
 
 **Evidence:**
 - All three `.md` files include SSOT footer lines identifying the source document (e.g., "SSOT: `.context/rules/prompt-quality.md`").
-- All three `.governance.yaml` files include `constitution.reference: docs/governance/JERRY_CONSTITUTION.md`.
+- All three `.governance.yaml` files include `constitution.reference: docs/governance/TOM_CONSTITUTION.md`.
 - P-004 Source Attribution is declared in `constitution.principles_applied` for pe-builder (P-004 present), pe-constraint-gen (P-004 present), and pe-scorer (P-004 present via "P-004: Source Attribution (Medium) - Scoring criteria traced to prompt-quality.md rubric").
 - AD-M-009 model selection rationale comments in all `.governance.yaml` files trace back to `agent-development-standards.md Cognitive Mode Taxonomy`.
 - `forbidden_action_format: NPT-009-complete` in all three `.governance.yaml` files traces to the ADR-002 NPT format standard.

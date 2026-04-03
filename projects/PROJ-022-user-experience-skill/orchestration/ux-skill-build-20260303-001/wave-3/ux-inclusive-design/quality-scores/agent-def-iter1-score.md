@@ -42,7 +42,7 @@
 | Methodological Rigor | 0.20 | 0.94 | 0.188 | 7-step dual-framework workflow is well-structured; POUR principles fully enumerated; testing protocols have explicit pass/fail criteria with WCAG SC references; minor version labeling inconsistency (2.1.4 labeled "A, new in 2.1" rather than citing it as a WCAG 2.1 addition—not an error but potentially misleading without 2.2-specific callout) |
 | Evidence Quality | 0.15 | 0.87 | 0.131 | WCAG 2.2 (W3C, 2023) and Microsoft Inclusive Design (Microsoft, 2016) cited in identity and purpose; legal references (ADA, EAA, Section 508) include statutory citations; severity scale attributed to Nielsen (1994b) in Step 2 but attribution is parenthetical rather than a full inline citation; no reference to ARIA APG specification version; ICE score origin cross-reference not present (unlike the reference exemplar which explicitly notes "Sean Ellis, GrowthHackers, circa 2015") |
 | Actionability | 0.15 | 0.96 | 0.144 | Testing protocols contain explicit threshold tables (e.g., contrast: >= 4.5:1 AA, >= 7:1 AAA); per-criterion evaluation format is fully specified with required fields; Persona Spectrum 4x3 matrix is complete; on-send YAML schema is fully specified; degraded mode disclosure banner is implementable; fallback behaviors map to specific conditions |
-| Traceability | 0.10 | 0.96 | 0.096 | VERSION header present with date, source, parent, revision history; trailing traceability comment maps all standards to implementation (H-34, AD-M-001 through ET-M-001, SR-002/003/009, AR-012); SKILL.md SSOT reference present; constitutional compliance table maps principles to agent behavior; governance `constitution.reference` points to `docs/governance/JERRY_CONSTITUTION.md` |
+| Traceability | 0.10 | 0.96 | 0.096 | VERSION header present with date, source, parent, revision history; trailing traceability comment maps all standards to implementation (H-34, AD-M-001 through ET-M-001, SR-002/003/009, AR-012); SKILL.md SSOT reference present; constitutional compliance table maps principles to agent behavior; governance `constitution.reference` points to `docs/governance/TOM_CONSTITUTION.md` |
 | **TOTAL** | **1.00** | | **0.941** | |
 
 > **Computed composite:** (0.95 × 0.20) + (0.96 × 0.20) + (0.94 × 0.20) + (0.87 × 0.15) + (0.96 × 0.15) + (0.96 × 0.10) = 0.190 + 0.192 + 0.188 + 0.131 + 0.144 + 0.096 = **0.941**
@@ -183,7 +183,7 @@
 - Project reference: `*Project: PROJ-022 User Experience Skill*`
 - Wave reference: `*Wave: 3 (Design System)*`
 - Constitutional compliance table in `<guardrails>` traces P-003, P-020, P-022, P-001, P-002 to specific agent behaviors
-- Governance `constitution.reference` field: `docs/governance/JERRY_CONSTITUTION.md`
+- Governance `constitution.reference` field: `docs/governance/TOM_CONSTITUTION.md`
 - Governance `constitution.principles_applied` array lists 5 principles with behavioral mapping
 - NPT-009-complete forbidden action format is declared in governance (`forbidden_action_format: NPT-009-complete`) -- all 3 forbidden actions use the VIOLATION+Consequence format
 - SKILL.md cross-references to routing rules: `skills/user-experience/rules/ux-routing-rules.md`, `skills/user-experience/rules/wave-progression.md`, `skills/user-experience/rules/synthesis-validation.md` -- all cited in agent methodology

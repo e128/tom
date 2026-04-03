@@ -9,7 +9,7 @@ Each stream is stored in a separate file, enabling efficient append operations
 and human-readable event logs.
 
 Storage Format:
-    - Each stream stored in: {base_path}/.jerry/data/events/{stream_id}.jsonl
+    - Each stream stored in: {base_path}/.tom/data/events/{stream_id}.jsonl
     - JSON Lines format (one JSON object per line)
     - Append-only writes for durability
 
@@ -51,7 +51,7 @@ class FileSystemEventStore:
     and human-readable event logs that are git-friendly.
 
     Storage Structure:
-        {base_path}/.jerry/data/events/
+        {base_path}/.tom/data/events/
         ├── work_item-WORK-001.jsonl
         ├── work_item-WORK-002.jsonl
         └── ...
@@ -90,7 +90,7 @@ class FileSystemEventStore:
 
         Args:
             base_path: Base project path (Path or str). Events stored in
-                {base_path}/.jerry/data/events/
+                {base_path}/.tom/data/events/
 
         Raises:
             ValueError: If base_path is not a valid path
@@ -99,8 +99,8 @@ class FileSystemEventStore:
             base_path = Path(base_path)
 
         self._base_path = base_path
-        self._events_dir = base_path / ".jerry" / "data" / "events"
-        self._lock_dir = base_path / ".jerry" / "local" / "locks" / "events"
+        self._events_dir = base_path / ".tom" / "data" / "events"
+        self._lock_dir = base_path / ".tom" / "local" / "locks" / "events"
         self._lock = threading.RLock()
 
         # Create events and lock directories if they don't exist

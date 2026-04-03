@@ -26,7 +26,7 @@ The crown jewel of the adversarial research pipeline: 36 candidates from three p
     3. **TASK-003** (Emerging): 10 strategies from cross-domain emerging approaches (46 references)
     4. **TASK-004** (Synthesis): Overlap analysis → deduplication → 15 unified strategies with standardized profiles
 
-    Each strategy profile includes: origin, mechanism, strengths, weaknesses, Jerry-specific applicability, P-003 compliance assessment, and token budget estimate.
+    Each strategy profile includes: origin, mechanism, strengths, weaknesses, Tom-specific applicability, P-003 compliance assessment, and token budget estimate.
 
 ??? abstract "Key Data: The 15 Strategies"
     | ID | Strategy | Family | One-Line Description |
@@ -120,7 +120,7 @@ Research into 14 adversarial review strategies from software engineering practic
     |----------|--------------------|---------|
     | Cross-Domain Transfer | Moot Court, M&M Conference, Wargaming | Centuries of refined adversarial practice, never formally applied to software review |
     | Cognitive Debiasing | Reference Class Forecasting, Inversion Technique | Powerful adversarial tools rarely framed as review strategies |
-    | AI-Native | Constitutional AI Critique Chains, Progressive Adversarial Escalation | No direct pre-AI precedent; most applicable to Jerry's architecture |
+    | AI-Native | Constitutional AI Critique Chains, Progressive Adversarial Escalation | No direct pre-AI precedent; most applicable to Tom's architecture |
     | Meta-Strategy | Cynefin-Gated Selection | Matches adversarial intensity to problem complexity |
 
     **46 references** spanning legal theory, medical practice, military doctrine, and AI safety research.

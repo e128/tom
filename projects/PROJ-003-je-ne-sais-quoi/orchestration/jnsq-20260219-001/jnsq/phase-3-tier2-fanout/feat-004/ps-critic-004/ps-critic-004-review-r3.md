@@ -62,7 +62,7 @@ DATE: 2026-02-19
 
 | AE Rule | SSOT | Document Reference | Status |
 |---------|------|--------------------|--------|
-| AE-001 | Constitution modification -> Auto-C4 | Sub-Category 1d: "AE-001 -- docs/governance/JERRY_CONSTITUTION.md was modified. Auto-escalation: C4." | ALIGNED |
+| AE-001 | Constitution modification -> Auto-C4 | Sub-Category 1d: "AE-001 -- docs/governance/TOM_CONSTITUTION.md was modified. Auto-escalation: C4." | ALIGNED |
 | AE-002-006 | Various escalation triggers | Not directly referenced (appropriately -- AE-002+ are for work classification, not message templates) | N/A |
 
 ### S-014 Dimensions

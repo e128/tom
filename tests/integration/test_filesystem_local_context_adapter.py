@@ -4,7 +4,7 @@
 """
 Integration tests for FilesystemLocalContextAdapter.
 
-Tests the adapter's ability to read .jerry/local/context.toml from
+Tests the adapter's ability to read .tom/local/context.toml from
 the real filesystem using pytest's tmp_path fixture.
 
 These tests verify the adapter correctly implements ILocalContextReader
@@ -77,7 +77,7 @@ class TestLocalContextReaderHappyPath:
         )
 
         # Arrange - create valid context.toml
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text('[context]\nactive_project = "PROJ-001-test"\n')
@@ -99,10 +99,10 @@ class TestLocalContextReaderHappyPath:
         )
 
         # Arrange
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
-        context_file.write_text('[context]\nactive_project = "PROJ-007-jerry-bugs"\n')
+        context_file.write_text('[context]\nactive_project = "PROJ-007-tom-bugs"\n')
 
         adapter = FilesystemLocalContextAdapter(base_path=tmp_path)
 
@@ -110,7 +110,7 @@ class TestLocalContextReaderHappyPath:
         result = adapter.get_active_project()
 
         # Assert
-        assert result == "PROJ-007-jerry-bugs"
+        assert result == "PROJ-007-tom-bugs"
 
     def test_read_handles_nested_structure(self, tmp_path: Path) -> None:
         """read() correctly parses nested TOML structure."""
@@ -119,7 +119,7 @@ class TestLocalContextReaderHappyPath:
         )
 
         # Arrange - create TOML with nested structure
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text(
@@ -170,7 +170,7 @@ class TestLocalContextReaderNegative:
         )
 
         # Arrange - create invalid TOML
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text("invalid toml [[[")
@@ -190,7 +190,7 @@ class TestLocalContextReaderNegative:
         )
 
         # Arrange - context file without active_project
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text('[preferences]\ntheme = "light"\n')
@@ -217,7 +217,7 @@ class TestLocalContextReaderEdgeCases:
         )
 
         # Arrange - create empty file
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text("")
@@ -256,7 +256,7 @@ class TestLocalContextReaderEdgeCases:
         )
 
         # Arrange - active_project is an integer (wrong type)
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text("[context]\nactive_project = 123\n")
@@ -280,7 +280,7 @@ class TestLocalContextReaderEdgeCases:
         )
 
         # Arrange - unicode in project ID (will fail validation later)
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text('[context]\nactive_project = "PROJ-001-日本語"\n')
@@ -304,7 +304,7 @@ class TestLocalContextReaderEdgeCases:
         )
 
         # Arrange - whitespace-only value
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text('[context]\nactive_project = "   "\n')
@@ -327,7 +327,7 @@ class TestLocalContextReaderEdgeCases:
         )
 
         # Arrange - TOML with comments
-        local_dir = tmp_path / ".jerry" / "local"
+        local_dir = tmp_path / ".tom" / "local"
         local_dir.mkdir(parents=True)
         context_file = local_dir / "context.toml"
         context_file.write_text(

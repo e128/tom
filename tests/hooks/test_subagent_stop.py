@@ -3,7 +3,7 @@
 
 """Tests for SubagentStop hook via CLI pipeline.
 
-Tests the consolidated SubagentStop hook (``uv run jerry hooks subagent-stop``)
+Tests the consolidated SubagentStop hook (``uv run tom hooks subagent-stop``)
 which records sub-agent lifecycle data and always approves.
 
 References:
@@ -51,7 +51,7 @@ def run_hook(
         input_data.update(extra_fields)
 
     result = subprocess.run(
-        ["uv", "run", "--directory", _REPO_ROOT, "jerry", "--json", "hooks", "subagent-stop"],
+        ["uv", "run", "--directory", _REPO_ROOT, "tom", "--json", "hooks", "subagent-stop"],
         input=json.dumps(input_data),
         capture_output=True,
         text=True,
@@ -172,7 +172,7 @@ class TestExitCodes:
     def test_empty_json_exits_zero(self) -> None:
         """Empty JSON object should exit 0 (fail-open)."""
         result = subprocess.run(
-            ["uv", "run", "--directory", _REPO_ROOT, "jerry", "--json", "hooks", "subagent-stop"],
+            ["uv", "run", "--directory", _REPO_ROOT, "tom", "--json", "hooks", "subagent-stop"],
             input="{}",
             capture_output=True,
             text=True,
@@ -184,7 +184,7 @@ class TestExitCodes:
     def test_missing_agent_name_exits_zero(self) -> None:
         """Missing agent_name should exit 0 (fail-open)."""
         result = subprocess.run(
-            ["uv", "run", "--directory", _REPO_ROOT, "jerry", "--json", "hooks", "subagent-stop"],
+            ["uv", "run", "--directory", _REPO_ROOT, "tom", "--json", "hooks", "subagent-stop"],
             input=json.dumps({"output": "test"}),
             capture_output=True,
             text=True,
@@ -196,7 +196,7 @@ class TestExitCodes:
     def test_missing_output_field_exits_zero(self) -> None:
         """Missing output field should exit 0 (fail-open)."""
         result = subprocess.run(
-            ["uv", "run", "--directory", _REPO_ROOT, "jerry", "--json", "hooks", "subagent-stop"],
+            ["uv", "run", "--directory", _REPO_ROOT, "tom", "--json", "hooks", "subagent-stop"],
             input=json.dumps({"agent_name": "test"}),
             capture_output=True,
             text=True,
@@ -300,7 +300,7 @@ class TestInputRobustness:
     def test_null_agent_name_handled(self) -> None:
         """Null agent_name should be handled gracefully."""
         result = subprocess.run(
-            ["uv", "run", "--directory", _REPO_ROOT, "jerry", "--json", "hooks", "subagent-stop"],
+            ["uv", "run", "--directory", _REPO_ROOT, "tom", "--json", "hooks", "subagent-stop"],
             input=json.dumps({"agent_name": None, "output": "done"}),
             capture_output=True,
             text=True,
@@ -311,7 +311,7 @@ class TestInputRobustness:
     def test_numeric_agent_name_handled(self) -> None:
         """Numeric agent_name should be handled gracefully."""
         result = subprocess.run(
-            ["uv", "run", "--directory", _REPO_ROOT, "jerry", "--json", "hooks", "subagent-stop"],
+            ["uv", "run", "--directory", _REPO_ROOT, "tom", "--json", "hooks", "subagent-stop"],
             input=json.dumps({"agent_name": 12345, "output": "done"}),
             capture_output=True,
             text=True,
@@ -328,7 +328,7 @@ class TestInputRobustness:
     def test_agent_id_field_handled(self) -> None:
         """agent_id field (alternative to agent_name) should be handled."""
         result = subprocess.run(
-            ["uv", "run", "--directory", _REPO_ROOT, "jerry", "--json", "hooks", "subagent-stop"],
+            ["uv", "run", "--directory", _REPO_ROOT, "tom", "--json", "hooks", "subagent-stop"],
             input=json.dumps({"agent_id": "abc123", "session_id": "sess-1"}),
             capture_output=True,
             text=True,
@@ -375,7 +375,7 @@ class TestInputRobustness:
     def test_invalid_json_exits_zero(self) -> None:
         """Invalid JSON input should still exit 0 (fail-open)."""
         result = subprocess.run(
-            ["uv", "run", "--directory", _REPO_ROOT, "jerry", "--json", "hooks", "subagent-stop"],
+            ["uv", "run", "--directory", _REPO_ROOT, "tom", "--json", "hooks", "subagent-stop"],
             input="not valid json at all",
             capture_output=True,
             text=True,

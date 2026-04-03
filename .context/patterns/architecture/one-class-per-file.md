@@ -82,7 +82,7 @@ Each CQRS element naturally gets its own file:
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Directory Structure
 
@@ -158,9 +158,9 @@ Apply these questions to determine if grouping is appropriate:
 
 ---
 
-## Jerry Opinion
+## Tom Opinion
 
-> **Jerry Decision**: We intentionally deviate from Python's "one idea per file" tradition because one-class-per-file optimizes for LLM agent navigation. This is a deliberate architectural choice, not ignorance of Python conventions.
+> **Tom Decision**: We intentionally deviate from Python's "one idea per file" tradition because one-class-per-file optimizes for LLM agent navigation. This is a deliberate architectural choice, not ignorance of Python conventions.
 
 Python's traditional approach groups related functionality into modules:
 ```python
@@ -169,7 +169,7 @@ Python's traditional approach groups related functionality into modules:
 # All revolve around the "decimal" topic
 ```
 
-Jerry's approach prioritizes:
+Tom's approach prioritizes:
 - Predictable file locations for AI agents
 - Multi-agent development (reduced conflicts)
 - Clean Architecture alignment

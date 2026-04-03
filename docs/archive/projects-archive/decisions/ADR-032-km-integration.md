@@ -520,7 +520,7 @@ src/application/queries/knowledge_query.py  # "What do we know about X?"
 
 ### Jerry Governance
 
-14. **Jerry Constitution** (`docs/governance/JERRY_CONSTITUTION.md`) - Principles P-002, P-003, P-020, P-022
+14. **Jerry Constitution** (`docs/governance/TOM_CONSTITUTION.md`) - Principles P-002, P-003, P-020, P-022
 15. **Coding Standards** (`.claude/rules/coding-standards.md`) - Hexagonal architecture enforcement
 
 ---

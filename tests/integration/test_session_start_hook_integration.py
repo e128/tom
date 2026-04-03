@@ -4,7 +4,7 @@
 """
 Integration tests for session-start hook quality context injection.
 
-Verifies that the SessionStart hook (via jerry hooks session-start CLI)
+Verifies that the SessionStart hook (via tom hooks session-start CLI)
 correctly integrates the quality framework preamble into its output
 without breaking existing project context functionality.
 
@@ -12,7 +12,7 @@ Test naming follows BDD convention:
     test_{scenario}_when_{condition}_then_{expected}
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - EN-007: Hook Wrapper Scripts
     - EN-706: SessionStart Quality Context Injection
 """
@@ -44,7 +44,7 @@ def run_hook(env_overrides: dict[str, str] | None = None) -> subprocess.Complete
         env.update(env_overrides)
 
     return subprocess.run(
-        ["uv", "run", "jerry", "--json", "hooks", "session-start"],
+        ["uv", "run", "tom", "--json", "hooks", "session-start"],
         input="{}",
         capture_output=True,
         text=True,
@@ -94,7 +94,7 @@ class TestHookOutputFormat:
         additional = data["additionalContext"]
 
         # Must contain project context tags
-        has_project_info = "<project-context>" in additional or "<jerry-project>" in additional
+        has_project_info = "<project-context>" in additional or "<tom-project>" in additional
         assert has_project_info, (
             f"Hook output missing project context tags. additionalContext: {additional[:200]}..."
         )

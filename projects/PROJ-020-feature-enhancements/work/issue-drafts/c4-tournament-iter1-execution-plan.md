@@ -17,7 +17,7 @@
 
 | Rule | Condition | Result |
 |------|-----------|--------|
-| AE-001 | Touches JERRY_CONSTITUTION.md | Not triggered |
+| AE-001 | Touches TOM_CONSTITUTION.md | Not triggered |
 | AE-002 | Touches .context/rules/ or .claude/rules/ | Not triggered |
 | AE-003 | New or modified ADR | Not triggered (GitHub issue, not ADR) |
 | AE-004 | Modifies baselined ADR | Not triggered |
@@ -124,7 +124,7 @@ This is the primary adversarial pass. Three complementary challenge strategies a
 
 This phase verifies that the proposal meets governance standards and that its evidence and reasoning are sound:
 
-1. **S-007 (Constitutional AI Critique)** — Audit the proposal against Jerry governance (JERRY_CONSTITUTION.md, quality-enforcement.md, H-01 through H-36). Does the proposal violate any governance constraints? Does it inadvertently create new governance violations?
+1. **S-007 (Constitutional AI Critique)** — Audit the proposal against Jerry governance (TOM_CONSTITUTION.md, quality-enforcement.md, H-01 through H-36). Does the proposal violate any governance constraints? Does it inadvertently create new governance violations?
 
 2. **S-011 (Chain-of-Verification)** — Verify claims hierarchically. Trace evidence chains: are the claims supported? Are sources cited? Are logical dependencies valid?
 

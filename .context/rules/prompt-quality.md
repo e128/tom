@@ -1,4 +1,4 @@
-# Writing Effective Jerry Prompts
+# Writing Effective Tom Prompts
 
 > The 5 elements that matter, the rubric to score them, and the anti-patterns to avoid.
 
@@ -6,7 +6,7 @@
 
 | Section | Purpose |
 |---------|---------|
-| [The 5 Elements](#the-5-elements-of-an-effective-jerry-prompt) | What every good prompt includes |
+| [The 5 Elements](#the-5-elements-of-an-effective-tom-prompt) | What every good prompt includes |
 | [The Quality Rubric](#the-quality-rubric) | 7 criteria to score any prompt (0-100) |
 | [The Adversarial Critique Loop](#the-adversarial-critique-loop) | The single highest-impact quality pattern |
 | [Agent Selection](#agent-selection) | Matching agents to cognitive modes |
@@ -15,9 +15,9 @@
 
 ---
 
-## The 5 Elements of an Effective Jerry Prompt
+## The 5 Elements of an Effective Tom Prompt
 
-Every effective Jerry prompt shares these five structural elements. Each maps to a specific Jerry mechanism — missing any one forces Claude to make a decision you should have made.
+Every effective Tom prompt shares these five structural elements. Each maps to a specific Tom mechanism — missing any one forces Claude to make a decision you should have made.
 
 ```
 1. SKILL ROUTING     Use /problem-solving with ps-[agent]
@@ -27,9 +27,9 @@ Every effective Jerry prompt shares these five structural elements. Each maps to
 5. OUTPUT PATH       Output: projects/PROJ-NNN/[path/to/artifact.md] with [format]
 ```
 
-### How Each Element Maps to Jerry
+### How Each Element Maps to Tom
 
-| Element | Jerry Mechanism | What Happens When Missing |
+| Element | Tom Mechanism | What Happens When Missing |
 |---------|----------------|---------------------------|
 | `/skill` routing | YAML activation-keywords load agent context | Entire framework bypassed; plain conversational response |
 | Domain scope | Agent research scoping | Hallucinated or too-broad findings |
@@ -83,7 +83,7 @@ Fix these four first. The remaining 35% (C3, C5, C7) fine-tunes the result.
 
 ## The Adversarial Critique Loop
 
-**This is the single highest-impact quality pattern in Jerry — and the most underused.**
+**This is the single highest-impact quality pattern in Tom — and the most underused.**
 
 The Adversarial Critique Loop (Pattern P-07) only fires when explicitly requested. Without it, no critique runs at all — not even at the default threshold.
 
@@ -201,8 +201,8 @@ OUTPUT
 ## Related Resources
 
 - [Prompt Templates](prompt-templates.md) — 5 copy-paste templates for common tasks
-- [Getting Started](getting-started.md) — First-time Jerry setup and invocation
+- [Getting Started](getting-started.md) — First-time Tom setup and invocation
 - [Problem-Solving Playbook](../playbooks/problem-solving.md) — Agent reference and keyword routing
-- [PROJ-006 Research](../../projects/PROJ-006-jerry-prompt/) — Full research backing this guide
+- [PROJ-006 Research](../../projects/PROJ-006-tom-prompt/) — Full research backing this guide
 
-*Derived from PROJ-006-jerry-prompt research (2026-02-18). Findings validated through 3-phase orchestration with adversarial critic gates (0.934, 0.933, 0.930 >= 0.920).*
+*Derived from PROJ-006-tom-prompt research (2026-02-18). Findings validated through 3-phase orchestration with adversarial critic gates (0.934, 0.933, 0.930 >= 0.920).*

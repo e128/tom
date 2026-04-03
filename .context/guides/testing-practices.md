@@ -175,7 +175,7 @@ def test_filesystem_adapter_saves_and_retrieves_work_item(tmp_path):
 def test_cli_list_command_outputs_valid_json():
     """Test CLI contract: JSON output format."""
     result = subprocess.run(
-        ["jerry", "items", "list", "--json"],
+        ["tom", "items", "list", "--json"],
         capture_output=True,
         text=True,
     )
@@ -261,20 +261,20 @@ def test_user_can_create_and_track_work_item_via_cli():
     env = create_test_environment()
 
     # Act: Create via CLI
-    result = run_cli(["jerry", "items", "create", "--title", "E2E Test"])
+    result = run_cli(["tom", "items", "create", "--title", "E2E Test"])
     assert result.returncode == 0
     item_id = extract_id_from_output(result.stdout)
 
     # Act: Start via CLI
-    result = run_cli(["jerry", "items", "start", item_id])
+    result = run_cli(["tom", "items", "start", item_id])
     assert result.returncode == 0
 
     # Act: Complete via CLI
-    result = run_cli(["jerry", "items", "complete", item_id])
+    result = run_cli(["tom", "items", "complete", item_id])
     assert result.returncode == 0
 
     # Assert: List shows completed item
-    result = run_cli(["jerry", "items", "list", "--status", "completed"])
+    result = run_cli(["tom", "items", "list", "--status", "completed"])
     assert item_id in result.stdout
 ```
 
@@ -1166,7 +1166,7 @@ Based on the actual `tests/` directory structure:
 
 ## Evidence
 
-> Verified references to actual Jerry codebase files demonstrating the testing patterns in this guide.
+> Verified references to actual Tom codebase files demonstrating the testing patterns in this guide.
 
 ### Test Directory Structure -- Real Layout
 

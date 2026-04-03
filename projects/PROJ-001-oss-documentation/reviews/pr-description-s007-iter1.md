@@ -6,7 +6,7 @@
 - **Deliverable:** `/tmp/pr-description.md` (PR description for INSTALLATION.md rewrite)
 - **Executed:** 2026-02-25T00:00:00Z
 - **Criticality:** C4 (PR description summarizes a C4-reviewed deliverable affecting public-facing documentation and project governance artifacts)
-- **Constitutional Context:** JERRY_CONSTITUTION.md v1.0, quality-enforcement.md v1.6.0, markdown-navigation-standards.md, mandatory-skill-usage.md
+- **Constitutional Context:** TOM_CONSTITUTION.md v1.0, quality-enforcement.md v1.6.0, markdown-navigation-standards.md, mandatory-skill-usage.md
 
 ---
 
@@ -15,7 +15,7 @@
 **Deliverable type:** Document (PR description — internal governance/process document, not a code file)
 
 **Applicable constitutional sources loaded:**
-- `docs/governance/JERRY_CONSTITUTION.md` (P-001 through P-043)
+- `docs/governance/TOM_CONSTITUTION.md` (P-001 through P-043)
 - `quality-enforcement.md` (H-01 through H-36 HARD Rule Index, operational score bands)
 - `markdown-navigation-standards.md` (H-23)
 - `mandatory-skill-usage.md` (H-22)
@@ -24,11 +24,11 @@
 
 | Principle | Name | Tier | Source | Applicability |
 |-----------|------|------|--------|---------------|
-| P-001 | Truth and Accuracy | SOFT (Advisory) | JERRY_CONSTITUTION.md | APPLICABLE — PR description makes factual claims about scores, agent counts, and review outcomes |
-| P-002 | File Persistence | MEDIUM | JERRY_CONSTITUTION.md | APPLICABLE — PR references artifacts that must be persisted |
-| P-004 | Explicit Provenance | MEDIUM | JERRY_CONSTITUTION.md | APPLICABLE — PR claims research and review artifacts exist at specific paths |
-| P-011 | Evidence-Based Decisions | MEDIUM | JERRY_CONSTITUTION.md | APPLICABLE — PR makes quality claims that should be traceable to evidence |
-| P-022 | No Deception | HARD | JERRY_CONSTITUTION.md | APPLICABLE — PR must not misrepresent scoring outcomes or review verdicts |
+| P-001 | Truth and Accuracy | SOFT (Advisory) | TOM_CONSTITUTION.md | APPLICABLE — PR description makes factual claims about scores, agent counts, and review outcomes |
+| P-002 | File Persistence | MEDIUM | TOM_CONSTITUTION.md | APPLICABLE — PR references artifacts that must be persisted |
+| P-004 | Explicit Provenance | MEDIUM | TOM_CONSTITUTION.md | APPLICABLE — PR claims research and review artifacts exist at specific paths |
+| P-011 | Evidence-Based Decisions | MEDIUM | TOM_CONSTITUTION.md | APPLICABLE — PR makes quality claims that should be traceable to evidence |
+| P-022 | No Deception | HARD | TOM_CONSTITUTION.md | APPLICABLE — PR must not misrepresent scoring outcomes or review verdicts |
 | H-13 | Quality threshold >= 0.92 | HARD | quality-enforcement.md | APPLICABLE — PR references S-014 scores and PASS/REVISE verdicts |
 | H-17 | Quality scoring REQUIRED | HARD | quality-enforcement.md | APPLICABLE — PR claims C4 review with scoring |
 | H-18 | Constitutional compliance check (S-007) REQUIRED | HARD | quality-enforcement.md | APPLICABLE — PR claims C4 strategies were applied |
@@ -36,7 +36,7 @@
 | H-32 | GitHub Issue parity | HARD | quality-enforcement.md | NOT APPLICABLE — H-32 governs work items, not PR descriptions |
 
 **Auto-escalation check:**
-- AE-001 (constitution touches): No — this PR description does not modify `JERRY_CONSTITUTION.md`
+- AE-001 (constitution touches): No — this PR description does not modify `TOM_CONSTITUTION.md`
 - AE-002 (rules/templates touches): No — this PR description moves review artifacts and updates `marketplace.json` / `PATH_PATTERNS`; it modifies `docs/INSTALLATION.md` (public-facing doc, not `.context/rules/`)
 - AE-003 (ADR): No ADR involved
 - AE-004 (baselined ADR): Not applicable

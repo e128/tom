@@ -18,8 +18,8 @@ allowed-tools:
 # JTBD Sub-Skill
 
 > **Version:** 1.0.0
-> **Framework:** Jerry User-Experience / Jobs-to-Be-Done
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom User-Experience / Jobs-to-Be-Done
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **Parent Skill:** `/user-experience` (`skills/user-experience/SKILL.md`)
 > **Project:** PROJ-022 User Experience Skill | Wave 1 (Zero-Dependency)
 
@@ -176,7 +176,7 @@ The `ux-orchestrator` dispatches to `ux-jtbd-analyst` via Agent:
 ```python
 Agent(
     description="ux-jtbd-analyst: Jobs-to-Be-Done analysis for onboarding flow",
-    subagent_type="jerry:ux-jtbd-analyst",
+    subagent_type="tom:ux-jtbd-analyst",
     prompt="""
 ## UX CONTEXT (REQUIRED)
 - **Engagement ID:** UX-0001
@@ -542,7 +542,7 @@ The following shows populated rows from a JTBD analysis of a developer tool's on
 
 ## Cross-Framework Integration
 
-JTBD output serves as upstream research for multiple downstream sub-skills. The `ux-orchestrator` manages handoff data between sub-skills via the Jerry handoff protocol (`docs/schemas/handoff-v2.schema.json` — planned; not yet committed to repository).
+JTBD output serves as upstream research for multiple downstream sub-skills. The `ux-orchestrator` manages handoff data between sub-skills via the Tom handoff protocol (`docs/schemas/handoff-v2.schema.json` — planned; not yet committed to repository).
 
 ### Downstream Handoff Contracts
 
@@ -703,7 +703,7 @@ Validation sources that advance MEDIUM to HIGH confidence:
 <!-- VERSION: 1.0.0 | DATE: 2026-03-04 | SOURCE: PROJ-022-user-experience-skill/PLAN.md | PARENT: /user-experience skill -->
 *Sub-Skill Version: 1.0.0*
 *Parent Skill: `/user-experience` (`skills/user-experience/SKILL.md`)*
-*Constitutional Compliance: Jerry Constitution v1.0 (P-003, P-020, P-022, P-001, P-002)*
+*Constitutional Compliance: Tom Constitution v1.0 (P-003, P-020, P-022, P-001, P-002)*
 *SSOT: `.context/rules/quality-enforcement.md`*
 *Project: PROJ-022 User Experience Skill | Wave 1*
 *Created: 2026-03-04*

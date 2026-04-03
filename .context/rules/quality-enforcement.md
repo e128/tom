@@ -44,7 +44,7 @@
 
 <!-- L2-REINJECT: rank=9, tokens=40, content="AE-006 graduated escalation: NOMINAL=no-op, WARNING=log+consider-checkpoint, CRITICAL=auto-checkpoint+reduce-verbosity, EMERGENCY=mandatory-checkpoint+warn-user, COMPACTION=human-escalation-C3+." -->
 
-<!-- L2-REINJECT: rank=10, tokens=30, content="AST-based parsing REQUIRED for worktracker entity operations (H-33). Use jerry ast frontmatter and jerry ast validate CLI commands. NEVER use regex for frontmatter extraction." -->
+<!-- L2-REINJECT: rank=10, tokens=30, content="AST-based parsing REQUIRED for worktracker entity operations (H-33). Use tom ast frontmatter and tom ast validate CLI commands. NEVER use regex for frontmatter extraction." -->
 
 | ID | Rule | Source |
 |----|------|--------|
@@ -69,7 +69,7 @@
 | H-25 | Skill naming and structure (SKILL.md case, kebab-case folder, no README.md) | skill-standards |
 | H-26 | Skill description, paths, and registration (WHAT+WHEN+triggers, repo-relative paths, CLAUDE.md+AGENTS.md) | skill-standards |
 | H-31 | Clarify before acting when ambiguous (ask, don't assume) | quality-enforcement |
-| H-32 | GitHub Issue parity for jerry repo work items | project-workflow |
+| H-32 | GitHub Issue parity for tom repo work items | project-workflow |
 | H-33 | AST-based parsing REQUIRED for worktracker entity ops | ast-enforcement |
 | H-34 | Agent definition standards (YAML schema validation, constitutional compliance triplet) | agent-development-standards |
 | H-36 | Agent routing standards (circuit breaker max 3 hops, keyword-first routing) | agent-routing-standards |
@@ -241,7 +241,7 @@ Temporary ceiling expansion is permitted under controlled conditions:
 
 | ID | Condition | Escalation |
 |----|-----------|------------|
-| AE-001 | Touches `docs/governance/JERRY_CONSTITUTION.md` | Auto-C4 |
+| AE-001 | Touches `docs/governance/TOM_CONSTITUTION.md` | Auto-C4 |
 | AE-002 | Touches `.context/rules/` or `.claude/rules/` | Auto-C3 minimum |
 | AE-003 | New or modified ADR | Auto-C3 minimum |
 | AE-004 | Modifies baselined ADR | Auto-C4 |

@@ -51,7 +51,7 @@ The document is clearly authored with strong domain knowledge and practical inte
 | H-24 | Anchor links REQUIRED in navigation table | HARD | markdown-navigation-standards.md |
 | NAV-002 | Navigation table placement (after frontmatter, before first content) | MEDIUM | markdown-navigation-standards.md |
 | NAV-004 | All major `##` headings listed in navigation table | MEDIUM | markdown-navigation-standards.md |
-| P-011 | Evidence-based: no vague findings without evidence | SOFT | JERRY_CONSTITUTION.md |
+| P-011 | Evidence-based: no vague findings without evidence | SOFT | TOM_CONSTITUTION.md |
 
 ### Principle-by-Principle Evaluation
 

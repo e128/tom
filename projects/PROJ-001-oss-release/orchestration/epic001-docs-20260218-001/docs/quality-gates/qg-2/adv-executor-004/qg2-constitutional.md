@@ -10,7 +10,7 @@
 **Criticality:** C2 (Standard)
 **Date:** 2026-02-18
 **Reviewer:** adv-executor-004
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, mandatory-skill-usage.md, markdown-navigation-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, mandatory-skill-usage.md, markdown-navigation-standards.md
 
 ## Document Sections
 
@@ -39,7 +39,7 @@
 
 | Source | Principles | Loaded |
 |--------|-----------|--------|
-| `JERRY_CONSTITUTION.md` v1.1 | P-001 through P-043 | Yes |
+| `TOM_CONSTITUTION.md` v1.1 | P-001 through P-043 | Yes |
 | `quality-enforcement.md` v1.3.0 | H-01 through H-24 | Yes |
 | `markdown-navigation-standards.md` | H-23, H-24, NAV-001 through NAV-006 | Yes |
 | `mandatory-skill-usage.md` | H-22 | Yes |
@@ -56,7 +56,7 @@
 - Constitutional principles: P-001 through P-005, P-010 through P-012, P-020 through P-022, P-030, P-031
 
 **Auto-escalation check:**
-- AE-001 (constitution): Not triggered -- deliverables do not modify JERRY_CONSTITUTION.md
+- AE-001 (constitution): Not triggered -- deliverables do not modify TOM_CONSTITUTION.md
 - AE-002 (rules/templates): Not triggered -- deliverables are in `docs/`, not `.context/rules/`
 - AE-003 (ADR): Not triggered -- no ADR produced
 - AE-005 (security): Not triggered -- no security-relevant code
@@ -179,11 +179,11 @@ Expected result: The path `projects/PROJ-001-my-first-project/` exists and conta
 - `orchestration.md:48` -- "required by H-04 before any work proceeds" -- consistent bare reference pattern
 - `getting-started.md:33` -- "rule **H-04**" -- bold formatting but no link to quality-enforcement.md or constitution
 
-**Impact:** Users encountering these rule IDs for the first time have no way to look them up without knowing to consult `quality-enforcement.md` or `JERRY_CONSTITUTION.md`. The inconsistency -- some references include context (good), others are bare IDs (gap) -- makes the documentation feel uneven. P-004 requires provenance documentation; user documentation that cites rules without explaining them or linking to their source partially violates this principle.
+**Impact:** Users encountering these rule IDs for the first time have no way to look them up without knowing to consult `quality-enforcement.md` or `TOM_CONSTITUTION.md`. The inconsistency -- some references include context (good), others are bare IDs (gap) -- makes the documentation feel uneven. P-004 requires provenance documentation; user documentation that cites rules without explaining them or linking to their source partially violates this principle.
 
 **Dimension:** Traceability
 
-**Remediation:** Standardize the citation pattern across all 4 deliverables. For first mention of any H-rule or P-principle in a document, use the pattern: `H-04 ([Quality Enforcement](../../.context/rules/quality-enforcement.md))` or `P-002 ([Jerry Constitution](../../docs/governance/JERRY_CONSTITUTION.md))`. Subsequent mentions in the same document can use the bare ID. This creates a consistent provenance chain without excessive verbosity.
+**Remediation:** Standardize the citation pattern across all 4 deliverables. For first mention of any H-rule or P-principle in a document, use the pattern: `H-04 ([Quality Enforcement](../../.context/rules/quality-enforcement.md))` or `P-002 ([Jerry Constitution](../../docs/governance/TOM_CONSTITUTION.md))`. Subsequent mentions in the same document can use the bare ID. This creates a consistent provenance chain without excessive verbosity.
 
 ---
 

@@ -2,10 +2,10 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-BlockquoteFrontmatter - Jerry-style blockquote frontmatter extraction and write-back.
+BlockquoteFrontmatter - Tom-style blockquote frontmatter extraction and write-back.
 
 Provides structured access to the `> **Key:** Value` metadata pattern used in
-Jerry entity files (worktracker items, skill definitions, spike entities, enabler
+Tom entity files (worktracker items, skill definitions, spike entities, enabler
 entities, etc.).
 
 The frontmatter format validated in EN-001 R-01 PoC:
@@ -17,18 +17,18 @@ The frontmatter format validated in EN-001 R-01 PoC:
 Write-back strategy (from R-01 PoC):
     - Operate at source-text level using regex substitution, NOT at the AST level.
     - set() normalizes via doc.render() before substitution to ensure idempotent results.
-    - All mutation operations return a new JerryDocument rather than modifying in place.
+    - All mutation operations return a new TomDocument rather than modifying in place.
 
 References:
     - ST-002: Blockquote Frontmatter Extension
     - EN-001: R-01 PoC (frontmatter regex validation)
-    - ST-001: JerryDocument facade (dependency)
+    - ST-001: TomDocument facade (dependency)
     - H-07: Domain layer MUST NOT import application/infrastructure/interface layers
 
 Exports:
     FrontmatterField: Dataclass representing a single frontmatter key-value pair.
-    BlockquoteFrontmatter: Collection class for Jerry blockquote frontmatter.
-    extract_frontmatter: Convenience function to extract frontmatter from a JerryDocument.
+    BlockquoteFrontmatter: Collection class for Tom blockquote frontmatter.
+    extract_frontmatter: Convenience function to extract frontmatter from a TomDocument.
 """
 
 from __future__ import annotations
@@ -37,7 +37,7 @@ import re
 from collections.abc import Iterator
 from dataclasses import dataclass
 
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 
 # ---------------------------------------------------------------------------
 # Regex pattern (validated in EN-001 R-01 PoC)
@@ -54,7 +54,7 @@ _FRONTMATTER_PATTERN = re.compile(r"^>\s*\*\*(?P<key>[^*:]+):\*\*\s*(?P<value>.+
 @dataclass(frozen=True)
 class FrontmatterField:
     """
-    A single key-value field extracted from a Jerry blockquote frontmatter.
+    A single key-value field extracted from a Tom blockquote frontmatter.
 
     Represents one line of the form `> **Key:** Value` with its associated
     position metadata in the source text.
@@ -88,15 +88,15 @@ class FrontmatterField:
 
 class BlockquoteFrontmatter:
     """
-    Collection of key-value fields extracted from a Jerry entity blockquote frontmatter.
+    Collection of key-value fields extracted from a Tom entity blockquote frontmatter.
 
     Provides dict-like read access to frontmatter fields and write-back operations
-    that return new JerryDocument instances with modified source text.
+    that return new TomDocument instances with modified source text.
 
     The frontmatter pattern extracted is: `> **Key:** Value`
 
     All mutation operations (set, add) are immutable -- they return a new
-    JerryDocument rather than modifying the current document in place.
+    TomDocument rather than modifying the current document in place.
 
     The `set()` and `add()` methods operate on the mdformat-normalized source
     (via `doc.render()`) to ensure idempotent write-back results. Callers should
@@ -105,10 +105,10 @@ class BlockquoteFrontmatter:
 
     Attributes:
         _fields: Ordered list of FrontmatterField instances in document order.
-        _doc: The JerryDocument this frontmatter was extracted from.
+        _doc: The TomDocument this frontmatter was extracted from.
 
     Examples:
-        >>> doc = JerryDocument.parse("> **Status:** pending\\n")
+        >>> doc = TomDocument.parse("> **Status:** pending\\n")
         >>> fm = BlockquoteFrontmatter.extract(doc)
         >>> fm.get("Status")
         'pending'
@@ -117,16 +117,16 @@ class BlockquoteFrontmatter:
         'in-progress'
     """
 
-    def __init__(self, fields: list[FrontmatterField], doc: JerryDocument) -> None:
+    def __init__(self, fields: list[FrontmatterField], doc: TomDocument) -> None:
         """
         Initialize a BlockquoteFrontmatter collection.
 
         Prefer BlockquoteFrontmatter.extract() or extract_frontmatter() for
-        constructing instances from a JerryDocument.
+        constructing instances from a TomDocument.
 
         Args:
             fields: Ordered list of FrontmatterField instances.
-            doc: The JerryDocument from which these fields were extracted.
+            doc: The TomDocument from which these fields were extracted.
         """
         self._fields = fields
         self._doc = doc
@@ -145,23 +145,23 @@ class BlockquoteFrontmatter:
         return list(self._fields)
 
     @classmethod
-    def extract(cls, doc: JerryDocument) -> BlockquoteFrontmatter:
+    def extract(cls, doc: TomDocument) -> BlockquoteFrontmatter:
         """
-        Extract blockquote frontmatter from a JerryDocument.
+        Extract blockquote frontmatter from a TomDocument.
 
-        Scans the document source for lines matching the Jerry frontmatter
+        Scans the document source for lines matching the Tom frontmatter
         pattern `> **Key:** Value` using the validated R-01 regex. Returns
         a BlockquoteFrontmatter containing all matched fields in document order.
 
         Args:
-            doc: The JerryDocument to extract frontmatter from.
+            doc: The TomDocument to extract frontmatter from.
 
         Returns:
             A BlockquoteFrontmatter instance. Empty (len == 0) if the document
             has no frontmatter or is empty.
 
         Examples:
-            >>> doc = JerryDocument.parse("> **Status:** pending\\n")
+            >>> doc = TomDocument.parse("> **Status:** pending\\n")
             >>> fm = BlockquoteFrontmatter.extract(doc)
             >>> fm.get("Status")
             'pending'
@@ -343,27 +343,27 @@ class BlockquoteFrontmatter:
     # Write-back operations
     # ------------------------------------------------------------------
 
-    def set(self, key: str, value: str) -> JerryDocument:
+    def set(self, key: str, value: str) -> TomDocument:
         """
-        Return a new JerryDocument with the specified frontmatter field modified.
+        Return a new TomDocument with the specified frontmatter field modified.
 
         Performs regex substitution on the mdformat-normalized source to replace
         the current value of `key` with `value`. The returned document reflects
         the modification; all other fields and document content are preserved.
 
-        This method is immutable -- the original JerryDocument is never modified.
+        This method is immutable -- the original TomDocument is never modified.
 
         Write-back strategy:
             1. Normalize source via doc.render() for idempotent baseline.
             2. Substitute the field value using a targeted regex.
-            3. Parse the modified source into a new JerryDocument.
+            3. Parse the modified source into a new TomDocument.
 
         Args:
             key: The frontmatter field name to modify (case-sensitive).
             value: The new value for the field.
 
         Returns:
-            A new JerryDocument with the field value updated.
+            A new TomDocument with the field value updated.
 
         Raises:
             KeyError: If the key does not exist in the frontmatter.
@@ -388,24 +388,24 @@ class BlockquoteFrontmatter:
         )
         modified, _ = pattern.subn(rf"\g<1>{_escape_replacement(value)}", normalized)
 
-        return JerryDocument.parse(modified)
+        return TomDocument.parse(modified)
 
-    def add(self, key: str, value: str) -> JerryDocument:
+    def add(self, key: str, value: str) -> TomDocument:
         """
-        Return a new JerryDocument with a new frontmatter field appended.
+        Return a new TomDocument with a new frontmatter field appended.
 
         Appends `> **key:** value` after the last existing frontmatter field
         if one exists, or prepends it to the source if the document has no
         existing frontmatter.
 
-        This method is immutable -- the original JerryDocument is never modified.
+        This method is immutable -- the original TomDocument is never modified.
 
         Args:
             key: The field name to add (case-sensitive).
             value: The field value.
 
         Returns:
-            A new JerryDocument with the new field added.
+            A new TomDocument with the new field added.
 
         Raises:
             ValueError: If the key already exists in the frontmatter.
@@ -432,7 +432,7 @@ class BlockquoteFrontmatter:
             # No existing frontmatter: prepend to document source
             modified = new_line + "\n" + source
 
-        return JerryDocument.parse(modified)
+        return TomDocument.parse(modified)
 
 
 # ---------------------------------------------------------------------------
@@ -440,23 +440,23 @@ class BlockquoteFrontmatter:
 # ---------------------------------------------------------------------------
 
 
-def extract_frontmatter(doc: JerryDocument) -> BlockquoteFrontmatter:
+def extract_frontmatter(doc: TomDocument) -> BlockquoteFrontmatter:
     """
-    Extract blockquote frontmatter from a JerryDocument.
+    Extract blockquote frontmatter from a TomDocument.
 
     Convenience wrapper around BlockquoteFrontmatter.extract(). Returns a
     BlockquoteFrontmatter containing all `> **Key:** Value` fields found in
     the document source, in document order.
 
     Args:
-        doc: The JerryDocument to extract frontmatter from.
+        doc: The TomDocument to extract frontmatter from.
 
     Returns:
         A BlockquoteFrontmatter instance. Empty (len == 0) if no frontmatter
         is found or the document is empty.
 
     Examples:
-        >>> doc = JerryDocument.parse("> **Status:** pending\\n")
+        >>> doc = TomDocument.parse("> **Status:** pending\\n")
         >>> fm = extract_frontmatter(doc)
         >>> fm.get("Status")
         'pending'

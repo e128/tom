@@ -190,6 +190,6 @@ No boundary conditions violated:
 ---
 
 *Scored by: sb-calibrator v1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Test: Test C — opus model + 2 reference files*
 *Created: 2026-02-20*

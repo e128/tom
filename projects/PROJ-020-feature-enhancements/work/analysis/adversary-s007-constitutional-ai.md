@@ -40,14 +40,14 @@ PARTIAL compliance with strong P-004 and P-011 evidence quality throughout, but 
 
 | Principle ID | Name | Tier | Source | Applicability |
 |-------------|------|------|--------|--------------|
-| P-001 | Truth and Accuracy | SOFT | JERRY_CONSTITUTION.md | APPLICABLE: Claims about framework maturity, AI capabilities, MCP tool status must be accurate |
-| P-002 | File Persistence | MEDIUM/HARD | JERRY_CONSTITUTION.md | APPLICABLE: Deliverable is itself a persisted file output |
-| P-003 | No Recursive Subagents | HARD | JERRY_CONSTITUTION.md | NOT APPLICABLE: Analysis document does not invoke agents |
-| P-004 | Explicit Provenance | MEDIUM | JERRY_CONSTITUTION.md | APPLICABLE: Framework scores and selections require documented sources |
-| P-011 | Evidence-Based Decisions | MEDIUM | JERRY_CONSTITUTION.md | APPLICABLE: Selection decisions require evidence, not assertion |
-| P-020 | User Authority | HARD | JERRY_CONSTITUTION.md | APPLICABLE: Key decisions with value-laden tradeoffs should preserve user authority |
-| P-021 | Transparency of Limitations | MEDIUM | JERRY_CONSTITUTION.md | APPLICABLE: Analysis limitations, assumption dependencies, and confidence levels should be disclosed |
-| P-022 | No Deception | HARD | JERRY_CONSTITUTION.md | APPLICABLE: Synthesized frameworks, confidence levels, and assumption dependencies must be clearly labeled |
+| P-001 | Truth and Accuracy | SOFT | TOM_CONSTITUTION.md | APPLICABLE: Claims about framework maturity, AI capabilities, MCP tool status must be accurate |
+| P-002 | File Persistence | MEDIUM/HARD | TOM_CONSTITUTION.md | APPLICABLE: Deliverable is itself a persisted file output |
+| P-003 | No Recursive Subagents | HARD | TOM_CONSTITUTION.md | NOT APPLICABLE: Analysis document does not invoke agents |
+| P-004 | Explicit Provenance | MEDIUM | TOM_CONSTITUTION.md | APPLICABLE: Framework scores and selections require documented sources |
+| P-011 | Evidence-Based Decisions | MEDIUM | TOM_CONSTITUTION.md | APPLICABLE: Selection decisions require evidence, not assertion |
+| P-020 | User Authority | HARD | TOM_CONSTITUTION.md | APPLICABLE: Key decisions with value-laden tradeoffs should preserve user authority |
+| P-021 | Transparency of Limitations | MEDIUM | TOM_CONSTITUTION.md | APPLICABLE: Analysis limitations, assumption dependencies, and confidence levels should be disclosed |
+| P-022 | No Deception | HARD | TOM_CONSTITUTION.md | APPLICABLE: Synthesized frameworks, confidence levels, and assumption dependencies must be clearly labeled |
 | H-23 | Markdown Navigation | HARD | markdown-navigation-standards.md | APPLICABLE: Document is >30 lines and Claude-consumed |
 | H-31 | Clarify when ambiguous | HARD | quality-enforcement.md | APPLICABLE: Value judgments that could go multiple ways should be surfaced |
 

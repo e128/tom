@@ -139,14 +139,14 @@ The dimensions are derived from three authoritative sources:
 |-------|------|-----------|----------------------|--------------------|--------------------------|
 | **C1: Routine** | CRIT-C1 | Low-risk, well-understood tasks. Standard code changes, documentation updates, routine configuration. Expected failure impact: localized, easily reversible. | L0 (Self-Check) + L1 (Light Review) | Minimal: S-010 (Self-Refine) + optional S-003 + S-014 | Ultra-Low: 2,000-5,600 tokens |
 | **C2: Significant** | CRIT-C2 | Moderate-risk tasks. New feature implementation, interface changes, non-trivial refactoring. Expected failure impact: multi-component, requires investigation to reverse. This is Jerry's **target operating layer** per ADR-EPIC002-001. | L2 (Standard Critic) | Standard: S-007 (Constitutional AI) + S-002 (DA) + S-014 (Judge) | Low-Medium: 8,000-16,000 tokens |
-| **C3: Major** | CRIT-C3 | High-risk tasks. Architecture decisions, cross-boundary changes, pattern introductions, security-relevant modifications. Expected failure impact: system-wide, costly to reverse. **Auto-escalation**: Any artifact touching `docs/governance/JERRY_CONSTITUTION.md` or `.claude/rules/` is automatically C3+ (FR-011). | L3 (Deep Review) | Intensive: L2 strategies + S-004 (Pre-Mortem) + S-012 (FMEA) + S-013 (Inversion) | Medium: 16,000-35,000 tokens |
+| **C3: Major** | CRIT-C3 | High-risk tasks. Architecture decisions, cross-boundary changes, pattern introductions, security-relevant modifications. Expected failure impact: system-wide, costly to reverse. **Auto-escalation**: Any artifact touching `docs/governance/TOM_CONSTITUTION.md` or `.claude/rules/` is automatically C3+ (FR-011). | L3 (Deep Review) | Intensive: L2 strategies + S-004 (Pre-Mortem) + S-012 (FMEA) + S-013 (Inversion) | Medium: 16,000-35,000 tokens |
 | **C4: Critical** | CRIT-C4 | Highest-risk tasks. Governance changes, constitutional amendments, irreversible system decisions, security architecture. Expected failure impact: framework-threatening, potentially irreversible. | L4 (Tournament) | Maximum: L3 strategies + S-001 (Red Team) + S-011 (CoVe) | Medium-High: 35,000-55,000 tokens |
 
 ### Criticality Determination Guidelines
 
 | Signal | Criticality Implication |
 |--------|------------------------|
-| Artifact modifies `docs/governance/JERRY_CONSTITUTION.md` | Auto-C3+ (FR-011) |
+| Artifact modifies `docs/governance/TOM_CONSTITUTION.md` | Auto-C3+ (FR-011) |
 | Artifact modifies `.claude/rules/` | Auto-C3+ (FR-011) |
 | Artifact introduces new architectural pattern | C3 minimum |
 | Artifact modifies bounded context boundaries | C3 minimum |

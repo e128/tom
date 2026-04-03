@@ -6,7 +6,7 @@
 **Date:** 2026-02-20
 **Reviewer:** adv-executor agent (v1.0.0)
 **Execution ID:** 20260220T1200
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, architecture-standards.md, coding-standards.md, testing-standards.md, markdown-navigation-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, architecture-standards.md, coding-standards.md, testing-standards.md, markdown-navigation-standards.md
 
 ---
 
@@ -291,12 +291,12 @@ The `get_context_window_tokens()` sample in Step 2 implements detection steps 1 
 | H-21: 90% coverage | HARD | testing-standards.md | Yes — new code paths specified | MAJOR gap |
 | H-23: Navigation table | HARD | markdown-navigation-standards.md | Yes — >30 line markdown | COMPLIANT |
 | H-24: Anchor links in nav | HARD | markdown-navigation-standards.md | Yes — navigation table present | COMPLIANT |
-| P-001: Truth and Accuracy | SOFT | JERRY_CONSTITUTION.md | Yes — factual claims about windows | COMPLIANT |
-| P-002: File Persistence | MEDIUM | JERRY_CONSTITUTION.md | No — applies to agent execution | N/A |
-| P-004: Explicit Provenance | SOFT | JERRY_CONSTITUTION.md | Yes — research citations present | COMPLIANT |
-| P-011: Evidence-Based | SOFT | JERRY_CONSTITUTION.md | Yes — lookup table values | MINOR gap |
-| P-020: User Authority | HARD | JERRY_CONSTITUTION.md | Yes — user config override design | COMPLIANT |
-| P-022: No Deception | HARD | JERRY_CONSTITUTION.md | Yes — code sample completeness | MINOR gap |
+| P-001: Truth and Accuracy | SOFT | TOM_CONSTITUTION.md | Yes — factual claims about windows | COMPLIANT |
+| P-002: File Persistence | MEDIUM | TOM_CONSTITUTION.md | No — applies to agent execution | N/A |
+| P-004: Explicit Provenance | SOFT | TOM_CONSTITUTION.md | Yes — research citations present | COMPLIANT |
+| P-011: Evidence-Based | SOFT | TOM_CONSTITUTION.md | Yes — lookup table values | MINOR gap |
+| P-020: User Authority | HARD | TOM_CONSTITUTION.md | Yes — user config override design | COMPLIANT |
+| P-022: No Deception | HARD | TOM_CONSTITUTION.md | Yes — code sample completeness | MINOR gap |
 
 ### Not-Applicable Principles
 

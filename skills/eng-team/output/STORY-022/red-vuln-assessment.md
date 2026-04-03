@@ -97,8 +97,8 @@ Secondary evidence sources:
 - `docs/schemas/agent-governance-v1.schema.json` -- `tool_tier` defined as `type: string, enum: ["T1","T2","T3","T4","T5"]`
 - `agent-development-standards.md` H-35 -- backward-compatible alias language: "Worker agents MUST NOT include `Agent` (or its backward-compatible alias `Task`) in the official `tools` frontmatter field."
 - Prior red-vuln assessment STORY-013-M007 (F-006) -- confirmed the `Task` alias issue in `disallowedTools`; same class of concern applies here to `tools`
-- CI workflow `ci.yml` lines 208-211: `frontmatter-validation` job runs `uv run jerry agents validate-frontmatter` (not the script directly)
-- `Makefile` -- no `validate-frontmatter` target; script invocation is indirect via `jerry` CLI
+- CI workflow `ci.yml` lines 208-211: `frontmatter-validation` job runs `uv run tom agents validate-frontmatter` (not the script directly)
+- `Makefile` -- no `validate-frontmatter` target; script invocation is indirect via `tom` CLI
 
 ---
 
@@ -225,7 +225,7 @@ else:
 
 When `--files` is provided with `--mode agents`, only the explicitly listed files are validated. The P-003 check on any agent NOT in the file list is never executed.
 
-The CI job (`ci.yml` line 210) invokes the check via `uv run jerry agents validate-frontmatter`, which is the full-scope invocation. The `--files` bypass is not exploitable in the standard CI path.
+The CI job (`ci.yml` line 210) invokes the check via `uv run tom agents validate-frontmatter`, which is the full-scope invocation. The `--files` bypass is not exploitable in the standard CI path.
 
 However, pre-commit hooks or local developer invocations that use `--files` with a subset of changed files (common in pre-commit frameworks that pass only staged files) would only validate those staged files. If a developer stages an agent `.md` file with `Agent` in `tools:` but does NOT stage the companion `.governance.yaml` (or stages a different governance file), the check runs against the staged `.md` but reads the governance file from the working tree.
 

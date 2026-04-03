@@ -4,7 +4,7 @@ description: Step-by-step guidance for multi-agent workflow coordination, includ
 version: "3.2.0"
 skill: orchestration
 template: PLAYBOOK_TEMPLATE.md v1.0.0
-constitutional_compliance: Jerry Constitution v1.0
+constitutional_compliance: Tom Constitution v1.0
 patterns_covered:
   - single-agent
   - sequential-chain
@@ -386,7 +386,7 @@ Provide complete workflow structure:
 ```yaml
 workflow:
   id: "sao-crosspoll-20260112-001"
-  name: "Jerry Design Canon Extraction"
+  name: "Tom Design Canon Extraction"
   pattern: "cross-pollinated-pipeline"
 
 pipelines:
@@ -835,7 +835,7 @@ quality:
 | IMPACT:     - Context window exhausted                            |
 |             - Untraceable execution path                          |
 |             - State impossible to checkpoint                      |
-|             - Violates Jerry Constitution P-003                   |
+|             - Violates Tom Constitution P-003                   |
 |                                                                   |
 | FIX:        Maximum ONE level of nesting:                         |
 |             Orchestrator -> Worker (end)                          |
@@ -978,7 +978,7 @@ Phase 1B ----+                        Phase 1B ------> Phase 2B
 
 | ID | Constraint | Rationale |
 |----|------------|-----------|
-| HC-001 | Maximum ONE level of agent nesting | P-003 Jerry Constitution |
+| HC-001 | Maximum ONE level of agent nesting | P-003 Tom Constitution |
 | HC-002 | ORCHESTRATION.yaml is SSOT | Single source of truth for recovery |
 | HC-003 | Barriers are blocking (never optional) | Cross-pollination is the point |
 | HC-004 | Checkpoints required at phase boundaries | Context rot survival |
@@ -1148,7 +1148,7 @@ CROSS-SKILL HANDOFF:
 
 - [ORCHESTRATION_PATTERNS.md](../shared/ORCHESTRATION_PATTERNS.md) - 8 canonical patterns with L0/L1/L2
 - [AGENT_TEMPLATE_CORE.md](../shared/AGENT_TEMPLATE_CORE.md) - Agent definition format
-- [Jerry Constitution](../../docs/governance/JERRY_CONSTITUTION.md) - P-003 No Recursive Subagents
+- [Tom Constitution](../../docs/governance/TOM_CONSTITUTION.md) - P-003 No Recursive Subagents
 
 ---
 
@@ -1169,7 +1169,7 @@ CROSS-SKILL HANDOFF:
 
 *Playbook Version: 3.2.0*
 *Skill: orchestration*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Enhancement: EN-709 Adversarial quality integration (phase gates, barrier quality, strategy selection)*
 *Last Updated: 2026-02-14*
 *Template: PLAYBOOK_TEMPLATE.md v1.0.0*

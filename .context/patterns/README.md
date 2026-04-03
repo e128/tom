@@ -1,4 +1,4 @@
-# Jerry Pattern Catalog - Executable Code Patterns
+# Tom Pattern Catalog - Executable Code Patterns
 
 > Standalone Python pattern files for few-shot learning and code generation.
 > Each file contains valid, executable Python demonstrating canonical patterns.
@@ -98,7 +98,7 @@
 
 ```python
 """
-{Pattern Name} - Canonical implementation for Jerry Framework.
+{Pattern Name} - Canonical implementation for Tom Framework.
 
 {Brief description of pattern and when to use it.}
 
@@ -168,7 +168,7 @@ from __future__ import annotations
 Add a new `.py` pattern file when:
 
 1. ✅ Pattern is used 3+ times in codebase
-2. ✅ Pattern has specific Jerry conventions (not generic Python)
+2. ✅ Pattern has specific Tom conventions (not generic Python)
 3. ✅ Pattern frequently causes confusion or errors
 4. ✅ Pattern has H-rules (HARD constraints) associated with it
 

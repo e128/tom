@@ -1,4 +1,4 @@
-# Contributing to Jerry Framework
+# Contributing to Tom Framework
 
 ## Development Setup
 
@@ -31,7 +31,7 @@ This:
 
 ### Windows-Specific Notes
 
-Jerry's development tooling works on Windows via Git Bash (included with [Git for Windows](https://git-scm.com/download/win)). Here are the key differences:
+Tom's development tooling works on Windows via Git Bash (included with [Git for Windows](https://git-scm.com/download/win)). Here are the key differences:
 
 | Topic | macOS/Linux | Windows |
 |-------|-------------|---------|
@@ -159,7 +159,7 @@ git commit --no-verify -m "message"
 ## Project Structure
 
 ```
-jerry/
+tom/
 ├── src/                  # Application code (hexagonal architecture)
 │   ├── domain/           # Business logic (no external deps)
 │   ├── application/      # Use cases (CQRS)

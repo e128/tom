@@ -1,7 +1,7 @@
 # GOVERNANCE.md - Protocols for Planning & Handoffs
 
 > This document defines the governance protocols that ensure quality,
-> consistency, and accountability in Jerry framework development.
+> consistency, and accountability in Tom framework development.
 
 ---
 

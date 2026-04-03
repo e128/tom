@@ -2,10 +2,10 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-Navigation table helpers for Jerry markdown documents.
+Navigation table helpers for Tom markdown documents.
 
 Provides AST-based helpers for querying and validating navigation tables in
-Jerry markdown files. Enforces H-23 (navigation table required for docs over
+Tom markdown files. Enforces H-23 (navigation table required for docs over
 30 lines) and H-24 (anchor links required in navigation table entries).
 
 Navigation table format (from markdown-navigation-standards.md):
@@ -29,8 +29,8 @@ References:
 Exports:
     NavEntry: Frozen dataclass representing one navigation table row.
     NavValidationResult: Result of nav table validation against document headings.
-    extract_nav_table: Parse the first navigation table from a JerryDocument.
-    validate_nav_table: Validate H-23/H-24 compliance for a JerryDocument.
+    extract_nav_table: Parse the first navigation table from a TomDocument.
+    validate_nav_table: Validate H-23/H-24 compliance for a TomDocument.
     heading_to_anchor: Convert heading text to a GitHub-style anchor slug.
 """
 
@@ -39,7 +39,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 
 # Regex to match a nav table row containing an anchor link.
 # Matches lines like: | [Section Name](#anchor-slug) | Description |
@@ -55,7 +55,7 @@ _NAV_CONTAINER_HEADINGS = frozenset({"Document Sections", "document-sections"})
 @dataclass(frozen=True)
 class NavEntry:
     """
-    Represents one row in a Jerry navigation table.
+    Represents one row in a Tom navigation table.
 
     Attributes:
         section_name: The display text of the section link (e.g. "Summary").
@@ -135,18 +135,18 @@ def heading_to_anchor(heading_text: str) -> str:
     return text
 
 
-def extract_nav_table(doc: JerryDocument) -> list[NavEntry] | None:
+def extract_nav_table(doc: TomDocument) -> list[NavEntry] | None:
     """
-    Find and parse the first navigation table in a JerryDocument.
+    Find and parse the first navigation table in a TomDocument.
 
     Scans the document source line by line looking for lines that match the
-    Jerry navigation table row pattern: ``| [Name](#anchor) | Description |``.
+    Tom navigation table row pattern: ``| [Name](#anchor) | Description |``.
     The first contiguous block of such rows is returned as the navigation table.
     Rows that do not contain anchor links (e.g. header separator rows, plain
     text table rows) are skipped.
 
     Args:
-        doc: A parsed JerryDocument to inspect.
+        doc: A parsed TomDocument to inspect.
 
     Returns:
         A list of NavEntry objects, one per nav table row, or None if no
@@ -154,7 +154,7 @@ def extract_nav_table(doc: JerryDocument) -> list[NavEntry] | None:
 
     Examples:
         >>> source = "# Doc\\n\\n## Document Sections\\n\\n| Section | Purpose |\\n|---------|---------|\\n| [Summary](#summary) | Text |\\n"
-        >>> doc = JerryDocument.parse(source)
+        >>> doc = TomDocument.parse(source)
         >>> entries = extract_nav_table(doc)
         >>> entries[0].section_name
         'Summary'
@@ -180,7 +180,7 @@ def extract_nav_table(doc: JerryDocument) -> list[NavEntry] | None:
     return entries if entries else None
 
 
-def _extract_h2_headings(doc: JerryDocument) -> list[str]:
+def _extract_h2_headings(doc: TomDocument) -> list[str]:
     """
     Extract all ## heading texts from the document using the AST.
 
@@ -189,7 +189,7 @@ def _extract_h2_headings(doc: JerryDocument) -> list[str]:
     heading nodes in markdown-it-py.
 
     Args:
-        doc: A parsed JerryDocument.
+        doc: A parsed TomDocument.
 
     Returns:
         List of heading text strings (e.g. ["Summary", "Details"]) for every
@@ -210,9 +210,9 @@ def _extract_h2_headings(doc: JerryDocument) -> list[str]:
     return headings
 
 
-def validate_nav_table(doc: JerryDocument) -> NavValidationResult:
+def validate_nav_table(doc: TomDocument) -> NavValidationResult:
     """
-    Validate H-23 and H-24 compliance for a JerryDocument.
+    Validate H-23 and H-24 compliance for a TomDocument.
 
     Checks that:
     - The document contains a navigation table (H-23).
@@ -225,7 +225,7 @@ def validate_nav_table(doc: JerryDocument) -> NavValidationResult:
     the heading_to_anchor() of any ``##`` heading text in the document.
 
     Args:
-        doc: A parsed JerryDocument to validate.
+        doc: A parsed TomDocument to validate.
 
     Returns:
         A NavValidationResult describing the validation outcome. ``is_valid``
@@ -234,7 +234,7 @@ def validate_nav_table(doc: JerryDocument) -> NavValidationResult:
 
     Examples:
         >>> source = "# Title\\n\\n## Document Sections\\n\\n| Section | Purpose |\\n|---------|---------|\\n| [Summary](#summary) | Text |\\n\\n## Summary\\n\\nContent.\\n"
-        >>> doc = JerryDocument.parse(source)
+        >>> doc = TomDocument.parse(source)
         >>> result = validate_nav_table(doc)
         >>> result.is_valid
         True

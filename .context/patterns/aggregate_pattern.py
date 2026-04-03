@@ -1,5 +1,5 @@
 """
-Aggregate Pattern - Canonical implementation for Jerry Framework.
+Aggregate Pattern - Canonical implementation for Tom Framework.
 
 Aggregates implement apply_event(), collect_events(), and invariant enforcement.
 Use event sourcing for state management.
@@ -16,7 +16,7 @@ References:
     - DDD Aggregate pattern (Evans, 2004)
 
 Exports:
-    Example aggregate following Jerry conventions
+    Example aggregate following Tom conventions
 """
 
 from __future__ import annotations

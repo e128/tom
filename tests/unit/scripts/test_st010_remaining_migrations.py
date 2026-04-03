@@ -36,7 +36,7 @@ import time
 import pytest
 
 from src.domain.markdown_ast import (
-    JerryDocument,
+    TomDocument,
     extract_frontmatter,
     extract_nav_table,
     get_entity_schema,
@@ -53,7 +53,7 @@ def parse_file(file_path: str) -> dict:
     """Parse a file and return structure info (replaces ast_ops.parse_file)."""
     with open(file_path, encoding="utf-8") as f:
         source = f.read()
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     node_types = []
     seen: set[str] = set()
     heading_count = 0
@@ -79,7 +79,7 @@ def query_frontmatter(file_path: str) -> dict[str, str]:
     """Extract frontmatter fields (replaces ast_ops.query_frontmatter)."""
     with open(file_path, encoding="utf-8") as f:
         source = f.read()
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     fm = extract_frontmatter(doc)
     return dict(fm.items())
 
@@ -88,7 +88,7 @@ def validate_file(file_path: str, schema: str | None = None) -> dict:
     """Validate file structure (replaces ast_ops.validate_file)."""
     with open(file_path, encoding="utf-8") as f:
         source = f.read()
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     nav_result = validate_nav_table(doc)
     schema_valid = True
     schema_violations: list[dict[str, str]] = []
@@ -121,7 +121,7 @@ def validate_nav_table_file(file_path: str) -> dict:
     """Validate nav table (replaces ast_ops.validate_nav_table_file)."""
     with open(file_path, encoding="utf-8") as f:
         source = f.read()
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     nav_result = validate_nav_table(doc)
     raw_entries = extract_nav_table(doc) or []
     return {
@@ -194,13 +194,13 @@ ADR_DELIVERABLE_MD = """\
 
 ## Summary
 
-We choose mistletoe as the markdown parser for the Jerry framework AST domain.
+We choose mistletoe as the markdown parser for the Tom framework AST domain.
 
 ---
 
 ## Context
 
-Jerry needs a markdown parser that produces a structured AST. Multiple options
+Tom needs a markdown parser that produces a structured AST. Multiple options
 were evaluated: mistletoe, markdown-it-py, and commonmark.
 
 ---

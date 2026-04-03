@@ -19,8 +19,8 @@ activation-keywords:
 # Orchestration Skill
 
 > **Version:** 2.2.0
-> **Framework:** Jerry Orchestration (ORCH)
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom Orchestration (ORCH)
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **Industry References:** [Anthropic Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills), [Microsoft AI Agent Patterns](https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns), [LangGraph](https://langchain-ai.github.io/langgraph/), [CrewAI Flows](https://docs.crewai.com/concepts/flows)
 
 ---
@@ -554,7 +554,7 @@ Cross-pollination artifacts exchanged at barriers are subject to adversarial rev
 |-----------|-----------------|---------|
 | A-to-B handoff | S-003 (Steelman) + S-002 (Devil's Advocate) | Strengthen claims before sharing; challenge hidden assumptions |
 | B-to-A handoff | S-003 (Steelman) + S-002 (Devil's Advocate) | Same adversarial rigor in reverse direction |
-| Both directions | S-007 (Constitutional AI Critique) | Verify compliance with Jerry Constitution and rules |
+| Both directions | S-007 (Constitutional AI Critique) | Verify compliance with Tom Constitution and rules |
 
 ### Quality Gates in Non-Barrier Patterns
 
@@ -585,7 +585,7 @@ The orchestrator selects adversarial strategies based on criticality level (per 
 
 **Auto-Escalation** (per quality-enforcement SSOT AE rules):
 - Artifacts touching `.context/rules/` = auto-C3 minimum (AE-002)
-- Artifacts touching `docs/governance/JERRY_CONSTITUTION.md` = auto-C4 (AE-001)
+- Artifacts touching `docs/governance/TOM_CONSTITUTION.md` = auto-C4 (AE-001)
 - Modifying baselined ADRs = auto-C4 (AE-004)
 - Security-relevant code changes = auto-C3 minimum (AE-005)
 - Token exhaustion at C3+ criticality = human escalation required (AE-006)
@@ -702,7 +702,7 @@ For workflow examples and step-by-step guides, see:
 ---
 
 *Skill Version: 2.2.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Enhancement: EN-709 Adversarial Quality Mode integration (phase gates, creator-critic-revision, quality scoring)*
 *Created: 2026-01-10*
 *Last Updated: 2026-02-14*

@@ -200,5 +200,5 @@ If tightening to maximum precision: anchor "the reference architecture fix" to i
 *Agent: sb-calibrator v1.0.0*
 *Skill: saucer-boy-framework-voice v1.1.0*
 *Calibration Pair: Pair 5 (Session Start), voice-guide.md*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Scored: 2026-02-20*

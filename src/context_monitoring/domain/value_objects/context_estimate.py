@@ -24,14 +24,14 @@ from src.context_monitoring.domain.value_objects.threshold_tier import Threshold
 class ContextEstimate:
     """Domain-computed context fill estimate.
 
-    Combines exact Claude Code data with Jerry's tier classification
+    Combines exact Claude Code data with Tom's tier classification
     and broken-out token types for consumer use.
 
     Attributes:
         fill_percentage: Fill as a fraction between 0.0 and 1.0.
         used_tokens: Total tokens in context window.
         window_size: Dynamic context window size.
-        tier: Classified ThresholdTier from Jerry's 5-tier system.
+        tier: Classified ThresholdTier from Tom's 5-tier system.
         is_estimated: False when computed from exact current_usage data.
             True when falling back to transcript-based estimation.
         fresh_tokens: Input tokens from last API call (non-cached).

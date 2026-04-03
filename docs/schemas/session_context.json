@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
-  "$id": "https://jerry.dev/schemas/session_context/v1.0.0",
+  "$id": "https://tom.dev/schemas/session_context/v1.0.0",
   "title": "Session Context Schema",
-  "description": "Canonical schema for agent-to-agent handoff context in the Jerry Framework. This schema defines the contract for reliable agent chaining across ps-* and nse-* agent families.",
+  "description": "Canonical schema for agent-to-agent handoff context in the Tom Framework. This schema defines the contract for reliable agent chaining across ps-* and nse-* agent families.",
   "version": "1.0.0",
   "type": "object",
   "required": ["schema_version", "session_id", "source_agent", "target_agent", "payload", "timestamp"],

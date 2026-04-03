@@ -124,7 +124,7 @@ class TestLayeredConfigAdapterToml:
         config = tmp_path / "config.toml"
         config.write_text(
             """
-[jerry]
+[tom]
 version = "1.0"
 
 [logging]
@@ -136,7 +136,7 @@ format = "json"
 
         with patch.dict(os.environ, clear=True):
             adapter = LayeredConfigAdapter(root_config_path=config)
-            assert adapter.get("jerry.version") == "1.0"
+            assert adapter.get("tom.version") == "1.0"
             assert adapter.get("logging.level") == "DEBUG"
             assert adapter.get("logging.format") == "json"
 

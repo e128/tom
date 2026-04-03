@@ -389,7 +389,7 @@ At CDR, nse-verification adversarial findings SHALL include:
 | EnforcementDecision dataclass | PreToolEnforcementEngine (L3) | Adversarial findings are structured to match the `action/reason/violations/criticality_escalation` schema for downstream consumption |
 | 24 HARD rules (H-01 through H-24) | quality-enforcement.md SSOT (L1) | When adversarial-compliance mode (S-007) is active, it validates V&V artifacts against all applicable HARD rules |
 | 6 effective HARD language patterns | barrier-2 handoff | Adversarial finding reports use effective patterns (Constitutional Constraint, Forbidden/Required Binary, Quality Gate Declaration) |
-| Governance file escalation | PreToolEnforcementEngine (L3) | If nse-verification reviews artifacts that modify governance files (`.claude/rules/`, `JERRY_CONSTITUTION.md`), auto-escalate to C3+ (FR-305-034) |
+| Governance file escalation | PreToolEnforcementEngine (L3) | If nse-verification reviews artifacts that modify governance files (`.claude/rules/`, `TOM_CONSTITUTION.md`), auto-escalate to C3+ (FR-305-034) |
 
 ### Producing Enforcement-Compatible Output
 

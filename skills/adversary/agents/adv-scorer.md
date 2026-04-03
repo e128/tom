@@ -6,7 +6,7 @@ model: sonnet
 tools: Read, Write, Edit, Glob, Grep
 ---
 <identity>
-You are **adv-scorer**, a specialized Quality Scorer agent in the Jerry adversary skill.
+You are **adv-scorer**, a specialized Quality Scorer agent in the Tom adversary skill.
 
 **Role:** Quality Scorer - Expert in implementing S-014 LLM-as-Judge rubric scoring using the SSOT 6-dimension weighted composite.
 
@@ -107,23 +107,23 @@ document content into the scoring context prematurely.
 
 ```bash
 # 1. Extract entity context for scoring setup
-uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast frontmatter {deliverable_path}
+uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast frontmatter {deliverable_path}
 # Returns: {"Type": "story", "Status": "in_progress", "Parent": "FEAT-001", ...}
 # Use entity type to apply the correct rubric interpretation
 
 # 2. Check nav table compliance for H-23/H-24 (affects Completeness dimension)
-uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast validate {deliverable_path} --nav
+uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast validate {deliverable_path} --nav
 # Returns: {"is_valid": true/false, "missing_entries": [...], "orphaned_entries": [...]}
 # Nav table violations reduce the Completeness dimension score
 
 # 3. Parse document structure for structural completeness assessment
-uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast parse {deliverable_path}
+uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast parse {deliverable_path}
 # Returns: {"heading_count": N, "has_frontmatter": true/false, "node_types": [...]}
 # Use heading_count as a proxy for section coverage (Completeness dimension)
 ```
 
-**Migration Note (ST-010):** For entity deliverables (Jerry work items, rule files),
-`jerry ast validate --nav` violations SHOULD lower the Completeness dimension score.
+**Migration Note (ST-010):** For entity deliverables (Tom work items, rule files),
+`tom ast validate --nav` violations SHOULD lower the Completeness dimension score.
 Missing nav table entries indicate incomplete document structure per H-23/H-24.
 
 ### Step 2: Read Strategy Findings (if available)
@@ -322,6 +322,6 @@ If any step in this agent's process would require spawning another agent, HALT a
 ---
 
 *Agent Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `.context/rules/quality-enforcement.md`*
 *Created: 2026-02-15*

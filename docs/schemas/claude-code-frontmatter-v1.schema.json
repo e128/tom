@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry-framework.dev/schemas/claude-code-frontmatter/v1.1.0",
+  "$id": "https://tom-framework.dev/schemas/claude-code-frontmatter/v1.1.0",
   "title": "Claude Code Agent Frontmatter Schema",
   "description": "Correctness gate for YAML frontmatter in agent .md files. Validates field types, enums, and patterns against Anthropic's documented Claude Code fields (March 2026). This schema is NOT a security boundary -- it cannot prevent prompt injection in descriptions, arbitrary commands in hooks, or malicious MCP server configs. Unrecognized fields are silently accepted (additionalProperties: true) because Claude Code ignores unknown fields at runtime. Governance metadata belongs in the companion .governance.yaml file, not here. Sources: https://code.claude.com/docs/en/sub-agents, https://code.claude.com/docs/en/tools-reference, https://code.claude.com/docs/en/hooks.",
   "type": "object",
@@ -87,7 +87,7 @@
               }
             ]
           },
-          "description": "Legacy object format (key=server name, value=true or config). Functional at runtime. Used by Jerry agents."
+          "description": "Legacy object format (key=server name, value=true or config). Functional at runtime. Used by Tom agents."
         }
       ],
       "description": "MCP servers available to this subagent. Official format: array of string references or inline definitions. Legacy format: object with server names as keys. Both accepted at runtime. String references share parent session connection; inline definitions are connected at subagent start, disconnected at finish. KNOWN ISSUE: Custom agents in .claude/agents/ may not receive MCP tools at runtime even when declared here (#25200). Verify MCP tool availability in your deployment."

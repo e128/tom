@@ -278,9 +278,9 @@ Implicit assumptions:
 
 **Constitutional Context:** For a research survey (document deliverable), applicable principles include:
 - H-23 (markdown navigation — HARD)
-- P-004 (Provenance — from JERRY_CONSTITUTION.md)
-- P-011 (Evidence-Based — from JERRY_CONSTITUTION.md)
-- P-022 (No Deception about capabilities — from JERRY_CONSTITUTION.md)
+- P-004 (Provenance — from TOM_CONSTITUTION.md)
+- P-011 (Evidence-Based — from TOM_CONSTITUTION.md)
+- P-022 (No Deception about capabilities — from TOM_CONSTITUTION.md)
 - Markdown navigation standards
 
 **Principle-by-Principle Evaluation:**

@@ -35,7 +35,7 @@ from dataclasses import dataclass
 from src.domain.markdown_ast.document_type import DocumentType
 from src.domain.markdown_ast.frontmatter import BlockquoteFrontmatter
 from src.domain.markdown_ast.html_comment import HtmlCommentBlock
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 from src.domain.markdown_ast.nav_table import NavEntry
 from src.domain.markdown_ast.reinject import ReinjectDirective
 from src.domain.markdown_ast.xml_section import XmlSection
@@ -48,7 +48,7 @@ class UniversalParseResult:
 
     Attributes:
         document_type: The detected or explicitly specified document type.
-        jerry_document: The base JerryDocument (always present).
+        tom_document: The base TomDocument (always present).
         yaml_frontmatter: YAML frontmatter result, or ``None`` if not invoked.
         blockquote_frontmatter: Blockquote frontmatter, or ``None`` if not invoked.
         xml_sections: Extracted XML sections, or ``None`` if not invoked.
@@ -60,7 +60,7 @@ class UniversalParseResult:
     """
 
     document_type: DocumentType
-    jerry_document: JerryDocument
+    tom_document: TomDocument
     yaml_frontmatter: YamlFrontmatterResult | None
     blockquote_frontmatter: BlockquoteFrontmatter | None
     xml_sections: tuple[XmlSection, ...] | None

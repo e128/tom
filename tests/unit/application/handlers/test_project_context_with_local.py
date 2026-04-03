@@ -6,7 +6,7 @@ Unit tests for RetrieveProjectContextQueryHandler with local context support.
 
 Tests the handler's ability to read project context from:
 1. JERRY_PROJECT environment variable (highest precedence)
-2. .jerry/local/context.toml (fallback)
+2. .tom/local/context.toml (fallback)
 3. Project discovery (lowest precedence)
 
 All dependencies are mocked - this is a pure unit test file.

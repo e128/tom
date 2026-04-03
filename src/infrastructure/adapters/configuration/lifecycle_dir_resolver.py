@@ -11,7 +11,7 @@ between hook processes and CLI commands regardless of their CWD.
 Resolution order:
     1. JERRY_LIFECYCLE_DIR env var — developer/CI override
     2. Config value — context_monitor.lifecycle_dir via LayeredConfigAdapter
-    3. Platform default — ~/.jerry/local/ (macOS/Linux) or %APPDATA%/jerry/local/ (Windows)
+    3. Platform default — ~/.tom/local/ (macOS/Linux) or %APPDATA%/tom/local/ (Windows)
 
 References:
     - PROJ-004: Context Resilience — lifecycle file location mismatch fix
@@ -50,13 +50,13 @@ def resolve_lifecycle_dir(config_value: str | None = None) -> Path:
 
 
 def _platform_default_lifecycle_dir() -> Path:
-    """Return platform-appropriate Jerry lifecycle directory.
+    """Return platform-appropriate Tom lifecycle directory.
 
     Returns:
-        ~/.jerry/local/ on macOS/Linux, %APPDATA%/jerry/local/ on Windows.
+        ~/.tom/local/ on macOS/Linux, %APPDATA%/tom/local/ on Windows.
     """
     if sys.platform == "win32":
         appdata = os.environ.get("APPDATA", "")
         if appdata:
-            return Path(appdata) / "jerry" / "local"
-    return Path.home() / ".jerry" / "local"
+            return Path(appdata) / "tom" / "local"
+    return Path.home() / ".tom" / "local"

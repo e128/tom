@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://jerry-framework.example.com/schemas/evidence-v2.json",
+  "$id": "https://tom-framework.example.com/schemas/evidence-v2.json",
   "title": "Evidence Schema v2.0",
   "description": "JSON Schema for Work Tracker Evidence - Supports 6 evidence types with metadata and verification tracking",
   "type": "object",

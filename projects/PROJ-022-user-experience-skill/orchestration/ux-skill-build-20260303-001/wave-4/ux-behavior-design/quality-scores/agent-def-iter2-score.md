@@ -175,7 +175,7 @@ Chapter-level citation specificity is maintained throughout: "Fogg, 2020, Chapte
 
 **Improvement Path:**
 
-1. Add a footnote or annotation in the governance YAML `constitution.principles_applied` section confirming the "(Medium)" classification with a constitution document reference (e.g., "per docs/governance/JERRY_CONSTITUTION.md, Section X"). This removes the unverified classification.
+1. Add a footnote or annotation in the governance YAML `constitution.principles_applied` section confirming the "(Medium)" classification with a constitution document reference (e.g., "per docs/governance/TOM_CONSTITUTION.md, Section X"). This removes the unverified classification.
 2. Optionally annotate the References section with chapter-to-content notes. Score would reach 0.95+.
 
 ---

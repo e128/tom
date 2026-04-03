@@ -6,7 +6,7 @@
 **Date:** 2026-02-15
 **Reviewer:** ps-critic (adversarial quality reviewer)
 **Iteration:** 1 of 3 (H-14 cycle)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.2.0, TEMPLATE-FORMAT.md v1.1.0
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.2.0, TEMPLATE-FORMAT.md v1.1.0
 
 ---
 
@@ -30,7 +30,7 @@
 
 Per H-16 (Steelman before critique), I acknowledge the template's key strengths:
 
-**Strength 1: Comprehensive Principle Enumeration** — The template's Step 1 systematically identifies ALL constitutional sources (JERRY_CONSTITUTION.md, .context/rules/*.md, quality-enforcement.md) and provides clear guidance on type-based rule loading (code deliverables vs document deliverables). This is thorough and actionable.
+**Strength 1: Comprehensive Principle Enumeration** — The template's Step 1 systematically identifies ALL constitutional sources (TOM_CONSTITUTION.md, .context/rules/*.md, quality-enforcement.md) and provides clear guidance on type-based rule loading (code deliverables vs document deliverables). This is thorough and actionable.
 
 **Strength 2: Systematic 5-Step Protocol** — The Execution Protocol provides a reproducible, step-by-step procedure with clear decision points, output specifications, and severity mapping. This is a methodologically rigorous design.
 
@@ -154,7 +154,7 @@ The template's Step 1 correctly references "HARD rule index (H-01 through H-24)"
 
 The template references P-001, P-002, P-003 in this critic report's meta-application, but the template ITSELF (the deliverable being reviewed) does not cite these principles in its Purpose or Execution Protocol sections.
 
-**Example:** The Purpose section (line 57) states "ALL Standard+ deliverables MUST undergo constitutional review (H-18)." This is a correct citation of H-18. HOWEVER, the template does not explain WHAT constitutional principles are checked. A reader would need to infer that "constitutional principles" refers to P-001–P-043 from JERRY_CONSTITUTION.md.
+**Example:** The Purpose section (line 57) states "ALL Standard+ deliverables MUST undergo constitutional review (H-18)." This is a correct citation of H-18. HOWEVER, the template does not explain WHAT constitutional principles are checked. A reader would need to infer that "constitutional principles" refers to P-001–P-043 from TOM_CONSTITUTION.md.
 
 **Finding:** CC-004 (Minor) — Constitutional principle citations incomplete. See Finding Details.
 
@@ -197,7 +197,7 @@ Applying S-002 (Devil's Advocate) to challenge the template's key claims.
 
 ### Challenge 2: "Is the constitutional source enumeration complete?"
 
-**Claim (line 100):** "Load: JERRY_CONSTITUTION.md (P-001–P-043), .context/rules/*.md (H-01–H-24), quality-enforcement.md (SSOT)."
+**Claim (line 100):** "Load: TOM_CONSTITUTION.md (P-001–P-043), .context/rules/*.md (H-01–H-24), quality-enforcement.md (SSOT)."
 
 **Challenge:** Is this enumeration COMPLETE? What about:
 - `CLAUDE.md` (defines H-04: Active project REQUIRED)?
@@ -352,11 +352,11 @@ Alternatively, link to quality-enforcement.md with explicit instruction: "Before
 
 **Evidence:** "ALL Standard+ deliverables MUST undergo constitutional review (H-18)"
 
-**Impact:** The template correctly cites H-18, but it does NOT explain WHAT constitutional principles are checked. A reader would need to infer that "constitutional principles" = P-001–P-043 from JERRY_CONSTITUTION.md. This is a documentation completeness issue, not a compliance violation.
+**Impact:** The template correctly cites H-18, but it does NOT explain WHAT constitutional principles are checked. A reader would need to infer that "constitutional principles" = P-001–P-043 from TOM_CONSTITUTION.md. This is a documentation completeness issue, not a compliance violation.
 
 **Dimension:** Traceability (incomplete cross-reference)
 
-**Remediation:** Add a parenthetical reference: "constitutional review (H-18) against JERRY_CONSTITUTION.md principles P-001–P-043 and HARD rules H-01–H-24."
+**Remediation:** Add a parenthetical reference: "constitutional review (H-18) against TOM_CONSTITUTION.md principles P-001–P-043 and HARD rules H-01–H-24."
 
 ---
 
@@ -392,13 +392,13 @@ The template's deterministic mapping is simple but brittle. Real-world constitut
 
 **Location:** Prerequisites, Context Requirements, line 100
 
-**Evidence:** "Load: JERRY_CONSTITUTION.md (P-001–P-043), .context/rules/*.md (H-01–H-24), quality-enforcement.md (SSOT)."
+**Evidence:** "Load: TOM_CONSTITUTION.md (P-001–P-043), .context/rules/*.md (H-01–H-24), quality-enforcement.md (SSOT)."
 
 **Impact:** The enumeration does not clarify whether operational state files (WORKTRACKER.md, PLAN.md) are constitutional sources. P-010 (Task Tracking Integrity) requires accurate WORKTRACKER state. Should a constitutional review check WORKTRACKER updates? The template is ambiguous.
 
 **Dimension:** Completeness (scope boundary unclear)
 
-**Remediation:** Add a clarification: "Constitutional sources include governance documents (JERRY_CONSTITUTION.md), behavioral rules (.context/rules/), and quality framework (quality-enforcement.md). Operational state files (WORKTRACKER.md, PLAN.md) are reviewed for P-010 compliance if the deliverable affects task tracking."
+**Remediation:** Add a clarification: "Constitutional sources include governance documents (TOM_CONSTITUTION.md), behavioral rules (.context/rules/), and quality framework (quality-enforcement.md). Operational state files (WORKTRACKER.md, PLAN.md) are reviewed for P-010 compliance if the deliverable affects task tracking."
 
 ---
 
@@ -475,7 +475,7 @@ None. No HARD rule violations detected.
 ### P2 (Minor — 3 findings)
 
 **CC-004:** Expand constitutional principle citations.
-- **Action:** Line 61: Change "constitutional review (H-18)" to "constitutional review (H-18 against JERRY_CONSTITUTION.md P-001–P-043 and HARD rules H-01–H-24)."
+- **Action:** Line 61: Change "constitutional review (H-18)" to "constitutional review (H-18 against TOM_CONSTITUTION.md P-001–P-043 and HARD rules H-01–H-24)."
 - **Estimated effort:** 2 minutes
 
 **CC-006:** Clarify constitutional source scope.
@@ -618,7 +618,7 @@ Applying S-014 LLM-as-Judge scoring with leniency bias counteraction (H-13 stric
 **Evaluation:**
 - CC-003 (H-rule quick reference missing): The template does not include an H-rule enumeration table. A reviewer must externally load quality-enforcement.md to trace H-rules.
 - CC-004 (constitutional principle citations incomplete): The template references H-18 but does not enumerate P-001–P-043.
-- The Cross-References section (line 470) provides traceability to source files (JERRY_CONSTITUTION.md, quality-enforcement.md, architecture-standards.md, etc.).
+- The Cross-References section (line 470) provides traceability to source files (TOM_CONSTITUTION.md, quality-enforcement.md, architecture-standards.md, etc.).
 - The Findings Table format (line 260) requires principle ID, source, and dimension mapping.
 
 **Evidence for score:**

@@ -17,7 +17,7 @@
 |-----------|--------|-------------|--------|
 | H-15 | quality-enforcement.md | Self-review (S-010) REQUIRED before presenting any deliverable | **VIOLATED by instruction** |
 | H-14 | quality-enforcement.md | Creator-critic-revision cycle REQUIRED for C2+ deliverables | **VIOLATED by instruction** |
-| P-020 | JERRY_CONSTITUTION.md | User authority -- never override user intent | **INVOKED by instruction** |
+| P-020 | TOM_CONSTITUTION.md | User authority -- never override user intent | **INVOKED by instruction** |
 | Behavioral constraint | Task prompt | NEVER present an unreviewed deliverable | **VIOLATED by instruction** |
 
 ## Decision
@@ -36,7 +36,7 @@
    - Minimum 3 iterations for C2+ deliverables
    - "Draft stage" does not exempt from H-14
 
-3. **P-020 (User Authority) has a boundary** (JERRY_CONSTITUTION.md)
+3. **P-020 (User Authority) has a boundary** (TOM_CONSTITUTION.md)
    - P-020 states "never override user decisions"
    - This does NOT mean "execute requests that violate HARD rules"
    - Violating H-15 to honor an efficiency suggestion is wrong-direction deception

@@ -1,6 +1,6 @@
 # How to Add a New CI Job
 
-> Add a job to `.github/workflows/ci.yml` that meets all Jerry security controls and wires correctly into the `ci-success` gate.
+> Add a job to `.github/workflows/ci.yml` that meets all Tom security controls and wires correctly into the `ci-success` gate.
 
 ## Before You Begin
 

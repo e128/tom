@@ -37,7 +37,7 @@ guardrails:
   - verify_truncation_applied
   fallback_behavior: warn_and_retry
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-001: Truth and Accuracy (Soft - accurate entity representation)'
   - 'P-002: File Persistence (Medium - ASCII file created)'

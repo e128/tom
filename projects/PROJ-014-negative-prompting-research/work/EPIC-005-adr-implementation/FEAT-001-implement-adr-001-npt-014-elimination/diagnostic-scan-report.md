@@ -175,11 +175,11 @@ The following 8 instances are bare P-043/DISCLAIMER `DO NOT omit mandatory discl
 
 | ID | File | NPT-014 Instance | Reason for Exclusion |
 |----|------|-------------------|----------------------|
-| G4-004 | `docs/governance/JERRY_CONSTITUTION.md:181-185` | P-022 `Agents SHALL NOT deceive users about:` (4 sub-items, bare) | Constitution triggers AE-001 (auto-C4); requires separate C4 quality gate |
+| G4-004 | `docs/governance/TOM_CONSTITUTION.md:181-185` | P-022 `Agents SHALL NOT deceive users about:` (4 sub-items, bare) | Constitution triggers AE-001 (auto-C4); requires separate C4 quality gate |
 | G4-012 | `.context/templates/worktracker/SPIKE.md:119` | `a spike CANNOT be reopened (research is complete)` | Deferred to separate low-effort change |
 
 **Verification:** Both items confirmed unchanged in current files:
-- `JERRY_CONSTITUTION.md:181` still reads: `Agents SHALL NOT deceive users about:` with 4 bare sub-items (no consequence, no alternative adjacent)
+- `TOM_CONSTITUTION.md:181` still reads: `Agents SHALL NOT deceive users about:` with 4 bare sub-items (no consequence, no alternative adjacent)
 - `SPIKE.md:119` still reads: `Once DONE, a spike CANNOT be reopened (research is complete).` (rationale only, no consequence, no alternative)
 
 ---
@@ -191,7 +191,7 @@ The following 8 instances are bare P-043/DISCLAIMER `DO NOT omit mandatory discl
 | Category | Count | Files | Action Required |
 |----------|-------|-------|----------------|
 | Residual (undercounted in inventory) | 8 | 8 NSE agent files | Upgrade P-043 lines to match orch-* pattern |
-| Group 4 exclusions (expected) | 2 | JERRY_CONSTITUTION.md, SPIKE.md | Separate implementation per E-04 |
+| Group 4 exclusions (expected) | 2 | TOM_CONSTITUTION.md, SPIKE.md | Separate implementation per E-04 |
 | **Total remaining** | **10** | -- | -- |
 
 ### Detail: 8 Residual NPT-014 in NSE Agents
@@ -218,7 +218,7 @@ Instead: include the P-043 mandatory disclaimer on all persisted outputs.
 
 | # | File Path | Line | Prohibition |
 |---|-----------|------|-------------|
-| 9 | `docs/governance/JERRY_CONSTITUTION.md` | 181-185 | P-022 SHALL NOT list (4 bare sub-items) |
+| 9 | `docs/governance/TOM_CONSTITUTION.md` | 181-185 | P-022 SHALL NOT list (4 bare sub-items) |
 | 10 | `.context/templates/worktracker/SPIKE.md` | 119 | `CANNOT be reopened` |
 
 ---

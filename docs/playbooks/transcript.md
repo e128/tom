@@ -54,14 +54,14 @@
 
 ## Prerequisites
 
-- **`JERRY_PROJECT` is set** — an active Jerry project is required (H-04). If not set,
-  the session will not proceed. Run `jerry session start` to establish a session.
+- **`JERRY_PROJECT` is set** — an active Tom project is required (H-04). If not set,
+  the session will not proceed. Run `tom session start` to establish a session.
 - **`uv` is installed** — all Python execution uses `uv run` (H-05). The Phase 1 CLI
-  parser MUST be invoked via `uv run jerry transcript parse`. Never use `python` directly.
+  parser MUST be invoked via `uv run tom transcript parse`. Never use `python` directly.
 - **A transcript file is available** on the local filesystem — the parser requires an
   absolute or resolvable path to a VTT, SRT, or plain text transcript file.
-- **The `jerry` CLI is installed** — verify with `uv run jerry --help`. The transcript
-  subcommand must be available (`uv run jerry transcript parse --help`).
+- **The `tom` CLI is installed** — verify with `uv run tom --help`. The transcript
+  subcommand must be available (`uv run tom transcript parse --help`).
 - **An output directory is specified or the default is acceptable** — output goes to
   `./transcript-output/` by default. Specify `--output-dir` to control placement.
 
@@ -102,7 +102,7 @@ The transcript skill uses a mandatory two-phase architecture:
 
 3. **Phase 1 executes automatically** — Claude runs the CLI parser:
    ```bash
-   uv run jerry transcript parse "/Users/me/meetings/quarterly-review.vtt" \
+   uv run tom transcript parse "/Users/me/meetings/quarterly-review.vtt" \
        --output-dir "/Users/me/output/quarterly-review/"
    ```
    This produces three files in the output directory:
@@ -151,7 +151,7 @@ The transcript skill uses a mandatory two-phase architecture:
 
 **System behavior:** Claude invokes the Phase 1 CLI parser:
 ```bash
-uv run jerry transcript parse "/Users/me/meetings/standup-2026-02-18.vtt" \
+uv run tom transcript parse "/Users/me/meetings/standup-2026-02-18.vtt" \
     --output-dir "./transcript-output/"
 ```
 The parser produces `index.json`, `chunks/chunk-*.json`, and `canonical-transcript.json`
@@ -167,7 +167,7 @@ ts-mindmap. The final output is an 8-file Markdown packet plus a mindmap in
 
 **System behavior:** Claude invokes the Phase 1 CLI parser with the `--domain` flag:
 ```bash
-uv run jerry transcript parse "/Users/me/meetings/sprint-review.vtt" \
+uv run tom transcript parse "/Users/me/meetings/sprint-review.vtt" \
     --output-dir "/Users/me/notes/" \
     --domain software-engineering
 ```
@@ -237,9 +237,9 @@ the default.
 
 **Domain selection examples:**
 ```bash
-uv run jerry transcript parse "standup.vtt" --output-dir "./out/" --domain software-engineering
-uv run jerry transcript parse "postmortem.vtt" --output-dir "./out/" --domain cloud-engineering
-uv run jerry transcript parse "user-interview.vtt" --output-dir "./out/" --domain user-experience
+uv run tom transcript parse "standup.vtt" --output-dir "./out/" --domain software-engineering
+uv run tom transcript parse "postmortem.vtt" --output-dir "./out/" --domain cloud-engineering
+uv run tom transcript parse "user-interview.vtt" --output-dir "./out/" --domain user-experience
 ```
 
 ---
@@ -258,13 +258,13 @@ as follows:
 **Command syntax for each format:**
 ```bash
 # VTT (Zoom, Teams, Google Meet captions)
-uv run jerry transcript parse "meeting.vtt" --output-dir "./output/"
+uv run tom transcript parse "meeting.vtt" --output-dir "./output/"
 
 # SRT (subtitle files)
-uv run jerry transcript parse "captions.srt" --output-dir "./output/"
+uv run tom transcript parse "captions.srt" --output-dir "./output/"
 
 # Plain text meeting notes
-uv run jerry transcript parse "notes.txt" --output-dir "./output/"
+uv run tom transcript parse "notes.txt" --output-dir "./output/"
 ```
 
 ---

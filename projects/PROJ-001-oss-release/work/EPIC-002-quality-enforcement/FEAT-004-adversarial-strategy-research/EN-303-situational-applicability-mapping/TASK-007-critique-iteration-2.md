@@ -109,7 +109,7 @@ Under the Steelman principle, I first acknowledge the genuine strengths of the r
 
 **3. The ENF-MIN handling is well-designed.** The per-profile ENF-MIN paragraphs provide a consistent feasibility classification (feasible / marginally feasible / infeasible) with concrete substitution guidance and human escalation recommendations. The ENF-MIN override rules in TASK-004 (ENF-MIN-001 through ENF-MIN-004) integrate cleanly with the existing auto-escalation framework. The ENF-MIN adapted strategy sets per criticality (TASK-004 lines 336-343) provide immediately actionable guidance.
 
-**4. PR-001 is elegantly designed.** The precedence rule distinguishes between "hard governance constraints" (auto-escalation from FR-011/JERRY_CONSTITUTION) and "soft workflow optimization preferences" (phase modifiers). This is a clean abstraction that is easy to implement and easy to reason about. The rationale is well-stated and the application to each PH-EXPLORE downgrade is consistently marked.
+**4. PR-001 is elegantly designed.** The precedence rule distinguishes between "hard governance constraints" (auto-escalation from FR-011/TOM_CONSTITUTION) and "soft workflow optimization preferences" (phase modifiers). This is a clean abstraction that is easy to implement and easy to reason about. The rationale is well-stated and the application to each PH-EXPLORE downgrade is consistently marked.
 
 **5. The compensation chain and token budget sections are substantive.** These are not perfunctory additions -- the Layer Failure to Adversarial Strategy Compensation table (TASK-003 lines 1077-1084) provides specific failure modes, specific compensating strategies, and specific compensation mechanisms for each layer. The token budget verification (lines 1098-1123) performs the actual calculation with clear findings. Both sections add genuine analytical value beyond merely satisfying requirements.
 
@@ -237,7 +237,7 @@ The correction of ADR-EPIC002-002 status to ACCEPTED eliminates the epistemic ri
 
 **TASK-003 (0.88 -> 0.91):** +0.03 from compensation chain tracing to REQ-303-030 and Barrier-1 compensation chain, token budget verification tracing to REQ-303-036, and pair count verification tracing to REQ-303-042.
 
-**TASK-004 (0.88 -> 0.91):** +0.03 from ENF-MIN override rules tracing to TASK-001 ENF-MIN definition, PR-001 tracing to FR-011 and JERRY_CONSTITUTION, and ENF-MIN adapted strategy sets tracing to TASK-003 per-profile feasibility.
+**TASK-004 (0.88 -> 0.91):** +0.03 from ENF-MIN override rules tracing to TASK-001 ENF-MIN definition, PR-001 tracing to FR-011 and TOM_CONSTITUTION, and ENF-MIN adapted strategy sets tracing to TASK-003 per-profile feasibility.
 
 ### Cross-Artifact Consistency Penalty
 

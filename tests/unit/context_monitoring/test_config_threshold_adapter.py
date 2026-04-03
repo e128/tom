@@ -71,7 +71,7 @@ def _make_adapter(
 class TestDefaultThresholdValues:
     """Scenario: Default threshold values are available.
 
-    Given a fresh Jerry installation with no overrides,
+    Given a fresh Tom installation with no overrides,
     all threshold defaults should be returned.
     """
 
@@ -311,7 +311,7 @@ class TestDisableFlag:
 class TestAllSixDefaultKeys:
     """Scenario: All six default keys exist.
 
-    Given a fresh Jerry installation,
+    Given a fresh Tom installation,
     all six context_monitor.* keys should return their defaults.
     """
 

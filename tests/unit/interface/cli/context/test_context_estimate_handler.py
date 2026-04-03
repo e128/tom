@@ -14,7 +14,7 @@ BDD scenarios from EN-012:
     - Compaction detected when previous state exists
 
 References:
-    - EN-012: jerry context estimate CLI Command
+    - EN-012: tom context estimate CLI Command
     - PROJ-004: Context Resilience
 """
 
@@ -46,7 +46,7 @@ from src.interface.cli.context.context_estimate_handler import (
 @pytest.fixture()
 def handler(tmp_path: Path) -> ContextEstimateHandler:
     """Create a ContextEstimateHandler with temp state directory."""
-    state_dir = tmp_path / "jerry-local"
+    state_dir = tmp_path / "tom-local"
     computer = ContextEstimateComputer()
     state_store = FilesystemContextStateStore(state_dir=state_dir)
     service = ContextEstimateService(computer, state_store)

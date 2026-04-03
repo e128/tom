@@ -241,7 +241,7 @@ mkdir -p "$TEST_DIR/source/projects/internal"
 mkdir -p "$TEST_DIR/source/transcripts"
 mkdir -p "$TEST_DIR/source/docs/knowledge/dragonsbelurkin"
 mkdir -p "$TEST_DIR/source/docs/knowledge/public"
-mkdir -p "$TEST_DIR/source/.jerry"
+mkdir -p "$TEST_DIR/source/.tom"
 mkdir -p "$TEST_DIR/source/.venv"
 mkdir -p "$TEST_DIR/source/.idea"
 mkdir -p "$TEST_DIR/source/__pycache__"
@@ -252,7 +252,7 @@ echo "SENSITIVE" > "$TEST_DIR/source/projects/internal/secret.txt"
 echo "SENSITIVE" > "$TEST_DIR/source/transcripts/meeting.txt"
 echo "SENSITIVE" > "$TEST_DIR/source/docs/knowledge/dragonsbelurkin/private.md"
 echo "PUBLIC" > "$TEST_DIR/source/docs/knowledge/public/readme.md"
-echo "SENSITIVE" > "$TEST_DIR/source/.jerry/state.json"
+echo "SENSITIVE" > "$TEST_DIR/source/.tom/state.json"
 echo "SENSITIVE" > "$TEST_DIR/source/.env"
 echo "SENSITIVE" > "$TEST_DIR/source/.env.local"
 echo "SENSITIVE" > "$TEST_DIR/source/test.backup"
@@ -275,13 +275,13 @@ info "T-002: Testing rsync multiple directory exclusions"
 RSYNC_OUTPUT=$(rsync -av --dry-run \
     --exclude='projects/' \
     --exclude='transcripts/' \
-    --exclude='.jerry/' \
+    --exclude='.tom/' \
     --exclude='.venv/' \
     --exclude='.idea/' \
     "$TEST_DIR/source/" "$TEST_DIR/target/" 2>&1)
 
 EXCLUDED_FOUND=0
-for dir in "projects" "transcripts" ".jerry" ".venv" ".idea"; do
+for dir in "projects" "transcripts" ".tom" ".venv" ".idea"; do
     if echo "$RSYNC_OUTPUT" | grep -q "$dir"; then
         EXCLUDED_FOUND=1
         break
@@ -412,7 +412,7 @@ FULL_RSYNC_OUTPUT=$(rsync -av --dry-run \
     --exclude='docs/knowledge/dragonsbelurkin/' \
     --exclude='.git/' \
     --exclude='.venv/' \
-    --exclude='.jerry/' \
+    --exclude='.tom/' \
     --exclude='logs/' \
     --exclude='__pycache__/' \
     --exclude='.pytest_cache/' \
@@ -439,7 +439,7 @@ FULL_RSYNC_OUTPUT=$(rsync -av --dry-run \
 cd - > /dev/null
 
 # Check for any sensitive content that should have been excluded
-CRITICAL_PATTERNS="projects|transcripts|dragonsbelurkin|\.jerry|\.env|\.backup|\.bak|~$|\.log$"
+CRITICAL_PATTERNS="projects|transcripts|dragonsbelurkin|\.tom|\.env|\.backup|\.bak|~$|\.log$"
 
 LEAK_DETECTED=0
 LEAKED_ITEMS=$(echo "$FULL_RSYNC_OUTPUT" | grep -E "$CRITICAL_PATTERNS" || true)

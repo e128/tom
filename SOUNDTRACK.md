@@ -1,11 +1,11 @@
-# FEAT-005: The Jerry Soundtrack
+# FEAT-005: The Tom Soundtrack
 
 <!--
 AGENT: ps-creator-005
 VERSION: 1.0.0
 WORKFLOW: jnsq-20260219-001
 PHASE: 2 — Tier 1 Fanout
-FEATURE: FEAT-005 The Jerry Soundtrack
+FEATURE: FEAT-005 The Tom Soundtrack
 PARENT: EPIC-001-je-ne-sais-quoi
 STATUS: DRAFT
 DATE: 2026-02-19
@@ -21,7 +21,7 @@ SOURCES: ps-creator-001-draft.md (v0.9.0), EPIC-001-je-ne-sais-quoi.md
 
 | Section | Purpose |
 |---------|---------|
-| [Soundtrack Philosophy](#soundtrack-philosophy) | Why music matters to Jerry's identity |
+| [Soundtrack Philosophy](#soundtrack-philosophy) | Why music matters to Tom's identity |
 | [The Curated Playlist](#the-curated-playlist) | 30 tracks organized by framework experience category |
 | [Genre Guidelines](#genre-guidelines) | Inclusion/exclusion criteria for the soundtrack's range |
 | [Usage Rules](#usage-rules) | Where soundtrack references appear and where they do not |
@@ -36,15 +36,15 @@ SOURCES: ps-creator-001-draft.md (v0.9.0), EPIC-001-je-ne-sais-quoi.md
 
 ### Why Music Matters
 
-Jerry is a quality enforcement framework. Quality enforcement, done well, is a creative act — iterative, demanding, occasionally exhilarating. Music maps to that experience better than any other cultural medium because music has the same structure: tension and release, repetition and variation, discipline in service of expression.
+Tom is a quality enforcement framework. Quality enforcement, done well, is a creative act — iterative, demanding, occasionally exhilarating. Music maps to that experience better than any other cultural medium because music has the same structure: tension and release, repetition and variation, discipline in service of expression.
 
-The Jerry Soundtrack is not a playlist for listening while coding (though it works as one). It is a cultural reference layer — a shared vocabulary of energy, mood, and moment that the framework can draw on in comments, documentation, CLI flavor text, and easter eggs. When a quality gate passes and the framework says "clean run," the developer who knows the soundtrack hears Daft Punk building. The developer who does not still gets a clear, celebratory message. The soundtrack adds depth without creating barriers.
+The Tom Soundtrack is not a playlist for listening while coding (though it works as one). It is a cultural reference layer — a shared vocabulary of energy, mood, and moment that the framework can draw on in comments, documentation, CLI flavor text, and easter eggs. When a quality gate passes and the framework says "clean run," the developer who knows the soundtrack hears Daft Punk building. The developer who does not still gets a clear, celebratory message. The soundtrack adds depth without creating barriers.
 
 ### The McConkey Connection
 
 Shane McConkey's cultural footprint was never single-genre. His film segments paired punk with powder, hip hop with helicopter drops, classic rock with cliff launches. The eclecticism was the point — the Saucer Boy spirit does not belong to one demographic, one decade, or one subculture.
 
-The Jerry Soundtrack inherits this. Old-school hip hop sits next to progressive metal. Electronic music sits next to post-hardcore. Jazz sits next to arena rock. The range signals what the framework believes: quality work is not the province of one kind of person. Anyone who builds with care is welcome here.
+The Tom Soundtrack inherits this. Old-school hip hop sits next to progressive metal. Electronic music sits next to post-hardcore. Jazz sits next to arena rock. The range signals what the framework believes: quality work is not the province of one kind of person. Anyone who builds with care is welcome here.
 
 ### How the Soundtrack Is Used
 
@@ -90,7 +90,7 @@ Each track includes: artist, title, album, year, framework mapping, a lyric frag
 
 **Track 3:** DJ Shadow — "Building Steam with a Grain of Salt"
 - **Album/Year:** *Endtroducing.....*, 1996
-- **Framework Mapping:** Filesystem as infinite memory. The entire album is built from samples — fragments of other records assembled into something new. That is Jerry's core solution to context rot: persist state to files, load selectively, build from fragments.
+- **Framework Mapping:** Filesystem as infinite memory. The entire album is built from samples — fragments of other records assembled into something new. That is Tom's core solution to context rot: persist state to files, load selectively, build from fragments.
 - **Lyric Fragment:** "I got the sickest vendetta / When it comes to the cheddar" — (sampled voice) on the relentless accumulation of knowledge across sessions
 - **Mood/Energy:** Medium | Building | No humor
 
@@ -104,7 +104,7 @@ Each track includes: artist, title, album, year, framework mapping, a lyric frag
 
 **Track 4:** Daft Punk — "Harder, Better, Faster, Stronger"
 - **Album/Year:** *Discovery*, 2001
-- **Framework Mapping:** THE Jerry anthem. The creator-critic-revision cycle (H-14). Each iteration: harder (more rigorous), better (higher quality), faster (more efficient), stronger (more resilient). The vocoder builds exactly like a revision cycle — mechanical repetition becoming something transcendent.
+- **Framework Mapping:** THE Tom anthem. The creator-critic-revision cycle (H-14). Each iteration: harder (more rigorous), better (higher quality), faster (more efficient), stronger (more resilient). The vocoder builds exactly like a revision cycle — mechanical repetition becoming something transcendent.
 - **Lyric Fragment:** "Work it harder, make it better / Do it faster, makes us stronger" — the H-14 cycle in four imperatives
 - **Mood/Energy:** High | Building | Earned celebration at the drop
 
@@ -182,7 +182,7 @@ Each track includes: artist, title, album, year, framework mapping, a lyric frag
 
 **Track 13:** Run the Jewels — "Run the Jewels"
 - **Album/Year:** *Run the Jewels*, 2013
-- **Framework Mapping:** Human + AI orchestration. The partnership. Killer Mike and El-P are different in every way — background, style, geography — and the collaboration produces something neither could alone. That is the Jerry developer experience: human judgment meets systematic enforcement.
+- **Framework Mapping:** Human + AI orchestration. The partnership. Killer Mike and El-P are different in every way — background, style, geography — and the collaboration produces something neither could alone. That is the Tom developer experience: human judgment meets systematic enforcement.
 - **Lyric Fragment:** "Run them jewels fast" — on shipping quality work with velocity
 - **Mood/Energy:** High | Aggressive-Joyful | Yes
 
@@ -334,7 +334,7 @@ Each track includes: artist, title, album, year, framework mapping, a lyric frag
 
 **Track 29:** Boogie Down Productions — "My Philosophy"
 - **Album/Year:** *By All Means Necessary*, 1988
-- **Framework Mapping:** Constitutional principles. JERRY_CONSTITUTION.md. KRS-One's delivery is pedagogical — teaching, not preaching. The framework's rules are the same: they exist to be understood, not just obeyed. The title is literally the constitution's opening statement.
+- **Framework Mapping:** Constitutional principles. TOM_CONSTITUTION.md. KRS-One's delivery is pedagogical — teaching, not preaching. The framework's rules are the same: they exist to be understood, not just obeyed. The title is literally the constitution's opening statement.
 - **Lyric Fragment:** "It's not about a salary, it's all about reality" — on why governance exists
 - **Mood/Energy:** Medium | Authoritative | No humor
 
@@ -342,8 +342,8 @@ Each track includes: artist, title, album, year, framework mapping, a lyric frag
 
 **Track 30:** Wu-Tang Clan — "C.R.E.A.M."
 - **Album/Year:** *Enter the Wu-Tang (36 Chambers)*, 1993
-- **Framework Mapping:** "Context Rules Everything Around Me." The core thesis of the Jerry Framework. Cash rules everything in the original; context rules everything in the framework. Without context, every LLM degrades. With it, the work holds. The piano loop is persistence itself — the same phrase, repeated, accumulating meaning.
-- **Lyric Fragment:** "Context rules everything around me / C.R.E.A.M., get the context, dollar dollar bill y'all" — the Jerry remix that writes itself
+- **Framework Mapping:** "Context Rules Everything Around Me." The core thesis of the Tom Framework. Cash rules everything in the original; context rules everything in the framework. Without context, every LLM degrades. With it, the work holds. The piano loop is persistence itself — the same phrase, repeated, accumulating meaning.
+- **Lyric Fragment:** "Context rules everything around me / C.R.E.A.M., get the context, dollar dollar bill y'all" — the Tom remix that writes itself
 - **Mood/Energy:** Medium | Foundational | Light (the remix)
 
 ---
@@ -364,7 +364,7 @@ Each track includes: artist, title, album, year, framework mapping, a lyric frag
 
 **Track 32:** Kendrick Lamar — "DNA."
 - **Album/Year:** *DAMN.*, 2017
-- **Framework Mapping:** Constitutional identity — it is in the framework's DNA. The two-part beat switch (chaos erupting from calm) is the quality gate moment: the score lands and everything shifts. H-01 through H-24 are not rules applied to Jerry; they are Jerry's DNA.
+- **Framework Mapping:** Constitutional identity — it is in the framework's DNA. The two-part beat switch (chaos erupting from calm) is the quality gate moment: the score lands and everything shifts. H-01 through H-24 are not rules applied to Tom; they are Tom's DNA.
 - **Lyric Fragment:** "I got loyalty, got royalty inside my DNA" — on constitutional constraints as identity, not imposition
 - **Mood/Energy:** High | Intense | No humor
 
@@ -380,7 +380,7 @@ Each track includes: artist, title, album, year, framework mapping, a lyric frag
 
 **Track 34:** Minor Threat — "Out of Step"
 - **Album/Year:** *Out of Step*, 1983
-- **Framework Mapping:** The independent, uncompromising spirit of the framework. Dischord Records (Ian MacKaye's label) ran on principles: fair pricing, no exploitation, no compromise on quality. Jerry's quality gates are the same energy — the threshold is 0.92 because that is where the quality lives, not because it is convenient.
+- **Framework Mapping:** The independent, uncompromising spirit of the framework. Dischord Records (Ian MacKaye's label) ran on principles: fair pricing, no exploitation, no compromise on quality. Tom's quality gates are the same energy — the threshold is 0.92 because that is where the quality lives, not because it is convenient.
 - **Lyric Fragment:** "Don't smoke / Don't drink / Don't fuck / At least I can fucking think" — on the clarity that comes from having non-negotiable constraints (H-tier rules)
 - **Mood/Energy:** High | Uncompromising | No humor
 
@@ -444,7 +444,7 @@ QUALITY_THRESHOLD: float = 0.92
 |----------|-----|
 | **Error messages** | Error messages serve diagnosis. A lyric fragment delays the developer's path to resolution. |
 | **Quality gate scoring output** | Scores are data. The S-014 rubric dimensions and weights must be presented without decoration. |
-| **Constitutional text** | JERRY_CONSTITUTION.md is governance. It must read as governance. |
+| **Constitutional text** | TOM_CONSTITUTION.md is governance. It must read as governance. |
 | **Governance escalation messages** | AE-001 through AE-006 triggers require clarity, not flavor. |
 | **Security-relevant output** | AE-005 contexts are not occasions for cultural references. |
 | **Rule definition files** | `.context/rules/*.md` are enforcement documents. Personality belongs in the voice layer, not the rule layer. |
@@ -552,7 +552,7 @@ This document becomes `SOUNDTRACK.md` at the repository root (or at `docs/cultur
 | 26 | Legacy | Tom Petty | "Free Fallin'" | *Full Moon Fever* | 1989 | Ski BASE; beauty and danger | Medium / Bittersweet-Beautiful |
 | 27 | Legacy | The Who | "Won't Get Fooled Again" | *Who's Next* | 1971 | P-022 No Deception; L1-L5 | Medium-High / Defiant |
 | 28 | Legacy | Metallica | "The Memory Remains" | *Reload* | 1997 | Context rot; filesystem as memory | Medium / Haunting |
-| 29 | Legacy | Boogie Down Productions | "My Philosophy" | *By All Means Necessary* | 1988 | JERRY_CONSTITUTION.md; principles | Medium / Authoritative |
+| 29 | Legacy | Boogie Down Productions | "My Philosophy" | *By All Means Necessary* | 1988 | TOM_CONSTITUTION.md; principles | Medium / Authoritative |
 | 30 | Legacy | Wu-Tang Clan | "C.R.E.A.M." | *Enter the Wu-Tang (36 Chambers)* | 1993 | "Context Rules Everything Around Me" | Medium / Foundational |
 | 31 | The Craft | J Dilla | "Time: The Donut of the Heart" | *Donuts* | 2006 | Persist state; build from fragments | Low-Medium / Tender |
 | 32 | The Craft | Kendrick Lamar | "DNA." | *DAMN.* | 2017 | Constitutional identity; it's in the DNA | High / Intense |
@@ -588,7 +588,7 @@ This document becomes `SOUNDTRACK.md` at the repository root (or at `docs/cultur
 | Agent | ps-creator-005 |
 | Workflow | jnsq-20260219-001 |
 | Phase | 2 — Tier 1 Fanout |
-| Feature | FEAT-005 The Jerry Soundtrack |
+| Feature | FEAT-005 The Tom Soundtrack |
 | Criticality | C1 (Routine) |
 | Date | 2026-02-19 |
 | Track count | 34 |

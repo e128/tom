@@ -23,7 +23,7 @@ activation-keywords:
   - "use case to test"
 ---
 
-> **Version:** 1.0.0 | **Framework:** Jerry Framework | **Constitutional compliance:** P-003 (no recursive subagents), P-020 (user authority), P-022 (no deception)
+> **Version:** 1.0.0 | **Framework:** Tom Framework | **Constitutional compliance:** P-003 (no recursive subagents), P-020 (user authority), P-022 (no deception)
 > **Status:** PROPOSED | **Author:** eng-backend | **Date:** 2026-03-09
 
 ---
@@ -273,7 +273,7 @@ The `.feature.md` extension indicates "Gherkin content in a Markdown container w
 | Integration | Direction | Mechanism | Pre-Condition |
 |-------------|-----------|-----------|---------------|
 | `/use-case` to `/test-spec` | tspec-generator reads UC artifact produced by uc-author or uc-slicer | Shared artifact file validated against `docs/schemas/use-case-realization-v1.schema.json` | `$.detail_level >= ESSENTIAL_OUTLINE`, `$.extensions` non-empty, `$.basic_flow[*].type` present |
-| `/test-spec` to `/worktracker` | tspec-analyst may update worktracker with coverage metrics | Bash + `uv run jerry items update` (H-05 compliant; MUST NOT invoke /worktracker via Task -- P-003) | Feature file exists with traceable scenario IDs |
+| `/test-spec` to `/worktracker` | tspec-analyst may update worktracker with coverage metrics | Bash + `uv run tom items update` (H-05 compliant; MUST NOT invoke /worktracker via Task -- P-003) | Feature file exists with traceable scenario IDs |
 | `/test-spec` output consumed by implementers | Feature files serve as acceptance criteria for implementation | Human-readable `.feature.md` files in `projects/${JERRY_PROJECT}/test-specs/` | Scenarios verified by tspec-analyst coverage check |
 | `/test-spec` parallel to `/contract-design` | Both are independent consumers of `/use-case` output | File-mediated -- both read the same UC artifact; neither depends on the other | UC artifact at ESSENTIAL_OUTLINE or FULLY_DESCRIBED |
 
@@ -358,6 +358,6 @@ Before invoking tspec-generator, verify your use case artifact has:
 
 ---
 
-> *Skill Version: 1.0.0 | Framework: Jerry Framework | Constitutional compliance: P-003, P-020, P-022*
+> *Skill Version: 1.0.0 | Framework: Tom Framework | Constitutional compliance: P-003, P-020, P-022*
 > *Author: eng-backend | Date: 2026-03-09 | Status: ACTIVE*
 > *SSOT: `projects/PROJ-021-use-case/orchestration/use-case-skills-20260308-001/implementation/step-10-test-spec-architecture.md`*

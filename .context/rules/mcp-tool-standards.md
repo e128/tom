@@ -2,7 +2,7 @@
 
 <!-- VERSION: 1.4.0 | DATE: 2026-03-28 | SOURCE: FEAT-028-mcp-tool-integration, ADR-STORY015-001, STORY-017 | REVISION: STORY-017 tier renumbering: MCP-M-001 T3/T4 refs, eng-*/red-* MK exclusion notes -->
 
-> Governance rules for proactive MCP tool usage across Jerry Framework agents.
+> Governance rules for proactive MCP tool usage across Tom Framework agents.
 
 <!-- L2-REINJECT: rank=9, content="Context7 REQUIRED for external library/framework docs: resolve-library-id then query-docs; respect tool-enforced call limit. Memory-Keeper REQUIRED at phase boundaries: phase-complete→context_save, phase-start→context_get. Fallback: persist to work/.mcp-fallback/ on MCP failure. Key: jerry/{project}/{entity-type}/{entity-id}." -->
 
@@ -86,9 +86,9 @@ Memory-Keeper is REQUIRED at orchestration phase boundaries (MCP-002). Memory-Ke
 **Entity-id format:** Use entity ID (e.g., `EPIC-003`) for entity-scoped entries or `{slug}-{YYYYMMDD}` for date-scoped entries.
 
 **Examples:**
-- `jerry/PROJ-001/orchestration/feat028-mcp-20260220`
-- `jerry/PROJ-001/research/adversarial-strategies`
-- `jerry/PROJ-001/phase-boundary/qg1-results`
+- `tom/PROJ-001/orchestration/feat028-mcp-20260220`
+- `tom/PROJ-001/research/adversarial-strategies`
+- `tom/PROJ-001/phase-boundary/qg1-results`
 
 **Triggers:**
 

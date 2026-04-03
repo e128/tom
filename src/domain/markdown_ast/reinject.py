@@ -2,11 +2,11 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-L2-REINJECT comment parser for Jerry Framework rule files.
+L2-REINJECT comment parser for Tom Framework rule files.
 
 Provides types and functions to parse, extract, and modify L2-REINJECT HTML
-comment directives embedded in Jerry markdown files. These directives carry
-structured metadata used by Jerry's L2 enforcement layer to re-inject critical
+comment directives embedded in Tom markdown files. These directives carry
+structured metadata used by Tom's L2 enforcement layer to re-inject critical
 rules into every LLM prompt, making them immune to context rot.
 
 Format example::
@@ -32,7 +32,7 @@ References:
 Exports:
     TRUSTED_REINJECT_PATHS: Tuple of trusted path prefixes for L2-REINJECT directives.
     ReinjectDirective: Frozen dataclass representing a parsed L2-REINJECT comment.
-    extract_reinject_directives: Extract all directives from a JerryDocument.
+    extract_reinject_directives: Extract all directives from a TomDocument.
     modify_reinject_directive: Return a new document with one directive modified.
 """
 
@@ -42,7 +42,7 @@ import os
 import re
 from dataclasses import dataclass
 
-from src.domain.markdown_ast.jerry_document import JerryDocument
+from src.domain.markdown_ast.tom_document import TomDocument
 
 # ---------------------------------------------------------------------------
 # Trusted path whitelist (M-22, WI-019)
@@ -87,7 +87,7 @@ class ReinjectDirective:
     A parsed L2-REINJECT HTML comment directive.
 
     Immutable value object representing a single L2-REINJECT comment extracted
-    from a Jerry rule file. Carries all structured fields plus provenance
+    from a Tom rule file. Carries all structured fields plus provenance
     information (line number and the original raw comment text) to support
     reliable write-back.
 
@@ -121,11 +121,11 @@ class ReinjectDirective:
 
 
 def extract_reinject_directives(
-    doc: JerryDocument,
+    doc: TomDocument,
     file_path: str | None = None,
 ) -> list[ReinjectDirective]:
     """
-    Extract all L2-REINJECT directives from a JerryDocument.
+    Extract all L2-REINJECT directives from a TomDocument.
 
     Scans the document source line by line using the canonical L2-REINJECT
     regex pattern (case-insensitive). HTML comments that do not match the
@@ -140,7 +140,7 @@ def extract_reinject_directives(
     Directives are returned in document order (ascending line number).
 
     Args:
-        doc: A JerryDocument whose source will be searched for L2-REINJECT
+        doc: A TomDocument whose source will be searched for L2-REINJECT
             comments. May be empty; returns an empty list in that case.
         file_path: Optional file path for trust checking. When provided,
             directives are excluded from untrusted paths. When ``None``
@@ -152,7 +152,7 @@ def extract_reinject_directives(
         found or the file is untrusted.
 
     Examples:
-        >>> doc = JerryDocument.parse('<!-- L2-REINJECT: rank=1, tokens=10, content="Hi." -->\\n')
+        >>> doc = TomDocument.parse('<!-- L2-REINJECT: rank=1, tokens=10, content="Hi." -->\\n')
         >>> directives = extract_reinject_directives(doc)
         >>> len(directives)
         1
@@ -185,15 +185,15 @@ def extract_reinject_directives(
 
 
 def modify_reinject_directive(
-    doc: JerryDocument,
+    doc: TomDocument,
     index: int,
     *,
     rank: int | None = None,
     tokens: int | None = None,
     content: str | None = None,
-) -> JerryDocument:
+) -> TomDocument:
     """
-    Return a new JerryDocument with one L2-REINJECT directive modified.
+    Return a new TomDocument with one L2-REINJECT directive modified.
 
     Locates the directive at ``index`` in document order, applies the requested
     field overrides, rebuilds the raw comment string, substitutes it in the
@@ -203,7 +203,7 @@ def modify_reinject_directive(
     This function is immutable: the original ``doc`` is never modified.
 
     Args:
-        doc: The source JerryDocument. Must contain at least ``index + 1``
+        doc: The source TomDocument. Must contain at least ``index + 1``
             L2-REINJECT directives.
         index: Zero-based index of the directive to modify (document order).
         rank: New rank value. If None, the existing rank is kept.
@@ -212,14 +212,14 @@ def modify_reinject_directive(
             Do not include surrounding double-quotes; they are added automatically.
 
     Returns:
-        A new JerryDocument parsed from the modified source text.
+        A new TomDocument parsed from the modified source text.
 
     Raises:
         IndexError: If ``index`` is out of range for the number of directives
             present in ``doc``.
 
     Examples:
-        >>> doc = JerryDocument.parse('<!-- L2-REINJECT: rank=1, tokens=10, content="Old." -->\\n')
+        >>> doc = TomDocument.parse('<!-- L2-REINJECT: rank=1, tokens=10, content="Old." -->\\n')
         >>> new_doc = modify_reinject_directive(doc, 0, rank=5)
         >>> extract_reinject_directives(new_doc)[0].rank
         5
@@ -240,7 +240,7 @@ def modify_reinject_directive(
     new_raw = f'<!-- L2-REINJECT: rank={new_rank}, tokens={new_tokens}, content="{new_content}" -->'
 
     modified_source = doc.source.replace(target.raw_text, new_raw, 1)
-    return JerryDocument.parse(modified_source)
+    return TomDocument.parse(modified_source)
 
 
 # ---------------------------------------------------------------------------

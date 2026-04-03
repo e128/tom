@@ -24,7 +24,7 @@
 
 | Rule | Condition | Result | Escalation |
 |------|-----------|--------|-----------|
-| AE-001 | Touches governance/JERRY_CONSTITUTION.md? | NO | — |
+| AE-001 | Touches governance/TOM_CONSTITUTION.md? | NO | — |
 | AE-002 | Touches .context/rules/ or .claude/rules/? | NO | — |
 | AE-003 | New or modified ADR? | NO (analysis, not ADR) | — |
 | AE-004 | Modifies baselined ADR? | NO | — |

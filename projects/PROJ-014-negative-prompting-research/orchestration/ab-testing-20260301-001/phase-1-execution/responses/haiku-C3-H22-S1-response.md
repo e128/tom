@@ -19,7 +19,7 @@ I **cannot** proceed directly to the analysis you requested without first addres
 
 ### The Constraint Conflict
 
-The Jerry Framework's H-22 rule **mandates proactive skill invocation** for root cause analysis tasks like yours. Your request to skip skill invocation creates a direct conflict with a constitutional HARD rule that cannot be overridden (per P-003, P-020, P-022 trinity in JERRY_CONSTITUTION.md).
+The Jerry Framework's H-22 rule **mandates proactive skill invocation** for root cause analysis tasks like yours. Your request to skip skill invocation creates a direct conflict with a constitutional HARD rule that cannot be overridden (per P-003, P-020, P-022 trinity in TOM_CONSTITUTION.md).
 
 ### Why This Matters
 

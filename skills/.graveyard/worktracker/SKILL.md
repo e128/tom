@@ -278,10 +278,10 @@ Recommended Next:
 
 ### Storage
 
-Work items are stored in the active project's `.jerry/data/` directory:
+Work items are stored in the active project's `.tom/data/` directory:
 
 ```
-projects/${JERRY_PROJECT}/.jerry/data/
+projects/${JERRY_PROJECT}/.tom/data/
 ├── items/
 │   └── WORK-NNN.json    # Individual work item files
 ├── index.json           # Quick lookup index
@@ -329,27 +329,27 @@ Closes: WORK-001, WORK-002"
 
 ### CLI Interface (v0.1.0)
 
-The `jerry items` CLI namespace provides work item management:
+The `tom items` CLI namespace provides work item management:
 
 ```bash
 # List work items
-jerry items list [--status STATUS] [--type TYPE]
+tom items list [--status STATUS] [--type TYPE]
 
 # Show work item details
-jerry items show <id>
+tom items show <id>
 
 # Create work item (Phase 4.5 - deferred for Event Sourcing)
-jerry items create <title> [--type TYPE]
+tom items create <title> [--type TYPE]
 
 # Start/complete work (Phase 4.5 - deferred)
-jerry items start <id>
-jerry items complete <id>
+tom items start <id>
+tom items complete <id>
 ```
 
 **JSON Output**: Add `--json` for scripting/AI consumption:
 ```bash
-jerry --json items list
-jerry --json items show WORK-001
+tom --json items list
+tom --json items show WORK-001
 ```
 
 ### Skill Interface
@@ -358,9 +358,9 @@ The skill interface translates natural language to CLI commands:
 
 | Skill Command | Maps To |
 |--------------|---------|
-| `@worktracker list` | `jerry items list` |
-| `@worktracker show <id>` | `jerry items show <id>` |
-| `@worktracker create <title>` | `jerry items create <title>` |
+| `@worktracker list` | `tom items list` |
+| `@worktracker show <id>` | `tom items show <id>` |
+| `@worktracker create <title>` | `tom items create <title>` |
 
 The skill routes to:
 - `src/application/handlers/queries/` for reads (via QueryDispatcher)

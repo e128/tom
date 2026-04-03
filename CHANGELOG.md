@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the Jerry Framework will be documented in this file.
+All notable changes to the Tom Framework will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `hooks.json`: SubagentStop consolidated from dual hooks (standalone handoff script + CLI lifecycle) to single CLI path — handoff orchestration superseded by `/orchestration` skill (#178)
 - `hooks/pre-tool-use.py`: Updated wrapper with consolidation documentation
 - `version-bump.yml`: `workflow_dispatch` now respects `[skip-bump]` marker to prevent double-bumping (F-004)
-- `ci.yml`: Removed redundant `uv run python scripts/validate-agent-frontmatter.py` step — P-003 check now included in `uv run jerry agents validate-frontmatter` (#193)
+- `ci.yml`: Removed redundant `uv run python scripts/validate-agent-frontmatter.py` step — P-003 check now included in `uv run tom agents validate-frontmatter` (#193)
 - `ValidateFrontmatterCommandHandler`: Split from 1 file (H-10 violation) into 4 files — `validate_frontmatter_command.py`, `validate_frontmatter_command_handler.py`, `frontmatter_file_result.py`, `validate_frontmatter_result.py` (#193)
 - `ValidateFrontmatterCommandHandler`: P-003 Agent/Task tool restriction check ported from standalone script — detects delegation tools in non-T5 agents with governance.yaml tier lookup and fail-closed semantics (#193)
 

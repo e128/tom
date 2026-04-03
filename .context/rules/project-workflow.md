@@ -1,11 +1,11 @@
 # Project Workflow Rules
 
-> Operational guidance for Jerry project-based work sessions.
+> Operational guidance for Tom project-based work sessions.
 > **SSOT:** `/worktracker` skill rules are the authoritative source for project structure, entity hierarchy, and worktracker integrity. This file provides session-start orientation and H-04 enforcement.
 
 <!-- L2-REINJECT: rank=8, content="Active project REQUIRED (H-04). MUST NOT proceed without JERRY_PROJECT set. Session work is untracked without active project." -->
 
-<!-- L2-REINJECT: rank=9, content="GitHub Issue parity REQUIRED (H-32) for jerry repo. Every bug/story/enabler/task MUST have corresponding GitHub Issue. Both MUST be kept in sync." -->
+<!-- L2-REINJECT: rank=9, content="GitHub Issue parity REQUIRED (H-32) for tom repo. Every bug/story/enabler/task MUST have corresponding GitHub Issue. Both MUST be kept in sync." -->
 
 ## Document Sections
 
@@ -22,13 +22,13 @@
 
 ## HARD Rule Reference
 
-> H-04: Active project REQUIRED. MUST NOT proceed without `JERRY_PROJECT` set -- doing so causes session work to be untracked, artifacts to land in incorrect paths, and worktracker integrity violations. Instead: set `JERRY_PROJECT` via the SessionStart hook or select a project using `jerry projects list`. See CLAUDE.md.
+> H-04: Active project REQUIRED. MUST NOT proceed without `JERRY_PROJECT` set -- doing so causes session work to be untracked, artifacts to land in incorrect paths, and worktracker integrity violations. Instead: set `JERRY_PROJECT` via the SessionStart hook or select a project using `tom projects list`. See CLAUDE.md.
 
 ---
 
 ## GitHub Issue Parity
 
-> **H-31:** When working in the Jerry repository (`geekatron/jerry`), all worktracker bugs, stories, enablers, and tasks MUST have a corresponding GitHub Issue. Worktracker is the internal SSOT; GitHub Issues are the external collaboration surface. Both MUST be kept in sync.
+> **H-31:** When working in the Tom repository (`geekatron/tom`), all worktracker bugs, stories, enablers, and tasks MUST have a corresponding GitHub Issue. Worktracker is the internal SSOT; GitHub Issues are the external collaboration surface. Both MUST be kept in sync.
 
 | Action | Worktracker | GitHub Issue |
 |--------|------------|--------------|
@@ -37,7 +37,7 @@
 | Close/Complete | Mark completed in entity file | `gh issue close` |
 | Link | Add `GitHub Issue: [#N](url)` to Related Items | Add worktracker ID in issue body |
 
-**Scope:** This rule applies only when the active repository is `geekatron/jerry` (the Jerry framework itself). Projects hosted in other repositories are not subject to this rule.
+**Scope:** This rule applies only when the active repository is `geekatron/tom` (the Tom framework itself). Projects hosted in other repositories are not subject to this rule.
 
 ---
 

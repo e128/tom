@@ -439,7 +439,7 @@ This is the final output of the Transcript Skill pipeline.
 
 ## Constitutional Compliance
 
-### Jerry Constitution v1.0 Compliance
+### Tom Constitution v1.0 Compliance
 
 | Principle | Enforcement | Agent Behavior |
 |-----------|-------------|----------------|

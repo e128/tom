@@ -35,7 +35,7 @@ from src.interface.cli.hooks.hooks_subagent_stop_handler import (
 @pytest.fixture()
 def lifecycle_dir(tmp_path: Path) -> Path:
     """Create a temporary lifecycle directory."""
-    d = tmp_path / ".jerry" / "local"
+    d = tmp_path / ".tom" / "local"
     d.mkdir(parents=True)
     return d
 

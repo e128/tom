@@ -32,7 +32,7 @@
 | **Enforcement Scope** | All tiers + tournament | Per quality-enforcement.md criticality table |
 
 **Escalation Assessment Detail:**
-- **AE-001** (constitution touch): Deliverable path is analysis/ux-framework-selection.md — does not touch docs/governance/JERRY_CONSTITUTION.md. Not triggered.
+- **AE-001** (constitution touch): Deliverable path is analysis/ux-framework-selection.md — does not touch docs/governance/TOM_CONSTITUTION.md. Not triggered.
 - **AE-002** (rules/ touch): Deliverable path does not match .context/rules/ or .claude/rules/. Not triggered.
 - **AE-003** (new/modified ADR): Deliverable type is Analysis, not ADR. Not triggered.
 - **AE-004** (baselined ADR modification): Not an ADR. Not triggered.

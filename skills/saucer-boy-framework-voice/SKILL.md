@@ -19,8 +19,8 @@ activation-keywords:
 
 > **INTERNAL SKILL** — Auto-loaded for framework output. Not user-invocable.
 > **Version:** 1.1.0
-> **Framework:** Jerry Voice Quality (SB)
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom Voice Quality (SB)
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **Canonical Source:** The persona document (`projects/PROJ-003-je-ne-sais-quoi/orchestration/jnsq-20260219-001/jnsq/phase-1-persona-distillation/ps-creator-001/ps-creator-001-draft.md`) is the authoritative reference (DEC-001 D-002). This skill operationalizes it.
 
 ## Document Sections
@@ -61,7 +61,7 @@ This SKILL.md serves multiple audiences:
 
 ## Purpose
 
-The Saucer Boy skill is a **voice quality gate** for Jerry framework outputs. It reviews, rewrites, and scores framework-generated text for persona compliance. The persona is derived from Shane McConkey's ethos: joy and excellence are not trade-offs; they are multipliers.
+The Saucer Boy skill is a **voice quality gate** for Tom framework outputs. It reviews, rewrites, and scores framework-generated text for persona compliance. The persona is derived from Shane McConkey's ethos: joy and excellence are not trade-offs; they are multipliers.
 
 ### Key Capabilities
 
@@ -71,7 +71,7 @@ The Saucer Boy skill is a **voice quality gate** for Jerry framework outputs. It
 
 ### What This Skill Is NOT
 
-This skill is NOT a Claude personality modifier or session conversational voice. It governs what Jerry says in its framework outputs (CLI messages, hook text, error messages, documentation). It does NOT govern how Claude Code talks to the developer during work sessions — that is the `/saucer-boy` session conversational voice skill. Constitutional constraints (H-01 through H-30) govern reasoning and planning behavior.
+This skill is NOT a Claude personality modifier or session conversational voice. It governs what Tom says in its framework outputs (CLI messages, hook text, error messages, documentation). It does NOT govern how Claude Code talks to the developer during work sessions — that is the `/saucer-boy` session conversational voice skill. Constitutional constraints (H-01 through H-30) govern reasoning and planning behavior.
 
 ---
 
@@ -81,7 +81,7 @@ Activate when:
 
 - Framework output text needs voice compliance validation before shipping
 - Quality gate messages, error messages, or CLI outputs need persona review
-- Text needs transformation from current Jerry voice to Saucer Boy voice
+- Text needs transformation from current Tom voice to Saucer Boy voice
 - Quantitative voice fidelity scoring is needed for a deliverable
 - Integration with /adversary for persona compliance as an additional quality signal
 - FEAT-004, FEAT-006, or FEAT-007 deliverables need voice calibration
@@ -105,9 +105,9 @@ See [Routing Disambiguation](#routing-disambiguation) for full exclusion conditi
 
 **Joy and excellence are not trade-offs. They're multipliers.**
 
-Jerry's quality gates are non-negotiable: 0.92 threshold, 3-cycle minimum, constitutional compliance required. None of that changes. What changes is how we talk about it. The banana suit did not make McConkey slower. Fear of looking silly would have.
+Tom's quality gates are non-negotiable: 0.92 threshold, 3-cycle minimum, constitutional compliance required. None of that changes. What changes is how we talk about it. The banana suit did not make McConkey slower. Fear of looking silly would have.
 
-The Saucer Boy persona is not a coating applied over Jerry's real character. It is Jerry's real character, now legible.
+The Saucer Boy persona is not a coating applied over Tom's real character. It is Tom's real character, now legible.
 
 **On "joy" in contexts without humor:** Joy in the Saucer Boy sense is not synonymous with humor content. In a precise, actionable error message with no jokes, the joy is in the directness -- in treating the developer as a capable adult who needs information, not coddling. A humorless message can still be joyful. A funny message that obscures the diagnosis is neither.
 
@@ -429,7 +429,7 @@ The persona document (ps-creator-001-draft.md) is the canonical source (DEC-001 
 
 ## Constitutional Compliance
 
-All agents adhere to the **Jerry Constitution v1.0**:
+All agents adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -445,7 +445,7 @@ All agents adhere to the **Jerry Constitution v1.0**:
 |--------|---------|
 | Persona doc (`projects/PROJ-003-je-ne-sais-quoi/orchestration/jnsq-20260219-001/jnsq/phase-1-persona-distillation/ps-creator-001/ps-creator-001-draft.md`) | Canonical source for all persona content (DEC-001 D-002) |
 | `.context/rules/quality-enforcement.md` | SSOT for quality gate thresholds |
-| `docs/governance/JERRY_CONSTITUTION.md` | Constitutional principles |
+| `docs/governance/TOM_CONSTITUTION.md` | Constitutional principles |
 | `projects/PROJ-003-je-ne-sais-quoi/work/EPIC-001-je-ne-sais-quoi/FEAT-002-saucer-boy-skill/DEC-001-scope-expansion-skill-best-practices.md` | Architecture decisions: D-001 Progressive Disclosure, D-002 Canonical Source, D-003 Decision Rules vs Examples |
 
 ---
@@ -479,6 +479,6 @@ All agents adhere to the **Jerry Constitution v1.0**:
 ---
 
 *Skill Version: 1.1.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Canonical Source: ps-creator-001-draft.md*
 *Created: 2026-02-19*

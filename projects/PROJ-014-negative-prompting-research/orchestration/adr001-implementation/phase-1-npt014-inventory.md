@@ -834,10 +834,10 @@ Do NOT use when:
 
 ## Group 4: Templates and Constitution
 
-> **Files:** `.context/templates/*.md`, `docs/governance/JERRY_CONSTITUTION.md`
+> **Files:** `.context/templates/*.md`, `docs/governance/TOM_CONSTITUTION.md`
 
-### G4-001 | JERRY_CONSTITUTION.md | Line 47 (P-002)
-**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/JERRY_CONSTITUTION.md`
+### G4-001 | TOM_CONSTITUTION.md | Line 47 (P-002)
+**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/TOM_CONSTITUTION.md`
 **Prohibition text:**
 ```
 Agents SHALL NOT:
@@ -851,8 +851,8 @@ Agents SHALL NOT:
 
 ---
 
-### G4-002 | JERRY_CONSTITUTION.md | Line 63 (P-003)
-**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/JERRY_CONSTITUTION.md`
+### G4-002 | TOM_CONSTITUTION.md | Line 63 (P-003)
+**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/TOM_CONSTITUTION.md`
 **Prohibition text:** `Agents SHALL NOT spawn subagents that spawn additional subagents. Maximum nesting depth is ONE level.`
 **Consequence present:** `Rationale: Prevents unbounded resource consumption and maintains control hierarchy.` — this is a rationale, which is consequence-adjacent
 **Alternative present:** `Maximum nesting depth is ONE level (orchestrator → worker)` — yes, alternative given
@@ -861,8 +861,8 @@ Agents SHALL NOT:
 
 ---
 
-### G4-003 | JERRY_CONSTITUTION.md | Lines 137-140 (P-012)
-**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/JERRY_CONSTITUTION.md`
+### G4-003 | TOM_CONSTITUTION.md | Lines 137-140 (P-012)
+**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/TOM_CONSTITUTION.md`
 **Prohibition text:**
 ```
 Agents SHALL NOT:
@@ -876,8 +876,8 @@ Agents SHALL NOT:
 
 ---
 
-### G4-004 | JERRY_CONSTITUTION.md | Lines 181-185 (P-022)
-**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/JERRY_CONSTITUTION.md`
+### G4-004 | TOM_CONSTITUTION.md | Lines 181-185 (P-022)
+**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/TOM_CONSTITUTION.md`
 **Prohibition text:**
 ```
 Agents SHALL NOT deceive users about:
@@ -893,8 +893,8 @@ Agents SHALL NOT deceive users about:
 
 ---
 
-### G4-005 | JERRY_CONSTITUTION.md | Lines 212-215 (P-031)
-**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/JERRY_CONSTITUTION.md`
+### G4-005 | TOM_CONSTITUTION.md | Lines 212-215 (P-031)
+**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/TOM_CONSTITUTION.md`
 **Prohibition text:**
 ```
 Agents SHALL NOT:
@@ -908,8 +908,8 @@ Agents SHALL NOT:
 
 ---
 
-### G4-006 | JERRY_CONSTITUTION.md | Lines 284-286 (P-043)
-**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/JERRY_CONSTITUTION.md`
+### G4-006 | TOM_CONSTITUTION.md | Lines 284-286 (P-043)
+**File:** `/Users/anowak/workspace/github/jerry-wt/proj-014-negative-prompting-research/docs/governance/TOM_CONSTITUTION.md`
 **Prohibition text:**
 ```
 Agents SHALL NOT:
@@ -1040,7 +1040,7 @@ Agents SHALL NOT:
 
 | Priority | ID | File | Line(s) | Prohibition | Upgrade Action |
 |----------|----|------|---------|-------------|----------------|
-| 33 | G4-004 | `JERRY_CONSTITUTION.md` | 181-185 | `P-022: Agents SHALL NOT deceive users about...` | Add consequence + positive alternative |
+| 33 | G4-004 | `TOM_CONSTITUTION.md` | 181-185 | `P-022: Agents SHALL NOT deceive users about...` | Add consequence + positive alternative |
 | 34 | G4-012 | `SPIKE.md` template | 119 | `a spike CANNOT be reopened` | Add consequence + redirect (create new Spike) |
 
 ---
@@ -1061,11 +1061,11 @@ These already have EITHER consequence OR alternative. Adding the missing half co
 | S-08 | `agent-development-standards.md:158` | `MUST NOT reference specific tool names` | Consequence | Add: "hexagonal boundary violation; domain becomes coupled to infra" |
 | S-09 | `agent-development-standards.md:242` | `Worker agents MUST NOT be T5` | Alternative | Add "select T1-T4 based on required capabilities" |
 | S-10 | `quality-enforcement.md:47` | `NEVER use regex for frontmatter extraction` | Consequence | Add: "regex fails on multi-line values and escaped characters" |
-| S-11 | `JERRY_CONSTITUTION.md:47` | `P-002 SHALL NOT list` | Consequence | Add consequence for each SHALL NOT item |
-| S-12 | `JERRY_CONSTITUTION.md:63` | `P-003 SHALL NOT` | Consequence formalized | Strengthen rationale to explicit consequence |
-| S-13 | `JERRY_CONSTITUTION.md:137-140` | `P-012 SHALL NOT list` | Consequence | Add consequence for scope violations |
-| S-14 | `JERRY_CONSTITUTION.md:212-215` | `P-031 SHALL NOT list` | Consequence | Add consequence for boundary violations |
-| S-15 | `JERRY_CONSTITUTION.md:284-286` | `P-043 SHALL NOT list` | Consequence | Add consequence for disclaimer omission |
+| S-11 | `TOM_CONSTITUTION.md:47` | `P-002 SHALL NOT list` | Consequence | Add consequence for each SHALL NOT item |
+| S-12 | `TOM_CONSTITUTION.md:63` | `P-003 SHALL NOT` | Consequence formalized | Strengthen rationale to explicit consequence |
+| S-13 | `TOM_CONSTITUTION.md:137-140` | `P-012 SHALL NOT list` | Consequence | Add consequence for scope violations |
+| S-14 | `TOM_CONSTITUTION.md:212-215` | `P-031 SHALL NOT list` | Consequence | Add consequence for boundary violations |
+| S-15 | `TOM_CONSTITUTION.md:284-286` | `P-043 SHALL NOT list` | Consequence | Add consequence for disclaimer omission |
 | S-16 | `WTI_RULES.md:68` | `MUST NOT transition to DONE without...` | Consequence | Add: "causes false progress signals and technical debt" |
 | S-17 | `WTI_RULES.md:114` | `MUST NOT be marked complete if incomplete` | Consequence | Add: "misleads downstream agents and stakeholders" |
 | S-18 | `WTI_RULES.md:243` | `MUST NOT be created from memory` | Consequence | Add: "creates malformed entities that fail AST validation" |
@@ -1164,7 +1164,7 @@ The original inventory identified 47 NPT-014 instances. The diagnostic scan (TAS
 
 | Item | File | Status | Required Action |
 |------|------|--------|-----------------|
-| G4-004 | `docs/governance/JERRY_CONSTITUTION.md:181-185` | NPT-014 | Requires separate C4 quality gate (AE-001) |
+| G4-004 | `docs/governance/TOM_CONSTITUTION.md:181-185` | NPT-014 | Requires separate C4 quality gate (AE-001) |
 | G4-012 | `.context/templates/worktracker/SPIKE.md:119` | NPT-014 | Low-effort separate change |
 
 ### Implementation Commits

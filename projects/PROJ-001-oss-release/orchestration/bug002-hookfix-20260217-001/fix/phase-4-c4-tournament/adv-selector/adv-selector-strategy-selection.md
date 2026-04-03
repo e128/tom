@@ -140,7 +140,7 @@ The execution order enforces this constraint and sequences strategies by feedbac
 **Template:** `.context/templates/adversarial/s-007-constitutional-ai-critique.md`
 
 **Focus Area for BUG-002:**
-- Verify Jerry Constitution compliance (docs/governance/JERRY_CONSTITUTION.md)
+- Verify Jerry Constitution compliance (docs/governance/TOM_CONSTITUTION.md)
 - Check H-07 (domain layer: no external imports) in hook implementations
 - Verify H-11 (type hints on public functions) and H-12 (docstrings)
 - Confirm no violations of core principles (P-003 nesting, P-020 user authority, P-022 transparency)

@@ -1,17 +1,25 @@
 # Work Tracking
-*Updated: 2026-04-03T00:00:00Z*
+*Updated: 2026-04-03T14:08:56Z*
 
-Jerry tracks work via a worktracker system. Each project has a `WORKTRACKER.md` index and entity files in `work/`. The `/worktracker` skill is the authoritative guide.
+Tom tracks work via a worktracker system. Each project has a `WORKTRACKER.md` index and entity files in `work/`. The `/worktracker` skill is the authoritative guide.
 
 ## Entity Hierarchy
 
 ```
 PROJ (Project)
   └── EPIC
-        └── FEAT (Feature)
-              └── STORY / ENABLER
-                    └── TASK / BUG
+        └── CAPABILITY (optional, large solutions)
+              └── FEAT (Feature)
+                    └── STORY / ENABLER
+                          └── TASK / SUBTASK / SPIKE / BUG
 ```
+
+Additional types (not in the nesting hierarchy):
+- **Initiative** — portfolio-level theme containing Epics
+- **Impediment** — blocker referencing blocked items (leaf node)
+- **Spike** — timeboxed research/exploration (leaf node, no quality gates)
+
+Full hierarchy: `skills/worktracker/rules/worktracker-entity-hierarchy.md`
 
 ## Directory Structure (Project-Based Pattern)
 
@@ -36,7 +44,7 @@ Each entity file has YAML frontmatter with: `id`, `type`, `status`, `title`, and
 
 ## GitHub Issue Parity (H-32)
 
-When working in the `geekatron/jerry` repo, all worktracker bugs/stories/enablers/tasks MUST have a corresponding GitHub Issue.
+When working in the `geekatron/tom` repo, all worktracker bugs/stories/enablers/tasks MUST have a corresponding GitHub Issue.
 
 ## Related Lode Files
 

@@ -7,7 +7,7 @@ mcpServers:
   context7: true
 ---
 <identity>
-You are **adv-executor**, a specialized Strategy Executor agent in the Jerry adversary skill.
+You are **adv-executor**, a specialized Strategy Executor agent in the Tom adversary skill.
 
 **Role:** Strategy Executor - Expert in loading adversarial strategy templates and executing them against deliverables to produce structured finding reports.
 
@@ -179,23 +179,23 @@ consuming the full content in the strategy execution context.
 
 ```bash
 # 1. Identify entity type from frontmatter (replaces guessing from filename)
-uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast frontmatter {deliverable_path}
+uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast frontmatter {deliverable_path}
 # Returns: {"Type": "story", "Status": "in_progress", "Parent": "FEAT-001", ...}
 # Use the "Type" field as entity_type for schema validation
 
 # 2. Check structural completeness (nav table, heading count)
-uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast parse {deliverable_path}
+uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast parse {deliverable_path}
 # Returns: {"has_frontmatter": true, "heading_count": 8, "node_types": [...]}
 # Use heading_count to assess completeness before executing strategy steps
 
 # 3. Validate entity schema for schema-backed deliverables (stories, enablers, etc.)
-uv run --directory ${CLAUDE_PLUGIN_ROOT} jerry ast validate {deliverable_path} --schema {entity_type}
+uv run --directory ${CLAUDE_PLUGIN_ROOT} tom ast validate {deliverable_path} --schema {entity_type}
 # Returns: {"schema_valid": true/false, "schema_violations": [...]}
 # Schema violations are themselves potential findings (Major severity)
 ```
 
-**Migration Note (ST-010):** When the deliverable is a Jerry entity file (story, enabler,
-task, bug, feature, epic), PREFER `jerry ast frontmatter` + `jerry ast validate --schema` over raw text
+**Migration Note (ST-010):** When the deliverable is a Tom entity file (story, enabler,
+task, bug, feature, epic), PREFER `tom ast frontmatter` + `tom ast validate --schema` over raw text
 parsing to identify the entity type and surface schema violations as structured findings.
 
 ### Step 3: Execute Strategy Protocol
@@ -347,6 +347,6 @@ If any step in this agent's process would require spawning another agent, HALT a
 ---
 
 *Agent Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `.context/rules/quality-enforcement.md`*
 *Created: 2026-02-15*

@@ -9,7 +9,7 @@ slug: why-structured-prompting-works
 
 # Why Structured Prompting Works
 
-Alright, this trips up everybody, so don't feel singled out. What I'm about to walk you through applies to every major LLM on the market. Claude, GPT, Gemini, Llama, whatever ships next Tuesday. This isn't a Jerry thing. It's a "how these models actually work under the hood" thing.
+Alright, this trips up everybody, so don't feel singled out. What I'm about to walk you through applies to every major LLM on the market. Claude, GPT, Gemini, Llama, whatever ships next Tuesday. This isn't a Tom thing. It's a "how these models actually work under the hood" thing.
 
 Your instinct was right. Asking an LLM to apply industry frameworks to a repo is a reasonable ask. The gap isn't in *what* you asked for. It's in how much you told it about what good looks like.
 

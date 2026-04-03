@@ -155,7 +155,7 @@ class TestEventSourcingPersistence:
         repo.save(work_item)
 
         # Verify event file exists
-        events_dir = tmp_path / ".jerry" / "data" / "events"
+        events_dir = tmp_path / ".tom" / "data" / "events"
         event_files = list(events_dir.glob("*.jsonl"))
         assert len(event_files) == 1
 
@@ -209,7 +209,7 @@ class TestEventSourcingPersistence:
         repo.save(item3)
 
         # Verify separate event files
-        events_dir = tmp_path / ".jerry" / "data" / "events"
+        events_dir = tmp_path / ".tom" / "data" / "events"
         event_files = list(events_dir.glob("*.jsonl"))
         assert len(event_files) == 3
 

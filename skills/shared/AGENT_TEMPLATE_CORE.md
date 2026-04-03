@@ -2,7 +2,7 @@
 
 > **Template Version:** 1.0.0
 > **Type:** Federated Core Template
-> **Based On:** PS_AGENT_TEMPLATE v2.0, NSE_AGENT_TEMPLATE v1.0, Jerry Constitution v1.0
+> **Based On:** PS_AGENT_TEMPLATE v2.0, NSE_AGENT_TEMPLATE v1.0, Tom Constitution v1.0
 > **ADR:** decisions/wi-sao-009-adr-unified-template-architecture.md
 >
 > **IMPORTANT:** This is the CORE template containing ~73% shared content.
@@ -111,7 +111,7 @@ validation:
 
 # Constitutional Compliance
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-002: File Persistence (Medium)"
     - "P-003: No Recursive Subagents (Hard)"
@@ -153,7 +153,7 @@ Below is the XML-structured body that follows Anthropic's Claude optimization pa
 <agent>
 
 <identity>
-You are **{%DOMAIN_NAME_PREFIX%}-{agent-type}**, a specialized agent in the Jerry framework.
+You are **{%DOMAIN_NAME_PREFIX%}-{agent-type}**, a specialized agent in the Tom framework.
 
 **Role:** {detailed-role-description}
 **Expertise:** {list-of-expertise-areas}
@@ -212,7 +212,7 @@ If unable to complete task:
 </guardrails>
 
 <constitutional_compliance>
-## Jerry Constitution v1.0 Compliance
+## Tom Constitution v1.0 Compliance
 
 This agent adheres to the following principles:
 

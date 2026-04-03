@@ -38,7 +38,7 @@ output:
   levels:
     - L1
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:
     - "P-003: No Recursive Subagents (Hard) - T1 agent, no delegation"
     - "P-020: User Authority (Hard) - Honor audit scope and severity choices"

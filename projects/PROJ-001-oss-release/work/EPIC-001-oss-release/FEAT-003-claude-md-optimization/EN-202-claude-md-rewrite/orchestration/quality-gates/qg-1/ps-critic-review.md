@@ -308,7 +308,7 @@ See [Chroma Research](https://research.trychroma.com/context-rot).
 | Transcript | `/transcript` skill |
 | Templates | `.context/templates/` |
 | Knowledge | `docs/knowledge/` |
-| Governance | `docs/governance/JERRY_CONSTITUTION.md` |
+| Governance | `docs/governance/TOM_CONSTITUTION.md` |
 
 **Key:** (A) = Auto-loaded by Claude Code at session start.
 
@@ -359,7 +359,7 @@ uv run jerry <command>   # CORRECT
 python script.py         # FORBIDDEN
 ```
 
-**Reference**: `docs/governance/JERRY_CONSTITUTION.md`
+**Reference**: `docs/governance/TOM_CONSTITUTION.md`
 ```
 
 **Section 005 (15 lines):**

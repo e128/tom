@@ -30,8 +30,8 @@ activation-keywords:
 # Adversary Skill
 
 > **Version:** 1.0.0
-> **Framework:** Jerry Adversarial Quality (ADV)
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom Adversarial Quality (ADV)
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **SSOT Reference:** `.context/rules/quality-enforcement.md`
 
 ## Document Audience (Triple-Lens)
@@ -48,7 +48,7 @@ This SKILL.md serves multiple audiences:
 
 ## Purpose
 
-The Adversary skill provides **on-demand adversarial quality reviews** using strategy templates from the Jerry quality framework. Unlike the problem-solving skill's integrated adversarial mode (which operates within creator-critic loops), the adversary skill is invoked explicitly when you need a standalone adversarial assessment of any deliverable.
+The Adversary skill provides **on-demand adversarial quality reviews** using strategy templates from the Tom quality framework. Unlike the problem-solving skill's integrated adversarial mode (which operates within creator-critic loops), the adversary skill is invoked explicitly when you need a standalone adversarial assessment of any deliverable.
 
 ### Key Capabilities
 
@@ -373,7 +373,7 @@ H-14 mandates a minimum 3-iteration creator-critic-revision cycle for C2+ delive
 
 ## Constitutional Compliance
 
-All agents adhere to the **Jerry Constitution v1.0**:
+All agents adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -432,13 +432,13 @@ All agents adhere to the **Jerry Constitution v1.0**:
 | `.context/rules/quality-enforcement.md` | SSOT for thresholds, strategies, criticality levels |
 | `.context/templates/adversarial/` | Strategy execution templates |
 | `skills/problem-solving/SKILL.md` | Integrated adversarial quality mode (ps-critic) |
-| `docs/governance/JERRY_CONSTITUTION.md` | Constitutional principles |
+| `docs/governance/TOM_CONSTITUTION.md` | Constitutional principles |
 | ADR-EPIC002-001 | Strategy selection and composite scores |
 | ADR-EPIC002-002 | 5-layer enforcement architecture |
 
 ---
 
 *Skill Version: 1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `.context/rules/quality-enforcement.md`*
 *Created: 2026-02-15*

@@ -43,7 +43,7 @@ guardrails:
   - no_vague_scoring
   fallback_behavior: warn_and_score_with_defaults
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-001: Truth and Accuracy — Scores based on rubric evidence'
   - 'P-002: File Persistence — Score report MUST be persisted'

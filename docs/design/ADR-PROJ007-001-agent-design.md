@@ -3,7 +3,7 @@
 <!-- PS-ID: PROJ-007 | ENTRY: e-004 | AGENT: ps-architect-001 | DATE: 2026-02-21 -->
 <!-- CRITICALITY: C4 (new ADR, AE-003 auto-C3+; will be baselined, AE-004 applies on modification) -->
 
-> Architecture Decision Record codifying the canonical agent definition format, structural patterns, and behavioral constraints for Claude Code agents within the Jerry Framework.
+> Architecture Decision Record codifying the canonical agent definition format, structural patterns, and behavioral constraints for Claude Code agents within the Tom Framework.
 
 ## Document Sections
 
@@ -31,7 +31,7 @@
 
 ## L0: Executive Summary
 
-This ADR establishes the canonical format for defining Claude Code agents within the Jerry Framework. It formalizes the implicit patterns already present in 37 production agents across 8 skills into an explicit, validatable, and enforceable standard.
+This ADR establishes the canonical format for defining Claude Code agents within the Tom Framework. It formalizes the implicit patterns already present in 37 production agents across 8 skills into an explicit, validatable, and enforceable standard.
 
 The decision retains the proven YAML frontmatter + Markdown body format (used across all 37 agents) and adds JSON Schema validation for the YAML frontmatter -- the single highest-value enhancement identified across all Phase 1-2 research (+0.45 trade study delta in TS-2, +0.40 in TS-4, consensus #1 priority across all three NSE Phase 2 agents).
 
@@ -51,13 +51,13 @@ This is a C4-criticality decision because it establishes a baseline standard tha
 
 ### Problem Statement
 
-Jerry currently has 37 agents across 8 skills, all using the YAML frontmatter + Markdown body format. This format is proven at scale and industry-validated. However, agent definitions vary in structure, field coverage, and quality. There is no schema validation to catch structural errors before runtime. This leads to three concrete problems:
+Tom currently has 37 agents across 8 skills, all using the YAML frontmatter + Markdown body format. This format is proven at scale and industry-validated. However, agent definitions vary in structure, field coverage, and quality. There is no schema validation to catch structural errors before runtime. This leads to three concrete problems:
 
 1. **Structural inconsistency.** Agent definitions vary in which fields they include, how they name fields, and whether they include guardrails, output specifications, or constitutional compliance. New agent authors have no authoritative template and must reverse-engineer the format from existing examples.
 
 2. **No deterministic validation.** All quality assurance for agent definitions relies on LLM-based review (S-010 self-review, S-014 critic scoring). Structural defects -- missing required fields, invalid enum values, malformed name patterns -- cannot be caught deterministically. Schema validation would catch these at zero LLM cost (architecture Pattern 8, Quality Gate Layer 1).
 
-3. **Implicit patterns are vulnerable to drift.** The patterns that make Jerry's agent architecture successful (specialist decomposition, cognitive mode assignment, progressive disclosure, tool restriction) are embodied in practice but not codified. As the framework grows beyond 37 agents, implicit patterns erode through entropy.
+3. **Implicit patterns are vulnerable to drift.** The patterns that make Tom's agent architecture successful (specialist decomposition, cognitive mode assignment, progressive disclosure, tool restriction) are embodied in practice but not codified. As the framework grows beyond 37 agents, implicit patterns erode through entropy.
 
 ### Driving Evidence
 
@@ -67,7 +67,7 @@ Jerry currently has 37 agents across 8 skills, all using the YAML frontmatter + 
 | +0.45 delta for schema-validated YAML+MD (B5 vs B1) | Trade Study TS-2 (nse-explorer-001) | Industry Leader (Anthropic, Google, Microsoft inputs) |
 | +0.40 delta for schema pre-check in QA architecture (D6 vs D2) | Trade Study TS-4 (nse-explorer-001) | Industry Leader |
 | 52 formal requirements across 6 domains, 8/8 INCOSE quality pass | nse-requirements-001 | NASA SE process (NPR 7123.1D) |
-| 10 design patterns validated against 37 production agents | nse-architecture-001 | Industry Leader + Jerry production data |
+| 10 design patterns validated against 37 production agents | nse-architecture-001 | Industry Leader + Tom production data |
 | 57 patterns cataloged, framework maturity 3.3/5 | ps-analyst-001 | Multi-source synthesis (Anthropic, Google, Microsoft, OpenAI) |
 | 3 RED-zone risks: context rot (RPN 392), error amplification (RPN 336), rule proliferation | nse-risk-001, ps-investigator-001 | FMEA methodology |
 
@@ -92,7 +92,7 @@ Jerry currently has 37 agents across 8 skills, all using the YAML frontmatter + 
 | OI-ID | Item | Resolution |
 |-------|------|------------|
 | OI-01 | JSON Schema format for agent definition validation | Resolved: JSON Schema Draft 2020-12. See [Section 2](#2-json-schema-for-agent-definition-validation). Rationale: widest tooling support (VS Code, ajv, Python jsonschema), industry-standard, interoperable with CI pipelines. |
-| OI-03 | Open Agent Specification adoption | Resolved: Adopt compatible elements (version field, description semantics) but do not adopt the full specification. Jerry's YAML+MD format is richer than the Agent Spec's JSON-only format and includes behavioral sections the Agent Spec does not address. Compatible evolution is preferred over wholesale adoption. |
+| OI-03 | Open Agent Specification adoption | Resolved: Adopt compatible elements (version field, description semantics) but do not adopt the full specification. Tom's YAML+MD format is richer than the Agent Spec's JSON-only format and includes behavioral sections the Agent Spec does not address. Compatible evolution is preferred over wholesale adoption. |
 | OI-04 | Output schema variability across L0/L1/L2 levels | Resolved: Define a base output schema with required `levels` array. Agents producing stakeholder-facing deliverables MUST declare all three levels; this convention is enforced by the guardrails template (Section 7) and agent definition review process (L1 behavioral foundation and L4 output inspection enforcement layers), not by the JSON Schema validation (L3/L5 layers). The JSON Schema enforces structural validity of the `levels` field when present but does not determine which agents are "stakeholder-facing" -- that classification is a design-time judgment captured in the template and verified during review. The per-level content structure is agent-specific (documented in methodology section). See PR-008 in the template. |
 
 ---
@@ -194,7 +194,7 @@ validation:                                # RECOMMENDED. Declarative post-compl
 
 # --- CONSTITUTIONAL COMPLIANCE (SR-001) ---
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:                      # REQUIRED. Minimum: P-003, P-020, P-022.
     - "P-003: No Recursive Subagents (Hard)"
     - "P-020: User Authority (Hard)"
@@ -225,7 +225,7 @@ enforcement:                               # RECOMMENDED. Quality gate configura
 <identity>
 ## Identity
 
-You are **{Role Title}**, a {cognitive_mode} specialist in the Jerry Framework.
+You are **{Role Title}**, a {cognitive_mode} specialist in the Tom Framework.
 
 **Expertise domains:**
 - {expertise_1}: {brief elaboration}
@@ -369,9 +369,9 @@ This JSON Schema (Draft 2020-12) validates the YAML frontmatter of agent definit
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry-framework.dev/schemas/agent-definition/v1.0.0",
-  "title": "Jerry Agent Definition Schema",
-  "description": "Validates YAML frontmatter of Jerry Framework agent definition files. ADR-PROJ007-001.",
+  "$id": "https://tom-framework.dev/schemas/agent-definition/v1.0.0",
+  "title": "Tom Agent Definition Schema",
+  "description": "Validates YAML frontmatter of Tom Framework agent definition files. ADR-PROJ007-001.",
   "type": "object",
   "required": [
     "name",
@@ -1097,7 +1097,7 @@ Net result: 6 rules consolidated to 3, reclaiming 3 HARD rule slots (from 31/35 
 | **NASA SE Process** | NPR 7123.1D formal requirements engineering | nse-requirements-001 (52 shall-statements, INCOSE 8/8 PASS) |
 | **Research Synthesis** | Multi-source analysis combining multiple Industry Leader sources | ps-analyst-001 (57 patterns, 8 families), ps-investigator-001 (28 FMEA modes) |
 | **Trade Study** | Structured evaluation of alternatives with weighted scoring | TS-1 through TS-5 (nse-explorer-001) |
-| **Jerry Production Data** | Operational evidence from 37 agents across 8 skills | AGENTS.md, existing agent definition files |
+| **Tom Production Data** | Operational evidence from 37 agents across 8 skills | AGENTS.md, existing agent definition files |
 | **Community Expert** | Published analysis from recognized practitioners | LangChain State of Agent Engineering (2025), Chroma context rot research (2024) |
 
 ### Citation Index
@@ -1112,8 +1112,8 @@ Net result: 6 rules consolidated to 3, reclaiming 3 HARD rule slots (from 31/35 
 | Context rot degrades LLM performance as context fills | Chroma context rot research (2024) | ps-researcher-001 | Community Expert |
 | Progressive disclosure three-tier model is validated | Anthropic Agent Skills architecture | ps-researcher-001 | Industry Leader |
 | 5 cognitive modes cover the reasoning spectrum | Pattern 9 validated against 37 agents | nse-architecture-001 | Industry Leader + Production Data |
-| Keyword routing handles ~80% of cases at ~1ms | Production routing analysis | ps-researcher-002 | Jerry Production Data |
-| 31/35 HARD rule slots consumed (89%) | Rule inventory analysis | nse-risk-001 | Jerry Production Data |
+| Keyword routing handles ~80% of cases at ~1ms | Production routing analysis | ps-researcher-002 | Tom Production Data |
+| 31/35 HARD rule slots consumed (89%) | Rule inventory analysis | nse-risk-001 | Tom Production Data |
 | Layered QA (schema + self-review + critic) is optimal | D6 scored highest at 3.70 in TS-4 | TS-4 | Trade Study |
 | Tool restriction by least privilege is industry consensus | Anthropic, Microsoft, NIST AC-6 | nse-architecture-001 | Industry Leader |
 | 52 formal requirements pass 8/8 INCOSE quality criteria | Requirements quality verification | nse-requirements-001 | NASA SE Process |

@@ -4,10 +4,10 @@
 """
 End-to-end tests for context_monitoring via CLI.
 
-Tests verify the full workflow through the actual jerry CLI:
-    - jerry hooks prompt-submit produces valid JSON with context-monitor XML
-    - jerry hooks pre-compact creates checkpoints on filesystem
-    - jerry hooks session-start discovers and injects checkpoint context
+Tests verify the full workflow through the actual tom CLI:
+    - tom hooks prompt-submit produces valid JSON with context-monitor XML
+    - tom hooks pre-compact creates checkpoints on filesystem
+    - tom hooks session-start discovers and injects checkpoint context
     - Cross-hook lifecycle: pre-compact → checkpoint → session-start → resumption
     - Hook output is parseable and contains expected elements
 
@@ -25,7 +25,7 @@ Acceptance Criteria Coverage:
 References:
     - FEAT-001: Context Detection (EN-006, EN-007)
     - PROJ-004: Context Resilience
-    - H-09: Tests exercise production composition root via `jerry` CLI
+    - H-09: Tests exercise production composition root via `tom` CLI
 """
 
 from __future__ import annotations
@@ -51,7 +51,7 @@ def _run_hook(
     env_overrides: dict[str, str] | None = None,
     timeout: int = 30,
 ) -> subprocess.CompletedProcess[str]:
-    """Run a jerry hook via CLI and capture output."""
+    """Run a tom hook via CLI and capture output."""
     env = os.environ.copy()
     env["JERRY_PROJECT"] = "PROJ-004-context-resilience"
     # Clear env vars that override context window detection (BUG-001)
@@ -61,7 +61,7 @@ def _run_hook(
         env.update(env_overrides)
 
     return subprocess.run(
-        ["uv", "run", "jerry", "--json", "hooks", hook_name],
+        ["uv", "run", "tom", "--json", "hooks", hook_name],
         input=stdin_data,
         capture_output=True,
         text=True,
@@ -77,7 +77,7 @@ def _run_hook(
 
 
 class TestPromptSubmitHookE2E:
-    """E2E: jerry hooks prompt-submit produces valid context monitoring output.
+    """E2E: tom hooks prompt-submit produces valid context monitoring output.
 
     References: FEAT-001 (EN-006), PROJ-004
     """
@@ -179,7 +179,7 @@ class TestPromptSubmitHookE2E:
 
 
 class TestSessionStartHookE2E:
-    """E2E: jerry hooks session-start produces valid session context.
+    """E2E: tom hooks session-start produces valid session context.
 
     References: FEAT-001 (EN-006), PROJ-004
     """
@@ -209,7 +209,7 @@ class TestSessionStartHookE2E:
 
 
 class TestPreCompactHookE2E:
-    """E2E: jerry hooks pre-compact creates checkpoints.
+    """E2E: tom hooks pre-compact creates checkpoints.
 
     References: FEAT-001 (EN-006), PROJ-004
     """

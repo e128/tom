@@ -9,7 +9,7 @@ paths:
 
 # Testing Standards
 
-> Test pyramid, BDD cycle, coverage, and tool configuration for Jerry.
+> Test pyramid, BDD cycle, coverage, and tool configuration for Tom.
 
 <!-- L2-REINJECT: rank=5, content="Testing standards REQUIRED (H-20): (a) BDD Red phase — NEVER write implementation before test fails, (b) 90% line coverage REQUIRED." -->
 

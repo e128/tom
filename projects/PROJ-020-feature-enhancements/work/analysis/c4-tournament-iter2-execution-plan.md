@@ -155,7 +155,7 @@ Strategies are organized into logical groups to balance rigor and execution time
 **Purpose:** Compliance gates and evidence chain verification; document traceability
 
 - **Order 6:** S-007 (Constitutional AI Critique)
-  - **Inputs:** Revision 6 deliverable; governance framework from JERRY_CONSTITUTION.md
+  - **Inputs:** Revision 6 deliverable; governance framework from TOM_CONSTITUTION.md
   - **Focus:** **Traceability dimension (0.80 → target 0.92+):** Verify that all major decisions (framework selection, ranking methodology, scope boundaries) are documented with rationale; confirm governance trail completeness; check that constitutional principles (transparency, justification, user authority) are satisfied
   - **Dependencies:** Group C complete
   - **Parallelizable:** Yes — independent from S-011

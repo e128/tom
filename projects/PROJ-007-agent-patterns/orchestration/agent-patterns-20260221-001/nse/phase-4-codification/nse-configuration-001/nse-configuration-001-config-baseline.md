@@ -290,7 +290,7 @@ The following auto-escalation rules from quality-enforcement.md apply to CI chan
 | AE-002 | Touches `.context/rules/` or `.claude/rules/` | Auto-C3 minimum | CI-006 (trigger map lives in `.context/rules/mandatory-skill-usage.md`) |
 | AE-003 | New or modified ADR | Auto-C3 minimum | CI-002 (ADR-001), CI-004 (ADR-002), any new ADR |
 | AE-004 | Modifies baselined ADR | Auto-C4 | CI-002 (ADR-001), CI-004 (ADR-002) after baselining |
-| AE-001 | Touches `docs/governance/JERRY_CONSTITUTION.md` | Auto-C4 | Any CI change that requires constitutional amendment |
+| AE-001 | Touches `docs/governance/TOM_CONSTITUTION.md` | Auto-C4 | Any CI change that requires constitutional amendment |
 
 **Escalation precedence:** When multiple AE rules apply, the highest escalation level governs. For example, modifying a baselined ADR (AE-004, C4) that also touches `.context/rules/` (AE-002, C3) is classified as C4.
 

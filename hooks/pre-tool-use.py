@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
-"""PreToolUse hook — delegates to jerry hooks pre-tool-use (#150 consolidated pipeline)."""
+"""PreToolUse hook — delegates to tom hooks pre-tool-use (#150 consolidated pipeline)."""
 
 import os
 import subprocess
@@ -11,7 +11,7 @@ from pathlib import Path
 root = os.environ.get("CLAUDE_PLUGIN_ROOT", str(Path(__file__).resolve().parent.parent))
 try:
     result = subprocess.run(
-        ["uv", "run", "--directory", root, "jerry", "--json", "hooks", "pre-tool-use"],
+        ["uv", "run", "--directory", root, "tom", "--json", "hooks", "pre-tool-use"],
         input=sys.stdin.buffer.read(),
         capture_output=True,
         timeout=4,

@@ -514,7 +514,7 @@ All agents adhere to the **Jerry Constitution v1.0**:
 | `.context/rules/quality-enforcement.md` | Quality gate SSOT |
 | `.context/rules/agent-development-standards.md` | H-34 dual-file architecture |
 | `docs/schemas/agent-governance-v1.schema.json` | Governance YAML schema |
-| `docs/governance/JERRY_CONSTITUTION.md` | Constitutional principles |
+| `docs/governance/TOM_CONSTITUTION.md` | Constitutional principles |
 
 ---
 

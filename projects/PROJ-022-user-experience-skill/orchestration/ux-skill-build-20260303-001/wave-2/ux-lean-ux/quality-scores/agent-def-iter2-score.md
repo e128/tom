@@ -238,7 +238,7 @@ Retained from iter1 (stable):
 - Footer traceability comment lists 13 standard IDs (H-34, H-34b, AD-M-001 through ET-M-001, SR-002, SR-003, SR-009, AR-012).
 - SSOT declaration: `skills/ux-lean-ux/SKILL.md` verified.
 - Parent skill reference traceable.
-- Governance `constitution.reference` points to `docs/governance/JERRY_CONSTITUTION.md`.
+- Governance `constitution.reference` points to `docs/governance/TOM_CONSTITUTION.md`.
 - Wave progression reference: `skills/user-experience/rules/wave-progression.md`.
 - Inline standard references in guardrails sections: `(H-34b, AR-012)`, `(SR-002)`, `(SR-009)`.
 

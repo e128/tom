@@ -352,7 +352,7 @@ VIS-005-empty-project-diagram.md
 - skills/worktracker/agents/wt-visualizer.md
 
 **Standards:**
-- docs/governance/JERRY_CONSTITUTION.md
+- docs/governance/TOM_CONSTITUTION.md
 - .claude/rules/error-handling-standards.md
 
 **Other VIS Tests:**

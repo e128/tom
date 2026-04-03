@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry-framework.dev/schemas/claude-code-skill-frontmatter/v1.1.0",
+  "$id": "https://tom-framework.dev/schemas/claude-code-skill-frontmatter/v1.1.0",
   "title": "Claude Code SKILL.md Frontmatter Schema",
-  "description": "Correctness gate for YAML frontmatter in SKILL.md files. Validates field types, enums, and patterns against Anthropic's documented Claude Code skill fields and the Agent Skills open standard (agentskills.io, March 2026). This schema is NOT a security boundary -- it cannot prevent prompt injection in descriptions or arbitrary commands in hooks. Unrecognized fields are silently accepted (additionalProperties: true) because Claude Code ignores unknown fields at runtime. Jerry-specific fields (version, activation-keywords) pass through without validation here. Sources: https://code.claude.com/docs/en/skills, https://agentskills.io/specification.",
+  "description": "Correctness gate for YAML frontmatter in SKILL.md files. Validates field types, enums, and patterns against Anthropic's documented Claude Code skill fields and the Agent Skills open standard (agentskills.io, March 2026). This schema is NOT a security boundary -- it cannot prevent prompt injection in descriptions or arbitrary commands in hooks. Unrecognized fields are silently accepted (additionalProperties: true) because Claude Code ignores unknown fields at runtime. Tom-specific fields (version, activation-keywords) pass through without validation here. Sources: https://code.claude.com/docs/en/skills, https://agentskills.io/specification.",
   "type": "object",
   "properties": {
     "name": {
@@ -54,7 +54,7 @@
     "effort": {
       "type": "string",
       "enum": ["low", "medium", "high", "max"],
-      "description": "Reasoning depth when this skill is active. Overrides session effort level. 'max' is Opus 4.6 only. CLAUDE_CODE_EFFORT_LEVEL env var takes precedence. Default: inherits from session (medium for Opus/Sonnet 4.6). Maps to Jerry ET-M-001 criticality reasoning."
+      "description": "Reasoning depth when this skill is active. Overrides session effort level. 'max' is Opus 4.6 only. CLAUDE_CODE_EFFORT_LEVEL env var takes precedence. Default: inherits from session (medium for Opus/Sonnet 4.6). Maps to Tom ET-M-001 criticality reasoning."
     },
     "context": {
       "type": "string",

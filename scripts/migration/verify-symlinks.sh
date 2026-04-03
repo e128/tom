@@ -53,7 +53,7 @@ readonly EXCLUDED_DIRS=(
     "transcripts"
     "docs/knowledge/dragonsbelurkin"
     "docs/internal"
-    ".jerry"
+    ".tom"
     ".venv"
     ".git"
 )
@@ -63,7 +63,7 @@ readonly EXCLUDED_PATTERNS=(
     "projects/"
     "transcripts/"
     "dragonsbelurkin/"
-    ".jerry/"
+    ".tom/"
     ".env"
 )
 

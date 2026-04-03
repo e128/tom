@@ -404,7 +404,7 @@ OPTIONAL FREEFORM SECTION
 ========================================
 
 This section is for detailed investigation documentation in the style of
-Jerry project disc-001 (432+ lines with Q&A, hypothesis testing, etc.).
+Tom project disc-001 (432+ lines with Q&A, hypothesis testing, etc.).
 
 Use this section when you need to document:
 - Interactive Q&A sessions (Question → Answer → Follow-up → Resolution)
@@ -506,15 +506,15 @@ validated: {{VALIDATED}}
 | Constraint | Failure Mode if Lost | Compensating Control | Detection |
 |-----------|---------------------|---------------------|-----------|
 | Co-location (REQ-D-025): MUST be in parent's folder | Discovery placed in wrong directory | /worktracker skill enforcement (WTI rules) | Worktracker audit detects misplaced discovery |
-| Status values: PENDING, IN_PROGRESS, DOCUMENTED, VALIDATED | Invalid status transition | L3 AST validation (H-33) | `jerry ast validate` rejects invalid status |
-| Impact field REQUIRED (REQ-D-004) | Discovery created without impact assessment | L3 AST validation (H-33) | `jerry ast validate` rejects missing impact |
+| Status values: PENDING, IN_PROGRESS, DOCUMENTED, VALIDATED | Invalid status transition | L3 AST validation (H-33) | `tom ast validate` rejects invalid status |
+| Impact field REQUIRED (REQ-D-004) | Discovery created without impact assessment | L3 AST validation (H-33) | `tom ast validate` rejects missing impact |
 | ID format: PARENT:DISC-NNN | Incorrect ID format breaks traceability | /worktracker skill enforcement | Worktracker audit detects format violation |
 
 <!--
 DESIGN RATIONALE:
 
 This template supports both concise discoveries (PROJ-001 style, 47-137 lines)
-and detailed investigation documentation (Jerry disc-001 style, 432+ lines).
+and detailed investigation documentation (Tom disc-001 style, 432+ lines).
 
 Mandatory sections (Summary, Context, Finding, Evidence, Implications, Relationships)
 provide consistent structure across all discoveries. Optional sections
@@ -550,7 +550,7 @@ SOURCES:
 - ONTOLOGY-v1.md Section 3.4.9: Discovery entity schema
 - worktracker.md: Discovery co-location and numbering conventions
 - PROJ-001 DISC-001, DISC-022, DISC-033: Concise discovery examples
-- Jerry project disc-001: Detailed investigation gold standard
+- Tom project disc-001: Detailed investigation gold standard
 - nse-requirements-001-template-requirements.md: REQ-D-001 to REQ-D-025
 - nse-architecture-001-template-architecture.md: Section 1.1, 5.1
 - ps-analyst-001-pattern-analysis.md: Section 3.1 DISCOVERY Blueprint

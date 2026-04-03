@@ -136,7 +136,7 @@ def create_repository() -> IProjectRepository:
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### File Location
 
@@ -146,7 +146,7 @@ def create_repository() -> IProjectRepository:
 
 ```python
 """
-Composition root for Jerry framework.
+Composition root for Tom framework.
 
 This module is the ONLY place where infrastructure adapters are instantiated
 and wired to their ports. All other modules receive dependencies via
@@ -241,10 +241,10 @@ def test_handlers_do_not_import_infrastructure():
 
 | Approach | Pros | Cons | When to Use |
 |----------|------|------|-------------|
-| **Factory Functions** | Simple, explicit, no dependencies | Manual wiring | Small to medium apps (Jerry) |
+| **Factory Functions** | Simple, explicit, no dependencies | Manual wiring | Small to medium apps (Tom) |
 | **DI Container** | Automatic resolution, less boilerplate | Added complexity | Large apps with many dependencies |
 
-**Jerry Decision**: We use factory functions for simplicity and explicitness.
+**Tom Decision**: We use factory functions for simplicity and explicitness.
 
 ---
 

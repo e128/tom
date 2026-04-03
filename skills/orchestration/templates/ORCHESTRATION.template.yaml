@@ -35,7 +35,7 @@ workflow:
     - BARRIER_SYNC    # Cross-pollination at barriers
     # Add patterns as applicable
 
-  # Constraints from Jerry Constitution
+  # Constraints from Tom Constitution
   constraints:
     max_agent_nesting: 1          # P-003: Single nesting
     file_persistence: true        # P-002: All state to filesystem

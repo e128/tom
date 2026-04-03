@@ -163,7 +163,7 @@ class CLIAdapter:
 
         if jerry_project is None:
             print("JERRY_PROJECT not set.")
-            print("Set JERRY_PROJECT to activate a project: jerry projects list")
+            print("Set JERRY_PROJECT to activate a project: tom projects list")
             print("\nAvailable projects:")
             print(self._format_project_table(context["available_projects"]))
         elif project_id and validation and validation.is_valid:
@@ -424,7 +424,7 @@ class CLIAdapter:
         else:
             if not status.has_active_session:
                 print("No active session.")
-                print("Use 'jerry session start' to begin.")
+                print("Use 'tom session start' to begin.")
             else:
                 print(f"Session ID: {status.session_id}")
                 print(f"Status: {status.status}")
@@ -1011,11 +1011,11 @@ class CLIAdapter:
 
         project_config_path = None
         if jerry_project:
-            project_config_path = root / "projects" / jerry_project / ".jerry" / "config.toml"
+            project_config_path = root / "projects" / jerry_project / ".tom" / "config.toml"
 
         return LayeredConfigAdapter(
             env_prefix="JERRY_",
-            root_config_path=root / ".jerry" / "config.toml",
+            root_config_path=root / ".tom" / "config.toml",
             project_config_path=project_config_path,
             defaults={
                 "logging.level": "INFO",
@@ -1047,8 +1047,8 @@ class CLIAdapter:
             Exit code (0 for success)
 
         References:
-            - AC-016.1: jerry config show displays merged configuration
-            - AC-016.2: jerry config show --json outputs JSON format
+            - AC-016.1: tom config show displays merged configuration
+            - AC-016.2: tom config show --json outputs JSON format
         """
         try:
             config = self._create_config_adapter()
@@ -1108,7 +1108,7 @@ class CLIAdapter:
             Exit code (0 for success, 1 for not found)
 
         References:
-            - AC-016.3: jerry config get <key> retrieves specific value
+            - AC-016.3: tom config get <key> retrieves specific value
         """
         try:
             config = self._create_config_adapter()
@@ -1155,7 +1155,7 @@ class CLIAdapter:
             Exit code (0 for success, 1 for error)
 
         References:
-            - AC-016.4: jerry config set <key> <value> --scope writes to appropriate file
+            - AC-016.4: tom config set <key> <value> --scope writes to appropriate file
         """
         try:
             import tomllib
@@ -1175,11 +1175,11 @@ class CLIAdapter:
                     else:
                         print("No active project. Set JERRY_PROJECT first.")
                     return 1
-                config_path = root / "projects" / jerry_project / ".jerry" / "config.toml"
+                config_path = root / "projects" / jerry_project / ".tom" / "config.toml"
             elif scope == "root":
-                config_path = root / ".jerry" / "config.toml"
+                config_path = root / ".tom" / "config.toml"
             elif scope == "local":
-                config_path = root / ".jerry" / "local" / "context.toml"
+                config_path = root / ".tom" / "local" / "context.toml"
             else:
                 if json_output:
                     print(json.dumps({"error": f"Invalid scope: {scope}"}))
@@ -1289,18 +1289,18 @@ class CLIAdapter:
             Exit code (0 for success)
 
         References:
-            - AC-016.5: jerry config path shows config file locations
+            - AC-016.5: tom config path shows config file locations
         """
         root = self._get_project_root()
         jerry_project = os.environ.get("JERRY_PROJECT")
 
         paths = {
-            "root": str(root / ".jerry" / "config.toml"),
-            "local": str(root / ".jerry" / "local" / "context.toml"),
+            "root": str(root / ".tom" / "config.toml"),
+            "local": str(root / ".tom" / "local" / "context.toml"),
         }
 
         if jerry_project:
-            paths["project"] = str(root / "projects" / jerry_project / ".jerry" / "config.toml")
+            paths["project"] = str(root / "projects" / jerry_project / ".tom" / "config.toml")
 
         if json_output:
             output = {
@@ -1374,15 +1374,15 @@ class CLIAdapter:
             - EN-031: Model Selection Capability
 
         Example:
-            >>> jerry transcript parse meeting.vtt
+            >>> tom transcript parse meeting.vtt
             Parsed: meeting.vtt
             Output: meeting-canonical.json
             Chunks: 6 files in chunks/
 
-            >>> jerry transcript parse meeting.vtt --model-extractor opus
+            >>> tom transcript parse meeting.vtt --model-extractor opus
             Using opus for extraction (higher quality)
 
-            >>> jerry transcript parse meeting.vtt --json
+            >>> tom transcript parse meeting.vtt --json
             {"success": true, "canonical_path": "...", "chunk_count": 6, ...}
         """
         if self._command_dispatcher is None:
@@ -1499,7 +1499,7 @@ class CLIAdapter:
             Exit code (0 for success, 1 for error)
 
         References:
-            - EN-006: jerry hooks CLI Command Namespace
+            - EN-006: tom hooks CLI Command Namespace
         """
         if self._hooks_handlers is None:
             print(json.dumps({"error": "Hooks handlers not configured"}))

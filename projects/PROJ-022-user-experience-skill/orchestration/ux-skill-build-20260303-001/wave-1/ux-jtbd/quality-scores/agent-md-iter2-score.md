@@ -208,7 +208,7 @@
 
 **Evidence — traceable elements:**
 - **PROJ-022 traceability:** Footer explicitly cites PROJ-022, Wave 1, parent skill, sub-skill, creation date, agent version. Full project chain.
-- **Constitutional compliance table:** Maps P-003, P-020, P-022, P-001, P-002 to specific agent behaviors. Each principle traceable to its JERRY_CONSTITUTION reference.
+- **Constitutional compliance table:** Maps P-003, P-020, P-022, P-001, P-002 to specific agent behaviors. Each principle traceable to its TOM_CONSTITUTION reference.
 - **AD-M-007 compliance now traceable:** governance.yaml `session_context` now populated with `on_receive` and `on_send` — L5 CI validation is now possible via schema.
 - **Tool tier:** T3 traceable to agent-development-standards.md Tool Security Tiers section; T3 = T2 + WebSearch + WebFetch + Context7 — all present in `allowed_tools`.
 - **Cognitive mode:** `divergent` traceable to Cognitive Mode Taxonomy.

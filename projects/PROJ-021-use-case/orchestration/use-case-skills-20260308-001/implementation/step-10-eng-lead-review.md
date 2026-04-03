@@ -217,7 +217,7 @@ H-20 is a HARD rule: NEVER write implementation before the test fails (BDD Red p
 | `skills/use-case/composition/uc-author.agent.yaml` | F-06, F-08 (reference implementation pattern) | Pattern reference | **EXISTS** -- produced by Step 9 eng-backend |
 | `skills/problem-solving/composition/ps-researcher.agent.yaml` | F-06, F-08 (alternate reference pattern) | Pattern reference | **EXISTS** -- production skill |
 | `skills/use-case/contracts/UC_SKILL_CONTRACT.yaml` | F-13 (adaptation template) | Pattern reference | **EXISTS** -- produced by Step 9 eng-lead |
-| `docs/governance/JERRY_CONSTITUTION.md` | F-03, F-05 (`constitution.reference` field) | Reference | **EXISTS** -- standard path |
+| `docs/governance/TOM_CONSTITUTION.md` | F-03, F-05 (`constitution.reference` field) | Reference | **EXISTS** -- standard path |
 | `skills/test-spec/rules/clark-transformation-rules.md` (F-12) | F-02 (tspec-generator `<methodology>` section runtime load) | Runtime methodology reference | **PRODUCED BY THIS SKILL** -- created at Wave 2b (eng-backend). F-02 agent definition is syntactically valid without F-12, but tspec-generator will fail at runtime if F-12 does not exist when it loads the rules file. Wave 2b (F-12) must complete before production invocations of tspec-generator. |
 | `skills/test-spec/templates/bdd-scenario.template.md` (F-10) | F-02 (tspec-generator output template ref) | Runtime template reference | **PRODUCED BY THIS SKILL** -- created at Wave 3. Agent definition references template by path. |
 

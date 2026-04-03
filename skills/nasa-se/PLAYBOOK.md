@@ -4,7 +4,7 @@ description: Step-by-step guidance for using the NASA Systems Engineering skill,
 version: "2.2.0"
 skill: nasa-se
 template: PLAYBOOK_TEMPLATE.md v1.0.0
-constitutional_compliance: Jerry Constitution v1.0 + P-040, P-041, P-042, P-043
+constitutional_compliance: Tom Constitution v1.0 + P-040, P-041, P-042, P-043
 standards: NPR 7123.1D, NASA/SP-2016-6105 Rev2, NPR 8000.4C
 agents_covered:
   - nse-requirements
@@ -916,7 +916,7 @@ Test Case
 | ID | Constraint | Rationale |
 |----|------------|-----------|
 | HC-001 | P-043 disclaimer on all nse-* outputs | AI is advisory, not authoritative |
-| HC-002 | Requirements have bidirectional traceability | P-040 Jerry Constitution |
+| HC-002 | Requirements have bidirectional traceability | P-040 Tom Constitution |
 | HC-003 | All RED risks have mitigation plans | P-042 Risk transparency |
 | HC-004 | Review gates have documented entrance/exit criteria | Gate discipline |
 | HC-005 | Human SME review required for all SE artifacts | AI cannot replace engineering judgment |
@@ -1085,7 +1085,7 @@ CROSS-SKILL HANDOFF:
 Internal References:
 - [ORCHESTRATION_PATTERNS.md](../shared/ORCHESTRATION_PATTERNS.md) - 8 canonical patterns
 - [AGENT_TEMPLATE_CORE.md](../shared/AGENT_TEMPLATE_CORE.md) - Agent definition format
-- [Jerry Constitution](../../docs/governance/JERRY_CONSTITUTION.md) - P-040, P-041, P-042, P-043
+- [Tom Constitution](../../docs/governance/TOM_CONSTITUTION.md) - P-040, P-041, P-042, P-043
 
 ---
 
@@ -1106,7 +1106,7 @@ Internal References:
 
 *Playbook Version: 2.2.0*
 *Skill: nasa-se*
-*Constitutional Compliance: Jerry Constitution v1.0 + P-040, P-041, P-042, P-043*
+*Constitutional Compliance: Tom Constitution v1.0 + P-040, P-041, P-042, P-043*
 *Enhancement: EN-708 adversarial quality cycles at review gates (EPIC-002 design)*
 *Last Updated: 2026-02-14*
 *Template: PLAYBOOK_TEMPLATE.md v1.0.0*

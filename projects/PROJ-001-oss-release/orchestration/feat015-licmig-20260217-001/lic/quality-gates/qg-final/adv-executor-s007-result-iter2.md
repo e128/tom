@@ -8,7 +8,7 @@
 **Date:** 2026-02-17
 **Reviewer:** adv-executor
 **Execution ID:** qgfinal-iter2-20260217
-**Constitutional Context:** quality-enforcement.md H-01–H-24, markdown-navigation-standards.md, python-environment.md, coding-standards.md; JERRY_CONSTITUTION.md P-003/P-020/P-022
+**Constitutional Context:** quality-enforcement.md H-01–H-24, markdown-navigation-standards.md, python-environment.md, coding-standards.md; TOM_CONSTITUTION.md P-003/P-020/P-022
 **Workflow:** feat015-licmig-20260217-001
 **Prior Iteration:** QG-Final iteration 1 — S-007 score 0.96 PASS (0 Critical, 0 Major, 2 Minor)
 

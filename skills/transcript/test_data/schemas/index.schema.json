@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry.dev/schemas/transcript/index.json",
+  "$id": "https://tom.dev/schemas/transcript/index.json",
   "title": "ChunkIndex",
   "description": "Index file for chunked transcript containing metadata and pointers to segment chunk files. Reference: TDD-FEAT-004 Section 5.",
   "type": "object",

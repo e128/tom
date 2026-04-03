@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://jerry-framework.example.com/schemas/work-tracker-v2.json",
+  "$id": "https://tom-framework.example.com/schemas/work-tracker-v2.json",
   "title": "Work Tracker Schema",
   "description": "JSON Schema for ECW Work Tracker v2.0",
   "type": "object",

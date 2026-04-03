@@ -228,12 +228,12 @@ The following open GH issues DO have worktracker entities with matching open/in-
 The following entity types were NOT audited for GH Issue presence (no `GitHub Issue:` field found):
 
 - PROJ-001-oss-release: extensive FEAT-* and EN-* entities without GH refs (pre-H-32 work)
-- PROJ-002, PROJ-003, PROJ-006, PROJ-008: no GH refs found — these projects predate or are exempt from H-32 enforcement (non-jerry-repo projects or purely internal research)
+- PROJ-002, PROJ-003, PROJ-006, PROJ-008: no GH refs found — these projects predate or are exempt from H-32 enforcement (non-tom-repo projects or purely internal research)
 - PROJ-014 EPIC-005 `in_progress` references GH #122 (CLOSED) — this is a research artifact reference, not a direct entity tracker; acceptable but noted
 
 ### H-32 Rule Scope Note
 
-H-32 applies specifically when the active repository is `geekatron/jerry`. All 20 projects audited are within this repository's worktree. Projects PROJ-009 (research), PROJ-011 (articles), and PROJ-006 (multi-instance) contain no GH Issue refs but are likely content/research projects where H-32 was not enforced — this is an acceptable gap unless those projects contain bugs or stories.
+H-32 applies specifically when the active repository is `geekatron/tom`. All 20 projects audited are within this repository's worktree. Projects PROJ-009 (research), PROJ-011 (articles), and PROJ-006 (multi-instance) contain no GH Issue refs but are likely content/research projects where H-32 was not enforced — this is an acceptable gap unless those projects contain bugs or stories.
 
 ---
 

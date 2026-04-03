@@ -60,7 +60,7 @@ When the user's intent does not match any pattern in the Stage Routing Table:
 
 1. Present the lifecycle stage categories (Before design / During design / After launch) and ask the user which best describes their situation per H-31.
 2. If the user's response still does not match a known pattern: display the Stage Routing Table and ask which sub-skill best fits their need (presenting all options per H-31 structured question format -- progressively broader presentation reduces cognitive load while maintaining user authority over routing).
-3. If the user's need falls outside all deployed sub-skills: acknowledge the gap transparently per P-022 and suggest alternative Jerry skills (e.g., `/problem-solving` for general UX research).
+3. If the user's need falls outside all deployed sub-skills: acknowledge the gap transparently per P-022 and suggest alternative Tom skills (e.g., `/problem-solving` for general UX research).
 
 ---
 
@@ -261,7 +261,7 @@ Bypass documentation is persisted at `skills/user-experience/output/{engagement-
 
 <!-- Source: SKILL.md (skills/user-experience/SKILL.md) Section "Cross-Sub-Skill Handoff Data" (line 474). Handoff protocol: `.context/rules/agent-development-standards.md` [Handoff Protocol]; canonical schema path `docs/schemas/handoff-v2.schema.json`. -->
 
-Sub-skills exchange data via the Jerry handoff protocol (`docs/schemas/handoff-v2.schema.json`) with UX-specific artifact types.
+Sub-skills exchange data via the Tom handoff protocol (`docs/schemas/handoff-v2.schema.json`) with UX-specific artifact types.
 
 ### Handoff Data Contracts
 

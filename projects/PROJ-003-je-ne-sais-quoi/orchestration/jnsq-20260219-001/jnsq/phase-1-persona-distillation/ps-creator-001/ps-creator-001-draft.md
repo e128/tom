@@ -132,7 +132,7 @@ The two modes for Jerry:
 
 **Structural comedy:** Putting something absurd next to something serious and letting the juxtaposition do the work.
 
-> "The JERRY_CONSTITUTION.md is non-negotiable. Saucer Boy himself was constitutionally compliant. In neon 90s ski gear, but compliant."
+> "The TOM_CONSTITUTION.md is non-negotiable. Saucer Boy himself was constitutionally compliant. In neon 90s ski gear, but compliant."
 
 **Deadpan delivery:** Stating the serious thing in a light voice, or the absurd thing in a serious voice.
 
@@ -298,7 +298,7 @@ Let's build something worth scoring.
 **Current Voice:**
 ```
 Constitutional compliance check: FAILED
-Trigger: AE-001 — modification to docs/governance/JERRY_CONSTITUTION.md
+Trigger: AE-001 — modification to docs/governance/TOM_CONSTITUTION.md
 Criticality: Auto-C4
 Status: Hard stop. Human escalation required.
 ```
@@ -307,7 +307,7 @@ Status: Hard stop. Human escalation required.
 ```
 Constitutional compliance check: FAILED
 
-Trigger: AE-001 — docs/governance/JERRY_CONSTITUTION.md was modified.
+Trigger: AE-001 — docs/governance/TOM_CONSTITUTION.md was modified.
 Auto-escalation: C4. This is not a drill.
 
 Hard stop. Human review required before proceeding.
@@ -690,7 +690,7 @@ Easter eggs are the highest-risk feature in this epic from a persona perspective
 **High-value easter egg territories:**
 - Docstring comments in the quality enforcement code (S-014 rubric calculation)
 - CLI help text for the /adversary skill
-- The JERRY_CONSTITUTION.md preamble (currently reads as regulation; could read as philosophy)
+- The TOM_CONSTITUTION.md preamble (currently reads as regulation; could read as philosophy)
 - Hidden `--saucer-boy` flag somewhere that enables maximum personality mode
 - The Vail lifetime ban [29] as a reference when the framework rejects a deliverable with extreme prejudice: the persona connection is direct (banned for a nude backflip, not for lack of skill)
 - The 8th-grade essay [23] as a reference in onboarding text: "He wrote down what he'd do before he was a teenager. Then he did it."
@@ -812,7 +812,7 @@ If a piece of text fails any of these tests, either fix it or strip the personal
 | `projects/PROJ-003-je-ne-sais-quoi/orchestration/jnsq-20260219-001/jnsq/phase-1-persona-distillation/ps-researcher-001/ps-researcher-001-research.md` | Initial research artifact; primary source for biographical analysis, trait taxonomy, voice design dimensions |
 | `projects/PROJ-003-je-ne-sais-quoi/orchestration/jnsq-20260219-001/jnsq/phase-1-persona-distillation/ps-researcher-001/ps-researcher-001-supplemental-research.md` | Supplemental research artifact; 35 web sources, 18 searches; source of corrections and inline citations in v0.5.0 |
 | `.context/rules/quality-enforcement.md` | Quality enforcement SSOT; thresholds, strategies, and rule IDs referenced throughout |
-| `docs/governance/JERRY_CONSTITUTION.md` | Constitutional constraints; boundary conditions section references H-01 through H-24 |
+| `docs/governance/TOM_CONSTITUTION.md` | Constitutional constraints; boundary conditions section references H-01 through H-24 |
 
 ---
 

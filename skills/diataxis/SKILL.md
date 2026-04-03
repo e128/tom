@@ -37,7 +37,7 @@ activation-keywords:
 
 > **Version:** 0.1.0
 > **Framework:** Diataxis Four-Quadrant Documentation (diataxis.fr)
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **Knowledge Reference:** `docs/knowledge/diataxis-framework.md`
 
 ## Document Sections
@@ -147,7 +147,7 @@ Four specialized writer agents (rather than one adaptive writer) is justified by
 ### Option 1: Natural Language Request
 
 ```
-Write a tutorial for setting up Jerry's problem-solving skill.
+Write a tutorial for setting up Tom's problem-solving skill.
 ```
 
 The trigger map routes "write tutorial" to `/diataxis`, and the main context invokes `diataxis-tutorial`.
@@ -156,25 +156,25 @@ The trigger map routes "write tutorial" to `/diataxis`, and the main context inv
 
 ```
 Use /diataxis with diataxis-classifier to classify this documentation request:
-"How do I configure MCP servers in Jerry?"
+"How do I configure MCP servers in Tom?"
 
 Then use the appropriate writer agent based on the classification.
 ```
 
 ### Option 3: Task Tool Invocation (Programmatic)
 
-Agent definitions in `skills/diataxis/agents/` follow the standard Jerry dual-file architecture (H-34). The orchestrator invokes them via the Task tool using the `jerry:diataxis-{agent}` subagent_type convention, which maps to the agent definition file at `skills/diataxis/agents/diataxis-{agent}.md`:
+Agent definitions in `skills/diataxis/agents/` follow the standard Tom dual-file architecture (H-34). The orchestrator invokes them via the Task tool using the `tom:diataxis-{agent}` subagent_type convention, which maps to the agent definition file at `skills/diataxis/agents/diataxis-{agent}.md`:
 
 ```
 Task tool invocation:
-  subagent_type: "jerry:diataxis-tutorial"
-  prompt: "Write a tutorial for setting up your first Jerry project.
-           Topic: Setting up your first Jerry project
-           Prerequisites: Jerry installed, Claude Code configured
+  subagent_type: "tom:diataxis-tutorial"
+  prompt: "Write a tutorial for setting up your first Tom project.
+           Topic: Setting up your first Tom project
+           Prerequisites: Tom installed, Claude Code configured
            Output: projects/PROJ-013-diataxis/samples/tutorial-first-project.md"
 ```
 
-The same pattern applies to all six agents: `jerry:diataxis-classifier`, `jerry:diataxis-tutorial`, `jerry:diataxis-howto`, `jerry:diataxis-reference`, `jerry:diataxis-explanation`, `jerry:diataxis-auditor`. (Note: verify `jerry:` namespace support against your Claude Code version before programmatic deployment.)
+The same pattern applies to all six agents: `tom:diataxis-classifier`, `tom:diataxis-tutorial`, `tom:diataxis-howto`, `tom:diataxis-reference`, `tom:diataxis-explanation`, `tom:diataxis-auditor`. (Note: verify `tom:` namespace support against your Claude Code version before programmatic deployment.)
 
 ---
 
@@ -197,7 +197,7 @@ Per-quadrant templates are located at `skills/diataxis/templates/`:
 - **`/nasa-se`**: Requirements and design artifacts feed reference documentation
 - **`/adversary`**: Diataxis agents integrate with creator-critic-revision cycle (H-14) for C2+ deliverables
 - **`/eng-team`**: Security documentation benefits from quadrant separation
-- **Jerry's own docs**: The skill can improve Jerry's own documentation (reflexive use)
+- **Tom's own docs**: The skill can improve Tom's own documentation (reflexive use)
 
 ### Documentation Quality Gate
 
@@ -250,6 +250,6 @@ All agents comply with:
 ---
 
 *Skill Version: 0.1.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *SSOT: `.context/rules/skill-standards.md`*
 *Created: 2026-02-26*

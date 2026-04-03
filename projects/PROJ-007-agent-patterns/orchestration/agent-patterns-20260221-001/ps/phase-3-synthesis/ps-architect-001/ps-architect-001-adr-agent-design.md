@@ -188,7 +188,7 @@ validation:                                # RECOMMENDED. Declarative post-compl
 
 # --- CONSTITUTIONAL COMPLIANCE (SR-001) ---
 constitution:
-  reference: "docs/governance/JERRY_CONSTITUTION.md"
+  reference: "docs/governance/TOM_CONSTITUTION.md"
   principles_applied:                      # REQUIRED. Minimum: P-003, P-020, P-022.
     - "P-003: No Recursive Subagents (Hard)"
     - "P-020: User Authority (Hard)"

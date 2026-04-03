@@ -22,7 +22,7 @@ The CLI Adapter is a primary adapter that translates command-line interactions i
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### CLI Adapter Structure
 
@@ -383,7 +383,7 @@ from src.interface.cli.adapter import CLIAdapter
 
 def main() -> int:
     """CLI entry point."""
-    parser = argparse.ArgumentParser(description="Jerry Work Tracker")
+    parser = argparse.ArgumentParser(description="Tom Work Tracker")
     subparsers = parser.add_subparsers(dest="command")
 
     # create-task subcommand
@@ -510,13 +510,13 @@ def test_cli_adapter_handles_not_found():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: CLI adapter receives dispatchers via constructor injection.
+> **Tom Decision**: CLI adapter receives dispatchers via constructor injection.
 
-> **Jerry Decision**: Exit codes follow Unix convention (0=success, non-zero=error).
+> **Tom Decision**: Exit codes follow Unix convention (0=success, non-zero=error).
 
-> **Jerry Decision**: Domain exceptions are translated to user-friendly messages.
+> **Tom Decision**: Domain exceptions are translated to user-friendly messages.
 
 ---
 

@@ -59,7 +59,7 @@ src/
   bootstrap.py      # Composition root (H-07c)
 ```
 
-**Project workspace:** `projects/PROJ-{NNN}-{slug}/` with `PLAN.md`, `WORKTRACKER.md`, `.jerry/data/items/`, `work/`, `research/`, `synthesis/`, `decisions/`.
+**Project workspace:** `projects/PROJ-{NNN}-{slug}/` with `PLAN.md`, `WORKTRACKER.md`, `.tom/data/items/`, `work/`, `research/`, `synthesis/`, `decisions/`.
 
 ---
 

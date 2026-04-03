@@ -41,11 +41,11 @@ PURPOSE: Create the execution template for S-007 Constitutional AI Critique stra
 
 ## Summary
 
-Create the execution template for S-007 Constitutional AI Critique -- principle-by-principle review against `.context/rules/` and the Jerry constitution (JERRY_CONSTITUTION.md). Used in C2+ quality cycles per quality-enforcement.md, this strategy ensures deliverables comply with all HARD rules (H-01 through H-24) and constitutional principles.
+Create the execution template for S-007 Constitutional AI Critique -- principle-by-principle review against `.context/rules/` and the Jerry constitution (TOM_CONSTITUTION.md). Used in C2+ quality cycles per quality-enforcement.md, this strategy ensures deliverables comply with all HARD rules (H-01 through H-24) and constitutional principles.
 
 **Technical Scope:**
 - Extract S-007 methodology from research-15-adversarial-strategies.md and EPIC-002 designs
-- Map to `.context/rules/` files and `docs/governance/JERRY_CONSTITUTION.md` for principle inventory
+- Map to `.context/rules/` files and `docs/governance/TOM_CONSTITUTION.md` for principle inventory
 - Create a principle-by-principle review checklist covering all 24 HARD rules
 - Write template following the canonical TEMPLATE-FORMAT.md from EN-801
 - Define violation severity classification and remediation guidance
@@ -77,7 +77,7 @@ S-007 Constitutional AI Critique provides systematic principle-by-principle gove
 ## Technical Approach
 
 1. **Extract S-007 methodology** from research-15-adversarial-strategies.md, focusing on the Constitutional AI paradigm: defining principles, reviewing outputs against principles, classifying violations, and guiding revisions.
-2. **Map to `.context/rules/` and JERRY_CONSTITUTION.md** -- Build a comprehensive principle inventory from all HARD rules (H-01 through H-24), auto-escalation rules (AE-001 through AE-006), and constitutional governance principles.
+2. **Map to `.context/rules/` and TOM_CONSTITUTION.md** -- Build a comprehensive principle inventory from all HARD rules (H-01 through H-24), auto-escalation rules (AE-001 through AE-006), and constitutional governance principles.
 3. **Write template** following TEMPLATE-FORMAT.md from EN-801, with a principle-by-principle review checklist as the core of the Execution Protocol section.
 4. **Define violation classification** -- Categorize violations as blocking (must fix before acceptance), warning (should fix, may defer), or informational (noted for future consideration). Map violation types to remediation guidance.
 
@@ -190,7 +190,7 @@ Status: DONE | All tasks completed | Quality gate PASSED
 | depends_on | EN-801 | Must follow TEMPLATE-FORMAT.md canonical format |
 | depends_on | quality-enforcement.md | Source of H-01 through H-24 rules, H-18 requirement |
 | depends_on | .context/rules/ | Source of all HARD rule definitions |
-| depends_on | JERRY_CONSTITUTION.md | Source of constitutional governance principles |
+| depends_on | TOM_CONSTITUTION.md | Source of constitutional governance principles |
 | related_to | EN-803 | S-014 template provides scoring after S-007 review |
 | related_to | EN-804 | S-010 Self-Refine may include constitutional checks |
 

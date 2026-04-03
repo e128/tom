@@ -381,7 +381,7 @@ The SessionStart context establishes the auto-escalation rule:
 
 > **AUTO-ESCALATE:** Any change to `docs/governance/`, `.context/rules/`, or `.claude/rules/` is C3 or higher.
 
-**Note (v1.1.0 -- M-007 alignment):** `.claude/rules/` is a symlink to `.context/rules/` (the canonical source). Both paths are included in the auto-escalation rule to ensure coverage regardless of which path is used by the agent. EN-403 TASK-003 (PreToolUse) checks all four governance patterns: `docs/governance/JERRY_CONSTITUTION.md` (C4), `docs/governance/` (C3), `.claude/rules/` (C3), `.context/rules/` (C3). EN-404 TASK-003 mandatory escalation rules now align with this same set.
+**Note (v1.1.0 -- M-007 alignment):** `.claude/rules/` is a symlink to `.context/rules/` (the canonical source). Both paths are included in the auto-escalation rule to ensure coverage regardless of which path is used by the agent. EN-403 TASK-003 (PreToolUse) checks all four governance patterns: `docs/governance/TOM_CONSTITUTION.md` (C4), `docs/governance/` (C3), `.claude/rules/` (C3), `.context/rules/` (C3). EN-404 TASK-003 mandatory escalation rules now align with this same set.
 
 This rule is enforced at two layers:
 1. **L1 (SessionStart):** Claude is aware of the rule from session start

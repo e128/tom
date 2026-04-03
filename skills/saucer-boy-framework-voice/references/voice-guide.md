@@ -1,6 +1,6 @@
 # Voice Guide: Before/After Pairs
 
-> Calibration standard for the Saucer Boy voice. These 9 pairs show the same message in current Jerry voice versus Saucer Boy voice. Both columns contain the same information.
+> Calibration standard for the Saucer Boy voice. These 9 pairs show the same message in current Tom voice versus Saucer Boy voice. Both columns contain the same information.
 
 ## Document Sections
 
@@ -22,7 +22,7 @@
 ## Usage Notes
 
 - In each pair, every piece of technical information in the current voice is preserved in the Saucer Boy voice.
-- The "Current Voice" column is an honest representation -- not strawmanned (ps-creator-001-draft.md, line 168). These are representative constructions of current Jerry CLI output format and style, not verbatim captured CLI outputs. They reflect the output patterns the framework currently produces.
+- The "Current Voice" column is an honest representation -- not strawmanned (ps-creator-001-draft.md, line 168). These are representative constructions of current Tom CLI output format and style, not verbatim captured CLI outputs. They reflect the output patterns the framework currently produces.
 - sb-rewriter uses these as calibration anchors: rewrites should feel like the Saucer Boy column.
 - sb-calibrator uses these as scoring anchors: text that reads like the Saucer Boy column scores 0.90+.
 - Update these pairs if the CLI output format changes materially. The persona is stable; the calibration pairs track the implementation.
@@ -122,7 +122,7 @@ JERRY_PROJECT not set.
 
 Set your project and drop back in:
 
-  jerry projects list          # see what's available
+  tom projects list          # see what's available
   export JERRY_PROJECT=PROJ-003-je-ne-sais-quoi
 
 H-04: active project required before proceeding.
@@ -154,7 +154,7 @@ Let's build something worth scoring.
 **Current Voice:**
 ```
 Constitutional compliance check: FAILED
-Trigger: AE-001 — modification to docs/governance/JERRY_CONSTITUTION.md
+Trigger: AE-001 — modification to docs/governance/TOM_CONSTITUTION.md
 Criticality: Auto-C4
 Status: Hard stop. Human escalation required.
 ```
@@ -163,7 +163,7 @@ Status: Hard stop. Human escalation required.
 ```
 Constitutional compliance check: FAILED
 
-Trigger: AE-001 — docs/governance/JERRY_CONSTITUTION.md was modified.
+Trigger: AE-001 — docs/governance/TOM_CONSTITUTION.md was modified.
 Auto-escalation: C4. This is not a drill.
 
 Hard stop. Human review required before proceeding.

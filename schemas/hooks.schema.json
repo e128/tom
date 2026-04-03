@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jerry.dev/schemas/hooks.schema.json",
+  "$id": "https://tom.dev/schemas/hooks.schema.json",
   "title": "Claude Code Plugin Hooks Configuration",
   "description": "JSON Schema for hooks/hooks.json configuration files. Based on Claude Code plugin specification via Context7.",
   "type": "object",

@@ -2,24 +2,24 @@
 # Copyright (c) 2026 Adam Nowak
 
 """
-JerryDocument - Unified facade for Jerry markdown AST operations.
+TomDocument - Unified facade for Tom markdown AST operations.
 
 Provides a single entry point for all markdown parsing, querying, transforming,
-and rendering operations used throughout the Jerry Framework. Built on
+and rendering operations used throughout the Tom Framework. Built on
 markdown-it-py for parsing and mdformat for rendering.
 
-The Jerry frontmatter blockquote pattern (validated in R-01 PoC):
+The Tom frontmatter blockquote pattern (validated in R-01 PoC):
     > **Key:** value
 
 is accessible via query('blockquote') and text extraction from the parsed tree.
 
 References:
-    - ST-001: JerryDocument Facade
+    - ST-001: TomDocument Facade
     - R-01: markdown-it-py + mdformat PoC validation
     - H-07: Domain layer MUST NOT import application/infrastructure/interface layers
 
 Exports:
-    JerryDocument: Unified facade for markdown AST operations
+    TomDocument: Unified facade for markdown AST operations
 """
 
 from __future__ import annotations
@@ -34,16 +34,16 @@ from markdown_it.token import Token
 from markdown_it.tree import SyntaxTreeNode
 
 
-class JerryDocument:
+class TomDocument:
     """
-    Unified facade for Jerry markdown AST operations.
+    Unified facade for Tom markdown AST operations.
 
     Wraps markdown-it-py and mdformat to provide a single, consistent API for
     parsing, querying, transforming, and rendering markdown documents used in
-    the Jerry Framework (worktracker items, plans, knowledge files, etc.).
+    the Tom Framework (worktracker items, plans, knowledge files, etc.).
 
     Instances are immutable after construction. All mutation operations (such as
-    transform) return a new JerryDocument rather than modifying in place.
+    transform) return a new TomDocument rather than modifying in place.
 
     Attributes:
         source: The original markdown source text.
@@ -51,7 +51,7 @@ class JerryDocument:
         tokens: The flat token list produced by markdown-it-py.
 
     Examples:
-        >>> doc = JerryDocument.parse("# Hello\\n\\nSome text\\n")
+        >>> doc = TomDocument.parse("# Hello\\n\\nSome text\\n")
         >>> doc.query("heading")
         [<SyntaxTreeNode heading>]
         >>> doc.render()
@@ -67,9 +67,9 @@ class JerryDocument:
         tree: SyntaxTreeNode,
     ) -> None:
         """
-        Initialize a JerryDocument with pre-parsed components.
+        Initialize a TomDocument with pre-parsed components.
 
-        Prefer JerryDocument.parse() for constructing instances from raw source.
+        Prefer TomDocument.parse() for constructing instances from raw source.
 
         Args:
             source: The original markdown source text.
@@ -82,9 +82,9 @@ class JerryDocument:
         self._type_index: dict[str, list[SyntaxTreeNode]] | None = None
 
     @classmethod
-    def parse(cls, source: str) -> JerryDocument:
+    def parse(cls, source: str) -> TomDocument:
         """
-        Parse markdown source text into a JerryDocument.
+        Parse markdown source text into a TomDocument.
 
         Uses markdown-it-py in commonmark mode to tokenize and build an AST.
         The original source is preserved unchanged; rendering via render() may
@@ -94,10 +94,10 @@ class JerryDocument:
             source: Markdown source text to parse. May be empty.
 
         Returns:
-            A new JerryDocument containing the parsed AST and original source.
+            A new TomDocument containing the parsed AST and original source.
 
         Examples:
-            >>> doc = JerryDocument.parse("# Hello\\n")
+            >>> doc = TomDocument.parse("# Hello\\n")
             >>> doc.tree.type
             'root'
             >>> doc.source
@@ -119,7 +119,7 @@ class JerryDocument:
             Normalized markdown string. For empty source, returns an empty string.
 
         Examples:
-            >>> doc = JerryDocument.parse("# Hello\\n\\nSome text\\n")
+            >>> doc = TomDocument.parse("# Hello\\n\\nSome text\\n")
             >>> doc.render()
             '# Hello\\n\\nSome text\\n'
         """
@@ -133,7 +133,7 @@ class JerryDocument:
 
         Uses a lazily-built type index to avoid repeated full tree walks.
         The index is constructed on the first call and reused for subsequent
-        queries. This is safe because JerryDocument is immutable after
+        queries. This is safe because TomDocument is immutable after
         construction.
 
         Node types correspond to markdown-it-py SyntaxTreeNode type names
@@ -150,7 +150,7 @@ class JerryDocument:
             the document is empty.
 
         Examples:
-            >>> doc = JerryDocument.parse("# H1\\n\\n## H2\\n")
+            >>> doc = TomDocument.parse("# H1\\n\\n## H2\\n")
             >>> headings = doc.query("heading")
             >>> len(headings)
             2
@@ -176,9 +176,9 @@ class JerryDocument:
     def transform(
         self,
         visitor: Callable[[SyntaxTreeNode], SyntaxTreeNode | None],
-    ) -> JerryDocument:
+    ) -> TomDocument:
         """
-        Apply a visitor function to produce a new transformed JerryDocument.
+        Apply a visitor function to produce a new transformed TomDocument.
 
         Creates a deep copy of the token list and AST tree, then walks the copy
         applying the visitor to each non-root node. The visitor may mutate the
@@ -186,7 +186,7 @@ class JerryDocument:
         The resulting modified source is reconstructed from the original source
         lines with changed inline content substituted, then re-parsed.
 
-        This method is immutable: the original JerryDocument is never modified.
+        This method is immutable: the original TomDocument is never modified.
 
         Args:
             visitor: A callable that receives a SyntaxTreeNode and returns the
@@ -196,10 +196,10 @@ class JerryDocument:
                 (adding/removing nodes) are not supported.
 
         Returns:
-            A new JerryDocument built from the transformed source text.
+            A new TomDocument built from the transformed source text.
 
         Examples:
-            >>> doc = JerryDocument.parse("# Hello\\n")
+            >>> doc = TomDocument.parse("# Hello\\n")
             >>> def uppercaser(node):
             ...     if node.type == 'inline':
             ...         node.token.content = node.token.content.upper()
@@ -248,7 +248,7 @@ class JerryDocument:
                     result_lines[line_idx] = original_line.replace(orig_content, new_content, 1)
 
         modified_source = "\n".join(result_lines)
-        return JerryDocument.parse(modified_source)
+        return TomDocument.parse(modified_source)
 
     @property
     def source(self) -> str:

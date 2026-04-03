@@ -71,7 +71,7 @@ Systematic bottom-up enumeration of ALL failure modes per component/element.
 
 **Foundation:** FMEA originated in U.S. Military reliability engineering (MIL-P-1629, 1949) and was adopted by NASA for Apollo mission hardware analysis. The automotive industry standardized it via AIAG/VDA. FMEA's power lies in systematic bottom-up decomposition: every element is examined for every possible failure mode, ensuring nothing is missed through intuition alone.
 
-**Jerry Adaptation:** Generalized from hardware to software deliverables, designs, processes, and documents. "Components" become deliverable elements (sections, claims, decisions, interfaces). "Failure modes" become quality failures (incompleteness, inconsistency, ambiguity, missing evidence). RPN calculation prioritizes corrective action.
+**Tom Adaptation:** Generalized from hardware to software deliverables, designs, processes, and documents. "Components" become deliverable elements (sections, claims, decisions, interfaces). "Failure modes" become quality failures (incompleteness, inconsistency, ambiguity, missing evidence). RPN calculation prioritizes corrective action.
 
 ---
 
@@ -355,7 +355,7 @@ From quality-enforcement.md (MUST NOT be redefined):
 ### Example 1: C3 API Contract Design Review
 
 **Context:**
-- **Deliverable:** API contract specification for Jerry CLI plugin interface (defines how external plugins interact with the Jerry framework)
+- **Deliverable:** API contract specification for Tom CLI plugin interface (defines how external plugins interact with the Tom framework)
 - **Criticality Level:** C3 (Significant) -- >10 files affected, public API, >1 day to reverse
 - **Scenario:** S-003 Steelman applied (H-16), S-002 and S-004 completed; now S-012 FMEA decomposes into component failure modes
 

@@ -167,13 +167,13 @@ Append to `red-vuln-agent-tool-access.md` an enumeration of the 79 agent files (
 Iteration 5 created both entity files that were absent in Iterations 3 and 4. Direct file inspection confirms:
 
 **STORY-021** (`STORY-021-non-ux-disallowed-tools.md`):
-- User story: "As a Jerry framework maintainer, I want all non-UX worker agents to explicitly declare `disallowedTools: [Agent]`, So that P-003 single-level nesting is enforced via explicit deny (defense-in-depth) rather than implicit deny-by-omission"
+- User story: "As a Tom framework maintainer, I want all non-UX worker agents to explicitly declare `disallowedTools: [Agent]`, So that P-003 single-level nesting is enforced via explicit deny (defense-in-depth) rather than implicit deny-by-omission"
 - Acceptance criteria (4 items): all non-T5 workers have `disallowedTools: [Agent]`; grep verification passes; no T5 orchestrators accidentally receive disallowedTools; CI validation passes per STORY-022
 - Related items: STORY-013 M-007 (informed by), red-vuln F-003 (informed by), STORY-022 (related)
 - Effort: 3 (story points)
 
 **STORY-022** (`STORY-022-ci-task-agent-check.md`):
-- User story: "As a Jerry framework developer, I want the CI pipeline to automatically detect stale `Task` references and `Agent` tool presence in non-T5 agents, So that the Task->Agent rename regression cannot recur silently"
+- User story: "As a Tom framework developer, I want the CI pipeline to automatically detect stale `Task` references and `Agent` tool presence in non-T5 agents, So that the Task->Agent rename regression cannot recur silently"
 - Acceptance criteria (4 items): validate-agent-frontmatter.py warns on `Task` in disallowedTools; errors on `Agent` in non-T5 tools; CI runs on every PR touching agents; existing agents pass
 - Related items: STORY-013 M-007, red-vuln F-006, STORY-021
 - Effort: 2

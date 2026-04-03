@@ -67,7 +67,7 @@
 | Transcript | `/transcript` skill | Skill invocation |
 | Templates | `.context/templates/` | Directory pointer |
 | Knowledge | `docs/knowledge/` | Directory pointer |
-| Governance | `docs/governance/JERRY_CONSTITUTION.md` | File pointer |
+| Governance | `docs/governance/TOM_CONSTITUTION.md` | File pointer |
 
 **Key Annotation:**
 - `(A)` = Auto-loaded content
@@ -133,7 +133,7 @@
 **External References:**
 | Reference | Type | Purpose |
 |-----------|------|---------|
-| `docs/governance/JERRY_CONSTITUTION.md` | File | Full governance document |
+| `docs/governance/TOM_CONSTITUTION.md` | File | Full governance document |
 
 ---
 
@@ -185,7 +185,7 @@
 | `.claude/rules/` | Navigation | Coding standards (auto-loaded) |
 | `.context/templates/` | Navigation | Templates |
 | `docs/knowledge/` | Navigation | Knowledge base |
-| `docs/governance/JERRY_CONSTITUTION.md` | Navigation, Critical Constraints | Governance |
+| `docs/governance/TOM_CONSTITUTION.md` | Navigation, Critical Constraints | Governance |
 | `scripts/session_start_hook.py` | Active Project | Hook implementation |
 | `projects/README.md` | Active Project | Project registry |
 | `skills/` | Quick Reference | Skill implementations |
@@ -233,7 +233,7 @@
 | Mandatory skill usage details | Individual skill files |
 | Full CLI documentation | CLI help / skill |
 | Agent registry | `AGENTS.md` |
-| Full governance | `docs/governance/JERRY_CONSTITUTION.md` |
+| Full governance | `docs/governance/TOM_CONSTITUTION.md` |
 | Architecture details | `/architecture` skill, `.claude/rules/` |
 | Coding standards | `.claude/rules/` (auto-loaded) |
 

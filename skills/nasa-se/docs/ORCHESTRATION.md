@@ -19,7 +19,7 @@
 ## Overview
 
 This document defines orchestration patterns for coordinating the 9 NASA Systems
-Engineering (NSE) agents within the Jerry Framework. Orchestration ensures proper
+Engineering (NSE) agents within the Tom Framework. Orchestration ensures proper
 sequencing, data flow, and state management across multi-agent workflows.
 
 **Key Principles:**
@@ -742,7 +742,7 @@ Agent states are persisted to:
 
 ```
 projects/{PROJECT}/
-└── .jerry/
+└── .tom/
     └── nse-state/
         ├── nse-requirements-state.json
         ├── nse-verification-state.json
@@ -808,7 +808,7 @@ function validateSession(state_file, current_session_id):
 **State Backup Location:**
 ```
 projects/{PROJECT}/
-└── .jerry/
+└── .tom/
     └── nse-state/
         ├── nse-requirements-state.json
         └── backups/
@@ -922,7 +922,7 @@ Summary: REQ-042 change impacts:
 
 ---
 
-## Integration with Jerry Framework
+## Integration with Tom Framework
 
 ### Work Tracker Integration
 
@@ -963,7 +963,7 @@ All orchestrated workflows MUST comply with:
 
 1. NPR 7123.1D - NASA Systems Engineering Processes and Requirements
 2. NASA/SP-2016-6105 Rev2 - SE Handbook
-3. Jerry Framework Constitution v1.0
+3. Tom Framework Constitution v1.0
 4. NSE Skill Definition (SKILL.md)
 
 ---

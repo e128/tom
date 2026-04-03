@@ -8,7 +8,7 @@
 
 ## Overview
 
-DomainEvent is the base class for all domain events in Jerry. Domain events represent facts that have happened in the domain - they are immutable records of past occurrences.
+DomainEvent is the base class for all domain events in Tom. Domain events represent facts that have happened in the domain - they are immutable records of past occurrences.
 
 ---
 
@@ -22,7 +22,7 @@ DomainEvent is the base class for all domain events in Jerry. Domain events repr
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ```python
 # File: src/shared_kernel/domain_event.py
@@ -277,13 +277,13 @@ def test_domain_event_deserializes_from_dict():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Internal domain events use DomainEvent base class. CloudEvents format (PAT-EVT-002) is only used for external integration events.
+> **Tom Decision**: Internal domain events use DomainEvent base class. CloudEvents format (PAT-EVT-002) is only used for external integration events.
 
-> **Jerry Decision**: Events are named as `{Entity}{PastVerb}` - e.g., `WorkItemCreated`, `StatusChanged`. No "Was" prefix.
+> **Tom Decision**: Events are named as `{Entity}{PastVerb}` - e.g., `WorkItemCreated`, `StatusChanged`. No "Was" prefix.
 
-> **Jerry Decision**: All events include `event_id`, `timestamp`, and `version` for ordering and idempotency.
+> **Tom Decision**: All events include `event_id`, `timestamp`, and `version` for ordering and idempotency.
 
 ---
 

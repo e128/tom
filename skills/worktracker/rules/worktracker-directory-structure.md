@@ -22,10 +22,10 @@ Worktracker supports two alternative placement patterns. Choose ONE based on you
 
 ### Project-based Folder Structure (ONE-OF)
 
-Used for repositories like Jerry that require **project-based** work tracking hierarchy. Multiple projects can exist in the same repository.
+Used for repositories like Tom that require **project-based** work tracking hierarchy. Multiple projects can exist in the same repository.
 
 ```
-{RepositoryRoot}/                               # Root of the Repository (e.g. Jerry, Forge, etc.)
+{RepositoryRoot}/                               # Root of the Repository (e.g. Tom, Forge, etc.)
 └── projects/                                   # Projects Folder
     └── {ProjectId}/                            # e.g. PROJ-005-plugin-bugs
         ├── PLAN.md                             # Initial Project Plan and Overview

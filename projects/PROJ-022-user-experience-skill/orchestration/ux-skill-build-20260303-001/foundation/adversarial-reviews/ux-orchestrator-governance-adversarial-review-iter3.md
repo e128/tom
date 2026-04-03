@@ -468,7 +468,7 @@ Minor reduction: MNR-001 (hardcoded count) creates a maintenance action that is 
 
 Traceability elements present:
 - Each `forbidden_actions` entry cites a named constitutional principle.
-- `constitution.reference: docs/governance/JERRY_CONSTITUTION.md` is explicit.
+- `constitution.reference: docs/governance/TOM_CONSTITUTION.md` is explicit.
 - `reasoning_effort` rationale comment cites ET-M-001.
 - T5 justification cites P-003.
 - `session_context` handoff validation cites `docs/schemas/handoff-v2.schema.json`.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
-"""Stop hook gate wrapper. Delegates to jerry hooks stop.
+"""Stop hook gate wrapper. Delegates to tom hooks stop.
 
 Blocks Claude from stopping at EMERGENCY tier to force checkpoint.
 Timeout budget: wrapper subprocess=4s < hooks.json=5s (1s buffer).
@@ -15,7 +15,7 @@ from pathlib import Path
 root = os.environ.get("CLAUDE_PLUGIN_ROOT", str(Path(__file__).resolve().parent.parent))
 try:
     result = subprocess.run(
-        ["uv", "run", "--directory", root, "jerry", "--json", "hooks", "stop"],
+        ["uv", "run", "--directory", root, "tom", "--json", "hooks", "stop"],
         input=sys.stdin.buffer.read(),
         capture_output=True,
         timeout=4,

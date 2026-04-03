@@ -22,7 +22,7 @@ The Event Store is a secondary port that defines the contract for event persiste
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Port Definition
 
@@ -356,13 +356,13 @@ def test_event_store_detects_concurrency_conflict():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Stream IDs follow format `{AggregateType}-{AggregateId}` (e.g., `WorkItem-WORK-001`).
+> **Tom Decision**: Stream IDs follow format `{AggregateType}-{AggregateId}` (e.g., `WorkItem-WORK-001`).
 
-> **Jerry Decision**: In-memory event store for testing; file-based JSON for development; real event store for production (future).
+> **Tom Decision**: In-memory event store for testing; file-based JSON for development; real event store for production (future).
 
-> **Jerry Decision**: Soft delete (tombstone) for streams rather than hard delete to maintain audit trail.
+> **Tom Decision**: Soft delete (tombstone) for streams rather than hard delete to maintain audit trail.
 
 ---
 

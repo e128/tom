@@ -25,8 +25,8 @@ activation-keywords:
 # Inclusive Design Sub-Skill
 
 > **Version:** 1.1.0
-> **Framework:** Jerry User-Experience -- Inclusive Design
-> **Constitutional Compliance:** Jerry Constitution v1.0
+> **Framework:** Tom User-Experience -- Inclusive Design
+> **Constitutional Compliance:** Tom Constitution v1.0
 > **Parent Skill:** `/user-experience` (`skills/user-experience/SKILL.md`)
 > **Wave:** 3 (Design System)
 > **Project:** PROJ-022 User Experience Skill | GitHub Issue [#138](https://github.com/geekatron/jerry/issues/138)
@@ -192,7 +192,7 @@ The `ux-orchestrator` invokes the agent via the Agent tool:
 ```python
 Agent(
     description="ux-inclusive-evaluator: WCAG 2.2 accessibility audit of checkout flow",
-    subagent_type="jerry:ux-inclusive-evaluator",
+    subagent_type="tom:ux-inclusive-evaluator",
     prompt="""
 ## UX CONTEXT (REQUIRED)
 - **Engagement ID:** UX-0001
@@ -535,7 +535,7 @@ This sub-skill receives context from other sub-skills when invoked as part of a 
 
 ### Downstream Handoffs
 
-This sub-skill produces artifacts that feed into cross-framework synthesis via the Jerry handoff protocol (`docs/schemas/handoff-v2.schema.json`).
+This sub-skill produces artifacts that feed into cross-framework synthesis via the Tom handoff protocol (`docs/schemas/handoff-v2.schema.json`).
 
 | To Sub-Skill/Consumer | Handoff Artifact | Key Fields | Trigger |
 |-----------------------|-----------------|-----------|---------|
@@ -581,7 +581,7 @@ Inclusive Design outputs include synthesis hypotheses that carry confidence clas
 
 ## Constitutional Compliance
 
-All agents in this sub-skill adhere to the **Jerry Constitution v1.0**:
+All agents in this sub-skill adhere to the **Tom Constitution v1.0**:
 
 | Principle | Requirement | Consequence of Violation |
 |-----------|-------------|-------------------------|
@@ -703,7 +703,7 @@ This sub-skill follows a parent-routed registration model. Sub-skills are not in
 
 *Sub-Skill Version: 1.1.0*
 *Parent Skill: `/user-experience` v1.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Wave: 3 (Design System)*
 *SSOT: `skills/user-experience/SKILL.md`*
 *Project: PROJ-022 User Experience Skill*

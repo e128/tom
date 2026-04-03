@@ -1,10 +1,10 @@
-# Jerry Constitution Behavioral Tests
+# Tom Constitution Behavioral Tests
 
 > **Document ID:** TEST-CONST-001
 > **Version:** 1.0
 > **Status:** DRAFT
 > **Created:** 2026-01-08
-> **Purpose:** Golden dataset for validating Jerry Constitution principles (18 scenarios)
+> **Purpose:** Golden dataset for validating Tom Constitution principles (18 scenarios)
 
 ---
 

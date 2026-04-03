@@ -608,7 +608,7 @@ Event:    Feb 21, 2026 @ Shack15, SF
 | `.context/templates/adversarial/` | All 10 strategy templates |
 | `.context/rules/quality-enforcement.md` | Quality gate constants (SSOT) |
 | `projects/PROJ-001-oss-release/work/EPIC-001-oss-release/FEAT-023-showcase-video/EN-945-video-script/` | Prior script work (reference) |
-| `docs/governance/JERRY_CONSTITUTION.md` | Constitutional compliance reference |
+| `docs/governance/TOM_CONSTITUTION.md` | Constitutional compliance reference |
 
 ---
 

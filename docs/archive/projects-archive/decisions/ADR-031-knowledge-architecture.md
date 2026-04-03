@@ -664,7 +664,7 @@ This decision is supported by **unanimous consensus across 5 independent researc
   - Netflix UDA pattern explanation
   - Serializer implementation checklist
 
-- Constitutional amendments: Add P-030 (Schema Evolution Governance), P-031 (Supernode Prevention), P-032 (Phase Gate Compliance) to `docs/governance/JERRY_CONSTITUTION.md`
+- Constitutional amendments: Add P-030 (Schema Evolution Governance), P-031 (Supernode Prevention), P-032 (Phase Gate Compliance) to `docs/governance/TOM_CONSTITUTION.md`
 
 **Success Criteria:**
 - All performance benchmarks meet targets (P95 < 50ms hot path)
@@ -933,7 +933,7 @@ Phase 4 migration triggered ONLY if:
 ### Jerry Documentation
 
 - **CLAUDE.md:** Jerry framework root context, architecture overview
-- **docs/governance/JERRY_CONSTITUTION.md:** Constitutional principles for agent governance
+- **docs/governance/TOM_CONSTITUTION.md:** Constitutional principles for agent governance
 - **docs/knowledge/:** Accumulated knowledge hierarchy
 - **docs/experience/:** Lessons learned (LES items)
 - **docs/wisdom/:** Distilled wisdom (WIS items)

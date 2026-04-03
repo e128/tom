@@ -15,8 +15,8 @@ info:
     reliable agent chaining across skill boundaries with proper context
     translation and validation.
   contact:
-    name: Jerry Framework
-    url: https://github.com/jerry-framework
+    name: Tom Framework
+    url: https://github.com/tom-framework
 
 # =============================================================================
 # SKILL FAMILY DEFINITIONS

@@ -164,7 +164,7 @@ Set `Status: completed` and populate `Completed: 2026-03-29T00:00:00Z` in the st
 All primary consistency signals are intact and unchanged from iteration 3:
 - Script logic, 6 tests, CI step, `pytest.ini`, and `pyproject.toml` are all mutually consistent.
 - Story entity ACs `[x]`, Implementation Details, and Related Items are consistent with the implementation.
-- The two CI steps are complementary: line 210 (schema validation via `jerry agents validate-frontmatter`) and line 213 (P-003 semantic check via script) address different aspects of validation without contradiction.
+- The two CI steps are complementary: line 210 (schema validation via `tom agents validate-frontmatter`) and line 213 (P-003 semantic check via script) address different aspects of validation without contradiction.
 - The sweep artifact confirms 89/89 agents pass, consistent with AC-3.
 
 **Gaps:**
@@ -272,7 +272,7 @@ Set `Status: completed` and `Completed: 2026-03-29T00:00:00Z` in story frontmatt
 
 | Priority | Dimension | Current | Target | Recommendation |
 |----------|-----------|---------|--------|----------------|
-| 1 | Internal Consistency | 0.93 | 0.95 | Add one comment at line 73 of `validate-agent-frontmatter.py` cross-referencing `_AGENT_KNOWN_FIELDS` in the CLI handler as the upstream SSOT for recognized fields, e.g.: `# NOTE: keep in sync with _AGENT_KNOWN_FIELDS in src/jerry/interface/cli/agents.py (or equivalent CLI handler path)`. This closes the four-iteration-old divergence with a single line and lifts Internal Consistency to 0.95, raising the composite to approximately 0.9475. |
+| 1 | Internal Consistency | 0.93 | 0.95 | Add one comment at line 73 of `validate-agent-frontmatter.py` cross-referencing `_AGENT_KNOWN_FIELDS` in the CLI handler as the upstream SSOT for recognized fields, e.g.: `# NOTE: keep in sync with _AGENT_KNOWN_FIELDS in src/interface/cli/agents.py (or equivalent CLI handler path)`. This closes the four-iteration-old divergence with a single line and lifts Internal Consistency to 0.95, raising the composite to approximately 0.9475. |
 | 2 | Completeness + Traceability | 0.94, 0.95 | 0.95, 0.96 | Set `Status: completed` and `Completed: 2026-03-29T00:00:00Z` in the STORY-022 entity frontmatter if the work is considered done. Minor but closes the last administrative traceability gap. |
 | 3 | Methodological Rigor | 0.95 | 0.96 | Resolve FINDING-007: extend the `yaml.load` grep in `.github/workflows/ci.yml` from `src/` to `src/ scripts/`. One-line change. Defense-in-depth improvement. |
 

@@ -5,7 +5,7 @@
 **Criticality:** C2 (Standard)
 **Date:** 2026-02-17
 **Reviewer:** adv-executor (S-007)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md, architecture-standards.md, python-environment.md, project-workflow.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.1, quality-enforcement.md v1.3.0, markdown-navigation-standards.md, architecture-standards.md, python-environment.md, project-workflow.md
 
 ## Document Sections
 
@@ -37,7 +37,7 @@
 
 | Source | Identifier | Content |
 |--------|------------|---------|
-| Jerry Constitution | `JERRY_CONSTITUTION.md` v1.1 | P-001 through P-043 (17 principles across Articles I-IV.5) |
+| Jerry Constitution | `TOM_CONSTITUTION.md` v1.1 | P-001 through P-043 (17 principles across Articles I-IV.5) |
 | Quality Enforcement SSOT | `quality-enforcement.md` v1.3.0 | H-01 through H-24 (24 HARD rules), tier vocabulary, auto-escalation rules AE-001 through AE-006, scoring dimensions |
 | Markdown Navigation | `markdown-navigation-standards.md` | H-23, H-24, NAV-001 through NAV-006 |
 | Architecture Standards | `architecture-standards.md` | H-07 through H-10, naming conventions |
@@ -58,7 +58,7 @@ The QG-1 composite is a **multi-artifact deliverable** consisting of:
 
 | Rule | Condition | Triggered? | Rationale |
 |------|-----------|------------|-----------|
-| AE-001 | Touches `JERRY_CONSTITUTION.md` | NO | Constitution is included in nav as a read-only reference; the file itself is not modified |
+| AE-001 | Touches `TOM_CONSTITUTION.md` | NO | Constitution is included in nav as a read-only reference; the file itself is not modified |
 | AE-002 | Touches `.context/rules/` or `.claude/rules/` | NO | No rule files are modified or created |
 | AE-003 | New or modified ADR | NO | No ADR files involved |
 | AE-004 | Modifies baselined ADR | NO | N/A |

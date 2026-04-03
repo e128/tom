@@ -45,7 +45,7 @@ The following are in scope for security reports:
 
 ## Security Best Practices for Users
 
-- Keep your Jerry installation up to date
+- Keep your Tom installation up to date
 - Review hook scripts before enabling them
-- Do not commit `.env` files or credentials to repositories using Jerry
+- Do not commit `.env` files or credentials to repositories using Tom
 - Use environment variables for sensitive configuration

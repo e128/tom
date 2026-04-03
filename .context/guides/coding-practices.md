@@ -247,7 +247,7 @@ class IRepository(Protocol[TAggregate, TId]):
 
 ### Google-Style Format
 
-**Jerry standard**: Google-style docstrings with Args, Returns, Raises sections.
+**Tom standard**: Google-style docstrings with Args, Returns, Raises sections.
 
 #### Function Docstring
 
@@ -444,7 +444,7 @@ from ...domain.aggregates.work_item import WorkItem  # Hard to follow
 - Within the same package (optional, not required)
 - Example: `from .value_objects import Priority` (within domain package)
 
-**Jerry preference**: Absolute imports for clarity.
+**Tom preference**: Absolute imports for clarity.
 
 ---
 
@@ -769,7 +769,7 @@ class IRepository(Protocol):
 
 ## Evidence
 
-> Verified references to actual Jerry codebase files demonstrating the patterns in this guide.
+> Verified references to actual Tom codebase files demonstrating the patterns in this guide.
 
 ### Type Hints (H-11) -- Real Examples
 

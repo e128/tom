@@ -187,7 +187,7 @@ The `<purpose>` section explicitly locates this agent within the wave structure:
 
 The `<guardrails>` section cites specific standards codes: `(H-34b, AR-012)`, `(SR-002)`, `(SR-009)` after each guardrail block. This standard-to-implementation traceability is high quality.
 
-The governance YAML `constitution.reference` correctly points to `docs/governance/JERRY_CONSTITUTION.md`.
+The governance YAML `constitution.reference` correctly points to `docs/governance/TOM_CONSTITUTION.md`.
 
 **Gaps:**
 

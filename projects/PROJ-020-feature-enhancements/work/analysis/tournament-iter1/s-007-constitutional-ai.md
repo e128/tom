@@ -270,20 +270,20 @@ For transparency, the following principles were evaluated and their applicabilit
 
 | Principle | Source | Tier | Applicable | Rationale |
 |-----------|--------|------|------------|-----------|
-| P-001: Truth/Accuracy | JERRY_CONSTITUTION.md | SOFT | Yes | Document makes factual claims about frameworks, scoring, and capabilities |
-| P-002: File Persistence | JERRY_CONSTITUTION.md | MEDIUM | Yes (meta) | Document is itself a persisted analysis artifact; compliance confirmed |
-| P-003: No Recursive Subagents | JERRY_CONSTITUTION.md | HARD | No | Analysis document; not an agent definition |
-| P-004: Explicit Provenance | JERRY_CONSTITUTION.md | MEDIUM | Yes | Document makes decisions that require source documentation |
-| P-005: Graceful Degradation | JERRY_CONSTITUTION.md | SOFT | Yes | Several degraded-mode behaviors documented for sub-skills |
-| P-010: Task Tracking Integrity | JERRY_CONSTITUTION.md | MEDIUM | Partial | Document references worktracker entities but compliance depends on worktracker state |
-| P-011: Evidence-Based Decisions | JERRY_CONSTITUTION.md | MEDIUM | Yes | Framework selection claims require evidence backing |
-| P-012: Scope Discipline | JERRY_CONSTITUTION.md | SOFT | Yes | V2 content extends beyond stated analysis scope |
-| P-020: User Authority | JERRY_CONSTITUTION.md | HARD | Yes | Document surfaces decisions requiring user confirmation (CC-001, CC-002 preamble notices) |
-| P-021: Transparency of Limitations | JERRY_CONSTITUTION.md | MEDIUM | Yes | AI scoring limitations and single-rater bias require disclosure |
-| P-022: No Deception | JERRY_CONSTITUTION.md | HARD | Yes | Capability claims for unbuilt sub-skills must be clearly labeled |
-| P-030: Clear Handoffs | JERRY_CONSTITUTION.md | MEDIUM | Partial | Not directly applicable as analysis document |
-| P-031: Respect Agent Boundaries | JERRY_CONSTITUTION.md | SOFT | No | Not an agent behavior document |
-| P-040-P-043: NASA SE Principles | JERRY_CONSTITUTION.md | MEDIUM | No | NSE domain not applicable to UX analysis |
+| P-001: Truth/Accuracy | TOM_CONSTITUTION.md | SOFT | Yes | Document makes factual claims about frameworks, scoring, and capabilities |
+| P-002: File Persistence | TOM_CONSTITUTION.md | MEDIUM | Yes (meta) | Document is itself a persisted analysis artifact; compliance confirmed |
+| P-003: No Recursive Subagents | TOM_CONSTITUTION.md | HARD | No | Analysis document; not an agent definition |
+| P-004: Explicit Provenance | TOM_CONSTITUTION.md | MEDIUM | Yes | Document makes decisions that require source documentation |
+| P-005: Graceful Degradation | TOM_CONSTITUTION.md | SOFT | Yes | Several degraded-mode behaviors documented for sub-skills |
+| P-010: Task Tracking Integrity | TOM_CONSTITUTION.md | MEDIUM | Partial | Document references worktracker entities but compliance depends on worktracker state |
+| P-011: Evidence-Based Decisions | TOM_CONSTITUTION.md | MEDIUM | Yes | Framework selection claims require evidence backing |
+| P-012: Scope Discipline | TOM_CONSTITUTION.md | SOFT | Yes | V2 content extends beyond stated analysis scope |
+| P-020: User Authority | TOM_CONSTITUTION.md | HARD | Yes | Document surfaces decisions requiring user confirmation (CC-001, CC-002 preamble notices) |
+| P-021: Transparency of Limitations | TOM_CONSTITUTION.md | MEDIUM | Yes | AI scoring limitations and single-rater bias require disclosure |
+| P-022: No Deception | TOM_CONSTITUTION.md | HARD | Yes | Capability claims for unbuilt sub-skills must be clearly labeled |
+| P-030: Clear Handoffs | TOM_CONSTITUTION.md | MEDIUM | Partial | Not directly applicable as analysis document |
+| P-031: Respect Agent Boundaries | TOM_CONSTITUTION.md | SOFT | No | Not an agent behavior document |
+| P-040-P-043: NASA SE Principles | TOM_CONSTITUTION.md | MEDIUM | No | NSE domain not applicable to UX analysis |
 | H-23: Navigation Table Required | markdown-navigation-standards.md | HARD | Yes | Document > 30 lines; navigation table present but incomplete |
 | H-31: Clarify When Ambiguous | quality-enforcement.md | HARD | Yes | Analyst-assumed ceiling requires user confirmation |
 

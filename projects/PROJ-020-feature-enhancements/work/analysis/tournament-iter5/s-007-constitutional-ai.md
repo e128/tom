@@ -5,7 +5,7 @@
 **Criticality:** C4
 **Date:** 2026-03-03
 **Reviewer:** adv-executor (S-007 execution)
-**Constitutional Context:** JERRY_CONSTITUTION.md v1.0 (P-001 through P-043); quality-enforcement.md HARD Rule Index (H-01 through H-36); markdown-navigation-standards.md
+**Constitutional Context:** TOM_CONSTITUTION.md v1.0 (P-001 through P-043); quality-enforcement.md HARD Rule Index (H-01 through H-36); markdown-navigation-standards.md
 
 ---
 
@@ -21,14 +21,14 @@ PARTIAL compliance with strong positive trajectory from prior iterations. This i
 
 | Principle | Tier | Source | Applicable? | Rationale |
 |-----------|------|--------|-------------|-----------|
-| P-001 Truth/Accuracy | SOFT (Advisory) | JERRY_CONSTITUTION.md Article I | YES | Analysis makes factual claims about frameworks, scores, and evidence |
-| P-002 File Persistence | MEDIUM (Hard Requirement) | JERRY_CONSTITUTION.md Article I | YES | Deliverable is itself a persisted output; mandated worktracker entities not yet in filesystem |
-| P-003 No Recursive Subagents | HARD | JERRY_CONSTITUTION.md Article I | NO | This is a document deliverable; P-003 governs agent behavior, not document content |
-| P-004 Explicit Provenance | MEDIUM (Soft enforcement) | JERRY_CONSTITUTION.md Article I | YES | All scoring decisions and citations must be traceable to sources |
-| P-011 Evidence-Based Decisions | MEDIUM (Soft) | JERRY_CONSTITUTION.md Article II | YES | Framework selection is a decision requiring evidence |
-| P-020 User Authority | HARD | JERRY_CONSTITUTION.md Article III | YES | CC-001/CC-002 strategic notices require user confirmation before implementation proceeds |
-| P-021 Transparency of Limitations | MEDIUM (Soft) | JERRY_CONSTITUTION.md Article III | YES | Methodology limitations, uncertainty bounds, AI synthesis risks must be disclosed |
-| P-022 No Deception | HARD | JERRY_CONSTITUTION.md Article III | YES | Capability claims, score certainty, and implementation status must be accurate |
+| P-001 Truth/Accuracy | SOFT (Advisory) | TOM_CONSTITUTION.md Article I | YES | Analysis makes factual claims about frameworks, scores, and evidence |
+| P-002 File Persistence | MEDIUM (Hard Requirement) | TOM_CONSTITUTION.md Article I | YES | Deliverable is itself a persisted output; mandated worktracker entities not yet in filesystem |
+| P-003 No Recursive Subagents | HARD | TOM_CONSTITUTION.md Article I | NO | This is a document deliverable; P-003 governs agent behavior, not document content |
+| P-004 Explicit Provenance | MEDIUM (Soft enforcement) | TOM_CONSTITUTION.md Article I | YES | All scoring decisions and citations must be traceable to sources |
+| P-011 Evidence-Based Decisions | MEDIUM (Soft) | TOM_CONSTITUTION.md Article II | YES | Framework selection is a decision requiring evidence |
+| P-020 User Authority | HARD | TOM_CONSTITUTION.md Article III | YES | CC-001/CC-002 strategic notices require user confirmation before implementation proceeds |
+| P-021 Transparency of Limitations | MEDIUM (Soft) | TOM_CONSTITUTION.md Article III | YES | Methodology limitations, uncertainty bounds, AI synthesis risks must be disclosed |
+| P-022 No Deception | HARD | TOM_CONSTITUTION.md Article III | YES | Capability claims, score certainty, and implementation status must be accurate |
 | H-23 Markdown Navigation | HARD | markdown-navigation-standards.md | YES | Document > 30 lines; navigation table REQUIRED |
 | H-31 Clarify Before Acting | HARD | quality-enforcement.md | YES | CC-001/CC-002 notices surface decisions requiring user confirmation before implementation |
 

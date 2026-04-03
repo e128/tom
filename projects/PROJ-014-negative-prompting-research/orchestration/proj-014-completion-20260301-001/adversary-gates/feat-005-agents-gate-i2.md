@@ -173,7 +173,7 @@ Strengths:
 
 Strengths:
 - **SSOT citations verified:** pe-builder references `.context/rules/prompt-templates.md`, `.context/rules/prompt-quality.md`, `.context/rules/mandatory-skill-usage.md` -- all confirmed real files in the repository.
-- **pe-constraint-gen references:** `skills/prompt-engineering/rules/npt-pattern-reference.md` (exists per Glob results), `docs/governance/JERRY_CONSTITUTION.md` (standard path).
+- **pe-constraint-gen references:** `skills/prompt-engineering/rules/npt-pattern-reference.md` (exists per Glob results), `docs/governance/TOM_CONSTITUTION.md` (standard path).
 - **pe-scorer rubric source:** Explicitly cites `.context/rules/prompt-quality.md` (The Quality Rubric section) as SSOT. Rubric content verified accurate against loaded context.
 - **Schema validation header:** All 3 governance YAMLs cite `docs/schemas/agent-governance-v1.schema.json` (confirmed to exist and read successfully).
 - **Model selection rationale (i1 finding #3 resolved):** AD-M-009 comments in all 3 governance YAMLs reference agent-development-standards.md Cognitive Mode Taxonomy section by name. The rationale is traceable to a specific standards document.
@@ -223,7 +223,7 @@ No significant actionability gaps remain. All i1 actionability findings are reso
 Strengths:
 - **Schema traceability:** All 3 governance YAMLs: `# Validated by: docs/schemas/agent-governance-v1.schema.json` with full path.
 - **Bidirectional file cross-reference:** `# Runtime config: {agent}.md` in each YAML; `*SSOT: ....*` in each `.md` footer.
-- **Constitution path:** `constitution.reference: docs/governance/JERRY_CONSTITUTION.md` in all 3.
+- **Constitution path:** `constitution.reference: docs/governance/TOM_CONSTITUTION.md` in all 3.
 - **Enforcement tier traceability (i1 finding #2 resolved):** `enforcement: { tier: hard, escalation_path: quality-gate }` in all 3 YAMLs. Quality tier is now machine-readable.
 - **PROJ-014 document path (i1 finding #7 resolved):** Full path in pe-constraint-gen.governance.yaml: `projects/PROJ-014-negative-prompting-research/orchestration/neg-prompting-20260227-001/phase-6/final-synthesis.md`.
 - **Principle traceability:** P-003, P-020, P-022 (and P-002, P-004, P-011) are all traceable to constitutional principles.

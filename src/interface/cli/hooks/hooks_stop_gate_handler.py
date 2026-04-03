@@ -4,7 +4,7 @@
 """
 HooksStopGateHandler - CLI handler for the Stop hook gate.
 
-Reads the cross-invocation state file written by ``jerry context estimate``
+Reads the cross-invocation state file written by ``tom context estimate``
 (status line) and blocks Claude from stopping at EMERGENCY tier. At all
 other tiers (including when the state file is unavailable), allows stop.
 

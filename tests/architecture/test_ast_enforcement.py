@@ -210,17 +210,17 @@ class TestH31RuleRegistration:
     def test_l2_reinject_when_checked_then_rank9_references_ast_commands(
         self, quality_enforcement_content: str
     ) -> None:
-        """L2-REINJECT rank=10 must reference jerry ast CLI commands within the same directive."""
+        """L2-REINJECT rank=10 must reference tom ast CLI commands within the same directive."""
         # Arrange — match within a single HTML comment to ensure both CLI commands
         # are in the same L2-REINJECT directive, not scattered across separate markers.
         # EN-002 updated from Python function names to CLI commands:
-        # "jerry ast frontmatter" and "jerry ast validate"
-        pattern = r"<!--[^>]*rank=10[^>]*jerry ast frontmatter[^>]*jerry ast validate[^>]*-->"
+        # "tom ast frontmatter" and "tom ast validate"
+        pattern = r"<!--[^>]*rank=10[^>]*tom ast frontmatter[^>]*tom ast validate[^>]*-->"
 
         # Act/Assert
         assert re.search(pattern, quality_enforcement_content, re.DOTALL), (
-            "L2-REINJECT rank=10 does not reference 'jerry ast frontmatter' and "
-            "'jerry ast validate' within the same HTML comment directive"
+            "L2-REINJECT rank=10 does not reference 'tom ast frontmatter' and "
+            "'tom ast validate' within the same HTML comment directive"
         )
 
     def test_l2_reinject_when_checked_then_rank9_content_is_substantive(
@@ -392,7 +392,7 @@ class TestWorktrackerAgentLanguage:
 
 
 class TestWorktrackerAgentPluginRoot:
-    """Tests for jerry ast CLI pattern in wt-* agent invocations."""
+    """Tests for tom ast CLI pattern in wt-* agent invocations."""
 
     @pytest.mark.parametrize("agent_file", EXPECTED_WT_AGENT_FILES)
     def test_agent_when_checked_then_no_python_c_pattern(
@@ -405,20 +405,20 @@ class TestWorktrackerAgentPluginRoot:
         # Act/Assert
         assert "python -c" not in content, (
             f"{agent_file} still contains 'python -c' invocations — "
-            f"should use 'jerry ast' CLI commands instead"
+            f"should use 'tom ast' CLI commands instead"
         )
 
     @pytest.mark.parametrize("agent_file", EXPECTED_WT_AGENT_FILES)
-    def test_agent_when_checked_then_uses_jerry_ast_pattern(
+    def test_agent_when_checked_then_uses_tom_ast_pattern(
         self, wt_agents_dir: Path, agent_file: str
     ) -> None:
-        """Each agent must use 'jerry ast' CLI commands."""
+        """Each agent must use 'tom ast' CLI commands."""
         # Arrange
         content = (wt_agents_dir / agent_file).read_text()
 
         # Act/Assert
-        assert "jerry ast" in content, (
-            f"{agent_file} does not contain 'jerry ast' CLI command invocations"
+        assert "tom ast" in content, (
+            f"{agent_file} does not contain 'tom ast' CLI command invocations"
         )
 
     @pytest.mark.parametrize("agent_file", EXPECTED_WT_AGENT_FILES)
@@ -521,7 +521,7 @@ class TestAstSkillRegistration:
         # Act/Assert
         assert not ast_ops.exists(), (
             "skills/ast/scripts/ast_ops.py still exists — BUG-002 requires deletion; "
-            "agents should use 'jerry ast' CLI commands instead"
+            "agents should use 'tom ast' CLI commands instead"
         )
 
 
@@ -595,19 +595,19 @@ class TestAgentsMdEnforcement:
 
 
 class TestWorktrackerAgentAstExamples:
-    """Tests for jerry ast CLI command references in agent code examples."""
+    """Tests for tom ast CLI command references in agent code examples."""
 
     @pytest.mark.parametrize("agent_file", EXPECTED_WT_AGENT_FILES)
-    def test_agent_when_checked_then_references_jerry_ast_frontmatter(
+    def test_agent_when_checked_then_references_tom_ast_frontmatter(
         self, wt_agents_dir: Path, agent_file: str
     ) -> None:
-        """Each agent must reference 'jerry ast frontmatter' in AST examples."""
+        """Each agent must reference 'tom ast frontmatter' in AST examples."""
         # Arrange
         content = (wt_agents_dir / agent_file).read_text()
 
         # Act/Assert
-        assert "jerry ast frontmatter" in content, (
-            f"{agent_file} does not reference 'jerry ast frontmatter' in AST examples"
+        assert "tom ast frontmatter" in content, (
+            f"{agent_file} does not reference 'tom ast frontmatter' in AST examples"
         )
 
     @pytest.mark.parametrize("agent_file", EXPECTED_WT_AGENT_FILES)
@@ -621,20 +621,20 @@ class TestWorktrackerAgentAstExamples:
         # Act/Assert
         assert "from skills.ast.scripts.ast_ops import" not in content, (
             f"{agent_file} still contains 'from skills.ast.scripts.ast_ops import' — "
-            f"should use 'jerry ast' CLI commands instead (BUG-002)"
+            f"should use 'tom ast' CLI commands instead (BUG-002)"
         )
 
     @pytest.mark.parametrize("agent_file", ["wt-auditor.md", "wt-verifier.md"])
-    def test_agent_when_checked_then_references_jerry_ast_validate(
+    def test_agent_when_checked_then_references_tom_ast_validate(
         self, wt_agents_dir: Path, agent_file: str
     ) -> None:
-        """Agents that perform schema validation must reference 'jerry ast validate'."""
+        """Agents that perform schema validation must reference 'tom ast validate'."""
         # Arrange
         content = (wt_agents_dir / agent_file).read_text()
 
         # Act/Assert
-        assert "jerry ast validate" in content, (
-            f"{agent_file} does not reference 'jerry ast validate' in AST examples"
+        assert "tom ast validate" in content, (
+            f"{agent_file} does not reference 'tom ast validate' in AST examples"
         )
 
 

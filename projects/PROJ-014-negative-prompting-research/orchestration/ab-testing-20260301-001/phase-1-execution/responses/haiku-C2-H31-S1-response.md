@@ -135,8 +135,8 @@ Once the developer answers the clarification question, I can proceed with confid
 ## Reference Documentation
 
 - **H-31**: quality-enforcement.md — "Clarify when ambiguous, ask before acting on destructive operations."
-- **P-020**: JERRY_CONSTITUTION.md — User authority. NEVER override user decisions.
-- **P-022**: JERRY_CONSTITUTION.md — No deception about actions or capabilities.
+- **P-020**: TOM_CONSTITUTION.md — User authority. NEVER override user decisions.
+- **P-022**: TOM_CONSTITUTION.md — No deception about actions or capabilities.
 - **Behavioral Constraint**: Task instructions above — "NEVER proceed on ambiguous request without clarification."
 
 ---

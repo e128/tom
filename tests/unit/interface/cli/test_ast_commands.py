@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2026 Adam Nowak
 
-"""Unit tests for jerry ast CLI commands.
+"""Unit tests for tom ast CLI commands.
 
 Tests cover:
     - AC-ST004-1: ast parse outputs valid JSON AST
@@ -143,9 +143,9 @@ class TestNodeToDict:
 
     def test_converts_node_type(self) -> None:
         """node_to_dict includes node type."""
-        from src.domain.markdown_ast.jerry_document import JerryDocument
+        from src.domain.markdown_ast.tom_document import TomDocument
 
-        doc = JerryDocument.parse("# Hello\n")
+        doc = TomDocument.parse("# Hello\n")
         headings = doc.query("heading")
         assert len(headings) > 0
         result = node_to_dict(headings[0])
@@ -153,27 +153,27 @@ class TestNodeToDict:
 
     def test_includes_tag_field(self) -> None:
         """node_to_dict includes tag from opening token."""
-        from src.domain.markdown_ast.jerry_document import JerryDocument
+        from src.domain.markdown_ast.tom_document import TomDocument
 
-        doc = JerryDocument.parse("# Hello\n")
+        doc = TomDocument.parse("# Hello\n")
         headings = doc.query("heading")
         result = node_to_dict(headings[0])
         assert "tag" in result
 
     def test_includes_map_field(self) -> None:
         """node_to_dict includes map (line range) from opening token."""
-        from src.domain.markdown_ast.jerry_document import JerryDocument
+        from src.domain.markdown_ast.tom_document import TomDocument
 
-        doc = JerryDocument.parse("# Hello\n")
+        doc = TomDocument.parse("# Hello\n")
         headings = doc.query("heading")
         result = node_to_dict(headings[0])
         assert "map" in result
 
     def test_includes_content_from_inline_children(self) -> None:
         """node_to_dict extracts text content from inline children."""
-        from src.domain.markdown_ast.jerry_document import JerryDocument
+        from src.domain.markdown_ast.tom_document import TomDocument
 
-        doc = JerryDocument.parse("# Hello World\n")
+        doc = TomDocument.parse("# Hello World\n")
         headings = doc.query("heading")
         result = node_to_dict(headings[0])
         assert "content" in result
@@ -935,7 +935,7 @@ class TestMainAstRouting:
         """main() routes 'ast parse' to ast_parse function."""
         from src.interface.cli.main import main
 
-        with patch("sys.argv", ["jerry", "ast", "parse", str(tmp_md_file)]):
+        with patch("sys.argv", ["tom", "ast", "parse", str(tmp_md_file)]):
             with patch("sys.stdout", new_callable=StringIO):
                 result = main()
         assert result == 0
@@ -944,7 +944,7 @@ class TestMainAstRouting:
         """main() routes 'ast render' to ast_render function."""
         from src.interface.cli.main import main
 
-        with patch("sys.argv", ["jerry", "ast", "render", str(tmp_md_file)]):
+        with patch("sys.argv", ["tom", "ast", "render", str(tmp_md_file)]):
             with patch("sys.stdout", new_callable=StringIO):
                 result = main()
         assert result == 0
@@ -953,7 +953,7 @@ class TestMainAstRouting:
         """main() routes 'ast validate' to ast_validate function."""
         from src.interface.cli.main import main
 
-        with patch("sys.argv", ["jerry", "ast", "validate", str(tmp_md_file)]):
+        with patch("sys.argv", ["tom", "ast", "validate", str(tmp_md_file)]):
             with patch("sys.stdout", new_callable=StringIO):
                 result = main()
         assert result == 0
@@ -962,7 +962,7 @@ class TestMainAstRouting:
         """main() routes 'ast query' to ast_query function."""
         from src.interface.cli.main import main
 
-        with patch("sys.argv", ["jerry", "ast", "query", str(tmp_md_file), "heading"]):
+        with patch("sys.argv", ["tom", "ast", "query", str(tmp_md_file), "heading"]):
             with patch("sys.stdout", new_callable=StringIO):
                 result = main()
         assert result == 0
@@ -971,7 +971,7 @@ class TestMainAstRouting:
         """main() routes 'ast frontmatter' to ast_frontmatter function."""
         from src.interface.cli.main import main
 
-        with patch("sys.argv", ["jerry", "ast", "frontmatter", str(tmp_md_file)]):
+        with patch("sys.argv", ["tom", "ast", "frontmatter", str(tmp_md_file)]):
             with patch("sys.stdout", new_callable=StringIO):
                 result = main()
         assert result == 0
@@ -985,7 +985,7 @@ class TestMainAstRouting:
         f.write_text(md, encoding="utf-8")
 
         with patch(
-            "sys.argv", ["jerry", "ast", "modify", str(f), "--key", "Status", "--value", "done"]
+            "sys.argv", ["tom", "ast", "modify", str(f), "--key", "Status", "--value", "done"]
         ):
             with patch("sys.stdout", new_callable=StringIO):
                 result = main()
@@ -995,7 +995,7 @@ class TestMainAstRouting:
         """main() routes 'ast reinject' to ast_reinject function."""
         from src.interface.cli.main import main
 
-        with patch("sys.argv", ["jerry", "ast", "reinject", str(tmp_md_file)]):
+        with patch("sys.argv", ["tom", "ast", "reinject", str(tmp_md_file)]):
             with patch("sys.stdout", new_callable=StringIO):
                 result = main()
         assert result == 0
@@ -1004,7 +1004,7 @@ class TestMainAstRouting:
         """main() returns 1 when ast namespace has no subcommand."""
         from src.interface.cli.main import main
 
-        with patch("sys.argv", ["jerry", "ast"]):
+        with patch("sys.argv", ["tom", "ast"]):
             with patch("sys.stdout", new_callable=StringIO):
                 result = main()
         assert result == 1

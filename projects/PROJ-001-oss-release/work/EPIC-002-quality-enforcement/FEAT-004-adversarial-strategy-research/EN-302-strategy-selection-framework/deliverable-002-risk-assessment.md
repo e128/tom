@@ -783,7 +783,7 @@ This risk assessment follows NASA Technical Risk Management (Process 13) methodo
 
 ### Jerry Framework References
 
-- Jerry Constitution v1.1 - docs/governance/JERRY_CONSTITUTION.md
+- Jerry Constitution v1.1 - docs/governance/TOM_CONSTITUTION.md
 - P-003: No Recursive Subagents
 - P-020: User Authority
 - P-022: No Deception

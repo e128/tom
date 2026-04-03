@@ -94,7 +94,7 @@ def system_components(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> System
 
     Note: Manual wiring is used instead of the production composition root
     (src/bootstrap.py) because bootstrap requires a full project environment
-    with CLI context. E2E tests exercise the composition root via `jerry` CLI.
+    with CLI context. E2E tests exercise the composition root via `tom` CLI.
 
     Uses monkeypatch to clear env vars that override context window detection
     (BUG-001: JERRY_CONTEXT_MONITOR__CONTEXT_WINDOW_TOKENS=1000000 in Claude sessions).

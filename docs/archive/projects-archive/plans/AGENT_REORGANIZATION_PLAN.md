@@ -142,7 +142,7 @@ Current state references 4 tiers but only Advisory is partially implemented:
 
 ### 3.2 Jerry Constitution v1.0
 
-Create `/docs/governance/JERRY_CONSTITUTION.md` with principles:
+Create `/docs/governance/TOM_CONSTITUTION.md` with principles:
 
 **General Principles:**
 1. Maximize user productivity and learning
@@ -198,7 +198,7 @@ self-monitoring:
 
 | ID | Task | Description | BDD |
 |----|------|-------------|-----|
-| AGT-001 | Create Jerry Constitution | `/docs/governance/JERRY_CONSTITUTION.md` | RED: Test principles exist, GREEN: Create file |
+| AGT-001 | Create Jerry Constitution | `/docs/governance/TOM_CONSTITUTION.md` | RED: Test principles exist, GREEN: Create file |
 | AGT-002 | Update CLAUDE.md with constitution reference | Add Advisory principles | RED: Check reference, GREEN: Add reference |
 | AGT-003 | Create simplified agent template | Remove hard enforcement references | RED: Template test, GREEN: Create template |
 | AGT-004 | Audit all ps-*.md agents | Document current state vs target | Analysis task |
@@ -250,7 +250,7 @@ self-monitoring:
 jerry/
 ├── docs/
 │   ├── governance/
-│   │   └── JERRY_CONSTITUTION.md           # NEW: Constitutional principles
+│   │   └── TOM_CONSTITUTION.md           # NEW: Constitutional principles
 │   ├── plans/
 │   │   └── AGENT_REORGANIZATION_PLAN.md    # THIS FILE
 │   └── research/

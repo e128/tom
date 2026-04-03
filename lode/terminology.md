@@ -1,12 +1,12 @@
 # Terminology
-*Updated: 2026-04-03T00:00:00Z*
+*Updated: 2026-04-03T14:08:34Z*
 
-Jerry-specific terms and their meanings. One term per line.
+Tom-specific terms and their meanings. One term per line.
 
 ## Core Concepts
 
-- **Jerry** — the framework itself; also the CLI tool name
-- **Context Rot** — degradation of LLM performance as context window fills with accumulated tokens; the core problem Jerry solves
+- **Tom** — the framework itself; also the CLI tool name
+- **Context Rot** — degradation of LLM performance as context window fills with accumulated tokens; the core problem Tom solves
 - **Lode** — the AI's structured persistent memory in `lode/`; named after a vein of ore (rich, structured deposit)
 - **Lode Coding** — the methodology of keeping all project knowledge in `lode/` and treating the AI as the memory owner
 - **HARD Rule** — a non-overridable governance constraint; identified by `H-XX` IDs (e.g., H-05, H-22)
@@ -26,7 +26,7 @@ Jerry-specific terms and their meanings. One term per line.
 - **Skill** — a `/slash-command` capability; lives in `skills/{name}/SKILL.md`
 - **Agent** — a specialized subagent; lives in `skills/{name}/agents/{agent}.md` with companion `.governance.yaml`
 - **Trigger map** — the keyword-to-skill routing table in `mandatory-skill-usage.md`
-- **T1–T5 tiers** — tool security tiers (T1=Read-Only, T2=Read-Write, T3=Persistent+MK, T4=External+Web, T5=Orchestration+Agent)
+- **T1–T5 tiers** — tool security tiers (T1=Read-Only, T2=Read-Write, T3=Persistent+MK, T4=External+Web+MK, T5=Orchestration+Agent); each tier is cumulative — T4 inherits T3's Memory-Keeper access
 - **H-22** — the HARD rule mandating proactive skill invocation; violations require rework
 - **Circuit breaker** — max 3 routing hops before halting and escalating to user (H-36)
 

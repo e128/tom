@@ -37,7 +37,7 @@ capabilities:
   - "NEVER provide generic improvement suggestions without specific evidence from the scored prompt -- Consequence: generic advice is not actionable; users cannot improve prompts without knowing exactly what to change and where."
   forbidden_action_format: NPT-009-complete
 constitution:
-  reference: docs/governance/JERRY_CONSTITUTION.md
+  reference: docs/governance/TOM_CONSTITUTION.md
   principles_applied:
   - 'P-003: No Recursive Subagents (Hard) - Single-level worker only'
   - 'P-020: User Authority (Hard) - Never override user decisions'

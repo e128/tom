@@ -66,7 +66,7 @@ Domain: Decision Science, Organizational Behavior, Group Decision-Making, Argume
 
 **Foundation:** Nemeth (2018) demonstrates that assigned dissent, while less effective than genuine disagreement, systematically improves decision quality by surfacing hidden assumptions and forcing argument strengthening. Janis (1982) documents catastrophic groupthink failures (Bay of Pigs, Challenger) that Devil's Advocate prevents.
 
-**Jerry Implementation:** Explicitly assigns the adversarial role of arguing against the deliverable's positions, assumptions, and claims. Constructs the strongest possible counter-arguments, forcing the creator to respond substantively. Implements H-16 ordering (S-003 Steelman MUST run before S-002).
+**Tom Implementation:** Explicitly assigns the adversarial role of arguing against the deliverable's positions, assumptions, and claims. Constructs the strongest possible counter-arguments, forcing the creator to respond substantively. Implements H-16 ordering (S-003 Steelman MUST run before S-002).
 
 ---
 
@@ -365,7 +365,7 @@ From quality-enforcement.md (MUST NOT be redefined):
 
 ### Example 1: C2 Architecture Decision -- Event Sourcing Adoption
 
-**Context:** A developer proposed adopting event sourcing for the Jerry work item aggregate (C2 Standard: reversible in 1 day, affects 6 files). S-003 Steelman was applied first (H-16 compliance). Devil's Advocate now critiques the strengthened proposal.
+**Context:** A developer proposed adopting event sourcing for the Tom work item aggregate (C2 Standard: reversible in 1 day, affects 6 files). S-003 Steelman was applied first (H-16 compliance). Devil's Advocate now critiques the strengthened proposal.
 
 #### Before (Key Claims from ADR after S-003 Steelman)
 
@@ -393,7 +393,7 @@ ADR-PROJ001-007 proposes event sourcing for the WorkItem aggregate. Key claims: 
 | DA-002-20260215T1515 | Operational complexity understated | Major | "Additional complexity in event store implementation" is acknowledged but not quantified. Event sourcing requires: event store, snapshot strategy, read model projection, eventual consistency handling, and replay tooling. This is a 5x complexity multiplier over simple CRUD, not a minor addition. | Evidence Quality |
 | DA-003-20260215T1515 | "Clear state transitions" assumption is fragile | Major | ADR states "Created -> InProgress -> Done" but WorkItem domain model may evolve to include Blocked, InReview, Cancelled, or parallel sub-item states. Event sourcing with complex state machines requires saga/process manager patterns not addressed in the ADR. | Methodological Rigor |
 | DA-004-20260215T1515 | No rollback or migration path defined | Minor | If event sourcing proves too complex, no strategy exists for reverting to a simpler persistence model. C2 classification assumes reversibility in 1 day, but event store migration is not a 1-day operation. | Actionability |
-| DA-005-20260215T1515 | Audit trail benefit overstated for current scope | Minor | "Complete audit trail" is listed as a primary benefit, but Jerry's current WorkItem aggregate is used by a single developer in a CLI tool. The audit trail benefit is relevant for multi-user systems, not the current single-user scope. | Evidence Quality |
+| DA-005-20260215T1515 | Audit trail benefit overstated for current scope | Minor | "Complete audit trail" is listed as a primary benefit, but Tom's current WorkItem aggregate is used by a single developer in a CLI tool. The audit trail benefit is relevant for multi-user systems, not the current single-user scope. | Evidence Quality |
 
 **Step 4: Require Substantive Responses**
 

@@ -447,7 +447,7 @@ As noted in CA-007-009 above. This is the only notable residual gap.
 - Every strategy ID traces to `.context/rules/quality-enforcement.md` (Strategy Catalog section)
 - Every criticality level traces to `.context/rules/quality-enforcement.md` (Criticality Levels section)
 - Every HARD rule traces to its source file (H-13, H-14, H-15, H-16 to quality-enforcement.md)
-- Constitutional principles trace to `docs/governance/JERRY_CONSTITUTION.md` with principle IDs
+- Constitutional principles trace to `docs/governance/TOM_CONSTITUTION.md` with principle IDs
 - ADR references trace to ADR-EPIC002-001 and ADR-EPIC002-002
 - SKILL.md References section (lines 319-328) provides explicit traceability table with 6 source entries
 - All agents include `SSOT: .context/rules/quality-enforcement.md` in their footer

@@ -16,8 +16,8 @@
       "start_ms": 0,
       "end_ms": 1000,
       "speaker": null,
-      "text": "Tom & Jerry",
-      "raw_text": "Tom &amp; Jerry"
+      "text": "Tom & Tom",
+      "raw_text": "Tom &amp; Tom"
     },
     {
       "id": "seg-002",

@@ -237,7 +237,7 @@ The preamble includes an expanded auto-escalation line covering AE-001 through A
 **Preamble text:** `AUTO-ESCALATE: governance files/rules -> C3+; new/modified ADR -> C3+; modified baselined ADR -> C4.`
 
 This covers:
-- **AE-001:** `docs/governance/JERRY_CONSTITUTION.md` -> C3 min (covered by "governance files")
+- **AE-001:** `docs/governance/TOM_CONSTITUTION.md` -> C3 min (covered by "governance files")
 - **AE-002:** `.claude/rules/`, `.context/rules/` -> C3 min (covered by "rules")
 - **AE-003:** New/modified ADR -> C3 min (explicitly listed)
 - **AE-004:** Modified baselined ADR -> C4 (explicitly listed)

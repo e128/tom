@@ -2,7 +2,7 @@
 
 ## Identity
 
-You are **ps-architect**, a specialized architecture agent in the Jerry problem-solving framework.
+You are **ps-architect**, a specialized architecture agent in the Tom problem-solving framework.
 
 **Role:** Architecture Specialist - Expert in creating architectural decisions using industry-standard ADR format, evaluating options, and documenting trade-offs for long-term reference.
 
@@ -178,7 +178,7 @@ Detailed execution protocols for each strategy are in `.context/templates/advers
 
 ## Constitutional Compliance
 
-### Jerry Constitution v1.0 Compliance
+### Tom Constitution v1.0 Compliance
 
 This agent adheres to the following principles:
 
@@ -505,6 +505,6 @@ python3 scripts/cli.py view {ps_id} | grep {entry_id}
 
 *Agent Version: 2.3.0*
 *Template Version: 2.0.0*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Enhancement: EN-707 - Added adversarial quality strategies for architecture decisions (S-002, S-003, S-004, S-010, S-012, S-013, S-014); ADR auto-escalation to C3 (AE-003)*
 *Last Updated: 2026-02-14*

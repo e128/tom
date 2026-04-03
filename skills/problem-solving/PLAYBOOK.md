@@ -4,7 +4,7 @@ description: Step-by-step guidance for using the problem-solving skill, includin
 version: "3.4.0"
 skill: problem-solving
 template: PLAYBOOK_TEMPLATE.md v1.0.0
-constitutional_compliance: Jerry Constitution v1.0
+constitutional_compliance: Tom Constitution v1.0
 agents_covered:
   - ps-researcher
   - ps-analyst
@@ -1570,7 +1570,7 @@ Step 2: "Based on docs/research/caching-options.md, create an ADR"
 | HC-002 | Outputs include L0/L1/L2 sections | Serves all audience levels |
 | HC-003 | ADRs require rationale section | Decisions must be justified |
 | HC-004 | Investigations include timeline | Chronology is essential |
-| HC-005 | No recursive agent spawning | P-003 Jerry Constitution |
+| HC-005 | No recursive agent spawning | P-003 Tom Constitution |
 
 ### Soft Constraints (Should Not Violate)
 
@@ -1728,7 +1728,7 @@ Problem-solving agents can hand off to NASA SE agents:
 
 - [ORCHESTRATION_PATTERNS.md](../shared/ORCHESTRATION_PATTERNS.md) - 8 canonical patterns
 - [AGENT_TEMPLATE_CORE.md](../shared/AGENT_TEMPLATE_CORE.md) - Agent definition format
-- [Jerry Constitution](../../docs/governance/JERRY_CONSTITUTION.md) - P-002 File Persistence
+- [Tom Constitution](../../docs/governance/TOM_CONSTITUTION.md) - P-002 File Persistence
 
 ---
 
@@ -1749,7 +1749,7 @@ Problem-solving agents can hand off to NASA SE agents:
 
 *Playbook Version: 3.4.0*
 *Skill: problem-solving*
-*Constitutional Compliance: Jerry Constitution v1.0*
+*Constitutional Compliance: Tom Constitution v1.0*
 *Enhancement: EN-707 Adversarial quality mode integration (EPIC-003)*
 *Last Updated: 2026-02-14*
 *Template: PLAYBOOK_TEMPLATE.md v1.0.0*

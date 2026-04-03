@@ -72,7 +72,7 @@ Inversion systematically inverts goals and stress-tests assumptions without temp
 
 **Foundation:** Jacobi's mathematical heuristic ("invert, always invert") was generalized by Charlie Munger into a decision-making mental model: instead of asking how to achieve a goal, ask what would guarantee failure and then avoid those conditions. Bevelin (2007) systematized this into explicit assumption mapping and stress-testing. Taleb's via negativa reinforces the power of removing known failure conditions over adding speculative success factors.
 
-**Jerry Adaptation:** Two-phase approach for deliverable quality review: (1) Map all assumptions the deliverable relies upon, making implicit assumptions explicit, (2) Stress-test each assumption by inverting it and evaluating consequences. Complements S-004 Pre-Mortem (temporal perspective) and S-012 FMEA (component decomposition) by operating at the assumption and goal level.
+**Tom Adaptation:** Two-phase approach for deliverable quality review: (1) Map all assumptions the deliverable relies upon, making implicit assumptions explicit, (2) Stress-test each assumption by inverting it and evaluating consequences. Complements S-004 Pre-Mortem (temporal perspective) and S-012 FMEA (component decomposition) by operating at the assumption and goal level.
 
 **Distinction from S-004 (Pre-Mortem):** Pre-Mortem declares "it has already failed" and works backward via temporal perspective shift. Inversion systematically inverts the deliverable's goals ("What would guarantee this fails?") and stress-tests each assumption ("What if this assumption is wrong?") without temporal framing. Pre-Mortem generates failure scenarios; Inversion identifies the specific assumptions and anti-goals that make failure possible.
 

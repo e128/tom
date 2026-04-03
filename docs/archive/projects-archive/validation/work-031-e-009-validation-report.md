@@ -617,7 +617,7 @@ PROPOSED
 
 5. **Jerry Documentation**
    - CLAUDE.md (Jerry framework root context)
-   - docs/governance/JERRY_CONSTITUTION.md
+   - docs/governance/TOM_CONSTITUTION.md
    - SPEC-001 (Jerry URI scheme)
 
 **Reasoning Chain Example:**

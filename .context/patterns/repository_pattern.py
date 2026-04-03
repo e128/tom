@@ -1,5 +1,5 @@
 """
-Repository Pattern - Canonical implementation for Jerry Framework.
+Repository Pattern - Canonical implementation for Tom Framework.
 
 Repositories implement IRepository protocol and provide aggregate persistence.
 Use composition of IFileStore and ISerializer adapters.

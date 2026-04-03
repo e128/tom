@@ -68,7 +68,7 @@ class IAuditable(Protocol):
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### File Location
 
@@ -129,7 +129,7 @@ class AggregateRoot(ABC):
 
 ## Design Canon Reference
 
-Lines 260-288 in Jerry Design Canon v1.0
+Lines 260-288 in Tom Design Canon v1.0
 
 ---
 

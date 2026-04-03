@@ -1,5 +1,5 @@
 # Skills System
-*Updated: 2026-04-03T00:00:00Z*
+*Updated: 2026-04-03T14:08:45Z*
 
 Skills are `/slash-command` capabilities. Each lives in `skills/{name}/SKILL.md`. Agents live in `skills/{name}/agents/`. Skills are invoked proactively by keyword detection (H-22).
 

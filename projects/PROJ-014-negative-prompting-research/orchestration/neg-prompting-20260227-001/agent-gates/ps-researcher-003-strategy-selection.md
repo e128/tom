@@ -14,7 +14,7 @@
 
 | Rule ID | Condition | Status | Result |
 |---------|-----------|--------|--------|
-| AE-001 | Touches `docs/governance/JERRY_CONSTITUTION.md` | Not present in path | No escalation |
+| AE-001 | Touches `docs/governance/TOM_CONSTITUTION.md` | Not present in path | No escalation |
 | AE-002 | Touches `.context/rules/` or `.claude/rules/` | Not present in path | No escalation |
 | AE-003 | New or modified ADR | Deliverable is research, not ADR | No escalation |
 | AE-004 | Modifies baselined ADR | Not applicable | No escalation |

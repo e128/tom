@@ -28,9 +28,9 @@ class TestAtomicFileAdapterInit:
     """Tests for AtomicFileAdapter initialization."""
 
     def test_init_with_default_lock_dir(self) -> None:
-        """Default lock directory is .jerry/local/locks/."""
+        """Default lock directory is .tom/local/locks/."""
         adapter = AtomicFileAdapter()
-        assert adapter.lock_dir == Path(".jerry/local/locks")
+        assert adapter.lock_dir == Path(".tom/local/locks")
 
     def test_init_with_custom_lock_dir(self, tmp_path: Path) -> None:
         """Custom lock directory is respected."""

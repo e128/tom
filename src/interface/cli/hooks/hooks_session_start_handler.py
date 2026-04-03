@@ -16,7 +16,7 @@ Design Principles:
     - **Valid JSON always**: The response is always valid JSON.
 
 References:
-    - EN-006: jerry hooks CLI Command Namespace
+    - EN-006: tom hooks CLI Command Namespace
     - EN-001: Local context support for session hook
     - EN-004: ResumptionContextGenerator
     - EN-008 TASK-002: WORKTRACKER.md auto-injection in resumption
@@ -151,14 +151,14 @@ class HooksSessionStartHandler:
             if jerry_project or project_id:
                 project_xml = (
                     "<project-context>\n"
-                    f"  <jerry-project>{jerry_project}</jerry-project>\n"
+                    f"  <tom-project>{jerry_project}</tom-project>\n"
                     f"  <project-id>{project_id}</project-id>\n"
                     "</project-context>"
                 )
             else:
                 project_xml = (
                     "<project-context>\n"
-                    "  <jerry-project></jerry-project>\n"
+                    "  <tom-project></tom-project>\n"
                     "  <project-id></project-id>\n"
                     "  <project-required/>\n"
                     "</project-context>"

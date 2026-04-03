@@ -369,7 +369,7 @@ Expected: FRAMEWORK_CONFIG
 NOT: WORKTRACKER_ENTITY
 
 Test: docs/ file that is NOT design/ does NOT match ADR
-Input: "docs/governance/JERRY_CONSTITUTION.md"
+Input: "docs/governance/TOM_CONSTITUTION.md"
 Expected: KNOWLEDGE_DOCUMENT
 NOT: ADR
 ```

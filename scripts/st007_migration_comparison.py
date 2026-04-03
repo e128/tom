@@ -31,7 +31,7 @@ if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
 
 from src.domain.markdown_ast import (  # noqa: E402
-    JerryDocument,
+    TomDocument,
     extract_frontmatter,
     get_entity_schema,
     validate_document,
@@ -43,7 +43,7 @@ def parse_file(file_path: str) -> dict:
     """Parse a file and return structure info."""
     with open(file_path, encoding="utf-8") as f:
         source = f.read()
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     node_types = []
     seen: set[str] = set()
     for node in doc.tree.walk():
@@ -66,7 +66,7 @@ def query_frontmatter(file_path: str) -> dict[str, str]:
     """Extract frontmatter fields."""
     with open(file_path, encoding="utf-8") as f:
         source = f.read()
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     fm = extract_frontmatter(doc)
     return dict(fm.items())
 
@@ -75,7 +75,7 @@ def validate_file(file_path: str, schema: str | None = None) -> dict:
     """Validate file structure."""
     with open(file_path, encoding="utf-8") as f:
         source = f.read()
-    doc = JerryDocument.parse(source)
+    doc = TomDocument.parse(source)
     nav_result = validate_nav_table(doc)
     schema_valid = True
     schema_violations: list[dict[str, str]] = []

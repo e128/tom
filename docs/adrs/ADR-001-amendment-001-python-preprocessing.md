@@ -339,7 +339,7 @@ Selected: 500 segments
 | Risk | Probability | Impact | Mitigation | **Status** |
 |------|-------------|--------|------------|-----------|
 | ps-critic integration issues | LOW | MEDIUM | Test cross-skill invocation in isolation first | Unchanged |
-| Custom agent drift from Jerry patterns | LOW | LOW | Use PS_AGENT_TEMPLATE.md as base | Unchanged |
+| Custom agent drift from Tom patterns | LOW | LOW | Use PS_AGENT_TEMPLATE.md as base | Unchanged |
 | Performance regression with ps-critic loop | MEDIUM | LOW | Make critic review optional; threshold-based | Unchanged |
 | **Context rot in long transcripts** | **MEDIUM** | **HIGH** | ~~Implement chunking in transcript-parser~~ **RESOLVED: Python preprocessing + chunking (Amendment 001)** | **MITIGATED** |
 | **webvtt-py dependency** (NEW) | LOW | MEDIUM | Pin version, comprehensive test coverage | NEW |
@@ -456,7 +456,7 @@ This amendment is implemented by **FEAT-004: Hybrid Parsing Infrastructure**:
 | [5] | "webvtt-py Documentation" | Library | [GitHub webvtt-py](https://github.com/glut23/webvtt-py) |
 | [6] | "LangChain Text Splitters" | Library | [LangChain Docs](https://docs.langchain.com/oss/python/integrations/splitters) |
 
-### Jerry Sources
+### Tom Sources
 
 | Document | Relevance |
 |----------|-----------|

@@ -22,13 +22,13 @@ Bounded Contexts define explicit boundaries within which a domain model is consi
 
 ---
 
-## Jerry Bounded Contexts
+## Tom Bounded Contexts
 
 ### Context Map
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        Jerry Framework                          │
+│                        Tom Framework                          │
 ├─────────────────────────────────────────────────────────────────┤
 │  ┌───────────────────┐         ┌───────────────────┐           │
 │  │ session_management│◄───────►│   work_tracking   │           │
@@ -224,8 +224,8 @@ Integration events (CloudEvents), Anti-Corruption Layer.
 from src.shared_kernel.integration_events import CloudEvent
 
 event = CloudEvent(
-    type="jerry.work_tracking.task.completed",
-    source="/jerry/work-tracking",
+    type="tom.work_tracking.task.completed",
+    source="/tom/work-tracking",
     data={"task_id": "WORK-001"},
 )
 event_publisher.publish(event)
@@ -337,15 +337,15 @@ def test_shared_kernel_has_no_context_imports():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Each bounded context has full hexagonal architecture (domain, application, infrastructure).
+> **Tom Decision**: Each bounded context has full hexagonal architecture (domain, application, infrastructure).
 
-> **Jerry Decision**: Cross-context communication uses CloudEvents format for integration events.
+> **Tom Decision**: Cross-context communication uses CloudEvents format for integration events.
 
-> **Jerry Decision**: Shared kernel is minimal: identity, base classes, protocols, exceptions only.
+> **Tom Decision**: Shared kernel is minimal: identity, base classes, protocols, exceptions only.
 
-> **Jerry Decision**: No direct imports across context boundaries. Use ACL or integration events.
+> **Tom Decision**: No direct imports across context boundaries. Use ACL or integration events.
 
 ---
 
@@ -370,7 +370,7 @@ from src.work_tracking.domain.aggregates.work_item import WorkItem
 
 # CORRECT: Use integration events or ACL
 work_item_completed_event = await event_bus.subscribe(
-    "jerry.work_tracking.task.completed"
+    "tom.work_tracking.task.completed"
 )
 ```
 

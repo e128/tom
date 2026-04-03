@@ -1,4 +1,4 @@
-# Jerry Framework - Expanded Discoveries Catalog
+# Tom Framework - Expanded Discoveries Catalog
 
 > **Purpose:** Comprehensive discovery documentation following PS-EXPORT-SPECIFICATION v2.1
 > **Format:** L0 (ELI5) / L1 (Software Engineer) / L2 (Principal Architect)
@@ -17,7 +17,7 @@
 **Short Description:** LLM performance degrades as context fills, even within technical limits; ~256k tokens is practical ceiling.
 
 **Long Description:**
-Chroma Research identified "context rot" as a phenomenon where LLM accuracy degrades significantly as the context window fills, even when total token count is well within the advertised technical limit. Their research shows that at approximately 256k tokens, performance degradation becomes severe enough to impact practical applications. This has direct implications for Jerry's design - the framework must offload state to the filesystem rather than rely on in-context memory.
+Chroma Research identified "context rot" as a phenomenon where LLM accuracy degrades significantly as the context window fills, even when total token count is well within the advertised technical limit. Their research shows that at approximately 256k tokens, performance degradation becomes severe enough to impact practical applications. This has direct implications for Tom's design - the framework must offload state to the filesystem rather than rely on in-context memory.
 
 **Evidence:**
 - [Chroma Research: Context Rot](https://research.trychroma.com/context-rot)
@@ -38,7 +38,7 @@ Chroma Research identified "context rot" as a phenomenon where LLM accuracy degr
 **Short Description:** Anthropic provides official Python SDK for MCP, enabling native Python server development.
 
 **Long Description:**
-The Model Context Protocol (MCP) provides a standardized way to build context servers for LLMs. Anthropic released an official Python SDK (`mcp`) alongside the TypeScript reference implementation. This validates the decision to use Python for Jerry's core - MCP servers can be implemented in Python without requiring TypeScript/Node.js dependencies.
+The Model Context Protocol (MCP) provides a standardized way to build context servers for LLMs. Anthropic released an official Python SDK (`mcp`) alongside the TypeScript reference implementation. This validates the decision to use Python for Tom's core - MCP servers can be implemented in Python without requiring TypeScript/Node.js dependencies.
 
 **Evidence:**
 - [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)
@@ -82,7 +82,7 @@ Hexagonal Architecture (Ports & Adapters) naturally supports polyglot implementa
 **Short Description:** Vernon's research shows most ARs should be small; large ARs cause performance issues.
 
 **Long Description:**
-Vaughn Vernon's "Implementing Domain-Driven Design" presents research showing that approximately 70% of aggregate roots in well-designed systems consist of a single entity plus value objects. Large aggregates that attempt to encapsulate entire object graphs cause: (1) contention/locking issues, (2) poor performance on updates, (3) difficulty in testing. This directly informed Jerry's decision to use Task as the primary small AR rather than Plan (large) or Phase (medium).
+Vaughn Vernon's "Implementing Domain-Driven Design" presents research showing that approximately 70% of aggregate roots in well-designed systems consist of a single entity plus value objects. Large aggregates that attempt to encapsulate entire object graphs cause: (1) contention/locking issues, (2) poor performance on updates, (3) difficulty in testing. This directly informed Tom's decision to use Task as the primary small AR rather than Plan (large) or Phase (medium).
 
 **Evidence:**
 - Vernon, V. (2013). *Implementing Domain-Driven Design*. Addison-Wesley.
@@ -103,7 +103,7 @@ Vaughn Vernon's "Implementing Domain-Driven Design" presents research showing th
 **Short Description:** Based on Vernon's ProjectOvation case study, Task (not Plan/Phase) should be the primary AR.
 
 **Long Description:**
-Vernon's ProjectOvation example in "Implementing DDD" demonstrates a project management domain where BacklogItem (analogous to Task) is the primary aggregate root, not Project or Sprint. The reasoning: BacklogItem is the unit of work, has its own lifecycle, and is the primary target of commands. Project and Sprint reference collections of BacklogItem IDs. This pattern directly applies to Jerry's Work Tracker.
+Vernon's ProjectOvation example in "Implementing DDD" demonstrates a project management domain where BacklogItem (analogous to Task) is the primary aggregate root, not Project or Sprint. The reasoning: BacklogItem is the unit of work, has its own lifecycle, and is the primary target of commands. Project and Sprint reference collections of BacklogItem IDs. This pattern directly applies to Tom's Work Tracker.
 
 **Evidence:**
 - Vernon, V. (2013). *Implementing Domain-Driven Design*, Chapter 10.
@@ -163,10 +163,10 @@ Following the Plan AR discussion, user confirmed that even Phase-as-primary-AR s
 **ID:** DISC-008
 **Slug:** cloudevents-required
 **Name:** CloudEvents 1.0 Is Hard Requirement
-**Short Description:** User mandated CloudEvents 1.0 spec for all domain events in Jerry.
+**Short Description:** User mandated CloudEvents 1.0 spec for all domain events in Tom.
 
 **Long Description:**
-The user explicitly stated CloudEvents as a hard requirement for Jerry. CloudEvents 1.0 is a CNCF specification for describing events in a common way. It provides: (1) standard envelope with required attributes (id, source, type, time), (2) extension mechanism for custom attributes, (3) multiple protocol bindings (HTTP, AMQP, Kafka), (4) JSON schema for validation. All Jerry domain events must conform to CloudEvents 1.0.
+The user explicitly stated CloudEvents as a hard requirement for Tom. CloudEvents 1.0 is a CNCF specification for describing events in a common way. It provides: (1) standard envelope with required attributes (id, source, type, time), (2) extension mechanism for custom attributes, (3) multiple protocol bindings (HTTP, AMQP, Kafka), (4) JSON schema for validation. All Tom domain events must conform to CloudEvents 1.0.
 
 **Evidence:**
 - [CloudEvents Specification 1.0](https://cloudevents.io/)
@@ -188,7 +188,7 @@ The user explicitly stated CloudEvents as a hard requirement for Jerry. CloudEve
 **Short Description:** User mandated strongly typed IDs (TaskId, PhaseId) rather than raw UUID/GUID.
 
 **Long Description:**
-The user explicitly required strongly typed identity objects instead of raw UUID/string identifiers. This is a DDD best practice that prevents accidental ID mixing (passing PhaseId where TaskId expected). Strongly typed IDs also enable: (1) validation at construction, (2) type-safe repository methods, (3) IDE autocomplete, (4) self-documenting code. In Jerry, all IDs extend VertexId for graph compatibility.
+The user explicitly required strongly typed identity objects instead of raw UUID/string identifiers. This is a DDD best practice that prevents accidental ID mixing (passing PhaseId where TaskId expected). Strongly typed IDs also enable: (1) validation at construction, (2) type-safe repository methods, (3) IDE autocomplete, (4) self-documenting code. In Tom, all IDs extend VertexId for graph compatibility.
 
 **Evidence:**
 - Evans, E. (2003). *Domain-Driven Design*. Chapter on Value Objects.
@@ -210,7 +210,7 @@ The user explicitly required strongly typed identity objects instead of raw UUID
 **Short Description:** ECW's glimmering-brewing-lake artifact contains 108+ use cases as reference material.
 
 **Long Description:**
-Analysis of ECW's knowledge artifacts revealed extensive use case documentation in the glimmering-brewing-lake series. These 108+ use cases cover: work management, knowledge capture, identity & access, and reporting bounded contexts. While Jerry is a fresh implementation, these use cases serve as reference material for feature discovery and edge case identification.
+Analysis of ECW's knowledge artifacts revealed extensive use case documentation in the glimmering-brewing-lake series. These 108+ use cases cover: work management, knowledge capture, identity & access, and reporting bounded contexts. While Tom is a fresh implementation, these use cases serve as reference material for feature discovery and edge case identification.
 
 **Evidence:**
 - ECW v3 strategic design documents (internal reference, not published)
@@ -274,7 +274,7 @@ LES-030 from ECW documents a critical constraint: Claude Code hooks (pre/post to
 **Short Description:** Constraint c-015 prevents subagents from spawning further subagents via Task tool.
 
 **Long Description:**
-ECW constraint c-015 prohibits recursive subagent spawning - a subagent cannot use the Task tool to spawn another subagent. This prevents: (1) runaway agent multiplication, (2) context explosion, (3) unpredictable behavior. The constraint is enforced at the adapter level by filtering allowed-tools for subagents. This has implications for multi-agent design in Jerry.
+ECW constraint c-015 prohibits recursive subagent spawning - a subagent cannot use the Task tool to spawn another subagent. This prevents: (1) runaway agent multiplication, (2) context explosion, (3) unpredictable behavior. The constraint is enforced at the adapter level by filtering allowed-tools for subagents. This has implications for multi-agent design in Tom.
 
 **Evidence:**
 - ECW constraint c-015
@@ -319,7 +319,7 @@ ECW constraint c-009 mandates that all agent outputs must be persisted to the fi
 **Short Description:** Vertex/Edge/Property abstractions prepare for eventual Gremlin/graph database migration.
 
 **Long Description:**
-Jerry's domain model uses property graph abstractions (Vertex, Edge, Property) that align with Apache TinkerPop's Gremlin query language. This enables future migration from file-based storage to a graph database (JanusGraph, Neptune, CosmosDB) without domain model changes. The abstractions include: Vertex (node with id, label, properties), Edge (connection with id, label, properties, in/out vertices), and Property (key-value with optional meta-properties).
+Tom's domain model uses property graph abstractions (Vertex, Edge, Property) that align with Apache TinkerPop's Gremlin query language. This enables future migration from file-based storage to a graph database (JanusGraph, Neptune, CosmosDB) without domain model changes. The abstractions include: Vertex (node with id, label, properties), Edge (connection with id, label, properties, in/out vertices), and Property (key-value with optional meta-properties).
 
 **Evidence:**
 - [Apache TinkerPop](https://tinkerpop.apache.org/)
@@ -407,7 +407,7 @@ Research across Anthropic, OpenAI, Google DeepMind, and academic sources reveals
 **Short Description:** Anthropic's Constitutional AI uses principles rather than human labeling for alignment.
 
 **Long Description:**
-Anthropic's Constitutional AI (CAI) approach trains models to self-supervise alignment using a constitution of principles rather than extensive human labeling. The model critiques its own outputs against the constitution and revises. This approach is foundational for Jerry's enforcement design - agents can be given a "constitution" (Jerry Constitution) and trained/prompted to self-monitor compliance, reducing need for external enforcement.
+Anthropic's Constitutional AI (CAI) approach trains models to self-supervise alignment using a constitution of principles rather than extensive human labeling. The model critiques its own outputs against the constitution and revises. This approach is foundational for Tom's enforcement design - agents can be given a "constitution" (Tom Constitution) and trained/prompted to self-monitor compliance, reducing need for external enforcement.
 
 **Evidence:**
 - [Anthropic Constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback)
@@ -415,7 +415,7 @@ Anthropic's Constitutional AI (CAI) approach trains models to self-supervise ali
 
 **Level Impact:**
 - **L0:** Instead of someone checking everything, the AI learns rules and checks itself
-- **L1:** Create Jerry Constitution with principles; inject into agent prompts for self-monitoring
+- **L1:** Create Tom Constitution with principles; inject into agent prompts for self-monitoring
 - **L2:** CAI-inspired approach reduces enforcement overhead; constitution is compressed governance
 
 ---
@@ -428,7 +428,7 @@ Anthropic's Constitutional AI (CAI) approach trains models to self-supervise ali
 **Short Description:** Research shows 75% of enforcement should be soft (warnings, suggestions) not hard (blocks).
 
 **Long Description:**
-Analysis of industry practices reveals that approximately 75% of agent enforcement is soft (advisory + soft tiers) while only 25% is hard (medium + hard tiers). Hard enforcement creates friction, degrades user experience, and can cause agents to find workarounds. Soft enforcement guides behavior through prompts, warnings, and suggestions, maintaining agent utility while achieving compliance. Jerry should follow this ratio.
+Analysis of industry practices reveals that approximately 75% of agent enforcement is soft (advisory + soft tiers) while only 25% is hard (medium + hard tiers). Hard enforcement creates friction, degrades user experience, and can cause agents to find workarounds. Soft enforcement guides behavior through prompts, warnings, and suggestions, maintaining agent utility while achieving compliance. Tom should follow this ratio.
 
 **Evidence:**
 - AGENT_BEHAVIOR_ENFORCEMENT_ANALYSIS.md

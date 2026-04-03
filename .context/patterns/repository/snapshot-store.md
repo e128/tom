@@ -22,7 +22,7 @@ Snapshots optimize event-sourced aggregate loading by persisting periodic state 
 
 ---
 
-## Jerry Implementation
+## Tom Implementation
 
 ### Snapshot Port
 
@@ -389,7 +389,7 @@ class WorkItem(AggregateRoot):
 
 ## Snapshot Strategies
 
-### Interval-Based (Jerry Default)
+### Interval-Based (Tom Default)
 
 ```python
 # Snapshot every N events
@@ -535,13 +535,13 @@ def test_aggregate_snapshot_roundtrip():
 
 ---
 
-## Jerry-Specific Decisions
+## Tom-specific Decisions
 
-> **Jerry Decision**: Snapshot interval is 10 events. This balances storage overhead against load time optimization.
+> **Tom Decision**: Snapshot interval is 10 events. This balances storage overhead against load time optimization.
 
-> **Jerry Decision**: Snapshots are optional optimization. Repositories MUST work without snapshots (pure event replay).
+> **Tom Decision**: Snapshots are optional optimization. Repositories MUST work without snapshots (pure event replay).
 
-> **Jerry Decision**: Aggregates implement `to_snapshot()` and `from_snapshot()` for snapshot support.
+> **Tom Decision**: Aggregates implement `to_snapshot()` and `from_snapshot()` for snapshot support.
 
 ---
 

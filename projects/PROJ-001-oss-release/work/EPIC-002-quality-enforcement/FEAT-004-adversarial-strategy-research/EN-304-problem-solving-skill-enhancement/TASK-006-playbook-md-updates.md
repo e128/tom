@@ -167,7 +167,7 @@ Use the Adversarial Review Pipeline when:
 | New feature, interface change, refactoring | C2 |
 | Architecture decision, cross-boundary change, ADR | C3 |
 | Constitutional amendment, irreversible decision | C4 |
-| Modifies JERRY_CONSTITUTION.md | Auto-escalate to C3+ |
+| Modifies TOM_CONSTITUTION.md | Auto-escalate to C3+ |
 | Modifies .claude/rules/ | Auto-escalate to C3+ |
 | Modifies baselined ADR | Auto-escalate to C4 |
 
@@ -247,7 +247,7 @@ the EN-303 decision tree in a human-friendly procedure.
 START
   |
   +-- Is the artifact modifying governance files?
-  |     (JERRY_CONSTITUTION.md, .claude/rules/*, baselined ADRs)
+  |     (TOM_CONSTITUTION.md, .claude/rules/*, baselined ADRs)
   |     YES -> C3 minimum (C4 if baselined ADR) -> Go to C3/C4 pipeline
   |     NO  -> Continue
   |

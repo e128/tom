@@ -297,14 +297,14 @@ Decision criticality levels (C1-C4) determine which enforcement tiers and advers
 
 | Condition | Auto-Escalation | Source |
 |-----------|----------------|--------|
-| Artifact touches `docs/governance/JERRY_CONSTITUTION.md` | Auto-C4 | FR-011 |
+| Artifact touches `docs/governance/TOM_CONSTITUTION.md` | Auto-C4 | FR-011 |
 | Artifact touches `.context/rules/` | Auto-C3 minimum | FR-011 |
 | Artifact touches `.claude/rules/` | Auto-C3 minimum | FR-011 (symlink to `.context/rules/`; checked for completeness) |
 | Artifact touches `CLAUDE.md` | Auto-C3 minimum | Extension of FR-011 |
 | Artifact is an ADR | Auto-C3 minimum | ADR-EPIC002-001 precedent |
 | Artifact is for public release | Auto-C4 | Jerry Constitution |
 
-> **M-007 note (v1.1.0):** `.claude/rules/` is a symlink to `.context/rules/` in the Jerry repo. Both paths are listed here to align with EN-403 TASK-003's `_check_governance_escalation()` which checks both canonical and symlink paths. The constitution (`JERRY_CONSTITUTION.md`) is elevated to C4 per EN-403 TASK-003 alignment.
+> **M-007 note (v1.1.0):** `.claude/rules/` is a symlink to `.context/rules/` in the Jerry repo. Both paths are listed here to align with EN-403 TASK-003's `_check_governance_escalation()` which checks both canonical and symlink paths. The constitution (`TOM_CONSTITUTION.md`) is elevated to C4 per EN-403 TASK-003 alignment.
 
 ---
 

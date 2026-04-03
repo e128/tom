@@ -27,12 +27,12 @@ Enforces current-state lode style: no changelog entries, only durable facts.
 | Skills, skill standards, skill authoring, SKILL.md | `lode/framework/skills.md` |
 | Agents, agent definition, YAML frontmatter, governance | `lode/framework/agents.md` |
 | Rules, quality gate, HARD rules, enforcement, H-XX | `lode/framework/rules.md` |
-| CLI, jerry commands, session start, session end | `lode/framework/cli.md` |
+| CLI, tom commands, session start, session end | `lode/framework/cli.md` |
 | Work tracking, worktracker, entities, WTI rules | `lode/framework/work-tracking.md` |
 | Architecture, hexagonal, domain, ports, adapters | `lode/framework/architecture.md` |
 | Lode, scripts, nushell, pug-lode-ts | `lode/practices.md` |
 | Practices, code style, conventions, workflow | `lode/practices.md` |
-| Terminology, domain words, definitions, Jerry, context rot | `lode/terminology.md` |
+| Terminology, domain words, definitions, Tom, context rot | `lode/terminology.md` |
 | Projects, PROJ, project structure, plans | `lode/framework/work-tracking.md` |
 | Context7, MCP, memory-keeper, MCP tools | `lode/framework/rules.md` |
 
