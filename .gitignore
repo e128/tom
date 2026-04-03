@@ -66,3 +66,10 @@ logs/hook-errors.log
 
 # Claude Code worktrees (local-only, should not be committed)
 .claude/worktrees/
+
+# Lode session scraps
+lode/tmp/
+!lode/tmp/.gitkeep
+
+# Claude Code lode-audit temp state
+.claude/tmp/
