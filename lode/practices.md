@@ -1,5 +1,5 @@
 # Practices
-*Updated: 2026-04-03T14:08:55Z*
+*Updated: 2026-04-08T00:00:25Z*
 
 Key conventions, workflow rules, and project patterns. The source of truth for how to work in this repo.
 

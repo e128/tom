@@ -1,5 +1,5 @@
 # Lode Map
-*Updated: 2026-04-03T15:51:45Z*
+*Updated: 2026-04-07T23:59:25Z*
 
 Hierarchical index of all lode files. Read this first to orient — don't explore the codebase until you've checked here.
 

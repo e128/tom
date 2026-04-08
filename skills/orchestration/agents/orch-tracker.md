@@ -5,7 +5,7 @@ model: haiku
 effort: low
 maxTurns: 10
 color: purple
-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
+tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 <agent>
 

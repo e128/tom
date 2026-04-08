@@ -1,5 +1,5 @@
 # Work Tracking
-*Updated: 2026-04-03T14:08:56Z*
+*Updated: 2026-04-07T23:59:40Z*
 
 Tom tracks work via a worktracker system. Each project has a `WORKTRACKER.md` index and entity files in `work/`. The `/worktracker` skill is the authoritative guide.
 

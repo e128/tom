@@ -229,7 +229,7 @@ If multiple candidates remain after Step 2:
 2. If the highest-priority candidate is 2+ priority levels above the next: route to highest priority (clear separation).
 3. If priority gap is < 2: escalate to Layer 2 (ambiguous).
 
-**2-level gap derivation:** The 2-level gap threshold is a conservative starting value: with 18 skill entries spanning priority 1-15, a 1-level gap is common between adjacent skills; requiring a 2-level gap ensures meaningful separation rather than arbitrary adjacency ordering. This threshold SHOULD be recalibrated when the skill count changes or routing accuracy data from the observability framework becomes available (RT-M-009).
+**2-level gap derivation:** The 2-level gap threshold is a conservative starting value: with 17 skill entries spanning priority 1-15, a 1-level gap is common between adjacent skills; requiring a 2-level gap ensures meaningful separation rather than arbitrary adjacency ordering. This threshold SHOULD be recalibrated when the skill count changes or routing accuracy data from the observability framework becomes available (RT-M-009).
 
 ### Routing Outcomes
 

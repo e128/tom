@@ -1,5 +1,5 @@
 # Rules and Quality Enforcement
-*Updated: 2026-04-03T14:08:45Z*
+*Updated: 2026-04-07T23:59:32Z*
 
 Tom enforces 25 HARD rules (non-overridable) and a quality gate of 0.92 for C2+ deliverables. The authoritative SSOT is `.context/rules/quality-enforcement.md`.
 
@@ -17,6 +17,9 @@ Tom enforces 25 HARD rules (non-overridable) and a quality gate of 0.92 for C2+ 
 | H-20 | BDD test-first Red phase; 90% line coverage required | Test standards violation |
 | H-22 | Proactive skill invocation (see trigger map) | Work quality degradation |
 | H-31 | Clarify when ambiguous; MUST NOT ask when clear | Wrong-direction work |
+| H-32 | GitHub Issue parity for tom repo work items | Dual-tracking violation |
+| H-34 | Agent definitions: YAML frontmatter + constitutional compliance triplet (P-003/P-020/P-022) | Agent structurally invalid |
+| H-36 | Agent routing: circuit breaker max 3 hops; keyword-first routing | Routing loop / token exhaustion |
 
 Full index: `.context/rules/quality-enforcement.md` HARD Rule Index table.
 
@@ -44,6 +47,11 @@ Full index: `.context/rules/quality-enforcement.md` HARD Rule Index table.
 | AE-003 | New or modified ADR | Auto-C3 minimum |
 | AE-004 | Modifies baselined ADR | Auto-C4 |
 | AE-005 | Security-relevant code | Auto-C3 minimum |
+| AE-006a | Context fill NOMINAL (< 0.70) | No action |
+| AE-006b | Context fill WARNING (>= 0.70) | Log + consider checkpoint |
+| AE-006c | Context fill CRITICAL (>= 0.80) | Auto-checkpoint + reduce verbosity |
+| AE-006d | Context fill EMERGENCY (>= 0.88) | Mandatory checkpoint + warn user |
+| AE-006e | Compaction event detected | Human escalation for C3+, session restart recommended |
 
 ## Enforcement Layers
 

@@ -15,7 +15,8 @@ description: >
   skills need simplifying, audit for scaffolding, prune scaffolding, skill friction,
   skills need updating.
 tools: Read, Glob, Grep, Bash, Write, Edit
-maxTurns: 50
+effort: medium
+maxTurns: 25
 memory: project
 ---
 

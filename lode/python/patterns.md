@@ -1,5 +1,5 @@
 # Python Patterns
-*Updated: 2026-04-03T15:51:45Z*
+*Updated: 2026-04-08T00:00:01Z*
 
 Python idioms and patterns used in this codebase.
 
@@ -8,15 +8,22 @@ Python idioms and patterns used in this codebase.
 All public function signatures require type hints. Docstrings are required on public functions. Use `from __future__ import annotations` for forward references.
 
 ```python
-def create_session(project_id: str, context: SessionContext) -> Session:
-    """Create a new work session for the given project.
-    
+@classmethod
+def create(
+    cls,
+    session_id: SessionId,
+    description: str = "",
+    project_id: ProjectId | None = None,
+) -> Session:
+    """Create a new session.
+
     Args:
-        project_id: The PROJ-NNN identifier for the active project.
-        context: Session context with user preferences and environment.
-    
+        session_id: Unique session identity.
+        description: Optional session description.
+        project_id: Optional initial project link.
+
     Returns:
-        A new Session instance in ACTIVE state.
+        New Session aggregate in ACTIVE state.
     """
 ```
 

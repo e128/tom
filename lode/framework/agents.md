@@ -1,5 +1,5 @@
 # Agent System
-*Updated: 2026-04-03T15:51:45Z*
+*Updated: 2026-04-08T00:00:28Z*
 
 Agents are specialized subagents invoked via the Agent tool by orchestrators. Single-file architecture (H-34): `.md` file contains both official Claude Code YAML frontmatter and the system prompt as the markdown body.
 
@@ -13,7 +13,7 @@ name: ps-researcher
 description: >
   Research agent for surveys and landscape analysis...
 model: opus
-effort: medium            # low | medium | high | max (max=Opus 4.6 only) — v2.1.80
+effort: high              # low | medium | high | max (max=Opus 4.6 only) — v2.1.80
 tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 disallowedTools: Agent    # worker agents always disallow Agent (P-003)
 permissionMode: default   # default | acceptEdits | auto | dontAsk | bypassPermissions | plan
@@ -68,7 +68,9 @@ One nesting level only: orchestrator (T5) → workers (T1–T4). Workers cannot 
 
 ## Effort Field (ET-M-001)
 
-`effort` maps to criticality level. All agent files declare `effort` (see `skills/*/agents/` for current count). Orchestrators and T5 agents use `high`.
+`effort` maps to criticality level. All 92 agent files declare `effort` (89 in `skills/*/agents/`, 3 in `.claude/agents/`). Orchestrators and T5 agents use `high`.
+
+**v2.1.94 change:** The session-level default effort changed from `low` to `high`. All agents now inherit `high` if `effort` is omitted. This makes explicit `effort: low` and `effort: medium` declarations critical for haiku/sonnet agents — without them, they run at `high` effort regardless of model.
 
 | Criticality | effort value | Example agents |
 |-------------|-------------|----------------|
@@ -107,3 +109,4 @@ Agents may declare `mcpServers` in frontmatter. Only `context7: true` is valid �
 
 - [skills.md](skills.md) — skills that contain agents
 - [rules.md](rules.md) — H-34, H-01 details
+- `/claude-revision` skill (`skills/claude-revision/SKILL.md`) — periodic health check for agents; has no agents/ subdirectory (runs directly in main context)

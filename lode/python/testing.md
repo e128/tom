@@ -1,7 +1,7 @@
 # Testing
-*Updated: 2026-04-03T15:51:45Z*
+*Updated: 2026-04-07T23:59:58Z*
 
-BDD test-first development at 90% line coverage (H-20). Tests live in `tests/`. (`pyproject.toml` `testpaths` also references `scripts/tests/` but that directory does not yet exist.)
+BDD test-first development. H-20 requires 90% line coverage; CI enforces 80% via `--cov-fail-under=80` (threshold gap tracked separately). Tests live in `tests/`. (`pyproject.toml` `testpaths` also references `scripts/tests/` but that directory does not exist.)
 
 ## Test-First Workflow (H-20)
 
@@ -19,7 +19,7 @@ uv run pytest tests/ -k "test_session"  # filter by name
 
 ## Coverage Requirement
 
-90% line coverage is required (H-20). Coverage configuration is in `pyproject.toml`.
+H-20 requires 90% line coverage. CI currently enforces 80% via `--cov-fail-under=80` in `.github/workflows/ci.yml`. Coverage configuration is in `pyproject.toml`.
 
 ## Test Organization
 
@@ -36,6 +36,8 @@ tests/
     bootstrap/          # bootstrap/composition root tests
     fixtures/           # shared test fixtures
     hooks/              # hook tests
+    infrastructure/     # infrastructure layer tests
+    interface/          # CLI/interface layer tests
     llm/                # LLM integration tests
     project_validation/ # project validation tests
     schemas/            # schema validation tests
@@ -43,8 +45,6 @@ tests/
     session_management/
     work_tracking/
     shared_kernel/
-    infrastructure/
-    interface/
 ```
 
 ## Markers

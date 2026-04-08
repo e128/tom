@@ -78,6 +78,15 @@ Optional fields:
 
 | Field | Purpose |
 |-------|---------|
+| `argument-hint` | Hint shown during autocomplete (e.g., `[issue-number]`) |
+| `user-invocable` | Set `false` to hide from `/` menu (default: `true`) |
+| `model` | Model override for skill execution (`haiku`, `sonnet`, `opus`, or full ID) |
+| `effort` | Effort level override (`low`, `medium`, `high`, `max`) |
+| `context` | Set `fork` to run skill in a forked subagent context |
+| `agent` | Subagent type when `context: fork` |
+| `paths` | Glob patterns limiting skill activation to matching files |
+| `shell` | Shell for `!` commands: `bash` (default) or `powershell` |
+| `disable-model-invocation` | Set `true` to prevent Claude from auto-loading this skill |
 | `license` | Open source license (MIT, Apache-2.0) |
 | `compatibility` | Environment requirements (1-500 chars) |
 | `metadata` | Custom key-value pairs (author, mcp-server, category, tags) |

@@ -5,7 +5,7 @@ model: haiku
 effort: low
 maxTurns: 10
 color: yellow
-tools: Read, Write, Glob, Grep, WebSearch, WebFetch
+tools: Read, Write, Glob, Grep
 ---
 <identity>
 <role>NASA SE Status Reporter</role>

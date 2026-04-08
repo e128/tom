@@ -1,5 +1,5 @@
 # Architecture
-*Updated: 2026-04-03T15:51:45Z*
+*Updated: 2026-04-08T00:00:08Z*
 
 Tom uses hexagonal (ports and adapters) architecture with strict layer isolation enforced by H-07.
 
@@ -21,10 +21,10 @@ graph TD
 
 | Layer | May Import |
 |-------|-----------|
-| domain | shared_kernel only |
+| domain | stdlib, shared_kernel only |
 | application | domain, shared_kernel |
 | infrastructure | domain, application, shared_kernel, external libs |
-| interface | application, shared_kernel |
+| interface | all inner layers (domain, application, infrastructure, shared_kernel) |
 | composition root | all layers |
 
 ## Key Directories
@@ -33,7 +33,7 @@ graph TD
 - `src/application/` — use cases, command/query handlers
 - `src/infrastructure/` — file-based adapters, external integrations
 - `src/interface/` — CLI commands (argparse)
-- `src/agents/` — agent entity management (canonical agents, generated artifacts)
+- `src/agents/` — agent bounded context (domain/application/infrastructure sub-structure): validation, canonical extraction, vendor adapter (Claude Code)
 - `src/configuration/` — configuration aggregates and domain events
 - `src/context_monitoring/` — context-fill monitoring and events
 - `src/session_management/` — session lifecycle

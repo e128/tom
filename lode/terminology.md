@@ -1,5 +1,5 @@
 # Terminology
-*Updated: 2026-04-03T14:08:34Z*
+*Updated: 2026-04-07T23:59:48Z*
 
 Tom-specific terms and their meanings. One term per line.
 
@@ -26,9 +26,11 @@ Tom-specific terms and their meanings. One term per line.
 - **Skill** — a `/slash-command` capability; lives in `skills/{name}/SKILL.md`
 - **Agent** — a specialized subagent; lives in `skills/{name}/agents/{agent}.md`
 - **Trigger map** — the keyword-to-skill routing table in `mandatory-skill-usage.md`
-- **T1–T5 tiers** — tool security tiers (T1=Read-Only, T2=Read-Write, T3=Persistent, T4=Persistent+External, T5=Orchestration+Agent); each tier is cumulative
+- **T1–T5 tiers** — tool security tiers (T1=Read-Only, T2=Read-Write, T3=Persistent, T4=External, T5=Orchestration+Agent); each tier is cumulative; always select the lowest tier that satisfies requirements
 - **H-22** — the HARD rule mandating proactive skill invocation; violations require rework
 - **Circuit breaker** — max 3 routing hops before halting and escalating to user (H-36)
+- **`effort` field** — agent frontmatter field controlling reasoning depth; values: `low`, `medium`, `high`, `max` (`max` = Opus 4.6 only); overrides session effort while the subagent is active; mapping: C1=low, C2=medium, C3=high, C4=max (ET-M-001)
+- **`/claude-revision`** — skill for periodic health checks of agents, skills, CLAUDE.md, rules, and lode memory; lives in `skills/claude-revision/SKILL.md`
 
 ## Work Tracking
 

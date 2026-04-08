@@ -1,7 +1,7 @@
 # Summary
-*Updated: 2026-04-03T15:51:45Z*
+*Updated: 2026-04-07T23:59:51Z*
 
-**Tom** is a Python CLI framework for behavior/workflow guardrails that accrues knowledge, wisdom, and experience across AI-assisted coding sessions. It solves **Context Rot** — the degradation of LLM performance as context fills — by using the filesystem as infinite memory: state is persisted to files and loaded selectively. The framework enforces 25 HARD rules (non-overridable governance constraints), a quality gate threshold of 0.92 for C2+ deliverables, and a skill/agent routing system that proactively invokes specialized skills based on keyword detection. Tom is managed via `tom session start|end|status|abandon`, `tom items list|show`, and `tom projects list|context|validate`. All Python execution uses `uv run`; dependencies use `uv add`. The codebase follows hexagonal architecture with strict layer isolation and BDD test-first development at 90% line coverage.
+**Tom** is a Python CLI framework for behavior/workflow guardrails that accrues knowledge, wisdom, and experience across AI-assisted coding sessions. It solves **Context Rot** — the degradation of LLM performance as context fills — by using the filesystem as infinite memory: state is persisted to files and loaded selectively. The framework enforces 25 HARD rules (non-overridable governance constraints), a quality gate threshold of 0.92 for C2+ deliverables, and a skill/agent routing system that proactively invokes 31 specialized skills (92 agents) based on keyword detection — including `/claude-revision` for periodic framework health checks. Tom is managed via `tom session start|end|status|abandon`, `tom items list|show`, and `tom projects list|context|validate`. All Python execution uses `uv run`; dependencies use `uv add`. The codebase follows hexagonal architecture with strict layer isolation and BDD test-first development at 90% line coverage.
 
 ## Key Facts
 
@@ -11,7 +11,7 @@
 - **Skills**: `skills/` directory — each has a `SKILL.md` file
 - **Agents**: `skills/*/agents/` — single `.md` file (YAML frontmatter + system prompt body)
 - **Rules**: `.context/rules/` — auto-loaded at session start via `.claude/rules/` symlink
-- **Active projects**: `projects/` directory, managed via `/worktracker` skill
+- **Active projects**: `projects/` directory (currently empty — only README.md), managed via `/worktracker` skill
 
 ## Related Lode Files
 
