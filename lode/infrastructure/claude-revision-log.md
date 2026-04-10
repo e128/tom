@@ -1,5 +1,5 @@
 # Claude Revision Log
-*Updated: 2026-04-07*
+*Updated: 2026-04-10*
 
 Persistent memory for `/claude-revision`. Each run appends one entry.
 Read at Phase 0 to recover last-known state and deferred items.
@@ -48,3 +48,24 @@ Read at Phase 0 to recover last-known state and deferred items.
   - L2: 14+ oversized agent definitions — LOW
   - L1: nse-configuration (haiku) with T4 tools — LOW, may be justified
   - W3: Check for /tag or /vim references — LOW
+
+### 2026-04-10
+- Agents: 92 | Skills: 34 (30 skills/ + 4 .claude/skills/) | Memory files: 1
+- Web guidance: Claude Code v2.1.95-v2.1.98 — Monitor tool, /agents tabbed UI, /reload-plugins, Bash security fixes, post-compaction skill budget docs (5K/skill, 25K total)
+- HIGH: 1 | MEDIUM: 3 | LOW: 3
+- Actions taken:
+  - S1: Consolidated duplicate claude-revision skill — removed skills/claude-revision/ (stale, 261 lines), updated .claude/skills/claude-revision/SKILL.md with evolved content (Phase 2 scans both agent locations, Phase 3 checks duplicates, Phase 4 audits rules, added model-tier alignment check). Canonical location: .claude/skills/
+  - A1: Promoted ux-heuristic-evaluator from haiku/low to sonnet/medium — agent has T4 tools (WebSearch, WebFetch, Context7 MCP) and reasons about UX standards, which is sonnet-tier work
+  - R2: Replaced volatile "31 skills" count in agent-routing-standards.md with stable reference to skills/ directory
+  - R1: Reclassified as FALSE POSITIVE — CLAUDE.md skill table correctly lists 21 top-level Tom framework skills; 10 UX sub-skills are invoked by /user-experience orchestrator, .claude/skills/ are utilities
+  - W3: Confirmed resolved — no /tag or /vim references in config files
+  - Lode: Replaced volatile "31 specialized skills (92 agents)" count in lode/summary.md with stable reference
+- Deferred:
+  - S2: 9 UX skills over 250 lines (558-824 lines each) — MEDIUM, bulk decomposition needed (deferred since 2026-04-03)
+  - S4: 12 other skills over 250 lines (292-708 lines) — LOW (deferred since 2026-04-03)
+  - A2: nse-configuration (haiku) with T4 tools — LOW, may be justified (deferred since 2026-04-07)
+  - L2: 14+ oversized agent definitions — LOW (deferred since 2026-04-07)
+- New check criteria added to SKILL.md:
+  - Phase 2: model-tier alignment check (haiku agents with T4 tools)
+  - Phase 3: duplicate detection across .claude/skills/ and skills/
+  - Phase 4: CLAUDE.md skill table completeness (top-level vs sub-skill distinction)

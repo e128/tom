@@ -1,6 +1,11 @@
 ---
 name: problem-solving
-description: Structured problem-solving framework with specialized agents for research, analysis, architecture decisions, validation, synthesis, reviews, investigations, and reporting. Use when tackling complex problems that need systematic exploration, evidence-based decisions, and persistent artifacts.
+description: >
+  Structured problem-solving framework with specialized agents for research, analysis, architecture
+  decisions, validation, synthesis, reviews, investigations, and reporting. Use when tackling complex
+  problems that need systematic exploration, evidence-based decisions, and persistent artifacts.
+  Triggers on: solve this problem, structured analysis, root cause analysis, investigate issue,
+  evidence-based decision, complex problem, systematic exploration.
 version: "2.2.0"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent, WebSearch, WebFetch, mcp__context7__resolve-library-id, mcp__context7__query-docs
 activation-keywords:

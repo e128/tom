@@ -94,7 +94,7 @@
 
 ## Layered Routing Architecture
 
-The routing framework uses three layers with graceful escalation. Only Layer 0 (explicit) and Layer 1 (keyword) are implemented at current scale (31 skills). Layers 2 and 3 are designed for future activation per the [Scaling Roadmap](#scaling-roadmap).
+The routing framework uses three layers with graceful escalation. Only Layer 0 (explicit) and Layer 1 (keyword) are implemented at the current skill count (see `skills/` directory for current list). Layers 2 and 3 are designed for future activation per the [Scaling Roadmap](#scaling-roadmap).
 
 ```
     User Request

@@ -8,8 +8,8 @@ description: >
   review against established usability principles. Escalates to Sonnet when
   critical finding count >= 3, Figma benchmark fails, or evaluation spans > 50 screens.
   Triggers: heuristic evaluation, usability audit, Nielsen heuristics, interface review.
-model: haiku
-effort: low
+model: sonnet
+effort: medium
 maxTurns: 10
 color: yellow
 tools:

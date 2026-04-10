@@ -1,7 +1,11 @@
 ---
 name: architecture
-description: "This skill should be used when the user asks to \"design system\",
-\"create ADR\", \"review architecture\", or mentions architectural decisions."
+description: >
+  Design systems, create ADRs, and review architecture decisions. Use when the user asks to design
+  a system, create an architecture decision record, review architecture, or discusses hexagonal,
+  ports-and-adapters, or other architectural patterns.
+  Triggers on: design system, create ADR, review architecture, architecture decision, hexagonal,
+  ports and adapters, system design, architectural review.
 version: 1.0.0
 allowed-tools:
   - Read

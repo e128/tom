@@ -30,7 +30,7 @@ Tom-specific terms and their meanings. One term per line.
 - **H-22** — the HARD rule mandating proactive skill invocation; violations require rework
 - **Circuit breaker** — max 3 routing hops before halting and escalating to user (H-36)
 - **`effort` field** — agent frontmatter field controlling reasoning depth; values: `low`, `medium`, `high`, `max` (`max` = Opus 4.6 only); overrides session effort while the subagent is active; mapping: C1=low, C2=medium, C3=high, C4=max (ET-M-001)
-- **`/claude-revision`** — skill for periodic health checks of agents, skills, CLAUDE.md, rules, and lode memory; lives in `skills/claude-revision/SKILL.md`
+- **`/claude-revision`** — skill for periodic health checks of agents, skills, CLAUDE.md, rules, and lode memory; lives in `.claude/skills/claude-revision/SKILL.md`
 
 ## Work Tracking
 

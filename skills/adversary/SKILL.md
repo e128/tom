@@ -1,6 +1,11 @@
 ---
 name: adversary
-description: On-demand adversarial quality reviews using strategy templates. Selects strategies by criticality level, executes adversarial templates against deliverables, and scores quality using LLM-as-Judge rubric. Integrates with quality-enforcement.md SSOT.
+description: >
+  On-demand adversarial quality reviews using strategy templates. Selects strategies by criticality
+  level, executes adversarial templates against deliverables, and scores quality using LLM-as-Judge
+  rubric. Integrates with quality-enforcement.md SSOT.
+  Triggers on: adversarial review, adversary, rigorous critique, strategy review, adversarial quality,
+  red team, stress test deliverable.
 version: "1.0.0"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch, mcp__context7__resolve-library-id, mcp__context7__query-docs
 activation-keywords:
